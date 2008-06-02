@@ -212,11 +212,9 @@ Here you need to declare the input / output properties as dynamic as Quartz Comp
 	/*
 	Release any resources created in -init.
 	*/
-	
-	if (![_waitToStopLock tryLock] && _stopListeningThread == YES)
-	{
-		[_waitToStopLock lock];
-	}
+//	NSLog(@"%s",__FUNCTION__);
+	_stopListeningThread == YES;
+	[_waitToStopLock lock];
 	id tmp = _waitToStopLock;
 	 _waitToStopLock = nil;
 	[tmp unlock];
@@ -235,19 +233,22 @@ Here you need to declare the input / output properties as dynamic as Quartz Comp
 
 - (void)startListeningThread
 {
-	if (![_waitToStopLock tryLock])
-	{
-		[_waitToStopLock lock];
-	}
+//	NSLog(@"%s",__FUNCTION__);
+	[_waitToStopLock lock];
 	_stopListeningThread = NO;
-
 	[_waitToStopLock unlock];
 
 	[NSThread detachNewThreadSelector:@selector(listenOnThread:) toTarget:self withObject:nil];
+//	NSLog(@"%s end",__FUNCTION__);
 }
 
 - (void)stopListeningThread {
+//	NSLog(@"%s",__FUNCTION__);
 	_stopListeningThread = YES;
+	// make sure thread is gone
+	[_waitToStopLock lock];
+	[_waitToStopLock unlock];
+//	NSLog(@"%s end",__FUNCTION__);
 }
 
 - (BOOL)startExecution:(id<QCPlugInContext>)inContext
@@ -322,6 +323,7 @@ Here you need to declare the input / output properties as dynamic as Quartz Comp
 - (void)listenOnThread:(id)aSender
 {	
 	NSAutoreleasePool *pool = [NSAutoreleasePool new];
+//	NSLog(@"%s",__FUNCTION__);
 	if ([_waitToStopLock tryLock])
 	{
 		NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
@@ -345,6 +347,7 @@ Here you need to declare the input / output properties as dynamic as Quartz Comp
 
 		[_waitToStopLock unlock];
 	}
+//	NSLog(@"%s end",__FUNCTION__);
 	[pool release];
 }
 

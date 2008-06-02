@@ -371,7 +371,7 @@ static void readData (
 
 - (void)readData:(NSData *)inData from:(NSString *)inFromAddress
 {
-	NSDate *date = [NSDate date];
+//	NSDate *date = [NSDate date];
 //	if (self.lastDate) {
 //		NSTimeInterval frameTime = [date timeIntervalSinceDate:self.lastDate];
 //		NSLog(@"%s since last frame: %f - frame rate of: %f",__FUNCTION__,frameTime, 1./frameTime);

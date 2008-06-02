@@ -96,8 +96,8 @@
 		08FB77AFFE84173DC02AAC07 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				F248518C0DF3F78E00E0AA98 /* BlinkenproviderPlugIn.m */,
 				F248518D0DF3F78E00E0AA98 /* BlinkenproviderPlugIn.h */,
+				F248518C0DF3F78E00E0AA98 /* BlinkenproviderPlugIn.m */,
 				F248518F0DF3F78E00E0AA98 /* BlinkenListener.h */,
 				F248518E0DF3F78E00E0AA98 /* BlinkenListener.m */,
 			);
