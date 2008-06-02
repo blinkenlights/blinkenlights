@@ -22,10 +22,10 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		16BA95420A7EB2EB001E4983 /* BlinkenproviderPlugIn.m in Sources */ = {isa = PBXBuildFile; fileRef = 16BA95410A7EB2EB001E4983 /* BlinkenproviderPlugIn.m */; };
 		16BA96310A7EB9AC001E4983 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16BA96300A7EB9AC001E4983 /* Quartz.framework */; };
 		8D5B49B4048680CD000E48DA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */; };
-		F22E4E0A0DF1C54D005C813E /* BlinkenListener.m in Sources */ = {isa = PBXBuildFile; fileRef = F22E4E080DF1C54D005C813E /* BlinkenListener.m */; };
+		F24851900DF3F78E00E0AA98 /* BlinkenproviderPlugIn.m in Sources */ = {isa = PBXBuildFile; fileRef = F248518C0DF3F78E00E0AA98 /* BlinkenproviderPlugIn.m */; };
+		F24851910DF3F78E00E0AA98 /* BlinkenListener.m in Sources */ = {isa = PBXBuildFile; fileRef = F248518E0DF3F78E00E0AA98 /* BlinkenListener.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,14 +41,14 @@
 /* Begin PBXFileReference section */
 		1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		16AA5C440A7EEE7300888E31 /* Blinkenposer_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = Blinkenposer_Prefix.pch; sourceTree = "<group>"; };
-		16BA95400A7EB2EB001E4983 /* BlinkenproviderPlugIn.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = BlinkenproviderPlugIn.h; sourceTree = "<group>"; };
-		16BA95410A7EB2EB001E4983 /* BlinkenproviderPlugIn.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = BlinkenproviderPlugIn.m; sourceTree = "<group>"; };
 		16BA96300A7EB9AC001E4983 /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = /System/Library/Frameworks/Quartz.framework; sourceTree = "<absolute>"; };
 		8D5B49B6048680CD000E48DA /* Blinkenposer.plugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Blinkenposer.plugin; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D5B49B7048680CD000E48DA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F22E4E080DF1C54D005C813E /* BlinkenListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlinkenListener.m; sourceTree = "<group>"; };
-		F22E4E090DF1C54D005C813E /* BlinkenListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlinkenListener.h; sourceTree = "<group>"; };
-		F22E4E0D0DF1C848005C813E /* bprotocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bprotocol.h; sourceTree = "<group>"; };
+		F248518B0DF3F78E00E0AA98 /* bprotocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = bprotocol.h; path = Sources/bprotocol.h; sourceTree = "<group>"; };
+		F248518C0DF3F78E00E0AA98 /* BlinkenproviderPlugIn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BlinkenproviderPlugIn.m; path = Sources/BlinkenproviderPlugIn.m; sourceTree = "<group>"; };
+		F248518D0DF3F78E00E0AA98 /* BlinkenproviderPlugIn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BlinkenproviderPlugIn.h; path = Sources/BlinkenproviderPlugIn.h; sourceTree = "<group>"; };
+		F248518E0DF3F78E00E0AA98 /* BlinkenListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BlinkenListener.m; path = Sources/BlinkenListener.m; sourceTree = "<group>"; };
+		F248518F0DF3F78E00E0AA98 /* BlinkenListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BlinkenListener.h; path = Sources/BlinkenListener.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,11 +96,10 @@
 		08FB77AFFE84173DC02AAC07 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				16BA95400A7EB2EB001E4983 /* BlinkenproviderPlugIn.h */,
-				16BA95410A7EB2EB001E4983 /* BlinkenproviderPlugIn.m */,
-				F22E4E0D0DF1C848005C813E /* bprotocol.h */,
-				F22E4E090DF1C54D005C813E /* BlinkenListener.h */,
-				F22E4E080DF1C54D005C813E /* BlinkenListener.m */,
+				F248518C0DF3F78E00E0AA98 /* BlinkenproviderPlugIn.m */,
+				F248518D0DF3F78E00E0AA98 /* BlinkenproviderPlugIn.h */,
+				F248518F0DF3F78E00E0AA98 /* BlinkenListener.h */,
+				F248518E0DF3F78E00E0AA98 /* BlinkenListener.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -116,6 +115,7 @@
 		32C88E010371C26100C91783 /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
+				F248518B0DF3F78E00E0AA98 /* bprotocol.h */,
 				16AA5C440A7EEE7300888E31 /* Blinkenposer_Prefix.pch */,
 			);
 			name = "Other Sources";
@@ -180,8 +180,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				16BA95420A7EB2EB001E4983 /* BlinkenproviderPlugIn.m in Sources */,
-				F22E4E0A0DF1C54D005C813E /* BlinkenListener.m in Sources */,
+				F24851900DF3F78E00E0AA98 /* BlinkenproviderPlugIn.m in Sources */,
+				F24851910DF3F78E00E0AA98 /* BlinkenListener.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
