@@ -217,9 +217,11 @@ Here you need to declare the input / output properties as dynamic as Quartz Comp
 	{
 		[_waitToStopLock lock];
 	}
-	[_waitToStopLock unlock];
-	[_waitToStopLock release];
-	_waitToStopLock = nil;
+	id tmp = _waitToStopLock;
+	 _waitToStopLock = nil;
+	[tmp unlock];
+	[tmp release];
+	
 	[_blinkenImageProvider release];
 	_blinkenImageProvider = nil;
 	self.blinkenStructure = nil;
@@ -237,11 +239,11 @@ Here you need to declare the input / output properties as dynamic as Quartz Comp
 	{
 		[_waitToStopLock lock];
 	}
-	[_waitToStopLock unlock];
 	_stopListeningThread = NO;
 
-	[NSThread detachNewThreadSelector:@selector(listenOnThread:) toTarget:self withObject:nil];
+	[_waitToStopLock unlock];
 
+	[NSThread detachNewThreadSelector:@selector(listenOnThread:) toTarget:self withObject:nil];
 }
 
 - (void)stopListeningThread {
@@ -333,7 +335,7 @@ Here you need to declare the input / output properties as dynamic as Quartz Comp
 		while (!_stopListeningThread)
 		{
 			NSAutoreleasePool *innerPool = [NSAutoreleasePool new];
-			[runLoop runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1.]];
+			[runLoop runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.25]];
 			[innerPool release];
 		}
 		
