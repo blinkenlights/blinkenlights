@@ -1,0 +1,275 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 42;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2B0A8B5E07FCA133000ACEFD /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67F52649029B02AF05CB1624 /* Carbon.framework */; };
+		2B0A8B5F07FCA133000ACEFD /* QuickTime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67F5264A029B02AF05CB1624 /* QuickTime.framework */; };
+		F2853CF40DE767B3008D550F /* blibMoviePlayer.c in Sources */ = {isa = PBXBuildFile; fileRef = F2853CF30DE767B3008D550F /* blibMoviePlayer.c */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		2B0A8B6107FCA133000ACEFD /* blibMoviePlayer */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = blibMoviePlayer; sourceTree = BUILT_PRODUCTS_DIR; };
+		67F52649029B02AF05CB1624 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
+		67F5264A029B02AF05CB1624 /* QuickTime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickTime.framework; path = /System/Library/Frameworks/QuickTime.framework; sourceTree = "<absolute>"; };
+		F2853CF30DE767B3008D550F /* blibMoviePlayer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = blibMoviePlayer.c; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2B0A8B5D07FCA133000ACEFD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2B0A8B5E07FCA133000ACEFD /* Carbon.framework in Frameworks */,
+				2B0A8B5F07FCA133000ACEFD /* QuickTime.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		08FB7794FE84155DC02AAC07 /* ASCIIMoviePlayer */ = {
+			isa = PBXGroup;
+			children = (
+				08FB7795FE84155DC02AAC07 /* Source */,
+				67F52648029B02AF05CB1624 /* Frameworks */,
+				1AB674ADFE9D54B511CA2CBB /* Products */,
+			);
+			name = ASCIIMoviePlayer;
+			sourceTree = "<group>";
+		};
+		08FB7795FE84155DC02AAC07 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				F2853CF30DE767B3008D550F /* blibMoviePlayer.c */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
+		1AB674ADFE9D54B511CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2B0A8B6107FCA133000ACEFD /* blibMoviePlayer */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		67F52648029B02AF05CB1624 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				67F52649029B02AF05CB1624 /* Carbon.framework */,
+				67F5264A029B02AF05CB1624 /* QuickTime.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		2B0A8B5A07FCA133000ACEFD /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		2B0A8B5907FCA133000ACEFD /* blibMoviePlayer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2B7AD77C08861A35005CCDCB /* Build configuration list for PBXNativeTarget "blibMoviePlayer" */;
+			buildPhases = (
+				2B0A8B5A07FCA133000ACEFD /* Headers */,
+				2B0A8B5B07FCA133000ACEFD /* Sources */,
+				2B0A8B5D07FCA133000ACEFD /* Frameworks */,
+				2B0A8B6007FCA133000ACEFD /* Rez */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = blibMoviePlayer;
+			productInstallPath = "$(HOME)/bin";
+			productName = ASCIIMoviePlayer;
+			productReference = 2B0A8B6107FCA133000ACEFD /* blibMoviePlayer */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		08FB7793FE84155DC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 2B7AD78008861A35005CCDCB /* Build configuration list for PBXProject "blibMoviePlayer" */;
+			compatibilityVersion = "Xcode 2.4";
+			hasScannedForEncodings = 0;
+			mainGroup = 08FB7794FE84155DC02AAC07 /* ASCIIMoviePlayer */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2B0A8B5907FCA133000ACEFD /* blibMoviePlayer */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXRezBuildPhase section */
+		2B0A8B6007FCA133000ACEFD /* Rez */ = {
+			isa = PBXRezBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXRezBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2B0A8B5B07FCA133000ACEFD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F2853CF40DE767B3008D550F /* blibMoviePlayer.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		2B7AD77D08861A35005CCDCB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH)";
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = "";
+				GCC_DEBUGGING_SYMBOLS = full;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
+				HEADER_SEARCH_PATHS = (
+					"/opt/local/include/blib-1.1",
+					"/opt/local/include/glib-2.0",
+					"/opt/local/lib/glib-2.0/include",
+					"/opt/local/include/glib-2.0/include",
+					/opt/local/include,
+				);
+				INSTALL_PATH = "$(HOME)/bin";
+				LIBRARY_SEARCH_PATHS = "";
+				MACOSX_DEPLOYMENT_TARGET = 10.4;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = (
+					"-L/opt/local/lib",
+					"-lgobject-2.0",
+					"-lgmodule-2.0",
+					"-lglib-2.0",
+					"-lb",
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = blibMoviePlayer;
+				REZ_EXECUTABLE = YES;
+				SDKROOT = /Developer/SDKs/MacOSX10.5.sdk;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+				ZERO_LINK = NO;
+			};
+			name = Debug;
+		};
+		2B7AD77E08861A35005CCDCB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH)";
+				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = "";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
+				HEADER_SEARCH_PATHS = (
+					"/opt/local/include/blib-1.1",
+					"/opt/local/include/glib-2.0",
+					"/opt/local/lib/glib-2.0/include",
+					"/opt/local/include/glib-2.0/include",
+					/opt/local/include,
+				);
+				INSTALL_PATH = "$(HOME)/bin";
+				LIBRARY_SEARCH_PATHS = "";
+				MACOSX_DEPLOYMENT_TARGET = 10.4;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = (
+					"-L/opt/local/lib",
+					"-lgobject-2.0",
+					"-lgmodule-2.0",
+					"-lglib-2.0",
+					"-lb",
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = blibMoviePlayer;
+				REZ_EXECUTABLE = YES;
+				SDKROOT = /Developer/SDKs/MacOSX10.5.sdk;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		2B7AD78108861A35005CCDCB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEAD_CODE_STRIPPING = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				MACOSX_DEPLOYMENT_TARGET = 10.4;
+				PREBINDING = NO;
+				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
+			};
+			name = Debug;
+		};
+		2B7AD78208861A35005CCDCB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					ppc,
+					i386,
+				);
+				DEAD_CODE_STRIPPING = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				MACOSX_DEPLOYMENT_TARGET = 10.4;
+				PREBINDING = NO;
+				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2B7AD77C08861A35005CCDCB /* Build configuration list for PBXNativeTarget "blibMoviePlayer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2B7AD77D08861A35005CCDCB /* Debug */,
+				2B7AD77E08861A35005CCDCB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		2B7AD78008861A35005CCDCB /* Build configuration list for PBXProject "blibMoviePlayer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2B7AD78108861A35005CCDCB /* Debug */,
+				2B7AD78208861A35005CCDCB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 08FB7793FE84155DC02AAC07 /* Project object */;
+}
