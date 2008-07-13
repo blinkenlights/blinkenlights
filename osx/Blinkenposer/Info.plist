@@ -15,7 +15,7 @@
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleGetInfoString</key>
-	<string>Blinkenposer version 1.0, Copyright YourCompany.</string>
+	<string>Blinkenposer version 1.0, Copyright TheCodingMonkeys.</string>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
 	<key>CFBundleShortVersionString</key>
@@ -23,6 +23,7 @@
 	<key>QCPlugInClasses</key>
 	<array>
 		<string>BlinkenproviderPlugIn</string>
+		<string>BlinkensenderPlugIn</string>
 	</array>
 </dict>
 </plist>

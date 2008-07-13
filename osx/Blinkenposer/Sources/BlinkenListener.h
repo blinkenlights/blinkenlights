@@ -8,7 +8,6 @@
 
 #import <Cocoa/Cocoa.h>
 
-
 @interface BlinkenListener : NSObject {
 	int	_port;
 	id _delegate;
