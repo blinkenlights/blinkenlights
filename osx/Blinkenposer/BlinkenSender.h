@@ -19,6 +19,7 @@
 
 @property (copy) NSString *targetAddress;
 
++ (NSData *)frameDataForBlinkenStructure:(NSArray *)inBlinkenStructure;
 - (void)sendBlinkenStructure:(NSArray *)blinkenStructure; // blinkenstructure is an array of line arrays with values from 0 to 15
 
 @end

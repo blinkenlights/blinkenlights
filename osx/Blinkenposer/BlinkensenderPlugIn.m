@@ -3,6 +3,7 @@
 #import "BlinkenListener.h"
 #import "BlinkenSender.h"
 #import "BlinkensenderPlugIn.h"
+#import "BlinkenImageProvider.h"
 
 #define	kQCPlugIn_Name				@"Blinkensender"
 #define	kQCPlugIn_Description		@"This plugin will send the image input via the Blinkenprotocol and/or generate bml files"
@@ -17,12 +18,11 @@
 
 @dynamic inputTargetAddress;
 @dynamic inputImage;
+@dynamic inputBlinkenStructure;
 @dynamic inputFPSCap;
 @dynamic inputBitsPerPixel;
-@dynamic inputRecordToBML;
-@dynamic inputOutputBaseDirectory;
 
-@dynamic outputBlinkenImage;
+@dynamic outputImage;
 @dynamic outputPixelWidth;
 @dynamic outputPixelHeight;
 @dynamic outputBlinkenStructure;
@@ -33,12 +33,11 @@
     
 		@"inputTargetAddress",
 		@"inputImage",
+		@"inputBlinkenStructure",
 		@"inputFPSCap",
 		@"inputBitsPerPixel",
-		@"inputRecordToBML",
-		@"inputOutputBaseDirectory",
     
-    	@"outputBlinkenImage",
+    	@"outputImage",
     	@"outputPixelWidth",
     	@"outputPixelHeight",
     	@"outputBlinkenStructure",
@@ -60,7 +59,7 @@
 	/*
 	Specify the optional attributes for property based ports (QCPortAttributeNameKey, QCPortAttributeDefaultValueKey...).
 	*/
-	if ([inKey isEqualToString:@"outputBlinkenImage"])
+	if ([inKey isEqualToString:@"outputImage"])
         return [NSDictionary dictionaryWithObjectsAndKeys:
                 	@"Blinken Image", QCPortAttributeNameKey,
                 nil];
@@ -80,10 +79,33 @@
                 	@"Pixel Height", QCPortAttributeNameKey,
                 nil];
 
-//	if ([inKey isEqualToString:@"inputProxyAddress"])
-//        return [NSDictionary dictionaryWithObjectsAndKeys:
-//                	@"Proxy Address", QCPortAttributeNameKey,
-//                nil];
+	if ([inKey isEqualToString:@"inputTargetAddress"])
+        return [NSDictionary dictionaryWithObjectsAndKeys:
+                	@"Target Address", QCPortAttributeNameKey,
+                	@"localhost:2323", QCPortAttributeDefaultValueKey,
+                nil];
+
+	if ([inKey isEqualToString:@"inputImage"])
+        return [NSDictionary dictionaryWithObjectsAndKeys:
+                	@"Image", QCPortAttributeNameKey,
+                nil];
+
+	if ([inKey isEqualToString:@"inputBlinkenStructure"])
+        return [NSDictionary dictionaryWithObjectsAndKeys:
+                	@"Blinken Structure", QCPortAttributeNameKey,
+                nil];
+
+	
+	if ([inKey isEqualToString:@"inputFPSCap"])
+        return [NSDictionary dictionaryWithObjectsAndKeys:
+                	@"FPS Cap", QCPortAttributeNameKey,
+                	[NSNumber numberWithInt:30], QCPortAttributeDefaultValueKey,
+                nil];
+	if ([inKey isEqualToString:@"inputBitsPerPixel"])
+        return [NSDictionary dictionaryWithObjectsAndKeys:
+                	@"Bits Per Pixel", QCPortAttributeNameKey,
+                	[NSNumber numberWithInt:8], QCPortAttributeDefaultValueKey,
+                nil];
 	
 	return nil;
 }
@@ -146,6 +168,30 @@
 	_blinkenSender = [BlinkenSender new];
 }
 
+- (NSArray *)blinkenStructureForImageProvider:(id)inImageProvider bitsPerPixel:(int)inBPP {
+
+	NSMutableArray *blinkenStructure = [NSMutableArray array];
+	static int valueBase = 0;
+	int x = 0, y=0;
+	int value = valueBase;
+	for (y = 0; y<32; y++) {
+		NSMutableArray *blinkenRow = [NSMutableArray array];
+		for (x = 0; x<96; x++) {
+			[blinkenRow addObject:[NSNumber numberWithInt:value]];
+			value = (value + 1) % 16;
+		}
+		[blinkenStructure addObject:blinkenRow];
+		value = (value + 1) % 16;
+	}
+	valueBase++;
+
+	return blinkenStructure;
+}
+
+- (BOOL)blinkenStructureIsDifferentFromLastFrame:(NSArray *)inStructure {
+	return YES;
+}
+
 - (BOOL)execute:(id<QCPlugInContext>)inContext atTime:(NSTimeInterval)time withArguments:(NSDictionary*)arguments
 {
 	/*
@@ -157,31 +203,51 @@
 	CGLContextObj cgl_ctx = [context CGLContextObj];
 	*/
 
-	static int frameCapper = 0;
-	static int valueBase = 0;
-	if (frameCapper == 0) {
-	
-		// generate data
-		NSMutableArray *blinkenStructure = [NSMutableArray array];
-		int x = 0, y=0;
-		int value = valueBase;
-		for (y = 0; y<32; y++) {
-			NSMutableArray *blinkenRow = [NSMutableArray array];
-			for (x = 0; x<96; x++) {
-				[blinkenRow addObject:[NSNumber numberWithInt:value]];
-				value = (value + 1) % 16;
-			}
-			[blinkenStructure addObject:blinkenRow];
-			value = (value + 1) % 16;
+	if ([self didValueForInputKeyChange:@"inputFPSCap"]) {
+		_minimumFrameTimeDifference = 1.0 / self.inputFPSCap;
+	}
+
+	int bitsPerPixel = (int)self.inputBitsPerPixel;
+
+	if (time - _lastFrameTime + 1.0 / 120. >= _minimumFrameTimeDifference) {
+		
+		NSArray *blinkenStructure = self.inputBlinkenStructure;
+		
+		id inputImage = self.inputImage;
+		if (inputImage) {
+			NSArray *structure = [self blinkenStructureForImageProvider:inputImage bitsPerPixel:bitsPerPixel];
+			if (structure) blinkenStructure = structure;
 		}
+		
+		if ([self blinkenStructureIsDifferentFromLastFrame:blinkenStructure]) {
+			self.blinkenStructure = blinkenStructure;
+			[_blinkenSender sendBlinkenStructure:blinkenStructure];
+			
+			if (!_blinkenImageProvider)
+			{
+				_blinkenImageProvider = [BlinkenImageProvider new];
+			}
+			CGSize imageSize = CGSizeMake((CGFloat)[[blinkenStructure lastObject] count],(CGFloat)[blinkenStructure count]);
+			
+			if ([blinkenStructure count] && [[blinkenStructure lastObject] count]) {
+				
+				[_blinkenImageProvider setFrameData:[BlinkenSender frameDataForBlinkenStructure:blinkenStructure] size:imageSize channels:1 maxValue:0xff];
 	
-		[_blinkenSender sendBlinkenStructure:blinkenStructure];
-	} 
-	
-	valueBase++;
-	
-	frameCapper = (frameCapper + 1) % 4;
-	frameCapper = 0;
+				self.outputImage = _blinkenImageProvider;
+				self.outputBlinkenStructure = blinkenStructure;
+				self.outputPixelHeight = imageSize.height;
+				self.outputPixelWidth  = imageSize.width;
+				_lastFrameTime = time;
+			} else {
+				self.outputBlinkenStructure = nil;
+				self.outputImage = nil;
+				self.outputPixelHeight = 0;
+				self.outputPixelWidth = 0;
+			}
+		}
+		
+
+	}
 	
 	return YES;
 }

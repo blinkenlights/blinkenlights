@@ -21,6 +21,18 @@
 
 @synthesize targetAddress = I_targetAddress;
 
++ (NSData *)frameDataForBlinkenStructure:(NSArray *)inBlinkenStructure {
+	NSMutableData *result = [NSMutableData data];
+	for (NSArray *row in inBlinkenStructure) {
+		for (NSNumber *value in row) {
+			unsigned char charValue = [value integerValue] * (0xff / 15);
+			[result appendBytes:&charValue length:1];
+		}
+	}
+	return result;
+}
+
+
 - (void)createSendSocket {
 	I_sendSocket = CFSocketCreate(kCFAllocatorDefault, PF_INET, SOCK_DGRAM, IPPROTO_UDP, 
 							   0, NULL, NULL);
@@ -127,22 +139,11 @@
         0.5
         );
     if (err != kCFSocketSuccess) {
-        NSLog(@"%s could not send data (%d, %@, %@)",__FUNCTION__,err,[NSString stringWithAddressData:(NSData *)_targetAddressData],inData);
+        NSLog(@"%s could not send data (%d, %@, %u bytes)",__FUNCTION__,err,[NSString stringWithAddressData:(NSData *)_targetAddressData],[inData length]);
         
     } else {
-        NSLog(@"%s did ping send data: (%@, %@)",__FUNCTION__,[NSString stringWithAddressData:(NSData *)_targetAddressData],inData);
+        NSLog(@"%s did send data: (%@, %u bytes)",__FUNCTION__,[NSString stringWithAddressData:(NSData *)_targetAddressData],[inData length]);
     };
-}
-
-- (NSData *)frameDataForBlinkenStructure:(NSArray *)inBlinkenStructure {
-	NSMutableData *result = [NSMutableData data];
-	for (NSArray *row in inBlinkenStructure) {
-		for (NSNumber *value in row) {
-			unsigned char charValue = [value integerValue] * (0xff / 15);
-			[result appendBytes:&charValue length:1];
-		}
-	}
-	return result;
 }
 
 - (void)sendBlinkenStructure:(NSArray *)inBlinkenStructure
@@ -158,7 +159,7 @@
 	
 	[sendData appendBytes:&header length:sizeof(struct mcu_frame_header)];
 	
-	[sendData appendData:[self frameDataForBlinkenStructure:inBlinkenStructure]];
+	[sendData appendData:[BlinkenSender frameDataForBlinkenStructure:inBlinkenStructure]];
 	
 	[self sendData:sendData];
 }

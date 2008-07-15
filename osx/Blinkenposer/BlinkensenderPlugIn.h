@@ -19,6 +19,8 @@
 	NSString *_BMLBaseDirectory;
 	NSString *_targetAddress;
 	BlinkenSender *_blinkenSender;
+	NSTimeInterval _lastFrameTime;
+	NSTimeInterval _minimumFrameTimeDifference;
 }
 
 @property (retain) NSArray  *blinkenStructure;
@@ -27,13 +29,12 @@
 
 
 @property (assign) NSString * inputTargetAddress;
-@property (assign) id<QCPlugInInputImageSource> *inputImage;
+@property (assign) id<QCPlugInInputImageSource> inputImage;
+@property (assign) NSArray * inputBlinkenStructure;
 @property double inputFPSCap;
 @property double inputBitsPerPixel;
-@property BOOL inputRecordToBML;
-@property (assign) NSString *inputOutputBaseDirectory;
 
-@property (assign)id <QCPlugInOutputImageProvider> outputBlinkenImage;
+@property (assign)id <QCPlugInOutputImageProvider> outputImage;
 @property NSUInteger outputPixelWidth;
 @property NSUInteger outputPixelHeight;
 @property (assign) NSArray * outputBlinkenStructure;
