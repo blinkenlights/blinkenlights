@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Blinkenposer - Quartz Composer patches for the Blinkenlights project.</title>
+    <meta name="robots" content="index,follow" />
+    <style type="text/css">
+      body {
+        background: #bbb;
+        font-family: Helvetica, Arial, sans-serif;
+      }
+      
+      .baseDiv {
+        background: #fff;
+        margin: 10px 50px;
+        min-width: 700px;
+        min-height:786px;
+      }
+      
+      .pageHeadingDiv {
+        background: #636b80;
+        color:white;
+        padding: 10px 10px;
+      }
+      .mainContent {
+        padding: 10px 10px;
+        font-size: 10pt;
+      }
+      
+      table {
+        margin: 10px;
+        border-collapse:collapse;
+        border: 1px solid black;
+      }
+      
+      th {
+        background: #636b80;
+        color: white;
+        padding: 2px 5px;
+        text-align:left;
+      }
+      
+      td {
+        padding: 2px 5px;
+        border-top: 1px solid #333;
+        vertical-align: top;
+      }
+      
+    </style>
+  </head>
+  <body>
+    <div class="baseDiv">
+      <div class="pageHeadingDiv">
+        <h1>Blinkenposer</h1>
+        Quartz Composer Patches for Blinkenlights
+      </div>
+      <div class="mainContent">
+        <h3>System Requirements</h3>
+        <p>The <tt>Blinkenposer.plugin</tt> requires Mac OS X 10.5</p>
+
+        <h3>Installation</h3>
+        <p>For the Blinkenposer packages to work with Quartz Composer, the <tt>Blinkenposer.plugin</tt> needs to be copied into either <tt>(~)/Library/Graphics/Quartz Composer Plug-Ins/</tt>. </p>
+        <p>The <tt>FlatStereoscopeToronto.qtz</tt> composition can be used as a Screen Saver if put into <tt>(~)/Library/Screen Savers/</tt></p>
+        <p>If you want to create content using Quartz Composer you have to download and install the freely available <a href="http://developer.apple.com/mac/">Apple Developer Tools (Xcode 3.1)</a>, after installation Quartz Composer.app can be found in <tt>/Developer/Applications/Quartz Composer.app</tt> and you are ready to go!</p>
+
+        <h3>Provided Patches</h3>
+        <p>The <tt>Blinkenposer.plugin</tt> provides the following patches to be used in Quartz Composer:
+        
+        <h4>Blinkenprovider</h4>
+        <img src="images/Blinkenprovider.png" /><br/>
+        The Blinkenprovider patch can listen to blinkenproxies and provides the an Image, the pixel dimensions and a structure representation of the received images.
+        <table>
+          <tr><th>Input</th><th>Type</th><th>Example</th><th>Description</th></tr>
+          <tr><td>Proxy&nbsp;Address</td><td>String</td><td>localhost:4242</td><td>The address and port of the blinkenproxy to listen to. &lt;address&gt;[:&lt;port&gt;] - if the port is omitted, 4242 is assumed. If the line is comepletely empty, then the Blinkenprovider will try to listen without a proxy.</td></tr>
+        </table>
+        <table>
+          <tr><th>Output</th><th>Type</th><th>Example</th><th>Description</th></tr>
+          <tr><td>Blinken&nbsp;Image</td><td>Image</td><td><img src="images/ExampleBlinkenImage.png" /></td><td>A Grayscale Image representation of what was received from the Blinkenproxy.</td></tr>
+          <tr><td>Pixel Width</td><td>Number</td><td>96</td><td>The width of the received Image.</td></tr>
+          <tr><td>Pixel Height</td><td>Number</td><td>32</td><td>The Height of the received Image.</td></tr>
+          <tr><td>Blinken&nbsp;Structure</td><td>Array of Arrays</td><td>{{15,0},{0,15}}</td><td>The received Data as a Structure that can be iterated through. This structure has values from 0 (black) to 15 (white). To see that in use you can look into the <tt>FlatStereoscopeToronto.qtz</tt> Composition.</td></tr>
+        </table>
+
+        <h4>Blinkensender</h4>
+        <img src="images/Blinkensender.png" /><br/>
+        The Blinkensender patch can send images or structures to a blinkenproxy.
+        <table>
+          <tr><th>Input</th><th>Type</th><th>Example</th><th>Description</th></tr>
+          <tr><td>Target&nbsp;Address</td><td>String</td><td>localhost:2323</td><td>The address and port of the blinkenproxy to Target. &lt;address&gt;[:&lt;port&gt;] - if the port is omitted, 2323 is assumed.</td></tr>
+          <tr><td>Image</td><td>Image</td><td><img src="images/ExampleBlinkenImage.png" /></td><td>A Grayscale Image representation of what should be sent to the Blinkenproxy. The Data will be boiled down to 16 grayscale values.</td></tr>
+          <tr><td>Blinken&nbsp;tructure</td><td>Array of Arrays</td><td>{{15,0},{0,15}}</td><td>A Blinken Structure to send out. If both Image and Structure are attached to this patch, the Image is taken. To see how that can be created using a javascript patch, have a look into the <tt>BasicTest.qtz</tt> Composition.</td></tr>
+          <tr><td>FPS Cap</td><td>Number</td><td>24</td><td>The max number of frames per second to send out. Please make sure this stays below thirty, because the installation can't display more FPS anyways.</td></tr>
+        </table>
+        <table>
+          <tr><th>Output</th><th>Type</th><th>Example</th><th>Description</th></tr>
+          <tr><td>Blinken&nbsp;Image</td><td>Image</td><td><img src="images/ExampleBlinkenImage.png" /></td><td>A Grayscale Image representation of what was sent to the Blinkenproxy.</td></tr>
+          <tr><td>Pixel Width</td><td>Number</td><td>96</td><td>The width of the received Image.</td></tr>
+          <tr><td>Pixel Height</td><td>Number</td><td>32</td><td>The Height of the received Image.</td></tr>
+          <tr><td>Blinkenstructure</td><td>Array of Arrays</td><td>{{15,0},{0,15}}</td><td>The sent Data as a Structure that can be iterated through. This structure has values from 0 (black) to 15 (white). To see that in use you can look into the <tt>FlatStereoscopeToronto.qtz</tt> Composition.</td></tr>
+        </table>
+
+        <h3>Example Compositions</h3>
+        <h4>FlatStereoscopeToronoto.qtz</h4>
+        <img src="images/FlatStereoscope.png" />
+        <p>This plugin is a simple implementation of a toronto blinkensim using the Blinkenprovider patch. It shows the blinken image, and iterates through the structure to display the windows on top of the background image.</p>
+
+        <h4>BasicText.qtz</h4>
+        <img src="images/BasicText.png" />
+        <p>This Plugin is a general example how to send data using the Blinkensender patch. All basic variants are demonstrated, if you want to make your own content, please base it on this one, e.g. reuse the Blinkensender and the Test Output Patch.</p>
+
+      </div>
+    </div>
+  </body>
+</html>
