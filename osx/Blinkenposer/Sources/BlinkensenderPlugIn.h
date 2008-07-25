@@ -32,7 +32,7 @@
 @property (assign) id<QCPlugInInputImageSource> inputImage;
 @property (assign) NSArray * inputBlinkenStructure;
 @property double inputFPSCap;
-@property double inputBitsPerPixel;
+//@property double inputBitsPerPixel;
 
 @property (assign)id <QCPlugInOutputImageProvider> outputImage;
 @property NSUInteger outputPixelWidth;

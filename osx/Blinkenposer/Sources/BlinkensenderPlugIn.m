@@ -20,7 +20,7 @@
 @dynamic inputImage;
 @dynamic inputBlinkenStructure;
 @dynamic inputFPSCap;
-@dynamic inputBitsPerPixel;
+//@dynamic inputBitsPerPixel;
 
 @dynamic outputImage;
 @dynamic outputPixelWidth;
@@ -35,7 +35,7 @@
 		@"inputImage",
 		@"inputBlinkenStructure",
 		@"inputFPSCap",
-		@"inputBitsPerPixel",
+//		@"inputBitsPerPixel",
     
     	@"outputImage",
     	@"outputPixelWidth",
@@ -101,11 +101,11 @@
                 	@"FPS Cap", QCPortAttributeNameKey,
                 	[NSNumber numberWithInt:30], QCPortAttributeDefaultValueKey,
                 nil];
-	if ([inKey isEqualToString:@"inputBitsPerPixel"])
-        return [NSDictionary dictionaryWithObjectsAndKeys:
-                	@"Bits Per Pixel", QCPortAttributeNameKey,
-                	[NSNumber numberWithInt:8], QCPortAttributeDefaultValueKey,
-                nil];
+//	if ([inKey isEqualToString:@"inputBitsPerPixel"])
+//        return [NSDictionary dictionaryWithObjectsAndKeys:
+//                	@"Bits Per Pixel", QCPortAttributeNameKey,
+//                	[NSNumber numberWithInt:4], QCPortAttributeDefaultValueKey,
+//                nil];
 	
 	return nil;
 }
@@ -170,26 +170,74 @@
 
 - (NSArray *)blinkenStructureForImageProvider:(id)inImageProvider bitsPerPixel:(int)inBPP {
 
+	CGColorSpaceRef					colorSpace;
+	NSString*						pixelFormat;
+	NSRect bounds = [inImageProvider imageBounds];
+
+	/* Figure out pixel format and colorspace to use */
+	colorSpace = [inImageProvider imageColorSpace];
+	if (CGColorSpaceGetModel(colorSpace) == kCGColorSpaceModelMonochrome) {
+		pixelFormat = QCPlugInPixelFormatI8;
+	} else if (CGColorSpaceGetModel(colorSpace) == kCGColorSpaceModelRGB) {
+#if __BIG_ENDIAN__
+		pixelFormat = QCPlugInPixelFormatARGB8;
+#else
+		pixelFormat = QCPlugInPixelFormatBGRA8;
+#endif
+	} else {
+		NSLog(@"%s no adequate color space",__FUNCTION__);
+		return nil;
+	}
+	
+	/* Get a buffer representation from the image in its native colorspace */
+	if(![inImageProvider lockBufferRepresentationWithPixelFormat:pixelFormat colorSpace:colorSpace forBounds:bounds]) {
+		NSLog(@"%s lock buffer representation did fail",__FUNCTION__);
+		return nil;
+	}
+	
+	NSUInteger bufferBytesPerRow = [inImageProvider bufferBytesPerRow];
+//	NSLog(@"%s inImageProvider %@ %@ %d",__FUNCTION__, NSStringFromRect(bounds), [inImageProvider bufferPixelFormat], bufferBytesPerRow);
+
+	unsigned char *bufferBaseAddress = (unsigned char *)[inImageProvider bufferBaseAddress];
+
+	
 	NSMutableArray *blinkenStructure = [NSMutableArray array];
-	static int valueBase = 0;
 	int x = 0, y=0;
-	int value = valueBase;
-	for (y = 0; y<32; y++) {
+
+	int value = 0;
+	for (y = 0; y< NSHeight(bounds); y++) {
 		NSMutableArray *blinkenRow = [NSMutableArray array];
-		for (x = 0; x<96; x++) {
+		unsigned char *rowBase = bufferBaseAddress + bufferBytesPerRow * y;
+		for (x = 0; x < NSWidth(bounds); x++) {
+			if (pixelFormat == QCPlugInPixelFormatI8) {
+				value = *rowBase;
+				rowBase++;
+			} else {
+#if __BIG_ENDIAN__
+			rowBase++;
+#endif
+				value = ((int)(*rowBase) + (int)(*(rowBase + 1))+ (int)(*(rowBase + 2)) ) / 3;
+#if __BIG_ENDIAN__
+			rowBase += 3;
+#else
+			rowBase += 4;
+#endif
+			}
+			value = (int)roundf((value / 255.) * 15.);
 			[blinkenRow addObject:[NSNumber numberWithInt:value]];
-			value = (value + 1) % 16;
 		}
 		[blinkenStructure addObject:blinkenRow];
-		value = (value + 1) % 16;
+
 	}
-	valueBase++;
+
+	[inImageProvider unlockBufferRepresentation];
 
 	return blinkenStructure;
 }
 
 - (BOOL)blinkenStructureIsDifferentFromLastFrame:(NSArray *)inStructure {
-	return YES;
+	BOOL result = ![inStructure isEqualToArray:self.blinkenStructure];
+	return result;
 }
 
 - (BOOL)execute:(id<QCPlugInContext>)inContext atTime:(NSTimeInterval)time withArguments:(NSDictionary*)arguments
@@ -207,9 +255,9 @@
 		_minimumFrameTimeDifference = 1.0 / self.inputFPSCap;
 	}
 
-	int bitsPerPixel = (int)self.inputBitsPerPixel;
+	int bitsPerPixel = 4; //MIN(1,MAX(4,(int)self.inputBitsPerPixel));
 
-	if (time - _lastFrameTime + 1.0 / 120. >= _minimumFrameTimeDifference) {
+	if (time - _lastFrameTime + 1.0 / 60. >= _minimumFrameTimeDifference) {
 		
 		NSArray *blinkenStructure = self.inputBlinkenStructure;
 		
@@ -259,6 +307,8 @@
 	*/
 	[_blinkenSender release];
 	_blinkenSender = nil;
+	self.blinkenStructure = nil;
+
 }
 
 - (void) stopExecution:(id<QCPlugInContext>)context
@@ -267,6 +317,7 @@
 	/*
 	Called by Quartz Composer when rendering of the composition stops: perform any required cleanup for the plug-in.
 	*/
+	self.blinkenStructure = nil;
 }
 
 

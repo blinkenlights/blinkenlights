@@ -38,7 +38,7 @@
 							   0, NULL, NULL);
 	int yes = YES;
 	if (I_sendSocket) {
-		NSLog(@"%s having my socket",__FUNCTION__);
+//		NSLog(@"%s having my socket",__FUNCTION__);
 		int result = setsockopt(CFSocketGetNative(I_sendSocket), SOL_SOCKET, 
 								SO_REUSEADDR, &yes, sizeof(int));
 		if (result == -1) {
@@ -76,7 +76,7 @@
 
 - (void)setTargetAddress:(NSString *)inTargetAddress
 {
-    NSLog(@"%s %@",__FUNCTION__,inTargetAddress);
+ //   NSLog(@"%s %@",__FUNCTION__,inTargetAddress);
     if (_targetAddressData) {
         CFRelease(_targetAddressData);
         _targetAddressData = nil;
@@ -109,7 +109,7 @@
             }
         }
         
-        NSLog(@"%s targetHost:%@ address:%@",__FUNCTION__,proxyHost,addressString);
+//        NSLog(@"%s targetHost:%@ address:%@",__FUNCTION__,proxyHost,addressString);
         
         bzero(&socketAddress, sizeof(struct sockaddr_in));
         socketAddress.sin_len = sizeof(struct sockaddr_in);
@@ -142,7 +142,7 @@
         NSLog(@"%s could not send data (%d, %@, %u bytes)",__FUNCTION__,err,[NSString stringWithAddressData:(NSData *)_targetAddressData],[inData length]);
         
     } else {
-        NSLog(@"%s did send data: (%@, %u bytes)",__FUNCTION__,[NSString stringWithAddressData:(NSData *)_targetAddressData],[inData length]);
+//        NSLog(@"%s did send data: (%@, %u bytes)",__FUNCTION__,[NSString stringWithAddressData:(NSData *)_targetAddressData],[inData length]);
     };
 }
 
