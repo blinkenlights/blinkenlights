@@ -57,10 +57,10 @@
 		F244CC540E29EB6D007125EE /* BlinkenSender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlinkenSender.h; sourceTree = "<group>"; };
 		F244CC550E29EB6D007125EE /* BlinkenSender.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlinkenSender.m; sourceTree = "<group>"; };
 		F248518B0DF3F78E00E0AA98 /* bprotocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = bprotocol.h; path = Sources/bprotocol.h; sourceTree = "<group>"; };
-		F248518C0DF3F78E00E0AA98 /* BlinkenproviderPlugIn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BlinkenproviderPlugIn.m; path = Sources/BlinkenproviderPlugIn.m; sourceTree = "<group>"; };
-		F248518D0DF3F78E00E0AA98 /* BlinkenproviderPlugIn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BlinkenproviderPlugIn.h; path = Sources/BlinkenproviderPlugIn.h; sourceTree = "<group>"; };
-		F248518E0DF3F78E00E0AA98 /* BlinkenListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BlinkenListener.m; path = Sources/BlinkenListener.m; sourceTree = "<group>"; };
-		F248518F0DF3F78E00E0AA98 /* BlinkenListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BlinkenListener.h; path = Sources/BlinkenListener.h; sourceTree = "<group>"; };
+		F248518C0DF3F78E00E0AA98 /* BlinkenproviderPlugIn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlinkenproviderPlugIn.m; sourceTree = "<group>"; };
+		F248518D0DF3F78E00E0AA98 /* BlinkenproviderPlugIn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlinkenproviderPlugIn.h; sourceTree = "<group>"; };
+		F248518E0DF3F78E00E0AA98 /* BlinkenListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlinkenListener.m; sourceTree = "<group>"; };
+		F248518F0DF3F78E00E0AA98 /* BlinkenListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlinkenListener.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,7 +79,7 @@
 		089C166AFE841209C02AAC07 /* Quartz Composer Plug In */ = {
 			isa = PBXGroup;
 			children = (
-				08FB77AFFE84173DC02AAC07 /* Classes */,
+				08FB77AFFE84173DC02AAC07 /* Sources */,
 				32C88E010371C26100C91783 /* Other Sources */,
 				089C167CFE841241C02AAC07 /* Resources */,
 				089C1671FE841209C02AAC07 /* Frameworks */,
@@ -105,23 +105,20 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
-		08FB77AFFE84173DC02AAC07 /* Classes */ = {
+		08FB77AFFE84173DC02AAC07 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				F244CBF40E293084007125EE /* BlinkensenderPlugIn.h */,
-				F244CBF50E293084007125EE /* BlinkensenderPlugIn.m */,
+				F28BB0B00E39E80F007768E8 /* Patches */,
 				F244CC0F0E2933C6007125EE /* BlinkenImageProvider.h */,
 				F244CC100E2933C6007125EE /* BlinkenImageProvider.m */,
-				F248518D0DF3F78E00E0AA98 /* BlinkenproviderPlugIn.h */,
-				F248518C0DF3F78E00E0AA98 /* BlinkenproviderPlugIn.m */,
-				F244CC540E29EB6D007125EE /* BlinkenSender.h */,
-				F244CC550E29EB6D007125EE /* BlinkenSender.m */,
 				F248518F0DF3F78E00E0AA98 /* BlinkenListener.h */,
 				F248518E0DF3F78E00E0AA98 /* BlinkenListener.m */,
+				F244CC540E29EB6D007125EE /* BlinkenSender.h */,
+				F244CC550E29EB6D007125EE /* BlinkenSender.m */,
 				F244CC460E29EABC007125EE /* UsefulAdditions.h */,
 				F244CC470E29EABC007125EE /* UsefulAdditions.m */,
 			);
-			name = Classes;
+			path = Sources;
 			sourceTree = "<group>";
 		};
 		19C28FB8FE9D52D311CA2CBB /* Products */ = {
@@ -139,6 +136,17 @@
 				16AA5C440A7EEE7300888E31 /* Blinkenposer_Prefix.pch */,
 			);
 			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		F28BB0B00E39E80F007768E8 /* Patches */ = {
+			isa = PBXGroup;
+			children = (
+				F244CBF40E293084007125EE /* BlinkensenderPlugIn.h */,
+				F244CBF50E293084007125EE /* BlinkensenderPlugIn.m */,
+				F248518D0DF3F78E00E0AA98 /* BlinkenproviderPlugIn.h */,
+				F248518C0DF3F78E00E0AA98 /* BlinkenproviderPlugIn.m */,
+			);
+			name = Patches;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
