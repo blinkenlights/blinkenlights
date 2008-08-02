@@ -190,10 +190,11 @@ Here you need to declare the input / output properties as dynamic as Quartz Comp
 
 	if (_needsOutputUpdate)
 	{
-		self.outputBlinkenImage = _blinkenImageProvider;
+        NSRect imageBounds = [_blinkenImageProvider imageBounds];
+		self.outputBlinkenImage = (imageBounds.size.width != 0 && imageBounds.size.height != 0) ? _blinkenImageProvider : nil;
 		self.outputBlinkenStructure = self.blinkenStructure;
-		self.outputPixelHeight = NSHeight([_blinkenImageProvider imageBounds]);
-		self.outputPixelWidth  = NSWidth([_blinkenImageProvider imageBounds]);
+		self.outputPixelHeight = NSHeight(imageBounds);
+		self.outputPixelWidth  = NSWidth(imageBounds);
 //		NSLog(@"%s",__FUNCTION__);
 		_needsOutputUpdate = NO;
 	}
