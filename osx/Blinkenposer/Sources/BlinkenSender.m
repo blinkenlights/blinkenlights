@@ -120,7 +120,7 @@
         addressData = CFDataCreate(kCFAllocatorDefault, (UInt8 *)&socketAddress, sizeof(struct sockaddr_in));
         
         _targetAddressData = addressData;
-        NSLog(@"%s did set proxy address data to: %@",__FUNCTION__,[NSString stringWithAddressData:(NSData *)_targetAddressData]);
+        NSLog(@"%s did set target address data to: %@",__FUNCTION__,[NSString stringWithAddressData:(NSData *)_targetAddressData]);
 
     }
     else

@@ -21,6 +21,9 @@
 	BlinkenSender *_blinkenSender;
 	NSTimeInterval _lastFrameTime;
 	NSTimeInterval _minimumFrameTimeDifference;
+	NSTimeInterval _maximumFrameTimeDifference;
+	BOOL _blinkenInputChanged;
+	BOOL _renderedOnce;
 }
 
 @property (retain) NSArray  *blinkenStructure;
@@ -29,9 +32,11 @@
 
 
 @property (assign) NSString * inputTargetAddress;
+@property NSUInteger inputTargetPort;
 @property (assign) id<QCPlugInInputImageSource> inputImage;
 @property (assign) NSArray * inputBlinkenStructure;
 @property double inputFPSCap;
+@property double inputMinFPS;
 //@property double inputBitsPerPixel;
 
 @property (assign)id <QCPlugInOutputImageProvider> outputImage;

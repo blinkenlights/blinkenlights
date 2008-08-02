@@ -17,9 +17,11 @@
 @synthesize BMLBaseDirectory = _BMLBaseDirectory;
 
 @dynamic inputTargetAddress;
+@dynamic inputTargetPort;
 @dynamic inputImage;
 @dynamic inputBlinkenStructure;
 @dynamic inputFPSCap;
+@dynamic inputMinFPS;
 //@dynamic inputBitsPerPixel;
 
 @dynamic outputImage;
@@ -32,9 +34,11 @@
     return [NSArray arrayWithObjects:
     
 		@"inputTargetAddress",
+		@"inputTargetPort",
 		@"inputImage",
 		@"inputBlinkenStructure",
 		@"inputFPSCap",
+		@"inputMinFPS",
 //		@"inputBitsPerPixel",
     
     	@"outputImage",
@@ -82,8 +86,17 @@
 	if ([inKey isEqualToString:@"inputTargetAddress"])
         return [NSDictionary dictionaryWithObjectsAndKeys:
                 	@"Target Address", QCPortAttributeNameKey,
-                	@"localhost:2323", QCPortAttributeDefaultValueKey,
+                	@"localhost", QCPortAttributeDefaultValueKey,
                 nil];
+
+	if ([inKey isEqualToString:@"inputTargetPort"])
+        return [NSDictionary dictionaryWithObjectsAndKeys:
+                	@"Target Port", QCPortAttributeNameKey,
+                	[NSNumber numberWithInt:2323], QCPortAttributeDefaultValueKey,
+                	[NSNumber numberWithInt:0],QCPortAttributeMinimumValueKey,
+                	[NSNumber numberWithInt:65535],QCPortAttributeMaximumValueKey,
+                nil];
+
 
 	if ([inKey isEqualToString:@"inputImage"])
         return [NSDictionary dictionaryWithObjectsAndKeys:
@@ -101,6 +114,13 @@
                 	@"FPS Cap", QCPortAttributeNameKey,
                 	[NSNumber numberWithInt:30], QCPortAttributeDefaultValueKey,
                 nil];
+
+	if ([inKey isEqualToString:@"inputMinFPS"])
+        return [NSDictionary dictionaryWithObjectsAndKeys:
+                	@"Min FPS", QCPortAttributeNameKey,
+                	[NSNumber numberWithInt:1], QCPortAttributeDefaultValueKey,
+                nil];
+
 //	if ([inKey isEqualToString:@"inputBitsPerPixel"])
 //        return [NSDictionary dictionaryWithObjectsAndKeys:
 //                	@"Bits Per Pixel", QCPortAttributeNameKey,
@@ -125,7 +145,7 @@
 	Return the time dependency mode of the plug-in: kQCPlugInTimeModeNone, kQCPlugInTimeModeIdle or kQCPlugInTimeModeTimeBase.
 	*/
 	
-	return kQCPlugInTimeModeNone;
+	return kQCPlugInTimeModeTimeBase;
 }
 
 - (id)init
@@ -156,7 +176,7 @@
 	Called by Quartz Composer when rendering of the composition starts: perform any required setup for the plug-in.
 	Return NO in case of fatal failure (this will prevent rendering of the composition to start).
 	*/
-    		
+    _renderedOnce = NO;
 	return YES;
 }
 
@@ -165,6 +185,7 @@
 	/*
 	Called by Quartz Composer when the plug-in instance starts being used by Quartz Composer.
 	*/
+	_renderedOnce = NO;
 	_blinkenSender = [BlinkenSender new];
 }
 
@@ -251,50 +272,77 @@
 	CGLContextObj cgl_ctx = [context CGLContextObj];
 	*/
 
+	if ([self didValueForInputKeyChange:@"inputTargetAddress"] || [self didValueForInputKeyChange:@"inputTargetPort"] || !_renderedOnce)
+	{
+		[_blinkenSender setTargetAddress:[NSString stringWithFormat:@"%@:%d", self.inputTargetAddress, self.inputTargetPort]];
+	}
+
 	if ([self didValueForInputKeyChange:@"inputFPSCap"]) {
 		_minimumFrameTimeDifference = 1.0 / self.inputFPSCap;
 	}
 
+	if ([self didValueForInputKeyChange:@"inputMinFPS"]) {
+		_maximumFrameTimeDifference = 1.0 / self.inputMinFPS;
+	}
+
+	if ([self didValueForInputKeyChange:@"inputImage"] || [self didValueForInputKeyChange:@"inputBlinkenStructure"] || self.blinkenStructure == nil)
+	{
+		_blinkenInputChanged = YES;
+	}
+
 	int bitsPerPixel = 4; //MIN(1,MAX(4,(int)self.inputBitsPerPixel));
 
-	if (time - _lastFrameTime + 1.0 / 60. >= _minimumFrameTimeDifference) {
+	if ((_blinkenInputChanged && time - _lastFrameTime + 1.0 / 60. >= _minimumFrameTimeDifference) ||
+		 time - _lastFrameTime >= _maximumFrameTimeDifference ||
+		 !_renderedOnce) {
 		
-		NSArray *blinkenStructure = self.inputBlinkenStructure;
 		
-		id inputImage = self.inputImage;
-		if (inputImage) {
-			NSArray *structure = [self blinkenStructureForImageProvider:inputImage bitsPerPixel:bitsPerPixel];
-			if (structure) blinkenStructure = structure;
-		}
+		NSArray *blinkenStructure = self.blinkenStructure;
 		
-		if ([self blinkenStructureIsDifferentFromLastFrame:blinkenStructure]) {
-			self.blinkenStructure = blinkenStructure;
-			[_blinkenSender sendBlinkenStructure:blinkenStructure];
+		if (_blinkenInputChanged) {
+			blinkenStructure = self.inputBlinkenStructure;
 			
-			if (!_blinkenImageProvider)
-			{
-				_blinkenImageProvider = [BlinkenImageProvider new];
+			id inputImage = self.inputImage;
+			if (inputImage) {
+				NSArray *structure = [self blinkenStructureForImageProvider:inputImage bitsPerPixel:bitsPerPixel];
+				if (structure) blinkenStructure = structure;
 			}
-			CGSize imageSize = CGSizeMake((CGFloat)[[blinkenStructure lastObject] count],(CGFloat)[blinkenStructure count]);
-			
-			if ([blinkenStructure count] && [[blinkenStructure lastObject] count]) {
+			if ([self blinkenStructureIsDifferentFromLastFrame:blinkenStructure]) {
+				self.blinkenStructure = blinkenStructure;
+				[_blinkenSender sendBlinkenStructure:blinkenStructure];
 				
-				[_blinkenImageProvider setFrameData:[BlinkenSender frameDataForBlinkenStructure:blinkenStructure] size:imageSize channels:1 maxValue:0xff];
-	
-				self.outputImage = _blinkenImageProvider;
-				self.outputBlinkenStructure = blinkenStructure;
-				self.outputPixelHeight = imageSize.height;
-				self.outputPixelWidth  = imageSize.width;
-				_lastFrameTime = time;
-			} else {
-				self.outputBlinkenStructure = nil;
-				self.outputImage = nil;
-				self.outputPixelHeight = 0;
-				self.outputPixelWidth = 0;
-			}
-		}
+				if (!_blinkenImageProvider)
+				{
+					_blinkenImageProvider = [BlinkenImageProvider new];
+				}
+				CGSize imageSize = CGSizeMake((CGFloat)[[blinkenStructure lastObject] count],(CGFloat)[blinkenStructure count]);
+				
+				if ([blinkenStructure count] && [[blinkenStructure lastObject] count]) {
+					
+					[_blinkenImageProvider setFrameData:[BlinkenSender frameDataForBlinkenStructure:blinkenStructure] size:imageSize channels:1 maxValue:0xff];
 		
+					self.outputImage = _blinkenImageProvider;
+					self.outputBlinkenStructure = blinkenStructure;
+					self.outputPixelHeight = imageSize.height;
+					self.outputPixelWidth  = imageSize.width;
+					_lastFrameTime = time;
+				} else {
+					self.outputBlinkenStructure = nil;
+					self.outputImage = nil;
+					self.outputPixelHeight = 0;
+					self.outputPixelWidth = 0;
+				}
+			}
+			_renderedOnce = YES;
+			_blinkenInputChanged = NO;
+		} else {
+			[_blinkenSender sendBlinkenStructure:blinkenStructure];
+//			NSLog(@"%s sent an unchanged frame (yay!)",__FUNCTION__);
+			_lastFrameTime = time;
+		}
 
+	} else {
+//		NSLog(@"%s skipped a frame (yay!)",__FUNCTION__);
 	}
 	
 	return YES;
@@ -308,7 +356,6 @@
 	[_blinkenSender release];
 	_blinkenSender = nil;
 	self.blinkenStructure = nil;
-
 }
 
 - (void) stopExecution:(id<QCPlugInContext>)context
