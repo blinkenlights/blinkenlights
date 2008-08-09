@@ -112,7 +112,7 @@
 	if ([inKey isEqualToString:@"inputFPSCap"])
         return [NSDictionary dictionaryWithObjectsAndKeys:
                 	@"FPS Cap", QCPortAttributeNameKey,
-                	[NSNumber numberWithInt:30], QCPortAttributeDefaultValueKey,
+                	[NSNumber numberWithInt:15], QCPortAttributeDefaultValueKey,
                 nil];
 
 	if ([inKey isEqualToString:@"inputMinFPS"])

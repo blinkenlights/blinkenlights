@@ -24,6 +24,7 @@
 	<array>
 		<string>BlinkenproviderPlugIn</string>
 		<string>BlinkensenderPlugIn</string>
+		<string>BlinkenBMLWriterPlugIn</string>
 	</array>
 </dict>
 </plist>

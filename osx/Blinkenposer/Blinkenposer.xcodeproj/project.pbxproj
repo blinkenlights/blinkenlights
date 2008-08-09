@@ -30,6 +30,7 @@
 		F244CC560E29EB6D007125EE /* BlinkenSender.m in Sources */ = {isa = PBXBuildFile; fileRef = F244CC550E29EB6D007125EE /* BlinkenSender.m */; };
 		F24851900DF3F78E00E0AA98 /* BlinkenproviderPlugIn.m in Sources */ = {isa = PBXBuildFile; fileRef = F248518C0DF3F78E00E0AA98 /* BlinkenproviderPlugIn.m */; };
 		F24851910DF3F78E00E0AA98 /* BlinkenListener.m in Sources */ = {isa = PBXBuildFile; fileRef = F248518E0DF3F78E00E0AA98 /* BlinkenListener.m */; };
+		F2BFA1570E4DC88900081601 /* BlinkenBMLWriterPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = F2BFA1550E4DC88900081601 /* BlinkenBMLWriterPlugin.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,8 @@
 		F248518D0DF3F78E00E0AA98 /* BlinkenproviderPlugIn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlinkenproviderPlugIn.h; sourceTree = "<group>"; };
 		F248518E0DF3F78E00E0AA98 /* BlinkenListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlinkenListener.m; sourceTree = "<group>"; };
 		F248518F0DF3F78E00E0AA98 /* BlinkenListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlinkenListener.h; sourceTree = "<group>"; };
+		F2BFA1550E4DC88900081601 /* BlinkenBMLWriterPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlinkenBMLWriterPlugin.m; sourceTree = "<group>"; };
+		F2BFA1560E4DC88900081601 /* BlinkenBMLWriterPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlinkenBMLWriterPlugin.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +144,8 @@
 		F28BB0B00E39E80F007768E8 /* Patches */ = {
 			isa = PBXGroup;
 			children = (
+				F2BFA1560E4DC88900081601 /* BlinkenBMLWriterPlugin.h */,
+				F2BFA1550E4DC88900081601 /* BlinkenBMLWriterPlugin.m */,
 				F244CBF40E293084007125EE /* BlinkensenderPlugIn.h */,
 				F244CBF50E293084007125EE /* BlinkensenderPlugIn.m */,
 				F248518D0DF3F78E00E0AA98 /* BlinkenproviderPlugIn.h */,
@@ -214,6 +219,7 @@
 				F244CC110E2933C6007125EE /* BlinkenImageProvider.m in Sources */,
 				F244CC480E29EABC007125EE /* UsefulAdditions.m in Sources */,
 				F244CC560E29EB6D007125EE /* BlinkenSender.m in Sources */,
+				F2BFA1570E4DC88900081601 /* BlinkenBMLWriterPlugin.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
