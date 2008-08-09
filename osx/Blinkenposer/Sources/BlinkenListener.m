@@ -168,12 +168,6 @@ static void readData (
                 NSLog(@"Could not setsockopt to reuseaddr: %@ / %s", errno, strerror(errno));
             }
             
-            result = setsockopt(CFSocketGetNative(I_listeningSocket), SOL_SOCKET, 
-                                    SO_REUSEPORT, &yes, sizeof(int));
-            if (result == -1) {
-                NSLog(@"Could not setsockopt to reuseport: %@ / %s", errno, strerror(errno));
-            }
-            
             CFDataRef addressData = NULL;
             struct sockaddr_in socketAddress;
             
@@ -181,7 +175,6 @@ static void readData (
             socketAddress.sin_len = sizeof(struct sockaddr_in);
             socketAddress.sin_family = PF_INET;
             socketAddress.sin_port = htons(_port);
-    //		socketAddress.sin_addr.s_addr = inet_addr("127.0.0.1");
             socketAddress.sin_addr.s_addr = htonl(INADDR_ANY);
             
             addressData = CFDataCreate(kCFAllocatorDefault, (UInt8 *)&socketAddress, sizeof(struct sockaddr_in));
@@ -213,13 +206,7 @@ static void readData (
             if (result == -1) {
                 NSLog(@"%s Could not setsockopt to reuseaddr: %@ / %s", __FUNCTION__, errno, strerror(errno));
             }
-            
-            result = setsockopt(CFSocketGetNative(I_listeningSocket6), SOL_SOCKET, 
-                                    SO_REUSEPORT, &yes, sizeof(int));
-            if (result == -1) {
-                NSLog(@"%s Could not setsockopt to reuseaddr: %@ / %s", __FUNCTION__, errno, strerror(errno));
-            }
-            
+                        
             struct sockaddr_in6 socketAddress6;
             
             bzero(&socketAddress6, sizeof(struct sockaddr_in6));
@@ -256,27 +243,7 @@ static void readData (
             if (result == -1) {
                 NSLog(@"Could not setsockopt to reuseaddr: %@ / %s", errno, strerror(errno));
             }
-            
-            result = setsockopt(CFSocketGetNative(I_proxySocket), SOL_SOCKET, 
-                                    SO_REUSEPORT, &yes, sizeof(int));
-            if (result == -1) {
-                NSLog(@"Could not setsockopt to reuseport: %@ / %s", errno, strerror(errno));
-            }
-            
-//            CFDataRef addressData = NULL;
-//            struct sockaddr_in socketAddress;
-//            
-//            bzero(&socketAddress, sizeof(struct sockaddr_in));
-//            socketAddress.sin_len = sizeof(struct sockaddr_in);
-//            socketAddress.sin_family = PF_INET;
-//            socketAddress.sin_port = htons(_port);
-//            socketAddress.sin_addr.s_addr = htonl(INADDR_ANY);
-//            
-//            addressData = CFDataCreate(kCFAllocatorDefault, (UInt8 *)&socketAddress, sizeof(struct sockaddr_in));
-//            if (addressData == NULL) {
-//                NSLog(@"Could not create addressData");
-//            } else {
-                    
+                                
             CFRunLoopRef currentRunLoop = [[NSRunLoop currentRunLoop] getCFRunLoop];
             CFRunLoopSourceRef runLoopSource = CFSocketCreateRunLoopSource(kCFAllocatorDefault, I_proxySocket, 0);
             CFRunLoopAddSource(currentRunLoop, runLoopSource, kCFRunLoopCommonModes);

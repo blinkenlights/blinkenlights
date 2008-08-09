@@ -15,7 +15,11 @@
 @dynamic outputPixelWidth;
 @dynamic outputPixelHeight;
 @dynamic outputBlinkenStructure;
+
+@dynamic inputUseProxyOption;
+@dynamic inputListeningPort;
 @dynamic inputProxyAddress;
+@dynamic inputProxyPort;
 
 @synthesize proxyAddress = _proxyAddress;
 @synthesize blinkenStructure = _blinkenStructure;
@@ -30,6 +34,10 @@ Here you need to declare the input / output properties as dynamic as Quartz Comp
     	@"outputPixelWidth",
     	@"outputPixelHeight",
     	@"outputBlinkenStructure",
+    	@"inputUseProxyOption",
+    	@"inputListeningPort",
+    	@"inputProxyAddress",
+    	@"inputProxyPort",
     nil];
 }
 
@@ -67,9 +75,36 @@ Here you need to declare the input / output properties as dynamic as Quartz Comp
                 	@"Pixel Height", QCPortAttributeNameKey,
                 nil];
 
+	if ([inKey isEqualToString:@"inputUseProxyOption"])
+        return [NSDictionary dictionaryWithObjectsAndKeys:
+                	@"Use Proxy", QCPortAttributeNameKey,
+                	[NSNumber numberWithBool:NO], QCPortAttributeDefaultValueKey,
+                	[NSArray arrayWithObjects:@"Listen to localhost on Listening Port",@"Ping and use Proxy Address and Port",nil],QCPortAttributeMenuItemsKey,
+                	[NSNumber numberWithInt:0],QCPortAttributeMinimumValueKey,
+                	[NSNumber numberWithInt:1],QCPortAttributeMaximumValueKey,
+                nil];
+
+
+	if ([inKey isEqualToString:@"inputListeningPort"])
+        return [NSDictionary dictionaryWithObjectsAndKeys:
+                	@"Local Listening Port", QCPortAttributeNameKey,
+                	[NSNumber numberWithInt:2323], QCPortAttributeDefaultValueKey,
+                	[NSNumber numberWithInt:0],QCPortAttributeMinimumValueKey,
+                	[NSNumber numberWithInt:65535],QCPortAttributeMaximumValueKey,
+                nil];
+
 	if ([inKey isEqualToString:@"inputProxyAddress"])
         return [NSDictionary dictionaryWithObjectsAndKeys:
                 	@"Proxy Address", QCPortAttributeNameKey,
+                	@"localhost", QCPortAttributeDefaultValueKey,
+                nil];
+
+	if ([inKey isEqualToString:@"inputProxyPort"])
+        return [NSDictionary dictionaryWithObjectsAndKeys:
+                	@"Proxy Port", QCPortAttributeNameKey,
+                	[NSNumber numberWithInt:4242], QCPortAttributeDefaultValueKey,
+                	[NSNumber numberWithInt:0],QCPortAttributeMinimumValueKey,
+                	[NSNumber numberWithInt:65535],QCPortAttributeMaximumValueKey,
                 nil];
 	
 	return nil;
@@ -156,8 +191,7 @@ Here you need to declare the input / output properties as dynamic as Quartz Comp
 	Called by Quartz Composer when rendering of the composition starts: perform any required setup for the plug-in.
 	Return NO in case of fatal failure (this will prevent rendering of the composition to start).
 	*/
-
-    [self startListeningThread];
+	_executedOnce = NO;
     		
 	return YES;
 }
@@ -180,10 +214,17 @@ Here you need to declare the input / output properties as dynamic as Quartz Comp
 	CGLContextObj cgl_ctx = [context CGLContextObj];
 	*/
 
-    if ([self didValueForInputKeyChange:@"inputProxyAddress"])
+    if ([self didValueForInputKeyChange:@"inputProxyAddress"] ||
+    	[self didValueForInputKeyChange:@"inputProxyPort"] ||
+    	[self didValueForInputKeyChange:@"inputListeningPort"] ||
+    	[self didValueForInputKeyChange:@"inputUseProxyOption"] || !_executedOnce)
     {
-        self.proxyAddress = self.inputProxyAddress;
-        if ([self.proxyAddress length] == 0) self.proxyAddress = nil;
+    	if (self.inputUseProxyOption > 0 ) {
+    		self.proxyAddress = [NSString stringWithFormat:@"%@:%d",self.inputProxyAddress,self.inputProxyPort];
+    	} else {
+    		self.proxyAddress = nil;
+    		_listeningPort = self.inputListeningPort;
+    	}
         [self stopListeningThread];
         [self startListeningThread];
     }
@@ -199,7 +240,7 @@ Here you need to declare the input / output properties as dynamic as Quartz Comp
 		_needsOutputUpdate = NO;
 	}
 
-	
+	_executedOnce = YES;
 	return YES;
 }
 
@@ -217,6 +258,8 @@ Here you need to declare the input / output properties as dynamic as Quartz Comp
 	Called by Quartz Composer when rendering of the composition stops: perform any required cleanup for the plug-in.
 	*/
     [self stopListeningThread];
+	_executedOnce = NO;
+
 }
 
 - (void)listenOnThread:(id)aSender
@@ -228,9 +271,8 @@ Here you need to declare the input / output properties as dynamic as Quartz Comp
 		NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
 		BlinkenListener *blinkenListener = [BlinkenListener new];
 		[blinkenListener setDelegate:self];
-//		[blinkenListener setPort:4561];
-//        [blinkenListener setProxyAddress:@"matrix.blinkenlights.de"];
         [blinkenListener setProxyAddress:self.proxyAddress];
+        if (!self.proxyAddress) [blinkenListener setPort:_listeningPort];
 		[blinkenListener listen];
 		
 		while (!_stopListeningThread)

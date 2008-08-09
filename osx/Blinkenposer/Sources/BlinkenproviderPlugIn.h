@@ -18,6 +18,8 @@
 	NSLock *_waitToStopLock;
 	NSArray *_blinkenStructure;
 	NSString *_proxyAddress;
+	NSInteger _listeningPort;
+	BOOL _executedOnce;
 }
 
 /*
@@ -33,6 +35,10 @@ You can access their values in the appropriate plug-in methods using self.inputF
 @property NSUInteger outputPixelWidth;
 @property NSUInteger outputPixelHeight;
 @property (assign) NSArray * outputBlinkenStructure;
-@property (assign) NSString * inputProxyAddress;
+
+@property NSUInteger inputUseProxyOption;
+@property NSUInteger inputListeningPort;
+@property (assign) NSString *inputProxyAddress;
+@property NSUInteger inputProxyPort;
 
 @end

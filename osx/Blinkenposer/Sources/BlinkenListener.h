@@ -25,7 +25,7 @@
 @property (retain) NSString *proxyAddressString;
 @property (retain) NSTimer *proxyTimer;
 
-
+// if proxy address is set to nil, the listener listens locally on anyip instead of using a proxy. the address can contain a port
 - (void)setProxyAddress:(NSString *)inProxyAddress;
 - (void)setPort:(int)aPort;
 - (void)listen;
