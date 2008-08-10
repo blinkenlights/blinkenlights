@@ -82,8 +82,16 @@ struct mcu_frame_header
    */
 };
 
+
 /*
  * MCU Multi Frame packet
+ *
+ *
+ * - One Multi Frame packet may contain multiple frames, but does not need to
+ * - If the number and ids of the subframes vary in consecutive multi frame packets 
+ *   then nothing is assumed about the missing subframes. This allows for incremental
+ *   updates for only the screens that did change. 
+ *
  */
 
 typedef struct mcu_multiframe_header mcu_multiframe_header_t;
@@ -91,7 +99,8 @@ typedef struct mcu_multiframe_header mcu_multiframe_header_t;
 struct mcu_multiframe_header
 {
   int32_t magic;     /* == MAGIC_MCU_MULTIFRAME                   */
-  int16_t subframe_count;    /* number of subframes               */
+  int64_t timeStamp; /* milliseconds since epoch - e.g. gettimeofday(&tv); 
+                        timeStamp = tv->tv_sec * 1000 + tv->tv_usec / 1000.; */
   /*
    * followed by multiple subframe headers
    */
@@ -101,17 +110,19 @@ typedef struct mcu_subframe_header mcu_subframe_header_t;
 
 struct mcu_subframe_header
 {
-  unsigned char screen_id; /* screen id                                 */
-  unsigned char maxval;    /* maximum pixel value, if <=8 data is in nibbles*/
-  int16_t height;    /* rows                                      */
-  int16_t width;     /* columns                                   */
-  int16_t channels;  /* Number of channels (mono/grey: 1, rgb: 3) */
-  int16_t byte_length; /* length of the bytes follwing this subframe, equals distance to next subframe or end of packet */
+  unsigned char screen_id;         /* screen id                                 */
+  unsigned char bpp;               /* bits per pixel, supported values: (4,8)   */
+  								   /* 4 means nibbles 8 means bytes             */
+  int16_t height;                  /* number of rows                            */
+  int16_t width;                   /* width in pixels of row                    */
   /*
    * followed by 
-   * nibbles in [rows][columns][channels];
+   * nibbles in [rows][columns];
    * if width is uneven one nibble is used as padding
    * or bytes[]
+   *
+   * the bytesize of this can be calculated using height * width in the byte case 
+   *   and height * ((width + 1)/2) in case of nibbles (integer divison) 
    */
 };
 
