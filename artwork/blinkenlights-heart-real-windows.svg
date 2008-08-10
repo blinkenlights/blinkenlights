@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<svg width="100%" height="100%" viewBox="0 0 18 14"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<defs>
+		<g id="pixel">
+			<rect x="0.15" y="0.1" width="0.7" height="0.6" style="fill: black; stroke: none"/>
+			<rect x="0.15" y="0.75" width="0.7" height="0.25" style="fill: black; stroke: none"/>
+		</g>
+	</defs>
+	<use xlink:href="#pixel" x="4" y="0.000000"/>
+	<use xlink:href="#pixel" x="5" y="0.000000"/>
+	<use xlink:href="#pixel" x="6" y="0.000000"/>
+	<use xlink:href="#pixel" x="10" y="0.000000"/>
+	<use xlink:href="#pixel" x="11" y="0.000000"/>
+	<use xlink:href="#pixel" x="12" y="0.000000"/>
+	<use xlink:href="#pixel" x="3" y="1.750000"/>
+	<use xlink:href="#pixel" x="4" y="1.750000"/>
+	<use xlink:href="#pixel" x="5" y="1.750000"/>
+	<use xlink:href="#pixel" x="6" y="1.750000"/>
+	<use xlink:href="#pixel" x="7" y="1.750000"/>
+	<use xlink:href="#pixel" x="9" y="1.750000"/>
+	<use xlink:href="#pixel" x="10" y="1.750000"/>
+	<use xlink:href="#pixel" x="11" y="1.750000"/>
+	<use xlink:href="#pixel" x="12" y="1.750000"/>
+	<use xlink:href="#pixel" x="13" y="1.750000"/>
+	<use xlink:href="#pixel" x="2" y="3.500000"/>
+	<use xlink:href="#pixel" x="3" y="3.500000"/>
+	<use xlink:href="#pixel" x="4" y="3.500000"/>
+	<use xlink:href="#pixel" x="5" y="3.500000"/>
+	<use xlink:href="#pixel" x="6" y="3.500000"/>
+	<use xlink:href="#pixel" x="7" y="3.500000"/>
+	<use xlink:href="#pixel" x="8" y="3.500000"/>
+	<use xlink:href="#pixel" x="9" y="3.500000"/>
+	<use xlink:href="#pixel" x="10" y="3.500000"/>
+	<use xlink:href="#pixel" x="11" y="3.500000"/>
+	<use xlink:href="#pixel" x="12" y="3.500000"/>
+	<use xlink:href="#pixel" x="13" y="3.500000"/>
+	<use xlink:href="#pixel" x="14" y="3.500000"/>
+	<use xlink:href="#pixel" x="2" y="5.250000"/>
+	<use xlink:href="#pixel" x="3" y="5.250000"/>
+	<use xlink:href="#pixel" x="4" y="5.250000"/>
+	<use xlink:href="#pixel" x="5" y="5.250000"/>
+	<use xlink:href="#pixel" x="6" y="5.250000"/>
+	<use xlink:href="#pixel" x="7" y="5.250000"/>
+	<use xlink:href="#pixel" x="8" y="5.250000"/>
+	<use xlink:href="#pixel" x="9" y="5.250000"/>
+	<use xlink:href="#pixel" x="10" y="5.250000"/>
+	<use xlink:href="#pixel" x="11" y="5.250000"/>
+	<use xlink:href="#pixel" x="12" y="5.250000"/>
+	<use xlink:href="#pixel" x="13" y="5.250000"/>
+	<use xlink:href="#pixel" x="14" y="5.250000"/>
+	<use xlink:href="#pixel" x="3" y="7.000000"/>
+	<use xlink:href="#pixel" x="4" y="7.000000"/>
+	<use xlink:href="#pixel" x="5" y="7.000000"/>
+	<use xlink:href="#pixel" x="6" y="7.000000"/>
+	<use xlink:href="#pixel" x="7" y="7.000000"/>
+	<use xlink:href="#pixel" x="8" y="7.000000"/>
+	<use xlink:href="#pixel" x="9" y="7.000000"/>
+	<use xlink:href="#pixel" x="10" y="7.000000"/>
+	<use xlink:href="#pixel" x="11" y="7.000000"/>
+	<use xlink:href="#pixel" x="12" y="7.000000"/>
+	<use xlink:href="#pixel" x="13" y="7.000000"/>
+	<use xlink:href="#pixel" x="4" y="8.750000"/>
+	<use xlink:href="#pixel" x="5" y="8.750000"/>
+	<use xlink:href="#pixel" x="6" y="8.750000"/>
+	<use xlink:href="#pixel" x="7" y="8.750000"/>
+	<use xlink:href="#pixel" x="8" y="8.750000"/>
+	<use xlink:href="#pixel" x="9" y="8.750000"/>
+	<use xlink:href="#pixel" x="10" y="8.750000"/>
+	<use xlink:href="#pixel" x="11" y="8.750000"/>
+	<use xlink:href="#pixel" x="12" y="8.750000"/>
+	<use xlink:href="#pixel" x="6" y="10.500000"/>
+	<use xlink:href="#pixel" x="7" y="10.500000"/>
+	<use xlink:href="#pixel" x="8" y="10.500000"/>
+	<use xlink:href="#pixel" x="9" y="10.500000"/>
+	<use xlink:href="#pixel" x="10" y="10.500000"/>
+	<use xlink:href="#pixel" x="8" y="12.250000"/>
+</svg>
