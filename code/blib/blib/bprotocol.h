@@ -126,8 +126,6 @@ typedef struct mcu_devctrl_header  mcu_devctrl_header_t;
 struct mcu_devctrl_header
 {
   guint32 magic;        /* == MAGIC_MCU_DEVCTRL                    */
-  guint16 pixels;       /* number of pixels used (starting from 0) */
-  guint16 _reserved;    /* 32 bit padding                          */
   guint32 command;      /* MCU_DEVCTRL_COMMAND_*                   */
   guint32 value;
 };
