@@ -49,88 +49,71 @@
 #define shell_printf(x...) debug_printf(x)
 
 static void
-cmd_status(const portCHAR *cmd)
+cmd_status (const portCHAR * cmd)
 {
-	shell_printf("alled schnafte\n");
+  shell_printf ("alled schnafte\n");
 }
 
 static void
-cmd_env(const portCHAR *cmd)
+cmd_env (const portCHAR * cmd)
 {
-	shell_printf("Current values in non-volatile flash storage:\n");
-	shell_printf("   assigned_line = %d\n", env.e.assigned_line);
+  shell_printf ("Current values in non-volatile flash storage:\n");
+  shell_printf ("   assigned_line = %d\n", env.e.assigned_line);
 }
 
 static void
-parse_cmd(const portCHAR *cmd)
+parse_cmd (const portCHAR * cmd)
 {
-	if (strlen(cmd) == 0)
-		return;
-	
-	if (strcmp(cmd, "status") == 0)
-		cmd_status(cmd);
-	else if (strcmp(cmd, "env") == 0)
-		cmd_env(cmd);
-	else
-		shell_printf("unknown command '%s'\n", cmd);
-}
+  if (strlen (cmd) == 0)
+    return;
 
-static int
-has_cr(const portCHAR *buf, int size)
-{
-	while (size--)
-		if (*buf++ == '\r')
-			return 1;
-
-	return 0;
+  if (strcmp (cmd, "status") == 0)
+    cmd_status (cmd);
+  else if (strcmp (cmd, "env") == 0)
+    cmd_env (cmd);
+  else
+    shell_printf ("unknown command '%s'\n", cmd);
 }
 
 static void
 usbshell_task (void *pvParameters)
 {
-	portCHAR buf[512];
-	int bufpos = 0;
+  int size = 0;
+  static portCHAR buf[128], c, *p = buf;
+  bool_t overflow = pdFALSE;
+  
+  for (;;)
+    {
+      if (vUSBRecvByte (&c, sizeof (c), 100))
+	{
+	  vUSBSendByte (c);
 
-	bzero(buf, sizeof(buf));
-	
-	vTaskDelay(1000 / portTICK_RATE_MS);
-	shell_printf(PROMPT);
+	  if (c < ' ')
+	    {
+	      *p = '\0';
+	      if (overflow)
+		overflow = pdFALSE;
+	      else
+		parse_cmd (buf);
 
-	for(;;) {
-		portCHAR in;
-		int len = vUSBRecvByte(&in, 1, 10000 / portTICK_RATE_MS);
-
-		if (len <= 0)
-			continue;
-
-		buf[bufpos++] = in;
-		
-		/* echo */
-		shell_printf("%c", in);
-
-		if (bufpos == sizeof(buf)) {
-			bzero(buf, sizeof(buf));
-			bufpos = 0;
-			continue;
-		}
-
-		if (!has_cr(buf, sizeof(buf)))
-			continue;
-
-		shell_printf("\n");
-
-		/* strip the newline */
-		buf[bufpos - 1] = '\0';
-		parse_cmd(buf);
-		bufpos = 0;
-		bzero(buf, sizeof(buf));
-		shell_printf(PROMPT);
+	      p = buf;
+	      size = 0;
+	      shell_printf (PROMPT);
+	    }
+	  else if (size < ((int) sizeof (buf) - 1))
+	    {
+	      *p++ = c;
+	      size++;
+	    }
+	  else
+	    overflow = pdTRUE;
 	}
+    }
 }
 
-void vUSBShellInit(void)
+void
+vUSBShellInit (void)
 {
-	xTaskCreate (usbshell_task, (signed portCHAR *) "USBSHELL", TASK_USBSHELL_STACK,
-               NULL, TASK_USBSHELL_PRIORITY, NULL);
+  xTaskCreate (usbshell_task, (signed portCHAR *) "USBSHELL",
+	       TASK_USBSHELL_STACK, NULL, TASK_USBSHELL_PRIORITY, NULL);
 }
-
