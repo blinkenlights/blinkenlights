@@ -1,0 +1,15 @@
+# $Id: Portfile,v 1.6 2004/03/17 12:47:35 tim Exp $
+PortSystem              1.0
+name                    blinkenthemes
+version                 0.10
+categories              graphics blinkenlights
+maintainers             tim@ccc.de
+description             Blinkenlights simulator themes
+long_description        Themes to use with blinkensim simulator
+homepage                http://www.blinkenlights.de/
+master_sites            http://sven.gimp.org/blinkenlights/
+configure.args          --mandir=${prefix}/share/man
+checksums               blinkenthemes-0.10.tar.gz md5 f8964909252737eeeb11c06f4b5decd4
+
+platforms               darwin
+

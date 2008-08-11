@@ -1,0 +1,5 @@
+variant: +powerpc
+variant: +darwin
+target: com.apple.main
+target: com.apple.fetch
+target: com.apple.checksum
