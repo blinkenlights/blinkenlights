@@ -37,7 +37,7 @@
 //
 // Dummy TEA encryption key of the tag - please change for real applications!
 //
-const long tea_key[4] = { 0x9c43725e, 0xad8ec2ab, 0x6ebad8db, 0xf29c3638 };	//{ 0x00112233, 0x44556677, 0x8899AABB, 0xCCDDEEFF };
+const long tea_key[4] = { 0x00112233, 0x44556677, 0x8899AABB, 0xCCDDEEFF };
 
 unsigned long z, y, sum, tmp, mx;
 unsigned char e;
