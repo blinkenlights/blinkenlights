@@ -144,12 +144,13 @@ static void b_recv(void *arg, struct udp_pcb *pcb, struct pbuf *p, struct ip_add
 {
 	unsigned int off = 0;
 
+debug_printf("%s(): %d bytes\n", __func__, p->len);
+
 	if (p->len < sizeof(unsigned int) || p->len > sizeof(payload)) {
 		pbuf_free(p);
 		return;
 	}
 
-debug_printf("%s(): %d bytes\n", __func__, p->len);
 
 	/* package payload has to be copied to a local buffer for whatever reason */
 	memcpy(payload, p->payload, p->len);
@@ -187,5 +188,6 @@ void bprotocol_init(void)
 
 	udp_recv(b_pcb, b_recv, NULL);
 	udp_bind(b_pcb, IP_ADDR_ANY, MCU_LISTENER_PORT);
+	debug_printf("%s()\n", __func__);
 }
 

@@ -38,6 +38,7 @@
 
 #include "network.h"
 #include "SAM7_EMAC.h"
+#include "bprotocol.h"
 
 /* lwIP includes. */
 #include "lwip/api.h"
@@ -84,7 +85,8 @@ vNetworkThread (void *pvParameters)
 
   debug_printf ("FreeRTOS based WMCU firmware version %s starting.\n",
 		VERSION);
-		
+
+  bprotocol_init();
   vLedSetGreen (1);
 
   while (pdTRUE)
