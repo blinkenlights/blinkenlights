@@ -14,8 +14,17 @@
 
 #import "bprotocol.h"
 
-
 #import "UsefulAdditions.h"
+
+
+
+/* for generating the timstamp later on
+	struct timeval tv;
+	gettimeofday(&tv,NULL);
+	int64_t timeStamp = ((int64_t)tv.tv_sec) * 1000 + tv.tv_usec / 1000;
+	NSLog(@"%s sec:%d usec:%d timestamp: %llX",__FUNCTION__,tv.tv_sec,tv.tv_usec,timeStamp);
+	
+*/
 
 @implementation BlinkenSender
 

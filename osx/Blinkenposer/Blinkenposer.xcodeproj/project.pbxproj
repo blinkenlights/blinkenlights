@@ -262,7 +262,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Blinkenposer_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
-				INSTALL_PATH = "$(HOME)/Library/Graphics/Quartz Composer Plug-Ins";
+				INSTALL_PATH = "/Library/Graphics/Quartz Composer Plug-Ins";
 				PRODUCT_NAME = Blinkenposer;
 				WRAPPER_EXTENSION = plugin;
 			};
