@@ -27,6 +27,7 @@ NETWORK_SRC= \
   network/src/core/pbuf.c \
   network/src/core/raw.c \
   network/src/core/stats.c \
+  network/src/core/sys.c \
   network/src/core/udp.c \
   network/src/netif/etharp.c \
   network/src/netif/ethernetif.c
