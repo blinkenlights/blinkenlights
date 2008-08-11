@@ -37,6 +37,7 @@
 
 #include "led.h"
 #include "proto.h"
+#include "usbshell.h"
 
 /**********************************************************************/
 static inline void
@@ -78,7 +79,7 @@ main (void)
 	       NULL, TASK_USB_PRIORITY, NULL);
 
   vInitProtocolLayer ();
-
+  vUSBShellInit ();
   vTaskStartScheduler ();
 
   return 0;

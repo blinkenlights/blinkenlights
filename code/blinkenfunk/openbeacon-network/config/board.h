@@ -89,6 +89,9 @@
 #define TASK_NRF_PRIORITY	( tskIDLE_PRIORITY + 3 )
 #define TASK_NRF_STACK		( 512 )
 
+#define TASK_USBSHELL_PRIORITY	( tskIDLE_PRIORITY + 4 )
+#define TASK_USBSHELL_STACK	( 512 )
+
 /*-------------------------------*/
 /* configuration structure       */
 /*-------------------------------*/

@@ -50,6 +50,7 @@ APP_SRC= \
   application/proto.c \
   application/xxtea.c \
   application/bprotocol.c \
+  application/usbshell.c \
   $(NETWORK_SRC)
   
 all: $(TARGET).bin

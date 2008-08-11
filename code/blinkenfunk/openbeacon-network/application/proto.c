@@ -129,8 +129,11 @@ PtDumpStringToUSB (const char *text)
   unsigned char data;
 
   if (text)
-    while ((data = *text++) != 0)
+    while ((data = *text++) != 0) {
       vUSBSendByte (data);
+      if (data == '\n')
+        vUSBSendByte ('\r');
+    }
 }
 
 void
