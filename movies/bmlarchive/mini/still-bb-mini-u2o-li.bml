@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blm width="26" height="20" bits="4" channels="1">
+	<header>
+		<title>still-bb-mini-u2o-li.bml</title>
+		<description></description>
+		<creator>ArcadePaint 1.1 Mac</creator>
+		<author></author>
+		<email></email>
+		<loop>no</loop>
+		<duration>200</duration>
+	</header>
+
+	<frame duration="200">
+		<row>45111111244110000000000000</row>
+		<row>45111111123577300000000000</row>
+		<row>45112676631015850000000000</row>
+		<row>4513b9aaaa5103792000000000</row>
+		<row>451189c7a72114995000000000</row>
+		<row>45100112111147785100000000</row>
+		<row>45100113455666686110000000</row>
+		<row>45100116776666997343100000</row>
+		<row>45100116776666997722431000</row>
+		<row>45100116886666864c62111600</row>
+		<row>45100116886666796642211a20</row>
+		<row>451001168866667a7642211a30</row>
+		<row>451001168866666a7642211a40</row>
+		<row>45100116886666697752211a50</row>
+		<row>45100116786666587531111b50</row>
+		<row>451001167766666a7531111b40</row>
+		<row>451001167766666a7653111b30</row>
+		<row>451001111245667a7653211b20</row>
+		<row>45113575411147aa7653111b11</row>
+		<row>45179a9a9a1027a97531111700</row>
+	</frame>
+</blm>

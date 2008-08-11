@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<blm width="26" height="20" bits="4">
+    <header>
+        <title>Björn</title>
+        <creator>blib 0.7</creator>
+    </header>
+    <frame duration="5000">
+        <row>22222222222222222222222222</row>
+        <row>22222222222234443332211212</row>
+        <row>22221222333334554333222211</row>
+        <row>22212223333456655544442221</row>
+        <row>21112224799aaabbbbbba88511</row>
+        <row>11111247bcddddeedccbba9841</row>
+        <row>111112369bcdddeedccbba9862</row>
+        <row>100112259bccdddeedcbbbb973</row>
+        <row>14511238cbbaaaaa98889a9742</row>
+        <row>3ba43248bbb987763367942221</row>
+        <row>2acb9469abddca867accc95541</row>
+        <row>139db8899abcdccbcdcccd9861</row>
+        <row>3114568888abbbbbbbbbbcb620</row>
+        <row>32101579999abbaabca8676200</row>
+        <row>2111354799aaaaba9998632000</row>
+        <row>11114764579999988876520000</row>
+        <row>1134678754578999a987500000</row>
+        <row>44366788876445788875200000</row>
+        <row>44357778777653333211112333</row>
+        <row>43337777777665543111123334</row>
+    </frame>
+</blm>

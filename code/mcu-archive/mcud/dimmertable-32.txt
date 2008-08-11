@@ -1,0 +1,33 @@
+Brightness: 1.000 Step:  31 ( 31.000000) Time: 0.000000 ms  Diff: 1.138000 ms    12
+Brightness: 0.968 Step:  30 ( 30.000252) Time: 1.138000 ms  Diff: 0.481000 ms     5
+Brightness: 0.935 Step:  29 ( 28.998982) Time: 1.619000 ms  Diff: 0.375000 ms     4
+Brightness: 0.903 Step:  28 ( 27.999164) Time: 1.994000 ms  Diff: 0.322000 ms     3
+Brightness: 0.871 Step:  27 ( 26.998977) Time: 2.316000 ms  Diff: 0.289000 ms     3
+Brightness: 0.839 Step:  26 ( 25.998817) Time: 2.605000 ms  Diff: 0.266000 ms     3
+Brightness: 0.806 Step:  25 ( 25.000059) Time: 2.871000 ms  Diff: 0.250000 ms     3
+Brightness: 0.774 Step:  24 ( 23.999573) Time: 3.121000 ms  Diff: 0.237000 ms     2
+Brightness: 0.742 Step:  23 ( 23.001640) Time: 3.358000 ms  Diff: 0.228000 ms     2
+Brightness: 0.710 Step:  22 ( 22.001507) Time: 3.586000 ms  Diff: 0.221000 ms     2
+Brightness: 0.677 Step:  21 ( 20.999560) Time: 3.807000 ms  Diff: 0.215000 ms     2
+Brightness: 0.645 Step:  20 ( 19.998824) Time: 4.022000 ms  Diff: 0.210000 ms     2
+Brightness: 0.613 Step:  19 ( 19.001118) Time: 4.232000 ms  Diff: 0.208000 ms     2
+Brightness: 0.581 Step:  18 ( 17.997578) Time: 4.440000 ms  Diff: 0.205000 ms     2
+Brightness: 0.548 Step:  17 ( 16.997849) Time: 4.645000 ms  Diff: 0.203000 ms     2
+Brightness: 0.516 Step:  16 ( 16.001615) Time: 4.848000 ms  Diff: 0.204000 ms     2
+Brightness: 0.484 Step:  15 ( 14.998385) Time: 5.052000 ms  Diff: 0.203000 ms     2
+Brightness: 0.452 Step:  14 ( 14.002151) Time: 5.255000 ms  Diff: 0.205000 ms     2
+Brightness: 0.419 Step:  13 ( 13.002422) Time: 5.460000 ms  Diff: 0.208000 ms     2
+Brightness: 0.387 Step:  12 ( 11.998882) Time: 5.668000 ms  Diff: 0.210000 ms     2
+Brightness: 0.355 Step:  11 ( 11.001176) Time: 5.878000 ms  Diff: 0.215000 ms     2
+Brightness: 0.323 Step:  10 ( 10.000440) Time: 6.093000 ms  Diff: 0.221000 ms     2
+Brightness: 0.290 Step:   9 (  8.998493) Time: 6.314000 ms  Diff: 0.228000 ms     2
+Brightness: 0.258 Step:   8 (  7.998360) Time: 6.542000 ms  Diff: 0.237000 ms     2
+Brightness: 0.226 Step:   7 (  7.000427) Time: 6.779000 ms  Diff: 0.250000 ms     3
+Brightness: 0.194 Step:   6 (  5.999941) Time: 7.029000 ms  Diff: 0.266000 ms     3
+Brightness: 0.161 Step:   5 (  5.001183) Time: 7.295000 ms  Diff: 0.289000 ms     3
+Brightness: 0.129 Step:   4 (  4.001023) Time: 7.584000 ms  Diff: 0.322000 ms     3
+Brightness: 0.097 Step:   3 (  3.000836) Time: 7.906000 ms  Diff: 0.375000 ms     4
+Brightness: 0.065 Step:   2 (  2.001018) Time: 8.281000 ms  Diff: 0.481000 ms     5
+Brightness: 0.032 Step:   1 (  0.999748) Time: 8.762000 ms  Diff: 1.138000 ms    12
+
+Minimum time diff: 0.203000 ms                                                   98

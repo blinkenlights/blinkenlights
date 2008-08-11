@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blm width="26" height="20" bits="4" channels="1">
+	<header>
+		<title>panda.gif</title>
+		<description></description>
+		<creator>ArcadePaint 1.1 Mac</creator>
+		<author>Denis Dhekaier</author>
+		<email>dhekaier@club-internet.fr</email>
+		<loop>no</loop>
+		<duration>1000</duration>
+	</header>
+
+	<frame duration="1000">
+		<row>dddbbbb66ddddd969ddddddddd</row>
+		<row>ddcbbbb116dddd616ddddddddd</row>
+		<row>dddc99b416cdddddcddddddddd</row>
+		<row>ddcb9cdbccdddddddddddddddd</row>
+		<row>db9bcccdcdddc9bdccdccdddbb</row>
+		<row>dcccdcdcdddd911ddbbbdbdddc</row>
+		<row>cdb146bcddcd949cdccddddddd</row>
+		<row>dd4111119ddcdcdcc99bbbdddd</row>
+		<row>db111111149ccdcbb99b99dddd</row>
+		<row>c61111111111114411114ddddd</row>
+		<row>c111111111111111111114dddd</row>
+		<row>b1111111111111111111149ddd</row>
+		<row>d111111111111111116644414d</row>
+		<row>d4944111111111169ddd94114d</row>
+		<row>d9cccccbb999cccdddcddc416c</row>
+		<row>d6ccccccccb6649cddddd994dc</row>
+		<row>d4cdccccc911111149cdb6144b</row>
+		<row>db49cdccb1111111111111111c</row>
+		<row>ddc649bc91111111111111116d</row>
+		<row>dddcdc9bcb6444444444444cdd</row>
+	</frame>
+</blm>

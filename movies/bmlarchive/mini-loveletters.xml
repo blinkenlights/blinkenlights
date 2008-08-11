@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+
+<!-- Mini Loveletters +7364 -->
+
+  <loveletters>
+    <movie id="01" href="mini/ac-eye.bml"/>
+    <movie id="02" href="mini/ac-garage.bml"/>
+    <movie id="03" href="mini/ac-labyrinth.bml"/>
+    <movie id="04" href="mini/ac-park-in.bml"/>
+    <movie id="05" href="mini/ac-pushletters.bml"/>
+    <movie id="06" href="mini/ac-rotation.bml"/>
+    <movie id="07" href="mini/bb-1st-r2l-grau.bml"/>
+    <movie id="08" href="mini/bb-cest-moi.bml"/>
+    <movie id="09" href="mini/bb-mini-l2r-slow.bml"/>
+    <movie id="10" href="mini/bb-mini-logo-zoom.bml"/>
+    <movie id="11" href="mini/bb-mini-logo-zoom2.bml"/>
+    <movie id="12" href="mini/bb-mini-o2u-li.bml"/>
+    <movie id="13" href="mini/bb-mini-rl2-slow.bml"/>
+    <movie id="14" href="mini/bb-mini-u2o-li.bml"/>
+    <movie id="15" href="mini/bb-mini-u2o-re.bml"/>
+    <movie id="16" href="mini/sc-buttons2.bml"/>
+    <movie id="17" href="mini/sc-countdown2.bml"/>
+    <movie id="18" href="mini/sc-earth2.bml"/>
+    <movie id="19" href="mini/sc-mini-eiffelturm.bml"/>
+    <movie id="20" href="mini/sc-mini-logo.bml"/>
+    <movie id="21" href="mini/sc-typologo.bml"/>
+    <movie id="22" href="mini/bb-unterwegs.bml"/>
+    <movie id="23" href="mini/sc-contribution-clip-short.bml"/>
+    <movie id="50" href="mini/still-ac-garage.bml"/>
+    <movie id="51" href="mini/still-ac-labyrinth.bml"/>
+    <movie id="52" href="mini/still-ac-pushletters.bml"/>
+    <movie id="53" href="mini/still-bb-cest-moi-1.bml"/>
+    <movie id="54" href="mini/still-bb-cest-moi-2.bml"/>
+    <movie id="55" href="mini/still-bb-mini-logo-zoom.bml"/>
+    <movie id="56" href="mini/still-bb-mini-u2o-li.bml"/>
+    <movie id="57" href="mini/still-bb-mini-u2o-re.bml"/>
+    <movie id="58" href="mini/still-mini-o2u-li.bml"/>
+    <movie id="59" href="mini/still-sc-earth.bml"/>
+    <movie id="60" href="mini/sc-mini-logo-still.bml"/>
+  </loveletters>

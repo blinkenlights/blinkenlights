@@ -1,0 +1,28 @@
+AC_INIT(src/network.c)
+
+PACKAGE=gondwana
+VERSION=0.1
+
+AM_INIT_AUTOMAKE($PACKAGE,$VERSION)
+
+AC_PROG_INSTALL
+AC_PROG_CC
+
+AC_HEADER_STDC
+
+AC_CHECK_HEADERS(unistd.h,
+  AC_MSG_RESULT(yes),
+  AC_MSG_ERROR([unistd.h not found -- get a real OS.]))
+
+PKG_CHECK_MODULES(DIRECTFB, directfb >= 0.9.11)
+
+DATADIR=$datadir
+
+AC_SUBST(PACKAGE)
+AC_SUBST(VERSION)
+AC_SUBST(DATADIR)
+
+AC_OUTPUT([
+Makefile
+src/Makefile
+])

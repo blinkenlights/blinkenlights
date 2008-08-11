@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blm width="26" height="20" bits="3" channels="1">
+	<header>
+		<title>clovis</title>
+		<description>declaration d&apos;amour</description>
+		<creator>ArcadePaint 1.1.1 PC</creator>
+		<author>virginie ortis</author>
+		<email>virginieortis@hotmail.com</email>
+		<loop>no</loop>
+		<duration>200</duration>
+	</header>
+
+	<frame duration="200">
+		<row>77777777777777777777777777</row>
+		<row>77777777777777777777777777</row>
+		<row>77000707700070770707000777</row>
+		<row>77077707707070770707077777</row>
+		<row>77077707707070770707000777</row>
+		<row>77077700707077007707770777</row>
+		<row>77000700700077007707000777</row>
+		<row>77777777777777777777777777</row>
+		<row>77777770070070070077777777</row>
+		<row>77777770070077000777777777</row>
+		<row>77777770707077707777777777</row>
+		<row>77777770777077707777777777</row>
+		<row>77777777777777777777777777</row>
+		<row>77707770000707707000077777</row>
+		<row>77707770770707707077777777</row>
+		<row>77707770770707707000777777</row>
+		<row>77700070770700007077777777</row>
+		<row>77700070000770077000070707</row>
+		<row>77777777777777777777777777</row>
+		<row>77777777777777777777777777</row>
+	</frame>
+</blm>
+

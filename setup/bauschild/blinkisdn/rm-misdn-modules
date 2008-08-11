@@ -1,0 +1,5 @@
+#!/bin/sh
+
+rmmod avmfritz mISDN_isac mISDN_capi l3udss1 mISDN_l2 mISDN_l1 mISDN_dtmf mISDN_core \
+  capi kernelcapi
+

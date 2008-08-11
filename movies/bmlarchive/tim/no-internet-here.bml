@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blm width="26" height="20" bits="3" channels="1">
+	<header>
+		<title>no internet here</title>
+		<description>Wanadoo sucks</description>
+		<creator>ArcadePaint 1.1 Mac</creator>
+		<author>Tim Pritlove</author>
+		<email>tim@ccc.de</email>
+		<loop>no</loop>
+		<duration>200</duration>
+	</header>
+
+	<frame duration="200">
+		<row>70007007770000007070007000</row>
+		<row>77007070007000007077007000</row>
+		<row>70707070007000007070707077</row>
+		<row>70077070007000007070077000</row>
+		<row>70007007770000007070007000</row>
+		<row>00000000000000000000000000</row>
+		<row>77707770770070070777077707</row>
+		<row>07007000707077070700007007</row>
+		<row>07007700770070770770007007</row>
+		<row>07007000707070070700007000</row>
+		<row>07007770707070070777007007</row>
+		<row>00000000000000000000000000</row>
+		<row>07707070070077077700000000</row>
+		<row>70007077070700070000000000</row>
+		<row>07007070770700077000000000</row>
+		<row>00707070070700070000000000</row>
+		<row>77007070070077077700000000</row>
+		<row>00000000000000000000000000</row>
+		<row>00000000000000000000000000</row>
+		<row>00000000000000000000000000</row>
+	</frame>
+</blm>

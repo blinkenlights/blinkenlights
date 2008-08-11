@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<playlist>
+  <item><param key="movie" value="anim/portraits/crew/antenne.bml"/></item>
+  <item type="BDropout"/>
+  <item><param key="movie" value="anim/portraits/crew/bjoern.bml"/></item>
+  <item type="BDropout"/>
+  <item><param key="movie" value="anim/portraits/crew/daniel.bml"/></item>
+  <item type="BDropout"/>
+  <item><param key="movie" value="anim/portraits/crew/fiedel.bml"/></item>
+  <item type="BDropout"/>
+  <item><param key="movie" value="anim/portraits/crew/hannes.bml"/></item>
+  <item type="BDropout"/>
+  <item><param key="movie" value="anim/portraits/crew/mitch.bml"/></item>
+  <item type="BDropout"/>
+  <item><param key="movie" value="anim/portraits/crew/papillon.bml"/></item>
+  <item type="BDropout"/>
+  <item><param key="movie" value="anim/portraits/crew/sven.bml"/></item>
+  <item type="BDropout"/>
+  <item><param key="movie" value="anim/portraits/crew/tim.bml"/></item>
+  <item type="BDropout"/>
+  <item><param key="movie" value="anim/portraits/tux.bml"/></item>
+  <item type="BDropout"/>
+</playlist>

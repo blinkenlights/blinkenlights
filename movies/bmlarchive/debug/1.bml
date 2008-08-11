@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blm width="26" height="20" bits="3" channels="1">
+	<header>
+		<title>1</title>
+		<description>Graustufen langsam hochzählen</description>
+		<creator>ArcadePaint 1.1 Mac</creator>
+		<author>Tim Pritlove</author>
+		<email>tim@ccc.de</email>
+		<loop>yes</loop>
+		<duration>16000</duration>
+	</header>
+
+	<frame duration="1000">
+		<row>11111111111111111111111111</row>
+		<row>11111111111111111111111111</row>
+		<row>11111111111111111111111111</row>
+		<row>11111111111111111111111111</row>
+		<row>11111111111111111111111111</row>
+		<row>11111111111111111111111111</row>
+		<row>11111111111111111111111111</row>
+		<row>11111111111111111111111111</row>
+		<row>11111111111111111111111111</row>
+		<row>11111111111111111111111111</row>
+		<row>11111111111111111111111111</row>
+		<row>11111111111111111111111111</row>
+		<row>11111111111111111111111111</row>
+		<row>11111111111111111111111111</row>
+		<row>11111111111111111111111111</row>
+		<row>11111111111111111111111111</row>
+		<row>11111111111111111111111111</row>
+		<row>11111111111111111111111111</row>
+		<row>11111111111111111111111111</row>
+		<row>11111111111111111111111111</row>
+	</frame>
+
+</blm>

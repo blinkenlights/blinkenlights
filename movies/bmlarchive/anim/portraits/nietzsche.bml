@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<blm width="26" height="20" bits="4">
+    <header>
+        <title>Friedrich Nietzsche</title>
+        <author>Carsten Schaeffer</author>
+        <creator>blib 0.9</creator>
+        <duration>10000</duration>
+    </header>
+    <frame duration="10000">
+        <row>bbb987788764466777777888ab</row>
+        <row>ba877777576224345556778789</row>
+        <row>a9777762245313301112466778</row>
+        <row>8777664368a972343333126767</row>
+        <row>77776669ccccb4135545335566</row>
+        <row>77766579bccca6434443444665</row>
+        <row>76655679bcccb7544553210365</row>
+        <row>7766532247bcca866794320265</row>
+        <row>7768337458bccccba589213655</row>
+        <row>776a8bc9abccccccb9aa546565</row>
+        <row>776a97768bccccccbbccb65665</row>
+        <row>7774247668bbcccbcbbca65555</row>
+        <row>7784015546bcbbbbabc9555555</row>
+        <row>68b5001568987679dc85555544</row>
+        <row>7bc84046656647ce8245554454</row>
+        <row>cdca417767757da40455544454</row>
+        <row>a9621477772001002543443235</row>
+        <row>11123888410000013311423004</row>
+        <row>34437862000000042244523014</row>
+        <row>56421110011000242215543024</row>
+    </frame>
+</blm>

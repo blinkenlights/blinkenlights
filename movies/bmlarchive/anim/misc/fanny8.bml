@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blm width="26" height="20" bits="3" channels="1">
+	<header>
+		<title>fanny</title>
+		<description>fanny by jimpunk</description>
+		<creator>ArcadePaint 1.1 Mac</creator>
+		<author>jimpunk-http://www.jimpunk.com</author>
+		<email>error401@jimpunk.com</email>
+		<loop>yes</loop>
+		<duration>3000</duration>
+	</header>
+
+	<frame duration="3000">
+		<row>00000000000000000000000000</row>
+		<row>00000000000000000000000000</row>
+		<row>00010111121232000000000000</row>
+		<row>00001025555555522100000000</row>
+		<row>00001247777777775210000000</row>
+		<row>00011247777777776311000000</row>
+		<row>00012234567765555431100000</row>
+		<row>00111212347632312343312210</row>
+		<row>00123445557766555654333510</row>
+		<row>00024566667777666665535310</row>
+		<row>00012555457666556565221100</row>
+		<row>00011343234566555443210000</row>
+		<row>00001123135654477552200000</row>
+		<row>00000012233444765522100000</row>
+		<row>00000000245567743451110000</row>
+		<row>00000000123545345552110000</row>
+		<row>00000000002344555553221100</row>
+		<row>00000000003555555554444421</row>
+		<row>00000011222445555555444411</row>
+		<row>00001112223333333333333322</row>
+	</frame>
+</blm>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<blm width="26" height="20" bits="4">
+    <header>
+        <title>Tux</title>
+        <author>Simon Budig</author>
+        <email>simon@gimp.org</email>
+        <creator>blib 0.8</creator>
+        <duration>10000</duration>
+        <loop/>
+    </header>
+    <frame duration="10000">
+        <row>00000000006899a51000000000</row>
+        <row>000000000b421116a000000000</row>
+        <row>00000000c12000213d00000000</row>
+        <row>0000000081cb4cb40810000000</row>
+        <row>00000000722c62a50820000000</row>
+        <row>00000000a778867500d1000000</row>
+        <row>000000083978779c132d200000</row>
+        <row>000000834affffffa001b20000</row>
+        <row>000008238dedefda75000a3000</row>
+        <row>0000823dfffffffffd60109100</row>
+        <row>000822afffcfffffffc0100b00</row>
+        <row>000b23dfffbffffffec0210800</row>
+        <row>02397756cfeffffffa71026b00</row>
+        <row>3777777614efffffe977777871</row>
+        <row>477777777beeedb72777777784</row>
+        <row>23788777783444443777789600</row>
+        <row>00000477700000000687771000</row>
+        <row>00000000000000000000000000</row>
+        <row>00000000000000000000000000</row>
+        <row>00000000000000000000000000</row>
+    </frame>
+</blm>

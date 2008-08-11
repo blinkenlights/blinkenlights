@@ -1,0 +1,598 @@
+<?xml version="1.0" encoding="utf-8"?>
+<playlist shuffle="yes">
+
+  <item type="BPushline" likely="8">
+    <param key="direction" value="top-to-bottom"/>
+  </item>  
+  <item type="BPushline" likely="8">
+    <param key="direction" value="right-to-left"/>
+  </item>  
+  <item type="BPushline" likely="8">
+    <param key="direction" value="bottom-to-top"/>
+  </item>  
+  <item type="BPushline" likely="8">
+    <param key="direction" value="left-to-right"/>
+  </item> 
+  
+  <item type="BQix" likely="6">
+    <param key="lifetime" value="23000"/>
+  </item>  
+
+  <item type="BMatrix" speed="0.4" likely="6">
+    <param key="lifetime" value="23000"/>
+  </item>  
+
+  <item type="BFire" likely="3">
+    <param key="lifetime" value="20000"/>
+  </item>  
+  
+  <item type="BClock" likely="4">
+    <param key="lifetime" value="10000"/>
+    <param key="mode" value="digital"/>
+  </item>  
+
+  <item type="BMoviePlayer" likely="1" speed="0.5" >
+    <param key="movie" value="/home/blccc/cvs/bmlarchive/reloaded/movies/roadtrip.bml"/>
+  </item>
+  <item type="BMoviePlayer" likely="1" speed="0.5" >
+    <param key="movie" value="/home/blccc/cvs/bmlarchive/reloaded/movies/train.bml"/>
+  </item>
+  <item type="BMoviePlayer" likely="1" loop="2">
+    <param key="movie" value="/home/blccc/cvs/bmlarchive/reloaded/movies/steakfinale.bml"/>
+  </item>
+  <item type="BMoviePlayer" likely="1" speed="0.8" >
+    <param key="movie" value="/home/blccc/cvs/bmlarchive/reloaded/movies/vivalasvegas1.bml"/>
+  </item>
+  <item type="BMoviePlayer" likely="2">
+    <param key="movie" value="/home/blccc/cvs/bmlarchive/reloaded/movies/flow.bml"/>
+  </item>
+  <item type="BMoviePlayer" likely="3">
+    <param key="movie" value="/home/blccc/cvs/bmlarchive/reloaded/movies/rotating_cube2.bml"/>
+  </item>
+  <item type="BMoviePlayer" likely="3">
+    <param key="movie" value="/home/blccc/cvs/bmlarchive/reloaded/movies/rotating_cube1.bml"/>
+  </item>
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/bmlarchive/reloaded/movies/greyheart.bml"/>
+  </item>
+
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/bmlarchive/reloaded/movies/nemesis.blm"/>
+  </item>
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/bmlarchive/reloaded/movies/horse.blm"/>
+  </item>
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/bmlarchive/reloaded/movies/payphone.bml"/>
+  </item>
+
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/bmlarchive/reloaded/movies/trash-as-pop-can-be.bml"/>
+  </item>
+
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/blmarchive/tim/this_is_blinkenlights.blm"/>
+  </item>
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/bmlarchive/reloaded/movies/no-war.bml"/>
+  </item>
+
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/bmlarchive/reloaded/movies/teechy.bml"/>
+  </item>
+
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/bmlarchive/reloaded/movies/torinberlin.bml"/>
+  </item>
+
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/bmlarchive/reloaded/movies/mathe.bml"/>
+  </item>
+
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/bmlarchive/reloaded/movies/goldfisch2.bml"/>
+  </item>
+
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/bmlarchive/reloaded/movies/goldfisch3.bml"/>
+  </item>
+
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/bmlarchive/reloaded/movies/goldfisch4.bml"/>
+  </item>
+
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/bmlarchive/reloaded/movies/goldfisch5.bml"/>
+  </item>
+
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/bmlarchive/reloaded/movies/goldfisch6.bml"/>
+  </item>
+
+  <item type="BMoviePlayer" likely="6">
+    <param key="movie" value="/home/blccc/cvs/bmlarchive/reloaded/movies/torus.bml"/>
+  </item>
+
+  <item type="BMoviePlayer" likely="6">
+    <param key="movie" value="/home/blccc/cvs/bmlarchive/reloaded/movies/2003.bml"/>
+  </item>
+  <item type="BMoviePlayer" loop="3">
+    <param key="movie" value="/home/blccc/cvs/bmlarchive/reloaded/movies/3duniverse.bml"/>
+  </item>
+  <item type="BMoviePlayer" loop="6">
+    <param key="movie" value="/home/blccc/cvs/bmlarchive/reloaded/movies/c64-stylee.bml"/>
+  </item>
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/bmlarchive/reloaded/movies/cylon.bml"/>
+  </item>
+
+
+<!--
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/bmlarchive/reloaded/movies/anotherzoomout.bml"/>
+  </item>
+-->
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/bmlarchive/reloaded/movies/raupe.bml"/>
+  </item>
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/bmlarchive/reloaded/movies/bb-gewaber.bml"/>
+  </item>
+<!--
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/bmlarchive/reloaded/movies/codeshaker.bml"/>
+  </item>
+-->
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/bmlarchive/reloaded/movies/emotion-face.bml"/>
+  </item>
+
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/bmlarchive/reloaded/movies/gewaber.bml"/>
+  </item>
+
+<!--
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/bmlarchive/reloaded/movies/mandel-zoom-in.bml"/>
+  </item>
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/bmlarchive/reloaded/movies/mandelspinzoom.bml"/>
+  </item>
+-->
+  <item type="BMoviePlayer" loop="2">
+    <param key="movie" value="/home/blccc/cvs/bmlarchive/reloaded/movies/a_wilberdrehung.bml"/>
+  </item>
+
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/bmlarchive/reloaded/movies/mandelzoomin2.bml"/>
+  </item>
+
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/bmlarchive/reloaded/movies/paint001.bml"/>
+  </item>
+
+  <item type="BMoviePlayer" loop="10">
+    <param key="movie" value="/home/blccc/cvs/bmlarchive/reloaded/movies/paint003.bml"/>
+  </item>
+
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/bmlarchive/reloaded/movies/plopphdl1-1.bml"/>
+  </item>
+
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/bmlarchive/reloaded/movies/plopphdl1.bml"/>
+  </item>
+
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/bmlarchive/reloaded/movies/smiley.bml"/>
+  </item>
+
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/bmlarchive/reloaded/movies/verschon-mich-2.bml"/>
+  </item>
+
+  <item type="BMoviePlayer" likely="2">
+    <param key="movie" value="/home/blccc/cvs/bmlarchive/reloaded/movies/waber1_hdl.bml"/>
+  </item>
+
+  <item type="BMoviePlayer" likely="2">
+    <param key="movie" value="/home/blccc/cvs/bmlarchive/reloaded/movies/waber2_hdl.bml"/>
+  </item>
+
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/bmlarchive/reloaded/movies/xmas-lemmings.bml"/>
+  </item>
+
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/bmlarchive/reloaded/movies/blinkenlights-3D-spikekugel.bml"/>
+  </item>
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/bmlarchive/reloaded/movies/0911.bml"/>
+  </item>
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/bmlarchive/reloaded/movies/ichbindashaus.bml"/>
+  </item>
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/bmlarchive/reloaded/movies/bigbrother.blm"/>
+  </item>
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/bmlarchive/reloaded/movies/blinkenlights-c64-stylee.bml"/>
+  </item>
+  <item type="BMoviePlayer" loop="2">
+    <param key="movie" value="/home/blccc/cvs/bmlarchive/reloaded/movies/blinkenlights-checkerboard.bml"/>
+  </item>
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/bmlarchive/reloaded/movies/blinkenlights-crest-kursiv.bml"/>
+  </item>
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/bmlarchive/reloaded/movies/blinkenlights-eyeanim.bml"/>
+  </item>
+  <item type="BMoviePlayer" loop="3" likely="3">
+    <param key="movie" value="/home/blccc/cvs/bmlarchive/reloaded/movies/blinkenlights-kreise.bml"/>
+  </item>
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/bmlarchive/reloaded/movies/blinkenlights-mac-radar.bml"/>
+  </item>
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/bmlarchive/reloaded/movies/blinkenlights-plasma.bml"/>
+  </item>
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/bmlarchive/reloaded/movies/blinkenlights-plasmascroll.bml"/>
+  </item>
+  <item type="BMoviePlayer" loop="3">
+    <param key="movie" value="/home/blccc/cvs/bmlarchive/reloaded/movies/blinkenlights-rotate.bml"/>
+  </item>
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/bmlarchive/reloaded/movies/snow.bml"/>
+  </item>
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/bmlarchive/reloaded/movies/leuchtturm.bml"/>
+  </item>
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/bmlarchive/reloaded/movies/pacman.bml"/>
+  </item>
+  <item type="BMoviePlayer" loop="3">
+    <param key="movie" value="/home/blccc/cvs/bmlarchive/reloaded/movies/simple_worms.bml"/>
+  </item>
+  
+  <item type="BMoviePlayer">
+    <param key="movie" value="../con6.bml"/>
+  </item>
+  <item type="BMoviePlayer">
+    <param key="movie" value="../con7.bml"/>
+  </item>
+
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/blmarchive/gallery/winter_in_the_city.blm"/>
+  </item>
+
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/blmarchive/gallery/life.blm"/>
+  </item>
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/blmarchive/gallery/auge.blm"/>
+  </item>
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/blmarchive/gallery/fallingpixels.blm"/>
+  </item>
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/blmarchive/gallery/peao.blm"/>
+  </item>
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/blmarchive/gallery/speedit.blm"/>
+  </item>
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/blmarchive/gallery/klo.blm"/>
+  </item>
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/blmarchive/gallery/dont_try_at_home.blm"/>
+  </item>
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/blmarchive/gallery/kreise.blm"/>
+  </item>
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/blmarchive/gallery/tetris.blm"/>
+  </item>
+  <item type="BMoviePlayer" likely="0.2">
+    <param key="movie" value="/home/blccc/cvs/blmarchive/gallery/tla_nerd1.blm"/>
+  </item>
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/blmarchive/gallery/dance.blm"/>
+  </item>
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/blmarchive/gallery/labyrinth.blm"/>
+  </item>
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/blmarchive/gallery/peacenow.blm"/>
+  </item>
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/blmarchive/gallery/rain.blm"/>
+  </item>
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/blmarchive/gallery/snake.blm"/>
+  </item>
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/blmarchive/gallery/coffee.blm"/>
+  </item>
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/blmarchive/gallery/klettermensch.blm"/>
+  </item>
+  <item type="BMoviePlayer" likely="2">
+    <param key="movie" value="/home/blccc/cvs/blmarchive/gallery/spin.blm"/>
+  </item>
+  <item type="BMoviePlayer" likely="0.2">
+    <param key="movie" value="/home/blccc/cvs/blmarchive/gallery/tla_nerd8.blm"/>
+  </item>
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/blmarchive/gallery/supermaennchen.blm"/>
+  </item>
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/blmarchive/gallery/mandel.blm"/>
+  </item>
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/blmarchive/gallery/vomit.blm"/>
+  </item>
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/blmarchive/gallery/pixie_in_the_box.blm"/>
+  </item>
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/blmarchive/gallery/blubb.blm"/>
+  </item>
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/blmarchive/gallery/surprise.blm"/>
+  </item>
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/blmarchive/gallery/flipp.blm"/>
+  </item>
+  <item type="BMoviePlayer" likely="0.2">
+    <param key="movie" value="/home/blccc/cvs/blmarchive/gallery/tla_nerd4.blm"/>
+  </item>
+  <item type="BMoviePlayer" loop="3">
+    <param key="movie" value="/home/blccc/cvs/blmarchive/gallery/yin_yang.blm"/>
+  </item>
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/blmarchive/gallery/die_autobahn.blm"/>
+  </item>
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/blmarchive/gallery/chat_noir.blm"/>
+  </item>
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/blmarchive/gallery/james_blond.blm"/>
+  </item>
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/blmarchive/gallery/bleeeh.blm"/>
+  </item>
+  <item type="BMoviePlayer" likely="0.2">
+    <param key="movie" value="/home/blccc/cvs/blmarchive/gallery/tla_nerd3.blm"/>
+  </item>
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/blmarchive/gallery/g.blm"/>
+  </item>
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/blmarchive/gallery/wasserhahn.blm"/>
+  </item>
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/blmarchive/gallery/torus.blm"/>
+  </item>
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/blmarchive/gallery/raumschiff_enterprise.blm"/>
+  </item>
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/blmarchive/gallery/peepshow.blm"/>
+  </item>
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/blmarchive/gallery/herz.blm"/>
+  </item>
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/blmarchive/gallery/invasion.blm"/>
+  </item>
+  <item type="BMoviePlayer" likely="0.2">
+    <param key="movie" value="/home/blccc/cvs/blmarchive/gallery/tla_nerd7.blm"/>
+  </item>
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/blmarchive/gallery/fft_tim_singsang.blm"/>
+  </item>
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/blmarchive/gallery/pixie_on_christmas.blm"/>
+  </item>
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/blmarchive/gallery/bad_luck.blm"/>
+  </item>
+  <item type="BMoviePlayer" likely="0.2">
+    <param key="movie" value="/home/blccc/cvs/blmarchive/gallery/tla_nerd6.blm"/>
+  </item>
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/blmarchive/gallery/worm.blm"/>
+  </item>
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/blmarchive/gallery/3D_cube.blm"/>
+  </item>
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/blmarchive/gallery/moewe_frontal.blm"/>
+  </item>
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/blmarchive/gallery/the_fly.blm"/>
+  </item>
+  <item type="BMoviePlayer" likely="0.2">
+    <param key="movie" value="/home/blccc/cvs/blmarchive/gallery/tla_nerd5.blm"/>
+  </item>
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/blmarchive/gallery/chaosknoten.blm"/>
+  </item>
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/blmarchive/gallery/fussballer.blm"/>
+  </item>
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/blmarchive/gallery/biker.blm"/>
+  </item>
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/blmarchive/gallery/matrix_maennchen.blm"/>
+  </item>
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/blmarchive/gallery/falling_pix.blm"/>
+  </item>
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/blmarchive/gallery/love_berlin.blm"/>
+  </item>
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/blmarchive/gallery/sanduhr.blm"/>
+  </item>
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/blmarchive/gallery/kriechi_die_schlange.blm"/>
+  </item>
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/blmarchive/gallery/sport_haelt_fit.blm"/>
+  </item>
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/blmarchive/gallery/illuminati.blm"/>
+  </item>
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/blmarchive/gallery/sortofselftest.blm"/>
+  </item>
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/blmarchive/gallery/spirals.blm"/>
+  </item>
+<!--
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/blmarchive/gallery/silent_night.blm"/>
+  </item>
+-->
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/blmarchive/gallery/pacman_saga.blm"/>
+  </item>
+  <item type="BMoviePlayer" speed="1.2" >
+    <param key="movie" value="/home/blccc/cvs/blmarchive/gallery/hanoi.blm"/>
+  </item>
+  <item type="BMoviePlayer" likely="0.2">
+    <param key="movie" value="/home/blccc/cvs/blmarchive/gallery/tla_nerd2.blm"/>
+  </item>
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/blmarchive/gallery/raindrops.blm"/>
+  </item>
+
+  <item type="BMoviePlayer" loop="8" likely="2">
+    <param key="movie" value="/home/blccc/cvs/bmlarchive/reloaded/movies/a_herzpuls23.bml"/>
+  </item>
+
+  <item type="BMoviePlayer" loop="8" likely="2">
+    <param key="movie" value="/home/blccc/cvs/bmlarchive/reloaded/movies/a_herzpuls2b.bml"/>
+  </item>
+
+  <item type="BMoviePlayer" loop="10" likely="6">
+    <param key="movie" value="/home/blccc/cvs/blmarchive/tim/heart_single.blm"/>
+  </item>
+
+  <item type="BMoviePlayer" loop="3" likely="6">
+    <param key="movie" value="/home/blccc/cvs/bmlarchive/reloaded/movies/ccc.bml"/>
+  </item>
+
+  <item type="BMoviePlayer" loop="8" speed="0.3" likely="5">
+    <param key="movie" value="/home/blccc/cvs/bmlarchive/reloaded/movies/blinken_spiral3.bml"/>
+  </item>
+
+  <item type="BMoviePlayer" loop="3" likely="7">
+    <param key="movie" value="/home/blccc/cvs/bmlarchive/reloaded/movies/blinken_dance.bml"/>
+  </item>
+
+  <item type="BMoviePlayer" loop="10" likely="5">
+    <param key="movie" value="/home/blccc/cvs/bmlarchive/reloaded/movies/groove.bml"/>
+  </item>
+  <item type="BMoviePlayer" loop="2">
+    <param key="movie" value="/home/blccc/cvs/bmlarchive/reloaded/movies/blinkeman.bml"/>
+  </item>
+  <item type="BMoviePlayer" loop="2" likely="3">
+    <param key="movie" value="/home/blccc/cvs/bmlarchive/reloaded/movies/dance.bml"/>
+  </item>
+  <item type="BMoviePlayer" loop="2" likely="3">
+    <param key="movie" value="/home/blccc/cvs/bmlarchive/reloaded/movies/power3ddreieck.bml"/>
+  </item>
+  <item type="BMoviePlayer" >
+    <param key="movie" value="/home/blccc/cvs/bmlarchive/reloaded/movies/wirbel.bml"/>
+  </item>
+  <item type="BMoviePlayer" >
+    <param key="movie" value="/home/blccc/cvs/bmlarchive/reloaded/movies/kopfdance.bml"/>
+  </item>
+  <item type="BMoviePlayer" likely="6" loop="5" >
+    <param key="movie" value="/home/blccc/cvs/bmlarchive/reloaded/movies/skataflieg.bml"/>
+  </item>
+  <item type="BMoviePlayer" likely="6" loop="3" >
+    <param key="movie" value="/home/blccc/cvs/bmlarchive/reloaded/movies/skatajump.bml"/>
+  </item>
+  <item type="BMoviePlayer" likely="3" loop="3" >
+    <param key="movie" value="/home/blccc/cvs/bmlarchive/reloaded/movies/skataflipup.bml"/>
+  </item>
+  <item type="BMoviePlayer" loop="2" likely="5">
+    <param key="movie" value="/home/blccc/cvs/bmlarchive/reloaded/movies/cursflashy.bml"/>
+  </item>
+  <item type="BMoviePlayer" loop="10" likely="5">
+    <param key="movie" value="/home/blccc/cvs/bmlarchive/reloaded/movies/beauty1.bml"/>
+  </item>
+  <item type="BMoviePlayer" loop="2">
+    <param key="movie" value="/home/blccc/cvs/bmlarchive/reloaded/movies/blinken_fire.bml"/>
+  </item>
+  <item type="BMoviePlayer" loop="10">
+    <param key="movie" value="/home/blccc/cvs/bmlarchive/reloaded/movies/blinken_auge.bml"/>
+  </item>
+  <item type="BMoviePlayer" loop="3">
+    <param key="movie" value="/home/blccc/cvs/bmlarchive/reloaded/movies/blinken_baller4.bml"/>
+  </item>
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/bmlarchive/reloaded/movies/blinken_gaehn.bml"/>
+  </item>
+
+  <item type="BMoviePlayer" likely="2">
+    <param key="movie" value="/home/blccc/cvs/bmlarchive/reloaded/movies/frogskin_hdl.bml"/>
+  </item>
+
+  <item type="BMoviePlayer" likely="16" loop="2">
+    <param key="movie" value="/home/blccc/cvs/bmlarchive/reloaded/movies/play-pong-static.bml"/>
+  </item>
+  
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/blmarchive/gallery/planetary_assault.blm"/>
+  </item>
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/blmarchive/gallery/tux.blm"/>
+  </item>
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/blmarchive/gallery/camel.blm"/>
+  </item>
+<!--
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/blmarchive/gallery/tropfen.blm"/>
+  </item>
+-->
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/blmarchive/gallery/allyourbase.blm"/>
+  </item>
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/blmarchive/gallery/bit_laden.blm"/>
+  </item>
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/blmarchive/gallery/21st_century_man.blm"/>
+  </item>
+  <item type="BMoviePlayer" likely="0.5">
+    <param key="movie" value="/home/blccc/cvs/blmarchive/gallery/tla_them.blm"/>
+  </item>
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/blmarchive/gallery/baustein.blm"/>
+  </item>
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/blmarchive/gallery/moewe_nr2.blm"/>
+  </item>
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/blmarchive/gallery/scooter.blm"/>
+  </item>
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/blmarchive/gallery/antiwar.blm"/>
+  </item>
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/blmarchive/gallery/fallingrows.blm"/>
+  </item>
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/blmarchive/gallery/kiss.blm"/>
+  </item>
+  <item type="BMoviePlayer">
+    <param key="movie" value="/home/blccc/cvs/blmarchive/WTC/bit_laden.blm"/>
+  </item>
+</playlist>

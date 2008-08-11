@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<blm width="26" height="20" bits="4">
+    <header>
+        <title>Hannes</title>
+        <creator>blib 0.9</creator>
+    </header>
+    <frame duration="5000">
+        <row>8888888888888877788899999a</row>
+        <row>999888888776665556678999aa</row>
+        <row>99998887644444554455679aaa</row>
+        <row>999988753334678986655469ab</row>
+        <row>a998864323479aabbba874358a</row>
+        <row>a9986432346789aababa963369</row>
+        <row>a98632223456789aaaaba84258</row>
+        <row>a9742212355444467777885248</row>
+        <row>a974222245433336983345425a</row>
+        <row>aa853333567888779a87896235</row>
+        <row>ba97434455689974458aaa6233</row>
+        <row>bba8633455456764468a974332</row>
+        <row>baa98413554444445557765652</row>
+        <row>bbba9733444433334456567873</row>
+        <row>bbba9844443334434665688422</row>
+        <row>cba865434432222234469a9211</row>
+        <row>853211211111111223359a7211</row>
+        <row>21111111111000011123882122</row>
+        <row>11111111111111111112423542</row>
+        <row>11111122222211111111213311</row>
+    </frame>
+</blm>

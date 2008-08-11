@@ -1,0 +1,6601 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blm width="18" height="8" bits="4" channels="1">
+	<header>
+		<title>waber1_hdl</title>
+		<description>Waber 1</description>
+		<creator>BlinkenPaint 3.12</creator>
+		<author>Björn Barnekow</author>
+		<email>bb@bytecamp.net</email>
+		<loop>yes</loop>
+		<duration>59900</duration>
+	</header>
+
+	<frame duration="100">
+		<row>55566529eeddcbaa82</row>
+		<row>555555335434566652</row>
+		<row>443212466542000100</row>
+		<row>321244326886203411</row>
+		<row>359abbb9545459bb82</row>
+		<row>39abbbcdedddeffeb3</row>
+		<row>5489999bdeeedcde92</row>
+		<row>97422111345569dd62</row>
+	</frame>
+
+	<frame duration="100">
+		<row>88776529eeeedccb82</row>
+		<row>765445346666788873</row>
+		<row>543211465542000001</row>
+		<row>321134325887302311</row>
+		<row>469abbb9445449cb93</row>
+		<row>4abbbccdedddeffec4</row>
+		<row>559999acdeeedcdea2</row>
+		<row>9643211135567ade72</row>
+	</frame>
+
+	<frame duration="100">
+		<row>89877638efeedccb92</row>
+		<row>886434437778999983</row>
+		<row>653201355432100001</row>
+		<row>321123225887411211</row>
+		<row>568abbb8445448bca3</row>
+		<row>5abbbccdedddefffc5</row>
+		<row>55999aacdeeedddeb2</row>
+		<row>9743211135567bee62</row>
+	</frame>
+
+	<frame duration="100">
+		<row>99987637effeedcb92</row>
+		<row>98632343899aaaa983</row>
+		<row>653201355432110001</row>
+		<row>331012225787520111</row>
+		<row>5679bbb8445547bca3</row>
+		<row>6abbbccdedddefffd6</row>
+		<row>55999abcdddddddec3</row>
+		<row>9743211134458cee62</row>
+	</frame>
+
+	<frame duration="100">
+		<row>9a987637effeedcb92</row>
+		<row>885323438aaaaaa982</row>
+		<row>653211355332110001</row>
+		<row>332111114788620101</row>
+		<row>4568aba8434446acb4</row>
+		<row>5abccccdedddefffe7</row>
+		<row>5599aabcddddddefc4</row>
+		<row>9753211123359ced63</row>
+	</frame>
+
+	<frame duration="100">
+		<row>8a987637effedcbb82</row>
+		<row>875323438bba888861</row>
+		<row>553221355332110001</row>
+		<row>332100114788630001</row>
+		<row>34579aa74345569cb5</row>
+		<row>49bccccdddddefffe8</row>
+		<row>6589aabccccccdefd4</row>
+		<row>9743211121259ded63</row>
+	</frame>
+
+	<frame duration="100">
+		<row>89987636effecaaa71</row>
+		<row>774323437bb9545641</row>
+		<row>554322355332210001</row>
+		<row>222111124788741001</row>
+		<row>124689963345469cc6</row>
+		<row>39bbcccdddcdefffe9</row>
+		<row>6589aabcbbbbcdefd5</row>
+		<row>8643211111149ded53</row>
+	</frame>
+
+	<frame duration="100">
+		<row>78987636dffda88851</row>
+		<row>665333436cb6101210</row>
+		<row>444433355333210001</row>
+		<row>222212224688741001</row>
+		<row>013578853245458bc7</row>
+		<row>27bbccccdcccdeffeb</row>
+		<row>5599aabba89acdefd6</row>
+		<row>864321100004aded63</row>
+	</frame>
+
+	<frame duration="100">
+		<row>78887636dfec855530</row>
+		<row>655433436ba3000000</row>
+		<row>444433455433210001</row>
+		<row>222223334678752001</row>
+		<row>112477742234557bc7</row>
+		<row>16bcccccbbbcdeffeb</row>
+		<row>5599aaa97679bdefd7</row>
+		<row>754321100004aeec53</row>
+	</frame>
+
+	<frame duration="100">
+		<row>67887635cfea533320</row>
+		<row>565444436b81000001</row>
+		<row>455444455433321001</row>
+		<row>332233334678852000</row>
+		<row>112467631234557ab8</row>
+		<row>15bccccaa9abdefffc</row>
+		<row>4599aa975348bdefe8</row>
+		<row>653321100003beeb64</row>
+	</frame>
+
+	<frame duration="100">
+		<row>67877634ced7422211</row>
+		<row>665544545a61221112</row>
+		<row>455555555433321101</row>
+		<row>333234444678862000</row>
+		<row>2123565211344569b8</row>
+		<row>15bcdcb9778adefffc</row>
+		<row>359aa9852116bdefe8</row>
+		<row>443211000003beeb64</row>
+	</frame>
+
+	<frame duration="100">
+		<row>67887634bdb5222111</row>
+		<row>666555544942332223</row>
+		<row>555555566444432112</row>
+		<row>433334445678863000</row>
+		<row>212455511124445897</row>
+		<row>15bddcb63348ceeffc</row>
+		<row>35aaa9720004adefe9</row>
+		<row>332211000102beea64</row>
+	</frame>
+
+	<frame duration="100">
+		<row>57777634ad93211112</row>
+		<row>666655544832443333</row>
+		<row>555556666444432112</row>
+		<row>443334555678863100</row>
+		<row>322355410123445686</row>
+		<row>14beec930015adeffd</row>
+		<row>25bba85100029defe9</row>
+		<row>212210001112aeea64</row>
+	</frame>
+
+	<frame duration="100">
+		<row>577775339c72222212</row>
+		<row>667666544623454444</row>
+		<row>556666776545432222</row>
+		<row>433334555678863100</row>
+		<row>322355311123434565</row>
+		<row>14beec8100028ceeed</row>
+		<row>15bca83001018defea</row>
+		<row>101211001211aed964</row>
+	</frame>
+
+	<frame duration="100">
+		<row>567876338a51233223</row>
+		<row>667777643524555444</row>
+		<row>556667776555543222</row>
+		<row>433344555678863111</row>
+		<row>321455301223332354</row>
+		<row>14beec7011005bdeed</row>
+		<row>05cdb82012106cefea</row>
+		<row>0023210012218ed964</row>
+	</frame>
+
+	<frame duration="100">
+		<row>567875227832344433</row>
+		<row>667877643425666544</row>
+		<row>556667776555543323</row>
+		<row>433344555678863211</row>
+		<row>312455302333322233</row>
+		<row>13beec60232028ceec</row>
+		<row>05dec82022204befea</row>
+		<row>0146520012217cc854</row>
+	</frame>
+
+	<frame duration="100">
+		<row>567875226722455444</row>
+		<row>667887643325666555</row>
+		<row>556677776555543333</row>
+		<row>433345556678864322</row>
+		<row>311345302443321222</row>
+		<row>23beed61343115acdc</row>
+		<row>05ded92123312aefea</row>
+		<row>0279851012314bb854</row>
+	</frame>
+
+	<frame duration="100">
+		<row>567875215512566544</row>
+		<row>667887632125776665</row>
+		<row>556667776666544333</row>
+		<row>433345556677754332</row>
+		<row>211234313444422221</row>
+		<row>119ded714553138bda</row>
+		<row>04ceeb31233218dfea</row>
+		<row>028aa7101232289754</row>
+	</frame>
+
+	<frame duration="100">
+		<row>567874215313676655</row>
+		<row>667777631136777665</row>
+		<row>556667776666544333</row>
+		<row>433345556677754433</row>
+		<row>200223313555432221</row>
+		<row>106bdd7156652169b9</row>
+		<row>02aeec41244305cee9</row>
+		<row>028bb8201232157654</row>
+	</frame>
+
+	<frame duration="100">
+		<row>567764214214677765</row>
+		<row>666777631136777666</row>
+		<row>555667776666544443</row>
+		<row>333444556777754443</row>
+		<row>200122213676543332</row>
+		<row>1017bc7157764137a7</row>
+		<row>016bdc502444229ee8</row>
+		<row>028bb8201233115555</row>
+	</frame>
+
+	<frame duration="100">
+		<row>567764114214788766</row>
+		<row>665666521246777766</row>
+		<row>555556666666544444</row>
+		<row>333444456777655544</row>
+		<row>211111114777655432</row>
+		<row>100158615787522585</row>
+		<row>0147bb502445316cd7</row>
+		<row>038bb8201234213445</row>
+	</frame>
+
+	<frame duration="100">
+		<row>567764102115799876</row>
+		<row>554555421246777766</row>
+		<row>545555666666554444</row>
+		<row>333444456777666654</row>
+		<row>212211114788766543</row>
+		<row>111002214788742363</row>
+		<row>0134795023565139b5</row>
+		<row>039bb8201235411345</row>
+	</frame>
+
+	<frame duration="100">
+		<row>566764101025899876</row>
+		<row>544444311256777766</row>
+		<row>444445556666555444</row>
+		<row>333444456777777764</row>
+		<row>222322124898887654</row>
+		<row>112210014789852241</row>
+		<row>014445302357620583</row>
+		<row>038ba7201235531345</row>
+	</frame>
+
+	<frame duration="100">
+		<row>5667641000258aa986</row>
+		<row>443344210256777776</row>
+		<row>443334445566555444</row>
+		<row>334444445777778765</row>
+		<row>233433224899999865</row>
+		<row>113332014689974211</row>
+		<row>014554201347741142</row>
+		<row>038aa7201236642346</row>
+	</frame>
+
+	<frame duration="100">
+		<row>5667642000259aa987</row>
+		<row>433333200257777776</row>
+		<row>432223334566555444</row>
+		<row>333334444677888875</row>
+		<row>234444334789aaa976</row>
+		<row>12344322357aa86322</row>
+		<row>015654301347963002</row>
+		<row>038aa7201236764446</row>
+	</frame>
+
+	<frame duration="100">
+		<row>5667642100269aaa97</row>
+		<row>333333200257777776</row>
+		<row>322222222455555444</row>
+		<row>333333334567889875</row>
+		<row>344544333689abba86</row>
+		<row>124554323569ba7534</row>
+		<row>026665301347985214</row>
+		<row>038996212336776567</row>
+	</frame>
+
+	<frame duration="100">
+		<row>5677753111369aaa97</row>
+		<row>333333211257777776</row>
+		<row>321112212345555443</row>
+		<row>332223322457899975</row>
+		<row>345555433579bbbb97</row>
+		<row>124665422369bb9755</row>
+		<row>026766401337a97445</row>
+		<row>038996312336887667</row>
+	</frame>
+
+	<frame duration="100">
+		<row>4677753112369bba97</row>
+		<row>333333211257777776</row>
+		<row>221111111245555443</row>
+		<row>322222221347899975</row>
+		<row>456665532369bbcb97</row>
+		<row>124666522248bba976</row>
+		<row>036776402336ab9767</row>
+		<row>048a86322335898777</row>
+	</frame>
+
+	<frame duration="100">
+		<row>467775322247abba87</row>
+		<row>333333211357777776</row>
+		<row>211111000245555443</row>
+		<row>322222210246899875</row>
+		<row>456666531258abcb97</row>
+		<row>135677531247bcba87</row>
+		<row>036776412446aba978</row>
+		<row>158a86323335899877</row>
+	</frame>
+
+	<frame duration="100">
+		<row>467775333347abba87</row>
+		<row>333333222357777776</row>
+		<row>211110000134555433</row>
+		<row>222112100136899875</row>
+		<row>456666520148abcb97</row>
+		<row>135677521137acca97</row>
+		<row>0467764024469bba98</row>
+		<row>158a85323445899888</row>
+	</frame>
+
+	<frame duration="100">
+		<row>567775333347abba87</row>
+		<row>233333222357777765</row>
+		<row>211110000034554433</row>
+		<row>222111100036788765</row>
+		<row>4666665200479bba97</row>
+		<row>2356775211269bcb97</row>
+		<row>1477764024459bba99</row>
+		<row>169a85334445799988</row>
+	</frame>
+
+	<frame duration="100">
+		<row>567775333347abb986</row>
+		<row>233333222357777765</row>
+		<row>211100000024554432</row>
+		<row>322111101025777764</row>
+		<row>4666665200379aa986</row>
+		<row>2456775211258bba87</row>
+		<row>1567763134358bba99</row>
+		<row>379985334445799888</row>
+	</frame>
+
+	<frame duration="100">
+		<row>567774333458abb976</row>
+		<row>233333223357777765</row>
+		<row>211100001024444432</row>
+		<row>322111003025677654</row>
+		<row>466666412126899876</row>
+		<row>2457775211148aa987</row>
+		<row>2567663034347aaa99</row>
+		<row>479975345445799988</row>
+	</frame>
+
+	<frame duration="100">
+		<row>567774333458aba976</row>
+		<row>233333223357777765</row>
+		<row>211100001123444332</row>
+		<row>332211014114566543</row>
+		<row>466665413125788865</row>
+		<row>246776511113799877</row>
+		<row>26666521344469a999</row>
+		<row>589975345555689988</row>
+	</frame>
+
+	<frame duration="100">
+		<row>567764334458aba976</row>
+		<row>233333223457777765</row>
+		<row>211100001113443332</row>
+		<row>332210025314555543</row>
+		<row>466665314124677765</row>
+		<row>246776411103678776</row>
+		<row>366765213444589989</row>
+		<row>689974345555689988</row>
+	</frame>
+
+	<frame duration="100">
+		<row>577764333458bba875</row>
+		<row>233333223457777665</row>
+		<row>211100001112333332</row>
+		<row>333210025413454433</row>
+		<row>456654214213567654</row>
+		<row>256776311102577776</row>
+		<row>367765113443478889</row>
+		<row>68a974356555678888</row>
+	</frame>
+
+	<frame duration="100">
+		<row>677764333459bba875</row>
+		<row>233333223467777665</row>
+		<row>211100001212333333</row>
+		<row>333210036502344433</row>
+		<row>356653114203466654</row>
+		<row>356766311101357666</row>
+		<row>367765124432467888</row>
+		<row>699874356555678887</row>
+	</frame>
+
+	<frame duration="100">
+		<row>677764333469ba9865</row>
+		<row>333333223467777665</row>
+		<row>321100011211223333</row>
+		<row>333200146511234433</row>
+		<row>356643124202456544</row>
+		<row>356765211101356666</row>
+		<row>256765124432357788</row>
+		<row>689864356555567887</row>
+	</frame>
+
+	<frame duration="100">
+		<row>777764333469ba9865</row>
+		<row>333333223467777665</row>
+		<row>321100111311223333</row>
+		<row>333200256610234433</row>
+		<row>255531024201356544</row>
+		<row>356764211100246666</row>
+		<row>146665124432246788</row>
+		<row>589864456555567777</row>
+	</frame>
+
+	<frame duration="100">
+		<row>777764333469ba9766</row>
+		<row>333333223567777666</row>
+		<row>321100111321123344</row>
+		<row>333101466620134443</row>
+		<row>245421023201245654</row>
+		<row>356664111000146666</row>
+		<row>135664134432246788</row>
+		<row>479864456555567777</row>
+	</frame>
+
+	<frame duration="100">
+		<row>787764333468aa8766</row>
+		<row>333333223567776666</row>
+		<row>431101222341123444</row>
+		<row>233103565640134443</row>
+		<row>134310022200246654</row>
+		<row>346653111000146766</row>
+		<row>125664034421146678</row>
+		<row>168753466555556677</row>
+	</frame>
+
+	<frame duration="100">
+		<row>787754333468aa8776</row>
+		<row>433333223567776666</row>
+		<row>432001322342113454</row>
+		<row>232015665641034544</row>
+		<row>023210011100146655</row>
+		<row>246653111000036666</row>
+		<row>113563134321135677</row>
+		<row>036753465554456677</row>
+	</frame>
+
+	<frame duration="100">
+		<row>887654333468a98776</row>
+		<row>543333223567776667</row>
+		<row>542112322353123555</row>
+		<row>122026765552035554</row>
+		<row>012210011000146665</row>
+		<row>245542111000036666</row>
+		<row>212452144321135567</row>
+		<row>104643565554455666</row>
+	</frame>
+
+	<frame duration="100">
+		<row>887653333468998876</row>
+		<row>643333222467776677</row>
+		<row>543113432354113565</row>
+		<row>111046764453135554</row>
+		<row>001100000000146765</row>
+		<row>134542100000036666</row>
+		<row>232241144321135566</row>
+		<row>311343565544445566</row>
+	</frame>
+
+	<frame duration="100">
+		<row>887543333468998877</row>
+		<row>754333212467776677</row>
+		<row>543124432255213566</row>
+		<row>111047764343125654</row>
+		<row>000100000000147765</row>
+		<row>013431010000036666</row>
+		<row>232220244310135555</row>
+		<row>431133565544445556</row>
+	</frame>
+
+	<frame duration="100">
+		<row>887533233467998877</row>
+		<row>764332112468876677</row>
+		<row>653124542246314666</row>
+		<row>111057764233125654</row>
+		<row>000100000000147765</row>
+		<row>002331010000036665</row>
+		<row>233200244210134455</row>
+		<row>642123555444445555</row>
+	</frame>
+
+	<frame duration="100">
+		<row>876432223467898877</row>
+		<row>875322112468877678</row>
+		<row>653125653146414666</row>
+		<row>111057663123135654</row>
+		<row>000100000000147765</row>
+		<row>001221010000036765</row>
+		<row>123310344210134444</row>
+		<row>664224555444444445</row>
+	</frame>
+
+	<frame duration="100">
+		<row>775311123457888887</row>
+		<row>875321112367877778</row>
+		<row>663136753036414676</row>
+		<row>111157663013235655</row>
+		<row>000000000000147775</row>
+		<row>000121110000146765</row>
+		<row>013321344210134444</row>
+		<row>775444555444444444</row>
+	</frame>
+
+	<frame duration="100">
+		<row>764201122357888887</row>
+		<row>764200001357877788</row>
+		<row>553047863015414676</row>
+		<row>110157663002226665</row>
+		<row>000000000000047875</row>
+		<row>000121110000146765</row>
+		<row>012322443110134443</row>
+		<row>776545554444444444</row>
+	</frame>
+
+	<frame duration="100">
+		<row>653100012346889887</row>
+		<row>553100001347877788</row>
+		<row>342048864004414677</row>
+		<row>110157663002226765</row>
+		<row>000000000000047875</row>
+		<row>000022110000146665</row>
+		<row>112333443100234433</row>
+		<row>877655544444444444</row>
+	</frame>
+
+	<frame duration="100">
+		<row>542000012346789888</row>
+		<row>442001101247877788</row>
+		<row>131069974003414677</row>
+		<row>100167652001126765</row>
+		<row>000000000100047875</row>
+		<row>000122110000146665</row>
+		<row>112344443101233332</row>
+		<row>877655544344444443</row>
+	</frame>
+
+	<frame duration="100">
+		<row>431010001235789888</row>
+		<row>231023200236877788</row>
+		<row>011179984002314677</row>
+		<row>000167652000126765</row>
+		<row>100000000110147875</row>
+		<row>000122211100146664</row>
+		<row>123444432101243332</row>
+		<row>887666543334444333</row>
+	</frame>
+
+	<frame duration="100">
+		<row>320243001124689888</row>
+		<row>110155410135777788</row>
+		<row>10027a983011214677</row>
+		<row>000267651010025765</row>
+		<row>100000011111147875</row>
+		<row>001122211110146664</row>
+		<row>234444432111243321</row>
+		<row>877665433334443333</row>
+	</frame>
+
+	<frame duration="100">
+		<row>210465100013589888</row>
+		<row>100478620124777788</row>
+		<row>51048a972011114677</row>
+		<row>100378641120025765</row>
+		<row>100001111221147875</row>
+		<row>101233222111146664</row>
+		<row>344554432111343321</row>
+		<row>876665422234443332</row>
+	</frame>
+
+	<frame duration="100">
+		<row>101676300002589898</row>
+		<row>203799730013677788</row>
+		<row>95479a971022114677</row>
+		<row>311588630231025765</row>
+		<row>100001111321137875</row>
+		<row>101233222211246654</row>
+		<row>334554422211343321</row>
+		<row>766665322233443332</row>
+	</frame>
+
+	<frame duration="100">
+		<row>102687500001479898</row>
+		<row>43799a840013577788</row>
+		<row>b989ab951122114677</row>
+		<row>333799620242025765</row>
+		<row>100000112332137875</row>
+		<row>000223333221246654</row>
+		<row>334554322222343320</row>
+		<row>766654311223443322</row>
+	</frame>
+
+	<frame duration="100">
+		<row>003788621001378898</row>
+		<row>659aaa940002477787</row>
+		<row>cbbbbb940233214676</row>
+		<row>4459a9610343125765</row>
+		<row>100111112442247875</row>
+		<row>000123333332246653</row>
+		<row>223454322222333320</row>
+		<row>655554201223433322</row>
+	</frame>
+
+	<frame duration="100">
+		<row>004788632100268898</row>
+		<row>67abaa940001367788</row>
+		<row>ddcccb930333224676</row>
+		<row>457ab9611454225765</row>
+		<row>101321123553247875</row>
+		<row>001123344432246653</row>
+		<row>223444323322333320</row>
+		<row>555543100123333322</row>
+	</frame>
+
+	<frame duration="100">
+		<row>014788743210268888</row>
+		<row>78bbba930000257787</row>
+		<row>eeeddb811444224676</row>
+		<row>468bca602565225765</row>
+		<row>003641124553247875</row>
+		<row>022112344442356653</row>
+		<row>112333333322333320</row>
+		<row>445542100123333322</row>
+	</frame>
+
+	<frame duration="100">
+		<row>003688744420258888</row>
+		<row>89ccba820110156787</row>
+		<row>eefeec812444324776</row>
+		<row>57acda503676325765</row>
+		<row>016851124664247875</row>
+		<row>143112345543356653</row>
+		<row>001233334332333310</row>
+		<row>334431000012333322</row>
+	</frame>
+
+	<frame duration="100">
+		<row>003678645431158888</row>
+		<row>89bccb810111146787</row>
+		<row>eeffec702444434776</row>
+		<row>57bdda404776435764</row>
+		<row>028a72135775347875</row>
+		<row>475212355543356653</row>
+		<row>001222334432333310</row>
+		<row>334321010012333321</row>
+	</frame>
+
+	<frame duration="100">
+		<row>002467645432158888</row>
+		<row>89bccb710221146787</row>
+		<row>efffec603555434775</row>
+		<row>68ceda315887435764</row>
+		<row>04ab82136775347875</row>
+		<row>697312456653356652</row>
+		<row>110122344432333210</row>
+		<row>223310121002233321</row>
+	</frame>
+
+	<frame duration="100">
+		<row>001367645432158888</row>
+		<row>88bccb701232146787</row>
+		<row>effffd613555434775</row>
+		<row>7adeea226998535764</row>
+		<row>16bc82246886347874</row>
+		<row>8a8412456653356652</row>
+		<row>210112344432233210</row>
+		<row>222211332001233321</row>
+	</frame>
+
+	<frame duration="100">
+		<row>001256545432158888</row>
+		<row>88accb601233136877</row>
+		<row>effffd614555445765</row>
+		<row>8bdee9237998545764</row>
+		<row>38cd81257886347864</row>
+		<row>8b9412467653356642</row>
+		<row>120012344432223211</row>
+		<row>112101343001223321</row>
+	</frame>
+
+	<frame duration="100">
+		<row>000246556532258888</row>
+		<row>889ccb601343136877</row>
+		<row>effffd614555545764</row>
+		<row>acefd9247998546753</row>
+		<row>5acd71257986347864</row>
+		<row>7ba512467753346642</row>
+		<row>021012344431223211</row>
+		<row>211102453100123321</row>
+	</frame>
+
+	<frame duration="100">
+		<row>000135457642258888</row>
+		<row>879bcb601343137876</row>
+		<row>fffffd614555545764</row>
+		<row>bcefd8248a98646753</row>
+		<row>7bdd61368986447864</row>
+		<row>5aa513567753346642</row>
+		<row>111002344431122211</row>
+		<row>210003554200123221</row>
+	</frame>
+
+	<frame duration="100">
+		<row>000024468641158887</row>
+		<row>778acb611332147876</row>
+		<row>fffffe714555556763</row>
+		<row>cdeec8259998656753</row>
+		<row>8bdc51368986447853</row>
+		<row>38a513567753246642</row>
+		<row>211002444431122212</row>
+		<row>310014554300022211</row>
+	</frame>
+
+	<frame duration="100">
+		<row>000013579731258987</row>
+		<row>7779bb732221147876</row>
+		<row>fffffe813455556753</row>
+		<row>cdeec7369998656742</row>
+		<row>9bdc41368986457853</row>
+		<row>269413567752246641</row>
+		<row>311002444431012202</row>
+		<row>420024565310012210</row>
+	</frame>
+
+	<frame duration="100">
+		<row>100013699621268877</row>
+		<row>6779bb973210157875</row>
+		<row>effffe923556656752</row>
+		<row>cdeec7368998657741</row>
+		<row>8bdb31368985457753</row>
+		<row>148414667652245631</row>
+		<row>410003444431012203</row>
+		<row>530035565420012211</row>
+	</frame>
+
+	<frame duration="100">
+		<row>0000147aa511378877</row>
+		<row>5778abbb5111257865</row>
+		<row>effffea33566667742</row>
+		<row>cefec7268998667731</row>
+		<row>7aca21368875457742</row>
+		<row>226414667652135531</row>
+		<row>510013444431012203</row>
+		<row>630145566430012211</row>
+	</frame>
+
+	<frame duration="100">
+		<row>1000049cb402478876</row>
+		<row>46679cee7122367765</row>
+		<row>dffffeb43567667631</row>
+		<row>ceeeb7358997667630</row>
+		<row>6ab921368875457742</row>
+		<row>215324667642135531</row>
+		<row>620013444430001203</row>
+		<row>740255566541001110</row>
+	</frame>
+
+	<frame duration="100">
+		<row>100006bdb213579876</row>
+		<row>36679dee8134468754</row>
+		<row>dffffec63567777631</row>
+		<row>bdeeb8347887667620</row>
+		<row>48b922367764457631</row>
+		<row>313225667641124530</row>
+		<row>730013454430001104</row>
+		<row>851355666543001111</row>
+	</frame>
+
+	<frame duration="100">
+		<row>200018dea124589866</row>
+		<row>25679dfe7245578754</row>
+		<row>befffed73577777520</row>
+		<row>9dedb8347887677520</row>
+		<row>37a812357764356530</row>
+		<row>421125667641024420</row>
+		<row>740013454430001104</row>
+		<row>851466666554101111</row>
+	</frame>
+
+	<frame duration="100">
+		<row>21002ade9135688865</row>
+		<row>1466aefe6355678643</row>
+		<row>8efffed83577777510</row>
+		<row>6cedb8336787666410</row>
+		<row>159712356653346520</row>
+		<row>521035666541014421</row>
+		<row>751013454431001105</row>
+		<row>862466666555200101</row>
+	</frame>
+
+	<frame duration="100">
+		<row>31004bee7146788765</row>
+		<row>1356aefd4466787643</row>
+		<row>4dffffe83677776410</row>
+		<row>2aeda9436777666400</row>
+		<row>137512346653345420</row>
+		<row>530035666541013321</row>
+		<row>751013454421200106</row>
+		<row>862466666556300002</row>
+	</frame>
+
+	<frame duration="100">
+		<row>31005ded6246888755</row>
+		<row>1257befc3567887632</row>
+		<row>1aeffee83677776301</row>
+		<row>18dca9525776665301</row>
+		<row>226412345542245310</row>
+		<row>641036666531013311</row>
+		<row>752023454421400006</row>
+		<row>862566566557500002</row>
+	</frame>
+
+	<frame duration="100">
+		<row>42008efd4357888655</row>
+		<row>2247cffa3778887521</row>
+		<row>17efffe73777776202</row>
+		<row>05ccaa625776665202</row>
+		<row>214212345542234310</row>
+		<row>741136666530202211</row>
+		<row>762123454421510017</row>
+		<row>862566666557610003</row>
+	</frame>
+
+	<frame duration="100">
+		<row>5201aefc4357887644</row>
+		<row>3148dff94888886411</row>
+		<row>24dfffe63777765114</row>
+		<row>12aaab725666665114</row>
+		<row>312112334432233200</row>
+		<row>752146666430311211</row>
+		<row>752123455422630018</row>
+		<row>752566666568820004</row>
+	</frame>
+
+	<frame duration="100">
+		<row>7313bffb3467887544</row>
+		<row>6238dfe74888886300</row>
+		<row>42beffe54777764136</row>
+		<row>2079ab725665664125</row>
+		<row>420013334431133100</row>
+		<row>753246666431421101</row>
+		<row>752123445322740019</row>
+		<row>751466655568930005</row>
+	</frame>
+
+	<frame duration="100">
+		<row>8414cffa3468886534</row>
+		<row>7229efe76998875211</row>
+		<row>519effe45887763057</row>
+		<row>3038ab725665653036</row>
+		<row>431123334421222101</row>
+		<row>753346766421530102</row>
+		<row>75322444432286002a</row>
+		<row>641466655559a40016</row>
+	</frame>
+
+	<frame duration="100">
+		<row>9515dfe93568875433</row>
+		<row>8429efe66998774122</row>
+		<row>726dffd36887752189</row>
+		<row>4216ab625665552057</row>
+		<row>542123334321121012</row>
+		<row>764456766421640003</row>
+		<row>75323444431297104a</row>
+		<row>641466655559a61028</row>
+	</frame>
+
+	<frame duration="100">
+		<row>9515dfe93567875323</row>
+		<row>9529efe57998763133</row>
+		<row>733dffc3698765229a</row>
+		<row>5315ab436665552167</row>
+		<row>642223334321110013</row>
+		<row>764457765311760003</row>
+		<row>65323444421299205b</row>
+		<row>531366655459a72039</row>
+	</frame>
+
+	<frame duration="100">
+		<row>a626efe83677864222</row>
+		<row>8628efe57998752154</row>
+		<row>742bffb379876414aa</row>
+		<row>6415ba336665541278</row>
+		<row>753223334321110023</row>
+		<row>765567765311771014</row>
+		<row>6543344442129a316b</row>
+		<row>541366654348a8314a</row>
+	</frame>
+
+	<frame duration="100">
+		<row>a725efe83677764222</row>
+		<row>8627efe57a98642275</row>
+		<row>752aeea379876416bb</row>
+		<row>6415b8247765540488</row>
+		<row>763223344321110134</row>
+		<row>775567765311883025</row>
+		<row>6643344432129a527c</row>
+		<row>541256653238b9425a</row>
+	</frame>
+
+	<frame duration="100">
+		<row>b935efe83677653212</row>
+		<row>7736efe57a98631486</row>
+		<row>6528ee9379976318cc</row>
+		<row>541495257766531589</row>
+		<row>763223344321112345</row>
+		<row>776667765212895136</row>
+		<row>7654444432029a638c</row>
+		<row>541156652027b9536b</row>
+	</frame>
+
+	<frame duration="100">
+		<row>b945efe73677643112</row>
+		<row>7735efe47a98631597</row>
+		<row>5427ed8489976329dc</row>
+		<row>541473267766531799</row>
+		<row>653223444321124555</row>
+		<row>7766676542028a7346</row>
+		<row>7654444432029b749c</row>
+		<row>552146651006a9647b</row>
+	</frame>
+
+	<frame duration="100">
+		<row>ba54dfe73677642112</row>
+		<row>7744dfe47a985216a8</row>
+		<row>5525dc748998623bdc</row>
+		<row>431242478766532899</row>
+		<row>543223444321127865</row>
+		<row>6766776542028a9567</row>
+		<row>7764444321029b859d</row>
+		<row>5531466400049a658b</row>
+	</frame>
+
+	<frame duration="100">
+		<row>bb63dfe64677531112</row>
+		<row>7753dfe47a975227a9</row>
+		<row>4523bb649a98524bed</row>
+		<row>431012578776533aa9</row>
+		<row>543234444321138975</row>
+		<row>6777766542028ba667</row>
+		<row>7765444321018b96ad</row>
+		<row>55313663000389658c</row>
+	</frame>
+
+	<frame duration="100">
+		<row>bb83cfe64676531112</row>
+		<row>7753cfe47a974138a9</row>
+		<row>35329a559a98525ced</row>
+		<row>432123688876524aa9</row>
+		<row>44333444432114aa86</row>
+		<row>6777766542027bb888</row>
+		<row>6765544221017b96ad</row>
+		<row>55412562010278658c</row>
+	</frame>
+
+	<frame duration="100">
+		<row>ab93afe54776521112</row>
+		<row>7762afd48a974159ba</row>
+		<row>343168459a98526ded</row>
+		<row>343234799876525bb9</row>
+		<row>44443345432114bb86</row>
+		<row>5777765432027bc988</row>
+		<row>5776543221116b96ad</row>
+		<row>65422552021167558b</row>
+	</frame>
+
+	<frame duration="100">
+		<row>aba47fd45766421112</row>
+		<row>67738fd48a97316aba</row>
+		<row>244246469a98527ded</row>
+		<row>344335799876527cb9</row>
+		<row>34443345542115cd96</row>
+		<row>4666665432017bca98</row>
+		<row>4676543222105a97ad</row>
+		<row>65531451121046447b</row>
+	</frame>
+
+	<frame duration="100">
+		<row>9bb65ec25766421111</row>
+		<row>67746eb39a96227aba</row>
+		<row>24532547aa98528eed</row>
+		<row>245446899876527dca</row>
+		<row>34432245542115dda7</row>
+		<row>3566554332016bdb99</row>
+		<row>3566543223204a96ad</row>
+		<row>65531330122025437b</row>
+	</frame>
+
+	<frame duration="100">
+		<row>9ab83d926765321112</row>
+		<row>67753d849a96238aba</row>
+		<row>13542348aaa8529eee</row>
+		<row>234445899986528eca</row>
+		<row>23321134442116dea7</row>
+		<row>2455543322005beba9</row>
+		<row>2566533223203a96ad</row>
+		<row>65541110232014337b</row>
+	</frame>
+
+	<frame duration="100">
+		<row>8ab936346765310112</row>
+		<row>577627369a95149bbb</row>
+		<row>13553259aaa843aeee</row>
+		<row>134446899987528eda</row>
+		<row>12210024443116eeb7</row>
+		<row>1344432122005bebaa</row>
+		<row>1355532233302996ad</row>
+		<row>75542001333002226b</row>
+	</frame>
+
+	<frame duration="100">
+		<row>89aa40157765311112</row>
+		<row>56873017aa8516abbb</row>
+		<row>13664469aaa843aefe</row>
+		<row>034445799986429eda</row>
+		<row>00001014443116eec8</row>
+		<row>0132220012104becaa</row>
+		<row>1344432234302886ad</row>
+		<row>76442102333001115a</row>
+	</frame>
+
+	<frame duration="100">
+		<row>89aa72367775311111</row>
+		<row>46884148aa8417abbb</row>
+		<row>1367558aaaa843befe</row>
+		<row>013335899986429eeb</row>
+		<row>10036313443217eec8</row>
+		<row>0011110012103bdcba</row>
+		<row>01333212343117759d</row>
+		<row>76443113333101115a</row>
+	</frame>
+
+	<frame duration="100">
+		<row>78aa85677775311111</row>
+		<row>46896469a98428abbb</row>
+		<row>1367679aaaa844befe</row>
+		<row>012335799987429eeb</row>
+		<row>6348a623443217efd9</row>
+		<row>3001234112102bdcba</row>
+		<row>11111101343106649d</row>
+		<row>764332234331000049</row>
+	</frame>
+
+	<frame duration="100">
+		<row>78aa97777765321111</row>
+		<row>36898689a97328bbbb</row>
+		<row>1467789aaaa844befe</row>
+		<row>112344789997429eeb</row>
+		<row>989bd833454216efd9</row>
+		<row>7445799303202adcbb</row>
+		<row>10000021243105549d</row>
+		<row>764333344332000049</row>
+	</frame>
+
+	<frame duration="100">
+		<row>689a98877764321111</row>
+		<row>3689989aa97339bbbb</row>
+		<row>1467789aaaa744befe</row>
+		<row>112344689997428eeb</row>
+		<row>babdea43454216dfea</row>
+		<row>a9abcdc4132119dcbb</row>
+		<row>21223452244203438d</row>
+		<row>764333334332000038</row>
+	</frame>
+
+	<frame duration="100">
+		<row>679998877764321111</row>
+		<row>3589989aa96249bbbb</row>
+		<row>2568889aaba744befe</row>
+		<row>112344589997527eec</row>
+		<row>cbcdeb42455315dfeb</row>
+		<row>ccdeefd4133108cbbb</row>
+		<row>33456762244202328d</row>
+		<row>753322344332100028</row>
+	</frame>
+
+	<frame duration="100">
+		<row>579999877764321111</row>
+		<row>3589989aa96249bbbb</row>
+		<row>2578889aaba744aefe</row>
+		<row>122344578998527eec</row>
+		<row>cbcdec52355314cfeb</row>
+		<row>ddefffd3144206bbbc</row>
+		<row>34688871244201217c</row>
+		<row>653222344332100027</row>
+	</frame>
+
+	<frame duration="100">
+		<row>578998767764321111</row>
+		<row>3689988aa96249bbbb</row>
+		<row>36788889aba744aefe</row>
+		<row>122333478998526eec</row>
+		<row>cbcdec41456413beeb</row>
+		<row>deffffb2244205babc</row>
+		<row>24799961344200116c</row>
+		<row>543223344333100017</row>
+	</frame>
+
+	<frame duration="100">
+		<row>468888677764321111</row>
+		<row>3689988aa96249bbbb</row>
+		<row>46788789aba744aefe</row>
+		<row>1223434689a9625efd</row>
+		<row>cbcdec42456522aefc</row>
+		<row>defffea13443039abc</row>
+		<row>25899841344310006c</row>
+		<row>443333344333100016</row>
+	</frame>
+
+	<frame duration="100">
+		<row>468886567764321111</row>
+		<row>4689877aa96239bbbb</row>
+		<row>467777889ba8449efe</row>
+		<row>1223434679a9735dfd</row>
+		<row>cbcdec424666319efc</row>
+		<row>defffd6135531289bc</row>
+		<row>25898621344310005b</row>
+		<row>432333333333200015</row>
+	</frame>
+
+	<frame duration="100">
+		<row>467765467764321111</row>
+		<row>46787679a96229bbbb</row>
+		<row>567777789bb8539efe</row>
+		<row>1222334679aa733dfd</row>
+		<row>cbcdec324676417efc</row>
+		<row>ceffeb2246541179bc</row>
+		<row>14887302344310004b</row>
+		<row>332333333333200015</row>
+	</frame>
+
+	<frame duration="100">
+		<row>456654467765322111</row>
+		<row>56676569a97228bbbb</row>
+		<row>577777679bb8548eff</row>
+		<row>1222334578aa843cfe</row>
+		<row>cbcdda235777526efd</row>
+		<row>ceffd71356652058ac</row>
+		<row>13664013444320004a</row>
+		<row>332333333333210005</row>
+	</frame>
+
+	<frame duration="100">
+		<row>344432367775322111</row>
+		<row>56554459a97328bbbb</row>
+		<row>676776679ab9538eff</row>
+		<row>12223345679a943cfe</row>
+		<row>cbccd9135787525dfd</row>
+		<row>cdeeb42466652048ac</row>
+		<row>12541023444320003a</row>
+		<row>223333323333210004</row>
+	</frame>
+
+	<frame duration="100">
+		<row>333321267775322111</row>
+		<row>65443248a97318bbbb</row>
+		<row>666665568ab9538eff</row>
+		<row>22223345679a952bfe</row>
+		<row>cbbcd7146788633cfe</row>
+		<row>cdec722577763037ac</row>
+		<row>02310124444320003a</row>
+		<row>123332222233210004</row>
+	</frame>
+
+	<frame duration="100">
+		<row>222100257776432111</row>
+		<row>64332148a98417bbba</row>
+		<row>7666555689b9648eff</row>
+		<row>22222345568aa62afe</row>
+		<row>bbbcc6257888743cfe</row>
+		<row>bcca524787764137ac</row>
+		<row>012012344554200029</row>
+		<row>123322221233310015</row>
+	</frame>
+
+	<frame duration="100">
+		<row>110000157876432110</row>
+		<row>53211137998417bbba</row>
+		<row>6655554579aa638dfe</row>
+		<row>22322345458aa729fe</row>
+		<row>bbbcb4267888842bfe</row>
+		<row>ccb8325888764127ac</row>
+		<row>111013444554210028</row>
+		<row>122222111233310015</row>
+	</frame>
+
+	<frame duration="100">
+		<row>100000157876432110</row>
+		<row>42000137998516bbba</row>
+		<row>6544444579aa747dff</row>
+		<row>22322344457aa738fe</row>
+		<row>bbbca3367888852afe</row>
+		<row>cca6336998775127ac</row>
+		<row>010013554554210028</row>
+		<row>011111100133310125</row>
+	</frame>
+
+	<frame duration="100">
+		<row>000112147886432110</row>
+		<row>20110126898526bbb9</row>
+		<row>6433444568aa747dff</row>
+		<row>22322344457ab837ff</row>
+		<row>bbbb724778898629ff</row>
+		<row>cb94257998875228bc</row>
+		<row>121014554554210137</row>
+		<row>011000000123310146</row>
+	</frame>
+
+	<frame duration="100">
+		<row>025532147886532110</row>
+		<row>12750026898515aba8</row>
+		<row>43333334689a846cfe</row>
+		<row>233223444579a846fe</row>
+		<row>bbba525777888638fe</row>
+		<row>cb93268aa8875228bc</row>
+		<row>133103655454210248</row>
+		<row>000000000123310357</row>
+	</frame>
+
+	<frame duration="100">
+		<row>169753037886532100</row>
+		<row>28b92025798624aba7</row>
+		<row>32222334689a846cfe</row>
+		<row>332224444579a945fe</row>
+		<row>bbb9336777889738ff</row>
+		<row>cb82269aa8775229cd</row>
+		<row>245313655454210358</row>
+		<row>000100010023310478</row>
+	</frame>
+
+	<frame duration="100">
+		<row>59b953036887532100</row>
+		<row>7dec4015788623ab96</row>
+		<row>222222346789846bfd</row>
+		<row>322124444579a955fe</row>
+		<row>bba7147777789737ff</row>
+		<row>cb7127aa9877523add</row>
+		<row>367513665444201678</row>
+		<row>012322221013211689</row>
+	</frame>
+
+	<frame duration="100">
+		<row>8bca63036887532100</row>
+		<row>cefd6025788633aa85</row>
+		<row>233212345779845bed</row>
+		<row>221124444579a954ee</row>
+		<row>aa84257776788737ff</row>
+		<row>cb7137aa9876523bdd</row>
+		<row>579723664444202799</row>
+		<row>0256533320132028aa</row>
+	</frame>
+
+	<frame duration="100">
+		<row>acca62036888542100</row>
+		<row>effe60257887329a74</row>
+		<row>456312346778845bec</row>
+		<row>110134444668aa54ee</row>
+		<row>a971367776678746ff</row>
+		<row>ba6137aa9766524bee</row>
+		<row>6898226644442049aa</row>
+		<row>2589754420122049bb</row>
+	</frame>
+
+	<frame duration="100">
+		<row>bdca61037898642100</row>
+		<row>fffe70257887428963</row>
+		<row>578512356778755adb</row>
+		<row>100034445668a963ee</row>
+		<row>9951477765568746ff</row>
+		<row>b95137aa8665524cee</row>
+		<row>899842564334205abb</row>
+		<row>48aa96543012105acc</row>
+	</frame>
+
+	<frame duration="100">
+		<row>cdca61047898642100</row>
+		<row>fffe70257897417852</row>
+		<row>7ab722356667754ada</row>
+		<row>0001334556679963ee</row>
+		<row>8842577654567637ff</row>
+		<row>a85137a97555425cee</row>
+		<row>99a952553333207bcc</row>
+		<row>79bba7543001107cdd</row>
+	</frame>
+
+	<frame duration="100">
+		<row>cdda61147998742100</row>
+		<row>fffe71367998525741</row>
+		<row>9cd8224666667439c9</row>
+		<row>0231334566668953de</row>
+		<row>8832677644456637ff</row>
+		<row>984136986434425cff</row>
+		<row>9aa952453223218cdc</row>
+		<row>9bcca7543001118cee</row>
+	</frame>
+
+	<frame duration="100">
+		<row>ddda60158999752100</row>
+		<row>fffe61368998513530</row>
+		<row>bee9235676666438b7</row>
+		<row>1771345666567853dd</row>
+		<row>8722566543346637ff</row>
+		<row>974226874334425dff</row>
+		<row>aaaa62442112118ded</row>
+		<row>bcccb8654100029dee</row>
+	</frame>
+
+	<frame duration="100">
+		<row>ddda50259aa9752100</row>
+		<row>fffd51478999622420</row>
+		<row>dee8245776656427a6</row>
+		<row>6b92356776557754dd</row>
+		<row>8832565432245538ff</row>
+		<row>864225763123326dff</row>
+		<row>aaaa72441002119dee</row>
+		<row>ccdcb865520003aeff</row>
+	</frame>
+
+	<frame duration="100">
+		<row>ddda50269aa9853100</row>
+		<row>fffd414789a9721210</row>
+		<row>efe724687655542794</row>
+		<row>aea2467776446743dd</row>
+		<row>9832454321134528ff</row>
+		<row>864224641013326dff</row>
+		<row>aaaa72331001119eff</row>
+		<row>cdccb976630004beff</row>
+	</frame>
+
+	<frame duration="100">
+		<row>ddda40379ba9853100</row>
+		<row>fffc225889a9730100</row>
+		<row>efe635788655531673</row>
+		<row>cea2577776445644dc</row>
+		<row>9942443211124429ff</row>
+		<row>753223530002316dff</row>
+		<row>aaaa83333311119eff</row>
+		<row>ddccb976751005ceff</row>
+	</frame>
+
+	<frame duration="100">
+		<row>ddda3037aba9863101</row>
+		<row>ffea126899aa831000</row>
+		<row>efd446888655531562</row>
+		<row>ef83678776434535db</row>
+		<row>a93233223212332aff</row>
+		<row>753223322511216eff</row>
+		<row>baaa83225840119eff</row>
+		<row>ccccba98864006ceff</row>
+	</frame>
+
+	<frame duration="100">
+		<row>ddd92048aba9863111</row>
+		<row>ffe8136999aa841000</row>
+		<row>ffc357898755430341</row>
+		<row>ee63788876434425cb</row>
+		<row>a81222134312332bff</row>
+		<row>753212226941216eff</row>
+		<row>baaa84248b71129eff</row>
+		<row>ccccba98886227dfff</row>
+	</frame>
+
+	<frame duration="100">
+		<row>ddd92159bba9963111</row>
+		<row>ffe7147999aa851000</row>
+		<row>fea367998755430220</row>
+		<row>ed35788876423316ca</row>
+		<row>a70222355411222bff</row>
+		<row>752111239c60216eff</row>
+		<row>baaa8525bd91119eff</row>
+		<row>bcccbba9988548dfff</row>
+	</frame>
+
+	<frame duration="100">
+		<row>ddc8126abba9963111</row>
+		<row>ffd5258a999a952000</row>
+		<row>fe8378998755430120</row>
+		<row>eb25898876423317ca</row>
+		<row>941213466421223cff</row>
+		<row>74211125cd80116eff</row>
+		<row>baaa9647ceb3019eff</row>
+		<row>bbcbbbbaaaa769dfff</row>
+	</frame>
+
+	<frame duration="100">
+		<row>ddb7126abba9974211</row>
+		<row>ffc3258a999a962000</row>
+		<row>ee5489998755430110</row>
+		<row>c736899876423217b9</row>
+		<row>922214566521214dff</row>
+		<row>63111028de91116eff</row>
+		<row>baaa9659dec4118eff</row>
+		<row>9bbbbbbbbbb979dfff</row>
+	</frame>
+
+	<frame duration="100">
+		<row>ddb6137bbaa9974211</row>
+		<row>ffa2469a9889963100</row>
+		<row>ed4589998755430000</row>
+		<row>b536899876422118b9</row>
+		<row>722224676521115dff</row>
+		<row>52110129eeb1116eff</row>
+		<row>baa9877befd5118eff</row>
+		<row>7abaabbccccb8adfff</row>
+	</frame>
+
+	<frame duration="100">
+		<row>dca5137bba99974211</row>
+		<row>ff71479a9889973100</row>
+		<row>da3699a98755420000</row>
+		<row>9346899876422118b9</row>
+		<row>403214676521106eff</row>
+		<row>4111013beec2116eff</row>
+		<row>aa99888befe6118eff</row>
+		<row>59aaabcccdec9aefff</row>
+	</frame>
+
+	<frame duration="100">
+		<row>dc85248bba98874211</row>
+		<row>ed32489a9889973100</row>
+		<row>c7379aa98755420000</row>
+		<row>6256899876422128a9</row>
+		<row>214324776531107eff</row>
+		<row>3111114ceec3116eff</row>
+		<row>9999989cefe7118eff</row>
+		<row>4799aaccddedabefff</row>
+	</frame>
+
+	<frame duration="100">
+		<row>ca75148bb988874211</row>
+		<row>c913589a9888973100</row>
+		<row>93489aa99754421000</row>
+		<row>426789987652112898</row>
+		<row>014324776531108eff</row>
+		<row>1011115cefc3016eff</row>
+		<row>888899adefe8118eff</row>
+		<row>36889abcdeeebbefff</row>
+	</frame>
+
+	<frame duration="100">
+		<row>b966248aa987874211</row>
+		<row>9413589a9878874100</row>
+		<row>5159aaa99754431000</row>
+		<row>226789987652103898</row>
+		<row>025314776531119eff</row>
+		<row>0111115cefd4006eff</row>
+		<row>688999adefe9117eff</row>
+		<row>25788abddefebbefff</row>
+	</frame>
+
+	<frame duration="100">
+		<row>9766238aa877774200</row>
+		<row>7123579a9877874100</row>
+		<row>3179aaa99754431000</row>
+		<row>237789887652113898</row>
+		<row>135414777530119eff</row>
+		<row>0111116defd4006eff</row>
+		<row>578999bdeff9117eff</row>
+		<row>146779bddefebbefff</row>
+	</frame>
+
+	<frame duration="100">
+		<row>765623799876764100</row>
+		<row>6124579a9877874100</row>
+		<row>428aaaa99754431000</row>
+		<row>247789887642113888</row>
+		<row>14541467753011aeff</row>
+		<row>1111116defe5006eff</row>
+		<row>378999bdfffa217eff</row>
+		<row>126679bddefebbefff</row>
+	</frame>
+
+	<frame duration="100">
+		<row>535623788766664100</row>
+		<row>712347899767763100</row>
+		<row>628aaaa99754431000</row>
+		<row>247779887642113888</row>
+		<row>25641467753001aeff</row>
+		<row>1111116dffe5006eff</row>
+		<row>168999bdfffb217eff</row>
+		<row>125678bddeeecbefff</row>
+	</frame>
+
+	<frame duration="100">
+		<row>334513677655553100</row>
+		<row>a22346899766663100</row>
+		<row>737999a99754331000</row>
+		<row>347779887642113888</row>
+		<row>35641467754111aeff</row>
+		<row>2111117dffe6006eff</row>
+		<row>157889bdfffb207eff</row>
+		<row>014668bddeedbbefff</row>
+	</frame>
+
+	<frame duration="100">
+		<row>324413566544443000</row>
+		<row>a21236898765653100</row>
+		<row>727999999753321000</row>
+		<row>337779887642113888</row>
+		<row>35641367764101aeff</row>
+		<row>2212117dffe6006eff</row>
+		<row>057889bdfffc307eff</row>
+		<row>014668bdeeedaaefff</row>
+	</frame>
+
+	<frame duration="100">
+		<row>324302455533332000</row>
+		<row>810125788655542000</row>
+		<row>615889999753320000</row>
+		<row>337779887642113788</row>
+		<row>24542367764001aeff</row>
+		<row>2222127dffe7006eff</row>
+		<row>047789adfffc306eff</row>
+		<row>015668bdeedc9aefff</row>
+	</frame>
+
+	<frame duration="100">
+		<row>443102344422221000</row>
+		<row>410025788654432000</row>
+		<row>414679999753320000</row>
+		<row>316779987532113788</row>
+		<row>245423677651019eff</row>
+		<row>2222127dffe7006eff</row>
+		<row>047788adfffc306eff</row>
+		<row>025678bdeeda89dfff</row>
+	</frame>
+
+	<frame duration="100">
+		<row>652001233321110000</row>
+		<row>410014687543321000</row>
+		<row>103578999753221000</row>
+		<row>215679987532103788</row>
+		<row>134424777761009eff</row>
+		<row>2222127dffe8005eff</row>
+		<row>047778adfffc306eff</row>
+		<row>026778bdeed968dfff</row>
+	</frame>
+
+	<frame duration="100">
+		<row>861001122211100022</row>
+		<row>520014677542220000</row>
+		<row>001368999753211000</row>
+		<row>004679987421102788</row>
+		<row>124424777882009eff</row>
+		<row>2222127dffe9105dff</row>
+		<row>037778adfffd406dff</row>
+		<row>137889bdeed846dfff</row>
+	</frame>
+
+	<frame duration="100">
+		<row>950000121112100133</row>
+		<row>630013677531110011</row>
+		<row>000258999752211000</row>
+		<row>002568886321102788</row>
+		<row>0134237789a5008eff</row>
+		<row>2112217dfffa105dff</row>
+		<row>037889adfffd405dff</row>
+		<row>147889beeed735ceff</row>
+	</frame>
+
+	<frame duration="100">
+		<row>a40000111124300255</row>
+		<row>730013677421000011</row>
+		<row>000147898742210000</row>
+		<row>001468876321002688</row>
+		<row>002424788bc7107eff</row>
+		<row>2112117dfffb204dff</row>
+		<row>026889adfffd505dff</row>
+		<row>25899acefed633aeff</row>
+	</frame>
+
+	<frame duration="100">
+		<row>a40000111147632466</row>
+		<row>730003676420000122</row>
+		<row>001136898642210000</row>
+		<row>000358874221001687</row>
+		<row>00131378adda307eff</row>
+		<row>1101117dfffc404cff</row>
+		<row>026889bdfffd615cff</row>
+		<row>36999acefed6228eff</row>
+	</frame>
+
+	<frame duration="100">
+		<row>a30000110269865687</row>
+		<row>730003676420000233</row>
+		<row>002126888642210000</row>
+		<row>000247763231001587</row>
+		<row>00121379beeb516dfe</row>
+		<row>1001117efffd704bff</row>
+		<row>016899befffc614bff</row>
+		<row>5799abcfffd5215dff</row>
+	</frame>
+
+	<frame duration="100">
+		<row>93000001037ba87898</row>
+		<row>730003576321111344</row>
+		<row>002225787642211000</row>
+		<row>000136753342001476</row>
+		<row>1002147aceec726dfe</row>
+		<row>1001128efffe924bef</row>
+		<row>016799befffc723aef</row>
+		<row>78aaabdfffd5213aff</row>
+	</frame>
+
+	<frame duration="100">
+		<row>93000001038cca99a9</row>
+		<row>720003576321223465</row>
+		<row>003315777542111000</row>
+		<row>000135642453100466</row>
+		<row>1001148beffea56bee</row>
+		<row>0000028efffeb65aef</row>
+		<row>025899befffc7239ef</row>
+		<row>89aaabdfffd52217ef</row>
+	</frame>
+
+	<frame duration="100">
+		<row>92000001049cdbbaba</row>
+		<row>720002576322223565</row>
+		<row>003315677542111000</row>
+		<row>000023433664201366</row>
+		<row>1000059ceffeb77bdd</row>
+		<row>0000029efffed86ade</row>
+		<row>135789ceffec6337ce</row>
+		<row>aaaaabdfffd43414ce</row>
+	</frame>
+
+	<frame duration="100">
+		<row>92000000049dedcbba</row>
+		<row>720012466322234666</row>
+		<row>003414676542111000</row>
+		<row>000012224775311355</row>
+		<row>100007beeffeda8bcc</row>
+		<row>000003aefffeda89cd</row>
+		<row>346889cefffb5335ad</row>
+		<row>bbaaabdfffe43522ae</row>
+	</frame>
+
+	<frame duration="100">
+		<row>9200110004adeecccb</row>
+		<row>620012456322335677</row>
+		<row>004513566532111000</row>
+		<row>000001125776422355</row>
+		<row>000019defffeebaacb</row>
+		<row>000004bffffeeca9bc</row>
+		<row>66788acffffb53248c</row>
+		<row>cbaaabdfffe436417d</row>
+	</frame>
+
+	<frame duration="100">
+		<row>9201110004adeedccb</row>
+		<row>620012355322345777</row>
+		<row>003513566532111000</row>
+		<row>001101247986532345</row>
+		<row>00001aefffffedbbbb</row>
+		<row>000115cffffedcbabb</row>
+		<row>87888adffffb52236a</row>
+		<row>dcbaabefffe447524b</row>
+	</frame>
+
+	<frame duration="100">
+		<row>9201110004adeeddcb</row>
+		<row>620013355322345787</row>
+		<row>003513566432110000</row>
+		<row>001202479987544344</row>
+		<row>00002beffffffedcba</row>
+		<row>001226cfffffecbbaa</row>
+		<row>99989adffffb422238</row>
+		<row>dcbaabefffe447623a</row>
+	</frame>
+
+	<frame duration="100">
+		<row>8201210004adeeeddc</row>
+		<row>620023345322345787</row>
+		<row>003513565432110000</row>
+		<row>00141479aa97765554</row>
+		<row>00013cefffffffedca</row>
+		<row>001338dffffeeccbaa</row>
+		<row>aa999beffffb422225</row>
+		<row>dcbbbcefffd4487339</row>
+	</frame>
+
+	<frame duration="100">
+		<row>81012210049deeeddc</row>
+		<row>610123334322246788</row>
+		<row>003413565432110000</row>
+		<row>0025359bbaa8776654</row>
+		<row>00035ceffffffffeca</row>
+		<row>002459effffeeccca9</row>
+		<row>aaa99befffe9422213</row>
+		<row>dcbbbcefffd3587438</row>
+	</frame>
+
+	<frame duration="100">
+		<row>61123210039deeeddc</row>
+		<row>510134334322245788</row>
+		<row>002313566431110000</row>
+		<row>002646abbba9888764</row>
+		<row>00047dffffffffffda</row>
+		<row>00256aefffeedcbba8</row>
+		<row>aaaaaceffec5233211</row>
+		<row>edbbbceffeb1588447</row>
+	</frame>
+
+	<frame duration="100">
+		<row>50123310038cdeeedc</row>
+		<row>410234323321235788</row>
+		<row>001213566431110000</row>
+		<row>002658bccba9888865</row>
+		<row>00148dffffffffffda</row>
+		<row>00367beffedcccbb97</row>
+		<row>aaaaaceffc61123310</row>
+		<row>edcbbceffd91588537</row>
+	</frame>
+
+	<frame duration="100">
+		<row>20234420027cdeeedc</row>
+		<row>101245422321235788</row>
+		<row>000113566431110000</row>
+		<row>001558bccba9999875</row>
+		<row>00059dffffffffffea</row>
+		<row>00268ceffda8abba97</row>
+		<row>aaaaacefe810124320</row>
+		<row>edccbcefec51588526</row>
+	</frame>
+
+	<frame duration="100">
+		<row>00244420027bddeddc</row>
+		<row>001356422321125787</row>
+		<row>000123556431110000</row>
+		<row>001458bccba9999875</row>
+		<row>00059efffffeffffea</row>
+		<row>00268cefeb757aaa86</row>
+		<row>aaaaacefc302234430</row>
+		<row>eddccceed932698624</row>
+	</frame>
+
+	<frame duration="100">
+		<row>02355530016acddddc</row>
+		<row>002466521210124677</row>
+		<row>000124566531000000</row>
+		<row>000348bccbba999874</row>
+		<row>10049effffeeefffea</row>
+		<row>00258defd84459a986</row>
+		<row>aaaaaceea023334430</row>
+		<row>eedccdedb613699622</row>
+	</frame>
+
+	<frame duration="100">
+		<row>23456630015abcdddb</row>
+		<row>123567521210014676</row>
+		<row>101234556431000000</row>
+		<row>100138bccbba999874</row>
+		<row>10028efffeeeefffe9</row>
+		<row>00148deec533479986</row>
+		<row>99aaaded6134444531</row>
+		<row>eeeddddc8314799731</row>
+	</frame>
+
+	<frame duration="100">
+		<row>345676410048acddcb</row>
+		<row>234677620110013566</row>
+		<row>123345555421000100</row>
+		<row>110027abbba9998874</row>
+		<row>11017dfffedddeffd9</row>
+		<row>10137ceea333358986</row>
+		<row>99aaadeb3145544530</row>
+		<row>eeeeedda5115799731</row>
+	</frame>
+
+	<frame duration="100">
+		<row>5567775100379acccb</row>
+		<row>446777620110002566</row>
+		<row>344455555421000010</row>
+		<row>3211269aaaa9988763</row>
+		<row>21006dffedccceefd9</row>
+		<row>10016cec7334347875</row>
+		<row>89aabcd91246655530</row>
+		<row>deeeedb610258a9741</row>
+	</frame>
+
+	<frame duration="100">
+		<row>66787751002589bccb</row>
+		<row>567787620110002466</row>
+		<row>555666555430001111</row>
+		<row>443224789999886652</row>
+		<row>32103beeecbbbcdeb8</row>
+		<row>10004aca4234326864</row>
+		<row>899aabb50257755530</row>
+		<row>deeeec9201368a9852</row>
+	</frame>
+
+	<frame duration="100">
+		<row>67888751001478abba</row>
+		<row>677887620010001455</row>
+		<row>666666555430001111</row>
+		<row>565433456778765432</row>
+		<row>333117cdca999abba6</row>
+		<row>110017a61134324653</row>
+		<row>889999811358865430</row>
+		<row>deeeea5002479aa852</row>
+	</frame>
+
+	<frame duration="100">
+		<row>778877510003579bba</row>
+		<row>788877620010001355</row>
+		<row>777766544430001111</row>
+		<row>676543333455543221</row>
+		<row>444201565555578985</row>
+		<row>111002510245523542</row>
+		<row>789865301358875430</row>
+		<row>defed81023579aa863</row>
+	</frame>
+
+	<frame duration="100">
+		<row>678777510002458aba</row>
+		<row>677776520010101344</row>
+		<row>677766433320001221</row>
+		<row>787655443112211111</row>
+		<row>554421000022224654</row>
+		<row>111100001346621321</row>
+		<row>788740012359976430</row>
+		<row>defec4023468aaa964</row>
+	</frame>
+
+	<frame duration="100">
+		<row>5677765100013479a9</row>
+		<row>567766520000300244</row>
+		<row>677765433320001222</row>
+		<row>677655554210000000</row>
+		<row>455442222112100232</row>
+		<row>122210012358740100</row>
+		<row>788620012359a86530</row>
+		<row>defeb2133568aaa964</row>
+	</frame>
+
+	<frame duration="100">
+		<row>4567764100002359a9</row>
+		<row>456665420000400233</row>
+		<row>466665432320002333</row>
+		<row>567655554321100000</row>
+		<row>455544333334310001</row>
+		<row>122221122358951000</row>
+		<row>688510122359a86531</row>
+		<row>defea2134579aaa975</row>
+	</frame>
+
+	<frame duration="100">
+		<row>345665410000114898</row>
+		<row>345555410001611133</row>
+		<row>356665422220102433</row>
+		<row>466654444323211100</row>
+		<row>455544333346531000</row>
+		<row>122222222369a62000</row>
+		<row>687511122359b96531</row>
+		<row>defe81134579aaa976</row>
+	</frame>
+
+	<frame duration="100">
+		<row>234554310000103788</row>
+		<row>234555410001711133</row>
+		<row>245654422210113443</row>
+		<row>356654444334421110</row>
+		<row>355544333458742000</row>
+		<row>122222222369b84100</row>
+		<row>687411122359b97642</row>
+		<row>defc40133479aaaa87</row>
+	</frame>
+
+	<frame duration="100">
+		<row>113454310000102587</row>
+		<row>123454310001721123</row>
+		<row>134554422211114554</row>
+		<row>145655444235632211</row>
+		<row>345544333469953000</row>
+		<row>123322111369b85210</row>
+		<row>685201111359ba8643</row>
+		<row>dee810123469abaa87</row>
+	</frame>
+
+	<frame duration="100">
+		<row>003443300000201576</row>
+		<row>013444310002821122</row>
+		<row>023555432211214554</row>
+		<row>135655544237743211</row>
+		<row>24444443336aa63100</row>
+		<row>12322110135ab95311</row>
+		<row>774100101358ba8753</row>
+		<row>eeb300122468abaa98</row>
+	</frame>
+
+	<frame duration="100">
+		<row>002333200100200466</row>
+		<row>002444310002821122</row>
+		<row>013555432211225665</row>
+		<row>024666555337853221</row>
+		<row>23444443335aa63100</row>
+		<row>133210000259b96422</row>
+		<row>662000001258ba9754</row>
+		<row>ee6000112358aaaa98</row>
+	</frame>
+
+	<frame duration="100">
+		<row>001332200100200355</row>
+		<row>002454300003811111</row>
+		<row>003566543201226665</row>
+		<row>114676666338853322</row>
+		<row>13444433325ab63100</row>
+		<row>133200000259b96432</row>
+		<row>630000000247aa9865</row>
+		<row>da10000012479aba99</row>
+	</frame>
+
+	<frame duration="100">
+		<row>001332100000200244</row>
+		<row>003565310003811111</row>
+		<row>103677653202226766</row>
+		<row>304677776427853333</row>
+		<row>134444332249a63111</row>
+		<row>244113310258a97543</row>
+		<row>3110001001479aa876</row>
+		<row>94010000012589aaa9</row>
+	</frame>
+
+	<frame duration="100">
+		<row>001333200000200234</row>
+		<row>004666310004811112</row>
+		<row>103787654201236776</row>
+		<row>403788877426854433</row>
+		<row>233444432239a63111</row>
+		<row>343146630258997544</row>
+		<row>01100221013689a987</row>
+		<row>00110000001478aaa9</row>
+	</frame>
+
+	<frame duration="100">
+		<row>002343200001200233</row>
+		<row>014787410005811111</row>
+		<row>104788764202137877</row>
+		<row>403788888415754444</row>
+		<row>233444433128962112</row>
+		<row>453179951147986654</row>
+		<row>122025421135789a98</row>
+		<row>112100112102579aa9</row>
+	</frame>
+
+	<frame duration="100">
+		<row>002454200001200233</row>
+		<row>015898510006811111</row>
+		<row>004899875312236887</row>
+		<row>304898888514654445</row>
+		<row>123444443127952123</row>
+		<row>56239ba61146876664</row>
+		<row>442046652234689a98</row>
+		<row>3431011343114689a9</row>
+	</frame>
+
+	<frame duration="100">
+		<row>003555310002300123</row>
+		<row>015898620008811111</row>
+		<row>0059a9875302236788</row>
+		<row>104899999513644455</row>
+		<row>223455443116852223</row>
+		<row>6625bcb61146776665</row>
+		<row>542157762223578998</row>
+		<row>5431012466302579a9</row>
+	</frame>
+
+	<frame duration="100">
+		<row>003565310002300122</row>
+		<row>0269a9631009812111</row>
+		<row>0159aa976213236788</row>
+		<row>0059a9998403544456</row>
+		<row>233455443015752234</row>
+		<row>6527cdb61235666665</row>
+		<row>6512789632234579a8</row>
+		<row>653012357872146899</row>
+	</frame>
+
+	<frame duration="100">
+		<row>003565420004300012</row>
+		<row>0258a973101a712111</row>
+		<row>016aaa986224326788</row>
+		<row>0059a9998402444456</row>
+		<row>333455543015742234</row>
+		<row>7529ddb61235665565</row>
+		<row>6413899632223468a8</row>
+		<row>652012467995025799</row>
+	</frame>
+
+	<frame duration="100">
+		<row>013566421006400001</row>
+		<row>13589874202b712211</row>
+		<row>127aaa986236325778</row>
+		<row>016aa9998402444467</row>
+		<row>333555543014642234</row>
+		<row>652bddb51234554565</row>
+		<row>6414899622222357a8</row>
+		<row>652113468aa8214799</row>
+	</frame>
+
+	<frame duration="100">
+		<row>013566421018500000</row>
+		<row>13579874204c713311</row>
+		<row>2379aa975257415678</row>
+		<row>127aa9998302334456</row>
+		<row>433555542014542234</row>
+		<row>743cedb51234454455</row>
+		<row>641599952222234798</row>
+		<row>652123468ab9413699</row>
+	</frame>
+
+	<frame duration="100">
+		<row>01466642003a501000</row>
+		<row>23468875216d713321</row>
+		<row>3379a9875269514677</row>
+		<row>228aa9997301234456</row>
+		<row>534555542014542234</row>
+		<row>644ceda41234443455</row>
+		<row>64169a952222223698</row>
+		<row>652023468bbb602589</row>
+	</frame>
+
+	<frame duration="100">
+		<row>02466542006b601100</row>
+		<row>34457874219e713321</row>
+		<row>3468a987528a614567</row>
+		<row>338aa9996211234456</row>
+		<row>634555541014542234</row>
+		<row>635deda31234443455</row>
+		<row>64169a942222222587</row>
+		<row>652123468bbb712488</row>
+	</frame>
+
+	<frame duration="100">
+		<row>12566531019c612210</row>
+		<row>3444676422be713331</row>
+		<row>54689987429b713566</row>
+		<row>448aa9985111234455</row>
+		<row>634555541014442224</row>
+		<row>637ded921234443345</row>
+		<row>64279a942222212487</row>
+		<row>652123578bbb821478</row>
+	</frame>
+
+	<frame duration="100">
+		<row>1357653104cd612210</row>
+		<row>4444676423de713332</row>
+		<row>6557998733bc812456</row>
+		<row>559ba9985112224445</row>
+		<row>635555431023432223</row>
+		<row>628eed821234433344</row>
+		<row>63289a832222211477</row>
+		<row>642123578bbb931378</row>
+	</frame>
+
+	<frame duration="100">
+		<row>1367752117dd613321</row>
+		<row>4444575315ed613332</row>
+		<row>7556888634bc812345</row>
+		<row>659aa9874012223444</row>
+		<row>635655430023432223</row>
+		<row>729eec821333333344</row>
+		<row>63289a732222211376</row>
+		<row>641123579bbb931368</row>
+	</frame>
+
+	<frame duration="100">
+		<row>236775212aed613332</row>
+		<row>4444465308ed612333</row>
+		<row>8645787626cc911345</row>
+		<row>659aa9863022223444</row>
+		<row>625555420023433223</row>
+		<row>62aeec711333333244</row>
+		<row>633899722222211376</row>
+		<row>641123579bcb930367</row>
+	</frame>
+
+	<frame duration="100">
+		<row>247875214cfd613433</row>
+		<row>445446520bfd512333</row>
+		<row>8544687527dc911234</row>
+		<row>658a99752022113333</row>
+		<row>635554410123433223</row>
+		<row>62aeeb611333333334</row>
+		<row>633899622222211266</row>
+		<row>641123579bcb820367</row>
+	</frame>
+
+	<frame duration="100">
+		<row>247875127efd523443</row>
+		<row>455345422dfc412333</row>
+		<row>8533577529dd910233</row>
+		<row>658988642012212333</row>
+		<row>524554410133333222</row>
+		<row>62aeeb511333333334</row>
+		<row>633899522222211265</row>
+		<row>641123579bcb820357</row>
+	</frame>
+
+	<frame duration="100">
+		<row>25787414aefc514544</row>
+		<row>455335414efb312334</row>
+		<row>852246642add910123</row>
+		<row>647877531022112222</row>
+		<row>524544310233333222</row>
+		<row>62aeea412343333334</row>
+		<row>633899522222211255</row>
+		<row>641013579bcb720356</row>
+	</frame>
+
+	<frame duration="100">
+		<row>35887415cffc424554</row>
+		<row>454334317ffb212333</row>
+		<row>852135533bdc810112</row>
+		<row>535765421122201222</row>
+		<row>414554200233323222</row>
+		<row>62aeda312343333334</row>
+		<row>633898422222211255</row>
+		<row>63101357abca610256</row>
+	</frame>
+
+	<frame duration="100">
+		<row>35897428dffb424555</row>
+		<row>45433431affa212333</row>
+		<row>741024523bdd810011</row>
+		<row>524554321122201111</row>
+		<row>414443200233222222</row>
+		<row>52aed9312343333333</row>
+		<row>633898322222211254</row>
+		<row>63001247abca610246</row>
+	</frame>
+
+	<frame duration="100">
+		<row>36897329efea334555</row>
+		<row>45423423cfe9122333</row>
+		<row>730024424bdc810001</row>
+		<row>412332210122200100</row>
+		<row>314433101343222222</row>
+		<row>529dd9212444333333</row>
+		<row>632897322222211254</row>
+		<row>63000247abca500245</row>
+	</frame>
+
+	<frame duration="100">
+		<row>4689833befe9335665</row>
+		<row>55423324dfe8122233</row>
+		<row>620113315ccc710000</row>
+		<row>300111111222200000</row>
+		<row>225543101343222211</row>
+		<row>528dd8213444333333</row>
+		<row>622897322222211244</row>
+		<row>52000147acc9511245</row>
+	</frame>
+
+	<frame duration="100">
+		<row>4699833cffe8235666</row>
+		<row>55323316efe6122233</row>
+		<row>511202216bcb610000</row>
+		<row>200000122222200000</row>
+		<row>237652112443212211</row>
+		<row>418dd8113444333333</row>
+		<row>522896322222111244</row>
+		<row>52000137acc9401245</row>
+	</frame>
+
+	<frame duration="100">
+		<row>4789833dffe7235666</row>
+		<row>55323217efd5122233</row>
+		<row>413402217bca510000</row>
+		<row>112001232222200000</row>
+		<row>149852123443211111</row>
+		<row>318cc8123444333333</row>
+		<row>522896222222111244</row>
+		<row>42000137acc9301244</row>
+	</frame>
+
+	<frame duration="100">
+		<row>4689843dffc4245666</row>
+		<row>54324309efc3122233</row>
+		<row>315612127ab9400000</row>
+		<row>147402333322200000</row>
+		<row>16a952234443211111</row>
+		<row>218cc7123444333333</row>
+		<row>412796222222111243</row>
+		<row>31000136acb8301244</row>
+	</frame>
+
+	<frame duration="100">
+		<row>4689843dfeb2245666</row>
+		<row>44224319eeb2122223</row>
+		<row>317612226997300000</row>
+		<row>169512454331100000</row>
+		<row>17b942245543211111</row>
+		<row>128bc7134444333322</row>
+		<row>302796233222111243</row>
+		<row>31000127acb7201234</row>
+	</frame>
+
+	<frame duration="100">
+		<row>4679852bed71246676</row>
+		<row>44235518ee91122223</row>
+		<row>227413325885100000</row>
+		<row>289414665431100000</row>
+		<row>28b832456553211111</row>
+		<row>139bb7134443333322</row>
+		<row>202796223332111243</row>
+		<row>21000026bcb7101234</row>
+	</frame>
+
+	<frame duration="100">
+		<row>35688627ca40246676</row>
+		<row>43136625cc61122223</row>
+		<row>137324423663100000</row>
+		<row>289214776431000000</row>
+		<row>28a733566653211111</row>
+		<row>139bb7135543333322</row>
+		<row>103796223332111233</row>
+		<row>10000027bcb6101233</row>
+	</frame>
+
+	<frame duration="100">
+		<row>346786327510256677</row>
+		<row>322377328930122223</row>
+		<row>146136632331000000</row>
+		<row>286125887531000000</row>
+		<row>279523577753211110</row>
+		<row>029bb6135543333322</row>
+		<row>103697223332111233</row>
+		<row>10000028bca5101233</row>
+	</frame>
+
+	<frame duration="100">
+		<row>234686311101356777</row>
+		<row>311367512301222223</row>
+		<row>134037752100000000</row>
+		<row>163025888641000000</row>
+		<row>155223677763211110</row>
+		<row>017aa6246654333322</row>
+		<row>103697223332111232</row>
+		<row>10000028bca4001233</row>
+	</frame>
+
+	<frame duration="100">
+		<row>123576420002456677</row>
+		<row>211267630001232223</row>
+		<row>021047864100000000</row>
+		<row>020135898642000000</row>
+		<row>001123688764211110</row>
+		<row>106996256654333321</row>
+		<row>103697234431111232</row>
+		<row>00000029bca4001223</row>
+	</frame>
+
+	<frame duration="100">
+		<row>011365432113456677</row>
+		<row>100157742001232223</row>
+		<row>000147885310000000</row>
+		<row>000124798752000000</row>
+		<row>100123688864311110</row>
+		<row>203896257754333221</row>
+		<row>103797235431111222</row>
+		<row>0000003acc93001222</row>
+	</frame>
+
+	<frame duration="100">
+		<row>100266443223456677</row>
+		<row>000157764212232222</row>
+		<row>000247886421000000</row>
+		<row>111123799762000000</row>
+		<row>311113689874311110</row>
+		<row>302685268754333221</row>
+		<row>102797135431111222</row>
+		<row>0000014acc92001222</row>
+	</frame>
+
+	<frame duration="100">
+		<row>110256444333456667</row>
+		<row>000147775322333222</row>
+		<row>101347887531000000</row>
+		<row>322112699863100000</row>
+		<row>432112699874311110</row>
+		<row>321574368754333210</row>
+		<row>102797235431111122</row>
+		<row>0000015bcb81001222</row>
+	</frame>
+
+	<frame duration="100">
+		<row>220156544334456666</row>
+		<row>001147775433333222</row>
+		<row>212346888642100000</row>
+		<row>543122589863100000</row>
+		<row>642112589874311110</row>
+		<row>431464378754333210</row>
+		<row>001796146421111121</row>
+		<row>1000016bcb71001222</row>
+	</frame>
+
+	<frame duration="100">
+		<row>330147655444456666</row>
+		<row>111246776443333222</row>
+		<row>322346888743100000</row>
+		<row>653253489874200000</row>
+		<row>652132489875311110</row>
+		<row>431353489753333210</row>
+		<row>001696156421111121</row>
+		<row>1000017bcb60001122</row>
+	</frame>
+
+	<frame duration="100">
+		<row>430147655444456666</row>
+		<row>111246876543333222</row>
+		<row>333346888753200000</row>
+		<row>752385379974200000</row>
+		<row>751363489875311100</row>
+		<row>431233489753223210</row>
+		<row>010595256421111111</row>
+		<row>1000028cca50011122</row>
+	</frame>
+
+	<frame duration="100">
+		<row>430147765444456666</row>
+		<row>112247876543333322</row>
+		<row>433356888864200000</row>
+		<row>752597369975200000</row>
+		<row>641595378875311100</row>
+		<row>431122599753223210</row>
+		<row>000483266311111111</row>
+		<row>1000039cc940011122</row>
+	</frame>
+
+	<frame duration="100">
+		<row>420257765444455666</row>
+		<row>112347876544333323</row>
+		<row>333356788874210000</row>
+		<row>6427a8368975200000</row>
+		<row>6318a6368875311101</row>
+		<row>321012598643223210</row>
+		<row>000152366311111110</row>
+		<row>100004acc920011122</row>
+	</frame>
+
+	<frame duration="100">
+		<row>410257865444445666</row>
+		<row>002357886544333323</row>
+		<row>233456788875310000</row>
+		<row>5339b9358885200000</row>
+		<row>523ab8368875311102</row>
+		<row>311112688642222201</row>
+		<row>000011465210111110</row>
+		<row>110016bcc720001122</row>
+	</frame>
+
+	<frame duration="100">
+		<row>301367875433445566</row>
+		<row>001357887554433333</row>
+		<row>233456788875310000</row>
+		<row>424ab9358885210000</row>
+		<row>416cc9358864321104</row>
+		<row>200123687532222202</row>
+		<row>000001565200011110</row>
+		<row>122138bcb610001122</row>
+	</frame>
+
+	<frame duration="100">
+		<row>201468876433445566</row>
+		<row>101357887554433333</row>
+		<row>123456788775410000</row>
+		<row>416aba447875310000</row>
+		<row>319dda357764321105</row>
+		<row>101223587432222102</row>
+		<row>011003564100011100</row>
+		<row>12446acca400001122</row>
+	</frame>
+
+	<frame duration="100">
+		<row>102478876433345566</row>
+		<row>201367887554433333</row>
+		<row>123456788776420000</row>
+		<row>328bba447875310001</row>
+		<row>23ceeb447764321107</row>
+		<row>114333476432122104</row>
+		<row>143112553100011100</row>
+		<row>13789bcc9300001222</row>
+	</frame>
+
+	<frame duration="100">
+		<row>002578876433344556</row>
+		<row>301467887555433333</row>
+		<row>123456778776420000</row>
+		<row>239bba536876310002</row>
+		<row>16deec436764321019</row>
+		<row>158632355431121105</row>
+		<row>166322442000001100</row>
+		<row>248abccb8100001222</row>
+	</frame>
+
+	<frame duration="100">
+		<row>013578886433344556</row>
+		<row>401468897555443333</row>
+		<row>213456778776420000</row>
+		<row>15abba536776410002</row>
+		<row>19efec52565432101a</row>
+		<row>18ca62244321111116</row>
+		<row>18a832221000001000</row>
+		<row>249bcdca6100001222</row>
+	</frame>
+
+	<frame duration="100">
+		<row>013678887433334556</row>
+		<row>421468998545443333</row>
+		<row>313456777666530000</row>
+		<row>27abbb625776410003</row>
+		<row>2cfffd71565432102c</row>
+		<row>2beda4133321111017</row>
+		<row>29cb83211000011100</row>
+		<row>239bcdc94000011222</row>
+	</frame>
+
+	<frame duration="100">
+		<row>003678987433334556</row>
+		<row>741478998545543333</row>
+		<row>312456777666531000</row>
+		<row>39bbbb725676410005</row>
+		<row>5efffe81455432104d</row>
+		<row>3cfed7113221111028</row>
+		<row>29ccb7310000011100</row>
+		<row>329bccb72000012222</row>
+	</frame>
+
+	<frame duration="100">
+		<row>113689987433334556</row>
+		<row>981478987545543333</row>
+		<row>422466777566531000</row>
+		<row>5abbbb724666420016</row>
+		<row>9efffea1345432106d</row>
+		<row>5dffeb402211110038</row>
+		<row>29ddca510000011100</row>
+		<row>428bba940000012333</row>
+	</frame>
+
+	<frame duration="100">
+		<row>112689987533334456</row>
+		<row>ca2479987534543333</row>
+		<row>522466677556531000</row>
+		<row>6abbbb823566520017</row>
+		<row>bffffeb2244432108e</row>
+		<row>5dfffd701111110048</row>
+		<row>28dddb610000111100</row>
+		<row>426aa9610000012333</row>
+	</frame>
+
+	<frame duration="100">
+		<row>222689987533334456</row>
+		<row>dc2479987434544333</row>
+		<row>632466676456642000</row>
+		<row>7abbbb933566520027</row>
+		<row>cfffffd3134432009e</row>
+		<row>6dfffe911111110058</row>
+		<row>27cdcb710000111110</row>
+		<row>524997300000123333</row>
+	</frame>
+
+	<frame duration="100">
+		<row>442689987533334456</row>
+		<row>ed3589987434444333</row>
+		<row>732466675445642000</row>
+		<row>7abbbba42466520038</row>
+		<row>dfffffd513443201bf</row>
+		<row>6dfffeb20111110069</row>
+		<row>25bcca710000112110</row>
+		<row>633784100000123433</row>
+	</frame>
+
+	<frame duration="100">
+		<row>542689987433333456</row>
+		<row>ed3589986433444433</row>
+		<row>842466665335642100</row>
+		<row>7abbbba52456530049</row>
+		<row>dfffffe712343202df</row>
+		<row>5ceffec30111110178</row>
+		<row>239bba600111122210</row>
+		<row>731463000111134443</row>
+	</frame>
+
+	<frame duration="100">
+		<row>642689987433333456</row>
+		<row>ed3689976323444433</row>
+		<row>942566664225653100</row>
+		<row>79abbba52356531069</row>
+		<row>dfffffe812343204ef</row>
+		<row>5beefec30111100278</row>
+		<row>3179a9400111123211</row>
+		<row>831231001111234543</row>
+	</frame>
+
+	<frame duration="100">
+		<row>642689986433333456</row>
+		<row>ed3689875323444433</row>
+		<row>a52466653125653100</row>
+		<row>78abbba62356631169</row>
+		<row>dfffffea11344206ef</row>
+		<row>49deeeb40111100278</row>
+		<row>314787201111233221</row>
+		<row>840010012112235544</row>
+	</frame>
+
+	<frame duration="100">
+		<row>642689876443333456</row>
+		<row>ec2689865333444433</row>
+		<row>b52466642014554200</row>
+		<row>778abba6224664117a</row>
+		<row>ceffffeb21244206ef</row>
+		<row>37bdedb30111100379</row>
+		<row>411465101112234321</row>
+		<row>841000122222345544</row>
+	</frame>
+
+	<frame duration="100">
+		<row>632689876443333456</row>
+		<row>eb2699864333444443</row>
+		<row>c61466531014654200</row>
+		<row>8679aba61136641179</row>
+		<row>ceffffeb21244218ff</row>
+		<row>36acdd930011100378</row>
+		<row>410133012222234321</row>
+		<row>731000133223346654</row>
+	</frame>
+
+	<frame duration="100">
+		<row>622688876443333346</row>
+		<row>e92798754334444443</row>
+		<row>d71466520104654310</row>
+		<row>b768aba50135642278</row>
+		<row>bdefffea20234218ff</row>
+		<row>357abb820111101479</row>
+		<row>520011012223344421</row>
+		<row>631000133333456654</row>
+	</frame>
+
+	<frame duration="100">
+		<row>613688865544333346</row>
+		<row>e83788754344444443</row>
+		<row>e81466412203565310</row>
+		<row>d9669b941125652267</row>
+		<row>cceeffe910134219ff</row>
+		<row>3568a9621111101469</row>
+		<row>421000022223345421</row>
+		<row>531000243333456654</row>
+	</frame>
+
+	<frame duration="100">
+		<row>513688765554333356</row>
+		<row>d62688644445444443</row>
+		<row>ea1355314413565310</row>
+		<row>eb668a833225653256</row>
+		<row>ccdefed810134319fe</row>
+		<row>345798411112101479</row>
+		<row>421000123333445430</row>
+		<row>431000244333456764</row>
+	</frame>
+
+	<frame duration="100">
+		<row>413688755555433356</row>
+		<row>d62687544456544443</row>
+		<row>eb2254227513565310</row>
+		<row>fd8678637425663145</row>
+		<row>cccdeec510124318ee</row>
+		<row>345686311122211469</row>
+		<row>321000123333455531</row>
+		<row>331010244333457764</row>
+	</frame>
+
+	<frame duration="100">
+		<row>412577655666433355</row>
+		<row>d62676544567544444</row>
+		<row>ec3243147523565420</row>
+		<row>fea66645a714664234</row>
+		<row>cccceda320023318ed</row>
+		<row>334565111222211469</row>
+		<row>320000133333456531</row>
+		<row>320130244333467765</row>
+	</frame>
+
+	<frame duration="100">
+		<row>412566655676533355</row>
+		<row>d62565434577643444</row>
+		<row>fd5232167524566420</row>
+		<row>ffc75438d924664224</row>
+		<row>cccccb8221123317dc</row>
+		<row>334564101233211469</row>
+		<row>320010023333456531</row>
+		<row>210351133333467765</row>
+	</frame>
+
+	<frame duration="100">
+		<row>302465555677533355</row>
+		<row>d72454434688743444</row>
+		<row>fe7110487434566420</row>
+		<row>ffd8545aea24665213</row>
+		<row>cdccb95221123226cb</row>
+		<row>334563001234311369</row>
+		<row>210131023333456531</row>
+		<row>202672133333457765</row>
+	</frame>
+
+	<frame duration="100">
+		<row>302455555788643345</row>
+		<row>d72244334799743444</row>
+		<row>fe9303787435666531</row>
+		<row>ffeb779cea24665313</row>
+		<row>cccba84331123225aa</row>
+		<row>334652001344321358</row>
+		<row>200352023333456632</row>
+		<row>104893123333457765</row>
+	</frame>
+
+	<frame duration="100">
+		<row>202344455798643345</row>
+		<row>c821233347a9853444</row>
+		<row>ffc768996346666531</row>
+		<row>ffecaacee814665313</row>
+		<row>cccb9753321232249a</row>
+		<row>335652002455322358</row>
+		<row>102673012334456632</row>
+		<row>016aa5022333457765</row>
+	</frame>
+
+	<frame duration="100">
+		<row>102344445898643345</row>
+		<row>b731223348aa853444</row>
+		<row>ffecaaa96456666531</row>
+		<row>fffedddee614666414</row>
+		<row>bccb97543223322389</row>
+		<row>245652002455422357</row>
+		<row>004895012334456632</row>
+		<row>039bb6022333357765</row>
+	</frame>
+
+	<frame duration="100">
+		<row>0023444458a9743345</row>
+		<row>a632222248aa853344</row>
+		<row>ffedccb85467776521</row>
+		<row>effffeeed314676414</row>
+		<row>accb97643233321378</row>
+		<row>246652003566422346</row>
+		<row>017aa6012334456642</row>
+		<row>16acb6012333356775</row>
+	</frame>
+
+	<frame duration="100">
+		<row>1123333348a9743345</row>
+		<row>9632111249aa853344</row>
+		<row>ffeedcb84578776521</row>
+		<row>dfffffeec114676414</row>
+		<row>9bba98653344322368</row>
+		<row>256653003576432346</row>
+		<row>049bb7112334456642</row>
+		<row>38bdc7112333356775</row>
+	</frame>
+
+	<frame duration="100">
+		<row>1123332237a9742234</row>
+		<row>7522110249aa853344</row>
+		<row>ffeeddb84688876421</row>
+		<row>deffffffb135676416</row>
+		<row>7bba98753354321268</row>
+		<row>356643013677532245</row>
+		<row>17bcb7102344456642</row>
+		<row>6acdc7112333356775</row>
+	</frame>
+
+	<frame duration="100">
+		<row>2223321137aa742234</row>
+		<row>6422110149aa853344</row>
+		<row>efeeedb74688876412</row>
+		<row>ceffffffb145776316</row>
+		<row>49aa98763465421268</row>
+		<row>266542014677632245</row>
+		<row>49ccb8102344445752</row>
+		<row>8bddc8101333346776</row>
+	</frame>
+
+	<frame duration="100">
+		<row>2333210027aa742234</row>
+		<row>5322100159aa853344</row>
+		<row>eeeeeda74799875312</row>
+		<row>aeffffffa256776317</row>
+		<row>38a988763575421269</row>
+		<row>256542014787642245</row>
+		<row>6bdcb7102344445652</row>
+		<row>9cddc8101233346776</row>
+	</frame>
+
+	<frame duration="100">
+		<row>3333210016aa742124</row>
+		<row>4322100159aa852234</row>
+		<row>eeeedc954799875313</row>
+		<row>9efffffe9266775218</row>
+		<row>179988763576421279</row>
+		<row>155542014788642235</row>
+		<row>7bdcb7102344445652</row>
+		<row>9cddc8201233346776</row>
+	</frame>
+
+	<frame duration="100">
+		<row>3433200016aa741124</row>
+		<row>4322100149aa852234</row>
+		<row>deeedb854799864203</row>
+		<row>7dfffffe8367775229</row>
+		<row>058988763587521279</row>
+		<row>145531014788753244</row>
+		<row>7cdca6102344445662</row>
+		<row>9cddc8201233346776</row>
+	</frame>
+
+	<frame duration="100">
+		<row>4433100216aa741013</row>
+		<row>5432100259aa841134</row>
+		<row>ceeeda7448a9863114</row>
+		<row>6ceffffe737876414a</row>
+		<row>037888752597531289</row>
+		<row>025431014788753234</row>
+		<row>5bcca5102344445662</row>
+		<row>6bccb8201233345786</row>
+	</frame>
+
+	<frame duration="100">
+		<row>4433102316aa730013</row>
+		<row>5553101259aa841023</row>
+		<row>beeec95348a9862015</row>
+		<row>4beffffd547876305a</row>
+		<row>02678775259863039a</row>
+		<row>024431014788763345</row>
+		<row>4acb85102344444662</row>
+		<row>38bcb9301223345787</row>
+	</frame>
+
+	<frame duration="100">
+		<row>4433203516aa730013</row>
+		<row>5664101359aa740013</row>
+		<row>9deec74359aa851036</row>
+		<row>3aefffeb458985217b</row>
+		<row>0157776426996204aa</row>
+		<row>013320014789863344</row>
+		<row>28ba84102344444673</row>
+		<row>148bb9301223345787</row>
+	</frame>
+
+	<frame duration="100">
+		<row>4443203525aa730002</row>
+		<row>5675112359aa730013</row>
+		<row>8beeb53359a9841157</row>
+		<row>28eeeed9258984118b</row>
+		<row>1047776326996315aa</row>
+		<row>002220014789864345</row>
+		<row>059974102344444673</row>
+		<row>0259a9400223335787</row>
+	</frame>
+
+	<frame duration="100">
+		<row>4443214625aa730001</row>
+		<row>4676212359aa730202</row>
+		<row>69cc943369a9730278</row>
+		<row>17deedb6269974039b</row>
+		<row>1036764216aa6217bb</row>
+		<row>101210014789864345</row>
+		<row>027764102344444674</row>
+		<row>113699500223335787</row>
+	</frame>
+
+	<frame duration="100">
+		<row>4443215735aa720201</row>
+		<row>5676213469a9722511</row>
+		<row>48bc723479a9731599</row>
+		<row>05ceec8326997304ac</row>
+		<row>1036653126aa6228bb</row>
+		<row>100110014789974345</row>
+		<row>004764112344444574</row>
+		<row>211489600223334687</row>
+	</frame>
+
+	<frame duration="100">
+		<row>4443215735aa721301</row>
+		<row>5676123469aa724721</row>
+		<row>36aa52357aa97227aa</row>
+		<row>03beda5137aa7216bc</row>
+		<row>1025541027aa7239bb</row>
+		<row>100010014789975345</row>
+		<row>102564112344444575</row>
+		<row>321279610122334688</row>
+	</frame>
+
+	<frame duration="100">
+		<row>4443226735aa622511</row>
+		<row>6676223469a9626941</row>
+		<row>258932468aaa6149bb</row>
+		<row>029cb72148aa6238bc</row>
+		<row>2014420037aa7249bb</row>
+		<row>200000014789875345</row>
+		<row>201454112344444575</row>
+		<row>332258610122334688</row>
+	</frame>
+
+	<frame duration="100">
+		<row>4444226735aa623620</row>
+		<row>6776123479a9627a62</row>
+		<row>258712468aba616acc</row>
+		<row>018b831369aa6159cc</row>
+		<row>2103310137ab735acc</row>
+		<row>210000014799985345</row>
+		<row>310354112344444576</row>
+		<row>443258720122334688</row>
+	</frame>
+
+	<frame duration="100">
+		<row>444422663599623630</row>
+		<row>677613347ab9518b83</row>
+		<row>358613579ab9617bcc</row>
+		<row>0168411479aa616bcd</row>
+		<row>2101100247ab735acc</row>
+		<row>210000024799985355</row>
+		<row>320254112344444576</row>
+		<row>554248720122334689</row>
+	</frame>
+
+	<frame duration="100">
+		<row>444422763699613740</row>
+		<row>777413357ab9529b94</row>
+		<row>468414689bb9528bcd</row>
+		<row>014411368aaa618bcd</row>
+		<row>2100001357ab735acc</row>
+		<row>210000024799985355</row>
+		<row>330144112344444476</row>
+		<row>665248730122333589</row>
+	</frame>
+
+	<frame duration="100">
+		<row>4454227646aa624751</row>
+		<row>776323357ab952aba6</row>
+		<row>588325789bb9529bcd</row>
+		<row>012002579aaa529bcd</row>
+		<row>2100012458ab736bdd</row>
+		<row>220000025899985356</row>
+		<row>430144112344443476</row>
+		<row>67524873012233358a</row>
+	</frame>
+
+	<frame duration="100">
+		<row>4565227646aa724751</row>
+		<row>776323358ab953abb7</row>
+		<row>79932579abb953acdd</row>
+		<row>12101469abba539cdd</row>
+		<row>1100023568ab736bdd</row>
+		<row>220000025899985356</row>
+		<row>441144112344433466</row>
+		<row>78624874111222358a</row>
+	</frame>
+
+	<frame duration="100">
+		<row>5665227646aa724762</row>
+		<row>764223358ab943acb9</row>
+		<row>ab923689abb953bcdd</row>
+		<row>3420357abbb952acdd</row>
+		<row>1000134668ab736bdd</row>
+		<row>220000025899985357</row>
+		<row>541144112344433366</row>
+		<row>78624874101222249b</row>
+	</frame>
+
+	<frame duration="100">
+		<row>67752276469a723762</row>
+		<row>653123468ab944bbb9</row>
+		<row>bb92378abbb943bcdd</row>
+		<row>6731479bbba953acdd</row>
+		<row>0001235678aa736bed</row>
+		<row>320000025899985367</row>
+		<row>542044112344333366</row>
+		<row>78624874201211249b</row>
+	</frame>
+
+	<frame duration="100">
+		<row>68862376469a723773</row>
+		<row>542223468ab944bbca</row>
+		<row>cc81478abba944bcdd</row>
+		<row>9a41479bbba943bcdd</row>
+		<row>01013466789a736bed</row>
+		<row>320000025899874367</row>
+		<row>552044112343332356</row>
+		<row>78614874201110149b</row>
+	</frame>
+
+	<frame duration="100">
+		<row>78862276569a723774</row>
+		<row>432134468aa834bbca</row>
+		<row>dc71479abba834bcdd</row>
+		<row>bc6147abbb9843bddd</row>
+		<row>12113467789a736bee</row>
+		<row>320000025799874367</row>
+		<row>552044112343332356</row>
+		<row>89625875310100148b</row>
+	</frame>
+
+	<frame duration="100">
+		<row>888622764699723775</row>
+		<row>322234468aa835bbcb</row>
+		<row>cb71479aaa9735bcdd</row>
+		<row>cd8247abba9743addd</row>
+		<row>231135677789736cee</row>
+		<row>321000025789873367</row>
+		<row>653034112333322256</row>
+		<row>89615875310000038b</row>
+	</frame>
+
+	<frame duration="100">
+		<row>798622764599623675</row>
+		<row>22223446899725bbcb</row>
+		<row>cb71479aaa8625bcdd</row>
+		<row>dea247abba8633bddd</row>
+		<row>242135677788626cee</row>
+		<row>321000025789863377</row>
+		<row>653034212333222256</row>
+		<row>89615976420001038a</row>
+	</frame>
+
+	<frame duration="100">
+		<row>798622764589623675</row>
+		<row>22223446898626bbcb</row>
+		<row>cb71479aa98516bcdd</row>
+		<row>dec337aba97523addd</row>
+		<row>243024676678626cee</row>
+		<row>321000024788862477</row>
+		<row>653034212333222256</row>
+		<row>89615986521034138a</row>
+	</frame>
+
+	<frame duration="100">
+		<row>799732664588623676</row>
+		<row>22223446788527bbcb</row>
+		<row>ba723799a87416bcdd</row>
+		<row>dec4269aa86523addd</row>
+		<row>243114666677526cfe</row>
+		<row>321000024788752477</row>
+		<row>653024212332221256</row>
+		<row>89616987532256238a</row>
+	</frame>
+
+	<frame duration="100">
+		<row>799731663578533676</row>
+		<row>22223445777427bbbb</row>
+		<row>ba713789975317bcdd</row>
+		<row>cdc51589975314addd</row>
+		<row>233114566666416cfe</row>
+		<row>421000024788741577</row>
+		<row>653025212222221356</row>
+		<row>99516997643577238a</row>
+	</frame>
+
+	<frame duration="100">
+		<row>689841443577533676</row>
+		<row>22223445665228bbbc</row>
+		<row>a9613688864218bcdd</row>
+		<row>bcb51478854314addd</row>
+		<row>122013555555416dfe</row>
+		<row>422000014687631577</row>
+		<row>654125211222221355</row>
+		<row>99516a987557872389</row>
+	</frame>
+
+	<frame duration="100">
+		<row>68a851233576533686</row>
+		<row>22223445653139bbbc</row>
+		<row>97512577642129bcdd</row>
+		<row>9a940467643205addd</row>
+		<row>111013454454316dfe</row>
+		<row>432100014677531576</row>
+		<row>664114311222211355</row>
+		<row>99516aa98668972379</row>
+	</frame>
+
+	<frame duration="100">
+		<row>59a962012566533687</row>
+		<row>22223444531159bbbc</row>
+		<row>8631156653104abcdd</row>
+		<row>77620355421105acdd</row>
+		<row>111112344344216dfe</row>
+		<row>433100013676521676</row>
+		<row>664114311232211354</row>
+		<row>98515aa98789973368</row>
+	</frame>
+
+	<frame duration="100">
+		<row>48a973113555532687</row>
+		<row>23323344420389abbc</row>
+		<row>6310135431016abcdd</row>
+		<row>54200234310006bcdd</row>
+		<row>212212333333216dfe</row>
+		<row>433200013665421666</row>
+		<row>665204321233211343</row>
+		<row>88515aaa999a974367</row>
+	</frame>
+
+	<frame duration="100">
+		<row>48a985224555532587</row>
+		<row>2333334330279aabbc</row>
+		<row>4100024320148bccdd</row>
+		<row>31000122100027acdd</row>
+		<row>222222222222116cee</row>
+		<row>334310013555412666</row>
+		<row>665203422233211342</row>
+		<row>88614abaaaaa974356</row>
+	</frame>
+
+	<frame duration="100">
+		<row>38aa85334556632587</row>
+		<row>23333333115899abbc</row>
+		<row>200001220048abccdd</row>
+		<row>00000010000138acdd</row>
+		<row>123322211111116cee</row>
+		<row>344321023555412566</row>
+		<row>565202432233101232</row>
+		<row>775239bbaaaa975234</row>
+	</frame>
+
+	<frame duration="100">
+		<row>38aa86444556532587</row>
+		<row>13332222137899abbc</row>
+		<row>000000100279abccdd</row>
+		<row>00110000013359acdd</row>
+		<row>124432111111116cee</row>
+		<row>344422123554313666</row>
+		<row>565302553332100221</row>
+		<row>675229bbbaaa986323</row>
+	</frame>
+
+	<frame duration="100">
+		<row>37aa97555555532587</row>
+		<row>13332221037889abbb</row>
+		<row>00000000059abbccdd</row>
+		<row>00121000035579acdd</row>
+		<row>024543111111116cee</row>
+		<row>245432123454303666</row>
+		<row>554302664232100110</row>
+		<row>654118bbcbaa986422</row>
+	</frame>
+
+	<frame duration="100">
+		<row>37aa97665555532587</row>
+		<row>13332211036878abbb</row>
+		<row>00000000059abbccdd</row>
+		<row>0022100004779aacdd</row>
+		<row>024543111111116ced</row>
+		<row>235433223444304667</row>
+		<row>454302674222000000</row>
+		<row>543117bccbaa997411</row>
+	</frame>
+
+	<frame duration="100">
+		<row>37aa98766665532487</row>
+		<row>23332111035778abbb</row>
+		<row>00000000059abbccdd</row>
+		<row>002320000489aaacdd</row>
+		<row>114653111122216cdd</row>
+		<row>234433223444204678</row>
+		<row>443301685221010002</row>
+		<row>433105bcca9aaa8510</row>
+	</frame>
+
+	<frame duration="100">
+		<row>37aa98766666532487</row>
+		<row>233321111146679bbb</row>
+		<row>00000000049abbbcdd</row>
+		<row>10232000048aaaabdd</row>
+		<row>414654111122226bdd</row>
+		<row>234543213433115789</row>
+		<row>443311584111132035</row>
+		<row>433204acca9aaba720</row>
+	</frame>
+
+	<frame duration="100">
+		<row>37aa98777666531487</row>
+		<row>123322222134469bbb</row>
+		<row>10000000048aabbcdd</row>
+		<row>20232000159abaabdd</row>
+		<row>724654111122226bdd</row>
+		<row>23554322333311689a</row>
+		<row>443320373111255469</row>
+		<row>3332029cb99abcb942</row>
+	</frame>
+
+	<frame duration="100">
+		<row>379a98777776531488</row>
+		<row>123322232123458abb</row>
+		<row>10000000037aabbcdc</row>
+		<row>21232000149abaabdd</row>
+		<row>824654111123216bdd</row>
+		<row>2345443233321279aa</row>
+		<row>4432201531112788ab</row>
+		<row>3322117ba89bbccb85</row>
+	</frame>
+
+	<frame duration="100">
+		<row>379988877776541488</row>
+		<row>223322333212358abb</row>
+		<row>100000000279aabcdc</row>
+		<row>30232000148abaabdd</row>
+		<row>824654111122215bcc</row>
+		<row>234554323321028abb</row>
+		<row>43221102100139abcd</row>
+		<row>3322104a979bcddcb8</row>
+	</frame>
+
+	<frame duration="100">
+		<row>368888777776641489</row>
+		<row>123323444212237abb</row>
+		<row>1000000002699abcdc</row>
+		<row>30132000148abaabdd</row>
+		<row>824664211112215bcc</row>
+		<row>234555322211028bcc</row>
+		<row>4311121000014acdee</row>
+		<row>4211103877abcdeeca</row>
+	</frame>
+
+	<frame duration="100">
+		<row>258777788876541389</row>
+		<row>123323455322136abb</row>
+		<row>1000000001599abcdd</row>
+		<row>41132001148aa99bdd</row>
+		<row>824664210012215bcc</row>
+		<row>235555432110039bcd</row>
+		<row>4311121000014aeeff</row>
+		<row>3211111656acceeeec</row>
+	</frame>
+
+	<frame duration="100">
+		<row>256666788876541389</row>
+		<row>1223235653211259bb</row>
+		<row>10000001014789abdd</row>
+		<row>511210011479a99bdd</row>
+		<row>824664200011215bcc</row>
+		<row>235555432110039cdd</row>
+		<row>4300112000025befff</row>
+		<row>4210111435acceffee</row>
+	</frame>
+
+	<frame duration="100">
+		<row>14555678887654129a</row>
+		<row>1122235664211148bb</row>
+		<row>00000001114789abdd</row>
+		<row>611210011469999bdd</row>
+		<row>724664200011115bcc</row>
+		<row>234555432100039cde</row>
+		<row>4200012110125befff</row>
+		<row>42001112149ccefffe</row>
+	</frame>
+
+	<frame duration="100">
+		<row>13444578987664128a</row>
+		<row>1122236764311137bb</row>
+		<row>10000001113678abcc</row>
+		<row>711210011369989bdc</row>
+		<row>614664200001116acc</row>
+		<row>334555432100039dee</row>
+		<row>4200012210135aefff</row>
+		<row>41001100039cceffff</row>
+	</frame>
+
+	<frame duration="100">
+		<row>01333478988654129b</row>
+		<row>0122236775321126bc</row>
+		<row>100000121135679bcc</row>
+		<row>821210011358889bcc</row>
+		<row>514664100000016acc</row>
+		<row>245665432100039dee</row>
+		<row>52000132201359efff</row>
+		<row>41000110028cceffff</row>
+	</frame>
+
+	<frame duration="100">
+		<row>00112478988654219b</row>
+		<row>0011136875321115ac</row>
+		<row>200100121124569bcc</row>
+		<row>821210012347779bcc</row>
+		<row>414664100000016acc</row>
+		<row>345665432100139dee</row>
+		<row>52000132200359dfff</row>
+		<row>41001121017cceefff</row>
+	</frame>
+
+	<frame duration="100">
+		<row>00111368888654219b</row>
+		<row>0011136876421114ac</row>
+		<row>300100121113468bcc</row>
+		<row>820210012335669bcc</row>
+		<row>414663100000017acc</row>
+		<row>345665432100138cee</row>
+		<row>52000233200358deff</row>
+		<row>42000222106bcdefff</row>
+	</frame>
+
+	<frame duration="100">
+		<row>01111368888655218b</row>
+		<row>00011368764211139c</row>
+		<row>511210122113358acc</row>
+		<row>820210012235569bcc</row>
+		<row>314653100000027acc</row>
+		<row>345665432100138cee</row>
+		<row>53001233300347ceff</row>
+		<row>52001232215bcdefff</row>
+	</frame>
+
+	<frame duration="100">
+		<row>12330368887655217b</row>
+		<row>10011367654211128b</row>
+		<row>721211121112358acc</row>
+		<row>820210012234469bcc</row>
+		<row>314653100000027acb</row>
+		<row>345665422100137bee</row>
+		<row>63001233310146beff</row>
+		<row>52001233313acdefff</row>
+	</frame>
+
+	<frame duration="100">
+		<row>23541368877655216b</row>
+		<row>30011255554211016a</row>
+		<row>930211111112347abc</row>
+		<row>820210012223459bcc</row>
+		<row>215652100000038acb</row>
+		<row>345665322100147bdd</row>
+		<row>631013343201469dee</row>
+		<row>520002344128cdefff</row>
+	</frame>
+
+	<frame duration="100">
+		<row>24651367777554216b</row>
+		<row>520112344332110159</row>
+		<row>a402101100123469bb</row>
+		<row>711210022223359bcc</row>
+		<row>215642100000148acc</row>
+		<row>346665322100146add</row>
+		<row>631013443210358cdc</row>
+		<row>520012344217bdeffe</row>
+	</frame>
+
+	<frame duration="100">
+		<row>25661356666554206b</row>
+		<row>730101122221110037</row>
+		<row>b5121000001224689a</row>
+		<row>611210122223369bcc</row>
+		<row>125642000000248acc</row>
+		<row>345664322210136acc</row>
+		<row>741023444310257ccb</row>
+		<row>620012344316bceefe</row>
+	</frame>
+
+	<frame duration="100">
+		<row>24651245565444216b</row>
+		<row>850111000111110015</row>
+		<row>b61310000002235778</row>
+		<row>612310122223369bbb</row>
+		<row>125641000000358bcc</row>
+		<row>3456643222101359bb</row>
+		<row>741023444320147bb8</row>
+		<row>630012345315acdeee</row>
+	</frame>
+
+	<frame duration="100">
+		<row>14651244444444216b</row>
+		<row>861211000001100002</row>
+		<row>c62320000001234554</row>
+		<row>613410122223459aba</row>
+		<row>126631000000358bcc</row>
+		<row>3455543222101359ba</row>
+		<row>741123444330146995</row>
+		<row>6311123453149cdeed</row>
+	</frame>
+
+	<frame duration="100">
+		<row>13651233333333226b</row>
+		<row>860221000000000001</row>
+		<row>c62420000001223222</row>
+		<row>5144101222234589a9</row>
+		<row>126631000000258bcc</row>
+		<row>3456532222100248a9</row>
+		<row>841133444431035872</row>
+		<row>6311123443138cdddc</row>
+	</frame>
+
+	<frame duration="100">
+		<row>02550122222333226b</row>
+		<row>961331000000000000</row>
+		<row>c63530000001111111</row>
+		<row>425520222222357899</row>
+		<row>036631000000248bdd</row>
+		<row>3455532222210248a8</row>
+		<row>851133444431035750</row>
+		<row>6311123343127bcdca</row>
+	</frame>
+
+	<frame duration="100">
+		<row>01451112111233226b</row>
+		<row>961432000000000000</row>
+		<row>c54641000000000001</row>
+		<row>426620222212346889</row>
+		<row>037630000000248cdd</row>
+		<row>345543222221014796</row>
+		<row>851133444432024630</row>
+		<row>6311122333216abca8</row>
+	</frame>
+
+	<frame duration="100">
+		<row>01451012101222126a</row>
+		<row>842442100000000011</row>
+		<row>c45741000000000011</row>
+		<row>327620122111235788</row>
+		<row>046620000000138cee</row>
+		<row>445542222221013685</row>
+		<row>852133333332013520</row>
+		<row>6311112222215abb86</row>
+	</frame>
+
+	<frame duration="100">
+		<row>10451012200122126a</row>
+		<row>732553100000000012</row>
+		<row>a36851000000000011</row>
+		<row>238720111111124888</row>
+		<row>147620000000138dee</row>
+		<row>355532112211002674</row>
+		<row>852222333332012311</row>
+		<row>631111111111489964</row>
+	</frame>
+
+	<frame duration="100">
+		<row>21352123300122126a</row>
+		<row>514653100000000012</row>
+		<row>737851000000000012</row>
+		<row>158720000000014899</row>
+		<row>257520000000028dee</row>
+		<row>455431111110002564</row>
+		<row>742222222331001202</row>
+		<row>532211000110378743</row>
+	</frame>
+
+	<frame duration="100">
+		<row>314532343101221279</row>
+		<row>115763100000000122</row>
+		<row>238951000000000022</row>
+		<row>269730000000014899</row>
+		<row>367520000000018dee</row>
+		<row>455421111110001554</row>
+		<row>742211112221000102</row>
+		<row>532210000010145422</row>
+	</frame>
+
+	<frame duration="100">
+		<row>424544554201221379</row>
+		<row>136763100000000123</row>
+		<row>259961000000000123</row>
+		<row>5898300000000049a9</row>
+		<row>567510000000018dee</row>
+		<row>555410000000001443</row>
+		<row>643210001110000013</row>
+		<row>432210001000022111</row>
+	</frame>
+
+	<frame duration="100">
+		<row>634555666400221369</row>
+		<row>447763100000111123</row>
+		<row>57a962120000000123</row>
+		<row>89a8300000000049aa</row>
+		<row>677510000000018dee</row>
+		<row>555410000000001433</row>
+		<row>543210000000000013</row>
+		<row>432210012000000001</row>
+	</frame>
+
+	<frame duration="100">
+		<row>844556677410121369</row>
+		<row>777764100000111124</row>
+		<row>8aa962232000001134</row>
+		<row>aa98313310000059bb</row>
+		<row>876514431000018ddd</row>
+		<row>654311210000001332</row>
+		<row>543310000000000024</row>
+		<row>432210144200000011</row>
+	</frame>
+
+	<frame duration="100">
+		<row>853556787520121369</row>
+		<row>998764200000111134</row>
+		<row>bba972253000001234</row>
+		<row>aa9843874100005abb</row>
+		<row>876516a86310008ddd</row>
+		<row>654313654100000322</row>
+		<row>544311331000000034</row>
+		<row>333210367400111121</row>
+	</frame>
+
+	<frame duration="100">
+		<row>963556788620121369</row>
+		<row>ba8764200000111134</row>
+		<row>bba973255100001234</row>
+		<row>a98844ab9300005abb</row>
+		<row>765527cca730008ddd</row>
+		<row>654414998541000223</row>
+		<row>544312675420000135</row>
+		<row>333211489611222222</row>
+	</frame>
+
+	<frame duration="100">
+		<row>963556788630121369</row>
+		<row>ba8764200000111134</row>
+		<row>baa973256200001234</row>
+		<row>888853bec710005abb</row>
+		<row>654425deda50008ddd</row>
+		<row>554424bcb973000223</row>
+		<row>5443129a9752001145</row>
+		<row>3333116aa822343332</row>
+	</frame>
+
+	<frame duration="100">
+		<row>863456788730121369</row>
+		<row>ba8864200000111134</row>
+		<row>a99984156300001234</row>
+		<row>6777628eea20005acb</row>
+		<row>443323cffc70008ddd</row>
+		<row>544423bddc93000222</row>
+		<row>4444229cca83112255</row>
+		<row>3333117bb832554432</row>
+	</frame>
+
+	<frame duration="100">
+		<row>753456778730121369</row>
+		<row>a98764200000111134</row>
+		<row>889985235300001234</row>
+		<row>5556634dec40005acc</row>
+		<row>3222219ffe80008dcc</row>
+		<row>433322aefda4000123</row>
+		<row>4444219eec93122356</row>
+		<row>3332117cd833666543</row>
+	</frame>
+
+	<frame duration="100">
+		<row>553346688740121369</row>
+		<row>888775210001111134</row>
+		<row>678985224300011234</row>
+		<row>4445532bec50005acc</row>
+		<row>1111215efe91008dcc</row>
+		<row>3333218ffeb3001123</row>
+		<row>4444219efda3123466</row>
+		<row>3322117cd923777643</row>
+	</frame>
+
+	<frame duration="100">
+		<row>343235778740121369</row>
+		<row>677875310001111134</row>
+		<row>568886313310111234</row>
+		<row>33344416dd60005acc</row>
+		<row>0000112ceea1018dcc</row>
+		<row>2223216efeb2000123</row>
+		<row>3333318ffd92233566</row>
+		<row>3322118dd924888643</row>
+	</frame>
+
+	<frame duration="100">
+		<row>233335677740121368</row>
+		<row>567875310001111234</row>
+		<row>467885311200111234</row>
+		<row>222233228b60005acc</row>
+		<row>00000117dea0018dcc</row>
+		<row>2222214efea1001123</row>
+		<row>3333217ffd81234565</row>
+		<row>3322118dd825998643</row>
+	</frame>
+
+	<frame duration="100">
+		<row>134334677740121269</row>
+		<row>357875310001111234</row>
+		<row>357776410000111234</row>
+		<row>211223312860004acc</row>
+		<row>011100139d90019ccc</row>
+		<row>1111112cfe90001122</row>
+		<row>2233216ffc51344565</row>
+		<row>2222118dd7269a9743</row>
+	</frame>
+
+	<frame duration="100">
+		<row>235533567640121268</row>
+		<row>257875321001111234</row>
+		<row>357776420000111234</row>
+		<row>211112320350004acc</row>
+		<row>023210124980118ccc</row>
+		<row>0011111bec70101122</row>
+		<row>2222214efb31344555</row>
+		<row>2222117dd516aa9743</row>
+	</frame>
+
+	<frame duration="100">
+		<row>225543467640122268</row>
+		<row>147875421001111234</row>
+		<row>256766421000111244</row>
+		<row>211112332020104acc</row>
+		<row>133320122460118ccc</row>
+		<row>00000119ca40101122</row>
+		<row>1112214ee812344554</row>
+		<row>2222106dc427aa9743</row>
+	</frame>
+
+	<frame duration="100">
+		<row>236643456640122268</row>
+		<row>147876421011111245</row>
+		<row>356666532100111244</row>
+		<row>211112344100104acc</row>
+		<row>134430232230118ccc</row>
+		<row>00000117a710101121</row>
+		<row>1111113de403444544</row>
+		<row>2111105cb226999643</row>
+	</frame>
+
+	<frame duration="100">
+		<row>147752355630122158</row>
+		<row>158876421111222245</row>
+		<row>356665543100111244</row>
+		<row>211112355200104abc</row>
+		<row>134430243110118ccc</row>
+		<row>000000157201101112</row>
+		<row>1111112dc123444433</row>
+		<row>1111104ba137998632</row>
+	</frame>
+
+	<frame duration="100">
+		<row>258853345520222158</row>
+		<row>358876432111222245</row>
+		<row>356665543211111234</row>
+		<row>2111123673001049bc</row>
+		<row>034430355200118ccc</row>
+		<row>000000134001101111</row>
+		<row>1111111a8024444432</row>
+		<row>111110297036888532</row>
+	</frame>
+
+	<frame duration="100">
+		<row>468863244420222257</row>
+		<row>468876432112222245</row>
+		<row>456665544321111244</row>
+		<row>2111124775101049bc</row>
+		<row>034420366300118ccc</row>
+		<row>001001221002101111</row>
+		<row>000111064134443322</row>
+		<row>110111164136787532</row>
+	</frame>
+
+	<frame duration="100">
+		<row>678863233310232247</row>
+		<row>678876432222222245</row>
+		<row>566665555321111245</row>
+		<row>2111124785201049bc</row>
+		<row>034411477400118ccc</row>
+		<row>001001321112100111</row>
+		<row>000012110234433211</row>
+		<row>100121021135776432</row>
+	</frame>
+
+	<frame duration="100">
+		<row>789864223211232146</row>
+		<row>788876433222233345</row>
+		<row>666665555432212245</row>
+		<row>2111135886201039bb</row>
+		<row>034201588410118bcd</row>
+		<row>001002332222210111</row>
+		<row>000012200344432111</row>
+		<row>100132100235665432</row>
+	</frame>
+
+	<frame duration="100">
+		<row>899874212101232135</row>
+		<row>888876533333333346</row>
+		<row>666666555432222345</row>
+		<row>2111235896311038bb</row>
+		<row>033102688511117bcc</row>
+		<row>001003554333210111</row>
+		<row>000023321344321000</row>
+		<row>100233201234554322</row>
+	</frame>
+
+	<frame duration="100">
+		<row>999975311111233135</row>
+		<row>888876543333333346</row>
+		<row>666666556543222345</row>
+		<row>1111246897311038ab</row>
+		<row>132013799621107bcc</row>
+		<row>010014665433210121</row>
+		<row>000124443334320000</row>
+		<row>101244422234444322</row>
+	</frame>
+
+	<frame duration="100">
+		<row>999975321112333125</row>
+		<row>888876543333344346</row>
+		<row>666666666543322345</row>
+		<row>1112357897411138ab</row>
+		<row>131024799631106acc</row>
+		<row>010024776433210121</row>
+		<row>000135654333310000</row>
+		<row>001355543333333211</row>
+	</frame>
+
+	<frame duration="100">
+		<row>999975321112333124</row>
+		<row>888876544444444457</row>
+		<row>666665666544333345</row>
+		<row>1112357897421137ab</row>
+		<row>120035899632106abc</row>
+		<row>010135787543300121</row>
+		<row>000246775433210000</row>
+		<row>001367754322232211</row>
+	</frame>
+
+	<frame duration="100">
+		<row>999975322222333114</row>
+		<row>888876544444444457</row>
+		<row>666665666554333455</row>
+		<row>11234578874211379a</row>
+		<row>1202468997421059bc</row>
+		<row>010246888543310121</row>
+		<row>001356776433200000</row>
+		<row>002467775321122210</row>
+	</frame>
+
+	<frame duration="100">
+		<row>889975322223333113</row>
+		<row>788876544444444457</row>
+		<row>566655656655444455</row>
+		<row>11234678874221369a</row>
+		<row>1102467997421048bb</row>
+		<row>000356788644310121</row>
+		<row>001356786433200111</row>
+		<row>002467776320011110</row>
+	</frame>
+
+	<frame duration="100">
+		<row>789875322223333113</row>
+		<row>678876544455444468</row>
+		<row>456555655655444565</row>
+		<row>11234677875321368a</row>
+		<row>0003567997432037ab</row>
+		<row>001356788654310121</row>
+		<row>001345787532100112</row>
+		<row>002467787420001100</row>
+	</frame>
+
+	<frame duration="100">
+		<row>678874322233333212</row>
+		<row>568876544455554568</row>
+		<row>345555665666544566</row>
+		<row>012356678753313589</row>
+		<row>00134568875320279a</row>
+		<row>001345688754310121</row>
+		<row>002344677532100223</row>
+		<row>012456787410001110</row>
+	</frame>
+
+	<frame duration="100">
+		<row>467764322233333212</row>
+		<row>357765554455555578</row>
+		<row>134555666666555566</row>
+		<row>002356677754312579</row>
+		<row>00124567875320258a</row>
+		<row>001234578754310121</row>
+		<row>002223567532101224</row>
+		<row>012345677510000000</row>
+	</frame>
+
+	<frame duration="100">
+		<row>246654332233333212</row>
+		<row>135665555555555579</row>
+		<row>013455666676666666</row>
+		<row>002345677764311468</row>
+		<row>001234577754201589</row>
+		<row>001222467754310110</row>
+		<row>001112356532101335</row>
+		<row>012234577510000101</row>
+	</frame>
+
+	<frame duration="100">
+		<row>025543332233333212</row>
+		<row>214555665555555579</row>
+		<row>502346666676666676</row>
+		<row>401355677764321367</row>
+		<row>001233467754300478</row>
+		<row>000111346764310110</row>
+		<row>001101245532101336</row>
+		<row>111223467510000112</row>
+	</frame>
+
+	<frame duration="100">
+		<row>403433333333333212</row>
+		<row>922445665555555579</row>
+		<row>b30246776777667776</row>
+		<row>821355567765421357</row>
+		<row>001223457764310368</row>
+		<row>000000235664310110</row>
+		<row>001000134532101347</row>
+		<row>111112356510001112</row>
+	</frame>
+
+	<frame duration="100">
+		<row>a31223333333333222</row>
+		<row>e8123466655555568a</row>
+		<row>e91247777777777776</row>
+		<row>c51366567765421246</row>
+		<row>201222346764310257</row>
+		<row>001000124654310100</row>
+		<row>000000023532002348</row>
+		<row>110001245410001113</row>
+	</frame>
+
+	<frame duration="100">
+		<row>c81022333333332222</row>
+		<row>ed402567655555568a</row>
+		<row>fc3257877777777777</row>
+		<row>d71466656665421135</row>
+		<row>311222345664310146</row>
+		<row>000000013554310100</row>
+		<row>110000012432002358</row>
+		<row>110001234410011114</row>
+	</frame>
+
+	<frame duration="100">
+		<row>ca3012333333332222</row>
+		<row>ee812577655555569a</row>
+		<row>fd4258887778888877</row>
+		<row>ea1466656666421135</row>
+		<row>511122235664310135</row>
+		<row>000000002554300100</row>
+		<row>110000001432002359</row>
+		<row>210000123420011125</row>
+	</frame>
+
+	<frame duration="100">
+		<row>993013333333322222</row>
+		<row>cc703677655555679a</row>
+		<row>fd4268987778888887</row>
+		<row>eb1477666666421124</row>
+		<row>730122234664310024</row>
+		<row>000000001554300100</row>
+		<row>210000000432002359</row>
+		<row>210000012420011126</row>
+	</frame>
+
+	<frame duration="100">
+		<row>351023333333322122</row>
+		<row>6720467765555668aa</row>
+		<row>ec2379987778888887</row>
+		<row>fc1477666666421013</row>
+		<row>740122234564310023</row>
+		<row>100000001454300100</row>
+		<row>210000000332002359</row>
+		<row>210000012420011137</row>
+	</frame>
+
+	<frame duration="100">
+		<row>000023433333322222</row>
+		<row>1102467765556679aa</row>
+		<row>c91489987778898887</row>
+		<row>fc2477766665421013</row>
+		<row>850122223554310013</row>
+		<row>100000001454200100</row>
+		<row>210000000332102359</row>
+		<row>320000001430022137</row>
+	</frame>
+
+	<frame duration="100">
+		<row>000134433333322222</row>
+		<row>0023577765556789aa</row>
+		<row>a5258a987778898887</row>
+		<row>fd2477765665421012</row>
+		<row>750122223554210012</row>
+		<row>210000000444200100</row>
+		<row>320000000332002359</row>
+		<row>320000001431022248</row>
+	</frame>
+
+	<frame duration="100">
+		<row>211234433333322222</row>
+		<row>013567776555789aaa</row>
+		<row>73369a987778998887</row>
+		<row>fc2577765565421001</row>
+		<row>650122223454200001</row>
+		<row>210000000344200100</row>
+		<row>43000000033200235a</row>
+		<row>431000001441022249</row>
+	</frame>
+
+	<frame duration="100">
+		<row>222344433333322222</row>
+		<row>12567777655589aaaa</row>
+		<row>4237aa987778988887</row>
+		<row>ec2577766555321001</row>
+		<row>540122223454200001</row>
+		<row>320000000343200100</row>
+		<row>43100000033201235a</row>
+		<row>432000001542022249</row>
+	</frame>
+
+	<frame duration="100">
+		<row>223344333333332222</row>
+		<row>1367777765568aaaaa</row>
+		<row>3248aa987777988887</row>
+		<row>db2577765554321001</row>
+		<row>430122223443200000</row>
+		<row>431000000343200100</row>
+		<row>54100000033201335a</row>
+		<row>442000002552022249</row>
+	</frame>
+
+	<frame duration="100">
+		<row>333444333333333222</row>
+		<row>2477777765569aaaa9</row>
+		<row>1259aa987777888887</row>
+		<row>b82688766554311000</row>
+		<row>320122223443100000</row>
+		<row>431000000343100100</row>
+		<row>54200000043201336a</row>
+		<row>44310000266202225a</row>
+	</frame>
+
+	<frame duration="100">
+		<row>333444333333333222</row>
+		<row>257777776557aaaaa9</row>
+		<row>0269aa977667888888</row>
+		<row>752688766554311000</row>
+		<row>210222223343100000</row>
+		<row>432000000343100100</row>
+		<row>54200000154201336a</row>
+		<row>44310000377202225a</row>
+	</frame>
+
+	<frame duration="100">
+		<row>333444333333433221</row>
+		<row>257777766547aaaaa9</row>
+		<row>0279aa976667888888</row>
+		<row>122688765553211000</row>
+		<row>211222222342100000</row>
+		<row>542000000342100100</row>
+		<row>55200000265201335a</row>
+		<row>45420000487202226a</row>
+	</frame>
+
+	<frame duration="100">
+		<row>333444333234433221</row>
+		<row>157777765547aaaaa8</row>
+		<row>027aa9876556888888</row>
+		<row>003688765543210001</row>
+		<row>321222222332100000</row>
+		<row>542000000342100100</row>
+		<row>65300000275201336a</row>
+		<row>55431001598202237b</row>
+	</frame>
+
+	<frame duration="100">
+		<row>333444333334433221</row>
+		<row>147777765447aaaaa8</row>
+		<row>027aa9876555778887</row>
+		<row>104788765543210001</row>
+		<row>322222222332000000</row>
+		<row>542000001442000100</row>
+		<row>65300000386201336a</row>
+		<row>555310026a8302237b</row>
+	</frame>
+
+	<frame duration="100">
+		<row>333344333344433221</row>
+		<row>136777665447aaaa98</row>
+		<row>027999866545777887</row>
+		<row>114777665542100011</row>
+		<row>432222222321000000</row>
+		<row>542000002542000000</row>
+		<row>653000005a8201336a</row>
+		<row>665421137a8302237b</row>
+	</frame>
+
+	<frame duration="100">
+		<row>333344333344433221</row>
+		<row>126777665446aaaa97</row>
+		<row>016998766434677887</row>
+		<row>214677655431100011</row>
+		<row>542222222221000000</row>
+		<row>542000002542000000</row>
+		<row>653000016b8301336a</row>
+		<row>665422248a9302238c</row>
+	</frame>
+
+	<frame duration="100">
+		<row>333344333344433221</row>
+		<row>0156776654469aaa97</row>
+		<row>005787766423567887</row>
+		<row>114676555431000112</row>
+		<row>543222222210000000</row>
+		<row>652000003542000000</row>
+		<row>653000027c9301346a</row>
+		<row>676532358b9301248c</row>
+	</frame>
+
+	<frame duration="100">
+		<row>323344433345433221</row>
+		<row>1035666553358aa986</row>
+		<row>003677666422567777</row>
+		<row>013565555420000112</row>
+		<row>543322222210000001</row>
+		<row>753100013542000000</row>
+		<row>753100038c9300346a</row>
+		<row>776543469b9301348c</row>
+	</frame>
+
+	<frame duration="100">
+		<row>322344443355433211</row>
+		<row>10246655434589a986</row>
+		<row>001466555311467777</row>
+		<row>001454455410000112</row>
+		<row>554332222210000001</row>
+		<row>763100013542000000</row>
+		<row>764100048b9300236a</row>
+		<row>77765457ab9301359c</row>
+	</frame>
+
+	<frame duration="100">
+		<row>312334444456433211</row>
+		<row>10134554434579a986</row>
+		<row>130345555311357777</row>
+		<row>000344444310000123</row>
+		<row>554322222210000002</row>
+		<row>774200023542000000</row>
+		<row>875200158b9300236a</row>
+		<row>78865568bb8401359c</row>
+	</frame>
+
+	<frame duration="100">
+		<row>311234444466443211</row>
+		<row>020244444344689985</row>
+		<row>042134445301246777</row>
+		<row>110133344300000123</row>
+		<row>454332222100000012</row>
+		<row>786310122431000000</row>
+		<row>886310267a8300236a</row>
+		<row>78876669bb840036ad</row>
+	</frame>
+
+	<frame duration="100">
+		<row>311234444466543210</row>
+		<row>031134444344578875</row>
+		<row>044023444212245776</row>
+		<row>111123334301100134</row>
+		<row>454433222100000013</row>
+		<row>677521222331000000</row>
+		<row>78752135698300136a</row>
+		<row>6788777aba840036ad</row>
+	</frame>
+
+	<frame duration="100">
+		<row>211345544577543210</row>
+		<row>021134444344568875</row>
+		<row>114113344214335776</row>
+		<row>211012333202200134</row>
+		<row>345432222100000013</row>
+		<row>577543221231000001</row>
+		<row>67764345587300136a</row>
+		<row>5788878aaa740026ad</row>
+	</frame>
+
+	<frame duration="100">
+		<row>211345654578643211</row>
+		<row>100134444354467764</row>
+		<row>203112344126434666</row>
+		<row>310002233203300135</row>
+		<row>134432222100000023</row>
+		<row>467653221221000001</row>
+		<row>57875554477300036a</row>
+		<row>46788889a9740027bd</row>
+	</frame>
+
+	<frame duration="100">
+		<row>212456654578653200</row>
+		<row>200244444355456764</row>
+		<row>410002333128534666</row>
+		<row>320001232103310135</row>
+		<row>034432221100000024</row>
+		<row>356653221221000001</row>
+		<row>46776553366300026a</row>
+		<row>25788899a9630027be</row>
+	</frame>
+
+	<frame duration="100">
+		<row>223467765688753200</row>
+		<row>311355543355446653</row>
+		<row>530002333138733565</row>
+		<row>231001222103420146</row>
+		<row>114432221100000024</row>
+		<row>245543221221000001</row>
+		<row>46666543365300026a</row>
+		<row>1478888899631027be</row>
+	</frame>
+
+	<frame duration="100">
+		<row>123567765689764200</row>
+		<row>322466543366445543</row>
+		<row>740012332039832455</row>
+		<row>332001222003420146</row>
+		<row>313432221100000035</row>
+		<row>234432221221000001</row>
+		<row>35565432365210026b</row>
+		<row>1368888898631017be</row>
+	</frame>
+
+	<frame duration="100">
+		<row>124677865679864210</row>
+		<row>323576543467534542</row>
+		<row>751012332049942455</row>
+		<row>322101222003430146</row>
+		<row>612332221100000035</row>
+		<row>234432221210000001</row>
+		<row>35554322355210027b</row>
+		<row>4258877887531017ce</row>
+	</frame>
+
+	<frame duration="100">
+		<row>025678865679864200</row>
+		<row>334677543477534432</row>
+		<row>852123322049952344</row>
+		<row>333111221003430146</row>
+		<row>822322221100000135</row>
+		<row>233322221210000001</row>
+		<row>24443222354210017b</row>
+		<row>7357777787521006ce</row>
+	</frame>
+
+	<frame duration="100">
+		<row>135788865689875300</row>
+		<row>435677543478643321</row>
+		<row>852123321059961244</row>
+		<row>322211221013430146</row>
+		<row>941322221100000135</row>
+		<row>133322221210000001</row>
+		<row>24332223454210017c</row>
+		<row>9357776776521006ce</row>
+	</frame>
+
+	<frame duration="100">
+		<row>136788765689875310</row>
+		<row>435777543579743321</row>
+		<row>852123321059a72244</row>
+		<row>432211221002430147</row>
+		<row>a61322221100000146</row>
+		<row>233222222210000012</row>
+		<row>24332223454210017c</row>
+		<row>a457766776421005ce</row>
+	</frame>
+
+	<frame duration="100">
+		<row>246888754689986410</row>
+		<row>435777543589854322</row>
+		<row>742123221059a72133</row>
+		<row>432211211012330147</row>
+		<row>a61322221110000146</row>
+		<row>233222222210000012</row>
+		<row>34322234443210017d</row>
+		<row>b546667775421004ce</row>
+	</frame>
+
+	<frame duration="100">
+		<row>247888654579987420</row>
+		<row>435776543589864322</row>
+		<row>642122210159972133</row>
+		<row>432221211012330146</row>
+		<row>952332222110000146</row>
+		<row>133222222210000012</row>
+		<row>33322334443210007d</row>
+		<row>c546666765421103ce</row>
+	</frame>
+
+	<frame duration="100">
+		<row>357887643579987520</row>
+		<row>335766433589865322</row>
+		<row>531122210159972123</row>
+		<row>321221111012330146</row>
+		<row>631332222110000146</row>
+		<row>034222222210000013</row>
+		<row>43322344443110007d</row>
+		<row>d546667664321103be</row>
+	</frame>
+
+	<frame duration="100">
+		<row>457986533568987521</row>
+		<row>214665323589975432</row>
+		<row>321012110159972123</row>
+		<row>211221111012220146</row>
+		<row>212442222110000146</row>
+		<row>034322222210000013</row>
+		<row>53433444433110007d</row>
+		<row>d646666654321102be</row>
+	</frame>
+
+	<frame duration="100">
+		<row>568985422468887631</row>
+		<row>113554323589975432</row>
+		<row>210001110158962123</row>
+		<row>112331111101220146</row>
+		<row>013552222110000146</row>
+		<row>145322222210000113</row>
+		<row>63433444432110007d</row>
+		<row>d536676544321101ae</row>
+	</frame>
+
+	<frame duration="100">
+		<row>568975311357887631</row>
+		<row>123443212589876433</row>
+		<row>111001110047751123</row>
+		<row>223431111111210146</row>
+		<row>235653222110000146</row>
+		<row>145432222210000113</row>
+		<row>73443444332110006d</row>
+		<row>d636665443321111ae</row>
+	</frame>
+
+	<frame duration="100">
+		<row>567863211257887631</row>
+		<row>232332101478876543</row>
+		<row>122000000047641123</row>
+		<row>345531111111110136</row>
+		<row>457753222210000146</row>
+		<row>246532222210000123</row>
+		<row>73443333332110006d</row>
+		<row>c5256544332111119e</row>
+	</frame>
+
+	<frame duration="100">
+		<row>567752100246777642</row>
+		<row>342221000367776543</row>
+		<row>233100000036630123</row>
+		<row>556641111101100135</row>
+		<row>578852222210000146</row>
+		<row>246522222210000123</row>
+		<row>74232123322110105d</row>
+		<row>95145433332111107d</row>
+	</frame>
+
+	<frame duration="100">
+		<row>666641000136777642</row>
+		<row>353110000257766543</row>
+		<row>334300000025520123</row>
+		<row>677731111100100135</row>
+		<row>679852222210000146</row>
+		<row>245421122210000123</row>
+		<row>65210012222111105d</row>
+		<row>86123222322112206d</row>
+	</frame>
+
+	<frame duration="100">
+		<row>666530000035677642</row>
+		<row>454100000246666543</row>
+		<row>444410000013310123</row>
+		<row>677631111111000135</row>
+		<row>788742122211000146</row>
+		<row>345420122210000123</row>
+		<row>46200002222111114c</row>
+		<row>66211112222112215c</row>
+	</frame>
+
+	<frame duration="100">
+		<row>665420000024567653</row>
+		<row>355200000135566544</row>
+		<row>444530000002201223</row>
+		<row>577521011110000135</row>
+		<row>678731122211000146</row>
+		<row>344410012211000123</row>
+		<row>35411001222111113b</row>
+		<row>56521001222222214b</row>
+	</frame>
+
+	<frame duration="100">
+		<row>665310100013566653</row>
+		<row>345310000024555544</row>
+		<row>544552000001101223</row>
+		<row>565410011110000135</row>
+		<row>577631112221000146</row>
+		<row>344310012211000122</row>
+		<row>25532201222111112a</row>
+		<row>45654101222222213b</row>
+	</frame>
+
+	<frame duration="100">
+		<row>665302310013456653</row>
+		<row>345433200013455544</row>
+		<row>544673000000001233</row>
+		<row>444210011110000134</row>
+		<row>466420112221100136</row>
+		<row>244300012221000122</row>
+		<row>145333002221111129</row>
+		<row>35798401222222212a</row>
+	</frame>
+
+	<frame duration="100">
+		<row>554204510002456653</row>
+		<row>334555400012345544</row>
+		<row>545884000000001233</row>
+		<row>222110011110001134</row>
+		<row>344310012221111135</row>
+		<row>133200001221101122</row>
+		<row>024334102221111117</row>
+		<row>158ab8101222222118</row>
+	</frame>
+
+	<frame duration="100">
+		<row>453116620002345653</row>
+		<row>234567410001334544</row>
+		<row>6569a6200000001233</row>
+		<row>000121011110001124</row>
+		<row>122100011221111135</row>
+		<row>122100001221111122</row>
+		<row>013334101221112216</row>
+		<row>048bda201222332117</row>
+	</frame>
+
+	<frame duration="100">
+		<row>443138720001345553</row>
+		<row>233478510001234544</row>
+		<row>6569a8300000002223</row>
+		<row>000252001110001123</row>
+		<row>000000011221111135</row>
+		<row>011000001221111122</row>
+		<row>002334201221111214</row>
+		<row>038cdc401333333206</row>
+	</frame>
+
+	<frame duration="100">
+		<row>332049720001235553</row>
+		<row>222489610001234443</row>
+		<row>5458b9400000012223</row>
+		<row>421473001110001123</row>
+		<row>330000011221111124</row>
+		<row>000000001221111122</row>
+		<row>001244201322112213</row>
+		<row>017bed601333333204</row>
+	</frame>
+
+	<frame duration="100">
+		<row>23106a720001234543</row>
+		<row>22238a600000124443</row>
+		<row>4336ba500000012223</row>
+		<row>763485101100001123</row>
+		<row>896221001221111124</row>
+		<row>121010001222111122</row>
+		<row>001344201332222211</row>
+		<row>016bed702434433203</row>
+	</frame>
+
+	<frame duration="100">
+		<row>22118a610001234543</row>
+		<row>11128b610000123433</row>
+		<row>2114ab610000012223</row>
+		<row>985486101100001123</row>
+		<row>cca642001221111124</row>
+		<row>676420001222111222</row>
+		<row>002554201333222310</row>
+		<row>005bee902444433211</row>
+	</frame>
+
+	<frame duration="100">
+		<row>11149a610001134442</row>
+		<row>00018b710000023333</row>
+		<row>10019b720000012223</row>
+		<row>a97488200100001123</row>
+		<row>ded842001221111123</row>
+		<row>9aa841001232111222</row>
+		<row>025874201443322320</row>
+		<row>003aeea12455443310</row>
+	</frame>
+
+	<frame duration="100">
+		<row>1127a9500000123432</row>
+		<row>00018b710000013332</row>
+		<row>00007b930000012223</row>
+		<row>aa8578300100001223</row>
+		<row>efea53001221011123</row>
+		<row>bddb51001233211122</row>
+		<row>258a73201444323320</row>
+		<row>0029deb12555543310</row>
+	</frame>
+
+	<frame duration="100">
+		<row>236ab9400000123431</row>
+		<row>00039a710000012222</row>
+		<row>00105b940000001233</row>
+		<row>aa9569500000001223</row>
+		<row>efeb63001211011123</row>
+		<row>ceed71001232211222</row>
+		<row>37ab83201455433320</row>
+		<row>0017deb22566543310</row>
+	</frame>
+
+	<frame duration="100">
+		<row>67adc7200000023321</row>
+		<row>00179a720000012221</row>
+		<row>12213ba51000001223</row>
+		<row>aa9559600000001233</row>
+		<row>ffec63100111011123</row>
+		<row>defd70001233211222</row>
+		<row>58bc93201455433320</row>
+		<row>0005ceb22577643320</row>
+	</frame>
+
+	<frame duration="100">
+		<row>abdeb5100000013320</row>
+		<row>016ba9620000001111</row>
+		<row>12212aa62000001223</row>
+		<row>bb9648710000001233</row>
+		<row>fffd73100110011223</row>
+		<row>effe70001233222222</row>
+		<row>7acc93201466543330</row>
+		<row>1003beb22677654320</row>
+	</frame>
+
+	<frame duration="100">
+		<row>defea3000000012310</row>
+		<row>46bda8631000001111</row>
+		<row>23222ab73000000123</row>
+		<row>bba648820000001233</row>
+		<row>fffd72100110011233</row>
+		<row>effe70011222222222</row>
+		<row>8bcc82201466543330</row>
+		<row>01129eb22688754320</row>
+	</frame>
+
+	<frame duration="100">
+		<row>effe91000000012210</row>
+		<row>9add98631000000011</row>
+		<row>223219b95100000123</row>
+		<row>bba737830000001333</row>
+		<row>fffd72100110001334</row>
+		<row>fffe70112222222232</row>
+		<row>9bdc72201467644430</row>
+		<row>01118db22688754320</row>
+	</frame>
+
+	<frame duration="100">
+		<row>fffe70000000002200</row>
+		<row>cded87641000000011</row>
+		<row>233219b96210000123</row>
+		<row>bba736851000001344</row>
+		<row>fffd61100110001344</row>
+		<row>fffd50112222222232</row>
+		<row>acdc52101467654430</row>
+		<row>11117ca22688854321</row>
+	</frame>
+
+	<frame duration="100">
+		<row>fffd50111000001200</row>
+		<row>deec77642000000001</row>
+		<row>232129ba7311000023</row>
+		<row>baa735962100001344</row>
+		<row>ffed61100100002344</row>
+		<row>fffc30222322222233</row>
+		<row>acca32112467754430</row>
+		<row>11116b922689864321</row>
+	</frame>
+
+	<frame duration="100">
+		<row>ffec30111000011100</row>
+		<row>deeb77653101110001</row>
+		<row>22213aba8421100023</row>
+		<row>ba9735973100001354</row>
+		<row>ffec50000100002355</row>
+		<row>ffea11223332222233</row>
+		<row>bcc821112467764430</row>
+		<row>11126a812689864321</row>
+	</frame>
+
+	<frame duration="100">
+		<row>ffea21211000011100</row>
+		<row>eeda77653111222001</row>
+		<row>22215acb8531210023</row>
+		<row>ba9625985211001355</row>
+		<row>ffeb30011100002455</row>
+		<row>ffe712333332222233</row>
+		<row>bcb611112467765420</row>
+		<row>111269612589964320</row>
+	</frame>
+
+	<frame duration="100">
+		<row>ffe922211000011101</row>
+		<row>ddc987754212344201</row>
+		<row>22116bcb9532232023</row>
+		<row>ba9624997431100355</row>
+		<row>ffea20111100002466</row>
+		<row>ffd512333332222333</row>
+		<row>bca311102357765420</row>
+		<row>11126750258a974210</row>
+	</frame>
+
+	<frame duration="100">
+		<row>ffe812221000011101</row>
+		<row>ddba97764222455301</row>
+		<row>22128bcb9642353113</row>
+		<row>ba85259a8542111366</row>
+		<row>ffd810111110002466</row>
+		<row>ffb323444432222333</row>
+		<row>bc9211102357765420</row>
+		<row>11136630158a974210</row>
+	</frame>
+
+	<frame duration="100">
+		<row>ffe812221100011101</row>
+		<row>ddbb97764333567501</row>
+		<row>2214accba743464213</row>
+		<row>ba85259a9753220366</row>
+		<row>ffd711121110002576</row>
+		<row>ffa224444432212333</row>
+		<row>bc8211101357775420</row>
+		<row>11146520158a974210</row>
+	</frame>
+
+	<frame duration="100">
+		<row>ffe812221100011101</row>
+		<row>dcbba7765334578611</row>
+		<row>2116bccba754576213</row>
+		<row>a97426aaa863231367</row>
+		<row>ffb401121110001577</row>
+		<row>ff9134444442212333</row>
+		<row>bc7111001357775420</row>
+		<row>11256410147a975310</row>
+	</frame>
+
+	<frame duration="100">
+		<row>ffe922221111112101</row>
+		<row>cbbdb8765444688720</row>
+		<row>2118cccbb864687313</row>
+		<row>a96337abb974341367</row>
+		<row>fea311222110011577</row>
+		<row>fe8134455442112333</row>
+		<row>bb6110001356775420</row>
+		<row>112663100479975300</row>
+	</frame>
+
+	<frame duration="100">
+		<row>ffea22322111112101</row>
+		<row>cbceb8664334689830</row>
+		<row>203addccb975698412</row>
+		<row>985349bbba84352366</row>
+		<row>fd9211233220011577</row>
+		<row>fe6134555442112333</row>
+		<row>bb5110001246765310</row>
+		<row>213762000379985200</row>
+	</frame>
+
+	<frame duration="100">
+		<row>ffeb31332221112101</row>
+		<row>badec8654323589830</row>
+		<row>104cedccb9867a9512</row>
+		<row>97435accba95463366</row>
+		<row>ed6011333221011577</row>
+		<row>fe5144555442112333</row>
+		<row>ba5110001246765310</row>
+		<row>214862000369985200</row>
+	</frame>
+
+	<frame duration="100">
+		<row>fefc31333322222101</row>
+		<row>badec8654222479940</row>
+		<row>107cedccba878aa512</row>
+		<row>86336bccbb96474256</row>
+		<row>eb4012333321021578</row>
+		<row>fd4145555442102333</row>
+		<row>aa4110001246665310</row>
+		<row>215962000369985200</row>
+	</frame>
+
+	<frame duration="100">
+		<row>eefd41333343222101</row>
+		<row>a9dec8643222369940</row>
+		<row>009dedccba988bb612</row>
+		<row>65337bcccba7584256</row>
+		<row>da2012333321132478</row>
+		<row>fc3134555542102333</row>
+		<row>aa3110001245665310</row>
+		<row>216973000368985210</row>
+	</frame>
+
+	<frame duration="100">
+		<row>eefd51334444322101</row>
+		<row>88dec8642222269950</row>
+		<row>01adeeccba889bb612</row>
+		<row>43238bcccba7695256</row>
+		<row>b71012333321142477</row>
+		<row>eb2134555542012333</row>
+		<row>a93111001245554210</row>
+		<row>216973000258985200</row>
+	</frame>
+
+	<frame duration="100">
+		<row>cdee61334555432101</row>
+		<row>56dfd9632232259960</row>
+		<row>02beeecbb9889bb722</row>
+		<row>22247bcccba8796256</row>
+		<row>940112333322253477</row>
+		<row>d91234555542001332</row>
+		<row>982111001245554200</row>
+		<row>217a84000258985200</row>
+	</frame>
+
+	<frame duration="100">
+		<row>9bee61345555532101</row>
+		<row>25dfd9532343249961</row>
+		<row>03ceedcbb9778bc822</row>
+		<row>01347acccca8797256</row>
+		<row>520111333322263477</row>
+		<row>b70234555542011332</row>
+		<row>771111001244554200</row>
+		<row>217a84000247986300</row>
+	</frame>
+
+	<frame duration="100">
+		<row>59ee72345666532101</row>
+		<row>03dfd9521354349961</row>
+		<row>04ceedcba8768bc822</row>
+		<row>013469bcccb98a8246</row>
+		<row>200111233322374477</row>
+		<row>830134556542021332</row>
+		<row>541111001244444201</row>
+		<row>217b94100147886301</row>
+	</frame>
+
+	<frame duration="100">
+		<row>16ee82345666543201</row>
+		<row>02dfd9522455348a71</row>
+		<row>04ceedca97668bc821</row>
+		<row>013457acccb99a9246</row>
+		<row>000111233322385367</row>
+		<row>300234556641131332</row>
+		<row>211111001344444202</row>
+		<row>327b95100147886301</row>
+	</frame>
+
+	<frame duration="100">
+		<row>03de82355666643201</row>
+		<row>12cfd9522455338a71</row>
+		<row>03ceddba86557bc931</row>
+		<row>0134459cccba9b9236</row>
+		<row>000112133332395367</row>
+		<row>001234456641241332</row>
+		<row>001111001333343102</row>
+		<row>428b95100146886301</row>
+	</frame>
+
+	<frame duration="100">
+		<row>22ce92355666643111</row>
+		<row>31bfd9413565438a82</row>
+		<row>13ceccb965556ac931</row>
+		<row>0033347bccbaaba235</row>
+		<row>001112223332496367</row>
+		<row>011234456641352332</row>
+		<row>001111001333333103</row>
+		<row>527ca6100136776311</row>
+	</frame>
+
+	<frame duration="100">
+		<row>31ce92355666653201</row>
+		<row>41afd9413565437a82</row>
+		<row>22bdcba755556ac931</row>
+		<row>0033225acccbbba335</row>
+		<row>1111122233324a7367</row>
+		<row>111124456641462232</row>
+		<row>101111012333333103</row>
+		<row>536ba6200135776311</row>
+	</frame>
+
+	<frame duration="100">
+		<row>41be82455666653201</row>
+		<row>519fd8313565437a82</row>
+		<row>31acaaa644445aca31</row>
+		<row>00221139cccbbcb325</row>
+		<row>1111112233325b7357</row>
+		<row>111124456641572232</row>
+		<row>100111112432233114</row>
+		<row>635bb7200135676311</row>
+	</frame>
+
+	<frame duration="100">
+		<row>41be82456666653211</row>
+		<row>528dc7224566527a82</row>
+		<row>319b9885444459ca41</row>
+		<row>10220027bccbbcb324</row>
+		<row>1110012234335b8357</row>
+		<row>110123456741682222</row>
+		<row>200111112432233114</row>
+		<row>7339a7200135676312</row>
+	</frame>
+
+	<frame duration="100">
+		<row>41ad72456666653201</row>
+		<row>417ba6235566526a83</row>
+		<row>307a7764334449ca41</row>
+		<row>10220015acccbcc414</row>
+		<row>1110012224436b9256</row>
+		<row>210013467741683222</row>
+		<row>310011113532222125</row>
+		<row>7417a7200134666412</row>
+	</frame>
+
+	<frame duration="100">
+		<row>31ab62566666653211</row>
+		<row>416984145556536983</row>
+		<row>41685553344349ca41</row>
+		<row>201100159cccbcc413</row>
+		<row>2100002224436b9246</row>
+		<row>320013467741793222</row>
+		<row>331001113531222135</row>
+		<row>641386100134666422</row>
+	</frame>
+
+	<frame duration="100">
+		<row>229942566666653211</row>
+		<row>303552245656535983</row>
+		<row>31452333333338ca41</row>
+		<row>201100149bccccc413</row>
+		<row>2100001224436ca246</row>
+		<row>3210024677427a3222</row>
+		<row>332001124531222136</row>
+		<row>531144100134666422</row>
+	</frame>
+
+	<frame duration="100">
+		<row>127732566666663200</row>
+		<row>100021355656535994</row>
+		<row>30120223333338ca41</row>
+		<row>300010038bccccb412</row>
+		<row>2100111224446ca346</row>
+		<row>4310013577417a4222</row>
+		<row>212001135631222136</row>
+		<row>432001000124566422</row>
+	</frame>
+
+	<frame duration="100">
+		<row>025522566666664210</row>
+		<row>100001456656535994</row>
+		<row>31000123322237ba41</row>
+		<row>310021027bccccb402</row>
+		<row>3200221223447ca235</row>
+		<row>4310012577516a4222</row>
+		<row>002101235641222136</row>
+		<row>323200001234566422</row>
+	</frame>
+
+	<frame duration="100">
+		<row>024413566666664210</row>
+		<row>000001456656535994</row>
+		<row>31000013322237ba40</row>
+		<row>310022126bccccb402</row>
+		<row>3210441223447ba235</row>
+		<row>4320102477516a4222</row>
+		<row>222201236741222136</row>
+		<row>223321111234566422</row>
+	</frame>
+
+	<frame duration="100">
+		<row>023313566666664210</row>
+		<row>001002566656534884</row>
+		<row>21000013322237b940</row>
+		<row>320032126bcccca301</row>
+		<row>4310551223446ba235</row>
+		<row>433121136751594222</row>
+		<row>542311246742222136</row>
+		<row>223432222234566421</row>
+	</frame>
+
+	<frame duration="100">
+		<row>023313566666664210</row>
+		<row>001102565556534883</row>
+		<row>21000012322236a930</row>
+		<row>321033015acccc9201</row>
+		<row>5420561222446a9224</row>
+		<row>433112036751494222</row>
+		<row>862321246752222126</row>
+		<row>123554332234576521</row>
+	</frame>
+
+	<frame duration="100">
+		<row>023212567666664310</row>
+		<row>011102455556534873</row>
+		<row>11110012322236a830</row>
+		<row>331033015acccb7101</row>
+		<row>553147122244598224</row>
+		<row>433213126761384122</row>
+		<row>a71321236852232126</row>
+		<row>224676543234576521</row>
+	</frame>
+
+	<frame duration="100">
+		<row>023212467666664310</row>
+		<row>012101455556533762</row>
+		<row>111110012222359730</row>
+		<row>4420330149bcba5101</row>
+		<row>764147122244487124</row>
+		<row>433214116861274133</row>
+		<row>b81332236752333126</row>
+		<row>324687653234577521</row>
+	</frame>
+
+	<frame duration="100">
+		<row>022211466766654210</row>
+		<row>012201345556533661</row>
+		<row>111110011222358520</row>
+		<row>4431220138bbb83011</row>
+		<row>885236122233256113</row>
+		<row>433214215861164133</row>
+		<row>c91442235752333125</row>
+		<row>323798763224577521</row>
+	</frame>
+
+	<frame duration="100">
+		<row>022220356666654321</row>
+		<row>012200244556532540</row>
+		<row>112110001122246310</row>
+		<row>5541220016aa961012</row>
+		<row>996236123232144023</row>
+		<row>433213215862153133</row>
+		<row>c91343335753343215</row>
+		<row>424799863224677521</row>
+	</frame>
+
+	<frame duration="100">
+		<row>022230246676654321</row>
+		<row>012200134555532420</row>
+		<row>112110000122234200</row>
+		<row>664121010378730022</row>
+		<row>996235133221022013</row>
+		<row>433213215762032123</row>
+		<row>c91343335743343214</row>
+		<row>534799863224677521</row>
+	</frame>
+
+	<frame duration="100">
+		<row>022330146666654321</row>
+		<row>012200034455531200</row>
+		<row>012100011112222101</row>
+		<row>663121011034310122</row>
+		<row>a85134034432011013</row>
+		<row>433212115862021123</row>
+		<row>c92343335643444213</row>
+		<row>533799853224677521</row>
+	</frame>
+
+	<frame duration="100">
+		<row>022352035666654322</row>
+		<row>012200034455531000</row>
+		<row>012100023111100011</row>
+		<row>652010122001100123</row>
+		<row>973022145542000013</row>
+		<row>432212026852011123</row>
+		<row>ca2343335643444213</row>
+		<row>533799852224677521</row>
+	</frame>
+
+	<frame duration="100">
+		<row>023464135666654322</row>
+		<row>012200025555520001</row>
+		<row>012100034201000022</row>
+		<row>531010133210001233</row>
+		<row>742011145653100013</row>
+		<row>322201026752000123</row>
+		<row>c92343335544554202</row>
+		<row>633799752124678521</row>
+	</frame>
+
+	<frame duration="100">
+		<row>013477125666653322</row>
+		<row>012202125545421011</row>
+		<row>112101045310000122</row>
+		<row>420010244321011333</row>
+		<row>520000156653100012</row>
+		<row>211100036752100123</row>
+		<row>c91243335544554301</row>
+		<row>633799742124678621</row>
+	</frame>
+
+	<frame duration="100">
+		<row>023599325666643333</row>
+		<row>012216416545421122</row>
+		<row>122123146420001233</row>
+		<row>310020245432122334</row>
+		<row>210000256753100012</row>
+		<row>211100146742100123</row>
+		<row>b81243344544555301</row>
+		<row>633688642124688620</row>
+	</frame>
+
+	<frame duration="100">
+		<row>0246ab425666543333</row>
+		<row>013218616644321223</row>
+		<row>221145256531112344</row>
+		<row>221131356543223344</row>
+		<row>123000356653100112</row>
+		<row>100100146642100123</row>
+		<row>a60243334444565311</row>
+		<row>523688532124688620</row>
+	</frame>
+
+	<frame duration="100">
+		<row>0357bc525656543333</row>
+		<row>01323b716654322233</row>
+		<row>221177256642223444</row>
+		<row>232231356543333444</row>
+		<row>264100356653100112</row>
+		<row>000000246542111223</row>
+		<row>840243344334665310</row>
+		<row>523687531124688620</row>
+	</frame>
+
+	<frame duration="100">
+		<row>0369cc515655543333</row>
+		<row>01215c816754322333</row>
+		<row>321398257643234555</row>
+		<row>442341356543334445</row>
+		<row>486100356542111112</row>
+		<row>000000245542111223</row>
+		<row>510233344334665310</row>
+		<row>313677421124688620</row>
+	</frame>
+
+	<frame duration="100">
+		<row>037add514655433334</row>
+		<row>01218e815754333333</row>
+		<row>3314c9257754345565</row>
+		<row>552341356544344455</row>
+		<row>7a7101356542111112</row>
+		<row>001000255442212223</row>
+		<row>200233333334665310</row>
+		<row>103676421124688620</row>
+	</frame>
+
+	<frame duration="100">
+		<row>048bed514655433334</row>
+		<row>0011be815754333334</row>
+		<row>5316da357764455665</row>
+		<row>652352355544444555</row>
+		<row>ac8201355442111122</row>
+		<row>011000245443222223</row>
+		<row>001233333334665310</row>
+		<row>013565411124688620</row>
+	</frame>
+
+	<frame duration="100">
+		<row>05aded614654432234</row>
+		<row>0004de915764433334</row>
+		<row>5318ea347875556676</row>
+		<row>752352355544445445</row>
+		<row>cc8201355432111122</row>
+		<row>122001345443222223</row>
+		<row>001233333335665410</row>
+		<row>013565311124688620</row>
+	</frame>
+
+	<frame duration="100">
+		<row>16befd614654332234</row>
+		<row>0018ee915864433334</row>
+		<row>6419ea347876666776</row>
+		<row>751352355554444444</row>
+		<row>dd8201355432111122</row>
+		<row>222101344443322223</row>
+		<row>111233333335665420</row>
+		<row>123454311124688630</row>
+	</frame>
+
+	<frame duration="100">
+		<row>17cefd614654322234</row>
+		<row>114bee915864433344</row>
+		<row>752aeb347877777776</row>
+		<row>751252355554444444</row>
+		<row>ec8101345432211112</row>
+		<row>332101344433322223</row>
+		<row>111233323335675420</row>
+		<row>234444311124688630</row>
+	</frame>
+
+	<frame duration="100">
+		<row>17defd614654322234</row>
+		<row>117dfe914865433334</row>
+		<row>852beb347877777776</row>
+		<row>740242355554444444</row>
+		<row>ec7101344432111112</row>
+		<row>333101344433323223</row>
+		<row>212233322335676421</row>
+		<row>333443211124688630</row>
+	</frame>
+
+	<frame duration="100">
+		<row>27dffd613653322234</row>
+		<row>118efe914875433334</row>
+		<row>952aeb347877777776</row>
+		<row>630242355554444334</row>
+		<row>dc6101344432111111</row>
+		<row>443101344433333323</row>
+		<row>222233322335676421</row>
+		<row>333443211124688630</row>
+	</frame>
+
+	<frame duration="100">
+		<row>28dfec503653222234</row>
+		<row>128efe814875443334</row>
+		<row>962aeb447877777776</row>
+		<row>630242355544333334</row>
+		<row>ec5101344432110001</row>
+		<row>443101344433333323</row>
+		<row>222233222335676421</row>
+		<row>433443211124688630</row>
+	</frame>
+
+	<frame duration="100">
+		<row>28deeb403653222234</row>
+		<row>228efd704875433334</row>
+		<row>9629eb447877777776</row>
+		<row>520242355543333333</row>
+		<row>eb4101344431000001</row>
+		<row>443101344433333223</row>
+		<row>322233222335676421</row>
+		<row>444443211134688630</row>
+	</frame>
+
+	<frame duration="100">
+		<row>37cdd9203653212233</row>
+		<row>228efd603875433334</row>
+		<row>9629eb437877777766</row>
+		<row>421242355543222223</row>
+		<row>ea3111344321000001</row>
+		<row>443101344433333223</row>
+		<row>322233322335676421</row>
+		<row>544443211134688630</row>
+	</frame>
+
+	<frame duration="100">
+		<row>36abb7103653212223</row>
+		<row>227deb403875333334</row>
+		<row>8527ec437877777766</row>
+		<row>411142355443222223</row>
+		<row>da3111344320000000</row>
+		<row>543001234433332223</row>
+		<row>322233322335676421</row>
+		<row>654443211135688630</row>
+	</frame>
+
+	<frame duration="100">
+		<row>368973002553211123</row>
+		<row>115cc8203775333334</row>
+		<row>8516ec436887777766</row>
+		<row>311142355433222123</row>
+		<row>d93121344310111100</row>
+		<row>543011233333332222</row>
+		<row>322233322345676421</row>
+		<row>655443211235778630</row>
+	</frame>
+
+	<frame duration="100">
+		<row>466530012553111123</row>
+		<row>214994113775333334</row>
+		<row>7514cb436887776666</row>
+		<row>310142355443222223</row>
+		<row>d82222344310233200</row>
+		<row>553012233333222222</row>
+		<row>432223322345676421</row>
+		<row>765544311235777631</row>
+	</frame>
+
+	<frame duration="100">
+		<row>554200012553111112</row>
+		<row>112651012775333333</row>
+		<row>7413bb436887666666</row>
+		<row>210143355443222223</row>
+		<row>d82232344201444310</row>
+		<row>653012233332222222</row>
+		<row>432223333345676420</row>
+		<row>876544322235677631</row>
+	</frame>
+
+	<frame duration="100">
+		<row>763001122553111112</row>
+		<row>111210113775333333</row>
+		<row>64129a426887666555</row>
+		<row>210143244453233213</row>
+		<row>d72232233102566410</row>
+		<row>653023333332222212</row>
+		<row>433333443345676420</row>
+		<row>976544332346677531</row>
+	</frame>
+
+	<frame duration="100">
+		<row>872001223453111012</row>
+		<row>221001223775333233</row>
+		<row>541178326887765555</row>
+		<row>210143244454333213</row>
+		<row>d62333233103777510</row>
+		<row>762123233222222112</row>
+		<row>543334444445676410</row>
+		<row>987544433446676531</row>
+	</frame>
+
+	<frame duration="100">
+		<row>982012333453110001</row>
+		<row>221001223675332223</row>
+		<row>431157226998765555</row>
+		<row>210143244564344214</row>
+		<row>c62343222004787620</row>
+		<row>862134322222222111</row>
+		<row>443334444445676410</row>
+		<row>997655444456676532</row>
+	</frame>
+
+	<frame duration="100">
+		<row>a93023333453100001</row>
+		<row>331002323685322223</row>
+		<row>421035225998765555</row>
+		<row>210143234674344213</row>
+		<row>c52343211015888720</row>
+		<row>872144322222222211</row>
+		<row>544344455445676410</row>
+		<row>a98655555556666532</row>
+	</frame>
+
+	<frame duration="100">
+		<row>ba3023443453100001</row>
+		<row>442012333685422223</row>
+		<row>3210341259a8765555</row>
+		<row>210143235774344213</row>
+		<row>c52344210126999830</row>
+		<row>972155311122222211</row>
+		<row>554345456545675310</row>
+		<row>a98655556667665532</row>
+	</frame>
+
+	<frame duration="100">
+		<row>ba3023444453100000</row>
+		<row>553013333686422223</row>
+		<row>3200231269a9765555</row>
+		<row>211143245884345314</row>
+		<row>c423442102479a9830</row>
+		<row>982266311122222111</row>
+		<row>554356567655675310</row>
+		<row>aa9655567777665432</row>
+	</frame>
+
+	<frame duration="100">
+		<row>ba3134444453100000</row>
+		<row>553013333686422222</row>
+		<row>3200231269a9765445</row>
+		<row>311133146984355214</row>
+		<row>c42344311358aaa830</row>
+		<row>982267412223222111</row>
+		<row>554367567656665310</row>
+		<row>aa8765567777655432</row>
+	</frame>
+
+	<frame duration="100">
+		<row>b82034444453100000</row>
+		<row>542013333686422212</row>
+		<row>2200220259a9765445</row>
+		<row>212123147a84344214</row>
+		<row>b32444313458aaa831</row>
+		<row>972267413433222111</row>
+		<row>553368668766665311</row>
+		<row>998765678887655432</row>
+	</frame>
+
+	<frame duration="100">
+		<row>950134444443100100</row>
+		<row>420013333687432112</row>
+		<row>1110120259a9765445</row>
+		<row>222123147a94344214</row>
+		<row>923444323568aaa831</row>
+		<row>861367513543322110</row>
+		<row>553478669876665311</row>
+		<row>898665679987654432</row>
+	</frame>
+
+	<frame duration="100">
+		<row>720134444443101210</row>
+		<row>200023333687532112</row>
+		<row>1221020259a9765445</row>
+		<row>134212148a94344214</row>
+		<row>823444324668aaa831</row>
+		<row>640367514543322110</row>
+		<row>44347866a976664311</row>
+		<row>787665689987654432</row>
+	</frame>
+
+	<frame duration="100">
+		<row>401234444443101210</row>
+		<row>001223333688642112</row>
+		<row>1331010259aa865445</row>
+		<row>145311148a94344214</row>
+		<row>623444324668aaa931</row>
+		<row>520367414653322110</row>
+		<row>44336766aa86554311</row>
+		<row>66655568aa87554432</row>
+	</frame>
+
+	<frame duration="100">
+		<row>112334444443212320</row>
+		<row>023223333588642112</row>
+		<row>2453000259aa865445</row>
+		<row>256520148a84234214</row>
+		<row>523444324668aaa931</row>
+		<row>420367425653222110</row>
+		<row>33235756aa86554321</row>
+		<row>55445568aa97544432</row>
+	</frame>
+
+	<frame duration="100">
+		<row>023434444443213430</row>
+		<row>034333333588753111</row>
+		<row>2674100269aa865445</row>
+		<row>377631148a84234224</row>
+		<row>523444324668aaa921</row>
+		<row>420256414653222111</row>
+		<row>21124656aa86544322</row>
+		<row>33334568aa97544432</row>
+	</frame>
+
+	<frame duration="100">
+		<row>034444444443213530</row>
+		<row>156433333589753111</row>
+		<row>4886200369aa865445</row>
+		<row>488742258a95233224</row>
+		<row>4223443236679aa821</row>
+		<row>520145414653222111</row>
+		<row>100135459a85443322</row>
+		<row>22234458aa97544433</row>
+	</frame>
+
+	<frame duration="100">
+		<row>145544444443224541</row>
+		<row>377533333589864211</row>
+		<row>59a7310369aa864445</row>
+		<row>589863358a85223124</row>
+		<row>4223443235679aa821</row>
+		<row>630034414653222111</row>
+		<row>000124448a85443322</row>
+		<row>01123458aa86544433</row>
+	</frame>
+
+	<frame duration="100">
+		<row>256544444443224541</row>
+		<row>488643333589864211</row>
+		<row>6aa8411369aa864445</row>
+		<row>599874458985223124</row>
+		<row>4223343235569aa821</row>
+		<row>640024314653222211</row>
+		<row>000023347985443322</row>
+		<row>000124579a86544333</row>
+	</frame>
+
+	<frame duration="100">
+		<row>256654444443224541</row>
+		<row>599743334589863211</row>
+		<row>7bb952246aa9864345</row>
+		<row>699975558985223124</row>
+		<row>3222343234568bb921</row>
+		<row>740013203653222211</row>
+		<row>100012336875443322</row>
+		<row>000123579986544333</row>
+	</frame>
+
+	<frame duration="100">
+		<row>366654444443224541</row>
+		<row>699743334689963211</row>
+		<row>7bb9633479a9764345</row>
+		<row>699986568985222114</row>
+		<row>3222333234468ab921</row>
+		<row>841012103654322211</row>
+		<row>310012235775443322</row>
+		<row>100013479986444333</row>
+	</frame>
+
+	<frame duration="100">
+		<row>467654444443224431</row>
+		<row>6aa853334689963111</row>
+		<row>8bba743579a9753334</row>
+		<row>699987678886212114</row>
+		<row>2222333224458ab931</row>
+		<row>741001103654333211</row>
+		<row>320001223664433222</row>
+		<row>200012468986444333</row>
+	</frame>
+
+	<frame duration="100">
+		<row>467654444343223320</row>
+		<row>7aa853334689863212</row>
+		<row>8bba854589a9753234</row>
+		<row>799998777886212114</row>
+		<row>2222233233457ab931</row>
+		<row>730001002654433210</row>
+		<row>310001123554433222</row>
+		<row>200012467876443332</row>
+	</frame>
+
+	<frame duration="100">
+		<row>477654444343212210</row>
+		<row>8aa864344789863212</row>
+		<row>8bba865689a9742234</row>
+		<row>799998777886212113</row>
+		<row>2222223233447ab930</row>
+		<row>620000003665433210</row>
+		<row>200000112453322211</row>
+		<row>200002357775433332</row>
+	</frame>
+
+	<frame duration="100">
+		<row>577765443343211110</row>
+		<row>8aa964445789853212</row>
+		<row>9bba97668998642123</row>
+		<row>799998877876212113</row>
+		<row>2222222223346ab941</row>
+		<row>400000003665444320</row>
+		<row>100000111343222111</row>
+		<row>000001356775433332</row>
+	</frame>
+
+	<frame duration="100">
+		<row>577765443343210010</row>
+		<row>8aa974445788753212</row>
+		<row>9bbba8778998631013</row>
+		<row>799999887776213103</row>
+		<row>22222222233369b941</row>
+		<row>200000003665555430</row>
+		<row>000000001233211001</row>
+		<row>000001346765333332</row>
+	</frame>
+
+	<frame duration="100">
+		<row>577765433333210100</row>
+		<row>9aa975456788752112</row>
+		<row>9bbba8878997521013</row>
+		<row>799999888776213102</row>
+		<row>12222222233359b951</row>
+		<row>000000003666666541</row>
+		<row>000000001222111001</row>
+		<row>000001245664333322</row>
+	</frame>
+
+	<frame duration="100">
+		<row>677765433333211000</row>
+		<row>9aa986556787642101</row>
+		<row>9bbba9888887520002</row>
+		<row>799999988776225202</row>
+		<row>12222222233359ba52</row>
+		<row>000000003666777753</row>
+		<row>110000001121100000</row>
+		<row>110001245554322222</row>
+	</frame>
+
+	<frame duration="100">
+		<row>677775432333221100</row>
+		<row>9aa986666777631001</row>
+		<row>9bbbba988886411001</row>
+		<row>699999988775226301</row>
+		<row>12222222233349ba63</row>
+		<row>000000003677788974</row>
+		<row>221000001111000000</row>
+		<row>231001234443222222</row>
+	</frame>
+
+	<frame duration="100">
+		<row>677775432333322100</row>
+		<row>9aaa97666777531001</row>
+		<row>9bbbba988886311201</row>
+		<row>689999988775237401</row>
+		<row>12222222233349ba73</row>
+		<row>000000003667899a96</row>
+		<row>331000000110000100</row>
+		<row>442001233443212221</row>
+	</frame>
+
+	<frame duration="100">
+		<row>677765322233332100</row>
+		<row>9aaa97666776520100</row>
+		<row>8aabba988876313400</row>
+		<row>688999987775148500</row>
+		<row>12222222223249bb84</row>
+		<row>00000001366899abb8</row>
+		<row>442000000111011320</row>
+		<row>552101233332111111</row>
+	</frame>
+
+	<frame duration="100">
+		<row>566664322233332110</row>
+		<row>8aa997666666421310</row>
+		<row>7aaaaa988875215610</row>
+		<row>578899987775159600</row>
+		<row>12222222222249bb85</row>
+		<row>1100000135689abcca</row>
+		<row>552000000110113431</row>
+		<row>663101233332001111</row>
+	</frame>
+
+	<frame duration="100">
+		<row>566654311233442200</row>
+		<row>89a987655665412520</row>
+		<row>79aaaa888775227730</row>
+		<row>57888988777416a710</row>
+		<row>1222222222224abb96</row>
+		<row>1100000145689abddc</row>
+		<row>653000001211234553</row>
+		<row>764211233321001110</row>
+	</frame>
+
+	<frame duration="100">
+		<row>456654311234443210</row>
+		<row>799987555665313640</row>
+		<row>689aa9887764138840</row>
+		<row>56788888777417a820</row>
+		<row>2222222222225abca7</row>
+		<row>1100000145689acded</row>
+		<row>653100001211345775</row>
+		<row>774211233320000111</row>
+	</frame>
+
+	<frame duration="100">
+		<row>345544211234443210</row>
+		<row>689987555654215850</row>
+		<row>689999887763149950</row>
+		<row>56778888777418a830</row>
+		<row>2222222222225acca8</row>
+		<row>1100000245689aceed</row>
+		<row>653100001222457887</row>
+		<row>775211233220000111</row>
+	</frame>
+
+	<frame duration="100">
+		<row>334443211234443311</row>
+		<row>578876544554216850</row>
+		<row>67899987776316a961</row>
+		<row>66677888776318b830</row>
+		<row>2222222222225accb9</row>
+		<row>111000024568aaceee</row>
+		<row>654100001222468998</row>
+		<row>775322232220011111</row>
+	</frame>
+
+	<frame duration="100">
+		<row>323343210234444311</row>
+		<row>578876544543127950</row>
+		<row>67899987775217a961</row>
+		<row>66677788776329b941</row>
+		<row>3222222222226bccba</row>
+		<row>110000034568abdeee</row>
+		<row>654200001223579aa9</row>
+		<row>775422222210111211</row>
+	</frame>
+
+	<frame duration="100">
+		<row>212343210234544311</row>
+		<row>567876544543128950</row>
+		<row>77789987775218ba71</row>
+		<row>6667777777632ab942</row>
+		<row>2222111222227bccba</row>
+		<row>110000034568abdefe</row>
+		<row>654210001123689aba</row>
+		<row>775422222210222222</row>
+	</frame>
+
+	<frame duration="100">
+		<row>212344210245544312</row>
+		<row>666766544542038950</row>
+		<row>76789988764128ba72</row>
+		<row>5567777777623ab852</row>
+		<row>2221111122127bcccb</row>
+		<row>110000134568abdeff</row>
+		<row>65331001112378abcb</row>
+		<row>876432222210332232</row>
+	</frame>
+
+	<frame duration="100">
+		<row>212354311345544313</row>
+		<row>656776544442049950</row>
+		<row>66789998764129ba72</row>
+		<row>5566777777623bb853</row>
+		<row>2221100111127bcccb</row>
+		<row>110000134458abdfff</row>
+		<row>65331001111478accc</row>
+		<row>876432222210443333</row>
+	</frame>
+
+	<frame duration="100">
+		<row>121455311345544314</row>
+		<row>556776544431059951</row>
+		<row>6678999886413aba62</row>
+		<row>4567667777624bb853</row>
+		<row>1221000111127bcdcb</row>
+		<row>110000133347abefff</row>
+		<row>64321001111479bcdc</row>
+		<row>776432222210454444</row>
+	</frame>
+
+	<frame duration="100">
+		<row>121565421355544315</row>
+		<row>556676544430169951</row>
+		<row>5579aa9886314aba63</row>
+		<row>4466666676525ba853</row>
+		<row>1121000001127bcdcb</row>
+		<row>100000222237acefff</row>
+		<row>54321001100379bcdd</row>
+		<row>765432222210465555</row>
+	</frame>
+
+	<frame duration="100">
+		<row>212576422355544316</row>
+		<row>456687544420279942</row>
+		<row>5579aa9886305aba63</row>
+		<row>3466666666525ba853</row>
+		<row>0121000001127bddcb</row>
+		<row>100000121016acefff</row>
+		<row>53210000000379bcdd</row>
+		<row>665432222210466666</row>
+	</frame>
+
+	<frame duration="100">
+		<row>212677532455544316</row>
+		<row>456787654320379933</row>
+		<row>4579bba985316bb953</row>
+		<row>2467666666526ba753</row>
+		<row>0121000001117bddcb</row>
+		<row>0000001100049cefff</row>
+		<row>43210000000279bdde</row>
+		<row>554422222220477778</row>
+	</frame>
+
+	<frame duration="100">
+		<row>213687533455554227</row>
+		<row>45679875431048a834</row>
+		<row>458abba985317bb953</row>
+		<row>2367666666526ba743</row>
+		<row>0121000001117bdccb</row>
+		<row>0000000000039cefff</row>
+		<row>3221000001016acdee</row>
+		<row>434422222220378889</row>
+	</frame>
+
+	<frame duration="100">
+		<row>114688533455554228</row>
+		<row>446798754311599825</row>
+		<row>348abba975218bb953</row>
+		<row>2367666666426ba743</row>
+		<row>0122000001117bdccb</row>
+		<row>0011000001028cffff</row>
+		<row>2122000012115acdee</row>
+		<row>21332222232037899a</row>
+	</frame>
+
+	<frame duration="100">
+		<row>115788644554444238</row>
+		<row>346899755311699826</row>
+		<row>3479bba975228ba943</row>
+		<row>1357766666526a9643</row>
+		<row>0123100011217cdccb</row>
+		<row>0122000011117cffff</row>
+		<row>1233100122105acdee</row>
+		<row>0023322233312799ab</row>
+	</frame>
+
+	<frame duration="100">
+		<row>125888644554444248</row>
+		<row>3468a975420269a726</row>
+		<row>3479bbb975229ba843</row>
+		<row>1257766666526a9643</row>
+		<row>0023200012216cdccb</row>
+		<row>0133100012116dffff</row>
+		<row>1244201233204acdee</row>
+		<row>23133223343127aabb</row>
+	</frame>
+
+	<frame duration="100">
+		<row>126888644444443248</row>
+		<row>3478a96542037aa726</row>
+		<row>3479bbb975239ba843</row>
+		<row>1247866666526a9643</row>
+		<row>0024300012315bdcbb</row>
+		<row>0244200123206dffff</row>
+		<row>1356311233203adeee</row>
+		<row>87334223343117abbc</row>
+	</frame>
+
+	<frame duration="100">
+		<row>136997544444443158</row>
+		<row>3479a86541037a9627</row>
+		<row>2469bbb975228ba834</row>
+		<row>1147866666526a8533</row>
+		<row>0024300013315cdcbb</row>
+		<row>0256300123315dffff</row>
+		<row>2467412344313adeee</row>
+		<row>a8434333444117abbc</row>
+	</frame>
+
+	<frame duration="100">
+		<row>247997434343332168</row>
+		<row>4579a8654103899527</row>
+		<row>2369bbb975228ba734</row>
+		<row>1146876666525a8533</row>
+		<row>0024410013425cccbb</row>
+		<row>1357401234415dffff</row>
+		<row>2578522444313adeee</row>
+		<row>b9545333444217bbcc</row>
+	</frame>
+
+	<frame duration="100">
+		<row>248996433332332167</row>
+		<row>4579a7554203899537</row>
+		<row>2369aba975217aa634</row>
+		<row>113687666762498533</row>
+		<row>0015510124524bccbb</row>
+		<row>1367411245514cffff</row>
+		<row>2589622455413adeee</row>
+		<row>b8546434455217bccc</row>
+	</frame>
+
+	<frame duration="100">
+		<row>258996322222221176</row>
+		<row>458997554202798437</row>
+		<row>2368aba975316a9634</row>
+		<row>113687666762397533</row>
+		<row>0025510124523bccbb</row>
+		<row>2468511345524cffff</row>
+		<row>3689633555412adeee</row>
+		<row>a7556544455316bccd</row>
+	</frame>
+
+	<frame duration="100">
+		<row>368a85211111121285</row>
+		<row>458a96554200598346</row>
+		<row>2368aba98541499534</row>
+		<row>113687666762287433</row>
+		<row>0025520135633bccbb</row>
+		<row>2478522456623cffff</row>
+		<row>3689633566512adeee</row>
+		<row>97567544555316bccd</row>
+	</frame>
+
+	<frame duration="100">
+		<row>469a85200110011394</row>
+		<row>468a96565320387255</row>
+		<row>3468aaaa8641388434</row>
+		<row>113687667773276433</row>
+		<row>0026620136733acbbb</row>
+		<row>2478622467633cffff</row>
+		<row>3689634666522adeed</row>
+		<row>96567544566316bcdd</row>
+	</frame>
+
+	<frame duration="100">
+		<row>479a74122222111493</row>
+		<row>468a86565421166275</row>
+		<row>3468aaaa8752178444</row>
+		<row>113697667774166433</row>
+		<row>00366212467429cbbb</row>
+		<row>2578622567732bffff</row>
+		<row>3689644666522adeed</row>
+		<row>85478655566316bcdd</row>
+	</frame>
+
+	<frame duration="100">
+		<row>579973146543211593</row>
+		<row>579a85566431044274</row>
+		<row>3468aaaa8763056445</row>
+		<row>123697767874155433</row>
+		<row>01366312478529cbbb</row>
+		<row>2589633578742bfffe</row>
+		<row>3699644677522adeed</row>
+		<row>64478655566316bcdd</row>
+	</frame>
+
+	<frame duration="100">
+		<row>689972157765422692</row>
+		<row>579974566421023284</row>
+		<row>34699aaa9863035455</row>
+		<row>224698668885135433</row>
+		<row>02477313578517bbbb</row>
+		<row>2589633678741aefed</row>
+		<row>3688645677522adedc</row>
+		<row>53588655566316bcdd</row>
+	</frame>
+
+	<frame duration="100">
+		<row>69a962279887533782</row>
+		<row>579964565311001383</row>
+		<row>4578999a9863024455</row>
+		<row>334798678886134433</row>
+		<row>13577323588616bbbb</row>
+		<row>26886346887418efec</row>
+		<row>3688545677513adddb</row>
+		<row>32688554566316bddd</row>
+	</frame>
+
+	<frame duration="100">
+		<row>79a852389999855981</row>
+		<row>689853565210001583</row>
+		<row>457889999863013465</row>
+		<row>345798778886124433</row>
+		<row>23688424689725abbb</row>
+		<row>36886446887517deca</row>
+		<row>3688545776413addcb</row>
+		<row>12687544566316bddd</row>
+	</frame>
+
+	<frame duration="100">
+		<row>899851499aab977981</row>
+		<row>789842454212102784</row>
+		<row>568888999852003566</row>
+		<row>446798778996224444</row>
+		<row>246885346897239aaa</row>
+		<row>36886457887524bdb8</row>
+		<row>3687545676413addb9</row>
+		<row>02687444566316bddd</row>
+	</frame>
+
+	<frame duration="100">
+		<row>8a9841599abcb99a81</row>
+		<row>799741354126525984</row>
+		<row>568877898752014676</row>
+		<row>346788778986214444</row>
+		<row>246885457887328aaa</row>
+		<row>358864578875229b84</row>
+		<row>3677445676413adca8</row>
+		<row>03786434566327cddd</row>
+	</frame>
+
+	<frame duration="100">
+		<row>9a97417aaacccaaa71</row>
+		<row>79863124314a968a95</row>
+		<row>568876788742236786</row>
+		<row>346888878986215544</row>
+		<row>247886457887417999</row>
+		<row>257754578875316742</row>
+		<row>2576335665313acb86</row>
+		<row>03775323465327cedc</row>
+	</frame>
+
+	<frame duration="100">
+		<row>9a86327aaacdcbaa71</row>
+		<row>89862123315ccaaa96</row>
+		<row>568865677643578987</row>
+		<row>246888777886226654</row>
+		<row>236876567887415999</row>
+		<row>257643477765302321</row>
+		<row>24652245653039ba74</row>
+		<row>03775323465328dedd</row>
+	</frame>
+
+	<frame duration="100">
+		<row>9986229bbacdcbaa82</row>
+		<row>88751122214decbba6</row>
+		<row>56775456753479aa97</row>
+		<row>135777777775237754</row>
+		<row>136876566777415888</row>
+		<row>146633466665310111</row>
+		<row>145421355421489853</row>
+		<row>03664223455238dedc</row>
+	</frame>
+
+	<frame duration="100">
+		<row>9975229bbbbccbba82</row>
+		<row>88741122214dedcba7</row>
+		<row>456643456535abbb98</row>
+		<row>125776666664249865</row>
+		<row>135775556666414777</row>
+		<row>135532356555310011</row>
+		<row>034310244421478642</row>
+		<row>03663112354249eedb</row>
+	</frame>
+
+	<frame duration="100">
+		<row>9974128bbbbccbba83</row>
+		<row>77640232113ceeccb8</row>
+		<row>345542345425bddca8</row>
+		<row>02466655554327a975</row>
+		<row>124664445555314677</row>
+		<row>024420245444421111</row>
+		<row>024200134321466531</row>
+		<row>0265211234424aeecb</row>
+	</frame>
+
+	<frame duration="100">
+		<row>9874127abaabcbba93</row>
+		<row>66531233211beedcb8</row>
+		<row>234432233324ceedb8</row>
+		<row>01456544443228cb86</row>
+		<row>014553333444324666</row>
+		<row>013310123444332222</row>
+		<row>013200023321455421</row>
+		<row>0254211234325bedba</row>
+	</frame>
+
+	<frame duration="100">
+		<row>8874026aaa9bcbba93</row>
+		<row>555312332119eeddc9</row>
+		<row>223321023324ceedb9</row>
+		<row>0134543232223adb96</row>
+		<row>013443112223324556</row>
+		<row>012110012333333333</row>
+		<row>002101012211454310</row>
+		<row>0254200124326cedb9</row>
+	</frame>
+
+	<frame duration="100">
+		<row>87641258999abbba83</row>
+		<row>444412333118eeedc9</row>
+		<row>123321012223ceedc9</row>
+		<row>0124431112114ceca7</row>
+		<row>002332001112235555</row>
+		<row>001100001223333343</row>
+		<row>002112001211454200</row>
+		<row>0143100123327dec97</row>
+	</frame>
+
+	<frame duration="100">
+		<row>77641246899abbba83</row>
+		<row>334311333216deedc9</row>
+		<row>112210001122cffec9</row>
+		<row>0023320001104deda7</row>
+		<row>001221000001134445</row>
+		<row>000021000112334444</row>
+		<row>001122001111343201</row>
+		<row>0143100123228eeb86</row>
+	</frame>
+
+	<frame duration="100">
+		<row>666411356889bbba82</row>
+		<row>223310233215deeed9</row>
+		<row>011110000121befec9</row>
+		<row>0012210000105deda7</row>
+		<row>000110000001134444</row>
+		<row>000043100002334554</row>
+		<row>001133100111343101</row>
+		<row>0143100113229eda55</row>
+	</frame>
+
+	<frame duration="100">
+		<row>666520345788aaaa82</row>
+		<row>122320133314beedc9</row>
+		<row>001100000111aefec9</row>
+		<row>0011100000005deda8</row>
+		<row>000000101000134444</row>
+		<row>000265200001234555</row>
+		<row>001134200000233101</row>
+		<row>014310001222aec833</row>
+	</frame>
+
+	<frame duration="100">
+		<row>566520244678aaaa71</row>
+		<row>112330023312adedc8</row>
+		<row>0000000001118efec9</row>
+		<row>0000000001003ceca8</row>
+		<row>000024322300024333</row>
+		<row>000497310000134555</row>
+		<row>002244200000232011</row>
+		<row>014310001212bdc512</row>
+	</frame>
+
+	<frame duration="100">
+		<row>5665301346779aaa61</row>
+		<row>1113310233129dedc8</row>
+		<row>0000000001116dfec9</row>
+		<row>0000011001002beb97</row>
+		<row>000268634520023333</row>
+		<row>0017b8311100134555</row>
+		<row>012244200000121011</row>
+		<row>014420001203bda201</row>
+	</frame>
+
+	<frame duration="100">
+		<row>5666310245679aa950</row>
+		<row>0123320022118dedb8</row>
+		<row>0000000001214cfeb8</row>
+		<row>00002420010008da76</row>
+		<row>0016aa855640013333</row>
+		<row>0029d9421110035565</row>
+		<row>013244200000121011</row>
+		<row>024421000103bc8100</row>
+	</frame>
+
+	<frame duration="100">
+		<row>5676420135668aa830</row>
+		<row>0123431022117cdda7</row>
+		<row>0000000001213bedb7</row>
+		<row>00015641111005a854</row>
+		<row>0049dc976761012443</row>
+		<row>004bea532320035565</row>
+		<row>123245200000111111</row>
+		<row>025531000104aa6111</row>
+	</frame>
+
+	<frame duration="100">
+		<row>667753103555899720</row>
+		<row>1123431012116bdc95</row>
+		<row>00011100112129dda7</row>
+		<row>000477521110028633</row>
+		<row>016cedb87872012453</row>
+		<row>016ceb533442035566</row>
+		<row>123345200001110111</row>
+		<row>136631000004983121</row>
+	</frame>
+
+	<frame duration="100">
+		<row>677763102455798610</row>
+		<row>1124432002115acb84</row>
+		<row>00012100123217bc96</row>
+		<row>002688632110014421</row>
+		<row>039deec98984013564</row>
+		<row>029deb644563035666</row>
+		<row>234345210122001111</row>
+		<row>246642000004761121</row>
+	</frame>
+
+	<frame duration="100">
+		<row>678864102444687401</row>
+		<row>1134431001104aca74</row>
+		<row>00122200123215ab96</row>
+		<row>004899742111002310</row>
+		<row>05cefeca9995013565</row>
+		<row>04beeb744674135666</row>
+		<row>233345210133001221</row>
+		<row>357752100004630131</row>
+	</frame>
+
+	<frame duration="100">
+		<row>788874201444676201</row>
+		<row>12344310011039ba63</row>
+		<row>002222001232138a85</row>
+		<row>027999853211101210</row>
+		<row>28defeca9995024665</row>
+		<row>17ceec755786135666</row>
+		<row>123345211354011221</row>
+		<row>468853100003310232</row>
+	</frame>
+
+	<frame duration="100">
+		<row>789874201333554102</row>
+		<row>12453200010028a952</row>
+		<row>012332001233126874</row>
+		<row>148999853211111110</row>
+		<row>4beffecaaa95024676</row>
+		<row>3adeec766896145676</row>
+		<row>123345322464012221</row>
+		<row>578863100002100232</row>
+	</frame>
+
+	<frame duration="100">
+		<row>889974200323332012</row>
+		<row>235431000011169741</row>
+		<row>023331001333115763</row>
+		<row>369a99854211221110</row>
+		<row>7ceffecaaa95025676</row>
+		<row>5ceeec8679a6146676</row>
+		<row>123345323674022221</row>
+		<row>579963100012001333</row>
+	</frame>
+
+	<frame duration="100">
+		<row>899864100222111013</row>
+		<row>245420000011048631</row>
+		<row>123321001243213553</row>
+		<row>489999754311221111</row>
+		<row>9dffedb99a94035676</row>
+		<row>7deeec978ab5146676</row>
+		<row>133345334783133221</row>
+		<row>679964200111012333</row>
+	</frame>
+
+	<frame duration="100">
+		<row>799853100221000023</row>
+		<row>345310000121036521</row>
+		<row>123320001244212442</row>
+		<row>589988754211232110</row>
+		<row>aeffeca99a82035777</row>
+		<row>8deedb989aa4256766</row>
+		<row>223345446892233221</row>
+		<row>68a974200120022333</row>
+	</frame>
+
+	<frame duration="100">
+		<row>898752100210000124</row>
+		<row>344200000121014321</row>
+		<row>122210001244311232</row>
+		<row>699877654211333111</row>
+		<row>befeeb989a71146777</row>
+		<row>9dedcb999ba2257766</row>
+		<row>223345457991233321</row>
+		<row>689974211120123343</row>
+	</frame>
+
+	<frame duration="100">
+		<row>788642000110111134</row>
+		<row>343100000122102210</row>
+		<row>122100001344321131</row>
+		<row>688766654212343211</row>
+		<row>ceeeca889950146777</row>
+		<row>9decba99ab81367766</row>
+		<row>223245568a71343321</row>
+		<row>689974211210233343</row>
+	</frame>
+
+	<frame duration="100">
+		<row>787531000100222234</row>
+		<row>232100000122100100</row>
+		<row>131000001245431021</row>
+		<row>587655554212454211</row>
+		<row>beedb9889840257777</row>
+		<row>9ddbaaaaaa51467766</row>
+		<row>233236679a42443321</row>
+		<row>679864211200233343</row>
+	</frame>
+
+	<frame duration="100">
+		<row>776420001102333345</row>
+		<row>121000000123210001</row>
+		<row>110000001245531011</row>
+		<row>565434554213455321</row>
+		<row>bddca8788720357887</row>
+		<row>8cda899ab922577766</row>
+		<row>132235789822454321</row>
+		<row>578764211101343433</row>
+	</frame>
+
+	<frame duration="100">
+		<row>666310001103544445</row>
+		<row>111000000124420001</row>
+		<row>000000001246641010</row>
+		<row>453223454113565321</row>
+		<row>accb98778611467887</row>
+		<row>7cc9789ab713677766</row>
+		<row>122235789613554321</row>
+		<row>578753211102344433</row>
+	</frame>
+
+	<frame duration="100">
+		<row>565310012114654456</row>
+		<row>111100000135530001</row>
+		<row>000000001246652000</row>
+		<row>221113454114566321</row>
+		<row>8aaa97777512467887</row>
+		<row>6bc8778aa514677766</row>
+		<row>122225789314554321</row>
+		<row>577643111002444433</row>
+	</frame>
+
+	<frame duration="100">
+		<row>554200012026765556</row>
+		<row>112100000236641011</row>
+		<row>000100001257753000</row>
+		<row>110012443124676322</row>
+		<row>689987777402578887</row>
+		<row>5ab867899315777766</row>
+		<row>122224687125554321</row>
+		<row>567542100013444433</row>
+	</frame>
+
+	<frame duration="100">
+		<row>454200112027886566</row>
+		<row>122100000247752111</row>
+		<row>001110000257763000</row>
+		<row>000002443125776322</row>
+		<row>467887766303678887</row>
+		<row>59b866897125787766</row>
+		<row>122224575035654321</row>
+		<row>566531000013454433</row>
+	</frame>
+
+	<frame duration="100">
+		<row>443101122038987666</row>
+		<row>222200000258863111</row>
+		<row>012210000257863000</row>
+		<row>000002442125776422</row>
+		<row>345677665204688887</row>
+		<row>49a866786126887766</row>
+		<row>122123553035654321</row>
+		<row>466421000013554333</row>
+	</frame>
+
+	<frame duration="100">
+		<row>443101121048a97666</row>
+		<row>233200000258973111</row>
+		<row>123310000357874000</row>
+		<row>001101332035786422</row>
+		<row>234577665114788887</row>
+		<row>38a865675036887766</row>
+		<row>122112442035654321</row>
+		<row>455320000013554333</row>
+	</frame>
+
+	<frame duration="100">
+		<row>443101221159a98766</row>
+		<row>343200000269974111</row>
+		<row>234310000368874000</row>
+		<row>012201332036786422</row>
+		<row>123467654015788887</row>
+		<row>379865664037887766</row>
+		<row>022112331035654321</row>
+		<row>455310000013554333</row>
+	</frame>
+
+	<frame duration="100">
+		<row>443101221159aa8767</row>
+		<row>44420000036aa84211</row>
+		<row>234320000368974000</row>
+		<row>012311221136886322</row>
+		<row>112356654026788887</row>
+		<row>269865664047887766</row>
+		<row>022112331035654321</row>
+		<row>455300000013554333</row>
+	</frame>
+
+	<frame duration="100">
+		<row>542001220159ba9767</row>
+		<row>44421000036aa85211</row>
+		<row>345420000368974000</row>
+		<row>123310120146886322</row>
+		<row>112356653026888888</row>
+		<row>259865664047887766</row>
+		<row>012122331035654321</row>
+		<row>454200000013554332</row>
+	</frame>
+
+	<frame duration="100">
+		<row>44200122016aba9876</row>
+		<row>55421000037aa95211</row>
+		<row>455420000368974000</row>
+		<row>234420110147886322</row>
+		<row>012346542037888888</row>
+		<row>258865654047887766</row>
+		<row>012122221035654221</row>
+		<row>454200000013554332</row>
+	</frame>
+
+	<frame duration="100">
+		<row>44200221026abb9876</row>
+		<row>55421000147ab95211</row>
+		<row>555521001478974000</row>
+		<row>345530000257886322</row>
+		<row>012245431047888888</row>
+		<row>158866653048887766</row>
+		<row>012122221035654221</row>
+		<row>465200000003554332</row>
+	</frame>
+
+	<frame duration="100">
+		<row>43200121026abb9876</row>
+		<row>55421000147ab96211</row>
+		<row>566531001479974000</row>
+		<row>456631000258886322</row>
+		<row>012334420157888888</row>
+		<row>258866653158887766</row>
+		<row>122122221035554221</row>
+		<row>465200000003554332</row>
+	</frame>
+
+	<frame duration="100">
+		<row>43200111027abba876</row>
+		<row>55421000148bb96311</row>
+		<row>676531101479974000</row>
+		<row>567642000368886322</row>
+		<row>113332210258888888</row>
+		<row>267766542158887766</row>
+		<row>123122220035554221</row>
+		<row>565200000003554322</row>
+	</frame>
+
+	<frame duration="100">
+		<row>33200110037abba876</row>
+		<row>55421000258bb96311</row>
+		<row>776532112579974000</row>
+		<row>677653101468986322</row>
+		<row>123322100368988888</row>
+		<row>367765540268887766</row>
+		<row>133222220034554211</row>
+		<row>575200000003554322</row>
+	</frame>
+
+	<frame duration="100">
+		<row>33200000148abba866</row>
+		<row>55421001258bb96311</row>
+		<row>776542123579974000</row>
+		<row>777753212478975322</row>
+		<row>233321000368988888</row>
+		<row>466765420268887766</row>
+		<row>133222210134554210</row>
+		<row>675300000003554322</row>
+	</frame>
+
+	<frame duration="100">
+		<row>32200000158abba866</row>
+		<row>55421001369bb96311</row>
+		<row>776643223689974000</row>
+		<row>777764323578975322</row>
+		<row>233221101478988887</row>
+		<row>566654310368887765</row>
+		<row>243222200134554210</row>
+		<row>676300000003554321</row>
+	</frame>
+
+	<frame duration="100">
+		<row>32200000258abba866</row>
+		<row>55421012469bb96311</row>
+		<row>776653234689974000</row>
+		<row>777775444678975322</row>
+		<row>233321112578988887</row>
+		<row>566443201478887765</row>
+		<row>243112100134554210</row>
+		<row>776300000003443321</row>
+	</frame>
+
+	<frame duration="100">
+		<row>32100001369abb9765</row>
+		<row>54422113479ab96321</row>
+		<row>776654345789974000</row>
+		<row>777776555688975322</row>
+		<row>123322224679988887</row>
+		<row>564332102588877765</row>
+		<row>232111000134554210</row>
+		<row>775300001003443211</row>
+	</frame>
+
+	<frame duration="100">
+		<row>32110002479aba9765</row>
+		<row>54432224589ab96321</row>
+		<row>777655445799974000</row>
+		<row>677777655788975222</row>
+		<row>123333344789988887</row>
+		<row>452111013688877654</row>
+		<row>121011000234454210</row>
+		<row>775300001003443210</row>
+	</frame>
+
+	<frame duration="100">
+		<row>32110113589aba9764</row>
+		<row>54433234689ab96311</row>
+		<row>777765556899973100</row>
+		<row>677787766789975222</row>
+		<row>123334445789988887</row>
+		<row>320000024788877654</row>
+		<row>110000001234453210</row>
+		<row>665200012002443210</row>
+	</frame>
+
+	<frame duration="100">
+		<row>22111124689aba9754</row>
+		<row>54433345789ba96311</row>
+		<row>777766567899973100</row>
+		<row>667888777889975222</row>
+		<row>123344566889988877</row>
+		<row>200001146788877653</row>
+		<row>110000012333453200</row>
+		<row>664200122002443200</row>
+	</frame>
+
+	<frame duration="100">
+		<row>22111235689aba9653</row>
+		<row>54444446799ba96311</row>
+		<row>777777677899973100</row>
+		<row>567888877899975321</row>
+		<row>013345667899998876</row>
+		<row>000112357898877643</row>
+		<row>000000112333443201</row>
+		<row>553100122002443100</row>
+	</frame>
+
+	<frame duration="100">
+		<row>21111346789aba8643</row>
+		<row>4444456779aaa85311</row>
+		<row>777777778899973100</row>
+		<row>467888888899975321</row>
+		<row>013445778999998876</row>
+		<row>000123478998776542</row>
+		<row>000001123332343103</row>
+		<row>442001222102443102</row>
+	</frame>
+
+	<frame duration="100">
+		<row>11111357789aa98642</row>
+		<row>4444456789aaa85311</row>
+		<row>777777788999973100</row>
+		<row>456888888999975321</row>
+		<row>013446788999998764</row>
+		<row>000234689998776532</row>
+		<row>000011223322343105</row>
+		<row>221013332102443104</row>
+	</frame>
+
+	<frame duration="100">
+		<row>10001357889aa98531</row>
+		<row>4444567889aaa85310</row>
+		<row>677888888999973100</row>
+		<row>346888988999975321</row>
+		<row>013446789999988764</row>
+		<row>000235789987776422</row>
+		<row>013101223321343117</row>
+		<row>111134433201343017</row>
+	</frame>
+
+	<frame duration="100">
+		<row>00001367889aa97521</row>
+		<row>33345678899aa85210</row>
+		<row>578888889999963101</row>
+		<row>246788988999975321</row>
+		<row>003446899999988753</row>
+		<row>101135789987766422</row>
+		<row>24641122221123313a</row>
+		<row>113577533301343039</row>
+	</frame>
+
+	<frame duration="100">
+		<row>00001367789aa87410</row>
+		<row>33335788899a974200</row>
+		<row>467888899999863111</row>
+		<row>135788999999975321</row>
+		<row>102446789999987642</row>
+		<row>201134689887665314</row>
+		<row>46874212221023304b</row>
+		<row>2369a965552133205b</row>
+	</frame>
+
+	<frame duration="100">
+		<row>01211367678aa86411</row>
+		<row>222357888899974200</row>
+		<row>357888999999863111</row>
+		<row>015788999999975311</row>
+		<row>302346789999987631</row>
+		<row>300123578876665215</row>
+		<row>57996321122013306d</row>
+		<row>47acca86773133207d</row>
+	</frame>
+
+	<frame duration="100">
+		<row>334313666689985311</row>
+		<row>122347888889963100</row>
+		<row>247888999998853111</row>
+		<row>214788999999975311</row>
+		<row>612346789999887530</row>
+		<row>400112467766554228</row>
+		<row>58998522233013207e</row>
+		<row>7acddb98884123219e</row>
+	</frame>
+
+	<frame duration="100">
+		<row>655412555579975302</row>
+		<row>112246887788863100</row>
+		<row>226888999888752111</row>
+		<row>824799999999875310</row>
+		<row>921355789998877511</row>
+		<row>61011235666555423a</row>
+		<row>589a9742244202208e</row>
+		<row>8befeca9aa512321ae</row>
+	</frame>
+
+	<frame duration="100">
+		<row>887622443578975303</row>
+		<row>212246777778753100</row>
+		<row>415888998887642011</row>
+		<row>c43799999998874210</row>
+		<row>b41345688988876413</row>
+		<row>62011135665444314b</row>
+		<row>479a9864356302219e</row>
+		<row>8cefecbaba711321be</row>
+	</frame>
+
+	<frame duration="100">
+		<row>998631332468874203</row>
+		<row>522236777677642100</row>
+		<row>824788898876531001</row>
+		<row>e72799999988864200</row>
+		<row>d61355688888875305</row>
+		<row>73001124554444314c</row>
+		<row>379a9975467412219e</row>
+		<row>8deeedbbcb821321be</row>
+	</frame>
+
+	<frame duration="100">
+		<row>a98631221357874202</row>
+		<row>a51236766666542000</row>
+		<row>c52798888875420001</row>
+		<row>e927a9999888753100</row>
+		<row>d81355688888765316</row>
+		<row>83001123444333315c</row>
+		<row>3699a986579511219e</row>
+		<row>7ceeedcbcc931221ae</row>
+	</frame>
+
+	<frame duration="100">
+		<row>ba9631111247764201</row>
+		<row>c92235665555432000</row>
+		<row>e92699888764310000</row>
+		<row>fa27aa999887653100</row>
+		<row>d91355678887764217</row>
+		<row>84001113443333205c</row>
+		<row>26899986689611208e</row>
+		<row>6ceeeecbcda41221ae</row>
+	</frame>
+
+	<frame duration="100">
+		<row>bb9631111136664201</row>
+		<row>db4235555544421100</row>
+		<row>fc2699888753210200</row>
+		<row>fb26aa999877642000</row>
+		<row>e91355578877654127</row>
+		<row>95001112333222205b</row>
+		<row>1588998779a721207d</row>
+		<row>4beeeeccddb512218d</row>
+	</frame>
+
+	<frame duration="100">
+		<row>bb9630012125654310</row>
+		<row>ed6234554443311100</row>
+		<row>fd3699888752113420</row>
+		<row>fb16aa999876531000</row>
+		<row>e91355578876553126</row>
+		<row>96000112332222204a</row>
+		<row>147899877ab830216b</row>
+		<row>3adeedccdec611207b</row>
+	</frame>
+
+	<frame duration="100">
+		<row>cb9520024224554310</row>
+		<row>ed8234444333212210</row>
+		<row>fd5599888741025740</row>
+		<row>ea16aa889865431000</row>
+		<row>d81355567765543125</row>
+		<row>960001123222122038</row>
+		<row>136789878ab9312149</row>
+		<row>29deedccdec7112059</row>
+	</frame>
+
+	<frame duration="100">
+		<row>bba510135324554320</row>
+		<row>ee8244443332123210</row>
+		<row>fd5599888741258961</row>
+		<row>d926aa889754321000</row>
+		<row>b61355467765432113</row>
+		<row>950000112211112125</row>
+		<row>125678878ab9402126</row>
+		<row>17ceedccded9212136</row>
+	</frame>
+
+	<frame duration="100">
+		<row>bba510146313544320</row>
+		<row>dd8244433322233320</row>
+		<row>ec45aa988631489a82</row>
+		<row>a616aa988753211110</row>
+		<row>830355456664432002</row>
+		<row>840000112211112112</row>
+		<row>013578878ab9501112</row>
+		<row>05bddcccdeda312113</row>
+	</frame>
+
+	<frame duration="100">
+		<row>bb9410257413444321</row>
+		<row>dc7255333221234430</row>
+		<row>cb35aa98863169bb92</row>
+		<row>6316aa978742211110</row>
+		<row>411355456654332000</row>
+		<row>720000112111112100</row>
+		<row>001467888aa8501100</row>
+		<row>13acccccdeda401100</row>
+	</frame>
+
+	<frame duration="100">
+		<row>bb9300267512444331</row>
+		<row>cc6255322221344431</row>
+		<row>a826aa9886328bcca3</row>
+		<row>2026aa977742111110</row>
+		<row>101355445553322000</row>
+		<row>300000111111111100</row>
+		<row>000367888997501100</row>
+		<row>228bcbbcdedb501100</row>
+	</frame>
+
+	<frame duration="100">
+		<row>bb8310378622444331</row>
+		<row>ba5355333211345431</row>
+		<row>7516aa988623acddb4</row>
+		<row>00269a877642112210</row>
+		<row>002355445543322100</row>
+		<row>001100011111111100</row>
+		<row>000257788876410000</row>
+		<row>316abbbcdddb601100</row>
+	</frame>
+
+	<frame duration="100">
+		<row>aa7210389622344332</row>
+		<row>993365333211355441</row>
+		<row>4216aa988623adddb4</row>
+		<row>013699876642122210</row>
+		<row>012345445543222100</row>
+		<row>001100011111101000</row>
+		<row>110367788765410000</row>
+		<row>414abbbcddcb710000</row>
+	</frame>
+
+	<frame duration="100">
+		<row>996210389621333332</row>
+		<row>761465333211445431</row>
+		<row>1027aa988623bdddb5</row>
+		<row>123699876642122210</row>
+		<row>222344444543222100</row>
+		<row>121100011111000000</row>
+		<row>220367776554310001</row>
+		<row>5239abbccccb710000</row>
+	</frame>
+
+	<frame duration="100">
+		<row>98511048a721233322</row>
+		<row>521465332211344432</row>
+		<row>0037aa988633bdddc5</row>
+		<row>224699876642122211</row>
+		<row>232344334433221100</row>
+		<row>231100011110000000</row>
+		<row>420467765433320001</row>
+		<row>6328aabbbbba720000</row>
+	</frame>
+
+	<frame duration="100">
+		<row>87411049a731233222</row>
+		<row>201565322211344432</row>
+		<row>0147aa988633bdddc5</row>
+		<row>334688876542122211</row>
+		<row>433343333222211000</row>
+		<row>431000000000000000</row>
+		<row>521566643333430001</row>
+		<row>63289aaabbaa730001</row>
+	</frame>
+
+	<frame duration="100">
+		<row>76311049a841222222</row>
+		<row>002565322211344331</row>
+		<row>0148aa988633adddb5</row>
+		<row>334688776542122211</row>
+		<row>432333222111111000</row>
+		<row>431000000001110000</row>
+		<row>522555422234432112</row>
+		<row>73179999aaa9730001</row>
+	</frame>
+
+	<frame duration="100">
+		<row>65311049a842122211</row>
+		<row>003575332211233331</row>
+		<row>1258999887329dddb5</row>
+		<row>334677766641122221</row>
+		<row>432222211101111000</row>
+		<row>520000000045421010</row>
+		<row>512432211145554322</row>
+		<row>841576778888741111</row>
+	</frame>
+
+	<frame duration="100">
+		<row>54311049a853111111</row>
+		<row>013675332111233221</row>
+		<row>1258999887329cdcb4</row>
+		<row>334666666641122221</row>
+		<row>432221100111110000</row>
+		<row>520000000489742210</row>
+		<row>511211000257766522</row>
+		<row>741233456777643211</row>
+	</frame>
+
+	<frame duration="100">
+		<row>54211049b963111001</row>
+		<row>014675332110222210</row>
+		<row>2358999887418ccca3</row>
+		<row>334565557751122322</row>
+		<row>432111001222100000</row>
+		<row>5100000038bca64321</row>
+		<row>510000000479987732</row>
+		<row>841000135666544521</row>
+	</frame>
+
+	<frame duration="100">
+		<row>54211049b963211100</row>
+		<row>024675332110122110</row>
+		<row>2368998887417ccc93</row>
+		<row>334554457851023312</row>
+		<row>321000002322100000</row>
+		<row>410000036bddd96531</row>
+		<row>41000000269aa99942</row>
+		<row>851000023555556731</row>
+	</frame>
+
+	<frame duration="100">
+		<row>4421103aca74311000</row>
+		<row>124675333210111110</row>
+		<row>2368888887417bbb82</row>
+		<row>224433357861123322</row>
+		<row>310000023433310011</row>
+		<row>400112359cdedb7741</row>
+		<row>4000000248bcbaaa42</row>
+		<row>852000002344457952</row>
+	</frame>
+
+	<frame duration="100">
+		<row>4321213aca85322100</row>
+		<row>124675333110011100</row>
+		<row>2367887887415aba71</row>
+		<row>223322357971034422</row>
+		<row>210011233433420121</row>
+		<row>30234458addeec9851</row>
+		<row>400112236acdcbbb52</row>
+		<row>863100001334458a52</row>
+	</frame>
+
+	<frame duration="100">
+		<row>32112129cb96432210</row>
+		<row>124675333110000000</row>
+		<row>235677788751399951</row>
+		<row>222211247972034522</row>
+		<row>100234544533531221</row>
+		<row>21466779cddeedaa61</row>
+		<row>412333458bdddbbc62</row>
+		<row>963110000234469b62</row>
+	</frame>
+
+	<frame duration="100">
+		<row>1012322adc97544310</row>
+		<row>124676332200000000</row>
+		<row>235666777751278741</row>
+		<row>122111147873045521</row>
+		<row>002577764543654441</row>
+		<row>2278889bcddeeecb71</row>
+		<row>42455557addedccc72</row>
+		<row>96321100023347ab62</row>
+	</frame>
+
+	<frame duration="100">
+		<row>00134219dcb9765530</row>
+		<row>124676333210000000</row>
+		<row>234545677752146520</row>
+		<row>111122237883046611</row>
+		<row>015799974543786651</row>
+		<row>2489aaabddddeedc81</row>
+		<row>43567778bdeedccd72</row>
+		<row>97321100123347bc62</row>
+	</frame>
+
+	<frame duration="100">
+		<row>1134532aedca987751</row>
+		<row>234566334210011220</row>
+		<row>334434677652024410</row>
+		<row>111133236884136622</row>
+		<row>0279aaa85543699861</row>
+		<row>26aaabbcedddeedc92</row>
+		<row>4367888acdeedcdd81</row>
+		<row>96422100234458bc72</row>
+	</frame>
+
+	<frame duration="100">
+		<row>3345542aeedcba9972</row>
+		<row>334555334322334432</row>
+		<row>443323566652002200</row>
+		<row>211244336885115512</row>
+		<row>148aabb845536aa971</row>
+		<row>27abbbbcedddefeda2</row>
+		<row>4478889aceeedcde92</row>
+		<row>96422111244569cd62</row>
+	</frame>
+</blm>

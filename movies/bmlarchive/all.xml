@@ -1,0 +1,215 @@
+<?xml version="1.0"?>
+<playlist reverse="yes" speed="3">
+  <item>
+    <param key="movie" value="anim/3D/boing.bml" />
+  </item>
+  <item>
+    <param key="movie" value="anim/3D/ccc-3D-cube.bml" />
+  </item>
+  <item>
+    <param key="movie" value="anim/3D/cube.bml" />
+  </item>
+  <item>
+    <param key="movie" value="anim/3D/torus.bml" />
+  </item>
+  <item>
+    <param key="movie" value="anim/WTC/flugzeuge-im-bauch.bml" />
+  </item>
+  <item>
+    <param key="movie" value="anim/animals/fishhook.bml" />
+  </item>
+  <item>
+    <param key="movie" value="anim/animals/ant.bml" />
+  </item>
+  <item>
+    <param key="movie" value="anim/animals/katze.bml" />
+  </item>
+  <item>
+    <param key="movie" value="anim/animals/superameisen.bml" />
+  </item>
+  <item>
+    <param key="movie" value="anim/human/voyeur.bml" />
+  </item>
+  <item>
+    <param key="movie" value="anim/misc/fire.bml" />
+  </item>
+  <item>
+    <param key="movie" value="anim/misc/gewitter.bml" />
+  </item>
+  <item>
+    <param key="movie" value="anim/misc/regentropfen.bml" />
+  </item>
+  <item>
+    <param key="movie" value="anim/pixel/falling-brightness.bml" />
+  </item>
+  <item>
+    <param key="movie" value="anim/pixel/gewaber.bml" />
+  </item>
+  <item>
+    <param key="movie" value="anim/pixel/hslabyr.bml" />
+  </item>
+
+  <playlist>
+    <item>
+      <param key="movie" value="anim/portraits/zuse.bml" />
+    </item>
+    <item>
+      <param key="movie" value="anim/portraits/alfred.bml" />
+    </item>
+    <item>
+      <param key="movie" value="anim/portraits/einstein.bml" />
+    </item>
+    <item>
+      <param key="movie" value="anim/portraits/louis1.bml" />
+    </item>
+    <item>
+      <param key="movie" value="anim/portraits/louis2.bml" />
+    </item>
+    <item>
+      <param key="movie" value="anim/portraits/louis3.bml" />
+    </item>
+    <item>
+      <param key="movie" value="anim/portraits/louis4.bml" />
+    </item>
+    <item>
+      <param key="movie" value="anim/portraits/louis5.bml" />
+    </item>
+    <item>
+      <param key="movie" value="anim/portraits/louis6.bml" />
+    </item>
+    <item>
+      <param key="movie" value="anim/portraits/louis7.bml" />
+    </item>
+    <item>
+      <param key="movie" value="anim/portraits/monalisa.bml" />
+    </item>
+    <item>
+      <param key="movie" value="anim/portraits/kleiner-prinz2.bml" />
+    </item>
+    <item>
+      <param key="movie" value="anim/portraits/jim-morrison.bml" />
+    </item>
+    <item>
+      <param key="movie" value="anim/portraits/marlene.bml" />
+    </item>
+    <item>
+      <param key="movie" value="anim/portraits/kleiner-prinz.bml" />
+    </item>
+    <item>
+      <param key="movie" value="anim/portraits/john-lennon.bml" />
+    </item>
+    <item>
+      <param key="movie" value="anim/portraits/sartre.bml" />
+    </item>
+    <item>
+      <param key="movie" value="anim/portraits/marlene-squashed.bml" />
+    </item>
+    <item>
+      <param key="movie" value="anim/portraits/albert-einstein.bml" />
+    </item>
+    <item>
+      <param key="movie" value="anim/portraits/gainsbourg-smoking.bml" />
+    </item>
+    <item>
+      <param key="movie" value="anim/portraits/gainsbourg2.bml" />
+    </item>
+    <item>
+      <param key="movie" value="anim/portraits/ghandi.bml" />
+    </item>
+    <item>
+      <param key="movie" value="anim/portraits/jim-morrison2.bml" />
+    </item>
+
+    <playlist loop="2">
+      <item>
+	<param key="movie" value="anim/portraits/crew/bjoern.bml" />
+      </item>
+      <item>
+	<param key="movie" value="anim/portraits/crew/sven.bml" />
+      </item>
+      <item>
+	<param key="movie" value="anim/portraits/crew/daniel.bml" />
+      </item>
+      <item>
+	<param key="movie" value="anim/portraits/crew/fiedel.bml" />
+      </item>
+      <item>
+	<param key="movie" value="anim/portraits/crew/tim.bml" />
+      </item>
+      <item>
+	<param key="movie" value="anim/portraits/crew/papillon.bml" />
+      </item>
+      <item>
+	<param key="movie" value="anim/portraits/crew/mitch.bml" />
+      </item>
+      <item>
+	<param key="movie" value="anim/portraits/crew/antenne.bml" />
+      </item>
+    </playlist>
+
+    <item>
+      <param key="movie" value="anim/portraits/linux.bml" />
+    </item>
+    <item>
+      <param key="movie" value="anim/portraits/marlen2.bml" />
+    </item>
+    <item>
+      <param key="movie" value="anim/portraits/tati-pipe.bml" />
+    </item>
+    <item>
+      <param key="movie" value="anim/portraits/martin-luther-king.bml" />
+    </item>
+    <item>
+      <param key="movie" value="anim/portraits/gainsbourg.bml" />
+    </item>
+    <item>
+      <param key="movie" value="anim/portraits/wau-test.bml" />
+    </item>
+  </playlist>
+
+  <item>
+    <param key="movie" value="anim/text/allyourbase.bml" />
+  </item>
+  <item>
+    <param key="movie" value="anim/text/ayb_blinkenlights.bml" />
+  </item>
+  <item>
+    <param key="movie" value="anim/text/ceci-nest-pas.bml" />
+  </item>
+  <item>
+    <param key="movie" value="debug/black.bml" />
+  </item>
+  <item>
+    <param key="movie" value="debug/white.bml" />
+  </item>
+  <item>
+    <param key="movie" value="mini/Mini-grau.bml" />
+  </item>
+  <item>
+    <param key="movie" value="mini/Mini-monochrom.bml" />
+  </item>
+  <item>
+    <param key="movie" value="mini/babumm1.bml" />
+  </item>
+  <item>
+    <param key="movie" value="mini/mini-logo-zoom.bml" />
+  </item>
+  <item>
+    <param key="movie" value="mini/mini-von-oben4.bml" />
+  </item>
+  <item>
+    <param key="movie" value="mini/mini-von-vorn1.bml" />
+  </item>
+  <item>
+    <param key="movie" value="mini/mini-von-vorn3.bml" />
+  </item>
+  <item>
+    <param key="movie" value="mini/mini_vorn_outline.bml" />
+  </item>
+  <item>
+    <param key="movie" value="mini/mini_vorn_outline2.bml" />
+  </item>
+  <item>
+    <param key="movie" value="tim/mcu_gewaber.bml" />
+  </item>
+</playlist>

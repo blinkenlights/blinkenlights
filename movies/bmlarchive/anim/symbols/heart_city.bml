@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blm width="26" height="20" bits="4" channels="1">
+	<header>
+		<title>heart_city</title>
+		<description>this is the heart of the city</description>
+		<creator>ArcadePaint 1.1.1 PC</creator>
+		<author>lawrence o&apos;toole</author>
+		<email>lawrence@otoole.com</email>
+		<loop>no</loop>
+		<duration>1600</duration>
+	</header>
+
+	<frame duration="200">
+		<row>000d0000dddd0d0000d0dddd00</row>
+		<row>000d0000d00d00d00d00fd0000</row>
+		<row>000dddd0dddd000dd000ddfd00</row>
+		<row>00000000000000000000000110</row>
+		<row>00003677774300034777643000</row>
+		<row>033778aa87777578aaaaa87733</row>
+		<row>378aaaaaaa87778aaaaaaaa877</row>
+		<row>778aaabddddba8aaaaaaaaa877</row>
+		<row>778aabddddeeeeddddddbaaa85</row>
+		<row>778aabdddeffeeeeedddbaaa85</row>
+		<row>378aabddeefffffeeeedbaa873</row>
+		<row>038aabddeefefffeeeedba8730</row>
+		<row>0038aabdeeeffeeeeddbaa8300</row>
+		<row>00038aabdddeffeddbaa873000</row>
+		<row>000038aaabdddeedbaaa830000</row>
+		<row>00000378aabddddbaa83000000</row>
+		<row>00000038aaabddba8730000000</row>
+		<row>0000000378aaaaa87300000000</row>
+		<row>000000003778aa873000000000</row>
+		<row>00000000037777730000000000</row>
+	</frame>
+
+	<frame duration="200">
+		<row>000b0000bbbb0b0000b0bbbb00</row>
+		<row>000b0000b00b00b00b00bb0000</row>
+		<row>000bbbb0bbbb000bb000bbbb00</row>
+		<row>00000000000000000000000110</row>
+		<row>00003677774300034777643000</row>
+		<row>033778aa87777578aaaaa87733</row>
+		<row>378aaaaaaa87778aaaaaaaa877</row>
+		<row>778aaaaaaaaaa8aaaaaaaaa877</row>
+		<row>778aabbaaaaaaaaaaaaaaaaa85</row>
+		<row>778aabbaaaaaaaaaaaaaaaaa85</row>
+		<row>378aabbaaaaaaaaaaaaaaaa873</row>
+		<row>038aabbaaaaaaaaaaaabba8730</row>
+		<row>0038aabbaaaaaaaaaabbaa8300</row>
+		<row>00038aaaaaaaaaaaaaaa873000</row>
+		<row>000038aaaaaaaaaaaaaa830000</row>
+		<row>00000378aaaaaaaaaa83000000</row>
+		<row>00000038aaaaaaaa8730000000</row>
+		<row>0000000378aaaaa87300000000</row>
+		<row>000000003778aa873000000000</row>
+		<row>00000000037777730000000000</row>
+	</frame>
+
+	<frame duration="200">
+		<row>00060000666606000060666600</row>
+		<row>00060000600600600600660000</row>
+		<row>00066660666600066000666600</row>
+		<row>00000000000000000000000110</row>
+		<row>00003677774300034777643000</row>
+		<row>03377888877775789888987733</row>
+		<row>37898888888777898888888877</row>
+		<row>77887666667888876666678877</row>
+		<row>77887666666666666666678985</row>
+		<row>77887666666666666666678985</row>
+		<row>37898766666666666666679873</row>
+		<row>03898876666666666666788730</row>
+		<row>00389876666666666678898300</row>
+		<row>00038987666666667888873000</row>
+		<row>00003888876666667888830000</row>
+		<row>00000378876666678885000000</row>
+		<row>00000038887666678730000000</row>
+		<row>00000003788766787300000000</row>
+		<row>00000000377766773000000000</row>
+		<row>00000000037777730000000000</row>
+	</frame>
+
+	<frame duration="200">
+		<row>00040000444404000040444400</row>
+		<row>00040000400400400400440000</row>
+		<row>00044440444400044000444400</row>
+		<row>00000000000000000000000110</row>
+		<row>00003677774300034777643000</row>
+		<row>03377888877775789888987733</row>
+		<row>37898887666677898888888877</row>
+		<row>77887555555555555555568877</row>
+		<row>77887555555555555555568985</row>
+		<row>77887555445555544445568985</row>
+		<row>37898655444444444455569873</row>
+		<row>03898655544444445555568730</row>
+		<row>00389655554444455555698300</row>
+		<row>00038965554444455556873000</row>
+		<row>00003886555444555688830000</row>
+		<row>00000376555545556885000000</row>
+		<row>00000038865555568730000000</row>
+		<row>00000003765555567300000000</row>
+		<row>00000000377655563000000000</row>
+		<row>00000000037655630000000000</row>
+	</frame>
+
+	<frame duration="200">
+		<row>00060000666606000060666600</row>
+		<row>00060000600600600600660000</row>
+		<row>00066660666600066000666600</row>
+		<row>00000000000000000000000110</row>
+		<row>00003677774300034777643000</row>
+		<row>03377888877775789888987733</row>
+		<row>37898888888777898888888877</row>
+		<row>77887666667888876666678877</row>
+		<row>77887666666666666666678985</row>
+		<row>77887666666666666666678985</row>
+		<row>37898766666666666666679873</row>
+		<row>03898876666666666666788730</row>
+		<row>00389876666666666678898300</row>
+		<row>00038987666666667888873000</row>
+		<row>00003888876666667888830000</row>
+		<row>00000378876666678885000000</row>
+		<row>00000038887666678730000000</row>
+		<row>00000003788766787300000000</row>
+		<row>00000000377766773000000000</row>
+		<row>00000000037777730000000000</row>
+	</frame>
+
+	<frame duration="200">
+		<row>000a0000aaaa0a0000a0aaaa00</row>
+		<row>000a0000a00a00a00a00aa0000</row>
+		<row>000aaaa0aaaa000aa000aaaa00</row>
+		<row>00000000000000000000000110</row>
+		<row>00003677774300034777643000</row>
+		<row>033778aa87777578aaaaa87733</row>
+		<row>378aaaaaaa87778aaaaaaaa877</row>
+		<row>778aaaaaaaaaa8aaaaaaaaa877</row>
+		<row>778aabbaaaaaaaaaaaaaaaaa85</row>
+		<row>778aabbaaaaaaaaaaaaaaaaa85</row>
+		<row>378aabbaaaaaaaaaaaaaaaa873</row>
+		<row>038aabbaaaaaaaaaaaabba8730</row>
+		<row>0038aabbaaaaaaaaaabbaa8300</row>
+		<row>00038aaaaaaaaaaaaaaa873000</row>
+		<row>000038aaaaaaaaaaaaaa830000</row>
+		<row>00000378aaaaaaaaaa83000000</row>
+		<row>00000038aaaaaaaa8730000000</row>
+		<row>0000000378aaaaa87300000000</row>
+		<row>000000003778aa873000000000</row>
+		<row>00000000037777730000000000</row>
+	</frame>
+
+	<frame duration="200">
+		<row>000f0000ffff0f0000f0ffff00</row>
+		<row>000f0000f00f00f00f00ff0000</row>
+		<row>000ffff0ffff000ff000ffff00</row>
+		<row>00000000000000000000000110</row>
+		<row>00003677774300034777643000</row>
+		<row>033778aa87777578aaaaa87733</row>
+		<row>378aaaaaaa87778aaaaaaaa877</row>
+		<row>778aaabddddba8aaaaaaaaa877</row>
+		<row>778aabddddeeeeddddddbaaa85</row>
+		<row>778aabdddeffeeeeedddbaaa85</row>
+		<row>378aabddeefffffeeeedbaa873</row>
+		<row>038aabddeefefffeeeedba8730</row>
+		<row>0038aabdeeeffeeeeddbaa8300</row>
+		<row>00038aabdddeffeddbaa873000</row>
+		<row>000038aaabdddeedbaaa830000</row>
+		<row>00000378aabddddbaa83000000</row>
+		<row>00000038aaabddba8730000000</row>
+		<row>0000000378aaaaa87300000000</row>
+		<row>000000003778aa873000000000</row>
+		<row>00000000037777730000000000</row>
+	</frame>
+
+	<frame duration="200">
+		<row>000f0000ffff0f0000f0ffff00</row>
+		<row>000f0000f00f00f00f00ff0000</row>
+		<row>000ffff0ffff000ff000ffff00</row>
+		<row>00000000000000000000000110</row>
+		<row>00003677774300034777643000</row>
+		<row>033778aa87777578aaaaa87733</row>
+		<row>378aaccccca7778aacccccc877</row>
+		<row>77bccccccccba8accddddcca77</row>
+		<row>77bcdeeeeedccccddeeeedcb85</row>
+		<row>77acdeefffeeeeeefffeedcb85</row>
+		<row>378bcdeffffffffffffeedb873</row>
+		<row>038bcdeeefffffffffeedca730</row>
+		<row>0038acdeeffffffffeedcca300</row>
+		<row>00038acddeffffffeddcc93000</row>
+		<row>000038acddefffffeccc830000</row>
+		<row>0000037acdeffffedca3000000</row>
+		<row>00000038ccdeffedc930000000</row>
+		<row>00000003bcddeedcb300000000</row>
+		<row>000000003adcddcc3000000000</row>
+		<row>00000000039cccb30000000000</row>
+	</frame>
+</blm>
+

@@ -1,0 +1,127 @@
+<?xml version="1.0"?>
+<playlist>
+	<item><param key="movie" value="anim/animals/flatter_flatter.bml"/></item>
+	<item><param key="movie" value="mini/ac-rotation.bml"/></item>
+	<item><param key="movie" value="anim/3D/boing.bml"/></item>
+	<item><param key="movie" value="anim/3D/chaosrings.bml"/></item>
+	<item><param key="movie" value="anim/3D/cube.bml"/></item>
+	<item type="BFire"><param key="flames" value="no"/></item>
+	<item><param key="movie" value="anim/3D/johjo117-rings-large.bml"/></item>
+	<item><param key="movie" value="anim/3D/torus.bml"/></item>
+	<item type="BFire"><param key="flames" value="no"/></item>
+	<item><param key="movie" value="anim/animals/schwan.bml"/></item>
+	<item><param key="movie" value="anim/astronomy/mond.bml"/></item>
+	<item><param key="movie" value="anim/human/auge.bml"/></item>
+	<item><param key="movie" value="anim/human/eye-on-you.bml"/></item>
+	<item><param key="movie" value="mini/ac-labyrinth.bml"/></item>
+	<item><param key="movie" value="anim/human/huete.bml"/></item>
+	<item type="BQix"><param key="lifetime" value="10000"/></item>
+	<item><param key="movie" value="anim/animals/flatter_flatter.bml"/></item>
+	<item><param key="movie" value="anim/human/k2.bml"/></item>
+	<item><param key="movie" value="anim/pixel/ccc-gewaber.bml"/></item>
+	<item><param key="movie" value="anim/human/reading.bml"/></item>
+	<item><param key="movie" value="anim/3D/torus.bml"/></item>
+	<item type="BFire"><param key="flames" value="no"/></item>
+	<item><param key="movie" value="anim/3D/boing.bml"/></item>
+	<item><param key="movie" value="anim/human/voyeur.bml"/></item>
+	<item><param key="movie" value="mini/ac-park-in.bml"/></item>
+	<item><param key="movie" value="anim/portraits/crew/sven.bml"/></item>
+	<item type="BFire"><param key="flames" value="no"/></item>
+	<item><param key="movie" value="anim/animals/schwan.bml"/></item>
+	<item><param key="movie" value="anim/misc/comatoze.bml"/></item>
+	<item><param key="movie" value="anim/misc/gewitter.bml"/></item>
+	<item><param key="movie" value="anim/3D/johjo117-rings.bml"/></item>
+	<item><param key="movie" value="anim/misc/herzen1.bml"/></item>
+	<item><param key="movie" value="mini/bb-cest-moi.bml"/></item>
+	<item><param key="movie" value="anim/misc/herzen4.bml"/></item>
+	<item><param key="movie" value="anim/misc/pacattack.bml"/></item>
+	<item><param key="movie" value="anim/portraits/marlene-squashed.bml"/></item>
+	<item type="BQix">
+		<param key="lifetime" value="10000"/>
+		<param key="lines" value="8"/>
+	</item>
+	<item><param key="movie" value="anim/3D/ccc-3D-cube.bml"/></item>
+	<item><param key="movie" value="anim/3D/torus.bml"/></item>
+	<item><param key="movie" value="anim/misc/regentropfen.bml"/></item>
+	<item><param key="movie" value="anim/animals/flatter_flatter.bml"/></item>
+	<item><param key="movie" value="anim/animals/schwan.bml"/></item>
+	<item><param key="movie" value="anim/misc/tapioco.bml"/></item>
+	<item><param key="movie" value="anim/pixel/gewaber.bml"/></item>
+	<item><param key="movie" value="anim/portraits/albert-einstein.bml"/></item>
+	<item><param key="movie" value="anim/3D/boing.bml"/></item>
+	<item><param key="movie" value="anim/text/ceci-nest-pas.bml"/></item>
+	<item><param key="movie" value="anim/portraits/alfred.bml"/></item>
+	<item type="BFire"><param key="flames" value="no"/></item>
+	<item><param key="movie" value="anim/portraits/beethoven.bml"/></item>
+	<item type="BFire"><param key="flames" value="no"/></item>
+	<item><param key="movie" value="anim/animals/flatter_flatter.bml"/></item>
+	<item><param key="movie" value="anim/portraits/che-guevara.bml"/></item>
+	<item><param key="movie" value="anim/pixel/ccc-gewaber.bml"/></item>
+	<item type="BFire"><param key="flames" value="no"/></item>
+	<item><param key="movie" value="anim/human/tetrisman_arcade.bml"/></item>
+	<item><param key="movie" value="mini/sc-typologo.bml"/></item>
+	<item><param key="movie" value="anim/text/ceci-nest-pas.bml"/></item>
+	<item><param key="movie" value="anim/3D/torus.bml"/></item>
+	<item><param key="movie" value="anim/portraits/crew/antenne.bml"/></item>
+	<item type="BFire"><param key="flames" value="no"/></item>
+	<item><param key="movie" value="anim/portraits/crew/bjoern.bml"/></item>
+	<item type="BFire"><param key="flames" value="no"/></item>
+	<item><param key="movie" value="anim/animals/schwan.bml"/></item>
+	<item><param key="movie" value="anim/misc/herzen2.bml"/></item>
+	<item><param key="movie" value="anim/portraits/crew/daniel.bml"/></item>
+	<item type="BFire"><param key="flames" value="no"/></item>
+	<item><param key="movie" value="anim/misc/herzen3.bml"/></item>
+	<item><param key="movie" value="anim/portraits/crew/fiedel.bml"/></item>
+	<item type="BFire"><param key="flames" value="no"/></item>
+	<item><param key="movie" value="anim/portraits/crew/mitch.bml"/></item>
+	<item type="BFire"><param key="flames" value="no"/></item>
+	<item><param key="movie" value="anim/animals/flatter_flatter.bml"/></item>
+	<item><param key="movie" value="anim/pixel/ccc-gewaber.bml"/></item>
+	<item><param key="movie" value="anim/3D/torus.bml"/></item>
+	<item type="BFire"><param key="flames" value="no"/></item>
+	<item><param key="movie" value="anim/text/ceci-nest-pas.bml"/></item>
+	<item><param key="movie" value="anim/portraits/crew/tim.bml"/></item>
+	<item type="BFire"><param key="flames" value="no"/></item>
+	<item><param key="movie" value="mini/sc-earth.bml"/></item>
+	<item><param key="movie" value="anim/portraits/einstein.bml"/></item>
+	<item><param key="movie" value="anim/3D/boing.bml"/></item>
+	<item><param key="movie" value="anim/portraits/gainsbourg-smoking.bml"/></item>
+	<item><param key="movie" value="anim/portraits/ghandi.bml"/></item>
+	<item><param key="movie" value="anim/pixel/ccc-gewaber.bml"/></item>
+	<item><param key="movie" value="mini/bb-mini-logo-zoom.bml"/></item>
+	<item><param key="movie" value="anim/portraits/jim-morrison.bml"/></item>
+	<item><param key="movie" value="anim/portraits/john-lennon.bml"/></item>
+	<item><param key="movie" value="anim/portraits/crew/papillon.bml"/></item>
+	<item type="BFire"><param key="flames" value="no"/></item>
+	<item><param key="movie" value="anim/portraits/kleiner-prinz.bml"/></item>
+	<item><param key="movie" value="anim/portraits/linux.bml"/></item>
+	<item><param key="movie" value="anim/portraits/louis1.bml"/></item>
+	<item><param key="movie" value="mini/sc-countdown.bml"/></item>
+	<item><param key="movie" value="anim/portraits/marlen2.bml"/></item>
+	<item><param key="movie" value="anim/text/ceci-nest-pas.bml"/></item>
+	<item><param key="movie" value="anim/portraits/marlene.bml"/></item>
+	<item><param key="movie" value="anim/pixel/ccc-gewaber.bml"/></item>
+	<item><param key="movie" value="anim/portraits/martin-luther-king.bml"/></item>
+	<item><param key="movie" value="anim/portraits/monalisa.bml"/></item>
+	<item type="BFire"><param key="lifetime" value="20000"/></item>
+	<item><param key="movie" value="anim/portraits/sartre.bml"/></item>
+	<item><param key="movie" value="anim/portraits/tati-pipe.bml"/></item>
+	<item><param key="movie" value="anim/pixel/ccc-gewaber.bml"/></item>
+	<item><param key="movie" value="anim/portraits/tux.bml"/></item>
+	<item><param key="movie" value="anim/portraits/wau-test.bml"/></item>
+	<item><param key="movie" value="anim/portraits/wilber.bml"/></item>
+	<item><param key="movie" value="tim/hdl-mask.bml"/></item>
+	<item><param key="movie" value="old/anna.blm"/>
+              <param key="h-align" value="0.3"/>
+	      <param key="v-align" value="0.8"/>
+              <param key="clear"   value="no"/>
+	</item>
+	<item><param key="movie" value="anim/portraits/zuse.bml"/></item>
+	<item><param key="movie" value="anim/text/allyourbase.bml"/></item>
+	<item><param key="movie" value="anim/text/ayb_blinkenlights.bml"/></item>
+	<item><param key="movie" value="anim/3D/boing.bml"/></item>
+	<item><param key="movie" value="anim/text/ceci-nest-pas.bml"/></item>
+	<item><param key="movie" value="anim/text/typoanimation.bml"/></item>
+	<item><param key="movie" value="anim/pixel/ccc-gewaber.bml"/></item>
+</playlist>
+

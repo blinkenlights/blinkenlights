@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<blm width="26" height="20" bits="4">
+    <header>
+        <title>Daniel</title>
+        <creator>blib 0.7</creator>
+    </header>
+    <frame duration="5000">
+        <row>22112432221111111111112222</row>
+        <row>22124444333223221121112222</row>
+        <row>2122356789aa88766555422332</row>
+        <row>23327abccccccbaaa987664453</row>
+        <row>2456abccccddcccbba98875433</row>
+        <row>2358bccdddddddccba98896432</row>
+        <row>2369bbdddddddcccba97786433</row>
+        <row>2268888acdb979aab987676431</row>
+        <row>24568b98cc9897aa8888775542</row>
+        <row>25999a9abbabbabbaab9864697</row>
+        <row>238aaaacbaabcddccba86569a7</row>
+        <row>2269b879877addccba8547a961</row>
+        <row>1148a9668aaccccba975355200</row>
+        <row>1015867999999bba9864100000</row>
+        <row>000166677788aaa98643000001</row>
+        <row>2211367899aaa9754442000001</row>
+        <row>33345544577764334661122211</row>
+        <row>34767864223445568862223321</row>
+        <row>346899aa877788899863233222</row>
+        <row>23359a9aa99998998742332232</row>
+    </frame>
+</blm>

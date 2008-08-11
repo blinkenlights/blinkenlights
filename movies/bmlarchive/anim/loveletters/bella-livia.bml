@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blm width="26" height="20" bits="4" channels="1">
+	<header>
+		<title>Bella Livia</title>
+		<description>Birthday Livia</description>
+		<creator>ArcadePaint 1.1.1 PC</creator>
+		<author>Coucounou</author>
+		<email>abcoucounou@hotmail.com</email>
+		<loop>no</loop>
+		<duration>9450</duration>
+	</header>
+
+	<frame duration="1000">
+		<row>00000000000000000000000000</row>
+		<row>00000000000000000000000000</row>
+		<row>00000000000000000000000000</row>
+		<row>00000000000000000000000000</row>
+		<row>0000000000000fffff00000000</row>
+		<row>000000000000ff000ff0000000</row>
+		<row>000000000000f00000f0000000</row>
+		<row>00000000000000000f00000000</row>
+		<row>000000000000000ff000000000</row>
+		<row>000000000000000f0000000000</row>
+		<row>0000ff0ff0ff00000000000000</row>
+		<row>0000ff0ff0ff000f0000000000</row>
+		<row>00000000000000000000000000</row>
+		<row>00000000000000000000000000</row>
+		<row>00000000000000000000000000</row>
+		<row>00000000000000000000000000</row>
+		<row>00000000000000000000000000</row>
+		<row>00000000000000000000000000</row>
+		<row>00000000000000000000000000</row>
+		<row>00000000000000000000000000</row>
+	</frame>
+
+	<frame duration="2800">
+		<row>000000000ff000ff0000000000</row>
+		<row>00000000f00fff00f000000000</row>
+		<row>000000000f00500f0000000000</row>
+		<row>0000000000f000f00000000000</row>
+		<row>00000000000f0f000000000000</row>
+		<row>000000000000f0000000000f00</row>
+		<row>ffff00ffff0f0000f000000f00</row>
+		<row>f00f00f0000f0000f00000fff0</row>
+		<row>fffff0fff00f0000f00000f9f0</row>
+		<row>f000f0f0000f0000f0000f000f</row>
+		<row>fffff0ffff0ffff0ffff0f000f</row>
+		<row>00000000000000000000000000</row>
+		<row>0f000000f000000000f0000000</row>
+		<row>0f00000000000000000000f000</row>
+		<row>0f000000f0f00000f0f000f000</row>
+		<row>0f000000f0f00000f0f00fff00</row>
+		<row>0f000000f00f000f00f00f9f00</row>
+		<row>0f000000f000f0f000f0f000f0</row>
+		<row>0ffffff0f0000f0000f0f000f0</row>
+		<row>00000000000000000000000000</row>
+	</frame>
+
+	<frame duration="2800">
+		<row>fffffffff00fff00ffffffffff</row>
+		<row>ffffffff0ff000ff0fffffffff</row>
+		<row>fffffffff0ffaff0ffffffffff</row>
+		<row>ffffffffff0fff0fffffffffff</row>
+		<row>fffffffffff0f0ffffffffffff</row>
+		<row>ffffffffffff0ffffffffff0ff</row>
+		<row>0000ff0000f0ffff0ffffff0ff</row>
+		<row>0ff0ff0ffff0ffff0fffff0a0f</row>
+		<row>00000f000ff0ffff0fffff0f0f</row>
+		<row>0fff0f0ffff0ffff0ffff0fff0</row>
+		<row>00000f0000f0000f0000f0fff0</row>
+		<row>ffffffffffffffffffffffffff</row>
+		<row>f0ffffff0fffffffff0fffffff</row>
+		<row>f0ffffffffffffffffffff0fff</row>
+		<row>f0ffffff0f0fffff0f0fff0fff</row>
+		<row>f0ffffff0f0fffff0f0ff0a0ff</row>
+		<row>f0ffffff0ff0fff0ff0ff0f0ff</row>
+		<row>f0ffffff0fff0f0fff0f0fff0f</row>
+		<row>f000000f0ffff0ffff0f0fff0f</row>
+		<row>ffffffffffffffffffffffffff</row>
+	</frame>
+
+	<frame duration="2850">
+		<row>000000000ff000ff0000000000</row>
+		<row>00000000f00fff00f000000000</row>
+		<row>000000000f00500f0000000000</row>
+		<row>0000000000f000f00000000000</row>
+		<row>00000000000f0f000000000000</row>
+		<row>000000000000f0000000000f00</row>
+		<row>ffff00ffff0f0000f000000f00</row>
+		<row>f00f00f0000f0000f00000fff0</row>
+		<row>fffff0fff00f0000f00000f9f0</row>
+		<row>f000f0f0000f0000f0000f000f</row>
+		<row>fffff0ffff0ffff0ffff0f000f</row>
+		<row>00000000000000000000000000</row>
+		<row>0f000000f000000000f0000000</row>
+		<row>0f00000000000000000000f000</row>
+		<row>0f000000f0f00000f0f000f000</row>
+		<row>0f000000f0f00000f0f00fff00</row>
+		<row>0f000000f00f000f00f00f9f00</row>
+		<row>0f000000f000f0f000f0f000f0</row>
+		<row>0ffffff0f0000f0000f0f000f0</row>
+		<row>00000000000000000000000000</row>
+	</frame>
+</blm>

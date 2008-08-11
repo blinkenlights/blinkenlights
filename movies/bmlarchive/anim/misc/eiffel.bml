@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blm width="26" height="20" bits="4" channels="1">
+	<header>
+		<title>eiffel</title>
+		<description>eiffel.gif</description>
+		<creator>ArcadePaint 1.1 Mac</creator>
+		<author>Oliver</author>
+		<email>oliver@learn2play.de</email>
+		<loop>no</loop>
+		<duration>8000</duration>
+	</header>
+
+	<frame duration="8000">
+		<row>eeeeeeeefffeeeffeeeeeeeeee</row>
+		<row>eeeeeeffffedcceffffeeeeeee</row>
+		<row>ffffffffffeb99defffffffeee</row>
+		<row>ffffffffffeb89ceffffffffff</row>
+		<row>ffffffffffec99ceffffffffff</row>
+		<row>eeeeeeeffeeb89ceefffffffff</row>
+		<row>deeeeeeeeedb88bdeeeeeeeeee</row>
+		<row>ddddeeeeedda87acdeeddddddd</row>
+		<row>ddddeeeeddca879cdddddddddd</row>
+		<row>ddddddddddca879cdddddddddd</row>
+		<row>ddddddddddca778bcddddddddd</row>
+		<row>dddddddddca86679bdddddcccc</row>
+		<row>dddddddddb865456acdccccccc</row>
+		<row>ddddcdddca7666558bcccccccc</row>
+		<row>ddccccccb977997569bccccccc</row>
+		<row>ddccccba97568875568abccbbb</row>
+		<row>bcbaaba8544455433457abbbaa</row>
+		<row>67876886544455544345788776</row>
+		<row>23445665554455555544444443</row>
+		<row>33456655444444555543333333</row>
+	</frame>
+</blm>

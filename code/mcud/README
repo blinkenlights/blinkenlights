@@ -1,0 +1,10 @@
+mcud
+----
+
+Matrix Control Unit Daemon
+
+This program acts as a hub between the network and the real-time drivers accessing the
+actual Blinkenlights control wires.
+
+
+some more junk to test cia

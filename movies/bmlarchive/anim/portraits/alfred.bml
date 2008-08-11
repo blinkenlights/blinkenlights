@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<blm width="26" height="20" bits="4" channels="1">
+    <header>
+        <title>Alfred Hitchcock</title>
+        <description>A portrait of the grandmaster of suspense</description>
+        <creator>ArcadePaint</creator>
+        <author>J. Random Hacker</author>
+        <email>my@email.com</email>
+        <url>http://my.home.page/</url>
+    </header>
+
+    <frame duration="10000">
+        <row>00000001369ceec95100000000</row>
+        <row>0000127acdeffffffe94000000</row>
+        <row>0015569bcdeeeeffffffb50000</row>
+        <row>01421465779eeeedccdefeb100</row>
+        <row>0110026bdd77deddeeedeed300</row>
+        <row>000011136aa5ced979bcdcc200</row>
+        <row>0000688acb65bddeddeefca100</row>
+        <row>000028abca11468deedddb8200</row>
+        <row>0000247bc30248acddcccbc700</row>
+        <row>0000025ba668abcbcdcbbad600</row>
+        <row>00000069525779baacca99c400</row>
+        <row>0000002850013557baaa966100</row>
+        <row>00000003212469baaa98710000</row>
+        <row>00000000000001354368300000</row>
+        <row>00000000000001377567100000</row>
+        <row>000010000000169b98ae400000</row>
+        <row>00001100000002699dff700000</row>
+        <row>000001225887203affffb10000</row>
+        <row>0000469bdee60012afffb10000</row>
+        <row>00003cadfffa118eceef710000</row>
+    </frame>
+</blm>

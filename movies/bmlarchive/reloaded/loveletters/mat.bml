@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blm width="18" height="8" bits="4" channels="1">
+	<header>
+		<title>mat</title>
+		<description></description>
+		<creator>BlinkenPaint 3.12</creator>
+		<author>md</author>
+		<email>david@mdavid.net</email>
+		<loop>yes</loop>
+		<duration>200</duration>
+	</header>
+
+	<frame duration="200">
+		<row>000000000000000000</row>
+		<row>ff0000f00ffff0ffff</row>
+		<row>fff00ff0ff00ffffff</row>
+		<row>ff0ff0f0ff000f0ff0</row>
+		<row>ff0000f0ffffff0ff0</row>
+		<row>ff000ff0ff00ff0ff0</row>
+		<row>ff000ff0ff00ff0ff0</row>
+		<row>000000000000000000</row>
+	</frame>
+</blm>

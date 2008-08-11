@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<blm width="26" height="20" bits="4">
+    <header>
+        <title>Jean-Paul Sartre</title>
+        <creator>blib 0.7</creator>
+        <duration>10000</duration>
+    </header>
+    <frame duration="10000">
+        <row>0000000000111356546778acbb</row>
+        <row>000000011344566765442126bc</row>
+        <row>0000123578a98766788511114a</row>
+        <row>0002269abba9779a9741111113</row>
+        <row>00248abbccccccb95221111111</row>
+        <row>0049bccccccccba96211111111</row>
+        <row>005ccccccccbaa986311112221</row>
+        <row>003ccccccccbaaa97211146456</row>
+        <row>001bccbaabaaaaa76321232777</row>
+        <row>00288965566679977532343884</row>
+        <row>02214759948acba87656348752</row>
+        <row>00218b99b8abcb976665334211</row>
+        <row>0002ba977bbccb976665421122</row>
+        <row>000153369bbba9987764221343</row>
+        <row>00000028887898886532224862</row>
+        <row>0000000276699756432236ab52</row>
+        <row>000000000499963223348bb933</row>
+        <row>00000000013322873139bbb857</row>
+        <row>00000000000002b8039bbba777</row>
+        <row>00000000000001b57bcbbb7678</row>
+    </frame>
+</blm>

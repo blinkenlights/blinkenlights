@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<blm width="26" height="20" bits="4" channels="1">
+	<header>
+		<title>Mona Lisa</title>
+		<description>The most famous face of the world!</description>
+		<author>Leonardo Da Vinci</author>
+		<creator>ArcadePaint 1.0.2</creator>
+	</header>
+	<frame duration="10000">
+		<row>44455666322211111112245666</row>
+		<row>55566531012111100101101356</row>
+		<row>56775124677754311111000015</row>
+		<row>7775238abcbba9852111000000</row>
+		<row>885117abbbbbba964211100000</row>
+		<row>962027aaaabbb9876542100000</row>
+		<row>73104999aaa987776543100000</row>
+		<row>42102443487313321122100000</row>
+		<row>41103563486247545674200000</row>
+		<row>31005aa9997579aaa863100000</row>
+		<row>111038a98a8569998532101111</row>
+		<row>11101578863148864321001111</row>
+		<row>11100366752234564321000100</row>
+		<row>11100146874334553211000100</row>
+		<row>11001001499753321110000000</row>
+		<row>20100000013211111000000000</row>
+		<row>31000000000211101111110000</row>
+		<row>32001000000454222223321000</row>
+		<row>11000000012466544455532111</row>
+		<row>00000012458988778888763111</row>
+	</frame>
+</blm>
+

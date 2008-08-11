@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<blm width="26" height="20" bits="4">
+    <header>
+        <title>Antenne</title>
+        <creator>blib 0.7</creator>
+    </header>
+    <frame duration="5000">
+        <row>00001111111111000000000000</row>
+        <row>11111111112222111100111000</row>
+        <row>11422333455554445432223100</row>
+        <row>15535788899987775433334321</row>
+        <row>4746899a99bba8876422233331</row>
+        <row>37888aacccbbdcbbba86432342</row>
+        <row>27879bbbbdddddcbaaa9743342</row>
+        <row>15458668777997665664432122</row>
+        <row>123668abba5862478996532212</row>
+        <row>12489bbbcabc847aaa98754221</row>
+        <row>3339cddccccc847accb9753122</row>
+        <row>2339ccbbdcca5456bcb8533331</row>
+        <row>2239dccccddca8889ab8445410</row>
+        <row>2225beecbaba98769cc8564100</row>
+        <row>223239ddddcba988ab96420000</row>
+        <row>2222228ddddddcba7543200000</row>
+        <row>2222217cccbba8653333100000</row>
+        <row>333347acddbb85443332200000</row>
+        <row>44649cbccdddccba8642221100</row>
+        <row>45545bcccdccccbb8544432122</row>
+    </frame>
+</blm>

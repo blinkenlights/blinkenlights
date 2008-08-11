@@ -1,0 +1,1519 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blm width="18" height="8" bits="4" channels="1">
+	<header>
+		<title>Jule</title>
+		<description>Jule</description>
+		<creator>BlinkenPaint 3.12</creator>
+		<author>Michael</author>
+		<email>M.Heinz@telegab.de</email>
+		<loop>no</loop>
+		<duration>21100</duration>
+	</header>
+
+	<frame duration="150">
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>000002222222200000</row>
+		<row>000002222222200000</row>
+		<row>000000000002210000</row>
+		<row>000000000002200000</row>
+		<row>000002200002200000</row>
+		<row>000002200002200000</row>
+		<row>000002222222200000</row>
+		<row>000002222222200000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>000003333333300000</row>
+		<row>000003333333300000</row>
+		<row>000000000003300000</row>
+		<row>000000000003300000</row>
+		<row>000003300003300000</row>
+		<row>000003300003300000</row>
+		<row>000003333333300000</row>
+		<row>000003333333300000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>000004444444400000</row>
+		<row>000004444444400000</row>
+		<row>000000000004400000</row>
+		<row>000000000004400000</row>
+		<row>000004400004400000</row>
+		<row>000004400004400000</row>
+		<row>000004444444400000</row>
+		<row>000004444444400000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>000005555555500000</row>
+		<row>000005555555500000</row>
+		<row>000000000005500000</row>
+		<row>000000000005500000</row>
+		<row>000005500005500000</row>
+		<row>000005500005500000</row>
+		<row>000005555555500000</row>
+		<row>000005555555500000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>000006666666600000</row>
+		<row>000006666666600000</row>
+		<row>000000000006600000</row>
+		<row>000000000006600000</row>
+		<row>000006600006600000</row>
+		<row>000006600006600000</row>
+		<row>000006666666600000</row>
+		<row>000006666666600000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>000007777777700000</row>
+		<row>000007777777700000</row>
+		<row>000000000007700000</row>
+		<row>000000000007700000</row>
+		<row>000007700007700000</row>
+		<row>000007700007700000</row>
+		<row>000007777777700000</row>
+		<row>000007777777700000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>000008888888800000</row>
+		<row>000008888888800000</row>
+		<row>000000000008800000</row>
+		<row>000000000008800000</row>
+		<row>000008800008800000</row>
+		<row>000008800008800000</row>
+		<row>000008888888800000</row>
+		<row>000008888888800000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>000009999999900000</row>
+		<row>000009999999900000</row>
+		<row>000000000009900000</row>
+		<row>000000000009900000</row>
+		<row>000009900009900000</row>
+		<row>000009900009900000</row>
+		<row>000009999999900000</row>
+		<row>000009999999900000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>00000aaaaaaaa00000</row>
+		<row>00000aaaaaaaa00000</row>
+		<row>00000000000aa00000</row>
+		<row>00000000000aa00000</row>
+		<row>00000aa0000aa00000</row>
+		<row>00000aa0000aa00000</row>
+		<row>00000aaaaaaaa00000</row>
+		<row>00000aaaaaaaa00000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>00000bbbbbbbb00000</row>
+		<row>00000bbbbbbbb00000</row>
+		<row>00000000000bb00000</row>
+		<row>00000000000bb00000</row>
+		<row>00000bb0000bb00000</row>
+		<row>00000bb0000bb00000</row>
+		<row>00000bbbbbbbb00000</row>
+		<row>00000bbbbbbbb00000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>00000cccccccc00000</row>
+		<row>00000cccccccc00000</row>
+		<row>00000000000cc00000</row>
+		<row>00000000000cc00000</row>
+		<row>00000cc0000cc00000</row>
+		<row>00000cc0000cc00000</row>
+		<row>00000cccccccc00000</row>
+		<row>00000cccccccc00000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>00000dddddddd00000</row>
+		<row>00000dddddddd00000</row>
+		<row>00000000000dd00000</row>
+		<row>00000000000dd00000</row>
+		<row>00000dd0000dd00000</row>
+		<row>00000dd0000dd00000</row>
+		<row>00000dddddddd00000</row>
+		<row>00000dddddddd00000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>00000eeeeeeee00000</row>
+		<row>00000eeeeeeee00000</row>
+		<row>00000000000ee00000</row>
+		<row>00000000000ee00000</row>
+		<row>00000ee0000ee00000</row>
+		<row>00000ee0000ee00000</row>
+		<row>00000eeeeeeee00000</row>
+		<row>00000eeeeeeee00000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>00000ffffffff00000</row>
+		<row>00000ffffffff00000</row>
+		<row>00000000000ff00000</row>
+		<row>00000000000ff00000</row>
+		<row>00000ff0000ff00000</row>
+		<row>00000ff0000ff00000</row>
+		<row>00000ffffffff00000</row>
+		<row>00000ffffffff00000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>00000ffffffff00000</row>
+		<row>00000ffffffff00000</row>
+		<row>00000000000ff00000</row>
+		<row>00000000000ff00000</row>
+		<row>00000ff0000ff00000</row>
+		<row>00000ff0000ff00000</row>
+		<row>00000ffffffff00000</row>
+		<row>00000ffffffff00000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>00000eeeeeeee00000</row>
+		<row>00000eeeeeeee00000</row>
+		<row>00000110000ee00000</row>
+		<row>00000110000ee00000</row>
+		<row>00000ee0000ee00000</row>
+		<row>00000ee0000ee00000</row>
+		<row>00000eeeeeeee00000</row>
+		<row>00000eeeeeeee00000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>00000dddddddd00000</row>
+		<row>00000dddddddd00000</row>
+		<row>00000220000dd00000</row>
+		<row>00000220000dd00000</row>
+		<row>00000dd0000dd00000</row>
+		<row>00000dd0000dd00000</row>
+		<row>00000dddddddd00000</row>
+		<row>00000dddddddd00000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>00000cccccccc00000</row>
+		<row>00000cccccccc00000</row>
+		<row>00000330000cc00000</row>
+		<row>00000330000cc00000</row>
+		<row>00000cc0000cc00000</row>
+		<row>00000cc0000cc00000</row>
+		<row>00000cccccccc00000</row>
+		<row>00000cccccccc00000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>00000bbbbbbbb00000</row>
+		<row>00000bbbbbbbb00000</row>
+		<row>00000440000bb00000</row>
+		<row>00000440000bb00000</row>
+		<row>00000bb0000bb00000</row>
+		<row>00000bb0000bb00000</row>
+		<row>00000bbbbbbbb00000</row>
+		<row>00000bbbbbbbb00000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>00000aaaaaaaa00000</row>
+		<row>00000aaaaaaaa00000</row>
+		<row>00000550000aa00000</row>
+		<row>00000550000aa00000</row>
+		<row>00000aa0000aa00000</row>
+		<row>00000aa0000aa00000</row>
+		<row>00000aaaaaaaa00000</row>
+		<row>00000aaaaaaaa00000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>000009999999900000</row>
+		<row>000009999999900000</row>
+		<row>000005500009900000</row>
+		<row>000005500009900000</row>
+		<row>000009900009900000</row>
+		<row>000009900009900000</row>
+		<row>000009999999900000</row>
+		<row>000009999999900000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>000008888888800000</row>
+		<row>000008888888800000</row>
+		<row>000006600008800000</row>
+		<row>000006600008800000</row>
+		<row>000008800008800000</row>
+		<row>000008800008800000</row>
+		<row>000008888888800000</row>
+		<row>000008888888800000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>000009988889900000</row>
+		<row>000009988889900000</row>
+		<row>000007700009900000</row>
+		<row>000007700009900000</row>
+		<row>000009900009900000</row>
+		<row>000009900009900000</row>
+		<row>000009999999900000</row>
+		<row>000009999999900000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>00000aa7777aa00000</row>
+		<row>00000aa7777aa00000</row>
+		<row>00000aa0000aa00000</row>
+		<row>00000aa0000aa00000</row>
+		<row>00000aa0000aa00000</row>
+		<row>00000aa0000aa00000</row>
+		<row>00000aaaaaaaa00000</row>
+		<row>00000aaaaaaaa00000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>00000bb6666bb00000</row>
+		<row>00000bb6666bb00000</row>
+		<row>00000bb0000bb00000</row>
+		<row>00000bb0000bb00000</row>
+		<row>00000bb0000bb00000</row>
+		<row>00000bb0000bb00000</row>
+		<row>00000bbbbbbbb00000</row>
+		<row>00000bbbbbbbb00000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>00000cc5555cc00000</row>
+		<row>00000cc5555cc00000</row>
+		<row>00000cc0000cc00000</row>
+		<row>00000cc0000cc00000</row>
+		<row>00000cc0000cc00000</row>
+		<row>00000cc0000cc00000</row>
+		<row>00000cccccccc00000</row>
+		<row>00000cccccccc00000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>00000dd4444dd00000</row>
+		<row>00000dd4444dd00000</row>
+		<row>00000dd0000dd00000</row>
+		<row>00000dd0000dd00000</row>
+		<row>00000dd0000dd00000</row>
+		<row>00000dd0000dd00000</row>
+		<row>00000dddddddd00000</row>
+		<row>00000dddddddd00000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>00000ee3333ee00000</row>
+		<row>00000ee3333ee00000</row>
+		<row>00000ee0000ee00000</row>
+		<row>00000ee0000ee00000</row>
+		<row>00000ee0000ee00000</row>
+		<row>00000ee0000ee00000</row>
+		<row>00000eeeeeeee00000</row>
+		<row>00000eeeeeeee00000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>00000ff2222ff00000</row>
+		<row>00000ff2222ff00000</row>
+		<row>00000ff0000ff00000</row>
+		<row>00000ff0000ff00000</row>
+		<row>00000ff0000ff00000</row>
+		<row>00000ff0000ff00000</row>
+		<row>00000ffffffff00000</row>
+		<row>00000ffffffff00000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>00000ff1111ff00000</row>
+		<row>00000ff1111ff00000</row>
+		<row>00000ff0000ff00000</row>
+		<row>00000ff0000ff00000</row>
+		<row>00000ff0000ff00000</row>
+		<row>00000ff0000ff00000</row>
+		<row>00000ffffffff00000</row>
+		<row>00000ffffffff00000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>00000ff0000ff00000</row>
+		<row>00000ff0000ff00000</row>
+		<row>00000ff0000ff00000</row>
+		<row>00000ff0000ff00000</row>
+		<row>00000ff0000ff00000</row>
+		<row>00000ff0000ff00000</row>
+		<row>00000ffffffff00000</row>
+		<row>00000ffffffff00000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>00000ff0000ee00000</row>
+		<row>00000ff0000ee00000</row>
+		<row>00000ff0000ee00000</row>
+		<row>00000ff0000ee00000</row>
+		<row>00000ff0000ee00000</row>
+		<row>00000ff0000ee00000</row>
+		<row>00000ffffffff00000</row>
+		<row>00000ffffffff00000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>00000ff0000dd00000</row>
+		<row>00000ff0000dd00000</row>
+		<row>00000ff0000dd00000</row>
+		<row>00000ff0000dd00000</row>
+		<row>00000ff0000dd00000</row>
+		<row>00000ff0000dd00000</row>
+		<row>00000ffffffff00000</row>
+		<row>00000ffffffff00000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>00000ff0000cc00000</row>
+		<row>00000ff0000cc00000</row>
+		<row>00000ff0000cc00000</row>
+		<row>00000ff0000cc00000</row>
+		<row>00000ff0000cc00000</row>
+		<row>00000ff0000cc00000</row>
+		<row>00000ffffffff00000</row>
+		<row>00000ffffffff00000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>00000ff0000bb00000</row>
+		<row>00000ff0000bb00000</row>
+		<row>00000ff0000bb00000</row>
+		<row>00000ff0000bb00000</row>
+		<row>00000ff0000bb00000</row>
+		<row>00000ff0000bb00000</row>
+		<row>00000ffffffff00000</row>
+		<row>00000ffffffff00000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>00000ff0000aa00000</row>
+		<row>00000ff0000aa00000</row>
+		<row>00000ff0000aa00000</row>
+		<row>00000ff0000aa00000</row>
+		<row>00000ff0000aa00000</row>
+		<row>00000ff0000aa00000</row>
+		<row>00000ffffffff00000</row>
+		<row>00000ffffffff00000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>00000ff00009900000</row>
+		<row>00000ff00009900000</row>
+		<row>00000ff00009900000</row>
+		<row>00000ff00009900000</row>
+		<row>00000ff00009900000</row>
+		<row>00000ff00009900000</row>
+		<row>00000ffffffff00000</row>
+		<row>00000ffffffff00000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>00000ff00008800000</row>
+		<row>00000ff00008800000</row>
+		<row>00000ff00008800000</row>
+		<row>00000ff00008800000</row>
+		<row>00000ff00008800000</row>
+		<row>00000ff00008800000</row>
+		<row>00000ffffffff00000</row>
+		<row>00000ffffffff00000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>00000ff00007700000</row>
+		<row>00000ff00007700000</row>
+		<row>00000ff00007700000</row>
+		<row>00000ff00007700000</row>
+		<row>00000ff00007700000</row>
+		<row>00000ff00007700000</row>
+		<row>00000ffffffff00000</row>
+		<row>00000ffffffff00000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>00000ff00006600000</row>
+		<row>00000ff00006600000</row>
+		<row>00000ff00006600000</row>
+		<row>00000ff00006600000</row>
+		<row>00000ff00006600000</row>
+		<row>00000ff00006600000</row>
+		<row>00000ffffffff00000</row>
+		<row>00000ffffffff00000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>00000ff00005500000</row>
+		<row>00000ff00005500000</row>
+		<row>00000ff00005500000</row>
+		<row>00000ff00005500000</row>
+		<row>00000ff00005500000</row>
+		<row>00000ff00005500000</row>
+		<row>00000ffffffff00000</row>
+		<row>00000ffffffff00000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>00000ff00004400000</row>
+		<row>00000ff00004400000</row>
+		<row>00000ff00004400000</row>
+		<row>00000ff00004400000</row>
+		<row>00000ff00004400000</row>
+		<row>00000ff00004400000</row>
+		<row>00000ffffffff00000</row>
+		<row>00000ffffffff00000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>00000ff00003300000</row>
+		<row>00000ff00003300000</row>
+		<row>00000ff00003300000</row>
+		<row>00000ff00003300000</row>
+		<row>00000ff00003300000</row>
+		<row>00000ff00003300000</row>
+		<row>00000ffffffff00000</row>
+		<row>00000ffffffff00000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>00000ff00002200000</row>
+		<row>00000ff00002200000</row>
+		<row>00000ff00002200000</row>
+		<row>00000ff00002200000</row>
+		<row>00000ff00002200000</row>
+		<row>00000ff00002200000</row>
+		<row>00000ffffffff00000</row>
+		<row>00000ffffffff00000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>00000ff00001100000</row>
+		<row>00000ff00001100000</row>
+		<row>00000ff00001100000</row>
+		<row>00000ff00001100000</row>
+		<row>00000ff00001100000</row>
+		<row>00000ff00001100000</row>
+		<row>00000ffffffff00000</row>
+		<row>00000ffffffff00000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>00000ff00000000000</row>
+		<row>00000ff00000000000</row>
+		<row>00000ff00000000000</row>
+		<row>00000ff00000000000</row>
+		<row>00000ff00000000000</row>
+		<row>00000ff00000000000</row>
+		<row>00000ffffffff00000</row>
+		<row>00000ffffffff00000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>00000ff00000000000</row>
+		<row>00000ff00000000000</row>
+		<row>00000ff00000000000</row>
+		<row>00000ff00000000000</row>
+		<row>00000ff00000000000</row>
+		<row>00000ff00000000000</row>
+		<row>00000ffffffff00000</row>
+		<row>00000ffffffff00000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>00000ff11111100000</row>
+		<row>00000ff11111100000</row>
+		<row>00000ff00000000000</row>
+		<row>00000ff11110000000</row>
+		<row>00000ff11110000000</row>
+		<row>00000ff00000000000</row>
+		<row>00000ffffffff00000</row>
+		<row>00000ffffffff00000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>00000ff22222200000</row>
+		<row>00000ff22222200000</row>
+		<row>00000ff00000000000</row>
+		<row>00000ff22220000000</row>
+		<row>00000ff22220000000</row>
+		<row>00000ff00000000000</row>
+		<row>00000ffffffff00000</row>
+		<row>00000ffffffff00000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>00000ff33333300000</row>
+		<row>00000ff33333300000</row>
+		<row>00000ff00000000000</row>
+		<row>00000ff33330000000</row>
+		<row>00000ff33330000000</row>
+		<row>00000ff00000000000</row>
+		<row>00000ffffffff00000</row>
+		<row>00000ffffffff00000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>00000ff44444400000</row>
+		<row>00000ff44444400000</row>
+		<row>00000ff00000000000</row>
+		<row>00000ff44440000000</row>
+		<row>00000ff44440000000</row>
+		<row>00000ff00000000000</row>
+		<row>00000ffffffff00000</row>
+		<row>00000ffffffff00000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>00000ff55555500000</row>
+		<row>00000ff55555500000</row>
+		<row>00000ff00000000000</row>
+		<row>00000ff55550000000</row>
+		<row>00000ff55550000000</row>
+		<row>00000ff00000000000</row>
+		<row>00000ffffffff00000</row>
+		<row>00000ffffffff00000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>00000ff66666600000</row>
+		<row>00000ff66666600000</row>
+		<row>00000ff00000000000</row>
+		<row>00000ff66660000000</row>
+		<row>00000ff66660000000</row>
+		<row>00000ff00000000000</row>
+		<row>00000ffffffff00000</row>
+		<row>00000ffffffff00000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>00000ff77777700000</row>
+		<row>00000ff77777700000</row>
+		<row>00000ff00000000000</row>
+		<row>00000ff77770000000</row>
+		<row>00000ff77770000000</row>
+		<row>00000ff00000000000</row>
+		<row>00000ffffffff00000</row>
+		<row>00000ffffffff00000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>00000ff88888800000</row>
+		<row>00000ff88888800000</row>
+		<row>00000ff00000000000</row>
+		<row>00000ff88880000000</row>
+		<row>00000ff88880000000</row>
+		<row>00000ff00000000000</row>
+		<row>00000ffffffff00000</row>
+		<row>00000ffffffff00000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>00000ff99999900000</row>
+		<row>00000ff99999900000</row>
+		<row>00000ff00000000000</row>
+		<row>00000ff99990000000</row>
+		<row>00000ff99990000000</row>
+		<row>00000ff00000000000</row>
+		<row>00000ffffffff00000</row>
+		<row>00000ffffffff00000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>00000ffaaaaaa00000</row>
+		<row>00000ffaaaaaa00000</row>
+		<row>00000ff00000000000</row>
+		<row>00000ffaaaa0000000</row>
+		<row>00000ffaaaa0000000</row>
+		<row>00000ff00000000000</row>
+		<row>00000ffffffff00000</row>
+		<row>00000ffffffff00000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>00000ffbbbbbb00000</row>
+		<row>00000ffbbbbbb00000</row>
+		<row>00000ff00000000000</row>
+		<row>00000ffbbbb0000000</row>
+		<row>00000ffbbbb0000000</row>
+		<row>00000ff00000000000</row>
+		<row>00000ffffffff00000</row>
+		<row>00000ffffffff00000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>00000ffcccccc00000</row>
+		<row>00000ffcccccc00000</row>
+		<row>00000ff00000000000</row>
+		<row>00000ffcccc0000000</row>
+		<row>00000ffcccc0000000</row>
+		<row>00000ff00000000000</row>
+		<row>00000ffffffff00000</row>
+		<row>00000ffffffff00000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>00000ffdddddd00000</row>
+		<row>00000ffdddddd00000</row>
+		<row>00000ff00000000000</row>
+		<row>00000ffdddd0000000</row>
+		<row>00000ffdddd0000000</row>
+		<row>00000ff00000000000</row>
+		<row>00000ffffffff00000</row>
+		<row>00000ffffffff00000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>00000ffeeeeee00000</row>
+		<row>00000ffeeeeee00000</row>
+		<row>00000ff00000000000</row>
+		<row>00000ffeeee0000000</row>
+		<row>00000ffeeee0000000</row>
+		<row>00000ff00000000000</row>
+		<row>00000ffffffff00000</row>
+		<row>00000ffffffff00000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>00000ffffffff00000</row>
+		<row>00000ffffffff00000</row>
+		<row>00000ff00000000000</row>
+		<row>00000ffffff0000000</row>
+		<row>00000ffffff0000000</row>
+		<row>00000ff00000000000</row>
+		<row>00000ffffffff00000</row>
+		<row>00000ffffffff00000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>00000ffffffff00000</row>
+		<row>00000ffffffff00000</row>
+		<row>00000ff00000000000</row>
+		<row>00000ffffff0000000</row>
+		<row>00000ffffff0000000</row>
+		<row>00000ff00000000000</row>
+		<row>00000ffffffff00000</row>
+		<row>00000ffffffff00000</row>
+	</frame>
+
+	<frame duration="500">
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>000000001100000000</row>
+		<row>000000001100000000</row>
+		<row>000000001100000000</row>
+		<row>000000001100000000</row>
+		<row>000000001100000000</row>
+		<row>000000001100000000</row>
+		<row>000000001100000000</row>
+		<row>000000001100000000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>000000002200000000</row>
+		<row>000000002200000000</row>
+		<row>000000002200000000</row>
+		<row>000000002200000000</row>
+		<row>000000002200000000</row>
+		<row>000000002200000000</row>
+		<row>000000002200000000</row>
+		<row>000000002200000000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>000000003300000000</row>
+		<row>000000003300000000</row>
+		<row>000000003300000000</row>
+		<row>000000003300000000</row>
+		<row>000000003300000000</row>
+		<row>000000003300000000</row>
+		<row>000000003300000000</row>
+		<row>000000003300000000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>000000004400000000</row>
+		<row>000000004400000000</row>
+		<row>000000004400000000</row>
+		<row>000000004400000000</row>
+		<row>000000004400000000</row>
+		<row>000000004400000000</row>
+		<row>000000004400000000</row>
+		<row>000000004400000000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>000000005500000000</row>
+		<row>000000005500000000</row>
+		<row>000000005500000000</row>
+		<row>000000005500000000</row>
+		<row>000000005500000000</row>
+		<row>000000005500000000</row>
+		<row>000000005500000000</row>
+		<row>000000005500000000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>000000006600000000</row>
+		<row>000000006600000000</row>
+		<row>000000006600000000</row>
+		<row>000000006600000000</row>
+		<row>000000006600000000</row>
+		<row>000000006600000000</row>
+		<row>000000006600000000</row>
+		<row>000000006600000000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>000000007700000000</row>
+		<row>000000007700000000</row>
+		<row>000000007700000000</row>
+		<row>000000007700000000</row>
+		<row>000000007700000000</row>
+		<row>000000007700000000</row>
+		<row>000000007700000000</row>
+		<row>000000007700000000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>000000008800000000</row>
+		<row>000000008800000000</row>
+		<row>000000008800000000</row>
+		<row>000000008800000000</row>
+		<row>000000008800000000</row>
+		<row>000000008800000000</row>
+		<row>000000008800000000</row>
+		<row>000000008800000000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>000000009900000000</row>
+		<row>000000009900000000</row>
+		<row>000000009900000000</row>
+		<row>000000009900000000</row>
+		<row>000000009900000000</row>
+		<row>000000009900000000</row>
+		<row>000000009900000000</row>
+		<row>000000009900000000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>00000000aa00000000</row>
+		<row>00000000aa00000000</row>
+		<row>00000000aa00000000</row>
+		<row>00000000aa00000000</row>
+		<row>00000000aa00000000</row>
+		<row>00000000aa00000000</row>
+		<row>00000000aa00000000</row>
+		<row>00000000aa00000000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>00000000bb00000000</row>
+		<row>00000000bb00000000</row>
+		<row>00000000bb00000000</row>
+		<row>00000000bb00000000</row>
+		<row>00000000bb00000000</row>
+		<row>00000000bb00000000</row>
+		<row>00000000bb00000000</row>
+		<row>00000000bb00000000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>00000000cc00000000</row>
+		<row>00000000cc00000000</row>
+		<row>00000000cc00000000</row>
+		<row>00000000cc00000000</row>
+		<row>00000000cc00000000</row>
+		<row>00000000cc00000000</row>
+		<row>00000000cc00000000</row>
+		<row>00000000cc00000000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>00000000dd00000000</row>
+		<row>00000000dd00000000</row>
+		<row>00000000dd00000000</row>
+		<row>00000000dd00000000</row>
+		<row>00000000dd00000000</row>
+		<row>00000000dd00000000</row>
+		<row>00000000dd00000000</row>
+		<row>00000000dd00000000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>00000000ee00000000</row>
+		<row>00000000ee00000000</row>
+		<row>00000000ee00000000</row>
+		<row>00000000ee00000000</row>
+		<row>00000000ee00000000</row>
+		<row>00000000ee00000000</row>
+		<row>00000000ee00000000</row>
+		<row>00000000ee00000000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>00000000ff00000000</row>
+		<row>00000000ff00000000</row>
+		<row>00000000ff00000000</row>
+		<row>00000000ff00000000</row>
+		<row>00000000ff00000000</row>
+		<row>00000000ff00000000</row>
+		<row>00000000ff00000000</row>
+		<row>00000000ff00000000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>00000000ff00000000</row>
+		<row>00000000ff00000000</row>
+		<row>00000000ff00000000</row>
+		<row>00000000ff00000000</row>
+		<row>00000000ff00000000</row>
+		<row>00000000ff00000000</row>
+		<row>00000000ff00000000</row>
+		<row>00000000ff00000000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>00000000ee00000000</row>
+		<row>00000000ee00000000</row>
+		<row>00000000ee00000000</row>
+		<row>00000000ee00000000</row>
+		<row>00000000ee00000000</row>
+		<row>00000000ee00000000</row>
+		<row>00000000ee00000000</row>
+		<row>00000000ee00000000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>00000000dd00000000</row>
+		<row>00000000dd00000000</row>
+		<row>00000000dd00000000</row>
+		<row>00000000dd00000000</row>
+		<row>00000000dd00000000</row>
+		<row>00000000dd00000000</row>
+		<row>00000000dd00000000</row>
+		<row>00000000dd00000000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>00000000cc00000000</row>
+		<row>00000000cc00000000</row>
+		<row>00000000cc00000000</row>
+		<row>00000000cc00000000</row>
+		<row>00000000cc00000000</row>
+		<row>00000000cc00000000</row>
+		<row>00000000cc00000000</row>
+		<row>00000000cc00000000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>00000000bb00000000</row>
+		<row>00000000bb00000000</row>
+		<row>00000000bb00000000</row>
+		<row>00000000bb00000000</row>
+		<row>00000000bb00000000</row>
+		<row>00000000bb00000000</row>
+		<row>00000000bb00000000</row>
+		<row>00000000bb00000000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>00000000aa00000000</row>
+		<row>00000000aa00000000</row>
+		<row>00000000aa00000000</row>
+		<row>00000000aa00000000</row>
+		<row>00000000aa00000000</row>
+		<row>00000000aa00000000</row>
+		<row>00000000aa00000000</row>
+		<row>00000000aa00000000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>000000009900000000</row>
+		<row>000000009900000000</row>
+		<row>000000009900000000</row>
+		<row>000000009900000000</row>
+		<row>000000009900000000</row>
+		<row>000000009900000000</row>
+		<row>000000009900000000</row>
+		<row>000000009900000000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>000000008800000000</row>
+		<row>000000008800000000</row>
+		<row>000000008800000000</row>
+		<row>000000008800000000</row>
+		<row>000000008800000000</row>
+		<row>000000008800000000</row>
+		<row>000000008800000000</row>
+		<row>000000008800000000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>000000007700000000</row>
+		<row>000000007700000000</row>
+		<row>000000007700000000</row>
+		<row>000000007700000000</row>
+		<row>000000007700000000</row>
+		<row>000000007700000000</row>
+		<row>000000007700000000</row>
+		<row>000000007700000000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>000000006600000000</row>
+		<row>000000006600000000</row>
+		<row>000000006600000000</row>
+		<row>000000006600000000</row>
+		<row>000000006600000000</row>
+		<row>000000006600000000</row>
+		<row>000000006600000000</row>
+		<row>000000006600000000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>000000005500000000</row>
+		<row>000000005500000000</row>
+		<row>000000005500000000</row>
+		<row>000000005500000000</row>
+		<row>000000005500000000</row>
+		<row>000000005500000000</row>
+		<row>000000005500000000</row>
+		<row>000000005500000000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>000000004400000000</row>
+		<row>000000004400000000</row>
+		<row>000000004400000000</row>
+		<row>000000004400000000</row>
+		<row>000000004400000000</row>
+		<row>000000004400000000</row>
+		<row>000000004400000000</row>
+		<row>000000004400000000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>000000003300000000</row>
+		<row>000000003300000000</row>
+		<row>000000003300000000</row>
+		<row>000000003300000000</row>
+		<row>000000003300000000</row>
+		<row>000000003300000000</row>
+		<row>000000003300000000</row>
+		<row>000000003300000000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>000000002200000000</row>
+		<row>000000002200000000</row>
+		<row>000000002200000000</row>
+		<row>000000002200000000</row>
+		<row>000000002200000000</row>
+		<row>000000002200000000</row>
+		<row>000000002200000000</row>
+		<row>000000002200000000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>000000001100000000</row>
+		<row>000000001100000000</row>
+		<row>000000001100000000</row>
+		<row>000000001100000000</row>
+		<row>000000001100000000</row>
+		<row>000000001100000000</row>
+		<row>000000001100000000</row>
+		<row>000000001100000000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+	</frame>
+
+	<frame duration="500">
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000000004400000000</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000000664466000000</row>
+		<row>000000064460000000</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000000880088000000</row>
+		<row>000008664466800000</row>
+		<row>000000864468000000</row>
+		<row>000000008800000000</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>000000000000000000</row>
+		<row>000000aa00aa000000</row>
+		<row>00000a88aa88a00000</row>
+		<row>0000a86644668a0000</row>
+		<row>00000a864468a00000</row>
+		<row>0000000a88a0000000</row>
+		<row>00000000aa00000000</row>
+		<row>000000000000000000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>000000000000000000</row>
+		<row>00000caa00aac00000</row>
+		<row>000cca88aa88acc000</row>
+		<row>000ca86644668ac000</row>
+		<row>0000ca864468ac0000</row>
+		<row>000000ca88ac000000</row>
+		<row>00000000aa00000000</row>
+		<row>000000000000000000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>00006ee4004ee60000</row>
+		<row>000eecaaeeaacee000</row>
+		<row>00ecca88aa88acce00</row>
+		<row>00eca86644668ace00</row>
+		<row>000eca864468ace000</row>
+		<row>00000eca88ace00000</row>
+		<row>0000000eaae0000000</row>
+		<row>00000000ee00000000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>00046ee4004ee64000</row>
+		<row>004eecaaeeaacee400</row>
+		<row>04ecca88aa88acce40</row>
+		<row>04eca86644668ace40</row>
+		<row>004eca864468ace400</row>
+		<row>00004eca88ace40000</row>
+		<row>0000004eaae4000000</row>
+		<row>00000004ee40000000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>0004fff4004fff4000</row>
+		<row>004ff6ffffff6ff400</row>
+		<row>04fff666ff666fff40</row>
+		<row>04fff66666666fff40</row>
+		<row>004fff666666fff400</row>
+		<row>00004fff66fff40000</row>
+		<row>000000ffffff000000</row>
+		<row>00000004ff40000000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>0002fff2002fff2000</row>
+		<row>002ff2ffffff2ff200</row>
+		<row>02fff222ff222fff20</row>
+		<row>02fff22222222fff20</row>
+		<row>002fff222222fff200</row>
+		<row>00002fff22fff20000</row>
+		<row>000000ffffff000000</row>
+		<row>00000002ff20000000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>0000fff0000fff0000</row>
+		<row>000ff0ffffff0ff000</row>
+		<row>00fff000ff000fff00</row>
+		<row>00fff00000000fff00</row>
+		<row>000fff000000fff000</row>
+		<row>00000fff00fff00000</row>
+		<row>000000ffffff000000</row>
+		<row>00000000ff00000000</row>
+	</frame>
+
+	<frame duration="100">
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>0000fff0000fff0000</row>
+		<row>000ff0ffffff0ff000</row>
+		<row>00fff000ff000fff00</row>
+		<row>00fff00000000fff00</row>
+		<row>000fff000000fff000</row>
+		<row>00000fff00fff00000</row>
+		<row>000000ffffff000000</row>
+		<row>00000000ff00000000</row>
+	</frame>
+
+	<frame duration="100">
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>0000fff0000fff0000</row>
+		<row>000ff0ffffff0ff000</row>
+		<row>00fff000ff000fff00</row>
+		<row>00fff00000000fff00</row>
+		<row>000fff000000fff000</row>
+		<row>00000fff00fff00000</row>
+		<row>000000ffffff000000</row>
+		<row>00000000ff00000000</row>
+	</frame>
+
+	<frame duration="100">
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>0000fff0000fff0000</row>
+		<row>000ff0ffffff0ff000</row>
+		<row>00fff000ff000fff00</row>
+		<row>00fff00000000fff00</row>
+		<row>000fff000000fff000</row>
+		<row>00000fff00fff00000</row>
+		<row>000000ffffff000000</row>
+		<row>00000000ff00000000</row>
+	</frame>
+
+	<frame duration="100">
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>0000ddd0000ddd0000</row>
+		<row>000dd0dddddd0dd000</row>
+		<row>00ddd000dd000ddd00</row>
+		<row>00ddd00000000ddd00</row>
+		<row>000ddd000000ddd000</row>
+		<row>00000ddd00ddd00000</row>
+		<row>000000dddddd000000</row>
+		<row>00000000dd00000000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>0000bbb0000bbb0000</row>
+		<row>000bb0bbbbbb0bb000</row>
+		<row>00bbb000bb000bbb00</row>
+		<row>00bbb00000000bbb00</row>
+		<row>000bbb000000bbb000</row>
+		<row>00000bbb00bbb00000</row>
+		<row>000000bbbbbb000000</row>
+		<row>00000000bb00000000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>000099900009990000</row>
+		<row>000990999999099000</row>
+		<row>009990009900099900</row>
+		<row>009990000000099900</row>
+		<row>000999000000999000</row>
+		<row>000009990099900000</row>
+		<row>000000999999000000</row>
+		<row>000000009900000000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>000077700007770000</row>
+		<row>000770777777077000</row>
+		<row>007770007700077700</row>
+		<row>007770000000077700</row>
+		<row>000777000000777000</row>
+		<row>000007770077700000</row>
+		<row>000000777777000000</row>
+		<row>000000007700000000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>000055500005550000</row>
+		<row>000550555555055000</row>
+		<row>005550005500055500</row>
+		<row>005550000000055500</row>
+		<row>000555000000555000</row>
+		<row>000005550055500000</row>
+		<row>000000555555000000</row>
+		<row>000000005500000000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>000033300003330000</row>
+		<row>000330333333033000</row>
+		<row>003330003300033300</row>
+		<row>003330000000033300</row>
+		<row>000333000000333000</row>
+		<row>000003330033300000</row>
+		<row>000000333333000000</row>
+		<row>000000003300000000</row>
+	</frame>
+
+	<frame duration="100">
+		<row>000011100001110000</row>
+		<row>000110111111011000</row>
+		<row>001110001100011100</row>
+		<row>001110000000011100</row>
+		<row>000111000000111000</row>
+		<row>000001110011100000</row>
+		<row>000000111111000000</row>
+		<row>000000001100000000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>000001100001100000</row>
+		<row>000001100001100000</row>
+		<row>000001100001100000</row>
+		<row>000001100001100000</row>
+		<row>000001100001100000</row>
+		<row>000001100001100000</row>
+		<row>000001111111100000</row>
+		<row>000001111111100000</row>
+	</frame>
+
+	<frame duration="200">
+		<row>000002200002200000</row>
+		<row>000002200002200000</row>
+		<row>000002200002200000</row>
+		<row>000002200002200000</row>
+		<row>000002200002200000</row>
+		<row>000002200002200000</row>
+		<row>000002222222200000</row>
+		<row>000002222222200000</row>
+	</frame>
+
+	<frame duration="200">
+		<row>000003300003300000</row>
+		<row>000003300003300000</row>
+		<row>000003300003300000</row>
+		<row>000003300003300000</row>
+		<row>000003300003300000</row>
+		<row>000003300003300000</row>
+		<row>000003333333300000</row>
+		<row>000003333333300000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>000004400004400000</row>
+		<row>000004400004400000</row>
+		<row>000004400004400000</row>
+		<row>000004400004400000</row>
+		<row>000004400004400000</row>
+		<row>000004400004400000</row>
+		<row>000004444444400000</row>
+		<row>000004444444400000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>000005500005500000</row>
+		<row>000005500005500000</row>
+		<row>000005500005500000</row>
+		<row>000005500005500000</row>
+		<row>000005500005500000</row>
+		<row>000005500005500000</row>
+		<row>000005555555500000</row>
+		<row>000005555555500000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>000006600006600000</row>
+		<row>000006600006600000</row>
+		<row>000006600006600000</row>
+		<row>000006600006600000</row>
+		<row>000006600006600000</row>
+		<row>000006600006600000</row>
+		<row>000006666666600000</row>
+		<row>000006666666600000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>000007700007700000</row>
+		<row>000007700007700000</row>
+		<row>000007700007700000</row>
+		<row>000007700007700000</row>
+		<row>000007700007700000</row>
+		<row>000007700007700000</row>
+		<row>000007777777700000</row>
+		<row>000007777777700000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>000008800008800000</row>
+		<row>000008800008800000</row>
+		<row>000008800008800000</row>
+		<row>000008800008800000</row>
+		<row>000008800008800000</row>
+		<row>000008800008800000</row>
+		<row>000008888888800000</row>
+		<row>000008888888800000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>000009900009900000</row>
+		<row>000009900009900000</row>
+		<row>000009900009900000</row>
+		<row>000009900009900000</row>
+		<row>000009900009900000</row>
+		<row>000009900009900000</row>
+		<row>000009999999900000</row>
+		<row>000009999999900000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>00000aa0000aa00000</row>
+		<row>00000aa0000aa00000</row>
+		<row>00000aa0000aa00000</row>
+		<row>00000aa0000aa00000</row>
+		<row>00000aa0000aa00000</row>
+		<row>00000aa0000aa00000</row>
+		<row>00000aaaaaaaa00000</row>
+		<row>00000aaaaaaaa00000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>00000bb0000bb00000</row>
+		<row>00000bb0000bb00000</row>
+		<row>00000bb0000bb00000</row>
+		<row>00000bb0000bb00000</row>
+		<row>00000bb0000bb00000</row>
+		<row>00000bb0000bb00000</row>
+		<row>00000bbbbbbbb00000</row>
+		<row>00000bbbbbbbb00000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>00000cc0000cc00000</row>
+		<row>00000cc0000cc00000</row>
+		<row>00000cc0000cc00000</row>
+		<row>00000cc0000cc00000</row>
+		<row>00000cc0000cc00000</row>
+		<row>00000cc0000cc00000</row>
+		<row>00000cccccccc00000</row>
+		<row>00000cccccccc00000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>00000dd0000dd00000</row>
+		<row>00000dd0000dd00000</row>
+		<row>00000dd0000dd00000</row>
+		<row>00000dd0000dd00000</row>
+		<row>00000dd0000dd00000</row>
+		<row>00000dd0000dd00000</row>
+		<row>00000dddddddd00000</row>
+		<row>00000dddddddd00000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>00000ee0000ee00000</row>
+		<row>00000ee0000ee00000</row>
+		<row>00000ee0000ee00000</row>
+		<row>00000ee0000ee00000</row>
+		<row>00000ee0000ee00000</row>
+		<row>00000ee0000ee00000</row>
+		<row>00000eeeeeeee00000</row>
+		<row>00000eeeeeeee00000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>00000ff0000ff00000</row>
+		<row>00000ff0000ff00000</row>
+		<row>00000ff0000ff00000</row>
+		<row>00000ff0000ff00000</row>
+		<row>00000ff0000ff00000</row>
+		<row>00000ff0000ff00000</row>
+		<row>00000ffffffff00000</row>
+		<row>00000ffffffff00000</row>
+	</frame>
+
+	<frame duration="150">
+		<row>00000ff0000ff00000</row>
+		<row>00000ff0000ff00000</row>
+		<row>00000ff0000ff00000</row>
+		<row>00000ff0000ff00000</row>
+		<row>00000ff0000ff00000</row>
+		<row>00000ff0000ff00000</row>
+		<row>00000ffffffff00000</row>
+		<row>00000ffffffff00000</row>
+	</frame>
+</blm>

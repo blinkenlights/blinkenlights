@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blm width="26" height="20" bits="4" channels="1">
+	<header>
+		<title>still-ac-pushletters.bml</title>
+		<description></description>
+		<creator>ArcadePaint 1.1 Mac</creator>
+		<author></author>
+		<email></email>
+		<loop>no</loop>
+		<duration>200</duration>
+	</header>
+
+	<frame duration="200">
+		<row>00000000000000000000000000</row>
+		<row>00000000000000000000000000</row>
+		<row>00000000000000000000000000</row>
+		<row>00000000000000000000000000</row>
+		<row>22222111100000000000000000</row>
+		<row>99999999998654100000000000</row>
+		<row>eeeeeeeeeeda86410000000000</row>
+		<row>eeeeeeeeeeccca862000000000</row>
+		<row>bbbbbceeeddddcba7400000000</row>
+		<row>88888776667777666541000000</row>
+		<row>eeeeeeabe6cdccbbba96420000</row>
+		<row>ccbccccbacfedcbcdefd830000</row>
+		<row>77777889876554444468930000</row>
+		<row>54444447952002221002452000</row>
+		<row>332224a71147aacaba51024100</row>
+		<row>11223a6128bdd8fabec9303100</row>
+		<row>2334881179caeebdfbbe711100</row>
+		<row>679ab80179c8eedefaad700000</row>
+		<row>0000121037aed9eabeb7100000</row>
+		<row>0000000000458aaa8530000000</row>
+	</frame>
+</blm>

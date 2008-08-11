@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<blm width="26" height="20" bits="4" channels="1">
+	<header>
+		<title>Haus des Lehrers</title>
+		<description>Maske fuer das Abspielen von BLM</description>
+		<creator>ArcadePaint 1.0.2 Mac</creator>
+		<author>Tim Pritlove</author>
+		<loop>no</loop>
+		<duration>200</duration>
+	</header>
+
+	<frame duration="200">
+		<row>0000000000000000000000f000</row>
+		<row>0000000000000000000000f000</row>
+		<row>000000000000000000006fff60</row>
+		<row>0000000000000000000fffffff</row>
+		<row>0000000000000000000fffffff</row>
+		<row>000000000000000000006fff60</row>
+		<row>0000000000000000000000f000</row>
+		<row>00009999000000ffff0000f000</row>
+		<row>0999999999999999999990f000</row>
+		<row>0600000000000000000090f000</row>
+		<row>0600000000000000000090f000</row>
+		<row>0600000000000000000090f000</row>
+		<row>0600000000000000000090f000</row>
+		<row>0600000000000000000090f000</row>
+		<row>0600000000000000000090f000</row>
+		<row>0600000000000000000090f000</row>
+		<row>0600000000000000000090f000</row>
+		<row>0ff62ffb6fff6f2bf6f9f0f000</row>
+		<row>0ffb262b26f6b6fbf22ff0f000</row>
+		<row>0f2fbb6ff6ff6fff6ffff0f000</row>
+	</frame>
+</blm>

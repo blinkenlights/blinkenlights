@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blm width="26" height="20" bits="4" channels="1">
+	<header>
+		<title>cube_still</title>
+		<description></description>
+		<creator>ArcadePaint 1.1 Mac</creator>
+		<author></author>
+		<email></email>
+		<loop>yes</loop>
+		<duration>200</duration>
+	</header>
+
+	<frame duration="15000">
+		<row>00000000000000000000000000</row>
+		<row>00000000000000000000000000</row>
+		<row>00000000000000000000000000</row>
+		<row>00000000000000000000000000</row>
+		<row>00000000000000000000000000</row>
+		<row>000008aaabbccdddd810000000</row>
+		<row>00004ffeddddddddddd8100000</row>
+		<row>0000cfffedddddddddddd82000</row>
+		<row>0007ffffffedddddddddddd820</row>
+		<row>001effffffffeddddddcba9750</row>
+		<row>008ffffffffffe986543333100</row>
+		<row>000afffffffff8333333320000</row>
+		<row>00006effffff73333333200000</row>
+		<row>000003dfffe733333321000000</row>
+		<row>0000001bfe7332211000000000</row>
+		<row>00000000761100000000000000</row>
+		<row>00000000000000000000000000</row>
+		<row>00000000000000000000000000</row>
+		<row>00000000000000000000000000</row>
+		<row>00000000000000000000000000</row>
+	</frame>
+</blm>

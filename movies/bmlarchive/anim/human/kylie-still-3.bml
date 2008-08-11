@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blm width="26" height="20" bits="4" channels="1">
+	<header>
+		<title>kylie-still-3.bml</title>
+		<description></description>
+		<creator>ArcadePaint 1.1 Mac</creator>
+		<author></author>
+		<email></email>
+		<loop>no</loop>
+		<duration>200</duration>
+	</header>
+
+	<frame duration="15000">
+		<row>ffffffeeefeeeeeeddddddeeee</row>
+		<row>fffdccbbcc9877888888888999</row>
+		<row>ffec9888986554444444445556</row>
+		<row>fffea4457acb7799aaa6433334</row>
+		<row>ffffcabcdd941255558bdc8335</row>
+		<row>ffffffffda314aedc96349b756</row>
+		<row>ffffffffb7227abb8546644446</row>
+		<row>fffffffd64335666899bb84124</row>
+		<row>ffffffd8213333246768987422</row>
+		<row>ffffffc6101123578644468732</row>
+		<row>ffffffc7100013567654578741</row>
+		<row>ffffffc8100013566666667652</row>
+		<row>ffffffb7211001445565455665</row>
+		<row>ffffffec862000111333344567</row>
+		<row>ffffffefda4100000123334556</row>
+		<row>efffffffc83112346543333445</row>
+		<row>efffffffc425aaba9998887668</row>
+		<row>bccddeeed98aa9887888999999</row>
+		<row>98889abccca987766667788aaa</row>
+		<row>a988888999876666555666789a</row>
+	</frame>
+</blm>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blm width="26" height="20" bits="4" channels="1">
+	<header>
+		<title>cats</title>
+		<description>Cats aus AYBABTU</description>
+		<creator>ArcadePaint 1.1 Mac</creator>
+		<author>Marian Mayland</author>
+		<email>marianmayland@gmx.net</email>
+		<loop>no</loop>
+		<duration>50</duration>
+	</header>
+
+	<frame duration="50">
+		<row>55223214233332232243321136</row>
+		<row>85325116132432321253310038</row>
+		<row>71414024131321431112310047</row>
+		<row>72124124143235122422310018</row>
+		<row>72033123432202022332200007</row>
+		<row>82042231132663434321000008</row>
+		<row>73133133464688777654002077</row>
+		<row>78114103733885788764111057</row>
+		<row>62131341303565546864400002</row>
+		<row>10051033324233357863300001</row>
+		<row>10013005344222552113220001</row>
+		<row>10044303224325113234221001</row>
+		<row>20003104223258467895100001</row>
+		<row>10000104333278567753101002</row>
+		<row>10110001433778438741010001</row>
+		<row>21100001336843355840000001</row>
+		<row>20000104116643466611110001</row>
+		<row>20132305503962677152030101</row>
+		<row>02211322430589820352310310</row>
+		<row>33421333345134235323321333</row>
+	</frame>
+</blm>

@@ -1,0 +1,59 @@
+2002-04-25 20:58  neo
+
+	* README: Mention that this version needs DirectFB >= 0.9.10.
+
+2002-04-17 13:12  neo
+
+	* configure.in, src/gfx.c: Follow DirectFB API changes in
+	IDirectFBImageProvider::RenderTo().
+
+2002-04-14 17:08  neo
+
+	* ChangeLog: Generated ChangeLog from CVS log messages.
+
+2002-04-14 17:07  neo
+
+	* ChangeLog, README, configure.in, src/main.c, src/network.c,
+	tools/blmsend.c: Bumped version number to 0.5. Simplified network
+	setup. Misc small fixes.
+
+2002-03-29 02:44  neo
+
+	* configure.in, src/Makefile.am: bumped version number to 0.4,
+	changed static build rules
+
+2002-03-26 16:13  neo
+
+	* src/main.c, tools/Makefile.am: More verbose error message when
+	socket can not be opened.
+
+2002-03-16 21:58  neo
+
+	* src/main.c: Don't crash if setup_gfx() failed, for example
+	because the images couldn't be found.
+
+2002-03-16 21:46  neo
+
+	* src/: .cvsignore, Makefile.am: Added a simple rule to build a
+	static binary.
+
+2002-03-13 20:28  neo
+
+	* src/: main.c, network.c: fixed some minor bugs
+
+2002-03-13 01:13  neo
+
+	* .cvsignore, AUTHORS, ChangeLog, Makefile.am, NEWS, README,
+	autogen.sh, configure.in, data/.cvsignore, data/Makefile.am,
+	data/1024x768/.cvsignore, data/1024x768/Makefile.am,
+	data/1024x768/house.png, data/1024x768/light.png,
+	data/640x480/.cvsignore, data/640x480/Makefile.am,
+	data/640x480/house.png, data/640x480/light.png,
+	data/800x600/.cvsignore, data/800x600/Makefile.am,
+	data/800x600/house.png, data/800x600/light.png, src/.cvsignore,
+	src/Makefile.am, src/gfx.c, src/gfx.h, src/magic-values.h,
+	src/main.c, src/network.c, src/network.h, src/walls.h,
+	tools/.cvsignore, tools/Makefile.am, tools/alloff.sh,
+	tools/allon.sh, tools/blmsend.c: The "Too stoned to use CVS"
+	initial commit of BlinkenSim.
+

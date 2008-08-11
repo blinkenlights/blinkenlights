@@ -1,0 +1,8 @@
+#!/bin/sh
+
+SETUP=/home/blccc/setup/blccc
+BINDIR=/usr/local/bin
+
+# start blinkensim, requesting data from local blinkenproxy
+
+${BINDIR}/blinkensim-directfb hdl2-1024x768 127.0.0.1

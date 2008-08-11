@@ -1,0 +1,849 @@
+<?xml version="1.0" encoding="utf-8"?>
+<blm width="18" height="8" bits="4">
+    <header>
+        <title>beauty1.gif</title>
+        <creator>blib 1.1.3</creator>
+        <duration>8400</duration>
+        <loop/>
+    </header>
+    <frame duration="100">
+        <row>010313afc68a810000</row>
+        <row>0c3cc9cfd537a11000</row>
+        <row>003cfccccfff860000</row>
+        <row>0008c6a98aca400000</row>
+        <row>00009cbbcfc8000000</row>
+        <row>0000017a8332000000</row>
+        <row>0000230023a8000000</row>
+        <row>0009cccacfcca60000</row>
+    </frame>
+    <frame duration="100">
+        <row>000326bfc9bb800000</row>
+        <row>0c3c66cfc216a00000</row>
+        <row>073cffdfffff630000</row>
+        <row>000aa7776bca300000</row>
+        <row>0003ccabbcc8000000</row>
+        <row>000003cca630000000</row>
+        <row>000032002362000000</row>
+        <row>0007cca7cccc400000</row>
+    </frame>
+    <frame duration="100">
+        <row>000338cfc9cb800000</row>
+        <row>0c2c43cfc206a00000</row>
+        <row>0a3cffffffff630000</row>
+        <row>001aa7667cca300000</row>
+        <row>0007caabbcc8000000</row>
+        <row>000007ccc830000000</row>
+        <row>000031002342000000</row>
+        <row>0007caa5acca100000</row>
+    </frame>
+    <frame duration="100">
+        <row>000338cfc9bb800000</row>
+        <row>0c2c45cfc216a00000</row>
+        <row>083cffffffff630000</row>
+        <row>201aa7666bca300000</row>
+        <row>0003caabbcc8000000</row>
+        <row>000003ccc630000000</row>
+        <row>000032002383000000</row>
+        <row>0007cca7cecc400000</row>
+    </frame>
+    <frame duration="100">
+        <row>000313afc68a800000</row>
+        <row>0c3c99cfc447a01000</row>
+        <row>023cfccddfff680000</row>
+        <row>2008a7898aca300000</row>
+        <row>1001acabbfc8000000</row>
+        <row>0000028aa332000000</row>
+        <row>0000230023aa000000</row>
+        <row>0009cccacfcc930000</row>
+    </frame>
+    <frame duration="100">
+        <row>000302ada336800000</row>
+        <row>083cccdff9bca22000</row>
+        <row>002acccccffd630000</row>
+        <row>2004c36b9aca400000</row>
+        <row>10002cccdfc4000000</row>
+        <row>000000233333000000</row>
+        <row>0000052028cc200000</row>
+        <row>2009ccccfffccc0000</row>
+    </frame>
+    <frame duration="100">
+        <row>000302aca326a10000</row>
+        <row>006cecfffccfa37000</row>
+        <row>0008ccaccdcc820000</row>
+        <row>3003c5395acc600000</row>
+        <row>20000accffa3000000</row>
+        <row>000000122336200000</row>
+        <row>000003302accc00000</row>
+        <row>2004cccffffcddb000</row>
+    </frame>
+    <frame duration="100">
+        <row>000201ac9217a20000</row>
+        <row>006accdffcffc3a000</row>
+        <row>0007ccaccdcc830000</row>
+        <row>3102a73969cc800000</row>
+        <row>200009ccffc4200000</row>
+        <row>000000022238a00000</row>
+        <row>000000301acfc70000</row>
+        <row>21009ccfffffffc000</row>
+    </frame>
+    <frame duration="100">
+        <row>000002ac9336a30000</row>
+        <row>003799cff9cfc37000</row>
+        <row>0005fc9ccddca30000</row>
+        <row>2200aa3aaacca00000</row>
+        <row>31000aabcfc8300000</row>
+        <row>200000133333a00000</row>
+        <row>0000002003cfcc0000</row>
+        <row>020009accfffffc900</row>
+    </frame>
+    <frame duration="100">
+        <row>000068cfa89aa30000</row>
+        <row>100201bfc259c32200</row>
+        <row>0006ffffffffa49000</row>
+        <row>0100aa247aaca20000</row>
+        <row>32002c8abcfc400000</row>
+        <row>2100002cca33450000</row>
+        <row>00000000015ccc0000</row>
+        <row>000000377cffffc600</row>
+    </frame>
+    <frame duration="100">
+        <row>000079ffdacca30000</row>
+        <row>1000018ca217c60300</row>
+        <row>0007ccffffffc4c000</row>
+        <row>0000cc9acccca40000</row>
+        <row>33003a3599cca20000</row>
+        <row>210000acffc4330000</row>
+        <row>100000001138cc0000</row>
+        <row>0000001205cffcc000</row>
+    </frame>
+    <frame duration="100">
+        <row>0000ccffffdcc20000</row>
+        <row>200013ac9368b80100</row>
+        <row>000665cff99fc47600</row>
+        <row>0101ffcccccfa60000</row>
+        <row>33003a38baaca30000</row>
+        <row>120005aacffa330000</row>
+        <row>100000057333aa0000</row>
+        <row>0000000001affc9000</row>
+    </frame>
+    <frame duration="100">
+        <row>0000acffffffa10000</row>
+        <row>200068bfa8bbb80000</row>
+        <row>0006019cc229c63700</row>
+        <row>2202ffffffffa43000</row>
+        <row>22008a2369aaa30000</row>
+        <row>11000a89bcfc420000</row>
+        <row>0000001aca336a0000</row>
+        <row>01000000005cec6000</row>
+    </frame>
+    <frame duration="100">
+        <row>0000acffffffa10000</row>
+        <row>100079cfc9cca50000</row>
+        <row>0004017cb118c43200</row>
+        <row>2202ffffffffa44000</row>
+        <row>22008a346aaa830000</row>
+        <row>20000a69bcfc410000</row>
+        <row>0000002ccc33480000</row>
+        <row>02000000003ccc1000</row>
+    </frame>
+    <frame duration="100">
+        <row>0000ccfffffc800000</row>
+        <row>202079cfc9cca30000</row>
+        <row>0003017ca118c33000</row>
+        <row>2205ffffffffa31000</row>
+        <row>230088668baa620000</row>
+        <row>11000a369bca400000</row>
+        <row>0000007cca33430000</row>
+        <row>00000000003ccc0000</row>
+    </frame>
+    <frame duration="100">
+        <row>0000ccfffffc300000</row>
+        <row>103179cfcacba10000</row>
+        <row>0005015c6118c33000</row>
+        <row>000afcfffccfa30000</row>
+        <row>331287789caa400000</row>
+        <row>12002a346ac8300000</row>
+        <row>2000009cca33400000</row>
+        <row>00000010028ccc0000</row>
+    </frame>
+    <frame duration="100">
+        <row>0002ccfffffa300000</row>
+        <row>00029cfffdcc800000</row>
+        <row>2005016c3338a22000</row>
+        <row>000ccccff99f820000</row>
+        <row>11038a9accba400000</row>
+        <row>330035375aa4200000</row>
+        <row>120001ccca33300000</row>
+        <row>00000200026ac50000</row>
+    </frame>
+    <frame duration="100">
+        <row>0001acdfffc3100000</row>
+        <row>0a0acffffffc300000</row>
+        <row>001237cc99b9800000</row>
+        <row>201902ac701a830000</row>
+        <row>001cccfffdfc400000</row>
+        <row>231133335664100000</row>
+        <row>22001a9abc43000000</row>
+        <row>200001273334500000</row>
+    </frame>
+    <frame duration="100">
+        <row>000028abcb60000000</row>
+        <row>0c03cdffffc3100000</row>
+        <row>0309cffffffc200000</row>
+        <row>203233aa6886410000</row>
+        <row>103c69cc813c300000</row>
+        <row>002aaccdccfa200000</row>
+        <row>330173674843000000</row>
+        <row>22000aaac832000000</row>
+    </frame>
+    <frame duration="100">
+        <row>000000238100000000</row>
+        <row>00003abccb30000000</row>
+        <row>9907cfffffc3000000</row>
+        <row>1129cffffffa100000</row>
+        <row>205123aa3864300000</row>
+        <row>007c69dc717c200000</row>
+        <row>33379cccccc6000000</row>
+        <row>320173964632000000</row>
+    </frame>
+    <frame duration="100">
+        <row>000000000000000000</row>
+        <row>00000238a200000000</row>
+        <row>00003acccb30000000</row>
+        <row>c00acfffffa3000000</row>
+        <row>3038cfffffda000000</row>
+        <row>00a112982434300000</row>
+        <row>22ac9cfd929a000000</row>
+        <row>332369acbac4000000</row>
+    </frame>
+    <frame duration="100">
+        <row>000000000000000000</row>
+        <row>000000000000000000</row>
+        <row>000025abc710000000</row>
+        <row>a002accffc31000000</row>
+        <row>c03ccfffffc3000000</row>
+        <row>00389cffccb6000000</row>
+        <row>22c003a31138300000</row>
+        <row>33afcfffccf8000000</row>
+    </frame>
+    <frame duration="100">
+        <row>000000000000000000</row>
+        <row>000000000000000000</row>
+        <row>000001288000000000</row>
+        <row>00015accca30000000</row>
+        <row>d02acffffd93000000</row>
+        <row>103acfffffc6000000</row>
+        <row>338013a73634200000</row>
+        <row>23c96cfc31aa000000</row>
+    </frame>
+    <frame duration="100">
+        <row>000000000000000000</row>
+        <row>000000000000000000</row>
+        <row>000000285000000000</row>
+        <row>00017accca20000000</row>
+        <row>f02acffffc82000000</row>
+        <row>303ccfffffc4000000</row>
+        <row>327125a74636200000</row>
+        <row>23c65cfc21c8000000</row>
+    </frame>
+    <frame duration="100">
+        <row>000000000000000000</row>
+        <row>000000000000000000</row>
+        <row>0000038c9100000000</row>
+        <row>1002accfca20000000</row>
+        <row>d03ccfffffa2000000</row>
+        <row>2039cdffdcb6000000</row>
+        <row>337013a31268300000</row>
+        <row>23cccdff99f8000000</row>
+    </frame>
+    <frame duration="100">
+        <row>000000000000000000</row>
+        <row>000000030000000000</row>
+        <row>00007abcc700000000</row>
+        <row>200acffffc31000000</row>
+        <row>c08cffffffc3000000</row>
+        <row>11225ac97988100000</row>
+        <row>33c12aca11ca200000</row>
+        <row>22accfffcfc4000000</row>
+    </frame>
+    <frame duration="100">
+        <row>000000000000000000</row>
+        <row>000027aca200000000</row>
+        <row>0007ccfffa20000000</row>
+        <row>607cffffffc2000000</row>
+        <row>70389cfcbca8000000</row>
+        <row>027028c511aa300000</row>
+        <row>33cffffffff6000000</row>
+        <row>12365578a864000000</row>
+    </frame>
+    <frame duration="100">
+        <row>000002893000000000</row>
+        <row>0002accfc610000000</row>
+        <row>005cffffffa2000000</row>
+        <row>603acffccca8000000</row>
+        <row>112028c312ba220000</row>
+        <row>00ccddffdff8200000</row>
+        <row>333aa9cccaa4000000</row>
+        <row>12037377ac82000000</row>
+    </frame>
+    <frame duration="100">
+        <row>000078aca300000000</row>
+        <row>000ccffffc61000000</row>
+        <row>00acfffffcc3000000</row>
+        <row>40226bc323aa020000</row>
+        <row>02969cfc9cfa700000</row>
+        <row>00afccccccc6000000</row>
+        <row>332853aaaaa4000000</row>
+        <row>12007aacfa33000000</row>
+    </frame>
+    <frame duration="100">
+        <row>0007ccffc720000000</row>
+        <row>007cffffffc2000000</row>
+        <row>0039bff9bbaa000000</row>
+        <row>32203ac614ca370000</row>
+        <row>00cfffffffd8200000</row>
+        <row>013a9578aaa8000000</row>
+        <row>3323a49bdca3000000</row>
+        <row>020009cca33a000000</row>
+    </frame>
+    <frame duration="100">
+        <row>000ccffffc50000000</row>
+        <row>00acffffccb3000000</row>
+        <row>00126cc333ba020000</row>
+        <row>23969cfccff8830000</row>
+        <row>00cfcaccccc8000000</row>
+        <row>223856b9aca4000000</row>
+        <row>2310aabdfa33000000</row>
+        <row>1200013223ac200000</row>
+    </frame>
+    <frame duration="100">
+        <row>007cffffffa1000000</row>
+        <row>0059cff9cca8000000</row>
+        <row>20103bc302ca270000</row>
+        <row>13cfffffffc8600000</row>
+        <row>008ca899aaa8000000</row>
+        <row>2328739bcca3000000</row>
+        <row>12002cffa338000000</row>
+        <row>2100000028cc900000</row>
+    </frame>
+    <frame duration="100">
+        <row>00acfffffdc2000000</row>
+        <row>00249cc336a8010000</row>
+        <row>32419cfa9cd8540000</row>
+        <row>01cfdcdcdfc6000000</row>
+        <row>003a359aaca4000000</row>
+        <row>2313a9bcfc42000000</row>
+        <row>02000377338a000000</row>
+        <row>100001003cecc00000</row>
+    </frame>
+    <frame duration="100">
+        <row>008adffccca3000000</row>
+        <row>10103cc303c8020000</row>
+        <row>24ccdfffffc6a00000</row>
+        <row>00acc9cccca6000000</row>
+        <row>233a3367bca2000000</row>
+        <row>12007cffc833000000</row>
+        <row>1000001126cc000000</row>
+        <row>00000313cfffc00000</row>
+    </frame>
+    <frame duration="100">
+        <row>0069bfd89aa3000000</row>
+        <row>30108cc716c6210000</row>
+        <row>23efffffffc4700000</row>
+        <row>008a7368aca4000000</row>
+        <row>332aa9bbfc80000000</row>
+        <row>12002acc8332000000</row>
+        <row>100000003ccc000000</row>
+        <row>0000387cffffc80000</row>
+    </frame>
+    <frame duration="100">
+        <row>0068acc446a3000000</row>
+        <row>81109cf969c3300000</row>
+        <row>13fffdddffc4300000</row>
+        <row>026a559aaca3000000</row>
+        <row>221aa9bcfc40000000</row>
+        <row>110017aa3362000000</row>
+        <row>000000017ccc000000</row>
+        <row>00007aceffffc90000</row>
+    </frame>
+    <frame duration="100">
+        <row>0057adc456a3000000</row>
+        <row>52119cf96ac3300000</row>
+        <row>63fffcdcffc4300000</row>
+        <row>128a569aaca3000000</row>
+        <row>322aaabcfc40000000</row>
+        <row>100017a83380000000</row>
+        <row>000000018cca000000</row>
+        <row>00017acfffffc30000</row>
+    </frame>
+    <frame duration="100">
+        <row>0079bfc888a2000000</row>
+        <row>12109cc816c3200000</row>
+        <row>a3ffffffffc4900000</row>
+        <row>22ac7388aca2000000</row>
+        <row>323caabcfc80000000</row>
+        <row>20002acc6330000000</row>
+        <row>000000015cc2000000</row>
+        <row>00018aacffff600000</row>
+    </frame>
+    <frame duration="100">
+        <row>0079cffacca1000000</row>
+        <row>02108cc602c3100000</row>
+        <row>83ffffffffc4900000</row>
+        <row>33ccc89bcca3000000</row>
+        <row>328c369acca0000000</row>
+        <row>2001acffa430000000</row>
+        <row>000000023ac0000000</row>
+        <row>0000875cffcc000000</row>
+    </frame>
+    <frame duration="100">
+        <row>01acfffccba0000000</row>
+        <row>02116cc312a2000000</row>
+        <row>43cacfffffc3700000</row>
+        <row>43cecccccca3000000</row>
+        <row>328c3496cca0000000</row>
+        <row>2003ccffc830000000</row>
+        <row>0000022336a0000000</row>
+        <row>00008327cfc7000000</row>
+    </frame>
+    <frame duration="100">
+        <row>01ccffffcc80000000</row>
+        <row>02238cc33381000000</row>
+        <row>2396cdfcccc3500000</row>
+        <row>43efccccffa3000000</row>
+        <row>328a59b9aca0000000</row>
+        <row>2028cbcfea30000000</row>
+        <row>000013333380000000</row>
+        <row>00003213ccc1000000</row>
+    </frame>
+    <frame duration="100">
+        <row>00ccffffdc80000000</row>
+        <row>02238cc33381000000</row>
+        <row>23649dfc9cc3300000</row>
+        <row>43ffccccffa3000000</row>
+        <row>328a68b9aca0000000</row>
+        <row>2028cacdfa20000000</row>
+        <row>000013533350000000</row>
+        <row>00013215cfc1000000</row>
+    </frame>
+    <frame duration="100">
+        <row>01ccfffcbb80000000</row>
+        <row>0238bdfcccb1000000</row>
+        <row>33ccdcfdffc3200000</row>
+        <row>33cfcacbcca3000000</row>
+        <row>226a59cbcca0000000</row>
+        <row>1003cccfc820000000</row>
+        <row>000002233580000000</row>
+        <row>0003aaacffc4000000</row>
+    </frame>
+    <frame duration="100">
+        <row>02768cfa8ba0000000</row>
+        <row>03a87cfc35a3000000</row>
+        <row>63ffdcffffc6000000</row>
+        <row>22aa7888aca1000000</row>
+        <row>225caabcfc80000000</row>
+        <row>00017cfc8300000000</row>
+        <row>000010134aa0000000</row>
+        <row>001acccffcc9000000</row>
+    </frame>
+    <frame duration="100">
+        <row>01589ffbaca2000000</row>
+        <row>63405cf911a6000000</row>
+        <row>85ffffffffc4000000</row>
+        <row>13aa6469cca2000000</row>
+        <row>227c9bbbcc50000000</row>
+        <row>00009ffc8310000000</row>
+        <row>000220023aa0000000</row>
+        <row>105acaacfcc8900000</row>
+    </frame>
+    <frame duration="100">
+        <row>00799ffbbca3000000</row>
+        <row>53206cc701a6000000</row>
+        <row>86ffffffffc4700000</row>
+        <row>23aa8689cca3000000</row>
+        <row>228c69aacc80000000</row>
+        <row>1001affc8320000000</row>
+        <row>000100023a80000000</row>
+        <row>001ac99cfcc2002000</row>
+    </frame>
+    <frame duration="100">
+        <row>0079affabca5000000</row>
+        <row>82206cc701b8000000</row>
+        <row>43ffffffffc4a00000</row>
+        <row>23aa7368aca3000000</row>
+        <row>213c89bbcc80000000</row>
+        <row>10007cfc8330000000</row>
+        <row>000010023aa0000000</row>
+        <row>101acc9cffcc000000</row>
+    </frame>
+    <frame duration="100">
+        <row>00368cd988a8000000</row>
+        <row>82617cf916c8220000</row>
+        <row>03ffffffffc4500000</row>
+        <row>326a3368aaa4000000</row>
+        <row>200aa9bbfc60000000</row>
+        <row>00002aca3330000000</row>
+        <row>000020018cc7000000</row>
+        <row>202cccccffcdc00000</row>
+    </frame>
+    <frame duration="100">
+        <row>10213cc3339a000000</row>
+        <row>03b69cfc9cfa370000</row>
+        <row>02cdcaccddc6100000</row>
+        <row>303a37a9aca4000000</row>
+        <row>1002aabcfc31000000</row>
+        <row>000002633387000000</row>
+        <row>00003202afcc100000</row>
+        <row>214cccffffcffc0000</row>
+    </frame>
+    <frame duration="100">
+        <row>00102ac322aa120000</row>
+        <row>02c9adffcffa390000</row>
+        <row>00acc9ccccc8100000</row>
+        <row>201a53979cc6000000</row>
+        <row>10007abffa33000000</row>
+        <row>0000002223ac000000</row>
+        <row>00002302affcc00000</row>
+        <row>229cccfffffffc4000</row>
+    </frame>
+    <frame duration="100">
+        <row>00013ac3329c210000</row>
+        <row>00969cfc9ffa4c0000</row>
+        <row>007fc9ccccc8300000</row>
+        <row>200873a99cc8000000</row>
+        <row>10007aacfc43000000</row>
+        <row>00000022238c700000</row>
+        <row>000002005cfcc60000</row>
+        <row>2069cccffffdffc000</row>
+    </frame>
+    <frame duration="100">
+        <row>00178cc7889c201000</row>
+        <row>00202bfb29cc3a0000</row>
+        <row>007ffdffdffa400000</row>
+        <row>20087237aaaa200000</row>
+        <row>1000a69bdfa3200000</row>
+        <row>000001bca33aa00000</row>
+        <row>000000001affc90000</row>
+        <row>200198a9cfffffc100</row>
+    </frame>
+    <frame duration="100">
+        <row>002ccffccccb200000</row>
+        <row>000129c333cc327000</row>
+        <row>00569cffcffc4a0000</row>
+        <row>201cc9bccaca600000</row>
+        <row>2002a3999cca300000</row>
+        <row>00000aacfc43800000</row>
+        <row>0000001213aec70000</row>
+        <row>100002203cffcf9000</row>
+    </frame>
+    <frame duration="100">
+        <row>000ccfffffc8000000</row>
+        <row>00079dfabccc503000</row>
+        <row>002028c902cc4a6000</row>
+        <row>002cccfffffa800000</row>
+        <row>2008a667a8aa600000</row>
+        <row>0000735bcfc4300000</row>
+        <row>000001cdc838c20000</row>
+        <row>0000000003cfcc0000</row>
+    </frame>
+    <frame duration="100">
+        <row>0007cdfffda3000000</row>
+        <row>001ccfffffca200000</row>
+        <row>00037ac348ac627000</row>
+        <row>00101afc26fc690000</row>
+        <row>201fccfdccca800000</row>
+        <row>00028238aaaa400000</row>
+        <row>0000088adfa3800000</row>
+        <row>00000026323cca0000</row>
+    </frame>
+    <frame duration="100">
+        <row>0002acfffb62000000</row>
+        <row>000ccfffffc8100000</row>
+        <row>00079cfbaccc503000</row>
+        <row>101013c8009c6a1000</row>
+        <row>102cccffdffa800000</row>
+        <row>000586669588400000</row>
+        <row>00002337bfc4400000</row>
+        <row>000000acc538c70000</row>
+    </frame>
+    <frame duration="100">
+        <row>0002aadffa32000000</row>
+        <row>000ccfffffc6000000</row>
+        <row>0019cffcccbb302000</row>
+        <row>101013a3118c6a0000</row>
+        <row>00299cffccfc600000</row>
+        <row>00078999b586400000</row>
+        <row>000023349ca4300000</row>
+        <row>000000acc836a70000</row>
+    </frame>
+    <frame duration="100">
+        <row>0002acfffa32000000</row>
+        <row>001ccfffffc6000000</row>
+        <row>0017bcfcacba301000</row>
+        <row>002003a3108c4a0000</row>
+        <row>002cccffccfa400000</row>
+        <row>000336789364300000</row>
+        <row>000023359ca4300000</row>
+        <row>000000acc338a70000</row>
+    </frame>
+    <frame duration="100">
+        <row>0005ccfffc52000000</row>
+        <row>002ccfffffc8000000</row>
+        <row>00168ccb9baa320000</row>
+        <row>002003a7009c420000</row>
+        <row>002cccffccfa400000</row>
+        <row>000232227344200000</row>
+        <row>00000669bc63400000</row>
+        <row>00000069633ac90000</row>
+    </frame>
+    <frame duration="100">
+        <row>0007ccfffc63000000</row>
+        <row>003ccfffffc8000000</row>
+        <row>00157aca8a9a330000</row>
+        <row>007003a7109c300000</row>
+        <row>002ccdffccd8300000</row>
+        <row>000132226344000000</row>
+        <row>00000689bc33300000</row>
+        <row>00000023225ac90000</row>
+    </frame>
+    <frame duration="100">
+        <row>0003ccdffc32000000</row>
+        <row>203ccfffffc3000000</row>
+        <row>00279ccc9ba8320000</row>
+        <row>007002a3005c300000</row>
+        <row>005cccffccfa200000</row>
+        <row>000222235334000000</row>
+        <row>00001669aa33000000</row>
+        <row>00000157333ac20000</row>
+    </frame>
+    <frame duration="100">
+        <row>20028ccfca30000000</row>
+        <row>c02acffffda3000000</row>
+        <row>003accfffcb6100000</row>
+        <row>00501283123a300000</row>
+        <row>00a96cfd96ca000000</row>
+        <row>0025399aa584000000</row>
+        <row>000053354a32000000</row>
+        <row>000005aaa334200000</row>
+    </frame>
+    <frame duration="100">
+        <row>000038ccc600000000</row>
+        <row>f003accffa31000000</row>
+        <row>903ccffffdc3000000</row>
+        <row>00389ccccba4200000</row>
+        <row>00a00293003a200000</row>
+        <row>00accfffccf8000000</row>
+        <row>000223334333000000</row>
+        <row>00005666a831000000</row>
+    </frame>
+    <frame duration="100">
+        <row>000000010000000000</row>
+        <row>00003accc710000000</row>
+        <row>f003ccdffc31000000</row>
+        <row>605ccffffdc3000000</row>
+        <row>00389ccc9ba4200000</row>
+        <row>00c003a3102a000000</row>
+        <row>00aecfffccf8000000</row>
+        <row>000233334332000000</row>
+    </frame>
+    <frame duration="100">
+        <row>000000000000000000</row>
+        <row>000000020000000000</row>
+        <row>00003accc820000000</row>
+        <row>f003ccdffc32000000</row>
+        <row>305ccffffcc3000000</row>
+        <row>00369acc9ba4200000</row>
+        <row>00c003a5102a000000</row>
+        <row>008dcfffccf8000000</row>
+    </frame>
+    <frame duration="100">
+        <row>000000000000000000</row>
+        <row>000000000000000000</row>
+        <row>000000153000000000</row>
+        <row>00005accca30000000</row>
+        <row>f015cdfffc82000000</row>
+        <row>205ccffffdc8000000</row>
+        <row>015287cc7994200000</row>
+        <row>01c406aa202a000000</row>
+    </frame>
+    <frame duration="100">
+        <row>000000000000000000</row>
+        <row>000000000000000000</row>
+        <row>000000000000000000</row>
+        <row>0000038bb300000000</row>
+        <row>90017ccccc30000000</row>
+        <row>c02acfffffc3000000</row>
+        <row>0039cdfffdc8100000</row>
+        <row>00a101682226300000</row>
+    </frame>
+    <frame duration="100">
+        <row>000000000000000000</row>
+        <row>000000000000000000</row>
+        <row>000000000000000000</row>
+        <row>000000278100000000</row>
+        <row>00003acccb30000000</row>
+        <row>f005cfffffc3000000</row>
+        <row>103ccffffdda100000</row>
+        <row>0072238a5643300000</row>
+    </frame>
+    <frame duration="100">
+        <row>000000000000000000</row>
+        <row>000000000000000000</row>
+        <row>000000000000000000</row>
+        <row>00000038a300000000</row>
+        <row>00003acccc60000000</row>
+        <row>d005cfffffc3000000</row>
+        <row>002acfffffdc300000</row>
+        <row>0032126a3233310000</row>
+    </frame>
+    <frame duration="100">
+        <row>000000000000000000</row>
+        <row>000000000000000000</row>
+        <row>000000000000000000</row>
+        <row>000003accb30000000</row>
+        <row>01005ccdffa3000000</row>
+        <row>470acffffffc200000</row>
+        <row>011389cdcaba600000</row>
+        <row>0019003a3117a10000</row>
+    </frame>
+    <frame duration="100">
+        <row>000000000000000000</row>
+        <row>000000000000000000</row>
+        <row>00000039c910000000</row>
+        <row>00002accfca2000000</row>
+        <row>0d02cdfffffa200000</row>
+        <row>0203bcffffcb800000</row>
+        <row>0005013a3124a30000</row>
+        <row>000cc9cff99fa00000</row>
+    </frame>
+    <frame duration="100">
+        <row>000000000000000000</row>
+        <row>000000149500000000</row>
+        <row>000019accca2000000</row>
+        <row>0000acffffda300000</row>
+        <row>0403ccfffffca00000</row>
+        <row>0002128a5233a33000</row>
+        <row>000a97adc79fc30000</row>
+        <row>0002cbccccbc610000</row>
+    </frame>
+    <frame duration="100">
+        <row>000000003000000000</row>
+        <row>000003aacc80000000</row>
+        <row>00006ccfffc8300000</row>
+        <row>0002ccffffffa00000</row>
+        <row>000137aca689a32000</row>
+        <row>0005117ca23cc44000</row>
+        <row>0002fdffffcfa30000</row>
+        <row>000023233876400000</row>
+    </frame>
+    <frame duration="100">
+        <row>00000028ca30000000</row>
+        <row>00000accffc3100000</row>
+        <row>0000acfffffc800000</row>
+        <row>00207bdfdccca50100</row>
+        <row>0001003a8216c6a000</row>
+        <row>0001cccffdffc60000</row>
+        <row>000088999c88640000</row>
+        <row>0000033356ca420000</row>
+    </frame>
+    <frame duration="100">
+        <row>0000027acca2000000</row>
+        <row>00002ccffffa300000</row>
+        <row>0000ccffffffc20000</row>
+        <row>000027aca366aa1300</row>
+        <row>0000118cc66cd88000</row>
+        <row>0000cfdfffcfb60000</row>
+        <row>000026223898830000</row>
+        <row>000000969bfa330000</row>
+    </frame>
+    <frame duration="100">
+        <row>000003aacca3000000</row>
+        <row>00005cfffffc910000</row>
+        <row>0000acfffdcca80000</row>
+        <row>0001003a8213ca2700</row>
+        <row>0000b9cdfccff84000</row>
+        <row>0000acb9cccca80000</row>
+        <row>0000053399aca30000</row>
+        <row>0000002abdc8341000</row>
+    </frame>
+    <frame duration="100">
+        <row>000007ccffc7200000</row>
+        <row>00007cffffffb20000</row>
+        <row>000039cff9ccba0000</row>
+        <row>0001103aa303ca3a00</row>
+        <row>0000ccffffffd83000</row>
+        <row>00003aa799aa880000</row>
+        <row>0000036359cca30000</row>
+        <row>0000000adfa3382000</row>
+    </frame>
+    <frame duration="100">
+        <row>00000acffffc610000</row>
+        <row>0000acffffffc30000</row>
+        <row>0000269cc366aa0200</row>
+        <row>0000408cf949fa3a00</row>
+        <row>0000cfffffcfc82000</row>
+        <row>0000283258aaa80000</row>
+        <row>000001a89bfc630000</row>
+        <row>0000000399333a5000</row>
+    </frame>
+    <frame duration="100">
+        <row>00002cffffffa20000</row>
+        <row>000059cffcccba0000</row>
+        <row>0001103ac313ca2300</row>
+        <row>0000ccfffffffa6400</row>
+        <row>0000acb9cccca80000</row>
+        <row>0000083396aca30000</row>
+        <row>0000003ccfc8340000</row>
+        <row>000000002123cc7000</row>
+    </frame>
+    <frame duration="100">
+        <row>0000acffffffc30000</row>
+        <row>0000239cc368aa0000</row>
+        <row>0002929cf969da3900</row>
+        <row>0000cfddffdfc62000</row>
+        <row>00003a368aaaa40000</row>
+        <row>000002a9bcfc420000</row>
+        <row>00000007a7334a0000</row>
+        <row>00000001005cec9000</row>
+    </frame>
+    <frame duration="100">
+        <row>000059cffacca80000</row>
+        <row>0002107cc312ca0200</row>
+        <row>0001ffffffffc6a000</row>
+        <row>0000aa989ccc840000</row>
+        <row>00001a3599cc810000</row>
+        <row>0000008fffa3310000</row>
+        <row>00000000013aca0000</row>
+        <row>000002852acfccb200</row>
+    </frame>
+    <frame duration="100">
+        <row>0010128cc468a80000</row>
+        <row>000796cff969c42200</row>
+        <row>0002fecccfffa45000</row>
+        <row>00008a3899aa820000</row>
+        <row>00000aaabdca300000</row>
+        <row>000000299333300000</row>
+        <row>0000002002acc50000</row>
+        <row>00009caccfffcdc000</row>
+    </frame>
+    <frame duration="100">
+        <row>0052016cb336930000</row>
+        <row>008aeccffc9cc32000</row>
+        <row>0005ccacccff831000</row>
+        <row>0000a73b9aca600000</row>
+        <row>00000acccfc6100000</row>
+        <row>000000133333200000</row>
+        <row>0000032005cca00000</row>
+        <row>0006cccefffcccb000</row>
+    </frame>
+    <frame duration="100">
+        <row>0003018cb336920000</row>
+        <row>008ccccff999c22000</row>
+        <row>000accaccdff830000</row>
+        <row>0003c56b9aca400000</row>
+        <row>00002ccccfc4000000</row>
+        <row>000000253333000000</row>
+        <row>0000052016ca200000</row>
+        <row>0009ccccfffccc0000</row>
+    </frame>
+</blm>

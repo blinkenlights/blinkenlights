@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blm width="26" height="20" bits="3" channels="1">
+	<header>
+		<title>j&apos;aime sido</title>
+		<description>un mot d&apos;amour</description>
+		<creator>ArcadePaint 1.1.1 PC</creator>
+		<author>denis</author>
+		<email>denis@sparkmoon.com</email>
+		<loop>yes</loop>
+		<duration>200</duration>
+	</header>
+
+	<frame duration="200">
+		<row>00000000000000000000000000</row>
+		<row>00077770777007770000770000</row>
+		<row>00070000070007007007007000</row>
+		<row>00070000070007007007007000</row>
+		<row>00070000070007007007007000</row>
+		<row>77770000777007770000770000</row>
+		<row>00000000000000000000000000</row>
+		<row>00000000000000000000000000</row>
+		<row>00000000000000000000000000</row>
+		<row>07777777000077000007700000</row>
+		<row>00007000000077700077700000</row>
+		<row>00007000000077770777700000</row>
+		<row>00007000000007777777000000</row>
+		<row>00007000000007777777000000</row>
+		<row>00007000000000777770000000</row>
+		<row>77777000000000077700000000</row>
+		<row>00000000000000000000000000</row>
+		<row>00000000000000000000000000</row>
+		<row>00000000000000000000000000</row>
+		<row>00000000000000000000000000</row>
+	</frame>
+</blm>
+

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blm width="26" height="20" bits="4" channels="1">
+	<header>
+		<title>star.gif</title>
+		<description></description>
+		<creator>ArcadePaint 1.1 Mac</creator>
+		<author>aeg/smash-designs</author>
+		<email>andre.buerger@similis.com</email>
+		<loop>no</loop>
+		<duration>1000</duration>
+	</header>
+
+	<frame duration="1000">
+		<row>00000000000000000000000000</row>
+		<row>00000000000002400000000000</row>
+		<row>00000000000003710000000000</row>
+		<row>00000000000003300000000000</row>
+		<row>00000000000003300000000000</row>
+		<row>00000000000015300000000000</row>
+		<row>00000000482025300000000000</row>
+		<row>00000000396235300000000000</row>
+		<row>00000000169765311310000000</row>
+		<row>00002221149a95656b21000000</row>
+		<row>0001978777aaa9856671000000</row>
+		<row>0000135789aa999889b4210000</row>
+		<row>00000014799887657998753211</row>
+		<row>00001368987775444455556668</row>
+		<row>00136765543333342111111122</row>
+		<row>34454331100011234200000000</row>
+		<row>65211000000000024310000000</row>
+		<row>10000000000000001351000000</row>
+		<row>00000000000000000281000000</row>
+		<row>00000000000000000111000000</row>
+	</frame>
+</blm>

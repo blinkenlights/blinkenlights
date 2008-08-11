@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<blm id="blinken_eye" width="18" height="8">
+	<header>
+		<name>blinkenEye</name>
+		<description>blinking eye</description>
+		<creator>Blinkenpaint 2.4</creator>
+		<author>neil cox</author>
+		<width>18</width>
+		<height>8</height>
+		<loop>yes</loop>
+		<duration>2700</duration>
+	</header>
+
+	<frame ms="2500">
+		<row>000001010101010000</row>
+		<row>000011111111110000</row>
+		<row>001110011110011100</row>
+		<row>111000111111000111</row>
+		<row>111000111111000111</row>
+		<row>001100011110001100</row>
+		<row>000011111111110000</row>
+		<row>000010101010100000</row>
+	</frame>
+
+	<frame ms="50">
+		<row>000000000000000000</row>
+		<row>000001010101010000</row>
+		<row>001111111111111100</row>
+		<row>111000111111000111</row>
+		<row>111000111111000111</row>
+		<row>001111111111111100</row>
+		<row>000010101010100000</row>
+		<row>000000000000000000</row>
+	</frame>
+
+	<frame ms="100">
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000001010101010000</row>
+		<row>111111111111111111</row>
+		<row>111111111111111111</row>
+		<row>000010101010100000</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+	</frame>
+
+	<frame ms="50">
+		<row>000000000000000000</row>
+		<row>000001010101010000</row>
+		<row>001111111111111100</row>
+		<row>111000111111000111</row>
+		<row>111000111111000111</row>
+		<row>001111111111111100</row>
+		<row>000010101010100000</row>
+		<row>000000000000000000</row>
+	</frame>
+</blm>

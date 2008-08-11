@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blm width="18" height="8" bits="4" channels="1">
+	<header>
+		<title>zappenduster</title>
+		<description>flickwerk</description>
+		<creator>BlinkenPaint 3.14</creator>
+		<author>agent createur</author>
+		<email>info@agent-createur.de</email>
+		<loop>yes</loop>
+		<duration>3600</duration>
+	</header>
+
+	<frame duration="200">
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000002222222200000</row>
+		<row>000002222222200000</row>
+		<row>000002222222200000</row>
+		<row>000002222222200000</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+	</frame>
+
+	<frame duration="200">
+		<row>443333333333333333</row>
+		<row>333333333333333333</row>
+		<row>333333333333333333</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+	</frame>
+
+	<frame duration="200">
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>333333333333333333</row>
+		<row>333333333333333333</row>
+		<row>333333333333333344</row>
+	</frame>
+
+	<frame duration="200">
+		<row>000000000000000000</row>
+		<row>004444444444444400</row>
+		<row>004444444444444400</row>
+		<row>004444444444444400</row>
+		<row>004444444444444400</row>
+		<row>004444444444444400</row>
+		<row>004444444444444400</row>
+		<row>000000000000000000</row>
+	</frame>
+
+	<frame duration="200">
+		<row>888888888888888888</row>
+		<row>888888888888888888</row>
+		<row>888888888888888888</row>
+		<row>888888888888888888</row>
+		<row>888888888888888888</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+	</frame>
+
+	<frame duration="200">
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>888888888888888888</row>
+		<row>888888888888888888</row>
+		<row>888888888888888888</row>
+		<row>888888888888888888</row>
+	</frame>
+
+	<frame duration="200">
+		<row>000000000000000066</row>
+		<row>000000000000006600</row>
+		<row>000000000000660000</row>
+		<row>000000000666000000</row>
+		<row>000000066000000000</row>
+		<row>000006600000000000</row>
+		<row>000660000000000000</row>
+		<row>666000000000000000</row>
+	</frame>
+
+	<frame duration="200">
+		<row>000000000000000066</row>
+		<row>000000000000006600</row>
+		<row>000000000000660000</row>
+		<row>000000000666000000</row>
+		<row>000000066000000000</row>
+		<row>000006600000000000</row>
+		<row>000660000000000000</row>
+		<row>666000000000000000</row>
+	</frame>
+
+	<frame duration="200">
+		<row>000000000000700066</row>
+		<row>000000000077006600</row>
+		<row>000000007700660000</row>
+		<row>000000770666000000</row>
+		<row>000077066000000000</row>
+		<row>007706600000000000</row>
+		<row>770660000000000000</row>
+		<row>666000000000000000</row>
+	</frame>
+
+	<frame duration="200">
+		<row>0000000000000008aa</row>
+		<row>00000000000008a600</row>
+		<row>000000000008a60000</row>
+		<row>000000008aa6000000</row>
+		<row>0000008a6000000000</row>
+		<row>00008a600000000000</row>
+		<row>088a60000000000000</row>
+		<row>666000000000000000</row>
+	</frame>
+
+	<frame duration="200">
+		<row>0000000000000008ac</row>
+		<row>00000000000008aa88</row>
+		<row>000000000088aa8880</row>
+		<row>000000008a6ab88000</row>
+		<row>0000088a68b8000000</row>
+		<row>00088668b800000000</row>
+		<row>8886a8b80000000000</row>
+		<row>666888000000000000</row>
+	</frame>
+
+	<frame duration="200">
+		<row>000000000000000066</row>
+		<row>000000000000006600</row>
+		<row>000000000000660000</row>
+		<row>000000000666000000</row>
+		<row>000000066000000000</row>
+		<row>00000660000fffffff</row>
+		<row>00066000000fffffff</row>
+		<row>66600000000fffffff</row>
+	</frame>
+
+	<frame duration="200">
+		<row>fffffff00000000666</row>
+		<row>fffffff00000066000</row>
+		<row>fffffff00006600000</row>
+		<row>000000000660000000</row>
+		<row>000000666000000000</row>
+		<row>000066000000000000</row>
+		<row>006600000000000000</row>
+		<row>660000000000000000</row>
+	</frame>
+
+	<frame duration="200">
+		<row>000000000000000066</row>
+		<row>000000000000006600</row>
+		<row>000000000000660000</row>
+		<row>000000000666000000</row>
+		<row>ffffffff6000000000</row>
+		<row>ffffffff0000000000</row>
+		<row>ffffffff0000000000</row>
+		<row>ffffffff0000000000</row>
+	</frame>
+
+	<frame duration="200">
+		<row>00000000000fffffff</row>
+		<row>00000000000fffffff</row>
+		<row>00000000000fffffff</row>
+		<row>00000000066fffffff</row>
+		<row>000000666000000000</row>
+		<row>000066000000000000</row>
+		<row>006600000000000000</row>
+		<row>660000000000000000</row>
+	</frame>
+
+	<frame duration="200">
+		<row>ffffffff0000000066</row>
+		<row>ffffffff0000006600</row>
+		<row>ffffffff0000660000</row>
+		<row>ffffffff0666000000</row>
+		<row>000000066000000000</row>
+		<row>000006600000000000</row>
+		<row>000660000000000000</row>
+		<row>666000000000000000</row>
+	</frame>
+
+	<frame duration="200">
+		<row>000000000000000666</row>
+		<row>000000000000066000</row>
+		<row>000000000006600000</row>
+		<row>000000000660000000</row>
+		<row>0000006660ffffffff</row>
+		<row>0000660000ffffffff</row>
+		<row>0066000000ffffffff</row>
+		<row>6600000000ffffffff</row>
+	</frame>
+
+	<frame duration="200">
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+	</frame>
+</blm>

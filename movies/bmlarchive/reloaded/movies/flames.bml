@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blm width="18" height="8" bits="4" channels="1">
+	<header>
+		<title>Flames</title>
+		<description>Building on fire!!</description>
+		<creator>BlinkenPaint 3.12</creator>
+		<author>Max Russell</author>
+		<email>maxlesley@iprimus.com.au</email>
+		<loop>yes</loop>
+		<duration>1600</duration>
+	</header>
+
+	<frame duration="200">
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000700000200020000</row>
+		<row>007200000200002000</row>
+		<row>024200000200002a00</row>
+		<row>07eb400042e0024f00</row>
+		<row>7efeb444eef22ff244</row>
+	</frame>
+
+	<frame duration="200">
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>007000002000200002</row>
+		<row>072000002000020002</row>
+		<row>24200000200002a002</row>
+		<row>7eb400042e0024f088</row>
+		<row>efeb444eef22ff2a55</row>
+	</frame>
+
+	<frame duration="200">
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>00400000400000b000</row>
+		<row>00400004700000b000</row>
+		<row>00740004700044a000</row>
+		<row>0e7440444e0444f080</row>
+		<row>99eb444ee422ff2a50</row>
+	</frame>
+
+	<frame duration="200">
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>00400000400000b000</row>
+		<row>00400004700000b000</row>
+		<row>00740004700044a000</row>
+		<row>0e7440444e0444f080</row>
+		<row>99eb444ee422ff2a50</row>
+	</frame>
+
+	<frame duration="200">
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000700000200020000</row>
+		<row>007200000200002000</row>
+		<row>024200000200002a00</row>
+		<row>07eb400042e0024f00</row>
+		<row>7efeb444eef22ff244</row>
+	</frame>
+
+	<frame duration="200">
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000700000200020000</row>
+		<row>007200000200002000</row>
+		<row>024200000200002a00</row>
+		<row>07eb400042e0024f00</row>
+		<row>7efeb444eef22ff244</row>
+	</frame>
+
+	<frame duration="200">
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000700000200020000</row>
+		<row>007200000200002000</row>
+		<row>024200000200002a00</row>
+		<row>07eb400042e0024f00</row>
+		<row>7efeb444eef22ff244</row>
+	</frame>
+
+	<frame duration="200">
+		<row>000000000000000000</row>
+		<row>000300000300000000</row>
+		<row>003000030300003000</row>
+		<row>005300805200033000</row>
+		<row>03540083033005c300</row>
+		<row>328400835d0058c500</row>
+		<row>07e5448dd533584550</row>
+		<row>7edeb888eef52cf244</row>
+	</frame>
+</blm>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<blm width="26" height="20" bits="4">
+    <header>
+        <title>Tim</title>
+        <creator>blib 0.7</creator>
+    </header>
+    <frame duration="5000">
+        <row>11111111100110111101010111</row>
+        <row>11111212233221111111110001</row>
+        <row>2121468abbba97653322221000</row>
+        <row>2213addeddccba986543321100</row>
+        <row>213ceeedddccba985554311000</row>
+        <row>22aedeeeddccba865544210000</row>
+        <row>24deeeedbbbba8655443321000</row>
+        <row>39cbdeb89bba86444443211000</row>
+        <row>27abcc9ac98857765432110000</row>
+        <row>248bc99accbbaba96422111111</row>
+        <row>25cdb977cdddcb974222111221</row>
+        <row>25cb6344bdccba863122122231</row>
+        <row>23ac9789ccbba9853221122210</row>
+        <row>226bbaaaa99888743211111000</row>
+        <row>22399888998655432111121000</row>
+        <row>22258888998545421111111000</row>
+        <row>22129bbbb98654211111111000</row>
+        <row>11114766542211111111111000</row>
+        <row>11111365521111111111111100</row>
+        <row>111118baa84111111121111100</row>
+    </frame>
+</blm>

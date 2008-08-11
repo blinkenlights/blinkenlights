@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<blm width="26" height="20" bits="4">
+    <header>
+        <title>ghandi.gif</title>
+        <creator>blib 0.7</creator>
+        <duration>10000</duration>
+    </header>
+    <frame duration="10000">
+        <row>baaaabbb99988899aa9888789b</row>
+        <row>aaaab866667667788888755578</row>
+        <row>bbbb546777788899aa99975555</row>
+        <row>bbc8467788889aabbbbaaa8555</row>
+        <row>ccc446668887789999aaabb965</row>
+        <row>c975445688876679999ababb75</row>
+        <row>84435533579887887779abaa75</row>
+        <row>94434746878876554232654797</row>
+        <row>d85665467789a9987668965997</row>
+        <row>cb9974356667887668abcaab98</row>
+        <row>bbba4343555322343357876aa9</row>
+        <row>bcb6244324424355421336aaaa</row>
+        <row>cc9934543332466655798cbbba</row>
+        <row>aabc934444322235569bcaaaba</row>
+        <row>aaccd62433332246315cdcbaa9</row>
+        <row>bbbccb64344324786315cddccb</row>
+        <row>ccccccda6555668999618ddddc</row>
+        <row>ccddddddd96689bbba736edddd</row>
+        <row>cccdddccccb76889a9742adcdc</row>
+        <row>dddddddccccc9689aa8638dddc</row>
+    </frame>
+</blm>

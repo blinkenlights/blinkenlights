@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blm width="26" height="20" bits="4" channels="1">
+	<header>
+		<title>still-sc-earth.bml</title>
+		<description></description>
+		<creator>ArcadePaint 1.1 Mac</creator>
+		<author></author>
+		<email></email>
+		<loop>no</loop>
+		<duration>200</duration>
+	</header>
+
+	<frame duration="200">
+		<row>00000000000000000000000000</row>
+		<row>00000000000000000000000000</row>
+		<row>00000000000000000000000000</row>
+		<row>00000000000000000000000000</row>
+		<row>00000023455431266762000000</row>
+		<row>00016753111112478899871000</row>
+		<row>00463111111114754445689500</row>
+		<row>06511111111147999877788760</row>
+		<row>21100000000145555555554422</row>
+		<row>234210ff0ff0f4ff4f5f555412</row>
+		<row>145542f1f0f0f0f1ff5f555300</row>
+		<row>24555553000000000035555101</row>
+		<row>32699983111111111169985412</row>
+		<row>04179821111111111168732130</row>
+		<row>00337511111111111112112200</row>
+		<row>00004521111111111111330000</row>
+		<row>00000012333223444321000000</row>
+		<row>00000000000000000000000000</row>
+		<row>00000000000000000000000000</row>
+		<row>00000000000000000000000000</row>
+	</frame>
+</blm>

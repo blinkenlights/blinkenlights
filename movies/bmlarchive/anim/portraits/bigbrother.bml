@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blm width="26" height="20" bits="4" channels="1">
+	<header>
+		<title>bb.gif</title>
+		<description></description>
+		<creator>ArcadePaint 1.1 Mac</creator>
+		<author></author>
+		<email></email>
+		<loop>no</loop>
+		<duration>10000</duration>
+	</header>
+
+	<frame duration="10000">
+		<row>12456899999999999876654321</row>
+		<row>00012578999aa9987654323321</row>
+		<row>000001223589a9842234322321</row>
+		<row>100000122129b9421011123421</row>
+		<row>32011138304bca744436456532</row>
+		<row>3530267885bcccb98876577431</row>
+		<row>15751369accddccca987887421</row>
+		<row>0269878acccddddccbaa876321</row>
+		<row>00379bbbaadeeedcdcca975321</row>
+		<row>00158abb47beeedcbcba975321</row>
+		<row>001268a54bceeeddcbaa875210</row>
+		<row>00011348c538ca68dc98754210</row>
+		<row>00010169920011039ba8653100</row>
+		<row>00033233200000014667752000</row>
+		<row>00015600000000000115641000</row>
+		<row>00002410000000012454320000</row>
+		<row>00000000000000000000000000</row>
+		<row>00000000000000000000000000</row>
+		<row>00000000000000000000000000</row>
+		<row>00000000000000000000000000</row>
+	</frame>
+</blm>

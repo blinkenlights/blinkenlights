@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blm width="26" height="20" bits="4" channels="1">
+	<header>
+		<title>schwan-still</title>
+		<description></description>
+		<creator>ArcadePaint 1.1 Mac</creator>
+		<author>Tim</author>
+		<email></email>
+		<loop>no</loop>
+		<duration>200</duration>
+	</header>
+
+	<frame duration="15000">
+		<row>00000012110010000000000000</row>
+		<row>00100147731000000001000000</row>
+		<row>00000148894110000001000000</row>
+		<row>0000135669bb41000000000000</row>
+		<row>00002466668bb6000001100000</row>
+		<row>0001333469bccc301468aa4111</row>
+		<row>000023357bcdeda5543359c511</row>
+		<row>0001369cdcdddd964433339610</row>
+		<row>010289abcbacc8544695113210</row>
+		<row>015977779cdd95457ced621110</row>
+		<row>1366664568bc7457added42410</row>
+		<row>1575443345884458bccdeb2541</row>
+		<row>1443343334554468cdcdded841</row>
+		<row>1244333233444459cdcdeeeec2</row>
+		<row>0123333222333248cddcdeeee7</row>
+		<row>0001233223323346addddeeeb2</row>
+		<row>00010012222232249bcdeed921</row>
+		<row>00000000101122345679ba9951</row>
+		<row>0011001000001222223478de71</row>
+		<row>00000111000000001135423983</row>
+	</frame>
+</blm>

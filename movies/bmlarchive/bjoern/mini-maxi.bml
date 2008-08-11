@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blm width="26" height="20" bits="4" channels="1">
+	<header>
+		<title>mini-maxi</title>
+		<description>Mini Maxi Typo</description>
+		<creator>ArcadePaint 1.1 Mac</creator>
+		<author>Björn Barnekow</author>
+		<email>bb@bytecamp.net</email>
+		<loop>no</loop>
+		<duration>200</duration>
+	</header>
+
+	<frame duration="50">
+		<row>ffb01ff703fb00ff703f703fb0</row>
+		<row>ffe04ff703fb00ffe03f703fb0</row>
+		<row>fff17ff703fb00fff73f703fb0</row>
+		<row>fcf4bef703fb00fbce4f703fb0</row>
+		<row>fbe8ebf703fb00fb5fbf703fb0</row>
+		<row>fbbcf7f703fb00fb0cff703fb0</row>
+		<row>fb7ff4f703fb00fb03ff703fb0</row>
+		<row>fb4fc3f703fb00fb00bf703fb0</row>
+		<row>75175173017500750027301750</row>
+		<row>00000000000000000000000000</row>
+		<row>77300773000770007700375570</row>
+		<row>ffb01ff7004ff400bf70cf3bf0</row>
+		<row>ffe04ff7009ff9001fe6fb0bf0</row>
+		<row>fff17ff700ecee0009fff10bf0</row>
+		<row>fcf4bef703f99f3000ef900bf0</row>
+		<row>fbe8ebf708f45f8001ffb00bf0</row>
+		<row>fbbcf7f70cffffc009fff40bf0</row>
+		<row>fb7ff4f72febbef23fc5fc0bf0</row>
+		<row>fb4fc3f77f6008f7bf50cf5bf0</row>
+		<row>75175173571001767700375570</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffb01ff7004ff400bf70cf3bf0</row>
+		<row>ffe04ff7009ff9001fe6fb0bf0</row>
+		<row>fff17ff700ecee0009fff10bf0</row>
+		<row>fcf4bef703f99f3000ef900bf0</row>
+		<row>fbe8ebf708f45f8001ffb00bf0</row>
+		<row>fbbcf7f70cffffc009fff40bf0</row>
+		<row>fb7ff4f72febbef23fc5fc0bf0</row>
+		<row>fb4fc3f77f6008f7bf50cf5bf0</row>
+		<row>75175173571001767700375570</row>
+		<row>00000000000000000000000000</row>
+		<row>77300773017500770017301750</row>
+		<row>ffb01ff703fb00ff703f703fb0</row>
+		<row>ffe04ff703fb00ffe03f703fb0</row>
+		<row>fff17ff703fb00fff73f703fb0</row>
+		<row>fcf4bef703fb00fbce4f703fb0</row>
+		<row>fbe8ebf703fb00fb5fbf703fb0</row>
+		<row>fbbcf7f703fb00fb0cff703fb0</row>
+		<row>fb7ff4f703fb00fb03ff703fb0</row>
+		<row>fb4fc3f703fb00fb00bf703fb0</row>
+		<row>75175173017500750027301750</row>
+	</frame>
+
+	<frame duration="50">
+		<row>00000000000000000000000000</row>
+		<row>ff900ff7001ff100ff308f8bf3</row>
+		<row>ffb00ff7003ff3009f60cf4bf3</row>
+		<row>ffb03ff7006ff6006f90ff0bf3</row>
+		<row>fff03ff7008ff8001fe4fb0bf3</row>
+		<row>fff06ff700bffb000cfbf60bf3</row>
+		<row>fff17cf700cefc0009fff20bf3</row>
+		<row>fff38bf700fbbf0004ffc00bf3</row>
+		<row>fbf3bbf703f99f3000ff900bf3</row>
+		<row>fbf7b7f705f77f5000cf600bf3</row>
+		<row>fbe7e7f707f45f7000ff900bf3</row>
+		<row>fbb9f6f709f66f9004ffe00bf3</row>
+		<row>fbbcf3f70cffffc009fff30bf3</row>
+		<row>fb8ff3f70ffffff00cfbf70bf3</row>
+		<row>fb7ff0f72ffffff12fe4fc0bf3</row>
+		<row>fb6ff0f73f9009f36f91ff0bf3</row>
+		<row>fb3fe0f77f7007f79f60cf4bf3</row>
+		<row>fb3fb0f79f3006f8ff209f9bf3</row>
+		<row>75075073571001767700375571</row>
+		<row>00000000000000000000000000</row>
+	</frame>
+
+	<frame duration="50">
+		<row>00000000000000000000000000</row>
+		<row>ff900ff703fb00ff203f703fb0</row>
+		<row>ffb00ff703fb00ff603f703fb0</row>
+		<row>ffb03ff703fb00ff903f703fb0</row>
+		<row>fff03ff703fb00ffe03f703fb0</row>
+		<row>fff06ff703fb00fff23f703fb0</row>
+		<row>fff17cf703fb00fff63f703fb0</row>
+		<row>fff38bf703fb00fcf93f703fb0</row>
+		<row>fbf3bbf703fb00fbce3f703fb0</row>
+		<row>fbf7b7f703fb00fb9f6f703fb0</row>
+		<row>fbe7e7f703fb00fb5f9f703fb0</row>
+		<row>fbb9f6f703fb00fb1fcf703fb0</row>
+		<row>fbbcf3f703fb00fb0cff703fb0</row>
+		<row>fb8ff3f703fb00fb09ff703fb0</row>
+		<row>fb7ff0f703fb00fb05ff703fb0</row>
+		<row>fb6ff0f703fb00fb01ff703fb0</row>
+		<row>fb3fe0f703fb00fb00cf703fb0</row>
+		<row>fb3fb0f703fb00fb009f703fb0</row>
+		<row>75075073017500750037301750</row>
+		<row>00000000000000000000000000</row>
+	</frame>
+</blm>

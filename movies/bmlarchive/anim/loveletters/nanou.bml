@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blm width="26" height="20" bits="3" channels="1">
+	<header>
+		<title>Nanou</title>
+		<description>Message d&apos;amour à ma Nanou</description>
+		<creator>ArcadePaint 1.1.1 PC</creator>
+		<author>David</author>
+		<email>yota9@caramail.com</email>
+		<loop>no</loop>
+		<duration>200</duration>
+	</header>
+
+	<frame duration="200">
+		<row>00000000000000000000000000</row>
+		<row>77000707777077000707770707</row>
+		<row>77000707007077000707070707</row>
+		<row>70700707007070700707070707</row>
+		<row>70070707777070070707070707</row>
+		<row>70070707007070070707070707</row>
+		<row>70007707007070007707070707</row>
+		<row>70000707007070000707770777</row>
+		<row>00000000000000000000000000</row>
+		<row>00000007777770077777770000</row>
+		<row>00000000070000070000000000</row>
+		<row>00000000070000077777000000</row>
+		<row>00000000070000070000000000</row>
+		<row>00000777770000077777770000</row>
+		<row>00000000000000000000000000</row>
+		<row>00000000077700777000000000</row>
+		<row>00000000777777707700000000</row>
+		<row>00000000777777007700000000</row>
+		<row>00000000077777777000000000</row>
+		<row>00000000000777700000000000</row>
+	</frame>
+</blm>
+

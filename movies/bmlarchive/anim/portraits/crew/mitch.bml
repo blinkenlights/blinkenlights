@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<blm width="26" height="20" bits="4">
+    <header>
+        <title>Mitch</title>
+        <creator>blib 0.7</creator>
+    </header>
+    <frame duration="5000">
+        <row>11122222332222211111111111</row>
+        <row>22222233567788754332221111</row>
+        <row>22222358accddcca9875322112</row>
+        <row>2222269bbcdddddcccb9742112</row>
+        <row>221248bbcddddddccbaa864211</row>
+        <row>2211479abceeeedccbba854221</row>
+        <row>22125566558cdda87778644211</row>
+        <row>12237688884464465455424210</row>
+        <row>135358aaa97aa46aa876522201</row>
+        <row>2289999889bdb9788887544235</row>
+        <row>2289bccca889668bcbaa843465</row>
+        <row>22479aaaaaa9889abba9634540</row>
+        <row>22259a97689998778987523300</row>
+        <row>222259bb99a9878aa965300000</row>
+        <row>2221259bbaaaaaba7533100000</row>
+        <row>22202558abbbaa963332000000</row>
+        <row>21124753456765433342000000</row>
+        <row>34775688533333344442333211</row>
+        <row>44886679877766556544434343</row>
+        <row>43477777887777776544344433</row>
+    </frame>
+</blm>

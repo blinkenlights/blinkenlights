@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+
+<!-- Example blccc config (BNF, Paris, France) -->
+
+<blccc>
+
+  <config>
+    <param key="width"              value="26"/>
+    <param key="height"             value="20"/>
+    <param key="aspect"             value="0.5"/>
+    <param key="playlist"           value="ds9-playlist.xml"/>
+    <param key="logfile"            value="/var/log/blccc.log"/>
+    <param key="recipient"          value="23.23.23.255"/>
+    <param key="recipient"          value="beamitup.hyte.de"/>
+    <param key="isdn-host"          value="10.0.1.98"/>
+    <param key="isdn-port"          value="1234"/>
+    <param key="authorized-caller"  value="+3344247369"/>   <!-- Belvedere -->
+    <param key="authorized-caller"  value="+491792902245"/> <!-- Tim       -->
+    <param key="authorized-caller"  value="+491792378019"/> <!-- Sven      -->
+    <param key="authorized-caller"  value="+491727018519"/> <!-- Daniel    -->
+    <param key="authorized-caller"  value="+33619490960"/>  <!-- Fiedel    -->
+
+    <application name="Tetris"      number="+7350" disabled="yes"
+                 type="BTetris"     public="yes" vamp="normalitaet.alaw"> 
+      <param key="lifetime"           value="200000"/>
+    </application>
+
+    <application name="Pong"        number="+7351" disabled="yes"
+                 type="BPong"       public="yes" vamp="normalitaet.alaw"> 
+      <param key="lifetime"           value="200000"/>
+    </application>
+
+    <application name="Breakout"    number="+7352" disabled="yes"
+                 type="BBreakout"   public="yes" vamp="normalitaet.alaw"> 
+      <param key="lifetime"           value="200000"/>
+    </application>
+
+    <application name="Pacman"      number="+7353" disabled="yes"
+                 type="BPacman"     public="yes" vamp="normalitaet.alaw"> 
+      <param key="lifetime"           value="200000"/>
+    </application>
+
+    <application name="Loveletters" number="+7360"
+                 type="BlOnDemand"  public="yes" vamp="normalitaet.alaw">
+      <param key="lifetime"           value="200000"/>
+      <param key="loveletters"        value="loveletters.xml"/>
+    </application>
+
+    <application name="Photo Loveletters" number="+7362"
+                 type="BlOnDemand"  public="yes" vamp="normalitaet.alaw">
+      <param key="loveletters"        value="photo-loveletters.xml"/>
+      <param key="advanced"           value="yes"/>
+    </application>
+
+    <application name="On demand"   number="+7363"
+                 type="BlOnDemand"  public="yes" vamp="normalitaet.alaw">
+      <param key="loveletters"        value="on-demand.xml"/>
+      <param key="advanced"           value="yes"/>
+    </application>
+
+    <application name="Mini Loveletters" number="+7364"
+                 type="BlOnDemand"  public="yes" vamp="normalitaet.alaw">
+      <param key="loveletters"        value="mini-loveletters.xml"/>
+      <param key="advanced"           value="yes"/>
+    </application>
+
+    <application name="Debugger"    number="+7366"
+                 type="BDebug"      public="yes" vamp="gutenabend.alaw">
+    </application>
+
+  </config>
+
+</blccc>

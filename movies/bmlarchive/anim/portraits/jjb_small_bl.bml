@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<blm width="26" height="20" bits="4">
+    <header>
+        <title>Jim Belonis</title>
+        <author>Jim Belonis</author>
+        <creator>blib 0.9</creator>
+        <duration>1000</duration>
+    </header>
+    <frame duration="1000">
+        <row>68655333445644448bacdd1112</row>
+        <row>46862334546766644359bc1111</row>
+        <row>41124576777888877544311111</row>
+        <row>3135577778999aaa98754329dd</row>
+        <row>225556779aabaaa9988765305c</row>
+        <row>33566779999989899887653101</row>
+        <row>235677987787aaa99654221231</row>
+        <row>345777557799878a7761554351</row>
+        <row>4656779868567a877787776561</row>
+        <row>446756789989a9867768888510</row>
+        <row>a93554799abb98888973567610</row>
+        <row>697555779a9776457542323320</row>
+        <row>05735467766756535554211210</row>
+        <row>00014457554255777777457300</row>
+        <row>0000245778b998765567998730</row>
+        <row>000013557677776878a9aa9657</row>
+        <row>10000456875698aaaa89bca657</row>
+        <row>008bbbcba97888999878a98744</row>
+        <row>04aa96cbbc8876788677657424</row>
+        <row>bcc66cc9ddb869bbbabc989655</row>
+    </frame>
+</blm>

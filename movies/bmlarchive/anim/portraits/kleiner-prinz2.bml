@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<blm width="26" height="20" bits="4">
+    <header>
+        <title>Kleiner_Prinz2.gif</title>
+        <creator>blib 0.7</creator>
+        <duration>10000</duration>
+    </header>
+    <frame duration="10000">
+        <row>fffffffffedfffffffffffffff</row>
+        <row>fffffefeb59fdcffffffffffff</row>
+        <row>feeeffe985bb89db67cbadffff</row>
+        <row>eeeeda9abb9acccb63a35dfeef</row>
+        <row>eeee789ccbbbbbbbccc9789aee</row>
+        <row>eec74acbaaaa999aaabcbb99fe</row>
+        <row>eec39cbbaaa9999999aabcb68e</row>
+        <row>ec8bdcdcbbbbaaaa999aac994d</row>
+        <row>e8beed8cba9b9978589ab938de</row>
+        <row>eddea477cd86ba74689bc915de</row>
+        <row>fe6949feefeceeedd728855eee</row>
+        <row>fd7ddfffffffeffeed674adeee</row>
+        <row>ffffcffcfdefe8beeffacefeef</row>
+        <row>ffffebd7c6bfedbfffccfedfff</row>
+        <row>ffffebceeb6ffffffa8debabae</row>
+        <row>ffffffacefedefffa7efbaebbf</row>
+        <row>ffffffd8da66ada31dfea7cbcf</row>
+        <row>eeddb7239eceb8700162148eff</row>
+        <row>84334534b7ec99b41230586dff</row>
+        <row>4233453297a48544324244369f</row>
+    </frame>
+</blm>

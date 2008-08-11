@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blm width="26" height="20" bits="4" channels="1">
+	<header>
+		<title>iie.gif</title>
+		<description></description>
+		<creator>ArcadePaint 1.1 Mac</creator>
+		<author>Patrick Jegu</author>
+		<email>patrick@jegu.info</email>
+		<loop>no</loop>
+		<duration>1000</duration>
+	</header>
+
+	<frame duration="1000">
+		<row>aaaaaa0000000000aaaaaaaaaa</row>
+		<row>aaa0000000000000000aaaaaaa</row>
+		<row>a00000ff000fff000fffffffff</row>
+		<row>00000000000000000000000000</row>
+		<row>00000fff00fff000fffffffffa</row>
+		<row>00000fff00ff000fff000000aa</row>
+		<row>0000fff00fff00fff00aaaaaaa</row>
+		<row>a000fff00fff00fffffffffffa</row>
+		<row>aaa000000000000000000000aa</row>
+		<row>aaaaaa0000000000aaaaaaaaaa</row>
+		<row>fffaaffaffaffaaaffffaaffff</row>
+		<row>faafaffaffaffaaaffaaaaaaaf</row>
+		<row>fffaaffaffaffaaaffffaaaffa</row>
+		<row>faafaffaffaffaaaffaaaafaaa</row>
+		<row>faafafffffaffffaffffaaffff</row>
+		<row>afaaaaaaaaaaaaaaaaaaaaaaaa</row>
+		<row>ffaffaafafafffaffaafaaaffa</row>
+		<row>aaaaaaafafafafafafafaaafaf</row>
+		<row>aaaaaaafffafafaffaafaaafaf</row>
+		<row>aaaaaaafafafffafafafffaffa</row>
+	</frame>
+</blm>

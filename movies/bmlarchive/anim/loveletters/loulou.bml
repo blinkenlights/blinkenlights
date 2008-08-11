@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blm width="26" height="20" bits="3" channels="1">
+	<header>
+		<title>Loulou</title>
+		<description>Message d&apos;amour à Samia</description>
+		<creator>ArcadePaint 1.1.1 PC</creator>
+		<author>Louis MOUSNY </author>
+		<email>lmousny@fnac.net</email>
+		<loop>no</loop>
+		<duration>200</duration>
+	</header>
+
+	<frame duration="200">
+		<row>00700000000007000000000000</row>
+		<row>00700070070707000700707000</row>
+		<row>00700707070707007070707000</row>
+		<row>00777070077707770700777000</row>
+		<row>00000000000000000000000000</row>
+		<row>00000007770000077700000000</row>
+		<row>00000070007707700070000000</row>
+		<row>00000007700070007700000000</row>
+		<row>00000000070000070000000000</row>
+		<row>00000000007707700000000000</row>
+		<row>00000000000070000000000000</row>
+		<row>00000000700000000000700000</row>
+		<row>00000000000000000000000000</row>
+		<row>00770770700700770770700700</row>
+		<row>00707070707070707070707070</row>
+		<row>00700070707770700070707770</row>
+		<row>00700070707070700070707070</row>
+		<row>00000000000000000000000000</row>
+		<row>00000000000000000000000000</row>
+		<row>00000000000000000000000000</row>
+	</frame>
+</blm>
+

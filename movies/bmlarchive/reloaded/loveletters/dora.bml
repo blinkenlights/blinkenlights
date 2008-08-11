@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<blm width="18" height="8" bits="4">
+    <header>
+        <title>/Users/tim/cvs/candela.digital.udk-berlin.de/bmlarchive/reloaded/loveletters/dora2.gif</title>
+        <creator>blib 1.1.4</creator>
+        <duration>100</duration>
+    </header>
+    <frame duration="100">
+        <row>9abbccbaa9ba888648</row>
+        <row>9bbcb8448ab9444449</row>
+        <row>abccba669cc9644448</row>
+        <row>bbbcccbaacbb689888</row>
+        <row>bbcccec8aba9669a66</row>
+        <row>ebcccb98cb98848946</row>
+        <row>eecccc989986448888</row>
+        <row>eeeeeb9aba866689ba</row>
+    </frame>
+</blm>

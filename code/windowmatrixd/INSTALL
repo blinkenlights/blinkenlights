@@ -1,0 +1,19 @@
+windowmatrixd
+-------------
+
+For building the windowmatrixd, configure it using the configure shell
+script. You have to specify the path to the bmc_pio driver buildtree
+to allow for configure to find the driver's include file
+bmc_pio.h. For help on using a configure script, see the file
+INSTALL.generic in this directory.
+
+Additional compile-time configuration can be done via editing
+the config.h header file, it should be self-explanatory.
+
+After configuring the package, you can compile it using
+
+make
+
+and then install it using
+
+make install

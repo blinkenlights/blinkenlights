@@ -1,0 +1,20 @@
+#!/bin/sh
+
+if [ $# -ge 1 ]; then
+      DEBUG=$1
+else
+      DEBUG=0
+fi
+#INSMOD_PARA=-m
+MEXT=.ko
+cd /lib/modules/`uname -r`/kernel/drivers/isdn/hardware/mISDN
+#modprobe capidrv
+modprobe capi
+insmod ${INSMOD_PARA} mISDN_core${MEXT} debug=${DEBUG} >/tmp/m_core.mod
+insmod ${INSMOD_PARA} mISDN_l1${MEXT} debug=${DEBUG} >/tmp/m_l1.mod
+insmod ${INSMOD_PARA} mISDN_l2${MEXT} debug=${DEBUG} >/tmp/m_l2.mod
+insmod ${INSMOD_PARA} l3udss1${MEXT} debug=${DEBUG} >/tmp/m_l3u.mod
+insmod ${INSMOD_PARA} mISDN_capi${MEXT} debug=${DEBUG} >/tmp/m_capi.mod
+insmod ${INSMOD_PARA} mISDN_isac${MEXT} >/tmp/m_isac.mod
+insmod ${INSMOD_PARA} avmfritz${MEXT} debug=${DEBUG} protocol=2 > /tmp/avmfritz.mod
+

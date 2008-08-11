@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+	<blm width="26" height="20" bits="4" channels="1">
+	<header>
+		<loop>yes</loop>
+	</header>
+	<frame duration="5000">
+		<row>bbcca7533335666779abcccbbb</row>
+		<row>bc8300002245655655457acbbb</row>
+		<row>b50000046789a9998786656bbb</row>
+		<row>80001357899aabbba9998867bb</row>
+		<row>20012655799bccdedcbbbaa87c</row>
+		<row>12112434678abcedddcdccba9c</row>
+		<row>2111111146789abbabbbbaa8ac</row>
+		<row>6201222235799abbbbbbba99cb</row>
+		<row>1211464212224689aabba989cb</row>
+		<row>5433677754753344b936544acb</row>
+		<row>93323579baaaab98db799aabbb</row>
+		<row>63423457accca998ccbcdcabbb</row>
+		<row>6432333578aa59a8dcaaa9bbbb</row>
+		<row>54322335755752369a866cecbb</row>
+		<row>74443434886574348989efffec</row>
+		<row>c93343435699899989bfffefff</row>
+		<row>dfb22333335899a9adffeffeff</row>
+		<row>fffc3111111249bcdeefeefeee</row>
+		<row>abab84221146dd89beffeceede</row>
+		<row>aa933345346cfffffffffcdddb</row>
+	</frame>
+</blm>
+

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blm width="18" height="8" bits="4" channels="1">
+	<header>
+		<title>emmi.blm</title>
+		<description>Love for Emmi</description>
+		<creator>BlinkenPaint 3.12</creator>
+		<author>Philipp Conrad</author>
+		<email>zini@zini.net</email>
+		<loop>no</loop>
+		<duration>200</duration>
+	</header>
+
+	<frame duration="200">
+		<row>0ff00fff0ffff0ffff</row>
+		<row>f00f0f0000f000000f</row>
+		<row>f0000f0000f00000f0</row>
+		<row>0ff00ff000f0000f00</row>
+		<row>000f0f0000f000f000</row>
+		<row>f00f0f0000f000f000</row>
+		<row>0ff00fff00f000ffff</row>
+		<row>000000000000000000</row>
+	</frame>
+</blm>

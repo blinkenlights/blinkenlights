@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<blm width="26" height="20" bits="4">
+    <header>
+        <title>gainsbourg-smoking.gif</title>
+        <creator>blib 0.7</creator>
+        <duration>10000</duration>
+    </header>
+    <frame duration="10000">
+        <row>00000000014532111000000000</row>
+        <row>00001135777765333553000000</row>
+        <row>00111356541022112688630000</row>
+        <row>00000001576699631364342000</row>
+        <row>0000015aeeeffffd9633322000</row>
+        <row>000018dfffffffeeb853321321</row>
+        <row>000017acdccdeeeed623333651</row>
+        <row>00000014215cedeefb22349782</row>
+        <row>0000006da227adeeff8136ceb5</row>
+        <row>000001cffd77beeeeedaddc863</row>
+        <row>0000019cabcbdedddeeb974430</row>
+        <row>0001003539ec7ceddcc8001000</row>
+        <row>1111216ccadda7bcca9ccb4000</row>
+        <row>1343552236dacea7abdfe72111</row>
+        <row>35443555689ceceb7bfd612212</row>
+        <row>444434338dd79eefe884122123</row>
+        <row>34443332128dbefffc11221123</row>
+        <row>44432222375aeeeefe31112112</row>
+        <row>32221222257549ceee50121211</row>
+        <row>11100165655cbbdeefb2114211</row>
+    </frame>
+</blm>

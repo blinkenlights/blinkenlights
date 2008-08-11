@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blm width="26" height="20" bits="3" channels="1">
+	<header>
+		<title>teddy-bear-256colors.gif</title>
+		<description></description>
+		<creator>ArcadePaint 1.1 Mac</creator>
+		<author>Poissonnet</author>
+		<email>popat@free.fr</email>
+		<loop>no</loop>
+		<duration>100</duration>
+	</header>
+
+	<frame duration="100">
+		<row>00000000000000000000000000</row>
+		<row>03565420000000000000000000</row>
+		<row>67666553111100000000000000</row>
+		<row>66655556666654320000000000</row>
+		<row>66556776666655655200000000</row>
+		<row>66577777777655655530000000</row>
+		<row>66777777766666565432000000</row>
+		<row>67777775566665555522100000</row>
+		<row>77777761177665565432100010</row>
+		<row>77777765576665455531000132</row>
+		<row>77776667766532036430000024</row>
+		<row>77777665566640014201000014</row>
+		<row>77776740015543001220000014</row>
+		<row>77776630004443000000000011</row>
+		<row>77776654465452000000000000</row>
+		<row>77666665665530000000000000</row>
+		<row>77666665543100000000000000</row>
+		<row>44423322110000000000000000</row>
+		<row>22222222221110000000000000</row>
+		<row>00000000000000000000000000</row>
+	</frame>
+</blm>

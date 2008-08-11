@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<blm width="26" height="20" bits="4">
+    <header>
+        <title>GAINSBOURG.gif</title>
+        <creator>blib 0.7</creator>
+        <duration>10000</duration>
+    </header>
+    <frame duration="10000">
+        <row>000000009fffecaa9762000000</row>
+        <row>00000004ffedb999a975200000</row>
+        <row>0000000bc88766889988500000</row>
+        <row>00000007259866677788740000</row>
+        <row>00000003667765578998864000</row>
+        <row>000000029535346acca8752000</row>
+        <row>00000048789779deca87540000</row>
+        <row>000007a88acddeec9765444434</row>
+        <row>00006a6578bddcb87654334455</row>
+        <row>0003c855445beca87654444444</row>
+        <row>000594222106bca88754445443</row>
+        <row>000010000459bba88754455421</row>
+        <row>000000002aa999987755431000</row>
+        <row>00000000155568976531000000</row>
+        <row>00000000003568841000000000</row>
+        <row>00000000005566761000000000</row>
+        <row>00000000000027885200000000</row>
+        <row>00100000000019863100000000</row>
+        <row>00200000000003420000000000</row>
+        <row>00210000000000000000000000</row>
+    </frame>
+</blm>

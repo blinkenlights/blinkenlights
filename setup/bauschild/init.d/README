@@ -1,0 +1,10 @@
+Linux Startup Scripts
+---------------------
+
+1) Create a symbolic link from each file in this directory to /etc/init.d/<file>
+
+2) Create properly prefixed symbolic links in /etc/rc2.s/ to files in /etc/init.d/
+   a) blinkisdn
+   b) blccc
+   c) blinkenproxy
+   d) blinkensim (if applicable)

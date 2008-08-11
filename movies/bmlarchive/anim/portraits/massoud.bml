@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blm width="26" height="20" bits="4" channels="1">
+	<header>
+		<title>massoud.gif</title>
+		<description></description>
+		<creator>ArcadePaint 1.1 Mac</creator>
+		<author>Robert Cottet</author>
+		<email>robert.cottet@cepc.ch</email>
+		<loop>no</loop>
+		<duration>100</duration>
+	</header>
+
+	<frame duration="100">
+		<row>ceceda58efecb9a888a88beb97</row>
+		<row>c867bcca875443333133444688</row>
+		<row>339e8746332001000012124334</row>
+		<row>3c856433143567878854444478</row>
+		<row>7664314677878bceeedb764137</row>
+		<row>6543146789bacebcbb88966344</row>
+		<row>563157688bccbcdc9898775212</row>
+		<row>74216564777878867778785200</row>
+		<row>43026642144977752246787300</row>
+		<row>41037444328c86513346578620</row>
+		<row>6314787578ec88775657889a40</row>
+		<row>7425b9887cca8a788899aa9964</row>
+		<row>8744b997779ba687a99ab9b876</row>
+		<row>d9a4b8741333135569aba9a77b</row>
+		<row>ccca8a5775777566578b8a9544</row>
+		<row>cdc7746777877878577788743a</row>
+		<row>eccb7411342133432134444314</row>
+		<row>dedc8430322333101201216303</row>
+		<row>edcdb730100001210000365302</row>
+		<row>ded99a53212212022124475201</row>
+	</frame>
+</blm>

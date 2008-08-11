@@ -1,0 +1,3 @@
+#!/bin/sh
+
+export MAX_LAMPS=48

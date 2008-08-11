@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+
+<blccc>
+  <config>
+
+    <param key="width"      value="18"/>
+    <param key="height"     value="8"/>
+    <param key="aspect"     value="0.54"/>  <!-- 23/42 -->
+    <param key="playlist"   value="test-playlist.xml"/>
+    <param key="logfile"    value="/var/tmp/blccc.log"/>
+    <param key="recipient"  value="127.0.0.1"/>
+    <param key="isdn-host"  value="127.0.0.1"/>
+    <param key="isdn-port"  value="1234"/>
+<!--
+    <param key="isdn-lines" value="2"/>
+-->
+
+    <application name="Pong" type="BPong"
+                 number="+493053656460" public="yes" wamp="telekoma.alaw"> 
+      <param key="lifetime" value="120000"/>
+    </application>
+
+  </config>
+</blccc>

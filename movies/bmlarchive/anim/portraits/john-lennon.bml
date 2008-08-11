@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<blm width="26" height="20" bits="4">
+    <header>
+        <title>john Lennon.gif</title>
+        <creator>blib 0.7</creator>
+        <duration>10000</duration>
+    </header>
+    <frame duration="10000">
+        <row>87776667444566531012222211</row>
+        <row>887667a8421113554665442221</row>
+        <row>766559cb720000156676433322</row>
+        <row>548899aa521012227767632122</row>
+        <row>39dd9762222686876a42222201</row>
+        <row>38ca8a6788bdcabca611100101</row>
+        <row>55768b9addeccdcdc710111000</row>
+        <row>567648cbdeeacdddeda4111110</row>
+        <row>764856cccdddddcb99a9521110</row>
+        <row>6328daba546bdb444554321111</row>
+        <row>4239cdb8789bea459755752111</row>
+        <row>646dedddddcded78bcbcc72111</row>
+        <row>6469eeedccdeed56abb8532111</row>
+        <row>6567deeeeedcdb439ec6332211</row>
+        <row>6555bedeefeda4128da5432211</row>
+        <row>64436eeedbbbb9434885432222</row>
+        <row>544316dedddca9768864333322</row>
+        <row>544579bbceeeedcc9533101111</row>
+        <row>78befedcaabbcca84321000000</row>
+        <row>ccdeedddca8543332210000000</row>
+    </frame>
+</blm>

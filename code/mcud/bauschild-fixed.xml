@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<mcu-setup height="8" width="18"   channels="1">
+	<lamp id="0"   row="0"   column="0"  />
+	<lamp id="1"   row="1"   column="2"  />
+	<lamp id="2"   row="0"   column="4"  />
+	<lamp id="3"   row="2"   column="0"  />
+	<lamp id="4"   row="3"   column="2"  />
+	<lamp id="5"   row="2"   column="4"  />
+	<lamp id="6"   row="4"   column="0"  />
+	<lamp id="7"   row="5"   column="2"  />
+
+	<lamp id="8"   row="4"   column="4"  />
+	<lamp id="9"   row="6"   column="0"  />
+	<lamp id="10"  row="7"   column="2"  />
+	<lamp id="11"  row="6"   column="4"  />
+	<lamp id="12"  row="0"   column="1"  />
+	<lamp id="13"  row="0"   column="2"  />
+	<lamp id="14"  row="0"   column="5"  />
+	<lamp id="15"  row="2"   column="1"  />
+
+	<lamp id="16"  row="1"   column="3"  />
+	<lamp id="17"  row="2"   column="5"  />
+	<lamp id="18"  row="4"   column="1"  />
+	<lamp id="19"  row="3"   column="3"  />
+	<lamp id="20"  row="4"   column="5"  />
+	<lamp id="21"  row="6"   column="1"  />
+	<lamp id="22"  row="5"   column="3"  />
+	<lamp id="23"  row="6"   column="5"  />
+
+	<lamp id="24"  row="1"   column="0"  />
+	<lamp id="25"  row="2"   column="2"  />
+	<lamp id="26"  row="1"   column="4"  />
+	<lamp id="27"  row="3"   column="0"  />
+	<lamp id="28"  row="4"   column="2"  />
+	<lamp id="29"  row="3"   column="4"  />
+	<lamp id="30"  row="5"   column="0"  />
+	<lamp id="31"  row="6"   column="2"  />
+
+	<lamp id="32"  row="5"   column="4"  />
+	<lamp id="33"  row="7"   column="0"  />
+	<lamp id="34"  row="7"   column="3"  />
+	<lamp id="35"  row="7"   column="4"  />
+	<lamp id="36"  row="1"   column="1"  />
+	<lamp id="37"  row="0"   column="3"  />
+	<lamp id="38"  row="1"   column="5"  />
+	<lamp id="39"  row="3"   column="1"  />
+
+	<lamp id="40"  row="2"   column="3"  />
+	<lamp id="41"  row="3"   column="5"  />
+	<lamp id="42"  row="5"   column="1"  />
+	<lamp id="43"  row="4"   column="3"  />
+	<lamp id="44"  row="5"   column="5"  />
+	<lamp id="45"  row="7"   column="1"  />
+	<lamp id="46"  row="6"   column="3"  />
+	<lamp id="47"  row="7"   column="5"  />
+
+	<lamp id="48"  row="0"   column="6"  />
+	<lamp id="49"  row="1"   column="8"        />
+	<lamp id="50"  row="0"   column="10" />
+	<lamp id="51"  row="2"   column="6"  />
+	<lamp id="52"  row="3"   column="8"  />
+	<lamp id="53"  row="2"   column="10" />
+	<lamp id="54"  row="4"   column="6"  />
+	<lamp id="55"  row="5"   column="8"  />
+
+	<lamp id="56"  row="4"   column="10" />
+	<lamp id="57"  row="6"   column="6"  />
+	<lamp id="58"  row="7"   column="8"  />
+	<lamp id="59"  row="6"   column="10" />
+	<lamp id="60"  row="0"   column="7"  />
+	<lamp id="61"  row="0"   column="8"  />
+	<lamp id="62"  row="0"   column="11" />
+	<lamp id="63"  row="2"   column="7"  />
+
+	<lamp id="64"  row="1"   column="9"  />
+	<lamp id="65"  row="2"   column="11" />
+	<lamp id="66"  row="4"   column="7"  />
+	<lamp id="67"  row="3"   column="9"  />
+	<lamp id="68"  row="4"   column="11" />
+	<lamp id="69"  row="6"   column="7"  />
+	<lamp id="70"  row="5"   column="9"  />
+	<lamp id="71"  row="6"   column="11" />
+
+	<lamp id="72"  row="1"   column="6"  />
+	<lamp id="73"  row="2"   column="8"  />
+	<lamp id="74"  row="1"   column="10" />
+	<lamp id="75"  row="3"   column="6"  />
+	<lamp id="76"  row="4"   column="8"  />
+	<lamp id="77"  row="3"   column="10" />
+	<lamp id="78"  row="5"   column="6"  />
+	<lamp id="79"  row="6"   column="8"  />
+
+	<lamp id="80"  row="5"   column="10" />
+	<lamp id="81"  row="7"   column="6"  />
+	<lamp id="82"  row="7"   column="9"  />
+	<lamp id="83"  row="7"   column="10" />
+	<lamp id="84"  row="1"   column="7"  />
+	<lamp id="85"  row="0"   column="9"  />
+	<lamp id="86"  row="1"   column="11" />
+	<lamp id="87"  row="3"   column="7"  />
+
+	<lamp id="88"  row="2"   column="9"  />
+	<lamp id="89"  row="3"   column="11" />
+	<lamp id="90"  row="5"   column="7"  />
+	<lamp id="91"  row="4"   column="9"  />
+	<lamp id="92"  row="5"   column="11" />
+	<lamp id="93"  row="7"   column="7"  />
+	<lamp id="94"  row="6"   column="9"  />
+	<lamp id="95"  row="7"   column="11" />
+
+	<lamp id="96"  row="0"   column="12" />
+	<lamp id="97"  row="1"   column="14" />
+	<lamp id="98"  row="0"   column="16" />
+	<lamp id="99"  row="2"   column="12" />
+	<lamp id="100" row="3"   column="14" />
+	<lamp id="101" row="2"   column="16" />
+	<lamp id="102" row="4"   column="12" />
+	<lamp id="103" row="5"   column="14" />
+
+	<lamp id="104" row="4"   column="16" />
+	<lamp id="105" row="6"   column="12" />
+	<lamp id="106" row="7"   column="14" />
+	<lamp id="107" row="6"   column="16" />
+	<lamp id="108" row="0"   column="13" />
+	<lamp id="109" row="0"   column="14" />
+	<lamp id="110" row="0"   column="17" />
+	<lamp id="111" row="2"   column="13" />
+
+	<lamp id="112" row="1"   column="15" />
+	<lamp id="113" row="2"   column="17" />
+	<lamp id="114" row="4"   column="13" />
+	<lamp id="115" row="3"   column="15" />
+	<lamp id="116" row="4"   column="17" />
+	<lamp id="117" row="6"   column="13" />
+	<lamp id="118" row="5"   column="15" />
+	<lamp id="119" row="6"   column="17" />
+
+	<lamp id="120" row="1"   column="12" />
+	<lamp id="121" row="2"   column="14" />
+	<lamp id="122" row="1"   column="16" />
+	<lamp id="123" row="3"   column="12" />
+	<lamp id="124" row="4"   column="14" />
+	<lamp id="125" row="3"   column="16" />
+	<lamp id="126" row="5"   column="12" />
+	<lamp id="127" row="6"   column="14" />
+
+	<lamp id="128" row="5"   column="16" />
+	<lamp id="129" row="7"   column="12" />
+	<lamp id="130" row="7"   column="15" />
+	<lamp id="131" row="7"   column="16" />
+	<lamp id="132" row="1"   column="13" />
+	<lamp id="133" row="0"   column="15" />
+	<lamp id="134" row="1"   column="17" />
+	<lamp id="135" row="3"   column="13" />
+
+	<lamp id="136" row="2"   column="15" />
+	<lamp id="137" row="3"   column="17" />
+	<lamp id="138" row="5"   column="13" />
+	<lamp id="139" row="4"   column="15" />
+	<lamp id="140" row="5"   column="17" />
+	<lamp id="141" row="7"   column="13" />
+	<lamp id="142" row="6"   column="15"      />
+	<lamp id="143" row="7"   column="17" />
+</mcu-setup>

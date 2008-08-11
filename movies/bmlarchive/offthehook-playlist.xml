@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<playlist>
+    <item><param key="movie" value="anim/text/2600.bml"/></item>
+    <item><param key="movie" value="anim/text/off-the-hook.bml"/></item>
+	<item type="BFire"><param key="flames" value="no"/></item>
+
+	<item><param key="movie" value="anim/portraits/bigbrother.bml"/></item>
+    <item><param key="movie" value="anim/text/2600.bml"/></item>
+    <item><param key="movie" value="anim/text/off-the-hook.bml"/></item>
+
+	<item><param key="movie" value="anim/pixel/xflame.bml"/></item>
+    <item><param key="movie" value="anim/text/2600.bml"/></item>
+    <item><param key="movie" value="anim/text/off-the-hook.bml"/></item>
+
+	<item><param key="movie" value="anim/animals/flatter_flatter.bml"/></item>
+    <item><param key="movie" value="anim/text/2600.bml"/></item>
+    <item><param key="movie" value="anim/text/off-the-hook.bml"/></item>
+
+	<item><param key="movie" value="anim/3D/torus.bml"/></item>
+    <item><param key="movie" value="anim/text/2600.bml"/></item>
+    <item><param key="movie" value="anim/text/off-the-hook.bml"/></item>
+
+	<item><param key="movie" value="anim/portraits/zuse.bml"/></item>
+	<item type="BFire"><param key="flames" value="no"/></item>
+    <item><param key="movie" value="anim/text/2600.bml"/></item>
+    <item><param key="movie" value="anim/text/off-the-hook.bml"/></item>
+
+	<item><param key="movie" value="anim/human/k2.bml"/></item>
+    <item><param key="movie" value="anim/text/2600.bml"/></item>
+    <item><param key="movie" value="anim/text/off-the-hook.bml"/></item>
+
+	<item><param key="movie" value="anim/text/allyourbase.bml"/></item>
+    <item><param key="movie" value="anim/text/2600.bml"/></item>
+    <item><param key="movie" value="anim/text/off-the-hook.bml"/></item>
+
+    <item><param key="movie" value="anim/text/fight-tcpa.bml"/></item>
+    <item><param key="movie" value="anim/text/2600.bml"/></item>
+    <item><param key="movie" value="anim/text/off-the-hook.bml"/></item>
+</playlist>

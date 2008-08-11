@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<blm width="26" height="20" bits="4">
+    <header>
+        <title>marlen2.gif</title>
+        <creator>blib 0.7</creator>
+        <duration>5000</duration>
+    </header>
+    <frame duration="5000">
+        <row>00000000000000000000000000</row>
+        <row>00000000000000121110000000</row>
+        <row>00001343467667664354100000</row>
+        <row>00134435acdddcccb658510000</row>
+        <row>0069649deeeeeeeeeec9688300</row>
+        <row>0016adeeeeeeeeeeeeeb412210</row>
+        <row>00027ba879ceeeda889ca20000</row>
+        <row>00114410128dedb62112540000</row>
+        <row>00000047aabeeddcba95132000</row>
+        <row>00179abcdd86669cddddccb416</row>
+        <row>0028bcddd8221326ccccba8445</row>
+        <row>1000379bca76678acba8520000</row>
+        <row>00662589853343237986536203</row>
+        <row>027b74689aaaaa9888666449bc</row>
+        <row>0019b2157789aaa88bb8300289</row>
+        <row>00039601200000000259b91038</row>
+        <row>000001000000155200005cb754</row>
+        <row>000000000000037bb610023320</row>
+        <row>00000000000000025867500000</row>
+        <row>00000000001223100029500000</row>
+    </frame>
+</blm>

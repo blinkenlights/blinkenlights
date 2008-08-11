@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<blm width="26" height="20" bits="4">
+    <header>
+        <title>linux.gif</title>
+        <creator>blib 0.7</creator>
+        <duration>10000</duration>
+    </header>
+    <frame duration="10000">
+        <row>ffffffffffffffffffffffffff</row>
+        <row>ffffffffffffffffffffffffff</row>
+        <row>ffffffffffffffffffffffffff</row>
+        <row>fffffffffd85557aefffffffff</row>
+        <row>ffffffffc20000002cffffffff</row>
+        <row>ffffffff7130045104efffffff</row>
+        <row>ffffffff8475676601efffffff</row>
+        <row>ffffffffa48cca8300cfffffff</row>
+        <row>ffffffff749889b8113dffffff</row>
+        <row>ffffffe64debaeff8002bfffff</row>
+        <row>fffffc20bffeffedd50006efff</row>
+        <row>ffffe30affeeffeeee60007fff</row>
+        <row>fffe509fffeeffffffc0000cff</row>
+        <row>fff801cfffeeffffffc0000bff</row>
+        <row>eddaa968dfeeffffeda0006dff</row>
+        <row>d8aabba418ffffffd9a878bade</row>
+        <row>a799aaab79eeeeda46bbbaaabc</row>
+        <row>ea98799a95344320059a99bcde</row>
+        <row>eeedcb988accddddc989adefff</row>
+        <row>fffffffeffffffffffeeffffff</row>
+    </frame>
+</blm>

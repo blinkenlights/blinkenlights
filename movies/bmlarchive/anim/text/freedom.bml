@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blm width="26" height="20" bits="3" channels="1">
+	<header>
+		<title>freedom</title>
+		<description></description>
+		<creator>ArcadePaint 1.1.1 PC</creator>
+		<author>gpumpkins</author>
+		<email>gpumpkins@hotmail.com</email>
+		<loop>no</loop>
+		<duration>200</duration>
+	</header>
+
+	<frame duration="200">
+		<row>00000000000000000000000000</row>
+		<row>07007000777070007007777000</row>
+		<row>07007000707007070007700000</row>
+		<row>07007770777000700007777000</row>
+		<row>00000000000000000000000000</row>
+		<row>00000000000000000000000000</row>
+		<row>00000000700000700000000000</row>
+		<row>00000000700000700000000000</row>
+		<row>00000000700000700000000000</row>
+		<row>00000000700000700000000000</row>
+		<row>00000000700000700000000000</row>
+		<row>00000000777777700000000000</row>
+		<row>00000000000000000000000000</row>
+		<row>00000000000000000000000000</row>
+		<row>77770077770777707777707007</row>
+		<row>70000070070707700070007007</row>
+		<row>77700077770777000070007777</row>
+		<row>70000070070700700070007007</row>
+		<row>77770070070700070070007007</row>
+		<row>00000000000000000000000000</row>
+	</frame>
+</blm>
+
+

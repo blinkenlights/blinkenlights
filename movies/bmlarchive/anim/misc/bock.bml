@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blm width="26" height="20" bits="3" channels="1">
+	<header>
+		<title>Bock</title>
+		<description>Wonder Boy...</description>
+		<creator>ArcadePaint 1.1 Mac</creator>
+		<author>Omar Cornut</author>
+		<email>omar@cornut.fr</email>
+		<loop>no</loop>
+		<duration>200</duration>
+	</header>
+
+	<frame duration="200">
+		<row>00027200000000000000000000</row>
+		<row>00247420000000000000000000</row>
+		<row>00247420022224442251000000</row>
+		<row>00247422222233332262000000</row>
+		<row>00247422224222434226000000</row>
+		<row>00247423234777242651000000</row>
+		<row>00247424537777242661200000</row>
+		<row>00022220433777444332322100</row>
+		<row>00223311334333441414342200</row>
+		<row>00334431034445231424342200</row>
+		<row>00022201422555231325765300</row>
+		<row>00000025532224642233442000</row>
+		<row>00122255344214642433424000</row>
+		<row>00114433220001214664000000</row>
+		<row>00000333000000000130000000</row>
+		<row>01667720277720277707101710</row>
+		<row>01711171711171711107117100</row>
+		<row>01767771710171710007771000</row>
+		<row>01711171711171711107117100</row>
+		<row>01667720277720277707101710</row>
+	</frame>
+</blm>
+707101710</row>
+	</frame>
+</blm>

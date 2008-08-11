@@ -1,0 +1,8 @@
+#!/bin/sh
+
+SETUP=/home/blccc/setup/blccc
+BINDIR=/usr/local/bin
+
+# start blccc
+
+su -c "cd ${SETUP};${BINDIR}/blccc micro-config.xml" - blccc &

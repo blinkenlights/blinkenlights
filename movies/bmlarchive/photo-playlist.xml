@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<playlist>
+	<item speed="0.5"><param key="movie" value="anim/pixel/jimpunk_still.bml"/></item>
+	<item speed="0.5"><param key="movie" value="anim/portraits/wilber-still.bml"/></item>
+    <item speed="0.5"><param key="movie" value="anim/misc/pacman-still.bml"/></item>
+	<item speed="0.5"><param key="movie" value="anim/misc/matrix_still.bml"/></item>
+	<item speed="0.5"><param key="movie" value="anim/human/voyeur8-still.bml"/></item>
+    <item speed="0.5"><param key="movie" value="anim/misc/herzen-still.bml"/></item>
+	<item speed="0.5"><param key="movie" value="anim/human/kylie-still-1.bml"/></item>
+    <item speed="0.5"><param key="movie" value="anim/human/kylie-still-2.bml"/></item>
+    <item speed="0.5"><param key="movie" value="anim/human/kylie-still-3.bml"/></item>
+	<item speed="0.5"><param key="movie" value="anim/human/eye-on-you-still.bml"/></item>
+	<item speed="0.5"><param key="movie" value="anim/animals/schwan-still.bml"/></item>
+    <item speed="0.5"><param key="movie" value="anim/3D/torus-still.bml"/></item>
+	<item speed="0.5"><param key="movie" value="anim/3D/johjo117-rings-still.bml"/></item>
+    <item speed="0.5"><param key="movie" value="anim/3D/cube_still.bml"/></item>
+</playlist>

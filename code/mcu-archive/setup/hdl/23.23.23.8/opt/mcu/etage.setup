@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>                                          
+                                                                                
+<mcu-setup height="8" width="18" channels="1" pixels="18">                     
+        <lamp id="0"  row="0" column="0"/>
+        <lamp id="1"  row="0" column="1"/>
+        <lamp id="2"  row="0" column="2"/>
+        <lamp id="3"  row="0" column="3"/>
+        <lamp id="4"  row="0" column="4"/>
+        <lamp id="5"  row="0" column="5"/>
+        <lamp id="6"  row="0" column="6"/>
+        <lamp id="7"  row="0" column="7"/>
+        <lamp id="8"  row="0" column="8"/>
+        <lamp id="9"  row="0" column="9"/>
+        <lamp id="10" row="0" column="10"/>
+        <lamp id="11" row="0" column="11"/>
+        <lamp id="12" row="0" column="12"/>
+        <lamp id="13" row="0" column="13"/>
+        <lamp id="14" row="0" column="14"/>
+        <lamp id="15" row="0" column="15"/>
+        <lamp id="16" row="0" column="16"/>
+        <lamp id="17" row="0" column="17"/>
+</mcu-setup>

@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<blm width="18" height="8" bits="4">
+    <header>
+        <title>a_herzpuls23.gif</title>
+        <author>Antenne</author>
+        <creator>blib 1.1.4</creator>
+        <duration>960</duration>
+    </header>
+    <frame duration="40">
+        <row>fffc9cfffffc9696ff</row>
+        <row>f369cc9ccc999c963f</row>
+        <row>99ffffffcfffffff69</row>
+        <row>f6cfffffffffffff9f</row>
+        <row>ff99ffffffffff99ff</row>
+        <row>ffff99cfffff99ffff</row>
+        <row>ffffff99ff9ccfffff</row>
+        <row>ffffffff99ffffffff</row>
+    </frame>
+    <frame duration="40">
+        <row>fffcccffffffccc9ff</row>
+        <row>f9399c99cc999cc66f</row>
+        <row>f3cfffff99ffffff0f</row>
+        <row>fc9ffffffffffffc9f</row>
+        <row>ffc9cffffffffc9cff</row>
+        <row>ffffccffffffccffff</row>
+        <row>ffffffccffcfffffff</row>
+        <row>ffffffffcfffffffff</row>
+    </frame>
+    <frame duration="40">
+        <row>ffffffffffffffffff</row>
+        <row>ff999ccfffcf9cccff</row>
+        <row>f96ffffffffffff9cf</row>
+        <row>f96cfffffffffff9cf</row>
+        <row>ff939ffffffffc6cff</row>
+        <row>ffff96cffffc9cffff</row>
+        <row>ffffff96cc9cffffff</row>
+        <row>ffffffff9cffffffff</row>
+    </frame>
+    <frame duration="40">
+        <row>ffffffffffffffffff</row>
+        <row>ffc9cfffffffff9fff</row>
+        <row>ff6ffffffffffff0ff</row>
+        <row>ff69cffffffffc69ff</row>
+        <row>fff939ffffff96cfff</row>
+        <row>fffffc99ff99cfffff</row>
+        <row>fffffff999cfffffff</row>
+        <row>ffffffffffffffffff</row>
+    </frame>
+    <frame duration="40">
+        <row>ffffffffffffffffff</row>
+        <row>fffc9969cfccc66fff</row>
+        <row>ffccfffc9fffff66ff</row>
+        <row>fffffffffffffc69ff</row>
+        <row>ffffffffffff96ffff</row>
+        <row>ffffffcfff96cfffff</row>
+        <row>fffffffc99cfffffff</row>
+        <row>ffffffffffffffffff</row>
+    </frame>
+    <frame duration="40">
+        <row>ffffffffffffffffff</row>
+        <row>ffffccccfffcc99fff</row>
+        <row>fff6cffffffffc6cff</row>
+        <row>fffccfffffffff3cff</row>
+        <row>ffffc9ffffff96cfff</row>
+        <row>ffffffccff99cfffff</row>
+        <row>ffffffffc69fffffff</row>
+        <row>ffffffffffffffffff</row>
+    </frame>
+    <frame duration="40">
+        <row>ffffffffffffffffff</row>
+        <row>ffffffffffcc9fffff</row>
+        <row>fffc6fffc9cff9cfff</row>
+        <row>fff99ffffffffc9fff</row>
+        <row>ffffc6cffffc9cffff</row>
+        <row>ffffff99cfc9ffffff</row>
+        <row>fffffffc99ffffffff</row>
+        <row>ffffffffffffffffff</row>
+    </frame>
+    <frame duration="40">
+        <row>ffffffffffffffffff</row>
+        <row>ffffffffffffffffff</row>
+        <row>ffff6699969693ffff</row>
+        <row>ffff6ffffffff9ffff</row>
+        <row>ffffcccffffccfffff</row>
+        <row>ffffffcccfcfffffff</row>
+        <row>fffffffffcffffffff</row>
+        <row>ffffffffffffffffff</row>
+    </frame>
+    <frame duration="40">
+        <row>ffffffffffffffffff</row>
+        <row>ffffffffffffffffff</row>
+        <row>ffffcccccc9c9cffff</row>
+        <row>ffffccfffffff9ffff</row>
+        <row>ffffffcffffcffffff</row>
+        <row>fffffffccfffffffff</row>
+        <row>fffffffffcffffffff</row>
+        <row>ffffffffffffffffff</row>
+    </frame>
+    <frame duration="40">
+        <row>ffffffffffffffffff</row>
+        <row>ffffffffffffffffff</row>
+        <row>fffff9cc9ccc9fffff</row>
+        <row>fffff9ffffff6cffff</row>
+        <row>ffffffcffff9ffffff</row>
+        <row>ffffffffc9cfffffff</row>
+        <row>ffffffffffffffffff</row>
+        <row>ffffffffffffffffff</row>
+    </frame>
+    <frame duration="40">
+        <row>ffffffffffffffffff</row>
+        <row>ffffffffffffffffff</row>
+        <row>fffffccc9fccffffff</row>
+        <row>fffff9cffffccfffff</row>
+        <row>ffffffc9ffccffffff</row>
+        <row>fffffffc9fcfffffff</row>
+        <row>ffffffffffffffffff</row>
+        <row>ffffffffffffffffff</row>
+    </frame>
+    <frame duration="40">
+        <row>ffffffffffffffffff</row>
+        <row>ffffffffffffffffff</row>
+        <row>ffffffcccfccffffff</row>
+        <row>ffffffcffff9cfffff</row>
+        <row>ffffffccff99ffffff</row>
+        <row>ffffffff99ffffffff</row>
+        <row>ffffffffffffffffff</row>
+        <row>ffffffffffffffffff</row>
+    </frame>
+    <frame duration="40">
+        <row>ffffffffffffffffff</row>
+        <row>ffffffffffffffffff</row>
+        <row>ffffffcfcfcccfffff</row>
+        <row>fffffc9fffffcfffff</row>
+        <row>ffffffc9fffcffffff</row>
+        <row>ffffffff9fcfffffff</row>
+        <row>ffffffffffffffffff</row>
+        <row>ffffffffffffffffff</row>
+    </frame>
+    <frame duration="40">
+        <row>ffffffffffffffffff</row>
+        <row>ffffffffffffffffff</row>
+        <row>fffffcffcfffcfffff</row>
+        <row>fffff9ffffff6cffff</row>
+        <row>ffffff9cffc69fffff</row>
+        <row>fffffffc996fffffff</row>
+        <row>fffffffffcffffffff</row>
+        <row>ffffffffffffffffff</row>
+    </frame>
+    <frame duration="40">
+        <row>ffffffffffffffffff</row>
+        <row>ffffffffffffffffff</row>
+        <row>fffff6ffffff9cffff</row>
+        <row>fffff9ffffffc9ffff</row>
+        <row>ffffffcffffccfffff</row>
+        <row>fffffffccfffffffff</row>
+        <row>fffffffffcffffffff</row>
+        <row>ffffffffffffffffff</row>
+    </frame>
+    <frame duration="40">
+        <row>ffffffffffffffffff</row>
+        <row>ffffffffffffffffff</row>
+        <row>ffff96ccccc993ffff</row>
+        <row>ffffcffffffff3ffff</row>
+        <row>fffffffffffccfffff</row>
+        <row>ffffffffcfccffffff</row>
+        <row>ffffffffffffffffff</row>
+        <row>ffffffffffffffffff</row>
+    </frame>
+    <frame duration="40">
+        <row>ffffffffffffffffff</row>
+        <row>ffffffffffcc9fffff</row>
+        <row>fffc69cc9cccc6cfff</row>
+        <row>ffff9ffffffff9cfff</row>
+        <row>ffffcccfffffccffff</row>
+        <row>fffffffcffccffffff</row>
+        <row>fffffffffcffffffff</row>
+        <row>ffffffffffffffffff</row>
+    </frame>
+    <frame duration="40">
+        <row>ffffffffffffffffff</row>
+        <row>ffff996cff9969ffff</row>
+        <row>fff69fffc9cffc6fff</row>
+        <row>fff9cffffffffccfff</row>
+        <row>ffffc9cfffffcfffff</row>
+        <row>ffffffcccfcfffffff</row>
+        <row>ffffffffcfffffffff</row>
+        <row>ffffffffffffffffff</row>
+    </frame>
+    <frame duration="40">
+        <row>ffffffffffffffffff</row>
+        <row>ffff999cffc969cfff</row>
+        <row>fff0ffffcccfff9cff</row>
+        <row>fff6cfffffffff9fff</row>
+        <row>fffc9cffffffcfcfff</row>
+        <row>fffffc99ffc9ffffff</row>
+        <row>ffffffff9cffffffff</row>
+        <row>ffffffffffffffffff</row>
+    </frame>
+    <frame duration="40">
+        <row>ffffffffffffffffff</row>
+        <row>fffc9ccffffccc9fff</row>
+        <row>ff69ffffcfffff96ff</row>
+        <row>ff99ffffffffff99ff</row>
+        <row>fff99cffffffc99fff</row>
+        <row>fffff99cffc9cfffff</row>
+        <row>fffffff9699fffffff</row>
+        <row>ffffffffffffffffff</row>
+    </frame>
+    <frame duration="40">
+        <row>ffffffffffffffffff</row>
+        <row>ff96399ccf9c6936ff</row>
+        <row>ff3cfffffffffff6cf</row>
+        <row>ff99ffffffffffc6ff</row>
+        <row>fffc6fffffffc96fff</row>
+        <row>fffff9ccfffc9fffff</row>
+        <row>fffffffc99cfffffff</row>
+        <row>ffffffffffffffffff</row>
+    </frame>
+    <frame duration="40">
+        <row>ffffffffffffffffff</row>
+        <row>ff699cccfc9c9c96ff</row>
+        <row>f66fffffccffffff6f</row>
+        <row>fc3cfffffffffffccf</row>
+        <row>ffc66fffffffffcfff</row>
+        <row>ffffc69cfffc9fffff</row>
+        <row>fffffff6699fffffff</row>
+        <row>ffffffffffffffffff</row>
+    </frame>
+    <frame duration="40">
+        <row>fffc9cffffffccc9ff</row>
+        <row>f639fffffcccffc99f</row>
+        <row>f0cfffffffffffff6f</row>
+        <row>f93cfffffffffff99f</row>
+        <row>ffc66ffffffffc9cff</row>
+        <row>ffffc69cfffc9cffff</row>
+        <row>ffffffc9699cffffff</row>
+        <row>ffffffffccffffffff</row>
+    </frame>
+    <frame duration="40">
+        <row>fffc9cfffffc9696ff</row>
+        <row>f369cc9ccc999c963f</row>
+        <row>99ffffffcfffffff69</row>
+        <row>f6cfffffffffffff9f</row>
+        <row>ff99ffffffffff99ff</row>
+        <row>ffff99cfffff99ffff</row>
+        <row>ffffff99ff9ccfffff</row>
+        <row>ffffffff99ffffffff</row>
+    </frame>
+</blm>

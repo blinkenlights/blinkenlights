@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blm width="26" height="20" bits="3" channels="1">
+	<header>
+		<title>standing-man</title>
+		<description>standing man</description>
+		<creator>ArcadePaint 1.1 Mac</creator>
+		<author>Mark Bensch</author>
+		<email>mark.bensch@gmx.de</email>
+		<loop>no</loop>
+		<duration>200</duration>
+	</header>
+
+	<frame duration="200">
+		<row>00000000000000000000000000</row>
+		<row>00000000000000000000000000</row>
+		<row>00000000000000000000000000</row>
+		<row>00000000777777770000000000</row>
+		<row>00000000700000007000000000</row>
+		<row>00000007000000007000000000</row>
+		<row>00000007700000007700000000</row>
+		<row>00000000077000777000000000</row>
+		<row>00000000000777000000000000</row>
+		<row>00000000077777000000000000</row>
+		<row>00000000700070777000000000</row>
+		<row>00000077000070000777000000</row>
+		<row>00077700000070000000777000</row>
+		<row>00070000000700000000007000</row>
+		<row>00000000000700000000000000</row>
+		<row>00000000000700000000000000</row>
+		<row>00000000000700000000000000</row>
+		<row>00000000000700000000000000</row>
+		<row>00000000000700000000000000</row>
+		<row>00000000000000000000000000</row>
+	</frame>
+</blm>

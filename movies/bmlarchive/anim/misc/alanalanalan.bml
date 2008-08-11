@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blm width="26" height="20" bits="4" channels="1">
+	<header>
+		<title>alanalanalan.gif</title>
+		<description></description>
+		<creator>ArcadePaint 1.1 Mac</creator>
+		<author>Peter Aston</author>
+		<email>peter.aston@ehsbrann.com</email>
+		<loop>no</loop>
+		<duration>1000</duration>
+	</header>
+
+	<frame duration="1000">
+		<row>ffffdbbb9855225888bdffffff</row>
+		<row>fd9988555200000000225bffff</row>
+		<row>92225522222220000000005dff</row>
+		<row>2225552225222222222220029d</row>
+		<row>22222222222588855222222225</row>
+		<row>200222558999bdfdbbb9985222</row>
+		<row>000222289bbbbbbddfffdd8202</row>
+		<row>2022555589b985555589bbb502</row>
+		<row>5589855555b9558555588bd922</row>
+		<row>2898522589dd85885589bddd82</row>
+		<row>29bbbbbbbbdbbbbbddffdddd95</row>
+		<row>29bbdddb9dffdbbdffffddbb98</row>
+		<row>58bddddb8899889bbbdddddb9b</row>
+		<row>b99bdbbbb98889bdb99bbbb99b</row>
+		<row>bb9999988999b9985599999982</row>
+		<row>d8259bb9888888899bdb998958</row>
+		<row>fd95599bbb988889bbb98859df</row>
+		<row>fffb8589bbbb9bbbbb9855bdff</row>
+		<row>fffffd8589bbdbb98558bdffff</row>
+		<row>fffffffb9999989999bfffffff</row>
+	</frame>
+</blm>

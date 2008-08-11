@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blm width="26" height="20" bits="4" channels="1">
+	<header>
+		<title>baka.gif</title>
+		<description></description>
+		<creator>ArcadePaint 1.1 Mac</creator>
+		<author>Patrick Jego</author>
+		<email>patrick@jegu.info</email>
+		<loop>no</loop>
+		<duration>1000</duration>
+	</header>
+
+	<frame duration="1000">
+		<row>04740000474747400000000000</row>
+		<row>07f700007f7f7f704740047400</row>
+		<row>47f704777f7f7f747f7007f740</row>
+		<row>7ff707ffffff7f77ff7777ff74</row>
+		<row>7f7404777f77477fffffff7ff7</row>
+		<row>7f7000007f740047f7777f7774</row>
+		<row>7f7404777ff70007f7047f7000</row>
+		<row>7ff707fffff70047f707ff7000</row>
+		<row>47f707f77ff7407ff747f74000</row>
+		<row>07f707ffffff707f747ff70000</row>
+		<row>47740477777740474047740000</row>
+		<row>7f700474000004740000474000</row>
+		<row>7f7007f7000007f700007f7000</row>
+		<row>7f7007f7740007f747407f7740</row>
+		<row>7f7777f7f77407f77f707f7f74</row>
+		<row>7ffff7fffff707fff7407ffff7</row>
+		<row>7f77f777f77407fff740477f74</row>
+		<row>7f7ff707f70007f7ff70007f70</row>
+		<row>7fff7407f70007f77f70007f70</row>
+		<row>47774004740004744740004740</row>
+	</frame>
+</blm>

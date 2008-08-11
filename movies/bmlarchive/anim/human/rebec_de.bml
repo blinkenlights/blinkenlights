@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blm width="26" height="20" bits="4" channels="1">
+	<header>
+		<title>rebec_de.gif</title>
+		<description></description>
+		<creator>ArcadePaint 1.1 Mac</creator>
+		<author>Bastien Bonju</author>
+		<email>bastien@vrtvstudions.com</email>
+		<loop>no</loop>
+		<duration>2200</duration>
+	</header>
+
+	<frame duration="100">
+		<row>eeeeeeeeeeeed7adeeeeeeeeee</row>
+		<row>eeeeeeeeeeed7444deeeeeeeee</row>
+		<row>eeeeeeeeeee77db47eeeeeeeee</row>
+		<row>eeeeeeeeeee47b944eeeeeeeee</row>
+		<row>eeeeeeeeeee49ba44eeeeeeeee</row>
+		<row>eeeeeeeeeee449a44eeeeeeeee</row>
+		<row>eeeeeeeeeeea7a747eeeeeeeee</row>
+		<row>eeeeeeeeeeaa99999deeeeeeee</row>
+		<row>eeeeeeeeeeaddbdebbeeeeeeee</row>
+		<row>eeeeeeeeeb9dddddbadeeeeeee</row>
+		<row>eeeeeeeeea9bdddda9aeeeeeee</row>
+		<row>eeeeeeeeea99dddd999eeeeeee</row>
+		<row>eeeeeeeeeabdddbaaaaeeeeeee</row>
+		<row>eeeeeeeeebabb979a9beeeeeee</row>
+		<row>eeeeeeeeebaa799bb7deeeeeee</row>
+		<row>eeeeeeeeed97999ab9deeeeeee</row>
+		<row>eeeeeeeeeba999abb9deeeeeee</row>
+		<row>eeeeeeedb7797aabb7beeeeeee</row>
+		<row>eeeeeeeb77447abbaadeeeeeee</row>
+		<row>eeeeeeeaadab9abbabeeeeeeee</row>
+	</frame>
+
+	<frame duration="100">
+		<row>eeeeeeeeeeeed7adeeeeeeeeee</row>
+		<row>eeeeeeeeeeed7444deeeeeeeee</row>
+		<row>eeeeeeeeeee77db47eeeeeeeee</row>
+		<row>eeeeeeeeeee47b944eeeeeeeee</row>
+		<row>eeeeeeeeeee49ba44eeeeeeeee</row>
+		<row>eeeeeeeeeee449a44eeeeeeeee</row>
+		<row>eeeeeeeeeeea7a747eeeeeeeee</row>
+		<row>eeeeeeeeeeaa99999deeeeeeee</row>
+		<row>eeeeeeeeeeaddbdebbeeeeeeee</row>
+		<row>eeeeeeeeeb9dddddbadeeeeeee</row>
+		<row>eeeeeeeeea9bdbab99aeeeeeee</row>
+		<row>eeeeeeeeea9ab9ba99aeeeeeee</row>
+		<row>eeeeeeeeeabb79bab9aeeeeeee</row>
+		<row>eeeeeeeeebaa99bbb9beeeeeee</row>
+		<row>eeeeeeeeeb999aba79deeeeeee</row>
+		<row>eeeeeeeeed99a9b977deeeeeee</row>
+		<row>eeeeeeeeeba9a9b977deeeeeee</row>
+		<row>eeeeeeedb77a99b977beeeeeee</row>
+		<row>eeeeeeeb77447ab97bdeeeeeee</row>
+		<row>eeeeeeeaadab9ababbeeeeeeee</row>
+	</frame>
+
+	<frame duration="100">
+		<row>eeeeeeeeeeeed7adeeeeeeeeee</row>
+		<row>eeeeeeeeeeed7444deeeeeeeee</row>
+		<row>eeeeeeeeeee77db47eeeeeeeee</row>
+		<row>eeeeeeeeeee47b944eeeeeeeee</row>
+		<row>eeeeeeeeeee49ba44eeeeeeeee</row>
+		<row>eeeeeeeeeee449a44eeeeeeeee</row>
+		<row>eeeeeeeeeeea7a747eeeeeeeee</row>
+		<row>eeeeeeeeeeaa99999deeeeeeee</row>
+		<row>eeeeeeeeedaddbdebbeeeeeeee</row>
+		<row>eeeeeeeeebaddabdbadeeeeeee</row>
+		<row>eeeeeeeeea9b9baba9aeeeeeee</row>
+		<row>eeeeeeeeea999baba99eeeeeee</row>
+		<row>eeeeeeeeeaa99bbbb9aeeeeeee</row>
+		<row>eeeeeeeeeb999bbdb9beeeeeee</row>
+		<row>eeeeeeeeeb99aaaa79deeeeeee</row>
+		<row>eeeeeeeeed79ab7777deeeeeee</row>
+		<row>eeeeeeeeebaaaaa997deeeeeee</row>
+		<row>eeeeeeedb77babb977beeeeeee</row>
+		<row>eeeeeeeb7744abb97addeeeeee</row>
+		<row>eeeeeeeaadabbbbbabeeeeeeee</row>
+	</frame>
+
+	<frame duration="100">
+		<row>eeeeeeeeeeeed7adeeeeeeeeee</row>
+		<row>eeeeeeeeeeed7444deeeeeeeee</row>
+		<row>eeeeeeeeeee77db47eeeeeeeee</row>
+		<row>eeeeeeeeeee47b944eeeeeeeee</row>
+		<row>eeeeeeeeeee49ba44eeeeeeeee</row>
+		<row>eeeeeeeeeee449a44eeeeeeeee</row>
+		<row>eeeeeeeeeeea7a747eeeeeeeee</row>
+		<row>eeeeeeeeeeaaa9999deeeeeeee</row>
+		<row>eeeeeeeeedaddbdebbeeeeeeee</row>
+		<row>eeeeeeeeebabaaddbadeeeeeee</row>
+		<row>eeeeeeeeea99babda9aeeeeeee</row>
+		<row>eeeeeeeeea99b9bd999eeeeeee</row>
+		<row>eeeeeeeeeaa9babbb9aeeeeeee</row>
+		<row>eeeeeeeeeb99b9ddb9beeeeeee</row>
+		<row>eeeeeeeeeb99b9ba79deeeeeee</row>
+		<row>eeeeeeeeed7aa97777deeeeeee</row>
+		<row>eeeeeeeeebaaa7a997deeeeeee</row>
+		<row>eeeeeeedb77bbab977beeeeeee</row>
+		<row>eeeeeeeb774aa9d97addeeeeee</row>
+		<row>eeeeeeeaadabaababbeeeeeeee</row>
+	</frame>
+
+	<frame duration="100">
+		<row>eeeeeeeeeeeed7adeeeeeeeeee</row>
+		<row>eeeeeeeeeeed7444deeeeeeeee</row>
+		<row>eeeeeeeeeee77db47eeeeeeeee</row>
+		<row>eeeeeeeeeee47b944eeeeeeeee</row>
+		<row>eeeeeeeeeee49ba44eeeeeeeee</row>
+		<row>eeeeeeeeeee449a44eeeeeeeee</row>
+		<row>eeeeeeeeeeea7a747eeeeeeeee</row>
+		<row>eeeeeeeeeeaa99999deeeeeeee</row>
+		<row>eeeeeeeeeeaddbdebbeeeeeeee</row>
+		<row>eeeeeeeeeb9dddddbadeeeeeee</row>
+		<row>eeeeeeeeea9aabdda9aeeeeeee</row>
+		<row>eeeeeeeeea9ab9db999eeeeeee</row>
+		<row>eeeeeeeeeaaab9dbb9aeeeeeee</row>
+		<row>eeeeeeeeeb9ab9ddb9deeeeeee</row>
+		<row>eeeeeeeeeb7ba9da79deeeeeee</row>
+		<row>eeeeeeeeed7ba77777deeeeeee</row>
+		<row>eeeeeeeeeb9ba9a997deeeeeee</row>
+		<row>eeeeeeedb77b9ab977beeeeeee</row>
+		<row>eeeeeeeb777b7ab99addeeeeee</row>
+		<row>eeeeeeeaad9b9abbabeeeeeeee</row>
+	</frame>
+
+	<frame duration="100">
+		<row>eeeeeeeeeeeed7adeeeeeeeeee</row>
+		<row>eeeeeeeeeeed7444deeeeeeeee</row>
+		<row>eeeeeeeeeee77db47eeeeeeeee</row>
+		<row>eeeeeeeeeee47b944eeeeeeeee</row>
+		<row>eeeeeeeeeee49ba44eeeeeeeee</row>
+		<row>eeeeeeeeeee449a44eeeeeeeee</row>
+		<row>eeeeeeeeeeea7a747eeeeeeeee</row>
+		<row>eeeeeeeeeeaa99999deeeeeeee</row>
+		<row>eeeeeeeeeeaddbdebbeeeeeeee</row>
+		<row>eeeeeeeeeb9dddddbadeeeeeee</row>
+		<row>eeeeeeeeea9bdddda9aeeeeeee</row>
+		<row>eeeeeeeeea9adddb999eeeeeee</row>
+		<row>eeeeeeeeeaaa9bdbb9aeeeeeee</row>
+		<row>eeeeeeeeeb9aaaedb9beeeeeee</row>
+		<row>eeeeeeeeeb7ba9da99deeeeeee</row>
+		<row>eeeeeeeeed9bb77777deeeeeee</row>
+		<row>eeeeeeeeeb9ba79997deeeeeee</row>
+		<row>eeeeeeedb77d99b977beeeeeee</row>
+		<row>eeeeeeeb779b9ab99addeeeeee</row>
+		<row>eeeeeeeaad9b9abbabeeeeeeee</row>
+	</frame>
+
+	<frame duration="100">
+		<row>eeeeeeeeeeeed7adeeeeeeeeee</row>
+		<row>eeeeeeeeeeed7444deeeeeeeee</row>
+		<row>eeeeeeeeeee77db47eeeeeeeee</row>
+		<row>eeeeeeeeeee47b944eeeeeeeee</row>
+		<row>eeeeeeeeeee49ba44eeeeeeeee</row>
+		<row>eeeeeeeeeee449a44eeeeeeeee</row>
+		<row>eeeeeeeeeeea7a747eeeeeeeee</row>
+		<row>eeeeeeeeeeaa99999deeeeeeee</row>
+		<row>eeeeeeeeeeaddbdebbeeeeeeee</row>
+		<row>eeeeeeeeeb9dddddbadeeeeeee</row>
+		<row>eeeeeeeeea9bdddda9aeeeeeee</row>
+		<row>eeeeeeeeea99dddb999eeeeeee</row>
+		<row>eeeeeeeeeabdbddbb9aeeeeeee</row>
+		<row>eeeeeeeeebabddddb9beeeeeee</row>
+		<row>eeeeeeeeeb9abddb99deeeeeee</row>
+		<row>eeeeeeeeed979b7777deeeeeee</row>
+		<row>eeeeeeeeeb77779997deeeeeee</row>
+		<row>eeeeeeedb77997b977beeeeeee</row>
+		<row>eeeeeeeb779b9ab99addeeeeee</row>
+		<row>eeeeeeeaadab99daabeeeeeeee</row>
+	</frame>
+
+	<frame duration="100">
+		<row>eeeeeeeeeeeed7adeeeeeeeeee</row>
+		<row>eeeeeeeeeeed7444deeeeeeeee</row>
+		<row>eeeeeeeeeee77db47eeeeeeeee</row>
+		<row>eeeeeeeeeee47b944eeeeeeeee</row>
+		<row>eeeeeeeeeee49ba44eeeeeeeee</row>
+		<row>eeeeeeeeeee449a44eeeeeeeee</row>
+		<row>eeeeeeeeeeea7a747eeeeeeeee</row>
+		<row>eeeeeeeeeeaa99999deeeeeeee</row>
+		<row>eeeeeeeeedaddbdebbeeeeeeee</row>
+		<row>eeeeeeeeebadddddbadeeeeeee</row>
+		<row>eeeeeeeeea9bdddda9aeeeeeee</row>
+		<row>eeeeeeeeea99dbdb999eeeeeee</row>
+		<row>eeeeeeeeeabdba9abaaeeeeeee</row>
+		<row>eeeeeeeeebabab9799beeeeeee</row>
+		<row>eeeeeeeeeb99ab9979deeeeeee</row>
+		<row>eeeeeeeeed77aba977deeeeeee</row>
+		<row>eeeeeeeeeb77ab9999deeeeeee</row>
+		<row>eeeeeeedb779ab99a7beeeeeee</row>
+		<row>eeeeeeeb777bab779adeeeeeee</row>
+		<row>eeeeeeeaadabbaababeeeeeeee</row>
+	</frame>
+
+	<frame duration="100">
+		<row>eeeeeeeeeeeed7adeeeeeeeeee</row>
+		<row>eeeeeeeeeeed7444deeeeeeeee</row>
+		<row>eeeeeeeeeee77db47eeeeeeeee</row>
+		<row>eeeeeeeeeee47b944eeeeeeeee</row>
+		<row>eeeeeeeeeee49ba44eeeeeeeee</row>
+		<row>eeeeeeeeeee449a44eeeeeeeee</row>
+		<row>eeeeeeeeeeea7a747eeeeeeeee</row>
+		<row>eeeeeeeeeeaa99999deeeeeeee</row>
+		<row>eeeeeeeeedaddbdebbeeeeeeee</row>
+		<row>eeeeeeeeebadddddbadeeeeeee</row>
+		<row>eeeeeeeeea9bbabda9aeeeeeee</row>
+		<row>eeeeeeeeea999a9b99aeeeeeee</row>
+		<row>eeeeeeeeeabdaa97a9aeeeeeee</row>
+		<row>eeeeeeeeebabaa9999beeeeeee</row>
+		<row>eeeeeeeeeb99a9a979deeeeeee</row>
+		<row>eeeeeeeeed79a9aa97deeeeeee</row>
+		<row>eeeeeeeeeb79a9a999deeeeeee</row>
+		<row>eeeeeeedb779a99bb7beeeeeee</row>
+		<row>eeeeeeeb777aa7777adeeeeeee</row>
+		<row>eeeeeeeaadaba9abbbeeeeeeee</row>
+	</frame>
+
+	<frame duration="100">
+		<row>eeeeeeeeeeeed7adeeeeeeeeee</row>
+		<row>eeeeeeeeeeed7444deeeeeeeee</row>
+		<row>eeeeeeeeeee77db47eeeeeeeee</row>
+		<row>eeeeeeeeeee47b944eeeeeeeee</row>
+		<row>eeeeeeeeeee49ba44eeeeeeeee</row>
+		<row>eeeeeeeeeee449a44eeeeeeeee</row>
+		<row>eeeeeeeeeeea7a747eeeeeeeee</row>
+		<row>eeeeeeeeeeaa99999deeeeeeee</row>
+		<row>eeeeeeeeedaddbdebbeeeeeeee</row>
+		<row>eeeeeeeeebadbbddbadeeeeeee</row>
+		<row>eeeeeeeeea9aa9ada9aeeeeeee</row>
+		<row>eeeeeeeeea99a97aa99eeeeeee</row>
+		<row>eeeeeeeeeaaaa9a7aaaeeeeeee</row>
+		<row>eeeeeeeeeba9a9a999beeeeeee</row>
+		<row>eeeeeeeeeb9a99aa97deeeeeee</row>
+		<row>eeeeeeeeed7a99aa97eeeeeeee</row>
+		<row>eeeeeeeeeb9a77b9a9deeeeeee</row>
+		<row>eeeeeeedb77a97abb7beeeeeee</row>
+		<row>eeeeeeeb779b97777adeeeeeee</row>
+		<row>eeeeeeeaad9a99abbbeeeeeeee</row>
+	</frame>
+
+	<frame duration="100">
+		<row>eeeeeeeeeeeed7adeeeeeeeeee</row>
+		<row>eeeeeeeeeeed7444deeeeeeeee</row>
+		<row>eeeeeeeeeee77db47eeeeeeeee</row>
+		<row>eeeeeeeeeee47b944eeeeeeeee</row>
+		<row>eeeeeeeeeee49ba44eeeeeeeee</row>
+		<row>eeeeeeeeeee449a44eeeeeeeee</row>
+		<row>eeeeeeeeeeea7a747eeeeeeeee</row>
+		<row>eeeeeeeeeeaaa9999deeeeeeee</row>
+		<row>eeeeeeeeedaddbdebbeeeeeeee</row>
+		<row>eeeeeeeeebadddddbadeeeeeee</row>
+		<row>eeeeeeeeea9a99dda9aeeeeeee</row>
+		<row>eeeeeeeeea99a99ba99eeeeeee</row>
+		<row>eeeeeeeeeaaa9999b9aeeeeeee</row>
+		<row>eeeeeeeeeb9a9aa7a9beeeeeee</row>
+		<row>eeeeeeeeeb9a7aaa79deeeeeee</row>
+		<row>eeeeeeeeeb9979aa97deeeeeee</row>
+		<row>eeeeeeeeeba979a9a9deeeeeee</row>
+		<row>eeeeeeeda9a9979bb7beeeeeee</row>
+		<row>eeeeeeeb79aa97777adeeeeeee</row>
+		<row>eeeeeeeaabaaa9abbbeeeeeeee</row>
+	</frame>
+
+	<frame duration="100">
+		<row>eeeeeeeeeeeed7adeeeeeeeeee</row>
+		<row>eeeeeeeeeeed7444deeeeeeeee</row>
+		<row>eeeeeeeeeee77db47eeeeeeeee</row>
+		<row>eeeeeeeeeee47b944eeeeeeeee</row>
+		<row>eeeeeeeeeee49ba44eeeeeeeee</row>
+		<row>eeeeeeeeeee449a44eeeeeeeee</row>
+		<row>eeeeeeeeeeea7a747eeeeeeeee</row>
+		<row>eeeeeeeeeeaaa9999deeeeeeee</row>
+		<row>eeeeeeeeedaddbdebbeeeeeeee</row>
+		<row>eeeeeeeeebadddddbadeeeeeee</row>
+		<row>eeeeeeeeea9bdddda9aeeeeeee</row>
+		<row>eeeeeeeeea99aadd999eeeeeee</row>
+		<row>eeeeeeeeeaaa97abb9aeeeeeee</row>
+		<row>eeeeeeeeeb9a9979b9beeeeeee</row>
+		<row>eeeeeeeeeb9a9aa799deeeeeee</row>
+		<row>eeeeeeeeebaa9a9a77deeeeeee</row>
+		<row>eeeeeeeeeb9979aa99deeeeeee</row>
+		<row>eeeeeeeda9a99779a7beeeeeee</row>
+		<row>eeeeeeeb7a9aa7779adeeeeeee</row>
+		<row>eeeeeeeb9a9ba9abbbeeeeeeee</row>
+	</frame>
+
+	<frame duration="1000">
+		<row>eeeeeeeeeeeed7adeeeeeeeeee</row>
+		<row>eeeeeeeeeeed7444deeeeeeeee</row>
+		<row>eeeeeeeeeee77db47eeeeeeeee</row>
+		<row>eeeeeeeeeee47b944eeeeeeeee</row>
+		<row>eeeeeeeeeee49ba44eeeeeeeee</row>
+		<row>eeeeeeeeeee449a44eeeeeeeee</row>
+		<row>eeeeeeeeeeea7a747eeeeeeeee</row>
+		<row>eeeeeeeeeeaa99999deeeeeeee</row>
+		<row>eeeeeeeeedaddbdebbeeeeeeee</row>
+		<row>eeeeeeeeebadddddbadeeeeeee</row>
+		<row>eeeeeeeeea9bdddda9aeeeeeee</row>
+		<row>eeeeeeeeea99dddb99aeeeeeee</row>
+		<row>eeeeeeeeeabbbddbb9aeeeeeee</row>
+		<row>eeeeeeeeeb9a99bbb9beeeeeee</row>
+		<row>eeeeeeeeeb9a997999deeeeeee</row>
+		<row>eeeeeeeeebaa999979deeeeeee</row>
+		<row>eeeeeeeeebaa999997deeeeeee</row>
+		<row>eeeeeeeda9a9979999beeeeeee</row>
+		<row>eeeeeeeb79aaa7777adeeeeeee</row>
+		<row>eeeeeeea9a9ba9adbbeeeeeeee</row>
+	</frame>
+</blm>

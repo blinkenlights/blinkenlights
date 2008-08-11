@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blm width="18" height="8" bits="4" channels="1">
+	<header>
+		<title>2000-2004</title>
+		<description></description>
+		<creator>BlinkenPaint 3.12</creator>
+		<author>md</author>
+		<email>david@mdavid.net</email>
+		<loop>yes</loop>
+		<duration>200</duration>
+	</header>
+
+	<frame duration="200">
+		<row>0ff000ff00ff00ff00</row>
+		<row>f00f0f00ff00ff00f0</row>
+		<row>00f00f00ff00ff00f0</row>
+		<row>ffff00ff00ff00ff00</row>
+		<row>0ff000ff00ff00f000</row>
+		<row>f00f0f00ff00ff00f0</row>
+		<row>00f00f00ff00ffffff</row>
+		<row>ffff00ff00ff0000f0</row>
+	</frame>
+</blm>

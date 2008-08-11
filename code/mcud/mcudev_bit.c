@@ -1,0 +1,157 @@
+/*
+ * mcudev_bit
+ *
+ * MCU Driver Module for monochrome lamps.
+ */
+
+#include <linux/module.h>
+#include <asm/io.h>
+
+MODULE_AUTHOR("Tim Pritlove");
+MODULE_DESCRIPTION("MCU Driver Module for lamps in monochrome mode");
+MODULE_LICENSE("GPL");
+
+#include <rtai.h>
+#include <rtai_sched.h>
+#include <rtai_fifos.h>
+#include <rtai_shm.h>
+
+#include "mcu.h"
+#include "pio.h"
+
+#include "mcud.h"
+#include "mcudev.h"
+
+#define UPDATE_PERIOD_NS		100000000         // 10ms
+
+#define MCUDEV_NAME             "mcu_bit"
+
+
+
+
+/*
+ * init_mcu
+ *
+ * boolean determining if MCU PIO subsystem should be initialized on AMD ELan Controller
+ */
+int init_mcu = 0;
+MODULE_PARM (init_mcu, "1i");
+
+/*
+ * max_lamps
+ *
+ * maximum number of lamps supported
+ */
+int max_lamps = MCU_MAX_LAMPS;
+MODULE_PARM (max_lamps, "1i");
+
+
+RT_TASK mcudev_bit_task;
+mcu_device_t * Device;
+
+
+
+static void
+mcudev_bit_process (int data)
+{
+	unsigned char value;
+	int pixel, bit, port;
+	
+	while(TRUE) {
+
+		/*
+		 * Collect port data to be written and write 8 bits
+		 * a time for performance reasons.
+		 */
+		bit = 0, value = 0, port = 0;
+		for(pixel = 0; pixel < max_lamps; pixel++) {
+			if (Device->pixel[pixel][0] > 1) {
+				rt_printk("%s: Illegal pixel value (pixel=%d value=%d)\n", MCUDEV_NAME, pixel, Device->pixel[pixel][0]);
+				continue;
+			}
+
+			value |= ( (Device->pixel[pixel][0] & 0x01) << bit);
+			bit++;
+
+			/*
+			flush port when all bits are collected
+			 or last pixel has been processed
+			*/
+			if(bit == 8 || pixel == max_lamps - 1) {
+				outb( value, (int) pio_port_addr[port]);
+				bit = 0;
+				port++;
+				value = 0;
+			}
+		}
+
+		rt_task_wait_period();
+	}
+}
+
+int
+init_module(void)
+{
+	RTIME period, start_time;
+	int status;
+
+	printk ("%s: init_module\n", MCUDEV_NAME);
+
+	Device = (mcu_device_t *) rtai_kmalloc(MCU_DEVICE_SHMEM_MAGIC, sizeof(mcu_device_t));
+	if (Device == NULL) {
+		printk ("%s: rtai_kmalloc failed\n", MCUDEV_NAME);
+		return 1;
+	}
+	
+	strcpy(Device->name, "mcudev_bit");
+	Device->channels = 1;
+	Device->maxval = 1;
+	Device->flag_zero_off = FALSE;
+
+	/*
+	 * Initialize PIO subsystem
+	 */
+	if (init_mcu) {
+		mcu_setup();
+	}
+	pio_setup();
+
+	/*
+	 * Switch off all lamps
+	 */
+	pio_init_ports(0x00);
+
+
+	status = rt_task_init(&mcudev_bit_task, &mcudev_bit_process, 0, 4096, 1, 0, NULL);
+	if(status != 0) {
+		printk("%s: rt_task_init failed (%d)\n", MCUDEV_NAME, status);
+		rtai_kfree(MCU_DEVICE_SHMEM_MAGIC);
+		return 1;
+	}
+
+	rt_set_periodic_mode();
+	period = start_rt_timer(nano2count(UPDATE_PERIOD_NS));
+	start_time = rt_get_time() + 10 * period;
+	status = rt_task_make_periodic(&mcudev_bit_task, start_time, period);
+	if(status != 0) {
+		printk("%s: rt_task_make_periodic failed (%d)\n", MCUDEV_NAME, status);
+		rtai_kfree(MCU_DEVICE_SHMEM_MAGIC);
+		return 1;
+	}
+
+	printk ("%s: mcudev_bit task started\n", MCUDEV_NAME);
+
+	Device->flag_loaded = TRUE;
+	return 0;
+}
+
+void
+cleanup_module (void)
+{
+	Device->flag_loaded = FALSE;
+	rtai_kfree(MCU_DEVICE_SHMEM_MAGIC);
+
+	rt_task_delete(&mcudev_bit_task);
+
+	printk ("%s: cleanup_module\n", MCUDEV_NAME);
+}

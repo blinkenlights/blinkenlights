@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blm width="26" height="20" bits="4" channels="1">
+	<header>
+		<title>mykeulm.gif</title>
+		<description></description>
+		<creator>ArcadePaint 1.1 Mac</creator>
+		<author>Myjeul K.</author>
+		<email>mykeul@noos.fr</email>
+		<loop>no</loop>
+		<duration>100</duration>
+	</header>
+
+	<frame duration="100">
+		<row>004411026ded93400000000000</row>
+		<row>00247a743548a4400000000000</row>
+		<row>00001222582231362000000000</row>
+		<row>00000000ae8432146100000030</row>
+		<row>00000002effb66543720001762</row>
+		<row>00000004aab86640546aaa9521</row>
+		<row>00000007da6656100266641000</row>
+		<row>00000008b94774000000000000</row>
+		<row>00000023353123000000000000</row>
+		<row>00001552111113000000000000</row>
+		<row>00015531111233000000000000</row>
+		<row>00164211001365000000000000</row>
+		<row>00442111223575100000000000</row>
+		<row>00111120003464100000000000</row>
+		<row>00110200003244200000000000</row>
+		<row>00110200003445200000000000</row>
+		<row>00110200002232300000000000</row>
+		<row>00111100002111300000000000</row>
+		<row>00111100002111100000000000</row>
+		<row>00111100001111000000000000</row>
+	</frame>
+</blm>

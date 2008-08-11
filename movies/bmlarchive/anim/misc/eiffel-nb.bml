@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<blm width="26" height="20" bits="4">
+    <header>
+        <title>Tour d'Eiffel</title>
+        <description>Le Tour d'Eiffel comme vue par la Nuit Blanche</description>
+        <author>Sven Neumann</author>
+        <creator>blib 0.9</creator>
+        <duration>5000</duration>
+    </header>
+    <frame duration="5000">
+        <row>00000000000100100000000000</row>
+        <row>00000000000141010000000000</row>
+        <row>000000000003d8111000000000</row>
+        <row>000000001112ee211100000000</row>
+        <row>000000000113ee221100000000</row>
+        <row>000000001113edc21100000000</row>
+        <row>000000001113ede32110000000</row>
+        <row>000000000113eecd2110000000</row>
+        <row>000000001124eddd3111000000</row>
+        <row>000000000116878ac100000000</row>
+        <row>00000000001644112250000000</row>
+        <row>00000000014b76333530000000</row>
+        <row>00000000006c89213775000000</row>
+        <row>00000000118dba22264a820000</row>
+        <row>0000000b77aac8324563dc6000</row>
+        <row>00000037121151130415477752</row>
+        <row>000000545756942b1321815140</row>
+        <row>00000050202231111012012224</row>
+        <row>000002168a4644216112240111</row>
+        <row>00003357442232135337337322</row>
+    </frame>
+</blm>

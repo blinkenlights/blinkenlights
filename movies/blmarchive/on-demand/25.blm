@@ -1,0 +1,19 @@
+# BlinkenLights Movie 18x8
+# name = AK
+# description = Konstantinos LOVES Aspa
+# creator = Blinkenpaint 2.4
+# author = Constantinos Iliopoulos
+# width = 18
+# height = 8
+# loop = no
+# duration = 200
+
+@200
+000100001101100101
+001010010010010110
+011111001000100110
+100000100010000101
+000000000000000000
+000000000000000000
+000000000000000000
+000000000000000000

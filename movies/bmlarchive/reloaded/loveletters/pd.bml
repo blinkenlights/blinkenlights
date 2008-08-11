@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blm width="18" height="8" bits="4" channels="1">
+	<header>
+		<title>pd</title>
+		<description></description>
+		<creator>BlinkenPaint 3.12</creator>
+		<author>md</author>
+		<email>david@mdavid.net</email>
+		<loop>yes</loop>
+		<duration>200</duration>
+	</header>
+
+	<frame duration="200">
+		<row>00ffffffff00000000</row>
+		<row>00ff000000ff000000</row>
+		<row>00ff000000ff000000</row>
+		<row>00ffffffff00000000</row>
+		<row>00ff000ffffffff000</row>
+		<row>00ff000ff000000ff0</row>
+		<row>00ff000ff000000ff0</row>
+		<row>0000000ffffffff000</row>
+	</frame>
+</blm>

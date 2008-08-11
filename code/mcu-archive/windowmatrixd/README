@@ -1,0 +1,51 @@
+The protocol
+------------
+
+Windowmatrixd will listen on port "blinkenlights" (2323/udp) for
+incoming packet's of variable length. One packet equals one frame on
+the display. The protocol is completeley stateless.
+
+Layout of frames:
+magic (32 bit), framecount (32 bit), width (16 bit), height (16 bit),
+frame-data (length is width * height bytes)
+
+The Magicnumber we use is 0xDEADBEEF (in hex)
+
+Warning: DON'T FORGET BYTE-ORDER CONVERSION. HOST->NETWORK,
+NETWORK->HOST. AS WE CAN'T MAKE ANY ASSUMPTIONS OF THE WIDTH (in
+windows) OF THE BUILDING WE USE AS DISPLAY, JUST WRITE THE FRAME-DATA
+OCTET-WISE TO THE SOCKET, SO BYTE-ORDER CONVERSIONS IN THE FRAME-DATA
+CAN BE AVOIDED.
+
+
+Stream log
+----------
+
+The log of the stream is just the stream itself, meaning, that it's a
+binary file containing the concatenated frame data. NB: frame data is
+in network byte-order. This format is application independent, so the
+"player" for this file must know how to interpret timing information.
+
+
+Timing
+------
+
+The protocol used here does not provide for proper
+timing. windowmatrixd outputs a frame immediately upon reception.
+
+
+Security
+--------
+
+The protocol we use for blinkenlights is INSECURE. Use it only in
+trusted networks, otherwise anyone attached to your network can insert
+frames and possibly damage your hardware. The only security feature
+windowmatrixd has are the ability to bind it to a specific network
+interface and the screenblanking feature. windowmatrixd does not take
+care of your hardware. Throwing too many frames against it will
+probably kill your hardware, so be careful.
+
+If you really want to use windowmatrixd in an untrusted network, use
+IPSEC or CIPE or anything comparable. This might increase the latency
+of your network, thereby making windowmatrixd unusable for interactive
+applications.

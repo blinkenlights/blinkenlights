@@ -1,0 +1,41 @@
+#!/bin/sh
+
+echo -n "MCU Dimmer Process"
+
+for var in /opt/mcu/var/*
+do
+	. $var
+done
+
+case $1 in
+	start)
+		insmod /opt/mcu/mcu_pdim.o \
+			max_lamps=$MAX_LAMPS \
+			mcu_phase=$MCU_PHASE \
+			phases="$PHASES" \
+			irq_delay_step=$IRQ_DELAY_STEP \
+			dim_step_length_ns=$DIM_STEP_LENGTH_NS \
+			pulse_length_steps=$PULSE_LENGTH_STEPS \
+			dim_resolution=$DIM_RESOLUTION \
+			dim_steps0=$DIM_STEPS0 \
+			dim_steps1=$DIM_STEPS1 \
+			dim_steps2=$DIM_STEPS2 \
+			phase1_offset=$PHASE1_OFFSET \
+			phase2_offset=$PHASE2_OFFSET \
+			spark_mode=$SPARK_MODE \
+			init_value=$INIT_VALUE
+		;;
+	stop)
+		rmmod mcu_pdim
+		;;
+	reload)
+		$0 stop
+		$0 start
+		;;
+	default)
+		echo "Huh?"
+		;;
+esac
+
+echo "done."
+

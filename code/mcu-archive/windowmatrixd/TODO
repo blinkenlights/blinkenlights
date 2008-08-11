@@ -1,0 +1,10 @@
+- clean up source code
+- reimplement frame logging
+- implement IPv6-anycast and IPv4-multicast support
+- generalize network.c -> implement sending of packets
+- useful errormessages everywhere -> strerror
+- make remapping configurable at runtime
+- SIGHUP to reload mapping and close/reopen devices
+- write manpages
+- allon/alloff must die -> merge all present ideas to a big debug/admintool
+- add parallel-port backend

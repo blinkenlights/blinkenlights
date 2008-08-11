@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<blm id="ak" width="18" height="8">
+	<header>
+		<name>AK</name>
+		<description>Konstantinos LOVES Aspa</description>
+		<creator>Blinkenpaint 2.4</creator>
+		<author>Constantinos Iliopoulos</author>
+		<width>18</width>
+		<height>8</height>
+		<loop>no</loop>
+		<duration>200</duration>
+	</header>
+
+	<frame ms="200">
+		<row>000100001101100101</row>
+		<row>001010010010010110</row>
+		<row>011111001000100110</row>
+		<row>100000100010000101</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+	</frame>
+</blm>

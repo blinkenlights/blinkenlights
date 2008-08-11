@@ -1,0 +1,45 @@
+Gondwana - a quick hack for a bushfire simulator
+
+
+Requirements
+------------
+
+Gonwana uses DirectFB to draw on the Linux framebuffer. You will need
+a recent version of DirectFB (>= 0.9.11) installed with header files
+to compile BlinkenSim.  DirectFB is available from
+http://www.directfb.org/.
+
+You also need pkg-config, a small utility that helps to locate
+installed software such as DirectFB. pkg-config is available from
+http://www.freedesktop.org/software/pkgconfig/.
+
+
+Installation
+------------
+
+Change to the toplevel source directory and type
+
+  ./configure
+  make
+  make install
+
+You can pass the usual options to configure (try ./configure --help).
+This should build and install blinkensim for you. Make sure your 
+framebuffer is configured correctly for DirectFB. Please check the 
+DirectFB FAQ for information.
+
+
+Usage
+-----
+
+Usage is very simple, just start it. There are no command-line
+parameters but the ones supported by all DirectFB apps (use --dfb-help
+to get a list of these options).
+
+Note that you need to have root privileges in order to access the
+framebuffer and to switch terminals. You might consider installing
+blinkensim suid root.
+
+
+Have Blinkenfun,
+	Sven Neumann  <sven@gimp.org>

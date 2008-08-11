@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blm width="18" height="8" bits="4" channels="1">
+	<header>
+		<title>Blinkenlights Eyeanim</title>
+		<description>Big Brother is watching you!</description>
+		<creator>BlinkenPaint 3.12</creator>
+		<author>DeeKay</author>
+		<email>dee@gmx.li</email>
+		<loop>yes</loop>
+		<duration>2600</duration>
+	</header>
+
+	<frame duration="2000">
+		<row>666665544543332444</row>
+		<row>665432233101000024</row>
+		<row>632367647ba6331000</row>
+		<row>337ff73038dffaa533</row>
+		<row>36ffb852126ffcb634</row>
+		<row>5557aa777ada853234</row>
+		<row>877655433223344455</row>
+		<row>888888887778887655</row>
+	</frame>
+
+	<frame duration="100">
+		<row>666655445543443444</row>
+		<row>664434333332322224</row>
+		<row>642355324631100000</row>
+		<row>324787303887797201</row>
+		<row>349dd852126ddcb623</row>
+		<row>555797777776553234</row>
+		<row>877655433223344455</row>
+		<row>888888887778887655</row>
+	</frame>
+
+	<frame duration="100">
+		<row>666665444443334444</row>
+		<row>665433454566543334</row>
+		<row>632247777878886433</row>
+		<row>445788877766544332</row>
+		<row>456897533422344333</row>
+		<row>455798776665553234</row>
+		<row>877655433223344455</row>
+		<row>888888887778887655</row>
+	</frame>
+
+	<frame duration="200">
+		<row>666665444443334444</row>
+		<row>665433444566543334</row>
+		<row>632246888888887443</row>
+		<row>445899999999998742</row>
+		<row>355788898888877533</row>
+		<row>454456666566542234</row>
+		<row>877655433222222355</row>
+		<row>888888888767886655</row>
+	</frame>
+
+	<frame duration="100">
+		<row>666665444443334444</row>
+		<row>665433454566543334</row>
+		<row>632247777878886433</row>
+		<row>445788877766544332</row>
+		<row>456897533422344333</row>
+		<row>455798776665553234</row>
+		<row>877655433223344455</row>
+		<row>888888887778887655</row>
+	</frame>
+
+	<frame duration="100">
+		<row>666655445543443444</row>
+		<row>664434333332322224</row>
+		<row>642355324631100000</row>
+		<row>324787303887797201</row>
+		<row>349dd852126ddcb623</row>
+		<row>555797777776553234</row>
+		<row>877655433223344455</row>
+		<row>888888887778887655</row>
+	</frame>
+</blm>

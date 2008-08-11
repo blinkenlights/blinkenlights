@@ -1,0 +1,24 @@
+#!/bin/sh
+
+echo -n "MCU Daemon"
+
+case $1 in
+	start)
+		/opt/mcu/mcud_loop.sh &
+		/etc/init.d/mcu_pdim start
+		;;
+	stop)
+		/etc/init.d/mcu_pdim stop
+		killall mcud
+		;;
+	reload)
+		$0 stop
+		$0 start
+		;;
+	default)
+		echo "Huh?"
+		;;
+esac
+
+echo "done."
+

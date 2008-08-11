@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+
+<!-- blccc configuration for uBlinkenlights (Bauschild) -->
+
+<blccc>
+  <config>
+
+    <param key="width"        value="18"/>
+    <param key="height"       value="8"/>
+    <param key="aspect"       value="0.55"/>
+    <param key="playlist"     value="playlist.xml"/>
+    <param key="logfile"      value="/var/log/blccc.log"/>
+ 
+    <param key="recipient"    value="23.23.23.255"/>
+    <param key="recipient"    value="localhost"/>
+    <param key="recipient"    value="proxy.blinkenlights.de"/>
+
+    <param key="authorized-caller"  value="+491792902245"/> <!-- Tim      -->
+    <param key="authorized-caller"  value="+491792378019"/> <!-- Sven     -->
+    <param key="authorized-caller"  value="+491727018519"/> <!-- Daniel   -->
+    <param key="authorized-caller"  value="+491772734721"/> <!-- Bjoern   -->
+    <param key="authorized-caller"  value="+491718327519"/> <!-- TV       -->
+
+    <param key="isdn-host"    value="localhost"/>
+    <param key="isdn-port"    value="1234"/>
+    <param key="isdn-listen"  value="1234"/>
+
+    <application name="Dispatch" type="BlDispatch"
+                 number="+493027560515" public="yes"
+		 sound="telekoma.alaw"
+		 soundloop="warteschleife-ewig.alaw">
+      <param key="loveletters" value="loveletters.xml"/>
+    </application>
+
+    <application name="Fotos" type="BlOnDemand"
+                 number="+493027560513" public="yes"
+                 sound="warteschleife-ewig.alaw"> 
+      <param key="loveletters" value="fotos.xml"/>
+      <param key="advanced" value="yes"/>
+    </application>
+
+<!--
+    <application name="Test" type="BlDispatch"
+                 number="+493027560514" public="yes"
+                 sound="warteschleife-ewig.alaw"> 
+      <param key="lovemodules" value="lovemodules.xml"/>
+    </application>
+ -->
+
+  </config>
+</blccc>

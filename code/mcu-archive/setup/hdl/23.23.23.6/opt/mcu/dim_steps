@@ -1,0 +1,10 @@
+#!/bin/sh
+
+export DIM_RESOLUTION=8
+
+DIM_STEPS=0,40,10,7,5,5,6,26
+
+export DIM_STEPS0=${DIM_STEPS}
+export DIM_STEPS1=0,38,10,7,5,5,6,28
+export DIM_STEPS2=0,40,10,6,5,6,6,26
+

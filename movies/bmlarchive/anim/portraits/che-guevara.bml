@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blm width="26" height="20" bits="3" channels="1">
+	<header>
+		<title>che-guevara</title>
+		<description>Ernesto Che Guevara</description>
+		<creator>ArcadePaint 1.1 Mac</creator>
+		<author>BMLator Kirill Lebedev</author>
+		<email>lordnn@yahoo.com</email>
+		<loop>no</loop>
+		<duration>10000</duration>
+	</header>
+
+	<frame duration="10000">
+		<row>77777775443344557777777777</row>
+		<row>77753200013000001344567777</row>
+		<row>75100010023100000000002477</row>
+		<row>60010001111110000000000036</row>
+		<row>30002456666665554320000001</row>
+		<row>40125666666666665544100000</row>
+		<row>60134333334653110011100000</row>
+		<row>10033112434640231000100000</row>
+		<row>00145556665642455423200000</row>
+		<row>00146666654432355421100000</row>
+		<row>00014566653441344321000000</row>
+		<row>00002565344441012221110100</row>
+		<row>00001353443332111011000000</row>
+		<row>00000134566655321000100000</row>
+		<row>00000021244443210000000000</row>
+		<row>43000001000000000011000033</row>
+		<row>64100001000000000110000577</row>
+		<row>23211111133122101100000477</row>
+		<row>23332222212223211111111135</row>
+		<row>13332122211111111111001122</row>
+	</frame>
+</blm>

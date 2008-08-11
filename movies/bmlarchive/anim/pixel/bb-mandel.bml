@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+Alternative version with maxval attribute
+
+<blm version="1.1" width="26" height="20" maxval="15" channels="1">
+-->
+
+<blm version="1.1" width="26" height="20" bits="4" channels="1">
+	<header>
+		<title>Mandelbrot Zoom</title>
+		<description>Zooming into the famous Mandelbrot set</description>
+		<creator>ArcadePaint 1.1 Mac</creator>
+		<author>Björn Barnekow</author>
+		<email>bb@bytecamp.net</email>
+		<loop>no</loop>
+		<duration>20000</duration>
+
+		<!-- new 1.1 elements -->
+		<name>bb-mandel</name>
+		<categories>
+			<category>pixel</category>
+			<category>mathematics</category>
+		</categories>
+
+	</header>
+
+	<frame duration="50" id="preview">
+		<row>00000000000000000000000000</row>
+		<row>00000000111111111111111100</row>
+		<row>00111222222222222222222222</row>
+		<row>12222222222222222222222222</row>
+		<row>22222222222222222222222222</row>
+		<row>22222222222222222222222222</row>
+		<row>22222222222222222222222222</row>
+		<row>22333333333333333332222222</row>
+		<row>33333333333334443333332222</row>
+		<row>33333333334454354433333332</row>
+		<row>33333334454432133444433333</row>
+		<row>44444445521000000013543333</row>
+		<row>45433344100000000001443333</row>
+		<row>43000011000000000002443333</row>
+		<row>44211122000000000001443333</row>
+		<row>45544455200000000001543333</row>
+		<row>33334444542210011234533333</row>
+		<row>33333333444453145444433333</row>
+		<row>33333333333345554333333322</row>
+		<row>33333333333334433333322222</row>
+	</frame>
+	
+	<!-- .... -->	
+	
+</blm>

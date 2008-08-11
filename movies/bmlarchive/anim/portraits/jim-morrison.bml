@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<blm width="26" height="20" bits="4">
+    <header>
+        <title>jim-morrison26x20.gif</title>
+        <creator>blib 0.7</creator>
+        <duration>5000</duration>
+    </header>
+    <frame duration="5000">
+        <row>47632110011331115514854653</row>
+        <row>2431211210243126cc73553331</row>
+        <row>50001136403435554342630100</row>
+        <row>7212100688a946200001542000</row>
+        <row>011100139feeda544345221102</row>
+        <row>0310003748ceee954565423611</row>
+        <row>0100003897adeb79ba99bccb51</row>
+        <row>4000004ddeeedceeeeeeeec994</row>
+        <row>d620002ceddecbbdeeeedc9772</row>
+        <row>eeb52008ddcc898deeedcb9620</row>
+        <row>debc9102bccccbcddddc98a700</row>
+        <row>eedcb4114a99999abcb8599300</row>
+        <row>eeeeeca605baaaaccc94441000</row>
+        <row>eeeeeec7306bcdddc951000126</row>
+        <row>eeeeeeed7103875420002467bd</row>
+        <row>eeeeeeebb933b8411248baacdd</row>
+        <row>eeeeeeeeddeedd968abcddcddd</row>
+        <row>eeeeeeeeefffedd99aacdddccb</row>
+        <row>eeeeeeeeeeeeeda8abccbccbba</row>
+        <row>eeeeeeeeeeeefdaacbabcdddcc</row>
+    </frame>
+</blm>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<blm width="26" height="20" bits="4">
+    <header>
+        <title>gainsbourg2.gif</title>
+        <creator>blib 0.7</creator>
+        <duration>10000</duration>
+    </header>
+    <frame duration="10000">
+        <row>cdb98aa888878a7666898bcb88</row>
+        <row>aa7579abb9986654457799aa85</row>
+        <row>877984567879a975558b9bc978</row>
+        <row>45774222332343333435559866</row>
+        <row>44323677654445886663223454</row>
+        <row>56325ffffeddddeeccdb411123</row>
+        <row>54228fefffeefeeeeeed721122</row>
+        <row>33227a768977765579de921124</row>
+        <row>3343984327832112458cd41134</row>
+        <row>4344cc634bf8223469abd61256</row>
+        <row>5533bea8cffe744448bca21453</row>
+        <row>67668da7bccec644688bb78788</row>
+        <row>7aeedd89c6556a8579beffd364</row>
+        <row>ffeeb8ef9322356448beefa002</row>
+        <row>9cead75a814a323227adefd548</row>
+        <row>14c8991247acb72337bdeee62c</row>
+        <row>1273684487434322368ab9618e</row>
+        <row>22449e9753222223333564159d</row>
+        <row>b7abba5663322333333222678d</row>
+        <row>b87a85787533233333455995ee</row>
+    </frame>
+</blm>

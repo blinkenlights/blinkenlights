@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blm width="26" height="20" bits="3" channels="1">
+	<header>
+		<title>amour</title>
+		<description>declaration</description>
+		<creator>ArcadePaint 1.1 Mac</creator>
+		<author>daniel berthome</author>
+		<email>danidan@skim.com</email>
+		<loop>no</loop>
+		<duration>200</duration>
+	</header>
+
+	<frame duration="200">
+		<row>00070777700000000000000000</row>
+		<row>00070700000000000000000000</row>
+		<row>00070777000000000000000000</row>
+		<row>07770700000000000000000000</row>
+		<row>00000777000000000000000000</row>
+		<row>00000000000000000000000000</row>
+		<row>77777707077770707770707777</row>
+		<row>00700000070070707077707000</row>
+		<row>00700000077770707000707700</row>
+		<row>00700000070070707000707000</row>
+		<row>00000000000000000000007777</row>
+		<row>00000000000000000000000000</row>
+		<row>77777007770777077770700070</row>
+		<row>70000000700700070070700070</row>
+		<row>77777000700770077770777770</row>
+		<row>00007000700700070000700070</row>
+		<row>77777000700777070000700070</row>
+		<row>00000000000000000000000000</row>
+		<row>00000000000000000000000000</row>
+		<row>00000000000000000000000000</row>
+	</frame>
+</blm>

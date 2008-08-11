@@ -1,0 +1,8 @@
+#!/bin/sh
+
+SETUP=/home/blccc/setup/blinkisdn
+BINDIR=/usr/local/bin
+
+# start blinkisdn
+
+su -c "cd ${SETUP};./blinkisdn.pl" - blccc &

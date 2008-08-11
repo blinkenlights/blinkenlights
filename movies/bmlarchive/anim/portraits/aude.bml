@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blm width="26" height="20" bits="4" channels="1">
+	<header>
+		<title>aude.gif</title>
+		<description></description>
+		<creator>ArcadePaint 1.1 Mac</creator>
+		<author>Jerome Gonfond</author>
+		<email></email>
+		<loop>no</loop>
+		<duration>1000</duration>
+	</header>
+
+	<frame duration="1000">
+		<row>bcccbbbbbbcccccccbbbbbbbbb</row>
+		<row>bbbbbbbbbbba979bbbcbbbcbbc</row>
+		<row>bbbbbbbbbb6310149cbbbcccbb</row>
+		<row>dddddddddc2000004ddddddddd</row>
+		<row>ddddddddee4001006eeddddddd</row>
+		<row>ddddddddee820003aeeeeeeeed</row>
+		<row>eeeeeeccdc930003addcdeeeee</row>
+		<row>eeeeee87a996333279a9aeeeee</row>
+		<row>eeeeeec7798665637ba8aeeeee</row>
+		<row>eeeeeeea9a888768abbaceeeee</row>
+		<row>eeeeeeeea78999aa988aeeeeee</row>
+		<row>eeeeeeeec78999aa988deeeeee</row>
+		<row>eeeeeeeed8898889a99eeeeeee</row>
+		<row>eeeeeeed988878889a9deeeeee</row>
+		<row>deddeeec88877777899cdddddd</row>
+		<row>dddeeeaabbbaaaaabbdbacdeed</row>
+		<row>dddeeb78bbcccccccca88ceeee</row>
+		<row>eedeeb98abbbbbbbba889deeee</row>
+		<row>eddefecbbbbbbbbbbaabceeede</row>
+		<row>dbdeeeeeeeeeeeeedeeeeeeeee</row>
+	</frame>
+</blm>

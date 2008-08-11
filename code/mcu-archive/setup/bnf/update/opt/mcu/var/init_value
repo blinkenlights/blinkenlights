@@ -1,0 +1,3 @@
+#!/bin/sh
+
+export INIT_VALUE=0

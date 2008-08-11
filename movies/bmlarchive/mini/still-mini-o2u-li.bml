@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blm width="26" height="20" bits="4" channels="1">
+	<header>
+		<title>still-mini-o2u-li.bml</title>
+		<description></description>
+		<creator>ArcadePaint 1.1 Mac</creator>
+		<author></author>
+		<email></email>
+		<loop>no</loop>
+		<duration>200</duration>
+	</header>
+
+	<frame duration="200">
+		<row>4517999a991027b97632112800</row>
+		<row>45103575410247ba7753211b20</row>
+		<row>451000112346667a7753221b20</row>
+		<row>451001168766666a7653221b30</row>
+		<row>451000167766666a7642111b40</row>
+		<row>45100006886666687632111b50</row>
+		<row>45100016886666698743221b50</row>
+		<row>451000178876667a8643221a40</row>
+		<row>451000178876667a8643221a30</row>
+		<row>45200017887667796643221a20</row>
+		<row>45200006887667864c73211700</row>
+		<row>45200006777677897722431000</row>
+		<row>45200006776667997343100000</row>
+		<row>45100013455677686110000000</row>
+		<row>45100022110147786100000000</row>
+		<row>451189c7a73104995000000000</row>
+		<row>4513b9a9aa5103792000000000</row>
+		<row>45112687631015850000000000</row>
+		<row>45111012223587300000000000</row>
+		<row>45111011344210000000000000</row>
+	</frame>
+</blm>

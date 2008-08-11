@@ -1,0 +1,2002 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blm width="18" height="8" bits="8" channels="1">
+	<header>
+		<title>yeah yeah</title>
+		<creator>gif2blm (modified)</creator>
+		<author>Tim Ruetz</author>
+		<email>tim@sushipunk.de</email>
+		<loop>yes</loop>
+		<duration>10900</duration>
+	</header>
+
+	<frame duration="100">
+		<row>ffffffffffffffffffd080a0d0ffffffffff</row>
+		<row>ffffffffffffffffd0a04064bbe0ffffffff</row>
+		<row>ffffffffffffbb944020001033a0e0ffffff</row>
+		<row>ffffffffffff8020100000000933a0bbffff</row>
+		<row>ffffffffe0ab3b0000000e1020293370b0ff</row>
+		<row>ffffffffffd094713300003370bbe0e0e0e0</row>
+		<row>ffffffffffffb15b33101040a1e3ffffffff</row>
+		<row>ffffffffffff9b615031316bcbcbd0d0e0e0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffffd094b0d4ffffffffff</row>
+		<row>ffffffffffffffffd4a0405bbbe0ffffffff</row>
+		<row>ffffffffffffbb805020101040b0ffffffff</row>
+		<row>ffffffffffe0802010000e00105bcee0ffff</row>
+		<row>fffffffbb05b40201000000000335bc4ffff</row>
+		<row>fffffffffbffa080330000215b6b7094bbe0</row>
+		<row>ffffffffffffb05020111040a1e0ffffecff</row>
+		<row>ffffffffffff8b5150313161d1cbd0d0d1e0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffffd094b0d4ffffffffff</row>
+		<row>ffffffffffffffffd0a0345bbbe0ffffffff</row>
+		<row>ffffffffffffa050402000103bb0ffffffff</row>
+		<row>ffbba49494503320100009000b70d0f2ffff</row>
+		<row>ffffffd0b4b080a040000900005ba0e0ffff</row>
+		<row>ffffffffffffa08033000020404180d0ffff</row>
+		<row>ffffffffffffa040201b1041b09ba09bd0ff</row>
+		<row>fffffffffff57b3b514b3b70e0cbbb94b0e0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffffc484a4deffffffffff</row>
+		<row>d0d0e0ffffffe0d0bb94335bbbe9ffffffff</row>
+		<row>d0a0948080705b332020001033b0ffffffff</row>
+		<row>ffffe0b69480705b240004000070d0e0ffff</row>
+		<row>ffffffffffffb09433000400005094e0ffff</row>
+		<row>ffffffffffff94643300001b404b80e0ffff</row>
+		<row>ffffffffffffa03320332b5bbb94abbbffff</row>
+		<row>ffffffffffe06b2b616b5b81db9b94bbe0e0</row>
+	</frame>
+
+	<frame duration="100">
+		<row>e0ffffffffffffffffbb80a4e0ffffffffff</row>
+		<row>d0b0b0deffe0bbd0b494335bc4ffffffffff</row>
+		<row>ffbb94805b5b50202014041033b0ffffffff</row>
+		<row>ffffffe0b0bb945b200010000e70d0e0ffff</row>
+		<row>ffffffffffffb09433001000005ba0e0ffff</row>
+		<row>ffffffffffff945b3300001b2b5ba0e0ffff</row>
+		<row>ffffffffffffa033203b405b94b0dbe0ffff</row>
+		<row>ffffffffffdb61216b7b6b8bdbbbb1cbe0e0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>e0bba6d6ffffffffffc494b6ffffffffffff</row>
+		<row>ffb494a0b0d0b0ceb0843366d4ffffffffff</row>
+		<row>ffffe0b0948050202020011040b0ffffffff</row>
+		<row>ffffffffe0d09446200001000480e0ffffff</row>
+		<row>ffffffffffff945b200000000070bbfbffff</row>
+		<row>ffffffffffff945b2b010b101080d1ffffff</row>
+		<row>ffffffffffff94331b415b5b51cbffffffff</row>
+		<row>ffffffffffd0511b5b7b8c9bb0bbd0d0e0e0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffc494c4e0ffffffffc494bbffffffffffff</row>
+		<row>ffe0c49494c4bbd0b0803370e0ffffffffff</row>
+		<row>ffffffa1807050202020011140bbffffffff</row>
+		<row>ffffffffe0ce9450200000000094ffffffff</row>
+		<row>ffffffffffffa070200010000094e0ffffff</row>
+		<row>ffffffffffff945b2b00001011a0ffffffff</row>
+		<row>ffffffffffff942b10315b515bcbffffffff</row>
+		<row>ffffffffffd050103c5b9b9c8caccbd0e0e0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffd4a6c6d6ffffffffc494b4ffffffffffff</row>
+		<row>ffe0c69694d0bbd0b4843370e0ffffffffff</row>
+		<row>ffffffa0707050332020011040bbffffffff</row>
+		<row>ffffffffd0bb945b200000000e94ffffffff</row>
+		<row>ffffffffffffa070200000000094e0ffffff</row>
+		<row>ffffffffffff945b2b00001010a0ffffffff</row>
+		<row>ffffffffffff9429103151515bd0ffffffff</row>
+		<row>ffffffffffd0501041619b9b8cb1d0d0e0e0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffd6ece9ffffffffbe7ea4ffffffffffff</row>
+		<row>ffe0c4b0b6ffe0d0b080335bd0ffffffffff</row>
+		<row>ffffff94707e64332011011033a9ffffffff</row>
+		<row>ffffffffb0a0765b200001001081f2ffffff</row>
+		<row>ffffffffffffa080330006000081d1ffffff</row>
+		<row>ffffffffffffa070330b0b101094e0ffffff</row>
+		<row>ffffffffffff912b113b5c513bbbffffffff</row>
+		<row>ffffffffffd051114b6b9b8c73a1d0d0e0e0</row>
+	</frame>
+
+	<frame duration="100">
+		<row>ffffffffffffffffffbb80a6f5ffffffffff</row>
+		<row>ffffffffffffffffbb84335bd0ffffffffff</row>
+		<row>ffffd4bbb0e094503320011033b0ffffffff</row>
+		<row>ffffffce945b342010000b001080e0ffffff</row>
+		<row>ffffffffffe094943b000b000070b0e0ffff</row>
+		<row>ffffffffffffa1803b010b101b5bb0f5ffff</row>
+		<row>ffffffffffffa03b11315b617191bbd0ffff</row>
+		<row>ffffffffffd9501041619b9c918391bbd1e0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffffbb84b0ffffffffffff</row>
+		<row>ffffffffffffffffc6943370d0ffffffffff</row>
+		<row>ffffffffffffb0764020011033b0ffffffff</row>
+		<row>ffffffd0bba05010100001000080e0ffffff</row>
+		<row>ffffffffdebb705b21011000005bb0e0ffff</row>
+		<row>ffffffffffffb0944001011b315691e0ffff</row>
+		<row>ffffffffffffa040112b4b61a1a0c1d0ffff</row>
+		<row>ffffffffffdb50103b51919191a1b1c1d1e0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffffc484b0ffffffffffff</row>
+		<row>ffffffffffffffffd0943366d0ffffffffff</row>
+		<row>ffffffffffffd0a05020101033a0ffffffff</row>
+		<row>ffffffffffffa05020000900005bd0e0ffff</row>
+		<row>ffffffffffff5b1000000900003370bbfbff</row>
+		<row>ffffffffffe080502000002b5b94bbffffff</row>
+		<row>ffffffffffffa0401b202b50a1e0ffffffff</row>
+		<row>ffffffffffdb51114b5b5b7bb1bbd0d0d0db</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffffbb74a0e0ffffffffff</row>
+		<row>ffffffffffffffffd094335bbbe0ffffffff</row>
+		<row>ffffffffffffd0a4542004103394bbb0d0ff</row>
+		<row>ffffffffffffb070330004001020505ba0ff</row>
+		<row>ffffffffffff80401000002040404094bbff</row>
+		<row>ffffffffffff80402000002b61bbffffffff</row>
+		<row>ffffffffffffa04020212050abf5ffffffff</row>
+		<row>ffffffffffe370315b514171dbcbd0d0d9db</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffffc474a0e0ffffffffff</row>
+		<row>ffffffffffffffffd094335bbbe0ffffffff</row>
+		<row>ffffffffffffd0a05020001033809680b0ff</row>
+		<row>ffffffffffffbb803300000010104040a0ff</row>
+		<row>ffffffffffff945b20000e20507080b0d0ff</row>
+		<row>ffffffffffff99692b00002b5bbbffffffff</row>
+		<row>ffffffffffffb05020201b4bb0f5ffffffff</row>
+		<row>ffffffffffff7b41514b3b71dbd0d0d0d0d0</row>
+	</frame>
+
+	<frame duration="100">
+		<row>ffffffffffffffffffd094b0e0ffffffffff</row>
+		<row>ffffffffffffffffd4a0345bbbb9b0d0e0ff</row>
+		<row>ffffffffffffd0a45e20041033505b5ba0ff</row>
+		<row>ffffffffffffbb94400004001020404094ff</row>
+		<row>ffffffffffffbba03300001133a0e0fbe0ff</row>
+		<row>ffffffffffffb08b3100002151bbffffffff</row>
+		<row>ffffffffffffbb6b2b111040a1e0ffffffff</row>
+		<row>ffffffffffe08b5b4b2b3b71dbcbcbd0d1d1</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffffd4a4bbe0ffffffffff</row>
+		<row>ffffffffffffffffe0a4405ba0b0bbe0ffff</row>
+		<row>ffffffffffffd0b05b2404102933394094ff</row>
+		<row>ffffffffffffbb944000040000204050b0ff</row>
+		<row>ffffffffffffb494330000101094e0ffffff</row>
+		<row>ffffffffffffb0943900002040b0ffffffff</row>
+		<row>ffffffffffffbb79331010338bdbffffffff</row>
+		<row>ffffffffffd1947141203161cbc1cbd0d1d1</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffffd4a0b6e0ffffffffff</row>
+		<row>ffffffffffffffffd6a0405ba0b0d0e0ffff</row>
+		<row>ffffffffffffd0a05b2909001033404094ff</row>
+		<row>ffffffffffffbb803300000010204050aeff</row>
+		<row>ffffffffffffae80330000101094e0fffbff</row>
+		<row>ffffffffffffb08b330000203bb0ffffffff</row>
+		<row>ffffffffffffbb793310103380dbffffffff</row>
+		<row>ffffffffffe094714b21316bcbcbcbd0d1db</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffffc684a4e0ffffffffff</row>
+		<row>ffffffffffffffffd0a03664bbe0ffffffff</row>
+		<row>ffffffffffffbb945020041040505b70b0ff</row>
+		<row>ffffffffffffa05020001000002033409bff</row>
+		<row>ffffffffffff8033100001101094e0f5e0ff</row>
+		<row>ffffffffffff80402000002050b0ffffffff</row>
+		<row>ffffffffffffb05b2110103370d0ffffffff</row>
+		<row>ffffffffffe09b715033405b94b0d0d0d9db</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffffc480a4e0ffffffffff</row>
+		<row>ffffffffffffffffc4943464bbe0ffffffff</row>
+		<row>ffffffffffffb08040200010405b7094bbff</row>
+		<row>ffffffffffff9420100000102033505bb0ff</row>
+		<row>ffffffffffe05010000000102094e0ffe0ff</row>
+		<row>ffffffffffb070502000002050bbffffffff</row>
+		<row>ffffffffffd0a05b331010205bbbffffffff</row>
+		<row>ffffffffffff9b6b503940405ba0d0d0e0e0</row>
+	</frame>
+
+	<frame duration="100">
+		<row>ffffffffffffffffecc484b0ffffffffffff</row>
+		<row>ffffffffffffffffbb843470cee0ffffffff</row>
+		<row>ffffffffffffb0704020001033507094bbff</row>
+		<row>ffffffffffe380201000001033334050a0ff</row>
+		<row>ffffffffe0a051311000041021a0e0ffe0ff</row>
+		<row>ffffffffe08070763300002051bbffffffff</row>
+		<row>ffffffffffd0a0613320103370d0ffffffff</row>
+		<row>fffffffffff58c5c514040404b9bd0d0e0e0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffd4b094bbffffffffffff</row>
+		<row>ffffffffffffffffa4704080d0e0ffffffff</row>
+		<row>ffffffffffffa05033201010335070a0d0ff</row>
+		<row>ffffffffe0a0501010000b001020405094ff</row>
+		<row>ffffffe0a0505b8033000b204080a0b0d0ff</row>
+		<row>ffffffffffffb094400000337bbbe0ffffff</row>
+		<row>ffffffffffffab4b2020204094e0ffffffff</row>
+		<row>ffffffffffe36b2b5b5b5070b1bbd0d0e0e0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffb4a4b4d4ffffffffffff</row>
+		<row>ffffffffffffffff84505b94d0e0ffffffff</row>
+		<row>ffffffffffe0944020101010245b80bbe9ff</row>
+		<row>ffffffd0a040242010000b1040505b70a0ff</row>
+		<row>ffffffffffd484843300013370a0945b80ff</row>
+		<row>ffffffffffffb09140010141a0d1ffe0ffff</row>
+		<row>ffffffffffffa04020212b50a0e0ffffffff</row>
+		<row>ffffffffffdb501b505b717b8bb0d0d0dee0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffb096bbe0ffffffffffff</row>
+		<row>fffffffffffff2f2744064a0d0ffffffffff</row>
+		<row>ffffffffe0bb804019101010337091d0ffff</row>
+		<row>ffffffd0a05b3424100000205b505b80b0ff</row>
+		<row>ffffffffffff84743300104094b0945b79ff</row>
+		<row>ffffffffffffb1a04101014bb0e0e0c4d0ff</row>
+		<row>ffffffffffffb05020212c51a0e0ffffffff</row>
+		<row>ffffffffffd050104b5b717b8bb0d0d0dee0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffb0a6e9ffffffffffffff</row>
+		<row>ffffffffffe0bbd05b3694c6ffffffffffff</row>
+		<row>ffffffe0b05b5b40101020264e9ed0ffffff</row>
+		<row>ffffffffb0704020100001206e337094d0ff</row>
+		<row>ffffffffffff805b20000150d0b06e405be0</row>
+		<row>ffffffffffffb09431000050d0ffffe0b084</row>
+		<row>ffffffffffffb05b21111150bbffffffffff</row>
+		<row>ffffffffffbb401031313161b0bbd0d0d0e0</row>
+	</frame>
+
+	<frame duration="100">
+		<row>ffffffffffffffd4bbd0ffffffffffffffff</row>
+		<row>ffffffffffd094805b5bb0e0ffffffffffff</row>
+		<row>ffffffffbb5b40101020334070bbffffffff</row>
+		<row>ffffffffbb70402010001020503380a0e0ff</row>
+		<row>ffffffffffff80502001105be0b05b5070e0</row>
+		<row>ffffffffffffb08433000051d0ffffffbb74</row>
+		<row>ffffffffffffbb7033100150d0ffffffffff</row>
+		<row>ffffffffffbb40202b1c1151bbbbd0d0d0db</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffd0c4d0ffffffffffffffff</row>
+		<row>ffffffffffe094705b70b0e0ffffffffffff</row>
+		<row>fffffffbbb7040101020334070bbffffffff</row>
+		<row>ffffffffbb70402010001020504094b0ffff</row>
+		<row>ffffffffffff805b20011170e0a0505080ff</row>
+		<row>ffffffffffffb09431000051d6ffffffbb80</row>
+		<row>ffffffffffffbb8033100b50d0ffffffffff</row>
+		<row>ffffffffffbb40202b1b0b50d0bbd0d0d1db</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffe9bbd0e0ffffffffffffffff</row>
+		<row>ffffffffffff94707080b0e0ffffffffffff</row>
+		<row>ffffffffd09450101020334074c4ffffffff</row>
+		<row>ffffffffb0502010100020204040a0bbffff</row>
+		<row>ffffffffffff705b20061666d094405ba0ff</row>
+		<row>ffffffffffffbba040000050c1e3e0bbb0b0</row>
+		<row>ffffffffffffc68633100b50c1ffffffffff</row>
+		<row>ffffffffffbb5020331b1150d0bbd0d0d9d9</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffe0b6d0ffffffffffffffffff</row>
+		<row>ffffffffffff96707494bbffffffffffffff</row>
+		<row>ffffffffffff70202020405bb0e0ffffffff</row>
+		<row>ffffffffb0502010100010203994e0ffffff</row>
+		<row>ffffffffe0b45b5020001050996b5bb0ffff</row>
+		<row>ffffffffffffbba040000050bbbbb0b0d0ff</row>
+		<row>ffffffffffffd09431100b40b1ffffffffff</row>
+		<row>ffffffffffd0502033111041bbbbd0d0d0d0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffe9c4d0ffffffffffffffffff</row>
+		<row>ffffffffffff945b80a0d0ffffffffffffff</row>
+		<row>ffffffffffff802020334080e0ffffffffff</row>
+		<row>ffffffffe0944410100010335bbbffffffff</row>
+		<row>ffffffffd08040331001112b507094d0ffff</row>
+		<row>ffffffffffffbba040000041b0a1b0e0ffff</row>
+		<row>ffffffffffffd09431100140b0e3ffffffff</row>
+		<row>ffffffffffd0503333160640b0bbd0d0d0cb</row>
+	</frame>
+
+	<frame duration="100">
+		<row>ffffffffffffe0bbd4ffffffffffffffffff</row>
+		<row>ffffffffffff805084bbe0ffffffffffffff</row>
+		<row>ffffffffffff802420395b99ffffffffffff</row>
+		<row>ffffffffffff801010001050d0e9ffffffff</row>
+		<row>ffffffffe0bb40000000103380d0ffffffff</row>
+		<row>ffffffffe0b094803300003370bbffffffff</row>
+		<row>ffffffffffffd0a03400003394e0ffffffff</row>
+		<row>ffffffffffd45b334020003394b0d0d0d0d0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffe9e9d4e0ffffffffffffffffff</row>
+		<row>ffffffffffc4745094d0ffffffffffffffff</row>
+		<row>ffffffffffff6e101e4089b9ffffffffffff</row>
+		<row>ffffffffffff801010103370ffffffffffff</row>
+		<row>ffffffffffff6b1b01001050d0ffffffffff</row>
+		<row>ffffffffffff7033100000337bd0ffffffff</row>
+		<row>ffffffffe0bba094330b01205bd0ffffffff</row>
+		<row>ffffffe0e0d06133402b21315ba0d0d0d0cb</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffe9e0e9d6e0ffffffffffffffffff</row>
+		<row>ffffffffffb0705ba0d0e0ffffffffffffff</row>
+		<row>ffffffffffe0540420405094ffffffffffff</row>
+		<row>ffffffffffff79090000105bffffffffffff</row>
+		<row>ffffffffffff702910061050bbe0ffffffff</row>
+		<row>ffffffffffff94502001002b5bbbffffffff</row>
+		<row>ffffffffffe0a0703311202150bbffffffff</row>
+		<row>ffecffe0d0b05b404031615b5091d0d0d0cb</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffe0fffbffffd0e0ffffffffffff</row>
+		<row>ffffffffe0948094b0b05ba0ffffffffffff</row>
+		<row>ffffffffe0b4501424331050d4ffffffffff</row>
+		<row>ffffffffffd0640000002061ffffffffffff</row>
+		<row>ffffffffffff642010001041b0e0ffffffff</row>
+		<row>ffffffffffffb081310100214bbbffffffff</row>
+		<row>ffffffffffffb45b332021334cc1ffffffff</row>
+		<row>fffbffdeded05b403333707171a1d0d0d0d0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffe0ffffffd494bbffffffffffff</row>
+		<row>ffffffffe09494a4bbb05b94e0ffffffffff</row>
+		<row>ffffffffe0a0502433331040a0e0ffffffff</row>
+		<row>ffffffffffce5b0000102070e0ffffffffff</row>
+		<row>ffffffffffff642010001040b0e0ffffffff</row>
+		<row>ffffffffffffbbb04b0101213cb1ffffffff</row>
+		<row>ffffffffffffd0943b1b1b213cbbffffffff</row>
+		<row>fffbffdee0d0705040335b6163a1d0d0d0d0</row>
+	</frame>
+
+	<frame duration="100">
+		<row>ffffffffffe0ffffffd6a4c4ffffffffffff</row>
+		<row>ffffffffe09484a0bbb05b94e0ffffffffff</row>
+		<row>ffffffffe0a454242433104094e0ffffffff</row>
+		<row>ffffffffffd064000400205be0fbffffffff</row>
+		<row>ffffffffffff703310001040a0e0ffffffff</row>
+		<row>ffffffffffffd0bb5000001b31b0ffffffff</row>
+		<row>ffffffffffffd0943b191b1b31bbffffffff</row>
+		<row>ffffffe0e0d074543e2b5b5b61a0d0d0d0d0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>fffffffffbe0ffe0ffffe0ffffffffffffff</row>
+		<row>ffffffffe9a08080b0b074a0e0ffffffffff</row>
+		<row>ffffffffffd454142024103380d0ffffffff</row>
+		<row>ffffffffffff740404001050c9e0ffffffff</row>
+		<row>ffffffffffff80401100103394d0ffffffff</row>
+		<row>ffffffffffffbbb05000002031b0ffffffff</row>
+		<row>ffffffffffffbb703310101131bbffffffff</row>
+		<row>ffffffe0e0d07040332150515c9bd0d0d0d0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffecd4e0ffffffffffffffffff</row>
+		<row>ffffffffffe08054a6e0e0ffffffffffffff</row>
+		<row>ffffffffffff80245070705b5bbbffffffff</row>
+		<row>ffffffffffff94202010103380bbffffffff</row>
+		<row>ffffffffffff80311000104091e0ffffffff</row>
+		<row>ffffffffffffa0703300002050bbffffffff</row>
+		<row>ffffffffffe0b0703310001040bbffffffff</row>
+		<row>ffffffffe0b0705b402020334094d0d0d0d0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffc6e0ffffffffffffffffff</row>
+		<row>ffffffffffff945b84b0bbe0ffffffffffff</row>
+		<row>ffffffffffff9450505b705b5bb0d0ffffff</row>
+		<row>ffffffffffff94334650545b80b0e0ffffff</row>
+		<row>ffffffffffff61111010104094e0ffffffff</row>
+		<row>ffffffffffe070401000002456bbffffffff</row>
+		<row>ffffffffe0bbb0a04004002050bbffffffff</row>
+		<row>ffffffffffd076504020203350a0d0d0d0cb</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffd0d0d4ffffffffffffffff</row>
+		<row>ffffffffffffd0bb8074b0d0e0ffffffffff</row>
+		<row>ffffffffffffd0a040203333407094d0ffff</row>
+		<row>ffffffffffff943320000400103394bbffff</row>
+		<row>ffffffffe0a040000014446494d0e0ffffff</row>
+		<row>ffffe0d0b09ba0a04010215b94d0ffffffff</row>
+		<row>ffffffffffffd09b3b1b2b4071d0ffffffff</row>
+		<row>ffffffffffff7131402b2b4064a0d0d0d0d1</row>
+	</frame>
+
+	<frame duration="100">
+		<row>ffffffffffffffffbbb4d4ffffffffffffff</row>
+		<row>ffffffffffffffff966484b0d0ffffffffff</row>
+		<row>ffffffffffffbb9440201120336b99d0ffff</row>
+		<row>ffe0d0d0bb8040111000001020245b80bbff</row>
+		<row>ffe0d0bba094708033000020504050a0dbff</row>
+		<row>ffffffffffffbbb04b0101336194bbffffff</row>
+		<row>ffffffffffffbb702b2b4b6191e0ffffffff</row>
+		<row>ffffffffffe05b20415b8b8c83acd0d0d6e0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffc4b4c4e9ffffffffffff</row>
+		<row>ffffffffffffffffb07470a0deffffffffff</row>
+		<row>ffffffffffe0b070402610143370a0deffff</row>
+		<row>ffd0b094804033201000000010205b80bbff</row>
+		<row>ffffffffe0e09494310000205b5b5b70a0ff</row>
+		<row>ffffffffffffbba04000013b807080bbffff</row>
+		<row>ffffffffffffb05b2033506ba0e0ffffffff</row>
+		<row>ffffffffffe05b144b5b91918caccbd0e0e0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffd4c4b4d4ffffffffffff</row>
+		<row>ffe0c4ffffffffffd0945694e0ffffffffff</row>
+		<row>ffe0b0a08094945b413110164080b4e0ffff</row>
+		<row>ffffffe0a0805b402000010000106494e0ff</row>
+		<row>ffffffffffffa09433000020405b5b76a4ff</row>
+		<row>ffffffffffffb09440000b3b81808094bbff</row>
+		<row>ffffffffffffa0401b2b4b61b0c1e0e0ffff</row>
+		<row>ffffffffffd0500b3b5c9b9c91b1cbd0d0e0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffe0ffffffffffffd4a4c4ffffffffffff</row>
+		<row>ffe0bbbbd0ffffffe0a64680d0ffffffffff</row>
+		<row>ffffffb094707050403110204094d0ffffff</row>
+		<row>ffffffffd0a0805620000100002094b0ffff</row>
+		<row>ffffffffffffa6863300011133334091d0ff</row>
+		<row>ffffffffffffa0803300003b805b70b0e0ff</row>
+		<row>ffffffffffff9b33102b4061b1b0d0d0ffff</row>
+		<row>ffffffffffd04b0b3b5191a1a1b1c1d0e0e0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffe0ffffffffffffd4a4bbe0ffffffffff</row>
+		<row>ffe0d0bebbe0e0ffe0b05070b0e0ffffffff</row>
+		<row>ffffffbb91707041403310113394d0ffffff</row>
+		<row>ffffffffd0b0815b20001000012194bbffff</row>
+		<row>ffffffffffffb08033000010332040b0ffff</row>
+		<row>ffffffffffff94703300003b94505bbbffff</row>
+		<row>ffffffffffff9420102b3b6bbbbbdbe0ffff</row>
+		<row>ffffffffffbb4b0b3b5c9b9ca1b1cbd0d4de</row>
+	</frame>
+
+	<frame duration="100">
+		<row>ffffffffffffffffffe0b0b4bbfbffffffff</row>
+		<row>ffffffd0d0ffe0ffd0b05b6e8ed0ffffffff</row>
+		<row>ffffffbba0807040332410102094d0ffffff</row>
+		<row>ffffffffd0a0805b240004000040a0d0ffff</row>
+		<row>ffffffffffffa0802400041010335bd0ffff</row>
+		<row>ffffffffffff7033200001335b5b94d0ffff</row>
+		<row>ffffffffffff80000b3b4b7be0ffffffffff</row>
+		<row>ffffffffffa0401151719babbbc1cbd0e0e0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffffe0bbbbb0e0ffffffff</row>
+		<row>ffffffffffffffffe0b0706e5bbbffffffff</row>
+		<row>ffffffd0bbd0a05b4029101020a0e0ffffff</row>
+		<row>ffffffffbb945033100000000050b0d0ffff</row>
+		<row>ffffffffffff947020000000004070d0ffff</row>
+		<row>ffffffffffff5b101000013180809eceffff</row>
+		<row>ffffffffe0d0700010404b80ffffffffffff</row>
+		<row>ffffffffe0944b316b8191abcbc1d0d0d1e0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffffffd0bbaee0ffffffff</row>
+		<row>ffffffffffffffffe0b0807054bbffffffff</row>
+		<row>ffffffffffffbb8b5033101424a0ffffffff</row>
+		<row>ffffffffd0944010100000001050bbd0ffff</row>
+		<row>ffffffffffff70401e001000002050b0ffff</row>
+		<row>ffffffffffff5b100b010140949ebefbffff</row>
+		<row>ffffffffe0d06b00103b4180ffffffffffff</row>
+		<row>ffffffffe094503b6b7b91a1c1c1d0d0d1e0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffffffe0d0a4e0ffffffff</row>
+		<row>ffffffffffffffffe0bb948050bbffffffff</row>
+		<row>ffffffffffffd0a05b33202033b0ffffffff</row>
+		<row>ffffffffffe080201000000010408094b0ff</row>
+		<row>ffffffffd09433100000001010143384c4ff</row>
+		<row>ffffffffffe050100b010b5bc9d9e0ffffff</row>
+		<row>ffffffffe0cb5b000b313b7bffffffffffff</row>
+		<row>fffffffff59b5033616b7b91d0c1d0d0dbdb</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffffffe0d0b0e0ffffffff</row>
+		<row>ffffffffffffffffe0bb948054bbffffffff</row>
+		<row>ffffffffffffbb945033102033b0e0bbd0ff</row>
+		<row>ffffffffffff94331000000010335b5ba0ff</row>
+		<row>ffffffffe0b0400000001021517080a0c4ff</row>
+		<row>ffffffffd05b20000000105bd9ffffffffff</row>
+		<row>ffffffffd094400010333979ffffffffffff</row>
+		<row>ffffffffffab61406b6b5b81d1d0d0d0d1db</row>
+	</frame>
+
+	<frame duration="100">
+		<row>ffffffffffffffffffffe0d0b0e0ffffffff</row>
+		<row>ffffffffffffffffe0bb948054bbffffffff</row>
+		<row>ffffffffffffbb945033112033b0e0a0bbff</row>
+		<row>ffffffffffff94201000000010205e5094ff</row>
+		<row>ffffffffe0b44000000000337094a0bbd0ff</row>
+		<row>ffffffffe0702000000b105be0ffffffffff</row>
+		<row>ffffffffd094400010333370ffffffffffff</row>
+		<row>ffffffffffb06b41716b5080d0ced0d0d0d1</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffffffe0e0bbe0ffffffff</row>
+		<row>ffffffffffffffffe0bb948470bbffffffff</row>
+		<row>ffffffffffffb0805033202040b0e094b0ff</row>
+		<row>ffffffffffe07010100000001020505080ff</row>
+		<row>ffffffffe0a04010000010335b94b0bbd0ff</row>
+		<row>ffffffffe07033100101105be0ffffffffff</row>
+		<row>ffffffffe0bb5b0001213370ffffffffffff</row>
+		<row>ffffffffffd1713c5b514180e3d0d0d0d1db</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffffffe0e0d0ffffffffff</row>
+		<row>ffffffffffffffffffd0949480d0e9e0d4ff</row>
+		<row>ffffffffffffbb805b40203350bbe084a0ff</row>
+		<row>ffffffffffd070201000000010405b5080ff</row>
+		<row>ffffffffd080402410000020407080a0bbff</row>
+		<row>ffffffffe07b33100b000050d0ffffffffff</row>
+		<row>ffffffffe0cb5b00001b2070ffffffffffff</row>
+		<row>ffffffffffe37333412c3171f5d0d0d0d1e0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffffffe0e0d0ffffffffff</row>
+		<row>ffffffffffffffffffd0949494d0e0bbbbff</row>
+		<row>ffffffffffffb0805b4020335bced08094ff</row>
+		<row>ffffffffffbb7020100004101e405b5080ff</row>
+		<row>ffffffffd070403310000620405b7094b0ff</row>
+		<row>ffffffffe076331009000050d0e0ffffffff</row>
+		<row>ffffffffe0c15b01001b2070ffffffffffff</row>
+		<row>fffffffffff57b3b3c2c3171e0d0d0d0e0e0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffffffd0d0deffffffffff</row>
+		<row>ffffffffffffffffe0bb7080a0d0e0e0e0ff</row>
+		<row>ffffffffffffa05b5033103370bbd080a0ff</row>
+		<row>ffffffffe0a05020100000102033505080ff</row>
+		<row>ffffffffbb41213310001020507080a0bbff</row>
+		<row>ffffffffbb8633060000005be0ffffffffff</row>
+		<row>ffffffe0d6d1700101203370ffffffffffff</row>
+		<row>ffffffffffd1733c41333371e0d0d0d0e0e0</row>
+	</frame>
+
+	<frame duration="100">
+		<row>ffffffffffffffffffe0b4d0e0ffffffffff</row>
+		<row>ffffffffffffffffe0b05080d0ffffffffff</row>
+		<row>ffffffffffd09440403304337eb0d0e0ffff</row>
+		<row>ffffffe0b05b33201000040416205b70a1ff</row>
+		<row>ffffffb080944020100004265ba0c1e0e0ff</row>
+		<row>ffffffcebee050000b000b5bd0ffffffffff</row>
+		<row>fffffffbe0e070000b334180ffffffffffff</row>
+		<row>ffffffffffbb6b3c5b5b5c91e0d0d0d0e0e0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffffdeb0d0ffffffffffff</row>
+		<row>ffffffffffffffffd0a04e80ffffffffffff</row>
+		<row>ffffffffe0bb80413121103370a0b0d0e0ff</row>
+		<row>ffffffb0945b40201000000010337094bbff</row>
+		<row>ffffff9180d051211000003370bbe0ffffff</row>
+		<row>ffffffffffff5b1010000b5be0ffffffffff</row>
+		<row>ffffffffffe070000131508bffffffffffff</row>
+		<row>ffffffffffbc5c2b5b617ca1dbd0d0d0d6e0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffe0d0bbe0ffffffffffff</row>
+		<row>ffffffffffffffffb08e6ea0ffffffffffff</row>
+		<row>ffffffe0d0b08950332020335b8094bbe0ff</row>
+		<row>ffe0bb86745b40100e00000020335070aeff</row>
+		<row>ffffffe0e0ff5b200400104094bbd0d0deff</row>
+		<row>ffffffffffff7020100b0b5be0ffffffffff</row>
+		<row>ffffffffffe070000b3b4c8bffffffffffff</row>
+		<row>fffffffff59b4020416baccbe0d0d0d0d1e0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffd0b6d0ffffffffffffff</row>
+		<row>ffe0d0ffffffffff946684bbffffffffffff</row>
+		<row>ffd0a09494b09450202033335080a0d0ffff</row>
+		<row>ffffe0a05b4624101000011040405b80b0ff</row>
+		<row>ffffffffe9fb5b4010000646b0bba99bb0ff</row>
+		<row>ffffffffffff804020010b6bfbffffffffff</row>
+		<row>ffffffffffe371000b3c5194ffffffffffff</row>
+		<row>ffffffffe0913b1b415e8bace0d0d0d0e0e0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffc4b6d6ffffffffffffff</row>
+		<row>ffe0d0e0e9ffffff805694bbffffffffffff</row>
+		<row>ffe0bb9480b09450202033335080aee0ffff</row>
+		<row>ffffffa45b502010100000105040708bbbff</row>
+		<row>ffffffffffe05b4010000050b0b0a08ba0ff</row>
+		<row>ffffffffffff805021010b6bffffece0e9ff</row>
+		<row>fffffffffff58010113c4c8bffffffffffff</row>
+		<row>ffffffffe09431114c6c7c9ce0d0d0d0e0e0</row>
+	</frame>
+
+	<frame duration="100">
+		<row>ffffffffe0ffffffbbb4e9ffffffffffffff</row>
+		<row>ffffffc4beffe3e37050a0d0ffffffffffff</row>
+		<row>fffffb9470bb9450201133335094bbfbffff</row>
+		<row>ffffffb0644e201010000b205b3b7ba0e0ff</row>
+		<row>ffffffffffe05b4019000950cbab8080a0ff</row>
+		<row>ffffffffffff94502b0b0161ffffe0b6c4ff</row>
+		<row>ffffffffffff94201b2c2b71ffffffe9e9ff</row>
+		<row>ffffffffe0943310515c3e71e0d0d0d0d1e0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffe0ffffffbbbbffffffffffffffff</row>
+		<row>ffffffd0bbffd4d07050b0e0ffffffffffff</row>
+		<row>ffffffa080bb945b202033335094d0ffffff</row>
+		<row>ffffffb070402010100000205b4080a0e0ff</row>
+		<row>ffffffffffe05b40100b0b50d0a07080a0ff</row>
+		<row>ffffffffffff945b2101015be0ffe0b0bbff</row>
+		<row>ffffffffffffa0401b1c1b61fffffffbffff</row>
+		<row>fffffffff5a033093c3e2e6ce0d0d0d0d1e0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffe9ffffe9bbbbffffffffffffffff</row>
+		<row>ffffffd0bbffd0bb705bb0e0ffffffffffff</row>
+		<row>ffffffa080bb945e2010333350a0d0ffffff</row>
+		<row>ffffffb470402010100000205b4080a9fbff</row>
+		<row>ffffffffffe05b3410001050bba07080aeff</row>
+		<row>ffffffffffff945b2101015bd0ffe0bbc4ff</row>
+		<row>ffffffffffffa050211c1b5be0ffffffffff</row>
+		<row>ffffffffffb03110333e336ce0d0d0d0d0e0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffd0bbc4ffffffffffffffff</row>
+		<row>ffffffe0d4ffbbb0705ba0d0ffffffffffff</row>
+		<row>ffffffb094d094502016203350a6e0ffffff</row>
+		<row>ffffffbb80412010100000205b4094beffff</row>
+		<row>ffffffffe0bb504010000040ae806e99bbff</row>
+		<row>ffffffffffffb08031010150b0d0e0e0e0ff</row>
+		<row>ffffffffffffbb70211c215bbbffffffffff</row>
+		<row>ffffffffffbb4b102e3e4c73bbbbd0d0d0db</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffc4bbd0ffffffffffffffff</row>
+		<row>ffffffffffffb0947070b0e0ffffffffffff</row>
+		<row>ffffffbbb0ff94502020334080d0ffffffff</row>
+		<row>ffffffbb9e804010100000102050bbd0ffff</row>
+		<row>ffffffffbb70332000000040805b5bbbffff</row>
+		<row>ffffffffffffbe9e4001014194d0ffffffff</row>
+		<row>ffffffffffffd0943121314c81e0ffffffff</row>
+		<row>ffffffffffe05b2031336e7c91b0d0d0d0db</row>
+	</frame>
+
+	<frame duration="100">
+		<row>ffffffffffffffc4bbd4ffffffffffffffff</row>
+		<row>ffffffffffffb0947070bbe0ffffffffffff</row>
+		<row>ffffffe0e0ff994b20203151a0e0ffffffff</row>
+		<row>ffffffbbbbbb6910100000102069d0e0ffff</row>
+		<row>fffffff5b05b20000000102e597994d9ffff</row>
+		<row>ffffffffffffbba04001013b80d0ffffffff</row>
+		<row>ffffffffffffd0a03b213b4b80d0ffffffff</row>
+		<row>ffffffffffe06b333133737c80b0d0d0d0d0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffbbc6e0ffffffffffffffff</row>
+		<row>ffffffffffffb0947080bbffffffffffffff</row>
+		<row>ffffffffffff94402024405baea0b0e0ffff</row>
+		<row>ffffffffffff801010000010203e94bbffff</row>
+		<row>ffffffffe0d04600000010335bb0e0ffffff</row>
+		<row>ffffffffd0a08670330000337bcbffffffff</row>
+		<row>ffffffffffffd0a03b20334070d0ffffffff</row>
+		<row>ffffffffffff804b3331818171a1d0d0d0d4</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffe9bbbbd0ffffffffffffffff</row>
+		<row>ffffffffffffb0946670b6e0ffb0a0e0ffff</row>
+		<row>ffffffffffff8033162033405b405bbbffff</row>
+		<row>ffffffffffe07010100000205070a0d0ffff</row>
+		<row>ffffffffffff50000000003380d0ffffffff</row>
+		<row>ffffffffffb65b401000003370d0ffffffff</row>
+		<row>ffffffffe0b6a080331920335bd0ffffffff</row>
+		<row>ffffffffffff945b4033707b80b0d0d0e0e0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffe0bbb0c6ffffffffe0ffffff</row>
+		<row>ffffffffffffb0946466b0d0e09480d0ffff</row>
+		<row>ffffffffffff80331016263340335bbbffff</row>
+		<row>ffffffffffe07000000000208094bbe0ffff</row>
+		<row>ffffffffffff50000000003380d0ffffffff</row>
+		<row>ffffffffffd05b211000003b80d0ffffffff</row>
+		<row>ffffffffe0bb945b211b203b70d0ffffffff</row>
+		<row>ffffffffffe091614131707180b0d0d0e0e0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffe0b4a0bbffffffd0bbd4ffff</row>
+		<row>ffffffffffffb0945b5ba0bbd05b5bd0ffff</row>
+		<row>ffffffffffff802010112020333370bbffff</row>
+		<row>ffffffffffbb5b000000093394b0d0ffffff</row>
+		<row>ffffffffffd040000000093394d0ffffffff</row>
+		<row>ffffffffffe050100000004094d0ffffffff</row>
+		<row>ffffffffffff9421102b3b5080e0ffffffff</row>
+		<row>ffffffffffff915b504b7b8ba0b0d0d0e0e0</row>
+	</frame>
+
+	<frame duration="100">
+		<row>ffffffffffffffc4b0bbffffffd0cee0ffff</row>
+		<row>ffffffffffffb4a05b5bb0d0e0795bbbffff</row>
+		<row>ffffffffffff803310112121393350a0e0ff</row>
+		<row>ffffffffffbb5b000000002070a0bbe0ffff</row>
+		<row>ffffffffffe044000000004094e0ffffffff</row>
+		<row>ffffffffffff5b100101014ba0e0ffffffff</row>
+		<row>ffffffffffff94201021315ba0e0ffffffff</row>
+		<row>ffffffffffff8b514b4b7b9bc1bbd0d0e0e0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffd0b0bbffffffd0c4e0ffff</row>
+		<row>ffffffffffffbba05b5bb0d0e08e70c4ffff</row>
+		<row>ffffffffffff80331120333340334094d0ff</row>
+		<row>ffffffffffbb5b0000000b205b94b0d0ffff</row>
+		<row>ffffffffffe044000000094094e0ffffffff</row>
+		<row>ffffffffffff5b040101014ba0e0ffffffff</row>
+		<row>ffffffffffff941610212b50a0e0ffffffff</row>
+		<row>ffffffffffff81414b4b6b81bbbbd0d0e0e0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffe0b0b4ffffffd4d0e0ffff</row>
+		<row>ffffffffffffbbb06456b0e0ff9474d0ffff</row>
+		<row>ffffffffffff80331020333340405080bbff</row>
+		<row>ffffffffffbb5b000e000e20505b80b0ffff</row>
+		<row>ffffffffffd0400000000040a0d0e3ffffff</row>
+		<row>ffffffffffd0500001000050bbe0ffffffff</row>
+		<row>ffffffffffff8010102b335bbbffffffffff</row>
+		<row>ffffffffffe3713b5b5b6b80b0bbd0d0e0e0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffe9b0b0e9ffffffffffffff</row>
+		<row>ffffffffffffd0d06650a6d0ffe0e0ffffff</row>
+		<row>ffffffffffff80402020313340505b94d0ff</row>
+		<row>ffffffffffbb500000000010405080a0ffff</row>
+		<row>ffffffffd094331000000040a0d0e0ffffff</row>
+		<row>ffffffffd07034201000015bd1ffffffffff</row>
+		<row>ffffffffe0d07020103b4b7bd0ffffffffff</row>
+		<row>ffffffffffd15b1b5b71809bcbcbd0d0dbe0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffb4b4e9ffffffffffffff</row>
+		<row>ffffffffffffe0e07050a6d0e9ffffffffff</row>
+		<row>ffffffffffff945020203b33407094b0d4ff</row>
+		<row>ffffffffe0b050000b0009104070a0b4ffff</row>
+		<row>ffffffffbb5b333310090940a0e0ffffffff</row>
+		<row>ffffffe9b474443311000b61e3ffffffffff</row>
+		<row>ffffffffece9801010405b8be0ffffffffff</row>
+		<row>ffffffffffd05111517194abd0cbd0d0d1e0</row>
+	</frame>
+
+	<frame duration="100">
+		<row>ffffffffffffffffd4c4ffffffffffffffff</row>
+		<row>ffffffffffffffff805bb4e0ffe0e0ffffff</row>
+		<row>ffffffffffffbb803424444040505b94d0ff</row>
+		<row>ffffffffd0804010100000104080a0b9ffff</row>
+		<row>ffffe0a05b6140311000004099e0ffffffff</row>
+		<row>ffffe0d4e0ff702011010b61e0ffffffffff</row>
+		<row>ffffffffffe07000013c6b9bffffffffffff</row>
+		<row>ffffffffffa0411b3c5cacc1d0d0d0d0d0db</row>
+	</frame>
+
+	<frame duration="50">
+		<row>fffffffffffffffffbe0ffffffffffffffff</row>
+		<row>ffffffffffffffffa084d0ffffffffffffff</row>
+		<row>ffffffffffffe0b650345e505b5b71a0d0ff</row>
+		<row>e9b0a094a05b402620000e103370a0bbffff</row>
+		<row>ffe0e0b09480332010000040a0e0ffffffff</row>
+		<row>ffffffffffff70331b0b0b61e0ffffffffff</row>
+		<row>ffffffffe3d16b000b3c5c8bffffffffffff</row>
+		<row>ffffffffe07b331b335ebccee0d0d0d0d0d0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffffe9ffffffffffffffff</row>
+		<row>ffffffffffffffffb094d0ffffffffffffff</row>
+		<row>e9d0bbd0ffffe0bb5b40645b708094aed0ff</row>
+		<row>ffbb91718050403320061010335ba0bbffff</row>
+		<row>ffffffd0b09433201001104094d0ffffffff</row>
+		<row>ffffffffffff702111010b5be0ffffffffff</row>
+		<row>ffffffffe0d061000b3c5181ffffffffffff</row>
+		<row>ffffffffe070331b3c5eafcee0d0d0d0d0d0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffffffffffffffffffffff</row>
+		<row>ffe0d0d1e0ffffffbba4c6e9ffb4a4deffff</row>
+		<row>ffffd09194ffffd074546470945b5070beff</row>
+		<row>ffffffa05b4e393320101010205080a0e0ff</row>
+		<row>ffffffffe0be39100000013180d0e0ffffff</row>
+		<row>ffffffffffff5b101001015bd0ffffffffff</row>
+		<row>ffffffffe0bb5b001b4c518bffffffffffff</row>
+		<row>ffffffffd05b2b1b4c6eacbce0d0d0d0d1d1</row>
+	</frame>
+
+	<frame duration="100">
+		<row>ffffffffffffffffffffffffffece0ffffff</row>
+		<row>ffffffe0d0ffffffd0b0c4e0ffa084d0ffff</row>
+		<row>ffffffa494d0e0e084646474b0705b70b0ff</row>
+		<row>ffffffbb805033403316101029408099ffff</row>
+		<row>ffffffffffd040100001013379bbe0ffffff</row>
+		<row>ffffffffffe050010b0b0b5bd4ffffffffff</row>
+		<row>ffffffffdbb051002b5c6b9bffffffffffff</row>
+		<row>ffffffffd05b211b4c6eacbce0d0d0d0d1e0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffffffffffffffffffffff</row>
+		<row>fffffffffbe0e0ffd0b4c4e0ffb094d0ffff</row>
+		<row>ffffffbba0b0d0e094706474b0745b80beff</row>
+		<row>ffffffd08040333333201414294980a0ffff</row>
+		<row>ffffffffffd040100000063369bbe0ffffff</row>
+		<row>ffffffffffe35001100b0b5bd0ffffffffff</row>
+		<row>ffffffffe0b151002b5c6b9bffffffffffff</row>
+		<row>ffffffffd05b21114c6eacbce0d0d0d0d0d1</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffffffffffffffffffffff</row>
+		<row>ffffffffffd0e0ffd4bbc4e0ffbba0d0ffff</row>
+		<row>ffffffd0b0a0d0e0a0746474b0805b80b0ff</row>
+		<row>ffffffd0944433403320101433508091e0ff</row>
+		<row>ffffffffffe05020000010335bbbe0ffffff</row>
+		<row>ffffffffffff5b100b0b0b50bbe0ffffffff</row>
+		<row>ffffffffe0c15b00114c4c81ffffffffffff</row>
+		<row>ffffffffe07121113e6ea4bce0d0d0d0d0e0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffffffffffffffe0e9ffff</row>
+		<row>ffffffffe0e0ffffd0b0b4e0ffbba0bbe0ff</row>
+		<row>ffffffbba0bed0d09464505ba0807070b0ff</row>
+		<row>ffffffd0804033332414101020408094e0ff</row>
+		<row>ffffffffffd050201000102050b0e0ffffff</row>
+		<row>ffffffffffff5b161001014bb0e0ffffffff</row>
+		<row>ffffffffffe070000b3c4c81ffffffffffff</row>
+		<row>ffffffffe08033103c5ea4bce0d0d0d0d1e0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffffffffffffd4ced4ffff</row>
+		<row>ffffffd6d0ffffffd0b0b0d0ffb094b0d0ff</row>
+		<row>ffffffb094d0d0bb805e445494745b64a0ff</row>
+		<row>ffffffbb804b33332010101020407094e0ff</row>
+		<row>ffffffffffdb5033100000205bb0e0ffffff</row>
+		<row>ffffffffffff702011010150b0e0ffffffff</row>
+		<row>ffffffffffe070000b3c518bffffffffffff</row>
+		<row>ffffffffe08b31112e5cafbce0d0d0d0d1e0</row>
+	</frame>
+
+	<frame duration="100">
+		<row>ffffffffffffffffe0d0e0ffffffe0e0ffff</row>
+		<row>ffe0e0ffffffffffb4848ebbffbba0b0d0ff</row>
+		<row>ffffd0a0a0e0bb8e504033405b5b5b5ba0ff</row>
+		<row>ffffffb0705020101000010010335b71d0ff</row>
+		<row>ffffffffe0d05040110001335bb0e0ffffff</row>
+		<row>ffffffffffff804020010b51bbe0ffffffff</row>
+		<row>fffffffffff570000b3c6191ffffffffffff</row>
+		<row>fffffffff59b40203b5cacbccbbbd0d0d1e0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffc6b4c6e9ffffffffffff</row>
+		<row>ffffffffffffffffa06674b0ffffffffffff</row>
+		<row>ffffffffffffa05b33202033407080a0d0ff</row>
+		<row>ffe0c4a0945b33000000001020407094e0ff</row>
+		<row>ffffffd4bbb05b502000003370bbe0ffffff</row>
+		<row>ffffffffffff8b50210b0b5bc1e0ffffffff</row>
+		<row>ffffffffffff800b0b3b5b8be0ffffffffff</row>
+		<row>ffffffffffb04b1b506ba1b0b1bbd0d0dee0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffbba6c4e9ffffffffffff</row>
+		<row>ffffffffffffffff945470a6e0ffffffffff</row>
+		<row>ffffffffffffa05020202020405b8094ceff</row>
+		<row>ffffffffbb6433040400001020405070b0ff</row>
+		<row>ffffffb0748050542000003370bbe0ffe0ff</row>
+		<row>ffffffffffff945b2b0b0b50bbe0ffffffff</row>
+		<row>ffffffffffff941b103b4c7bd0ffffffffff</row>
+		<row>ffffffffffbb4b1b51719babb1bbd0d0e0e0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffb4a4d4ffffffffffffff</row>
+		<row>ffffffffffffffff804680b0e0ffffffffff</row>
+		<row>ffffffffffff944020102020407094b1e0ff</row>
+		<row>ffffffffd0804010100000102133415b94ff</row>
+		<row>ffffffffb05050702000003370b0a05e70ff</row>
+		<row>ffffffbba0bb94763101014bb0e0d0a0b0ff</row>
+		<row>ffffffffffffa0331b333b61bbffffd4d0ff</row>
+		<row>ffffffffffdb5b1b5b6b819bb1bbcbd0e0e0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffb4b0e0ffffffffffffff</row>
+		<row>ffffffffffffe0e0805494c6ffffffffffff</row>
+		<row>ffffffffffffa050202033335080b0d0ffff</row>
+		<row>ffffffffe9b05b10100000002020505ba0ff</row>
+		<row>ffffffffd0705b66200010335ba0947080ff</row>
+		<row>ffffffffd05b5b8033010041a0c1bba0b0ff</row>
+		<row>ffffffffe0bb714020202150b0e0e0e0e0ff</row>
+		<row>ffffffffffe05b20505b708bb0bbd0d0dee0</row>
+	</frame>
+
+	<frame duration="100">
+		<row>ffffffffffffffffb0b0e0ffffffffffffff</row>
+		<row>ffffffffffffe0e0765694c6ffffffffffff</row>
+		<row>ffffffffffffa050201433335080b0d4ffff</row>
+		<row>ffffffffffbb5b000000000020205070b0ff</row>
+		<row>ffffffffd0945040100000335b94947094ff</row>
+		<row>ffffffffe0805b5121010141a0b0b0b0d0ff</row>
+		<row>ffffffffe0bb80311b212150b0d0ffe0ffff</row>
+		<row>ffffffffffe05b10505b6b81b0bbd0d0e0e0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffb0a4d4ffffffffffffff</row>
+		<row>ffffffffffffffff744480b4ffffffffffff</row>
+		<row>ffffffffffffa050201020244494bbe0ffff</row>
+		<row>ffffffffffe070101000041020207094d0ff</row>
+		<row>ffffffffffe05000000004335b707094bbff</row>
+		<row>ffffffffffc9490900000040a094a0d0ffff</row>
+		<row>fffffffffff57b090b212050b0d0ffe9ffff</row>
+		<row>ffffffffffdb5b10506b6b80bbbbd0d0dee0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffb4a4c4e9ffffffffffff</row>
+		<row>ffffffffffffffff804664a0ffffffffffff</row>
+		<row>ffffffffffffae5b3310102040b0ffffffff</row>
+		<row>ffffffffffff8010100000002040a9d0ffff</row>
+		<row>ffffffffffff5900000000295b4959bbffff</row>
+		<row>ffffffffffbb5b2010000046b0a4b4ffffff</row>
+		<row>ffffffffffff9420102b2151bbe0ffffffff</row>
+		<row>ffffffffffd04b0b5b6b6b8bd0cbd0d0d1e0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffbba4b4e0ffffffffffff</row>
+		<row>ffffffffffffffff94545ba0ffffffffffff</row>
+		<row>ffffffffffffb0703310102050bbffffffff</row>
+		<row>ffffffffffff801010000000105bd0e0ffff</row>
+		<row>ffffffffffd0501000000610205080d0ffff</row>
+		<row>ffffffffffb0704b20000040a0b0d0ffffff</row>
+		<row>ffffffffffff942011332b5bbbe0ffffffff</row>
+		<row>ffffffffffd0500051706181d0c1d0d0d4e0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffd4b49ec4ffffffffffff</row>
+		<row>ffffffffffffffffbe804080e0ffffffffff</row>
+		<row>ffffffffffffbb804020101040b0ffffffff</row>
+		<row>ffffffffe0b05b20100000000180e0ffffff</row>
+		<row>ffffffffe0d07050200010000080d0ffffff</row>
+		<row>ffffffffffff805020000b3b80ceffffffff</row>
+		<row>ffffffffffff941e10201b50b0e0ffffffff</row>
+		<row>ffffffffffd4500450502150a0b0d0d0d1e0</row>
+	</frame>
+
+	<frame duration="100">
+		<row>ffffffffffffffffffd094b0d0ffffffffff</row>
+		<row>ffffffffffffffffd0a0405b94d0ffffffff</row>
+		<row>ffffffffd4a4a080402000102094d0ffffff</row>
+		<row>ffffffffe0bb744020000100005bbbe0ffff</row>
+		<row>ffffffffffffa080330010000080bbffffff</row>
+		<row>ffffffffffff8040202044545bbbffffffff</row>
+		<row>ffffffffffff94111633245bbbffffffffff</row>
+		<row>ffffffffffe35b1b5b5b3361dbcbd0d0d1e0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffffe0b0b0bee0ffffffff</row>
+		<row>ffffffffffbbd0ffd0a05b5b64bbffffffff</row>
+		<row>ffffffffe0948070402010011080d0ffffff</row>
+		<row>ffffffffffe09454200000000450b0d0ffff</row>
+		<row>ffffffffffffa080330010000070bbffffff</row>
+		<row>ffffffffffff80403433344050b0ffffffff</row>
+		<row>ffffffffffff941033331050bbffffffffff</row>
+		<row>fffffffffff56b2b615b335bd0cbd0d0e0e0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffffffe0c494d0ffffffff</row>
+		<row>ffffffffffffb0a0b0b494702ea0fbffffff</row>
+		<row>ffffffffffff8020202010010070b0e0ffff</row>
+		<row>ffffffffffffbb9433000000042694bbffff</row>
+		<row>ffffffffffffb09433000000004494e0ffff</row>
+		<row>ffffffffffff8041402e101e33a0e0ffffff</row>
+		<row>ffffffffffff912b40341040b0ffffffffff</row>
+		<row>ffffffffffe05b115b5b3350bbbbd0d0d4e0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffffffffe0aed0ffffffff</row>
+		<row>ffffffffffffbbb0beb4bba0508ebeffffff</row>
+		<row>ffffffffffff803333403311005ba0e0ffff</row>
+		<row>ffffffffffffd0a050101000041074b0ffff</row>
+		<row>ffffffffffffd0b04000000000205bd0ffff</row>
+		<row>ffffffffffff945b401000001080d0ffffff</row>
+		<row>ffffffffffffa0335040103394e0ffffffff</row>
+		<row>ffffffffffe05b0b41462041a1b1cbd0d1db</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffffffffe0bed4fbffffff</row>
+		<row>ffffffffffffded0b0a6bbae5b80b0ffffff</row>
+		<row>ffffffffffff9440404033200e5094d0ffff</row>
+		<row>ffffffffffffd0a050101000100670a0ffff</row>
+		<row>ffffffffffffd0bb50010100001650bbffff</row>
+		<row>ffffffffffff945b311000002080d0ffffff</row>
+		<row>ffffffffffffa0315040103380d9ffffffff</row>
+		<row>ffffffffffe0511040401640a0b0d0d0d0d0</row>
+	</frame>
+
+	<frame duration="100">
+		<row>ffffffffffffffffffffffffc6d4e0e9ffff</row>
+		<row>ffffffffffffe0e0bbb0bbb0808094e0ffff</row>
+		<row>ffffffffffffb0704b3b3320104080d0ffff</row>
+		<row>ffffffffffffbb944b10100010005b9bffff</row>
+		<row>ffffffffffffd0c150101000001040bbffff</row>
+		<row>ffffffffffff945b34100010105bb0e0ffff</row>
+		<row>ffffffffffffa0335644203370d0ffffffff</row>
+		<row>ffffffffffe36b3150402040abbbd0d0d6d6</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffffffffffd4d0d0e0ffff</row>
+		<row>ffffffffffffd0d0e0e0bbb0867080e0ffff</row>
+		<row>ffffffffffffa05450503320104071d0ffff</row>
+		<row>ffffffffffffbb804000000000005b94ffff</row>
+		<row>ffffffffffffd0bb40001000001040bbffff</row>
+		<row>ffffffffffff945b33100010105ba0e0ffff</row>
+		<row>ffffffffffffa033334033405bcbffffffff</row>
+		<row>fffffffffff57b415b502650a0b9d0d0d6e0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffffffffffe0d0d0e0ffff</row>
+		<row>ffffffffffffffffffe0bbb0947080e0ffff</row>
+		<row>ffffffffffffffd080503320104080d0ffff</row>
+		<row>ffffffffffffb0703300010000005ba0ffff</row>
+		<row>ffffffffffffc4bb41000100001050bbffff</row>
+		<row>ffffffffffffa07033000010105094e0ffff</row>
+		<row>ffffffffffffb0412033404040b0ffffffff</row>
+		<row>ffffffffffff8151514034508babd0d0d0d0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffffffffffe0d0d0e0ffff</row>
+		<row>ffffffffffffffffffe0d0bb947494e0ffff</row>
+		<row>ffffffffffffffd094504020104080d0ffff</row>
+		<row>ffffffffffffae5b33000000040470a6ffff</row>
+		<row>ffffffffffff9e702e000000002050c4ffff</row>
+		<row>ffffffffffffb081330000101050a0e0ffff</row>
+		<row>ffffffffffffb0512020333340b0ffffffff</row>
+		<row>ffffffffffff915b5040405080b0d0d0d9db</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffffffffffd0d0e0e0ffff</row>
+		<row>ffffffffffffffffffffd9bb8080a0e0ffff</row>
+		<row>ffffffffffffffffa0704033105094d0ffff</row>
+		<row>ffffffffffffd0b050000000042494bbffff</row>
+		<row>ffffffffffff944010000000004080d0ffff</row>
+		<row>ffffffffffff8033100000001064b0e9ffff</row>
+		<row>ffffffffffffbb804020101034b4ffffffff</row>
+		<row>ffffffffffff945b5031334070a0d0d0dbdb</row>
+	</frame>
+
+	<frame duration="100">
+		<row>ffffffffffffffffffffffe9bbd4e9ffffff</row>
+		<row>ffffffffffffffffffffe0bb5b8eb0ffffff</row>
+		<row>ffffffffffffffffbb8050330070bbe0ffff</row>
+		<row>ffffffffffffffff5b1000000050b0d0ffff</row>
+		<row>ffffffffffffd0bb40000000005bb0e0ffff</row>
+		<row>ffffffffffffbbb0400000001080d0ffffff</row>
+		<row>ffffffffffffd0943310101020b0ffffffff</row>
+		<row>ffffffffffffb094401033334094d0d0d0cb</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffffffffe0bedefbffffff</row>
+		<row>ffffffffffffffffffffe0b05e94bbffffff</row>
+		<row>ffffffffffffffffbb9450330080d0ffffff</row>
+		<row>ffffffffffffffff70141000065bc6e0ffff</row>
+		<row>ffffffffffffffe0500010000070bbffffff</row>
+		<row>ffffffffffffd0c1500000010680d6ffffff</row>
+		<row>ffffffffffffe0b04010000010a0ffffffff</row>
+		<row>ffffffffffffd0bb501033202484d0d0d0cb</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffffffffe0b0deffffffff</row>
+		<row>ffffffffffffffffffffbba050aee0ffffff</row>
+		<row>ffffffffffffffffc494502010a0ffffffff</row>
+		<row>ffffffffffffffff802010000080e0ffffff</row>
+		<row>ffffffffffffffff5b1010000094e0ffffff</row>
+		<row>ffffffffffffe0e0510000040470bbe9ffff</row>
+		<row>ffffffffffffffd050060000145ba0a6d0ff</row>
+		<row>ffffffffffffffff5b0020203370a0b1c1bb</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffffffffe0b9e0ffffffff</row>
+		<row>ffffffffffffffffffe0b0945ebbffffffff</row>
+		<row>ffffffffffffffffbb80342020b0ffffffff</row>
+		<row>ffffffffffffffff701400001094ffffffff</row>
+		<row>ffffffffffffffff5b1010000094e0ffffff</row>
+		<row>ffffffffffffffff5b000004104480b0e0ff</row>
+		<row>ffffffffffffffe0540400102084bbb0b1ff</row>
+		<row>ffffffffffffffff5b00201b2080cbd0cbb1</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffffffe0debbe0ffffffff</row>
+		<row>ffffffffffffffffffe0a0945bbbffffffff</row>
+		<row>ffffffffffffffffbb80332631bbffffffff</row>
+		<row>ffffffffffffffff701000001091ffffffff</row>
+		<row>ffffffffffffffff5b1010000094e0ffffff</row>
+		<row>ffffffffffffffff5b00000410407094bbff</row>
+		<row>ffffffffffffffe35610001033a0e0d0d0ff</row>
+		<row>ffffffffffffffff5b0420101b7bbbcbcbb1</row>
+	</frame>
+
+	<frame duration="100">
+		<row>ffffffffffffffffffffe0e0d0ffffffffff</row>
+		<row>ffffffffffffffffffe0948e80d0ffffffff</row>
+		<row>ffffffffffffffffb064333350bbffffffff</row>
+		<row>ffffffffffffffff5b10011020a0ffffffff</row>
+		<row>ffffffffffffffff5b10100000a0ffffffff</row>
+		<row>ffffffffffffffff5b00001010445b70a0de</row>
+		<row>ffffffffffffffff5b10000020b0ffe9fbff</row>
+		<row>ffffffffffffffff5b0020101170b1cbc1b1</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffffffe0e0deffffffffff</row>
+		<row>ffffffffffffffffffde8e8e8ed0ffffffff</row>
+		<row>ffffffffffffffffa05b20335bd0ffffffff</row>
+		<row>ffffffffffffe0d05b00001020a0ffffffff</row>
+		<row>ffffffffffffe0e0500001000094e0ffffff</row>
+		<row>ffffffffffffe0e0500000101e5b8094aebb</row>
+		<row>ffffffffffffffd45004000020a0ffffffff</row>
+		<row>ffffffffffffffe05b0020101b6ba1c1cbbb</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffffffe0e0e0ffffffffff</row>
+		<row>ffffffffffffffffffe0949486d0ffffffff</row>
+		<row>ffffffffffffffffa05b2e335bd0ffffffff</row>
+		<row>ffffffffffffe0bb5000001020a0ffffffff</row>
+		<row>ffffffffffffd0bb400010000094e0ffffff</row>
+		<row>ffffffffffffd0bb50000020405b80a4b4b4</row>
+		<row>ffffffffffffe0bb500e001033a6ffffffff</row>
+		<row>ffffffffffffe0d050002010116babcbd0bb</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffffffffffdeffffffffff</row>
+		<row>fffffffffffffffffffbb4ae80d0ffffffff</row>
+		<row>ffffffffffffffe0a070404050bbffffffff</row>
+		<row>ffffffffffffbb944000001033a0ffffffff</row>
+		<row>ffffffffffff8040100000000080bbe0e0bb</row>
+		<row>ffffffffffffa0703310203326335080bbff</row>
+		<row>ffffffffffffd094331020335bbbffffffff</row>
+		<row>ffffffffffffbba0400020202c8bcbd0d1cb</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffffffffffe0ffffffffff</row>
+		<row>ffffffffffffffffffffe0bb80d0ffffffff</row>
+		<row>ffffffffffffffe0b0805b5040bbffffffff</row>
+		<row>ffffffffffffab5b3310101136b0ffffffff</row>
+		<row>fffffffff2d05009000010000070b0bbbbb4</row>
+		<row>ffffffffffe05b201010000410204094d0ff</row>
+		<row>ffffffffffffbb806433102051a1f5e0ffff</row>
+		<row>ffffffffffffa074330010204191d0d1d1c1</row>
+	</frame>
+
+	<frame duration="100">
+		<row>ffffffffffffffffffffffffe0ffffffffff</row>
+		<row>ffffffffffffffffffffe0d094d0ffffffff</row>
+		<row>ffffffffffffffe0b094805b40bbffffffff</row>
+		<row>ffffffffffffa0593320111b33abffffffff</row>
+		<row>ffffffffe0a9502b100010000070b0bbbbd0</row>
+		<row>ffffffffe0a464401000000010204094d0ff</row>
+		<row>ffffffffffffc494331000205ba0e0e0ffff</row>
+		<row>ffffffffffffa070310110214c9bd0dbdbcb</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffffffffffffffffffffff</row>
+		<row>ffffffffffffffffffffffe0b0deffffffff</row>
+		<row>ffffffffffffffffbbb0a07033a4ffffffff</row>
+		<row>ffffffffffe0a0544033202033a0ffffffff</row>
+		<row>ffffffffd0705b5b200010000080bbbbc4d6</row>
+		<row>ffffffffd07070803300000010104094d1ff</row>
+		<row>ffffffffffe09450201000205b94dbe0ffff</row>
+		<row>ffffffffffff945b330106215cabdbd1d0bb</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffffffffffffffffffffff</row>
+		<row>ffffffffffffffffffffffffbbe0ffffffff</row>
+		<row>ffffffffffffffffd0bbbb8434a4e9ffffff</row>
+		<row>ffffffffffffa0644033332020a0ffffffff</row>
+		<row>ffffffffc4705b5b200010000080bbd0d0e0</row>
+		<row>ffffffffd08080803300001010204094d0ff</row>
+		<row>ffffffffffffa046201000205181d0d0ffff</row>
+		<row>ffffffffffff94502100012b6cbbe0d1d0c1</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffffffffffffffffffffff</row>
+		<row>ffffffffffffffffffffffffd0e0ffffffff</row>
+		<row>ffffffffffffffffd0bbbb8033a0e0ffffff</row>
+		<row>ffffffffffffb0704b31332020a0ffffffff</row>
+		<row>ffffffffd07b5b50200110000080c4d0d0e0</row>
+		<row>ffffffffbb7074803400000610204094d0ff</row>
+		<row>ffffffffe9ffa046201000205080d0d0ffff</row>
+		<row>ffffffffffff81412100012b7bbbe0dbd0bb</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffffffffffffffffffffff</row>
+		<row>ffffffffffffffffffffffffd0e0ffffffff</row>
+		<row>ffffffffffffffffd0c4bb9434a0e0ffffff</row>
+		<row>ffffffffffffbb80504033202094fbffffff</row>
+		<row>ffffffffd0945b40100110000080bbd0d0d0</row>
+		<row>ffffffffd05470803300000610204094d0ff</row>
+		<row>ffffffffffe09440201000205080c1d0ffff</row>
+		<row>ffffffffffff814120000b3181bbe0d1d0cb</row>
+	</frame>
+
+	<frame duration="100">
+		<row>ffffffffffffffffffffffffffffffffffff</row>
+		<row>ffffffffffffffffffffffffc4d6ecffffff</row>
+		<row>ffffffffffffffffd0c4bb843494d6ffffff</row>
+		<row>ffffffffffffbb94503433161494e9ffffff</row>
+		<row>ffffffffe0b05b33100000000080b4d0d0d0</row>
+		<row>ffffffffd05b5b5b3300000610204094d0ff</row>
+		<row>ffffffffe3d08b40201000204b80d0d0ffff</row>
+		<row>ffffffffffff814120000b3b91c1e0dbd0bb</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffffffffffffffffffffff</row>
+		<row>ffffffffffffffffffffffffbbd4e9ffffff</row>
+		<row>ffffffffffffffffd4c4bb803494d6ffffff</row>
+		<row>ffffffffffffd0a05b3433101094e9ffffff</row>
+		<row>fffffffffbd05b20000000000070b0bbcee0</row>
+		<row>ffffffffde7050502000001010204694deff</row>
+		<row>ffffffffe0d08140201000204176bbd0ffff</row>
+		<row>fffffffffff5814121000b40abcbdbd0d0d0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffffffffffffffffffffff</row>
+		<row>ffffffffffffffffffffffe0b0d0e9ffffff</row>
+		<row>ffffffffffffffffd0bbb07433a0e9ffffff</row>
+		<row>ffffffffffffd0b05b3320101086e9ffffff</row>
+		<row>fffffffffffb6e1e00011000005b94b0d0ff</row>
+		<row>ffffffffe9a4441000000006042046a0e0ff</row>
+		<row>ffffffffffe0a050201010204070bbd0ffff</row>
+		<row>ffffffffffff7131210b2061e0d0d0d0d0c1</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffffffffffe0ffffffffff</row>
+		<row>ffffffffffffffffffffe0d094d0ffffffff</row>
+		<row>ffffffffffffffffd0b0805b33bbffffffff</row>
+		<row>ffffffffffffc494502b1b101094ffffffff</row>
+		<row>ffffffffffff6410000b0b00005094d0ffff</row>
+		<row>ffffffffffe05b1010060010244480e0ffff</row>
+		<row>ffffffffffffb04440332033707ebbd0ffff</row>
+		<row>ffffffffffe05b20202b7b94b0bbd0d0d0cb</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffffffffffffffffffffff</row>
+		<row>ffffffffffffffffffffbbbba0e0ffffffff</row>
+		<row>ffffffffffffffffbba05b505bd0ffffffff</row>
+		<row>ffffffffffffbb80492010102094e0ffffff</row>
+		<row>ffffffffffff5b1000000900004080d0ffff</row>
+		<row>ffffffffffff702033341024504070d0ffff</row>
+		<row>ffffffffffffb05026202044a0b0dee0ffff</row>
+		<row>ffffffffffd05020202b718bb0bbd0d0d0cb</row>
+	</frame>
+
+	<frame duration="100">
+		<row>ffffffffffffffffffffe0ffffffffffffff</row>
+		<row>ffffffffffffffffffd080a0e0ffffffffff</row>
+		<row>ffffffffffffffe0b0702050bbffffffffff</row>
+		<row>ffffffffffffb05b401000103494e0ffffff</row>
+		<row>ffffffffffff5b0600000e00005094d0ffff</row>
+		<row>ffffffffffff804034343450804450bbffff</row>
+		<row>ffffffffffffb05b2410104094a0d0d0ffff</row>
+		<row>ffffffffffbb4010212c4161a0b0bbd0d0d0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffffe0e0ffffffffffffff</row>
+		<row>ffffffffffffffffbba094bbffffffffffff</row>
+		<row>ffffffffffffffd070404070d0ffffffffff</row>
+		<row>ffffffffffffa0503304102033a0ffffffff</row>
+		<row>ffffffffffff5b1000102010105094d0ffff</row>
+		<row>ffffffffffff94503320104080505bbbffff</row>
+		<row>ffffffffffffbb703310062670b0e0e0ffff</row>
+		<row>ffffffffffbb40203321214094b0d0d0d0d0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffffe0e0ffffffffffffff</row>
+		<row>ffffffffffffffffb086a0d0ffffffffffff</row>
+		<row>ffffffffffffffd05b365080d0ffffffffff</row>
+		<row>ffffffffffffa0502b00102040b0ffffffff</row>
+		<row>ffffffffffff5b1000091b10015094d0ffff</row>
+		<row>ffffffffffff9450331e0e33705064d0ffff</row>
+		<row>ffffffffffffbb803310012470b4ffffffff</row>
+		<row>ffffffffffbb4420331c114094b0d0d0d0d0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffe0e0ffffffffffffffff</row>
+		<row>ffffffffffffffff9474d0ffffffffffffff</row>
+		<row>ffffffffffffe3d050337094d0ffffffffff</row>
+		<row>ffffffffffffb05b3300102040a0ffffffff</row>
+		<row>ffffffffffff5b1000001010105080d0ffff</row>
+		<row>ffffffffffff944020140e335b5070d0ffff</row>
+		<row>ffffffffffffd094331000205bb0ffffffff</row>
+		<row>ffffffffffb044203311113180b0d0d0d0cb</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffe0e0ffffffffffffffff</row>
+		<row>ffffffffffffe0e09480e0ffffffffffffff</row>
+		<row>ffffffffffffe0d050337094bbffffffffff</row>
+		<row>ffffffffffffbb94400010203394e0ffffff</row>
+		<row>ffffffffffff702b1010101b333b5bbbffff</row>
+		<row>ffffffffffff814010000033805b71d0ffff</row>
+		<row>ffffffffffffd0943310001b5094d0e0ffff</row>
+		<row>ffffffffffab40292b1b113380a0bbd0d0d0</row>
+	</frame>
+
+	<frame duration="100">
+		<row>ffffffffffffffffe0e0ffffffffffffffff</row>
+		<row>ffffffffffffe0e08480e0ffffffffffffff</row>
+		<row>ffffffffffffffd056336680bbffffffffff</row>
+		<row>ffffffffffffd0b0400010103370d0e0ffff</row>
+		<row>ffffffffffff804010001033504050bbffff</row>
+		<row>ffffffffffff94501b00004096505bd0ffff</row>
+		<row>ffffffffffffd099311000339680a6bbffff</row>
+		<row>ffffffffffb04020331c1141b09494bbd0d0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffe0e0ffffffffffffffff</row>
+		<row>ffffffffffffe0e08074d6ffffffffffffff</row>
+		<row>ffffffffffffffe05b345670a0e0ffffffff</row>
+		<row>ffffffffffbbbbd0560001102050bbd0ffff</row>
+		<row>ffffffffe0a0503300000121503340a0e0ff</row>
+		<row>ffffffffffffb08033000040a1705b80bbff</row>
+		<row>ffffffffffffe0b040100040a0d0d0bbc4ff</row>
+		<row>ffffffffffb0503331111150bbbbbbb0b0bb</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffe0e0ffffffffffffffff</row>
+		<row>ffffffffffffe0d08076d0ffffffffffffff</row>
+		<row>ffffffffffe0e0e06633505b94d0ffffffff</row>
+		<row>ffffffffd094b0e05b0601102033a0bbffff</row>
+		<row>ffffffffe0a0502e000001338050204194ff</row>
+		<row>ffffffffffffd0b040000040a0d0d0a0a0d0</row>
+		<row>ffffffffffffffc4410b003394e0ffffffd0</row>
+		<row>ffffffffffbb5b44330b0b4bbbbbd0d0d0bb</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffe0e0ffffffffffffffff</row>
+		<row>ffffffffffffe0d09480d0ffffffffffffff</row>
+		<row>ffffffffffd0e0e06433445080bbffffffff</row>
+		<row>ffffffffd094b0ff66100610393380a0e0ff</row>
+		<row>ffffffffe0b0502000000640948b594069d9</row>
+		<row>ffffffffffffe0d05000004094d0ffecb684</row>
+		<row>ffffffffffffffd050100b3380d0ffffffff</row>
+		<row>ffffffffffd07050310b0b40b0bbd0d0d0bb</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffe0fbffffffffffffffff</row>
+		<row>ffffffffffffd0c49494d0ffffffffffffff</row>
+		<row>ffffffffffd0e0d46434445070b0d0ffffff</row>
+		<row>ffffffffd094b0ff6404041050406480a4ff</row>
+		<row>ffffffffe0a050200000103380b0b0945b5b</row>
+		<row>ffffffffffffe0e05b10003361bbffffffe0</row>
+		<row>ffffffffffffffe05b20102050bbffffffff</row>
+		<row>ffffffffffd4846e400101338eb0d0d0d0bb</row>
+	</frame>
+
+	<frame duration="100">
+		<row>ffffffffffffffffe0ffffffffffffffffff</row>
+		<row>ffffffffffffc6b6a0a0d0ffffffffffffff</row>
+		<row>ffffffffffd0d4c45b33405070a0d0ffffff</row>
+		<row>ffffffffd094b0ff5b01102050405b7094e0</row>
+		<row>ffffffffe0a050240001103380b1bba17061</row>
+		<row>ffffffffffffe0e05b10002450bbffffffff</row>
+		<row>ffffffffffffffe07020101034bbffffffff</row>
+		<row>ffffffffffde94744001012b70a0d0d0d0c1</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffe0ffffffffffffffffff</row>
+		<row>ffffffffffffc6b4a0a0d0ffffffffffffff</row>
+		<row>ffffffffffd4d4c45b34445070b0d0ffffff</row>
+		<row>ffffffffd094b0e95b00012050335b70a0ff</row>
+		<row>ffffffffe09e50330000013380b0b4a06464</row>
+		<row>ffffffffffffe0d45b11002050bbffffffe0</row>
+		<row>ffffffffffffffe07121101039bbffffffff</row>
+		<row>ffffffffffe094804001012170a0d0d0d0bb</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffe0ffffffffffffffffff</row>
+		<row>ffffffffffffbba494a0d0ffffffffffffff</row>
+		<row>ffffffffe9ffd0b45633405080bbecffffff</row>
+		<row>ffffffffd0a0b4e95b000010403380a0d0ff</row>
+		<row>ffffffffe0a054340000003380a0805b70d0</row>
+		<row>ffffffffffffd0b05b20002050bbffffd4a0</row>
+		<row>ffffffffffffffe08021101033bbffffffff</row>
+		<row>ffffffffffde94804110012b70a0d0d0d0bb</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffe0e0ffffffffffffffffff</row>
+		<row>ffffffffffffb09494a4d0ffffffffffffff</row>
+		<row>ffffffffffffbb9450334470b0ffffffffff</row>
+		<row>ffffffffffd0d0d0500000103370d0e0ffff</row>
+		<row>ffffffffd0a080702000002050505091d0ff</row>
+		<row>ffffffffffffb080401b002039a0c9d0e0ff</row>
+		<row>ffffffffffffffff8033101020b0ffffffff</row>
+		<row>ffffffffffe0a0945010112b5ba0d0d0cbbb</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffe0e0ffffffffffffffffff</row>
+		<row>ffffffffffffb08094b0e0ffffffffffffff</row>
+		<row>ffffffffffffb08050405080d0ffffffffff</row>
+		<row>ffffffffffffdebb5000002040a4ffffffff</row>
+		<row>ffffffffd0b0aeae3e000000105080d0ffff</row>
+		<row>ffffffffffe0945b331000102969a0e0ffff</row>
+		<row>ffffffffffffffff8033190b10a9ffffffff</row>
+		<row>ffffffffffe0b09450112b335094d0d0d0bb</row>
+	</frame>
+
+	<frame duration="100">
+		<row>ffffffffffffffd0e0ffffffffffffffffff</row>
+		<row>ffffffffffff945494bbe0ffffffffffffff</row>
+		<row>ffffffffffff945440405080e0ffffffffff</row>
+		<row>ffffffffffffbb843600013370bbffffffff</row>
+		<row>ffffffffffffbba6400001000094ffffffff</row>
+		<row>ffffffffffffbbb05010002150b0ffffffff</row>
+		<row>ffffffffe0d0bbb07033110110a0ffffffff</row>
+		<row>ffffffffffffbbb0501b40333394d0d0cbbb</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffd0deffffffffffffffffff</row>
+		<row>ffffffffffff845080b0e0ffffffffffffff</row>
+		<row>ffffffffffff843433405080e0ffffffffff</row>
+		<row>ffffffffffffa0402000003380d0ffffffff</row>
+		<row>ffffffffffffa080330010203bb9ffffffff</row>
+		<row>ffffffffffffffff5b0400100b94f2ffffff</row>
+		<row>ffffffffffffdbab401004000094ffffffff</row>
+		<row>ffffffffffffa080401020100979bbd0d0bb</row>
+	</frame>
+
+	<frame duration="50">
+		<row>fffffffffffffbced0ffffffffffffffffff</row>
+		<row>ffffffffffff945b7ea0d4ffffffffffffff</row>
+		<row>ffffffffffff863633345080d0ffffffffff</row>
+		<row>ffffffffffff94331000103380d0ffffffff</row>
+		<row>ffffffffffff9b6b2b00101020b0ffffffff</row>
+		<row>ffffffffffffffe05b0000000194e3ffffff</row>
+		<row>ffffffffffffffd0501000000094ffffffff</row>
+		<row>ffffffffffffb494401033200b70bbcbd0cb</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffe0bbbbe0ffffffffffffffff</row>
+		<row>ffffffffffffb0947080d0ffffffffffffff</row>
+		<row>ffffffffffffa05024244464a1e0ffffffff</row>
+		<row>ffffffffffff80101000002050b0ffffffff</row>
+		<row>ffffffffffff8050200000000094e0ffffff</row>
+		<row>ffffffffffffd1bb5000001010a0ffffffff</row>
+		<row>ffffffffffffffe35b1010000094ffffffff</row>
+		<row>ffffffffffffd0c15019593b1070bbcbd0d0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffe0bbc4ffffffffffffffff</row>
+		<row>ffffffffffffe0d08064b4e0ffffffffffff</row>
+		<row>ffffffffffffb0703320405080d0ffffffff</row>
+		<row>ffffffffffff8010100006061094ffffffff</row>
+		<row>ffffffffffff7033100006203394bbffffff</row>
+		<row>ffffffffffffb0943300001033b0ffffffff</row>
+		<row>fffffffffffff2bb5010100010b0ffffffff</row>
+		<row>ffffffffffffd0bb5b2969400b79bbcbd0d0</row>
+	</frame>
+
+	<frame duration="100">
+		<row>ffffffffffffffffbbb4e0ffffffffffffff</row>
+		<row>ffffffffffffffff945ba0d0ffffffffffff</row>
+		<row>ffffffffffffb0703320315080d0ffffffff</row>
+		<row>ffffffffffff80101000011020a0ffffffff</row>
+		<row>ffffffffffff5b20010001101094d0ffffff</row>
+		<row>ffffffffffff945b2000002050b0ffffffff</row>
+		<row>ffffffffffffd0a04010101020b0ffffffff</row>
+		<row>ffffffffffffd0bb5b2b5b401080c1d0d0d0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffc4b4d0ffffffffffffff</row>
+		<row>ffffffffffffffffa07080bbffffffffffff</row>
+		<row>ffffffffffffb0703b213350a0e0ffffffff</row>
+		<row>ffffffffffff80101000101020a0ffffffff</row>
+		<row>fffffffffff25000000009000094e0ffffff</row>
+		<row>ffffffffffe06633140000103380bbffffff</row>
+		<row>ffffffffffff94211010102050b0ffffffff</row>
+		<row>ffffffffffffa0704b3349392080cbd0d1d0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffd0bbd0ffffffffffffff</row>
+		<row>ffffffffffffffffb08080bbffffffffffff</row>
+		<row>ffffffffffffb0714033405bb0ffffffffff</row>
+		<row>ffffffffffd470101000102033b0ffffffff</row>
+		<row>ffffffffe0a05033100000000080d0ffffff</row>
+		<row>ffffffffd05b5b70330000164066a0e0ffff</row>
+		<row>ffffffffe0b07140201b1b50b0e0ffffffff</row>
+		<row>ffffffffffd170314b414b7bdbc9c9d0d0d0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffe0d0e0ffffffffffffff</row>
+		<row>ffffffffffffffffb08084bbffffffffffff</row>
+		<row>ffffffffffffbb8050344070bbffffffffff</row>
+		<row>ffffffffffd070101000101433b0ffffffff</row>
+		<row>ffffffffd0704033100004000070bbe0ffff</row>
+		<row>ffffffe0b080705b330000337086b0e0ffff</row>
+		<row>ffffffe0e0ff942b1020336bd0e0ffffffff</row>
+		<row>ffffffffffdb511141506194e0d0d0d0d0d0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffffe0e0ffffffffffffff</row>
+		<row>ffffffffffffffffb494a0d0ffffffffffff</row>
+		<row>ffffffffffffe0b070505080d0ffffffffff</row>
+		<row>ffffffffe0b05b202010102040b0ffffffff</row>
+		<row>ffe0d0a05b3320100000000610365084c4ff</row>
+		<row>ffffe0e9ffff703320010b50bbbbd0ffffff</row>
+		<row>ffffffffffff800001315b8be0ffffffffff</row>
+		<row>ffffffffffab40103b5b9cbbcbc1d0d0d0cb</row>
+	</frame>
+
+	<frame duration="100">
+		<row>ffffffffffffffffffffffffffffffffffff</row>
+		<row>ffffffffffffffffd0b0b4e0ffffffffffff</row>
+		<row>ffffe0ffffffffe094646494ffffffd0e0ff</row>
+		<row>ffe0b094a0815b40332010265070a0a0bbff</row>
+		<row>ffffffb0704010100000001020335bb0e0ff</row>
+		<row>ffffffffffff5b11100b0b6bffffffffffff</row>
+		<row>fffffffff5db70000b3c6191ffffffffffff</row>
+		<row>ffffffffe08b3310315cbccbd0cbd0d0d0d0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffffffffffffffffffffff</row>
+		<row>ffffffffffffffffd0b6b6e0ffffffffffff</row>
+		<row>ffffe0c4d0ffffffa0746494ffffffc4d4ff</row>
+		<row>ffffe0808081704b33201433505094a0e0ff</row>
+		<row>ffffffbb80502010000010102b4070d0ffff</row>
+		<row>ffffffffffff5b10100b0b6bffffffffffff</row>
+		<row>ffffffffe0d05b0010416191ffffffffffff</row>
+		<row>ffffffffe0802b0b2c5cbccedbd0d0d0d0d0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffffffffffffffffffffff</row>
+		<row>ffffffffffffffffe0bbb4e0ffffffffffff</row>
+		<row>ffffffbbb0ffffffb4846494ffd4bbd0e0ff</row>
+		<row>ffffffb09480705b403320335b4080b0ffff</row>
+		<row>ffffffd0a05b200000000020405b94e0ffff</row>
+		<row>ffffffffffff561010000b70ffffffffffff</row>
+		<row>ffffffffe0bb5b00104b5b94ffffffffffff</row>
+		<row>ffffffffe07b210b2c5cbccee0d0d0d0d0d0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffffffffffffffffffffff</row>
+		<row>ffffffffffffffffe9d0b0d4ffffffffffff</row>
+		<row>ffffffe0c4d0ffffbb946494ffd0bbd0ffff</row>
+		<row>ffffffbb915b5b5b40332033704480b0ffff</row>
+		<row>ffffffe0b070201000000116405b94e0ffff</row>
+		<row>ffffffffffff54100b0b0b6bffffffffffff</row>
+		<row>ffffffffe0bb5b00103c518bffffffffffff</row>
+		<row>ffffffffe08021012c5cbcced0d0d0d0d0c1</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffffffffffffffffffffff</row>
+		<row>ffffffffffffffffffd0b0d0ffffffffffff</row>
+		<row>ffffffe0d0c6ffffbb945686ffe0bbd0e0ff</row>
+		<row>ffffffcea05b5b5b40331633704680a6ffff</row>
+		<row>ffffffe0b070201000011011335080d0ffff</row>
+		<row>ffffffffffff5b10100b0b6bffffffffffff</row>
+		<row>ffffffffe0d05b000b3c518bffffffffffff</row>
+		<row>ffffffffe08021012c5cbcced0d0d0d0d0cb</row>
+	</frame>
+
+	<frame duration="100">
+		<row>ffffffffffffffffffffffffffffffffffff</row>
+		<row>ffffffffffffffffffc694bbffffffffffff</row>
+		<row>ffffffd0bbc4fbffc4944476ffe0d0bbe0ff</row>
+		<row>ffffffd0945e4e4e402610335b5080a0e0ff</row>
+		<row>ffffffffbb7020100000101021315bbbffff</row>
+		<row>ffffffffffff61201001015bffffffffffff</row>
+		<row>ffffffffe0d061000b3b5181ffffffffffff</row>
+		<row>ffffffffe08133012c5cbcced0cbd0d0d0d0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffffffe0ffffffffffffff</row>
+		<row>ffffffffffffffffffbb74b0ffffffffffff</row>
+		<row>ffffffc4b0defbe0b080335be0e0d0cee0ff</row>
+		<row>ffffffd0945b404033201020404080a0deff</row>
+		<row>ffffffffbb70242004000010111140b0e0ff</row>
+		<row>ffffffffffff70331b00005be0e0ffffffff</row>
+		<row>ffffffffffe0700000314b80e3ffffffffff</row>
+		<row>fffffffff29b3b102c4cbbcbcbcbd0d0d0d0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffffffd4ffffffffffffff</row>
+		<row>ffffffffffffffffffc464a0ffffffffffff</row>
+		<row>ffffffbbb0fffbd0a4702050ced0d0e0ffff</row>
+		<row>ffffffbb9464403333140e1e334080a0e0ff</row>
+		<row>ffffffffbb70201400000e10111140a0e0ff</row>
+		<row>ffffffffffff804020010051d0d0e0ffffff</row>
+		<row>ffffffffffff710001314b7be0ffffffffff</row>
+		<row>ffffffffffab4010315bacc1cbcbcbd0d0d1</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffffe9c4e0ffffffffffff</row>
+		<row>ffffffffffffffffffce5080e0ffffffffff</row>
+		<row>ffffffffffffd0b08454103491e0ffffffff</row>
+		<row>ffffffb0b0a05b20200404102080e0ffffff</row>
+		<row>ffffffe0a070201000000410203350b9ffff</row>
+		<row>ffffffffffff945020000050b4b0bbffffff</row>
+		<row>ffffffffffff800b00214070deffffffffff</row>
+		<row>ffffffffffbb4b0b3b5191abcbc9d0d0d0d0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffffffc4d0d0ffffffffff</row>
+		<row>ffffffffffffffffffd0808094d0ffffffff</row>
+		<row>ffffffffffffd0a07040202150bbffffffff</row>
+		<row>ffffffffffff8e2e100000001070d0e0ffff</row>
+		<row>ffffffffdea03e00000010204074a0e0ffff</row>
+		<row>ffffffffe0bb80502000003374a0d0ffffff</row>
+		<row>ffffffffffff94201020335bbbffffffffff</row>
+		<row>ffffffffffd15b114b51617b9bb0d0d0d1d1</row>
+	</frame>
+
+	<frame duration="100">
+		<row>ffffffffffffffffffffd0d0bbffffffffff</row>
+		<row>ffffffffffffffffffd0948070d0ffffffff</row>
+		<row>ffffffffffffe0bb8050262033b0ffffffff</row>
+		<row>ffffffffffffa04e200004001070d0e9ffff</row>
+		<row>ffffffffffde5000001040331480bbfbffff</row>
+		<row>ffffffffffc15b201006102044a0ffffffff</row>
+		<row>ffffffffffff9b3310100140b0fbffffffff</row>
+		<row>ffffffffffdb5b1b4b40114099b0d0d0d0d0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffffffffdeb0e0ffffffff</row>
+		<row>ffffffffffffffffffe0b0944eb4ffffffff</row>
+		<row>ffffffffffffffde8050332010a0ffffffff</row>
+		<row>ffffffffffffbb9450101000105bd0e0ffff</row>
+		<row>ffffffffffff945b403433100080d0ffffff</row>
+		<row>ffffffffffff8b502000003374c4ffffffff</row>
+		<row>ffffffffffffa03320200040b0e0ffffffff</row>
+		<row>ffffffffffd0500140402050bbbbd0d0d0d0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffffffe0d0b0e0ffffffff</row>
+		<row>ffffffffffffffffffd094805ebbffffffff</row>
+		<row>ffffffffffffffd98040201120a0e0ffffff</row>
+		<row>ffffffffffffe0bb80201000005bd0e0ffff</row>
+		<row>ffffffffffffbbb040100e000080d0ffffff</row>
+		<row>ffffffffffffb0943100003370bbffffffff</row>
+		<row>ffffffffffffa0401620205094e0ffffffff</row>
+		<row>ffffffffffd650104040335094b0d0d0d0d0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffffe0bbbbbbe9ffffffff</row>
+		<row>ffffffffffffffffffbb707070d0ffffffff</row>
+		<row>ffffffffffffe0d08040101033a0ffffffff</row>
+		<row>ffffffffffffd0b0702010000670d0e0ffff</row>
+		<row>ffffffffffffceb9491000000094e0ffffff</row>
+		<row>ffffffffffffb0944000003370bbffffffff</row>
+		<row>ffffffffffffa04020141040a4e0ffffffff</row>
+		<row>ffffffffffd45010404020335ba0d0d0d0d0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffffc694b4e0ffffffffff</row>
+		<row>ffffffffffffffffe0a03364d0ffffffffff</row>
+		<row>ffffffffffffd0a05b330b1040b0ffffffff</row>
+		<row>ffffffffffffbb94501010001080e0ffffff</row>
+		<row>ffffffffffffb9993900101020a0ffffffff</row>
+		<row>ffffffffffffbba04000003370bbffffffff</row>
+		<row>ffffffffffffb050201000205bd0ffffffff</row>
+		<row>ffffffffffe051114040204070a0d0d0d0d0</row>
+	</frame>
+
+	<frame duration="100">
+		<row>ffffffffffffffffc4a4a4d0ffffffffffff</row>
+		<row>ffffffffffffffffa05b5094e0ffffffffff</row>
+		<row>ffffffffffffbb944020102040b0ffffffff</row>
+		<row>ffffffffffff9433331010000171e0ffffff</row>
+		<row>ffffffffffff8e502e10103370c1ffffffff</row>
+		<row>ffffffffffffbbb05020315070d0ffffffff</row>
+		<row>ffffffffffffb0502010003380d0ffffffff</row>
+		<row>ffffffffffd040103133103370a0d0d0d0d0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffb094b4e0ffffffffffff</row>
+		<row>ffffffffffffffff804064a0e0ffffffffff</row>
+		<row>ffffffffffffbb803616162040b0ffffffff</row>
+		<row>ffffffffffff8b20201010001070d0e0ffff</row>
+		<row>ffffffffffff7020333310408ed0ffffffff</row>
+		<row>ffffffffffffb1a05b33244680d0ffffffff</row>
+		<row>ffffffffffffb05b2010103694e0ffffffff</row>
+		<row>ffffffffffbb41103133204070a0d0d0d0d0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffe094a0e9ffffffffffffff</row>
+		<row>ffffffffffffe0d05b3394bbd0ffffffffff</row>
+		<row>ffffffffffffbb943310112050a0d0ffffff</row>
+		<row>ffffffffffe08020100010203394d0ffffff</row>
+		<row>ffffffffffd070503320335ba0e0ffffffff</row>
+		<row>ffffffffffffbbae4000003380d0ffffffff</row>
+		<row>ffffffffffffbb7033100036a0e0ffffffff</row>
+		<row>ffffffffffe05b103321114094b0d0d0d0d0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffe0b0b0bbffffffffffffffff</row>
+		<row>ffffffffffffbba05b5094bbffffffffffff</row>
+		<row>ffffffffffffbb94331010205ba1d0ffffff</row>
+		<row>ffffffffffd08020100000001480d0e0ffff</row>
+		<row>ffffffffe0b05b401000104080d0ffffffff</row>
+		<row>ffffffffffffd0b04400004084d0ffffffff</row>
+		<row>ffffffffffffd0943310003394e0ffffffff</row>
+		<row>fffffffffff56b2b3310003396b0d0d0d0d0</row>
+	</frame>
+
+	<frame duration="100">
+		<row>ffffffffffffe0a6b4d0ffffffffffffffff</row>
+		<row>ffffffffffffb0865b5b94bbffffffffffff</row>
+		<row>ffffffffffffbb8b3b10102b70b0e0ffffff</row>
+		<row>ffffffffe094502b1b0000103370c9e0ffff</row>
+		<row>ffffffffe0a15041200010205eb0e0ffffff</row>
+		<row>ffffffffffffd0b0400000215bbbffffffff</row>
+		<row>ffffffffffffd0a04001003394e0ffffffff</row>
+		<row>ffffffffffff70333310003394b0d0d0d0d0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffe0a6d0ffffffffffffffffff</row>
+		<row>ffffffffffff94567089b0d9ffffffffffff</row>
+		<row>ffffffbbb0e3a05b2b10204080d0ffffffff</row>
+		<row>ffffffd0a0704020190009103380d4ffffff</row>
+		<row>ffffffffdea05e50200010102494d0ffffff</row>
+		<row>ffffffffffffe0d05000002040aeffffffff</row>
+		<row>fffffffffffff2bb5010002e7ed0ffffffff</row>
+		<row>fffffffffff580503310003394b0d0d0d9db</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffd0e0ffffffffffffffffff</row>
+		<row>ffffffffffff805080b0d0ffffffffffffff</row>
+		<row>ffffffb094ff94443333405ba0e0ffffffff</row>
+		<row>ffffffbb948044201000041020b0ffffffff</row>
+		<row>ffffffffd094505020000e0000a0ffffffff</row>
+		<row>ffffffffffffe0d0500000335bbbffffffff</row>
+		<row>ffffffffffffffd05010003370d0ffffffff</row>
+		<row>ffffffffffff94703101103194b0d0d0d0d0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffd0e0ffffffffffffffffff</row>
+		<row>ffffffffffe980508ebbe0ffffffffffffff</row>
+		<row>ffffffb096e9864433334969b0f2ffffffff</row>
+		<row>ffffffbb94805020100000103bb0ffffffff</row>
+		<row>ffffffffd09450411600101020b0ffffffff</row>
+		<row>ffffffffffffd0bb5000004094d0ffffffff</row>
+		<row>ffffffffffffffd05010103370d0ffffffff</row>
+		<row>ffffffffffff9e6e3b010b3ba0b0d0d0d0d0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffd0e0ffffffffffffffffff</row>
+		<row>ffffffffffff805074a0bbe0ffffffffffff</row>
+		<row>ffffffd9d0e994503320335094e0ffffffff</row>
+		<row>ffffffe0b084502e1000001020a0ffffffff</row>
+		<row>ffffffffcb703320100000335bd0ffffffff</row>
+		<row>ffffffffffffd0b04414335480d0ffffffff</row>
+		<row>ffffffffffffe0bb4010003380d0ffffffff</row>
+		<row>ffffffffffff805033010140a0b0d0d0d0d0</row>
+	</frame>
+
+	<frame duration="100">
+		<row>ffffffffffffe0bbc4e0ffffffffffffffff</row>
+		<row>ffffffffffffb0847070b0d9ffffffffffff</row>
+		<row>ffffffffffffb080332033395bbbffffffff</row>
+		<row>ffffffffffe09440200004001080e0ffffff</row>
+		<row>ffffffffd08e33001033334070d0ffffffff</row>
+		<row>ffffffffffffb0945020003380d0ffffffff</row>
+		<row>ffffffffffffd0943310003384e0ffffffff</row>
+		<row>ffffffffffff5b2020010140a0b4d0d0d0d0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffecc4bbd0ffffffffffffffff</row>
+		<row>ffffffffffffbba46464b0e0ffffffffffff</row>
+		<row>ffffffffffffbba04014333359bbffffffff</row>
+		<row>ffffffffffffae5b401010011070d0e0ffff</row>
+		<row>ffffffffe0bb5b205b70203350b1e3ffffff</row>
+		<row>ffffffffffffa0703300003371d0ffffffff</row>
+		<row>ffffffffffffbb803310013381e0ffffffff</row>
+		<row>fffffffffff25b2020011040a0b0d0d0d0d0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffb4a6d4ffffffffffffff</row>
+		<row>ffffffffffffffff805084bbffffffffffff</row>
+		<row>ffffffffffffdeb07050504050b9ffffffff</row>
+		<row>ffffffffffffb05b503324100b70d0f2ffff</row>
+		<row>ffffffffffff804020041010209bdbffffff</row>
+		<row>ffffffffffd080502000003370bbffffffff</row>
+		<row>ffffffffffffb05b2010003380d0ffffffff</row>
+		<row>ffffffffffe051113320103370a0d0d0d0d0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffc4a4a4d0ffffffffffff</row>
+		<row>ffffffffffffffffa4705ba0e0ffffffffff</row>
+		<row>ffffffffffffd0ae502420244eaee0ffffff</row>
+		<row>ffffffffffffbb80330004001070d0e0ffff</row>
+		<row>ffffffffffffa070200000101091e0ffffff</row>
+		<row>ffffffffffff7033100000245bbbffffffff</row>
+		<row>ffffffffffdb944b2010002070d0ffffffff</row>
+		<row>ffffffffffe35c1b4033102b70a0d0d0d0d0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffd0a486bbffffffffffff</row>
+		<row>ffffffffffffffffb6764080e0ffffffffff</row>
+		<row>ffffffffffffd0a0502000103b9bd9ffffff</row>
+		<row>ffffffffffffbe8033000000105bbbe0ffff</row>
+		<row>ffffffffffffa05b200010101094e0ffffff</row>
+		<row>ffffffffffff7033100000205bbbffffffff</row>
+		<row>ffffffffffe08b331010002070d0ffffffff</row>
+		<row>ffffffffffe06121413310205ba0d0d0dbdb</row>
+	</frame>
+
+	<frame duration="100">
+		<row>ffffffffffffffffffd094b0d0ffffffffff</row>
+		<row>ffffffffffffffffd0a0405ba0d0ffffffff</row>
+		<row>ffffffffffffd0a0502000001180c1ffffff</row>
+		<row>ffffffffffffb05b240000000040b0d0ffff</row>
+		<row>ffffffffffff7024040004000070bbffffff</row>
+		<row>ffffffffffff5b101000002b5bbbffffffff</row>
+		<row>ffffffffffff9420101b103376d0ffffffff</row>
+		<row>ffffffffffdb6b2b4b3b2b405ba0d0d0d1e0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffffe0b0bebee0ffffffff</row>
+		<row>ffffffffffffffffd0a0545b70c4ffffffff</row>
+		<row>ffffffffffffd0a0502010101180bbe0ffff</row>
+		<row>ffffffffffffae5b330010001040a0d0ffff</row>
+		<row>ffffffffffff5b10000010000051a0e0ffff</row>
+		<row>ffffffffffe050100000002050b0ffffffff</row>
+		<row>ffffffffffff80111020204ba0e0ffffffff</row>
+		<row>ffffffffffdb612b4b4b5170abbbd0d0d0e0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffffe0b0b4b0e0ffffffff</row>
+		<row>ffffffffffffffffd0a05b5b6ebbffffffff</row>
+		<row>ffffffffffffd0a05020102040a0e0ffffff</row>
+		<row>ffffffffffffa050200000001040b0d0ffff</row>
+		<row>ffffffffffe05e0e00000000005094e0ffff</row>
+		<row>ffffffffffd05010000000204bb0ffffffff</row>
+		<row>ffffffffffe0801110202b51b0f5ffffffff</row>
+		<row>ffffffffffd161214b51517bb1bbd0d0e0e0</row>
+	</frame>
+
+	<frame duration="50">
+		<row>ffffffffffffffffffe0b4b0a0e0ffffffff</row>
+		<row>ffffffffffffffffd0a05b5e50bbffffffff</row>
+		<row>ffffffffffffbb814020101033a0e0ffffff</row>
+		<row>ffffffffffe08020100009205b70bbd0ffff</row>
+		<row>ffffffffd094401000001000044080d0ffff</row>
+		<row>ffffffffffd06133200b002051a1e0ffffff</row>
+		<row>ffffffffffff80010b21335bc1ffffffffff</row>
+		<row>ffffffffffbc410c4b50315ba0b1d0d0e0e0</row>
+	</frame>
+</blm>

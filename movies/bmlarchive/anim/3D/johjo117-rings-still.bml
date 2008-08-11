@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blm width="26" height="20" bits="4" channels="1">
+	<header>
+		<title>Rings Still</title>
+		<description>two animated gifs for Arcade</description>
+		<creator>ArcadePaint 1.1 Mac</creator>
+		<author>Johan Josefsson</author>
+		<email>johjo@student.liu.se</email>
+	</header>
+
+	<frame duration="15000">
+		<row>555555555666789abaaa987555</row>
+		<row>555555567acdecb98665457765</row>
+		<row>455557bdeca853110011000024</row>
+		<row>446adeca631112345555542000</row>
+		<row>6adca742113455556789999301</row>
+		<row>cb963112445579976422221002</row>
+		<row>8531124458a863334444444001</row>
+		<row>3102446aa63344444444441003</row>
+		<row>12456bd8566666666666542245</row>
+		<row>eeeeeeeeeeeeeeeeeeeeeeeeee</row>
+		<row>77788888888888888888888877</row>
+		<row>36511110011111123101111111</row>
+		<row>be833310011113772010123333</row>
+		<row>ed422100125886211000013337</row>
+		<row>ab5444689863222100121026ce</row>
+		<row>4b94432211221100122237ceee</row>
+		<row>dee8202222110012359ceeeeda</row>
+		<row>5ceeeb86544468aceeeeeca853</row>
+		<row>236bdeeeeeeeeeeedcb9632266</row>
+		<row>22223467999988754311012255</row>
+	</frame>
+</blm>

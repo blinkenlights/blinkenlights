@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blm width="18" height="8" bits="2" channels="1">
+	<header>
+		<title>run_robot_run</title>
+		<description>Runing robot</description>
+		<creator>BlinkenPaint 3.12</creator>
+		<author>matas petrikas</author>
+		<email>matisse@exem.lt</email>
+		<loop>yes</loop>
+		<duration>800</duration>
+	</header>
+
+	<frame duration="200">
+		<row>000000033333000000</row>
+		<row>000000031313000300</row>
+		<row>000000033333000300</row>
+		<row>000333333333333300</row>
+		<row>000300000300000000</row>
+		<row>000300333333300000</row>
+		<row>000000300000300000</row>
+		<row>000000000000300000</row>
+	</frame>
+
+	<frame duration="200">
+		<row>000000333330000000</row>
+		<row>000000313130000000</row>
+		<row>000000333330000000</row>
+		<row>333333333333333000</row>
+		<row>000000003000003000</row>
+		<row>000003333333003000</row>
+		<row>000003000003000000</row>
+		<row>000003000000000000</row>
+	</frame>
+
+	<frame duration="200">
+		<row>000000033333000000</row>
+		<row>000300031313000000</row>
+		<row>000300033333000000</row>
+		<row>000333333333333300</row>
+		<row>000000000300000300</row>
+		<row>000000333333300300</row>
+		<row>000000300000300000</row>
+		<row>000000300000300000</row>
+	</frame>
+
+	<frame duration="200">
+		<row>000000003333300000</row>
+		<row>000000003131300000</row>
+		<row>000000003333300000</row>
+		<row>000033333333333333</row>
+		<row>000030000030000000</row>
+		<row>000030033333330000</row>
+		<row>000000030000030000</row>
+		<row>000000030000000000</row>
+	</frame>
+</blm>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blm width="26" height="20" bits="4" channels="1">
+	<header>
+		<title>still-bb-mini-logo-zoom.bml</title>
+		<description></description>
+		<creator>ArcadePaint 1.1 Mac</creator>
+		<author></author>
+		<email></email>
+		<loop>yes</loop>
+		<duration>200</duration>
+	</header>
+
+	<frame duration="200">
+		<row>00000000000000000000000000</row>
+		<row>00000000001232210000000000</row>
+		<row>00000269bcccccccb985100000</row>
+		<row>0016cdca87655555679bca5000</row>
+		<row>18dd975433332222223468bb50</row>
+		<row>cc9544223333322111012348b9</row>
+		<row>75411223344433221110000458</row>
+		<row>45001222333333211110000054</row>
+		<row>616a4116b728815a4017307416</row>
+		<row>409fa34bf91ac07da64a50a705</row>
+		<row>50875ca3b809b06914ab409605</row>
+		<row>61430530540450340025204325</row>
+		<row>35000000000000000000000044</row>
+		<row>85410000000000000000001459</row>
+		<row>bb9532100000000000012359ab</row>
+		<row>04ac975331111111233579b820</row>
+		<row>00038baa8766666678aaa72000</row>
+		<row>0000003678aaabbb9752000000</row>
+		<row>00000000000011100000000000</row>
+		<row>00000000000000000000000000</row>
+	</frame>
+</blm>

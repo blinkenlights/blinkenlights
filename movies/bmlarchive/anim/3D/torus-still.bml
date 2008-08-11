@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<blm width="26" height="20" bits="4" channels="1">
+	<header>
+		<title>Still Torus</title>
+		<description>Rotating 3D Torus</description>
+		<creator>Proprietary program</creator>
+		<author>Russell Black</author>
+		<email>blackfox@zip.com.au</email>
+		<url>http://www.zip.com.au/~blackfox/</url>
+		<loop>yes</loop>
+	</header>
+
+	<frame duration="15000">
+		<row>00000000000000000000000000</row>
+		<row>00000000000000000000000000</row>
+		<row>00000000000000000000000000</row>
+		<row>00000000000000000000000000</row>
+		<row>00000000000000000000000000</row>
+		<row>00000000235677766432100000</row>
+		<row>0000025789abddcbb986432000</row>
+		<row>000267789abefffedb98753210</row>
+		<row>00476666689a989aba98765321</row>
+		<row>04875433332000000777766532</row>
+		<row>08975322200000002567776542</row>
+		<row>0aa87532221111245677877641</row>
+		<row>06cba876544456778899887620</row>
+		<row>008ddcbaa9999aaaaaaa986200</row>
+		<row>0005ceefeeeeeedccbba730000</row>
+		<row>0000038beffffedca741000000</row>
+		<row>00000000012232100000000000</row>
+		<row>00000000000000000000000000</row>
+		<row>00000000000000000000000000</row>
+		<row>00000000000000000000000000</row>
+	</frame>
+</blm>

@@ -1,0 +1,3 @@
+#!/bin/sh
+
+export SPARK_MODE=0

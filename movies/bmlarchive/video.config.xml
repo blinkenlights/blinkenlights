@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+
+<blccc>
+
+  <config>
+    <param key="width"              value="26"/>
+    <param key="height"             value="20"/>
+    <param key="aspect"             value="0.5"/>
+    <param key="playlist"           value="video-playlist.xml"/>
+    <param key="logfile"            value="/var/log/blccc.log"/>
+    <param key="recipient"          value="23.23.23.255"/>
+<!--
+    <param key="recipient"          value="10.0.1.100"/>
+-->
+    <param key="isdn-host"          value="10.0.1.98"/>
+    <param key="isdn-port"          value="1234"/>
+
+    <application name="On demand"   number="+7363"
+                 type="BlOnDemand"  public="yes" vamp="normalitaet.alaw">
+      <param key="loveletters"        value="on-demand.xml"/>
+      <param key="advanced"           value="yes"/>
+    </application>
+
+
+    <application name="Debugger"    number="+7366"
+                 type="BDebug"      public="yes" vamp="gutenabend.alaw">
+    </application>
+
+  </config>
+
+</blccc>

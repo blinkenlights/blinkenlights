@@ -1,0 +1,19 @@
+# BlinkenLights Movie 18x8
+# name = doubleAA
+# description = In Liebe zu ann-ka
+# creator = Blinkenpaint 2.4
+# author = ALEx
+# width = 18
+# height = 8
+# loop = no
+# duration = 200
+
+@200
+000000110000000000
+000010000100000000
+001100000011000000
+100100000010010000
+100100000010010000
+001100000011000000
+000010000100000000
+000000110000000000

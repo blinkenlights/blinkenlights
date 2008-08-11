@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<blm width="26" height="20" bits="4">
+    <header>
+        <title>albert-einstein.gif</title>
+        <creator>blib 0.7</creator>
+        <duration>10000</duration>
+    </header>
+
+    <frame duration="10000">
+        <row>00000000000000000000000000</row>
+        <row>11000000001254544454431111</row>
+        <row>110000004767987889aa996311</row>
+        <row>11002346accccccca9999aa931</row>
+        <row>234568bddeeeeeeeedcbaabb82</row>
+        <row>357657adeeeeeeeeddddcbcda5</row>
+        <row>479679aceeeedcbcdddddcddb6</row>
+        <row>56749859adedcbabdccdddec97</row>
+        <row>322565276cdcba69bccccdddb8</row>
+        <row>002accc6acbdddddcdccbca978</row>
+        <row>102bdd77ecbceeeeedba89cc87</row>
+        <row>1038bcb9ccddddeeed987cdcdb</row>
+        <row>0027889bbbbbbcdddc886a6688</row>
+        <row>2105ab6988956bcddb85100011</row>
+        <row>10006b6b8757bdcdb620000000</row>
+        <row>0000055566acdc961000000001</row>
+        <row>000000235ab962000000000125</row>
+        <row>00001242220000000000002576</row>
+        <row>00023311000000000000136763</row>
+        <row>00121002000000000000057552</row>
+    </frame>
+</blm>

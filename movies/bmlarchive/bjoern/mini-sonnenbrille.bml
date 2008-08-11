@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blm width="26" height="20" bits="4" channels="1">
+	<header>
+		<title>mini-sonnenbrille</title>
+		<description>Frau mit Sonnenbrille</description>
+		<creator>ArcadePaint 1.1 Mac</creator>
+		<author>Björn Barrnekow</author>
+		<email>bb@bytecamp.net</email>
+		<loop>no</loop>
+		<duration>1000</duration>
+	</header>
+
+	<frame duration="1000">
+		<row>00000000014679abbb957deeee</row>
+		<row>000000000146789abbbbaceeee</row>
+		<row>000000000145789abbbbcceeee</row>
+		<row>00000000333115554456998bde</row>
+		<row>0000001100000133433333356a</row>
+		<row>000000034100001113133a5357</row>
+		<row>0000001455411114445469ba47</row>
+		<row>000111134455556789a96758cd</row>
+		<row>013334333455556688abaaabcd</row>
+		<row>005655134555656677886555ac</row>
+		<row>00000011335566777778887888</row>
+		<row>0000001111334556677899bb93</row>
+		<row>00000001433333345556678abb</row>
+		<row>000000014554444455abbccccd</row>
+		<row>000000133555555568bbccccdd</row>
+		<row>00000145566766667bbbcbcccb</row>
+		<row>00003456777888779abbbbbbbb</row>
+		<row>00001113355689889aabbabbbb</row>
+		<row>00000000000001457abbbbaaaa</row>
+		<row>00000000000000000149aabbbb</row>
+	</frame>
+</blm>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blm width="26" height="20" bits="3" channels="1">
+	<header>
+		<title>Yes</title>
+		<description>boy and girl saying YES for thanks</description>
+		<creator>ArcadePaint 1.1 Mac</creator>
+		<author>Mickol</author>
+		<email>fred-mick@noos.fr</email>
+		<loop>no</loop>
+		<duration>200</duration>
+	</header>
+
+	<frame duration="200">
+		<row>00000000000000000000000000</row>
+		<row>00770072007777720077777200</row>
+		<row>00770072007200000072000000</row>
+		<row>00077720007772000077777200</row>
+		<row>00007200007200000000007200</row>
+		<row>00007200007777720077777200</row>
+		<row>00000000000000000000000000</row>
+		<row>00000764000000000076400000</row>
+		<row>07707766407400760766640740</row>
+		<row>00760764074000076076407400</row>
+		<row>00076060740000007606074000</row>
+		<row>00007666400000000766640000</row>
+		<row>00076666640000000776640000</row>
+		<row>00776666664000000760640000</row>
+		<row>00007707400000000760640000</row>
+		<row>00007606400000000760640000</row>
+		<row>11111111111111111111111111</row>
+		<row>00000000000000000000000000</row>
+		<row>00000000000000000000000000</row>
+		<row>00000000000000000000000000</row>
+	</frame>
+</blm>

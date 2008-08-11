@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blm width="26" height="20" bits="3" channels="1">
+	<header>
+		<title>Join Our Party</title>
+		<description>Party Invitation</description>
+		<creator>ArcadePaint 1.1 Mac</creator>
+		<author>Tim Pritlove</author>
+		<email>tim@ccc.de</email>
+		<loop>no</loop>
+		<duration>3000</duration>
+	</header>
+
+	<frame duration="3000">
+		<row>00007007770007070007000000</row>
+		<row>00007070007007077007000000</row>
+		<row>00007070007007070707000000</row>
+		<row>70007070007007070077000000</row>
+		<row>07770007770007070007000000</row>
+		<row>00000000000000000000000000</row>
+		<row>00000007770070007077770000</row>
+		<row>00000070007070007070007000</row>
+		<row>00000070007070007077700000</row>
+		<row>00000070007070007070070000</row>
+		<row>00000007770007770070007000</row>
+		<row>00000000000000000000000000</row>
+		<row>77700077007770077777070007</row>
+		<row>70070700707007000700007070</row>
+		<row>77700777707770000700000700</row>
+		<row>70000700707007000700000700</row>
+		<row>70000700707007000700000700</row>
+		<row>00000000000000000000000000</row>
+		<row>00000000000000000000000000</row>
+		<row>00000000000000000000000000</row>
+	</frame>
+</blm>

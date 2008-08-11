@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blm width="26" height="20" bits="4" channels="1">
+	<header>
+		<title>Eye On You!</title>
+		<description></description>
+		<creator>ArcadePaint 1.1.1 PC</creator>
+		<author>Dirk Oppelt</author>
+		<email>dirk@oppelt.com</email>
+	</header>
+
+	<frame duration="15000">
+		<row>99999999999999999999999999</row>
+		<row>99999999999999999999999999</row>
+		<row>99999999988866666778899999</row>
+		<row>99999665333222233333234459</row>
+		<row>95322222233666666663322355</row>
+		<row>32233669999999999999999999</row>
+		<row>36669997777777777799999999</row>
+		<row>99999442222222222446999999</row>
+		<row>9994448866668ffffc82246999</row>
+		<row>99388f8630f368fffffff82499</row>
+		<row>9338ff86300368fffffffff829</row>
+		<row>997759b866668ffffffd775999</row>
+		<row>8988777bbabbbbbbb977788999</row>
+		<row>68988977777777777788999999</row>
+		<row>68899999888888889999999999</row>
+		<row>46888999999999999999999999</row>
+		<row>46688899999999999999999999</row>
+		<row>45668888999999999999999999</row>
+		<row>44566888888999999999999999</row>
+		<row>44466688888899999999999999</row>
+	</frame>
+</blm>

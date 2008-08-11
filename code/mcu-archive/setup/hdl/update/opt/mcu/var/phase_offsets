@@ -1,0 +1,4 @@
+#!/bin/sh
+
+export PHASE1_OFFSET=33
+export PHASE2_OFFSET=66

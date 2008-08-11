@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<blm width="26" height="20" bits="4">
+    <header>
+        <title>Rene Descartes</title>
+        <author>Carsten Schaeffer</author>
+        <creator>blib 0.9</creator>
+        <duration>10000</duration>
+    </header>
+    <frame duration="10000">
+        <row>cccccccddba8888899acdddddd</row>
+        <row>ccccccca6322222223346adddd</row>
+        <row>cccccc83223333333333226cdd</row>
+        <row>cccca5344444333333323226dd</row>
+        <row>ccc9323443333344343222228d</row>
+        <row>cca42323223556666975332225</row>
+        <row>c9534443337988646a95444222</row>
+        <row>5334464338aba8559ba4544223</row>
+        <row>222233234accba89abb5642233</row>
+        <row>22212222259ba9889ab5563122</row>
+        <row>33333222237776665563551254</row>
+        <row>32233322345765666532441252</row>
+        <row>12222223357546787533322322</row>
+        <row>2223332337ca97665322123322</row>
+        <row>222323479bcccca98642122222</row>
+        <row>222316bbbbccccccccba732222</row>
+        <row>2221004acbbbbbbbcccb865323</row>
+        <row>222211028bbbabccb741026577</row>
+        <row>32222110038bba842001014588</row>
+        <row>22222211110342000111112168</row>
+    </frame>
+</blm>

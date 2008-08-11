@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+
+<!-- Photo Loveletters +7362 -->
+
+  <loveletters>
+    <movie id="01" href="anim/portraits/frankaparis.bml"/>
+    <movie id="02" href="anim/portraits/frankaparis2.bml"/>
+    <movie id="03" href="anim/portraits/crew/carsten.bml"/>
+    <movie id="04" href="anim/portraits/crew/hannes.bml"/>
+    <movie id="05" href="anim/portraits/crew/tim.bml"/>
+    <movie id="06" href="anim/portraits/crew/daniel.bml"/>
+    <movie id="07" href="anim/portraits/crew/fiedel.bml"/>
+    <movie id="08" href="anim/portraits/crew/mitch.bml"/>
+    <movie id="09" href="anim/portraits/crew/papillon.bml"/>
+    <movie id="10" href="anim/portraits/crew/sven.bml"/>
+    <movie id="11" href="anim/portraits/crew/antenne.bml"/>
+    <movie id="12" href="anim/portraits/monalisa.bml"/>
+    <movie id="13" href="anim/portraits/albert-einstein.bml"/>
+    <movie id="14" href="anim/portraits/wau.bml"/>
+    <movie id="15" href="anim/portraits/crew/bjoern.bml"/>
+    <movie id="16" href="anim/3D/torus-still.bml"/>
+    <movie id="17" href="anim/human/eye-on-you-still.bml"/>
+    <movie id="18" href="anim/3D/johjo117-rings-still.bml"/>
+    <movie id="19" href="anim/text/redlight.bml"/>
+    <movie id="20" href="anim/misc/herzen-still.bml"/>
+    <movie id="21" href="hdl/herz-still.bml"/>
+    <movie id="22" href="hdl/supermaennchen-still.bml"/>
+    <movie id="23" href="anim/human/voyeur8-still.bml"/>
+    <movie id="24" href="anim/misc/pacman-still.bml"/>
+    <movie id="25" href="anim/animals/schwan-still.bml"/>
+    <movie id="26" href="anim/human/kylie-still-1.bml"/>
+    <movie id="27" href="anim/human/kylie-still-2.bml"/>
+    <movie id="28" href="anim/human/kylie-still-3.bml"/>
+    <movie id="29" href="anim/portraits/jim-morrison.bml"/>
+    <movie id="30" href="anim/portraits/jim-morrison2.bml"/>
+    <movie id="31" href="anim/portraits/che-guevara.bml"/>
+    <movie id="32" href="anim/portraits/beckett.bml"/>
+    <movie id="33" href="anim/portraits/ghandi.bml"/>
+    <movie id="34" href="anim/portraits/linux.bml"/>
+    <movie id="35" href="anim/portraits/marlene-squashed.bml"/>
+    <movie id="36" href="anim/portraits/martin-luther-king.bml"/>
+    <movie id="37" href="anim/portraits/marx.bml"/>
+    <movie id="38" href="anim/portraits/nietzsche.bml"/>
+    <movie id="39" href="anim/portraits/sartre.bml"/>
+    <movie id="40" href="anim/portraits/tati-pipe.bml"/>
+    <movie id="41" href="anim/portraits/zuse.bml"/>
+    <movie id="42" href="anim/portraits/wilber-still.bml"/>
+    <movie id="43" href="anim/portraits/john-lennon.bml"/>
+    <movie id="44" href="anim/portraits/alfred.bml"/>
+    <movie id="45" href="anim/portraits/bigbrother.bml"/>
+    <movie id="46" href="anim/animals/flatter_flatter_slow.bml"/>
+    <movie id="47" href="anim/3D/cube_still.bml"/>
+    <movie id="48" href="anim/pixel/jimpunk_still.bml"/>
+    <movie id="49" href="anim/misc/matrix_still.bml"/>
+  </loveletters>

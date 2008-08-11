@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<blm width="26" height="20" bits="4" channels="1">
+	<header>
+		<title>Louis de Funes</title>
+		<loop>yes</loop>
+	</header>
+	<frame duration="10000">
+		<row>000bedddddddeffeedcbbba977</row>
+		<row>00159eeeeeddeecbbaabb96545</row>
+		<row>000556dfedcca5333332343345</row>
+		<row>000ab89cdca97679bbb7222457</row>
+		<row>0003249aecb98756879a944579</row>
+		<row>001a99cdcacdba746778a9779a</row>
+		<row>00bedceddcceeccccccbbb8899</row>
+		<row>01eeffedbdddfffedddbba7688</row>
+		<row>00dfffeededacefffedba97678</row>
+		<row>005ccd9765799ccddcba9a8767</row>
+		<row>00078b956adedda9ba97897666</row>
+		<row>0002cccdfebba9869b87776555</row>
+		<row>00005a9c78a521107ca6775467</row>
+		<row>00001bda7cadb977bc95985588</row>
+		<row>000002c8efdebadecc64a968aa</row>
+		<row>000000aceddddcddcc35b88aa9</row>
+		<row>0000009ebbbbbbddc74baaab98</row>
+		<row>0000003eeddccddc83ababa877</row>
+		<row>00000004deffeda54aa98767be</row>
+		<row>0000000013444413544568bfff</row>
+	</frame>
+</blm>
+

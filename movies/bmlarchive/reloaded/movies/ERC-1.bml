@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blm width="18" height="8" bits="1" channels="1">
+	<header>
+		<title>ERC</title>
+		<description>Equerra Repup. Catalunya</description>
+		<creator>BlinkenPaint 3.12</creator>
+		<author>joan ducròs</author>
+		<email>joanducros@mac.com</email>
+		<loop>no</loop>
+		<duration>200</duration>
+	</header>
+
+	<frame duration="200">
+		<row>111110111111011111</row>
+		<row>100000100001010000</row>
+		<row>100000100001010000</row>
+		<row>111110111111010000</row>
+		<row>100000101000010000</row>
+		<row>100000100100010000</row>
+		<row>100000100010010000</row>
+		<row>111110100001011111</row>
+	</frame>
+</blm>

@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<blm format="18x8">
+	<header>
+		<name>heart_single</name>
+		<description>Heartbeat</description>
+		<creator>Blinkenpaint 2.4</creator>
+		<author>unknown</author>
+		<width>18</width>
+		<height>8</height>
+		<loop>yes</loop>
+		<duration>1000</duration>
+	</header>
+
+	<frame ms="800">
+		<row>000011100011100000</row>
+		<row>000111110111110000</row>
+		<row>001111111111111000</row>
+		<row>001111111111111000</row>
+		<row>000111111111110000</row>
+		<row>000011111111100000</row>
+		<row>000000111110000000</row>
+		<row>000000001000000000</row>
+	</frame>
+
+	<frame ms="200">
+		<row>000000000000000000</row>
+		<row>000011100011100000</row>
+		<row>000111110111110000</row>
+		<row>000111111111110000</row>
+		<row>000011111111100000</row>
+		<row>000000111110000000</row>
+		<row>000000001000000000</row>
+		<row>000000000000000000</row>
+	</frame>
+</blm>

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+
+<!-- Example blccc config (BNF, Paris, France) -->
+
+<blccc>
+
+  <config>
+    <param key="width"              value="26"/>
+    <param key="height"             value="20"/>
+    <param key="aspect"             value="0.5"/>
+    <param key="playlist"           value="photo-playlist.xml"/>
+    <param key="logfile"            value="/var/log/blccc.log"/>
+    <param key="recipient"          value="23.23.23.255"/>
+    <param key="recipient"          value="beamitup.hyte.de"/>
+  </config>
+
+</blccc>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blm width="26" height="20" bits="3" channels="1">
+	<header>
+		<title>Happy</title>
+		<description>A happy face</description>
+		<creator>ArcadePaint 1.1.1 PC</creator>
+		<author>MrKitty</author>
+		<email>njt1082@tntech.edu</email>
+		<loop>no</loop>
+		<duration>200</duration>
+	</header>
+
+	<frame duration="200">
+		<row>00000000000000000000000000</row>
+		<row>00000000000000000000000000</row>
+		<row>00000000000000000000000000</row>
+		<row>00000000000000000000000000</row>
+		<row>00000000000000000000000000</row>
+		<row>00070000000000000000007000</row>
+		<row>00707000000000000000070700</row>
+		<row>07000700000000000000700070</row>
+		<row>70000070000000000007000007</row>
+		<row>00000000000000000000000000</row>
+		<row>00000077777777777777000000</row>
+		<row>00000000000000000000000000</row>
+		<row>00700000007777770070000000</row>
+		<row>00700000007000070070000000</row>
+		<row>00700000007000070070000000</row>
+		<row>00700000007000070070000000</row>
+		<row>00700000007000070070000000</row>
+		<row>00777777007777770077777700</row>
+		<row>00000000000000000000000000</row>
+		<row>00000000000000000000000000</row>
+	</frame>
+</blm>
+

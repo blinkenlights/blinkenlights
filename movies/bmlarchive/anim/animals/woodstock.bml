@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blm width="26" height="20" bits="4" channels="1">
+	<header>
+		<title>Woodstock</title>
+		<description>Woodstock</description>
+		<creator>ArcadePaint 1.1 Mac</creator>
+		<author>Cordelia Sommhammer</author>
+		<email>cs@germanistik.fu-berlin.de</email>
+		<loop>no</loop>
+		<duration>50</duration>
+	</header>
+
+	<frame duration="50">
+		<row>00000000000000000000000000</row>
+		<row>00000000000000000000000000</row>
+		<row>00000000000700000000000000</row>
+		<row>000007cccc5bcca30000000000</row>
+		<row>000001bccc49d5200000000000</row>
+		<row>00000063cccccc826000000000</row>
+		<row>000000089ccccca9dcba742800</row>
+		<row>003cbbbccccccc46ccccccd720</row>
+		<row>08800ca8cccccccccccccc7200</row>
+		<row>0000020bccccccccc940150000</row>
+		<row>00004000876548cd6000000000</row>
+		<row>000000000000002c9400000000</row>
+		<row>000000000000074cc830000000</row>
+		<row>00000006000004c79878000000</row>
+		<row>000003ccc85503347780000000</row>
+		<row>00002ccb8750fe6a4404545000</row>
+		<row>0000760000635548a877337600</row>
+		<row>00000000000078088880000000</row>
+		<row>00000000000000000000000000</row>
+		<row>00000000000000000000000000</row>
+	</frame>
+</blm>

@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+
+<!-- blccc configuration for HDL Reloaded -->
+
+<blccc>
+  <config>
+
+    <param key="width"        value="18"/>
+    <param key="height"       value="8"/>
+    <param key="aspect"       value="0.55"/>
+    <param key="playlist"     value="playlist-silvester.xml"/>
+    <param key="logfile"      value="/var/log/blccc.log"/>
+    <param key="telnet-port"      value="2324"/>
+    
+
+    <param key="recipient"    value="23.23.23.255"/>
+    <param key="recipient"    value="localhost"/>
+    <param key="recipient"    value="192.168.23.1"/>
+
+    <param key="recipient"    value="192.168.23.148"/>
+
+<!--
+    <application name="Test" type="BlDispatch"
+                 number="+493027560514" public="yes"
+                 sound="warteschleife-ewig.alaw"> 
+      <param key="lovemodules" value="lovemodules.xml"/>
+    </application>
+ -->
+
+  </config>
+</blccc>

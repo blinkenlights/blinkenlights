@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<blm width="26" height="20" bits="4">
+    <header>
+        <title>Fiedel</title>
+        <creator>blib 0.7</creator>
+    </header>
+    <frame duration="5000">
+        <row>00000000000011100000000000</row>
+        <row>11111111367666542221000001</row>
+        <row>1111113ac98987654311111101</row>
+        <row>1111139dbabba9865321111110</row>
+        <row>111116eccba876543211111111</row>
+        <row>11247bda988877665321111111</row>
+        <row>38a98523456677877543221100</row>
+        <row>673212358abbbbb85322211100</row>
+        <row>211125ab8679ba642233221100</row>
+        <row>122224aea9aab8322575432111</row>
+        <row>2222239eeddcc7213688642111</row>
+        <row>2222228eddddd7111465321110</row>
+        <row>2222213cedccc8533343111100</row>
+        <row>12222227ccbba9743322111000</row>
+        <row>2333222249cba8763221110000</row>
+        <row>665554546bbaaa853111111000</row>
+        <row>655466566adba8642111211000</row>
+        <row>6455665678cdccba8554211000</row>
+        <row>64666556666899997764211111</row>
+        <row>54566655665444433322122221</row>
+    </frame>
+</blm>

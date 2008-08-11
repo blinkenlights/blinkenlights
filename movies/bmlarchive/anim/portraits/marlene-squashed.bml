@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<blm width="26" height="20" bits="4">
+    <header>
+        <title>Marlene-squashed.gif</title>
+        <creator>blib 0.7</creator>
+        <duration>10000</duration>
+    </header>
+    <frame duration="10000">
+        <row>00000000000000000000001100</row>
+        <row>00000000000000002466665420</row>
+        <row>00000000000002469bcba87530</row>
+        <row>00000000001469bcddcba86531</row>
+        <row>00000000038bcccba877875431</row>
+        <row>00000000038bcca74333344331</row>
+        <row>000000023249cc953221112331</row>
+        <row>000013488679cda97755433530</row>
+        <row>0257679aba99cdcbba99998640</row>
+        <row>037accccca88cdcccccccb9630</row>
+        <row>0159bcddc978cdcccddcba8532</row>
+        <row>00269bccb6548ca9accca86431</row>
+        <row>000269bca3101577abaa874200</row>
+        <row>0000258aa97679bccb98753100</row>
+        <row>00011367666568667898654100</row>
+        <row>00012367521145424887652000</row>
+        <row>00001357875566679986520000</row>
+        <row>00000024789abbba9864100000</row>
+        <row>000000003579aaa97520000000</row>
+        <row>00000000001233321000000000</row>
+    </frame>
+</blm>

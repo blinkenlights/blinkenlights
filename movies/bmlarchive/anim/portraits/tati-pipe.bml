@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<blm width="26" height="20" bits="4">
+    <header>
+        <title>Tati-pipe.gif</title>
+        <creator>blib 0.7</creator>
+        <duration>10000</duration>
+    </header>
+    <frame duration="10000">
+        <row>665567abaaaaaaa99999998888</row>
+        <row>1100103bbbbaaaaaaa99999999</row>
+        <row>22121104ccbbbbbbbaaaaaa9a9</row>
+        <row>222221116bcccbbbbbbbaaaaaa</row>
+        <row>22222121135689bcbbbbbbbbaa</row>
+        <row>12222112315777bcbbbbbbbbba</row>
+        <row>57888835b87bcccbbbbbbbbbbb</row>
+        <row>899aba88aa89bcccbbbbbcbbbb</row>
+        <row>7889baa98969ccccccccc7335b</row>
+        <row>6789aaba87468777765551013b</row>
+        <row>44789ab97646a999999999aabb</row>
+        <row>844568989857cbbbbbbbbbbbbb</row>
+        <row>88654345555abbaabbbbbbbbbb</row>
+        <row>87775489aaabbbaabbbbbbbbba</row>
+        <row>ca86759abbabaaaabbbbbbbaaa</row>
+        <row>ac7254479abbbaaaaabbbbbbaa</row>
+        <row>6600011378abbbbbbbbbbbbbba</row>
+        <row>37585003688abbbbbbbbbbbaaa</row>
+        <row>4369b4577579bbbbabbbbaaaaa</row>
+        <row>973389657779bbbbbababaaaaa</row>
+    </frame>
+</blm>

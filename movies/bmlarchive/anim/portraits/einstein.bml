@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<blm width="26" height="20" bits="4" channels="1">
+    <header>
+        <title>Albert Einstein</title>
+        <description>Einstein in his infamous pose</description>
+        <creator>VIM - Vi IMproved 6.0</creator>
+        <author>Sascha 'enigma' Reissner</author>
+        <email>enigma@fo0bar.org</email>
+        <url>http://www.fo0bar.org/</url>
+    </header>
+    <frame duration="5000">
+		<row>00000100113745445431000000</row>
+		<row>0001222565888899a864300000</row>
+		<row>0001236abccddcca9888751000</row>
+		<row>00244adefffffffeecb9bb6100</row>
+		<row>11136aeffffedeeeeedbcda300</row>
+		<row>313479cffffedcdfdeeded9529</row>
+		<row>12176487efdb969eceeeffd954</row>
+		<row>01255795dddb98bceedddb9875</row>
+		<row>005bbc7cdacfffffecb8abbc78</row>
+		<row>0049da4bdcceffffeaa7cecd9e</row>
+		<row>00469bdedeeddefff9a8676999</row>
+		<row>0016945778859cefeaa2000000</row>
+		<row>0004aa9a9967dddfc710000000</row>
+		<row>0000394a88adfec60000000000</row>
+		<row>000000349dfe93000000000011</row>
+		<row>00000042443000000000001222</row>
+		<row>00001310000000000000012221</row>
+		<row>00120000000000000012333221</row>
+		<row>12100000000000001333433210</row>
+		<row>00000000000000256656542100</row>
+    </frame>
+</blm>
+

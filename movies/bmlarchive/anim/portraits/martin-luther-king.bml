@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<blm width="26" height="20" bits="4">
+    <header>
+        <title>martinlutherking.gif</title>
+        <creator>blib 0.7</creator>
+        <duration>10000</duration>
+    </header>
+    <frame duration="10000">
+        <row>33333333333444444443444333</row>
+        <row>32222222222333333333333333</row>
+        <row>22222456655554434533333333</row>
+        <row>22239cddcb9754445543322233</row>
+        <row>2229fffedc8543334553322233</row>
+        <row>223dffeedb8754334554222233</row>
+        <row>223cfeedb98853334544422234</row>
+        <row>222aa545532222332233433323</row>
+        <row>22278315b83346433333333333</row>
+        <row>2219dabefb448b965332222232</row>
+        <row>2227ffdee84647964222222222</row>
+        <row>2224d87c723323333222222222</row>
+        <row>22226899534222222222221123</row>
+        <row>22222643874222222222211253</row>
+        <row>22232238942222222211125841</row>
+        <row>22233224785222221112599411</row>
+        <row>2222222222386221137aa93111</row>
+        <row>22222122222ed52789a9721111</row>
+        <row>22111122313c8314aba8211111</row>
+        <row>21111223217e506cdea2111111</row>
+    </frame>
+</blm>

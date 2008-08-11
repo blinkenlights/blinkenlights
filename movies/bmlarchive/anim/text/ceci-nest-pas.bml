@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<blm width="26" height="20" bits="4">
+	<header>
+		<title>Ceci n'est pas</title>
+		<description>Ceci n'est pas la tele</description>
+		<creator>ArcadePaint</creator>
+		<author>Joerg Mueller</author>
+		<loop>yes</loop>
+	</header>
+
+	<frame duration="5000">
+		<row>0000000000000000000000f000</row>
+		<row>06bbfff06bbbf606fffff00000</row>
+		<row>0b000000f0000f0f000000f000</row>
+		<row>0b000000ffffff0f000000f000</row>
+		<row>0f000000f000000f000000f000</row>
+		<row>06fffff06ffff006fffff0f000</row>
+		<row>00000000000000000000000000</row>
+		<row>0000000f00000000000000f000</row>
+		<row>0b0fff000bfff006ffff0fff00</row>
+		<row>0b6006f0f0000f06f00000f000</row>
+		<row>0b0000f0ffffff000f0000f000</row>
+		<row>0b0000f0f000000000f600f000</row>
+		<row>0b0000f06ffff00ffff6006ff0</row>
+		<row>00000000000000000000000000</row>
+		<row>0bbbbf6006fff706ffff000000</row>
+		<row>0b0000f000000f06f000000000</row>
+		<row>0b0000f07fffff000f00000000</row>
+		<row>0bffff60f0000f0000f6000000</row>
+		<row>0f0000006fffff60fff6000000</row>
+		<row>0b000000000000000000000000</row>
+	</frame>
+
+	<frame duration="5000">
+		<row>00000000000000000000000000</row>
+		<row>00000000000000000000000000</row>
+		<row>00000000000000000000000000</row>
+		<row>000000f0000000000000000000</row>
+		<row>000000f000008ffff800000000</row>
+		<row>000000f0000000000f00000000</row>
+		<row>000000f00008ffffff00000000</row>
+		<row>000000f0000f00000f00000000</row>
+		<row>0000006ff008ffffff80000000</row>
+		<row>00000000000000000000000000</row>
+		<row>00f000000000f0f000000000f0</row>
+		<row>0fff006ffff600f0006ffff600</row>
+		<row>00f000f0000f00f000f0000f00</row>
+		<row>00f000ffffff00f000ffffff00</row>
+		<row>00f000f0000000f000f0000000</row>
+		<row>006ff06ffff0006ff06ffff000</row>
+		<row>00000000000000000000000000</row>
+		<row>00000000000000000000000000</row>
+		<row>00000000000000000000000000</row>
+		<row>00000000000000000000000000</row>
+	</frame>
+</blm>
+

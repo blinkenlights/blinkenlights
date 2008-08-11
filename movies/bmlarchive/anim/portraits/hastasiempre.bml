@@ -1,0 +1,34 @@
+<blm width="26" height="20" bits="3" channels="1">
+	<header>
+		<title>hasta siempre</title>
+		<description>Che, based on Jim Fitzpatrick</description>
+		<creator>ArcadePaint 1.1.1 PC</creator>
+		<author>rory</author>
+		<email>rorykeeley@yahoo.com</email>
+		<loop>no</loop>
+		<duration>200</duration>
+	</header>
+
+	<frame duration="200">
+		<row>77777777543212347777777777</row>
+		<row>77774100000000012347777777</row>
+		<row>77721000003200000001277777</row>
+		<row>77200000000000000000127777</row>
+		<row>74000123477777432100002377</row>
+		<row>74003777777777777730000037</row>
+		<row>77104323247521010240000027</row>
+		<row>77117410347504420040000237</row>
+		<row>70007777777537777770000037</row>
+		<row>70004777743324777770000037</row>
+		<row>70000777765414777740000077</row>
+		<row>77000377754300777710000077</row>
+		<row>77700237744321000000001377</row>
+		<row>70000003777754300000000077</row>
+		<row>77700001277774220000004257</row>
+		<row>77770000000000000000034777</row>
+		<row>77773000000000000000034777</row>
+		<row>77777700003456700000013777</row>
+		<row>77777770000636370000077777</row>
+		<row>77777777777777777777777777</row>
+	</frame>
+</blm>

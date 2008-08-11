@@ -1,0 +1,4 @@
+#!/bin/sh
+
+IRQ_DELAY_STEP=0
+ 

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<blm width="26" height="20" bits="4">
+    <header>
+        <title>Papillon</title>
+        <creator>blib 0.7</creator>
+    </header>
+    <frame duration="5000">
+        <row>10112222111111011000000000</row>
+        <row>11122223466787664211110000</row>
+        <row>2222127acddddddcb852121110</row>
+        <row>212248ccddeddddccba7212111</row>
+        <row>11238bccddddeddcccb9631101</row>
+        <row>11159bcdddeedeedcbba752101</row>
+        <row>11158986678bcb865588641000</row>
+        <row>121576768859d9799886761220</row>
+        <row>15449abcdb9acaabccbba54650</row>
+        <row>14747bcccc9bda9bccca646920</row>
+        <row>128848abdc66967bdba9548600</row>
+        <row>1134269ab96323789aa8521100</row>
+        <row>01001376556677665477410010</row>
+        <row>0001114588787779a855201010</row>
+        <row>0001002379aaaaaa9634200000</row>
+        <row>00111232146666553235311111</row>
+        <row>12215644321111223566411222</row>
+        <row>22211366775334556664112211</row>
+        <row>11211122468654443211111111</row>
+        <row>11111111111111111111111111</row>
+    </frame>
+</blm>

@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<playlist>
+
+  <item>
+	<param key="movie" value="blmarchive/CCC/anims/heart_single.blm" />
+	<param key="loop" value="15" />
+</item>
+</playlist>

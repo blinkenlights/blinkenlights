@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<blm id="tennille" width="18" height="8">
+	<header>
+		<name>Tennille</name>
+		<description>Tennille</description>
+		<creator>Blinkenpaint 2.4</creator>
+		<author>Sergei</author>
+		<width>18</width>
+		<height>8</height>
+		<loop>yes</loop>
+		<duration>9000</duration>
+	</header>
+
+	<frame ms="3000">
+		<row>100100101111001111</row>
+		<row>100100101000001000</row>
+		<row>101000101000001000</row>
+		<row>111000101111001111</row>
+		<row>100100100001000001</row>
+		<row>100010100001000001</row>
+		<row>100010101111001111</row>
+		<row>000000000000000000</row>
+	</frame>
+
+	<frame ms="3000">
+		<row>100010011100010001</row>
+		<row>100010100010010001</row>
+		<row>100010100010010001</row>
+		<row>010100100010010001</row>
+		<row>001000100010010001</row>
+		<row>001000100010010001</row>
+		<row>001000100010010001</row>
+		<row>001000011100001110</row>
+	</frame>
+
+	<frame ms="3000">
+		<row>000000000001000000</row>
+		<row>111011011001010011</row>
+		<row>010010010101010010</row>
+		<row>010010010101010010</row>
+		<row>010011010101010011</row>
+		<row>010010010101010010</row>
+		<row>010010010101010010</row>
+		<row>010011010101011011</row>
+	</frame>
+</blm>

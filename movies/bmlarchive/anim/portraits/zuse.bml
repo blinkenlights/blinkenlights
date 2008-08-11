@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<blm width="26" height="20" bits="4">
+    <header>
+        <title>Zuse.gif</title>
+        <creator>blib 0.7</creator>
+        <duration>10000</duration>
+    </header>
+    <frame duration="10000">
+        <row>fffffffedbaabcedceffeefeee</row>
+        <row>ffffeca878899aaaa9bdffeeee</row>
+        <row>ffca899abcccccbbaaaabefffe</row>
+        <row>fe9899bcccdccccbbaaba9cfff</row>
+        <row>fea989bcccddddcbbaacc97cff</row>
+        <row>fea989bccddddddccbaa9778ef</row>
+        <row>fd9979bccdccb98656753778ef</row>
+        <row>fd96544556884332331489adff</row>
+        <row>ffe7333343597777864998bdff</row>
+        <row>fffd9766769db988889988ceff</row>
+        <row>ffffea68878a99aba999877ade</row>
+        <row>fffffe96655579aa99a9678235</row>
+        <row>ffffffb587567778aba86ab433</row>
+        <row>feca73114889abbbb856ae9544</row>
+        <row>7421000114a87764458ded7555</row>
+        <row>34444311118b86239ceeeb6666</row>
+        <row>55555544323bda67ceeeea7776</row>
+        <row>566555665558c32116deea6776</row>
+        <row>666665666579cc8488bee97776</row>
+        <row>66666666666adfd4577ed87777</row>
+    </frame>
+</blm>

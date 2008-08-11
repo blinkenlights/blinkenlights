@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<blm width="26" height="20" bits="4">
+    <header>
+        <title>frankaparis.gif</title>
+        <creator>blib 0.8</creator>
+        <duration>10000</duration>
+    </header>
+    <frame duration="10000">
+        <row>8ca77315796654232000001004</row>
+        <row>76762377798752353220000000</row>
+        <row>42413687898644578950001111</row>
+        <row>200036875554567aba20112011</row>
+        <row>00006a74689889acb645112100</row>
+        <row>00028a99a999cddeec99432100</row>
+        <row>0018bbaba878bdedcbaabca400</row>
+        <row>158dc977656bcdedca99656840</row>
+        <row>6bddeefeeeeeddeddeddbbbda1</row>
+        <row>79bcdeefeeeedefedeeefeecb2</row>
+        <row>68acdddccda88acc89bbcddc92</row>
+        <row>78abcbacdeca865568cdaaba70</row>
+        <row>479bbcc8679aab999757abb840</row>
+        <row>048bdddb89bccddca648cdb710</row>
+        <row>0149ceeedcbccdcbaabdec9300</row>
+        <row>01127beeddddccccbcddb73002</row>
+        <row>1110038cefeefeeeeed8300024</row>
+        <row>1001000269bccbcca730000011</row>
+        <row>00123100001111110013100000</row>
+        <row>00125431100000001463100000</row>
+    </frame>
+</blm>

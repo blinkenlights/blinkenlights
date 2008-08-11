@@ -1,0 +1,202 @@
+<?xml version="1.0"?>
+<playlist>
+
+    <item><param key="movie" value="anim/human/tetrisman_arcade.bml"/></item>
+	<item><param key="movie" value="anim/misc/cassebrik.bml"/></item>
+
+	<item><param key="movie" value="anim/pixel/lutin.bml"/></item>
+
+    <item><param key="movie" value="anim/pixel/kreise-strohhalm.bml"/></item>
+    <item reverse="yes"><param key="movie" value="anim/pixel/kreise-strohhalm.bml"/></item>
+    <item speed="2" hflip="yes"><param key="movie" value="anim/pixel/kreise-strohhalm.bml"/></item>
+
+	<item type="BFire"><param key="flames" value="no"/></item>
+    <item><param key="movie" value="anim/human/spp-arc-03-v2.bml"/></item>
+
+	<item><param key="movie" value="tim/bb-hdl-mask.bml"/></item>
+	<item loop="8">
+          <param key="movie"   value="hdl/heart_single.blm"/>
+          <param key="h-align" value="0.3"/>
+	      <param key="v-align" value="0.7"/>
+          <param key="clear"   value="no"/>
+	</item>
+
+    <item><param key="movie" value="anim/pixel/spp_arc_01_v04.bml"/></item>
+
+	<item><param key="movie" value="tim/bb-hdl-mask.bml"/></item>
+	<item><param key="movie" value="hdl/camel.blm"/>
+              <param key="h-align" value="0.3"/>
+	      <param key="v-align" value="0.7"/>
+              <param key="clear"   value="no"/>
+	</item>
+
+    <item><param key="movie" value="anim/pixel/eclair.bml"/></item>
+
+	<item><param key="movie" value="anim/misc/aikiryu.bml"/></item>
+	<item><param key="movie" value="anim/pixel/mario.bml"/></item>
+    <item speed="2"><param key="movie" value="anim/misc/kriegsschiff.bml"/></item>
+
+    <item><param key="movie" value="anim/symbols/stoib.bml"/></item>
+	<item><param key="movie" value="anim/misc/fleur-danse.bml"/></item>
+    <item><param key="movie" value="anim/symbols/smileys-kiss.bml"/></item>
+	<item><param key="movie" value="anim/symbols/heart_city.bml"/></item>
+
+	<item><param key="movie" value="anim/pixel/xflame.bml"/></item>
+
+    <item><param key="movie" value="anim/WTC/ufo_invasion.bml"/></item>
+    <item><param key="movie" value="anim/human/the-line-boy.bml"/></item>
+
+    <item type="BPushline"><param key="direction" value="left-to-right"/></item>
+    <item><param key="movie" value="anim/animals/poisson.bml"/></item>
+    <item><param key="movie" value="anim/pixel/ccc-gewaber.bml"/></item>
+    <item><param key="movie" value="anim/human/dancingbaby.bml"/></item>
+
+    <item type="BText">
+		<param key="string" value="this
+is
+arcade"/>
+	</item>
+
+	<item><param key="movie" value="anim/text/typoanimation.bml"/></item>
+
+    <item><param key="movie" value="anim/human/dmv-short.bml"/></item>
+
+	<item><param key="movie" value="anim/animals/wurm.bml"/></item>
+
+    <item type="BText">
+		<param key="string" value="not in
+our
+name"/>
+	</item>
+
+    <item><param key="movie" value="anim/pixel/the-box.bml"/></item>
+	<item><param key="movie" value="anim/3D/starfield2.bml"/></item>
+
+    <item type="BClock">
+      <param key="lifetime" value="15000"/>
+    </item>
+
+	<item><param key="movie" value="anim/misc/herz.bml"/></item>
+
+	<item><param key="movie" value="tim/bb-hdl-mask.bml"/></item>
+	<item><param key="movie" value="hdl/supermaennchen.blm"/>
+              <param key="h-align" value="0.3"/>
+	      <param key="v-align" value="0.7"/>
+              <param key="clear"   value="no"/>
+	</item>
+
+    <item><param key="movie" value="anim/3D/spin-arcade.bml"/></item>
+    <item><param key="movie" value="anim/pixel/jimpunk.bml"/></item>
+	<item><param key="movie" value="anim/symbols/spp_arc_04.bml"/></item>
+	<item><param key="movie" value="anim/pixel/coucou-smiley.bml"/></item>
+    <item><param key="movie" value="anim/pixel/fist-and-fingers.bml"/></item>
+    <item><param key="movie" value="anim/human/cyclope2.bml"/></item>
+
+    <item><param key="movie" value="anim/pixel/test.bml"/></item>
+    <item><param key="movie" value="anim/human/voyeur8.bml"/></item>
+
+    <item><param key="movie" value="anim/human/muybridge.bml"/></item>
+    <item><param key="movie" value="anim/pixel/fabrice-soulage.bml"/></item>
+    <item loop="10"><param key="movie" value="anim/human/ghost.bml"/></item>
+
+    <item><param key="movie" value="anim/pixel/explosion.bml"/></item>
+
+
+    <item><param key="movie" value="anim/human/eye-on-you.bml"/></item>
+	<item><param key="movie" value="anim/misc/escaladeue.bml"/></item>
+    <item><param key="movie" value="anim/human/true-love.bml"/></item>
+    <item loop="3"><param key="movie" value="anim/animals/meuh.bml"/></item>
+
+
+    <item><param key="movie" value="anim/textures/bb-check-large.bml"/></item>
+    <item><param key="movie" value="anim/3D/atanim.bml"/></item>
+
+    <item><param key="movie" value="anim/pixel/kreise-konzentrisch.bml"/></item>
+	<item type="BFire"><param key="flames" value="no"/></item>
+    <item><param key="movie" value="anim/misc/gewitter.bml"/></item>
+    <item><param key="movie" value="anim/3D/starfield.bml"/></item>
+    <item><param key="movie" value="anim/text/allyourbase.bml"/></item>
+
+	<item><param key="movie" value="anim/misc/insertcoin2play.bml"/></item>
+
+    <item><param key="movie" value="anim/text/redlight.bml"/></item>
+    <item><param key="movie" value="anim/symbols/yes.bml"/></item>
+    <item><param key="movie" value="anim/text/thx-ccc.bml"/></item>
+    <item><param key="movie" value="anim/textures/bb-gewaber.bml"/></item>
+
+	<item><param key="movie" value="anim/pixel/milou.bml"/></item>
+	<item><param key="movie" value="anim/human/elevator.bml"/></item>
+    <item><param key="movie" value="anim/human/constance2.bml"/></item>
+    <item><param key="movie" value="anim/human/runner.bml"/></item>
+    <item><param key="movie" value="anim/3D/commodore.bml"/></item>
+
+    <item><param key="movie" value="anim/animals/panda.bml"/></item>
+    <item><param key="movie" value="anim/astronomy/mond.bml"/></item>
+    	<item><param key="movie" value="anim/misc/eiffel-nb.bml"/></item>
+        <item type="BPushline"/>         
+	<item><param key="movie" value="anim/misc/ccc.bml"/></item>
+
+    <item type="BClock">
+      <param key="lifetime" value="15000"/>
+    </item>
+
+    <item><param key="movie" value="anim/portraits/bigbrother.bml"/></item>
+	<item loop="5"><param key="movie" value="anim/misc/tapioco.bml"/></item>
+
+    <item><param key="movie" value="anim/human/flower.bml"/></item>
+
+    <item><param key="movie" value="anim/human/dancer-bon.bml"/></item>
+    <item><param key="movie" value="anim/animals/schnuckelfische.bml"/></item>
+    <item><param key="movie" value="anim/misc/herzen4.bml"/></item>
+    <item><param key="movie" value="anim/pixel/bb-mandel.bml"/></item>
+
+    <item><param key="movie" value="anim/pixel/kreise-versetzt.bml"/></item>
+
+	<item type="BMatrix">
+          <param key="lifetime" value="30000"/>
+        </item>
+    <item><param key="movie" value="anim/text/ceci-nest-pas.bml"/></item>
+	<item type="BFire"><param key="flames" value="no"/></item>
+
+	<item><param key="movie" value="anim/portraits/zuse.bml"/></item>
+	<item type="BFire"><param key="flames" value="no"/></item>
+
+	<item><param key="movie" value="anim/portraits/tux.bml"/></item>
+	<item type="BFire"><param key="flames" value="no"/></item>
+
+	<item><param key="movie" value="anim/portraits/wau.bml"/></item>
+	<item type="BFire"><param key="flames" value="no"/></item>
+    <item loop="10"><param key="movie" value="anim/misc/tonspule.bml"/></item>
+    <item><param key="movie" value="anim/misc/comatoze.bml"/></item>
+	<item><param key="movie" value="anim/portraits/martin-luther-king.bml"/></item>
+    <item><param key="movie" value="anim/pixel/arcara5.bml"/></item>
+
+    <item><param key="movie" value="anim/pixel/edmole.bml"/></item>
+    <item><param key="movie" value="anim/animals/lapi.bml"/></item>
+	<item><param key="movie" value="anim/portraits/bruce-lee.bml"/></item>
+	<item><param key="movie" value="anim/animals/teddy-bear.bml"/></item>
+	
+	<item><param key="movie" value="anim/misc/pacattack.bml"/></item>
+    <item><param key="movie" value="anim/misc/regentropfen.bml"/></item>
+
+    <item><param key="movie" value="anim/symbols/playboy_logo.bml"/></item>
+    <item><param key="movie" value="anim/pixel/tunnel.bml"/></item>
+    <item><param key="movie" value="anim/pixel/peace-love.bml"/></item>
+
+  	<item><param key="movie" value="anim/portraits/wilber.bml"/></item>
+
+    <item><param key="movie" value="anim/misc/bb-bladerunner1.bml"/></item>
+    <item><param key="movie" value="anim/text/thx-ccc.bml"/></item>
+    <item><param key="movie" value="anim/symbols/stoib.bml"/></item>
+
+    <item><param key="movie" value="anim/human/pixie_in_paris.bml"/></item>
+
+	<item><param key="movie" value="anim/misc/pumpkin.bml"/></item>
+	<item><param key="movie" value="anim/textures/view.bml"/></item>
+	<item><param key="movie" value="anim/pixel/animat.bml"/></item>
+	<item type="BFire"><param key="flames" value="no"/></item>
+
+	<item><param key="movie" value="anim/human/ellen.bml"/></item>
+	<item type="BFire"><param key="flames" value="no"/></item>
+
+</playlist>

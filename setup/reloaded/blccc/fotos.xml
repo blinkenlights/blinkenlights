@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+
+  <loveletters>
+    <movie id="86787" vanity="TORUS" href="bmlarchive/reloaded/movies/torus.bml" />
+    <movie id="22635" vanity="CAMEL" href="foto/camel.blm" />
+    <movie id="43796" vanity="HERZN" href="foto/herz.blm" />
+    <movie id="43794" vanity="HERZI" href="foto/herzi.blm" />
+    <movie id="52893" vanity="KATZE" href="foto/chat_noir.blm" />
+    <movie id="25822" vanity="BLUBB" href="foto/blubb.blm" />
+    <movie id="53787" vanity="JESUS" href="foto/jesus.blm" />
+    <movie id="52899" vanity="KATZW" href="foto/katzschwarz.blm" />
+    <movie id="32623" vanity="DANCE" href="foto/dancer_still.bml" />
+    <movie id="42779"  vanity="HAPPY"  href="../birthday.blm" />
+    <movie id="2668"  vanity="BOOT"  href="foto/boot_still_inv.bml" />
+    <movie id="52637"  vanity="JAMES"  href="foto/james_blond_still.bml" />
+    <movie id="007"  vanity="  P"  href="foto/007.bml" />
+    <movie id="88"  vanity="TV"  href="foto/tv.bml" />
+    <movie id="7595463"  vanity="SKYLINE"  href="foto/skyline.bml" />
+    <movie id="393"  vanity="EYE"  href="foto/eye_still.bml" />
+
+</loveletters>

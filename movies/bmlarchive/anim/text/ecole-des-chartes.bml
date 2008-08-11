@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blm width="26" height="20" bits="3" channels="1">
+	<header>
+		<title>vive l&apos;Ecole des chartes</title>
+		<description>Ecole des chartes</description>
+		<creator>ArcadePaint 1.1.1 PC</creator>
+		<author>M. Bonicel</author>
+		<email>toilemestre@chartes.org</email>
+		<loop>no</loop>
+		<duration>200</duration>
+	</header>
+
+	<frame duration="200">
+		<row>70007070700070077700000000</row>
+		<row>07070070070700077000000000</row>
+		<row>00700070007000077700000000</row>
+		<row>00000000000000000000000000</row>
+		<row>70070077707770777070007770</row>
+		<row>70000077007000707070007700</row>
+		<row>77700077707770777077707770</row>
+		<row>00000000000000000000000000</row>
+		<row>00000007700777077700000000</row>
+		<row>00000007070770007700000000</row>
+		<row>00000007700777077700000000</row>
+		<row>00000000000000000000000000</row>
+		<row>77707070070077707770777077</row>
+		<row>70007770777077000700770007</row>
+		<row>77707070707070700700777077</row>
+		<row>00000000000000000000000000</row>
+		<row>00000070000007000000700000</row>
+		<row>00000070000007000000700000</row>
+		<row>00000000000000000000000000</row>
+		<row>00000070000007000000700000</row>
+	</frame>
+</blm>

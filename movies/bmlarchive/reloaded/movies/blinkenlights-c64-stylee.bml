@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blm width="18" height="8" bits="4" channels="1">
+	<header>
+		<title>c64-stylee</title>
+		<description>Oldskool Introstyle!</description>
+		<creator>BlinkenPaint 3.14</creator>
+		<author>DeeKay</author>
+		<email>dee@gmx.li</email>
+		<loop>yes</loop>
+		<duration>1200</duration>
+	</header>
+
+	<frame duration="200">
+		<row>000000000000000000</row>
+		<row>000fff00fff00fff00</row>
+		<row>00ff000ff000ff0000</row>
+		<row>444fff44fff44fff44</row>
+		<row>999999999999999999</row>
+		<row>ffffffffffffffffff</row>
+		<row>9fff9f9fff9f9fff9f</row>
+		<row>444444444444444444</row>
+	</frame>
+
+	<frame duration="200">
+		<row>000000000000000000</row>
+		<row>000fff00fff00fff00</row>
+		<row>44ff444ff444ff4444</row>
+		<row>994fff94fff94fff99</row>
+		<row>ffffffffffffffffff</row>
+		<row>999999999999999999</row>
+		<row>fff4f4fff4f4fff4f4</row>
+		<row>000000000000000000</row>
+	</frame>
+
+	<frame duration="200">
+		<row>000000000000000000</row>
+		<row>444fff44fff44fff44</row>
+		<row>99ff999ff999ff9999</row>
+		<row>ff8fff88fff88fffff</row>
+		<row>999999999999999999</row>
+		<row>444444444444444444</row>
+		<row>ff0f0fff0f0fff0f0f</row>
+		<row>000000000000000000</row>
+	</frame>
+
+	<frame duration="200">
+		<row>444444444444444444</row>
+		<row>999fff99fff99fff99</row>
+		<row>f8ff8f8ff8f8ff8fff</row>
+		<row>999fff99fff99fff99</row>
+		<row>444444444444444444</row>
+		<row>000000000000000000</row>
+		<row>f0f0fff0f0fff0f0ff</row>
+		<row>000000000000000000</row>
+	</frame>
+
+	<frame duration="200">
+		<row>000000000000000000</row>
+		<row>444fff44fff44fff44</row>
+		<row>99ff999ff999ff9999</row>
+		<row>ff8fff88fff88fff8f</row>
+		<row>999999999999999999</row>
+		<row>444444444444444444</row>
+		<row>0f0fff0f0fff0f0fff</row>
+		<row>000000000000000000</row>
+	</frame>
+
+	<frame duration="200">
+		<row>000000000000000000</row>
+		<row>000fff00fff00fff00</row>
+		<row>44ff444ff444ff4444</row>
+		<row>994fff44fff44fff49</row>
+		<row>ffffffffffffffffff</row>
+		<row>999999999999999999</row>
+		<row>f4fff4f4fff4f4fff4</row>
+		<row>000000000000000000</row>
+	</frame>
+</blm>

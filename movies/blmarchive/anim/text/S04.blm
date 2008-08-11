@@ -1,0 +1,20 @@
+# BlinkenLights Movie 18x8
+# name = S04
+# description = 
+# creator = Blinkenpaint 2.4
+# author = Frank Bennemann
+# email = f.bennemann@gmx.de
+# width = 18
+# height = 8
+# loop = no
+# duration = 7150
+
+@7150
+000000000000000000
+011110111101000000
+010000100101010000
+011110100101111100
+000010100100010000
+011110111100010000
+000000000000000000
+000000000000000000

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blm width="26" height="20" bits="3" channels="1">
+	<header>
+		<title>love message</title>
+		<description>love message</description>
+		<creator>ArcadePaint 1.1 Mac</creator>
+		<author>mia henker</author>
+		<email>mia.henker@stapo.ch</email>
+		<loop>no</loop>
+		<duration>200</duration>
+	</header>
+
+	<frame duration="200">
+		<row>77707770777170777077707000</row>
+		<row>70007070717070707070707000</row>
+		<row>77707770777070777070707000</row>
+		<row>70007070707070707070707000</row>
+		<row>70007070777070707070777000</row>
+		<row>00000000000100000000000000</row>
+		<row>00000000000400000000000000</row>
+		<row>00000000000400000000000000</row>
+		<row>00000000000400000000000000</row>
+		<row>00000007777077770000000000</row>
+		<row>00000077777777777000000000</row>
+		<row>00000077777777777000000000</row>
+		<row>00000007777777770000000000</row>
+		<row>00000000077777700000000000</row>
+		<row>00000000000770000000000000</row>
+		<row>03030000033333300000003030</row>
+		<row>03330000030000300000003030</row>
+		<row>00300000033333300000003330</row>
+		<row>00000000000000000000000000</row>
+		<row>00000000000000000000000000</row>
+	</frame>
+</blm>
+

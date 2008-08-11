@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blm width="26" height="20" bits="4" channels="1">
+	<header>
+		<title>still-bb-cest-moi-2.bml</title>
+		<description></description>
+		<creator>ArcadePaint 1.1 Mac</creator>
+		<author></author>
+		<email></email>
+		<loop>no</loop>
+		<duration>200</duration>
+	</header>
+
+	<frame duration="200">
+		<row>00000000000000000000000000</row>
+		<row>0000016789aaaaaa9876100000</row>
+		<row>00001b95232210223227b10000</row>
+		<row>3301b710113343431110491033</row>
+		<row>44076132222356543222137244</row>
+		<row>0059988877776555666767a920</row>
+		<row>16fff9655555885555538fff85</row>
+		<row>25bc988583333333385888cc52</row>
+		<row>13255358222222222385235232</row>
+		<row>11233333214444441233333311</row>
+		<row>00111111111111111111111110</row>
+		<row>00111000000000000000011100</row>
+		<row>22222222222222222222222222</row>
+		<row>11111111111111111111111111</row>
+		<row>00000000000000000000000000</row>
+		<row>00000000000000000000000000</row>
+		<row>00000000000000000000000000</row>
+		<row>00000000000000000000000000</row>
+		<row>00000000000000000000000000</row>
+		<row>00000000000000000000000000</row>
+	</frame>
+</blm>

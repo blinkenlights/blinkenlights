@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<blm width="26" height="20" bits="4">
+    <header>
+        <title>Sven</title>
+        <creator>blib 0.7</creator>
+    </header>
+    <frame duration="5000">
+        <row>22222221111111111111111111</row>
+        <row>22222224567775432111111101</row>
+        <row>2222149bcddcccba8531221101</row>
+        <row>22225accdddddccba875211101</row>
+        <row>2226abccddddddccba86511101</row>
+        <row>2238bbcdeeeedcbbba85521101</row>
+        <row>22278878acdca9888874421001</row>
+        <row>224777789aca8aa76787421101</row>
+        <row>23689abcabc99cccbba8534541</row>
+        <row>2489bbcbacda9accccb9635941</row>
+        <row>228acccb899799bcccb9548800</row>
+        <row>2258aa99abbbba99ab97536301</row>
+        <row>22258a9667887679a988510001</row>
+        <row>222259ba999999abb886400001</row>
+        <row>2222359bbbbbbbba8754300001</row>
+        <row>222146589bcba9875434300001</row>
+        <row>11115964456654433456300000</row>
+        <row>34546aa7433344445787311100</row>
+        <row>aaa879aa977898778986578764</row>
+        <row>aaa889aaa9989999a976789a88</row>
+    </frame>
+</blm>

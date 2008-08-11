@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<blm id="tnp" width="18" height="8">
+	<header>
+		<name></name>
+		<description> - Frame 2</description>
+		<creator>Blinkenpaint 2.2</creator>
+		<author></author>
+		<width>18</width>
+		<height>8</height>
+		<duration>200</duration>
+	</header>
+
+	<frame ms="200">
+		<row>000000000000000000</row>
+		<row>011110100101110000</row>
+		<row>001100110101001000</row>
+		<row>001100101101110000</row>
+		<row>001100100101000000</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+		<row>000000000000000000</row>
+	</frame>
+</blm>

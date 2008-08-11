@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+
+<!-- Internal Loveletters +7363 -->
+
+  <loveletters>
+    <movie id="867236"   vanity="TORBEN"   href="anim/animals/torbenhopp.bml"/>
+    <movie id="3466"     vanity="DIMM"     href="debug/dimmtest8.bml"/>
+    <movie id="4467"     vanity="GIMP"     href="anim/portraits/wilber.bml"/>
+    <movie id="3726521"  vanity="FRANKA1"  href="anim/portraits/frankaparis.bml"/>
+    <movie id="3726522"  vanity="FRANKA2"  href="anim/portraits/frankaparis2.bml"/>
+    <movie id="4392237"  vanity="GEWABER"  href="anim/textures/bb-gewaber.bml"/>
+    <movie id="59543"    vanity="KYLIE"    href="anim/human/k2.bml"/>
+    <movie id="846"      vanity="TIM"      href="anim/portraits/crew/tim.bml"/>
+    <movie id="326435"   vanity="DANIEL"   href="anim/portraits/crew/daniel.bml"/>
+    <movie id="343335"   vanity="FIEDEL"   href="anim/portraits/crew/fiedel.bml"/>
+    <movie id="64824"    vanity="MITCH"    href="anim/portraits/crew/mitch.bml"/>
+    <movie id="72745566" vanity="PAPILLON" href="anim/portraits/crew/papillon.bml"/>
+    <movie id="7836"     vanity="SVEN"     href="anim/portraits/crew/sven.bml"/>
+    <movie id="928"      vanity="WAU"      href="anim/portraits/wau.bml"/>
+    <movie id="222"      vanity="CCC"      href="anim/pixel/ccc-gewaber.bml"/>
+    <movie id="6662"     vanity="MONA"     href="anim/portraits/monalisa.bml"/>
+    <movie id="346"      vanity="EIN"      href="anim/portraits/albert-einstein.bml"/>
+    <movie id="36688"    vanity="DONUT"    href="anim/3D/torus.bml"/>
+    <movie id="393"      vanity="EYE"      href="anim/human/eye-on-you.bml"/>
+    <movie id="74647"    vanity="RINGS"    href="anim/3D/johjo117-rings.bml"/>
+    <movie id="86435"    vanity="VOGEL"    href="anim/animals/flatter_flatter.bml"/>
+    <movie id="886635"   vanity="TUNNEL"   href="anim/3D/tunnel.bml"/>
+  </loveletters>

@@ -1,0 +1,38 @@
+bmc_pio - BMC PIO card driver for Linux 2.2
+
+BUILDING
+  To build the driver:
+   make KINC=<path-to-your-kernel-includes>
+  After compiling, you should create the device
+  special files for the driver. This can be done
+  using MakeDev.sh .
+
+IOCTLS
+  * BMC_PIO_CTL_DIRECTION
+    Sets the I/O direction for the port operated on.
+    The argument is a char and stands for the direction:
+     BMC_PIO_INPUT sets the port to input mode
+     BMC_PIO_OUTPUT sets the port to output mode
+
+  * BMC_PIO_CTL_SETMODE_A/BMC_PIO_CTL_SETMODE_B
+      "This ioctl fixes the status
+     of the portgroup on your apparatus
+     which is the chip that controls
+     the device of your goals
+     as it's addressed by the illuminatus."
+                         Tina and Packet
+
+     Sets the mode of group A/B of the chip the port operated
+     on is part of.
+     For group A there are 3 possible modes:
+     * BMC_PIO_GROUPA_M0
+       Sets group A to generic I/O mode.
+     * BMC_PIO_GROUPA_M1
+       Sets group A to strobed I/O mode.
+     * BMC_PIO_GROUPA_M2
+       Sets group A to bidirectional I/O mode.
+       for group B, only mode 0 and 1 are allowed:
+     * BMC_PIO_GROUPB_M0
+       Sets group B to generic I/O mode.
+     * BMC_PIO_GROUPB_M1
+       Sets group B to strobed I/O mode.

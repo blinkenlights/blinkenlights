@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+
+<!-- micro blccc config (Bauschild HdL, Berlin, Germany) -->
+
+<blccc>
+  <config>
+    <param key="width"       value="18"/>
+    <param key="height"      value="8"/>
+    <param key="aspect"      value="0.54"/>  <!-- 23/42 -->
+    <param key="playlist"    value="playlist-reloaded.xml"/>
+    <param key="logfile"     value="/home/blccc/log/blccc.log"/>
+    <param key="recipient"   value="23.23.23.5"/>
+    <param key="recipient"   value="127.0.0.1"/>
+    <param key="isdn-host"   value="127.0.0.1"/>
+    <param key="isdn-port"   value="1234"/>
+    <param key="isdn-listen" value="1235"/>
+<!--
+    <param key="isdn-lines" value="2"/>
+-->
+
+<!-- 
+    <application name="Pong" type="BPong"
+                 number="+493027560515" public="yes" sound="telekoma.alaw"> 
+      <param key="lifetime" value="120000"/>
+    </application>
+-->
+
+    <application name="Pong" type="BPong"
+                 number="+875" public="yes" sound="telekoma.alaw"> 
+      <param key="lifetime" value="120000"/>
+    </application>
+
+<!--
+    <application name="Loveletters" type="BlOnDemand"
+                 number="+493027560515" public="yes" sound="telekoma.alaw"> 
+      <param key="loveletters" value="micro-loveletters.xml"/>
+      <param key="lifetime"    value="600000"/>
+    </application>
+-->
+  </config>
+</blccc>

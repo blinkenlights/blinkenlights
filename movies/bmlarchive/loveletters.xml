@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+
+<!-- Public Loveletters +7360 -->
+
+  <loveletters>
+    <movie id="2662"  vanity="ANNA"  href="hdl/anna.blm"/>
+    <movie id="688"   vanity="MUV"   href="anim/loveletters/mvhochzeit.bml"/>
+    <movie id="354"   vanity="ELI"   href="anim/loveletters/elisabeth.bml"/>
+    <movie id="63473" vanity="MEISE" href="anim/loveletters/meisenfrau.bml"/>
+  </loveletters>

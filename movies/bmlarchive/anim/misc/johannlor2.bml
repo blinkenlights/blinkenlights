@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<blm width="26" height="20" bits="4">
+    <header>
+        <title>johannlor2.gif</title>
+        <creator>blib 0.9</creator>
+        <duration>1000</duration>
+    </header>
+    <frame duration="1000">
+        <row>ffffffffffffffffffffffffff</row>
+        <row>ffffffffffffffffffffffffff</row>
+        <row>ffffffffffffffffffffffffff</row>
+        <row>ffffff99fffffffff00fffffff</row>
+        <row>ffffff88f779997ff006777fff</row>
+        <row>ffffff00f00ddd0ff006660fff</row>
+        <row>ffefff00f00ddd0ff00fff0fff</row>
+        <row>ff066600f778887ff77efe8fff</row>
+        <row>ff877788ffffffffffffffffff</row>
+        <row>ff8aaa88f77ddddff77dddefff</row>
+        <row>ff0bbb00f009990ff009990fff</row>
+        <row>ff088800f00fff0ff00fff0fff</row>
+        <row>ff8fff77f77fff7ff77fff7fff</row>
+        <row>ff8ffffffffdddfffffdddffff</row>
+        <row>ff0ffffff008882ff008886fff</row>
+        <row>ff0fffddf00fff3ff00fff6fff</row>
+        <row>ff188811f008882ff00effffff</row>
+        <row>ffffffffffffffffffffffffff</row>
+        <row>ffffffffffffffffffffffffff</row>
+        <row>ffffffffffffffffffffffffff</row>
+    </frame>
+</blm>

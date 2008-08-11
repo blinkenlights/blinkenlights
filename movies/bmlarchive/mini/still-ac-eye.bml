@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blm width="26" height="20" bits="4" channels="1">
+	<header>
+		<title>still-ac-eye</title>
+		<description></description>
+		<creator>ArcadePaint 1.1 Mac</creator>
+		<author></author>
+		<email></email>
+		<loop>no</loop>
+		<duration>200</duration>
+	</header>
+
+	<frame duration="200">
+		<row>00000000000000000000000000</row>
+		<row>00000000ffffffffff00000000</row>
+		<row>00000000000000ff0000000000</row>
+		<row>000000000000ff000000000000</row>
+		<row>00000000000000ff0000000000</row>
+		<row>00000000ffffffffff00000000</row>
+		<row>00000000000000000000000000</row>
+		<row>00000000000000000000000000</row>
+		<row>00000000ffffffffff00000000</row>
+		<row>00000000000000000000000000</row>
+		<row>00000000000000000000000000</row>
+		<row>00000000ffffffffff00000000</row>
+		<row>00000000000000ff0000000000</row>
+		<row>000000000000ff000000000000</row>
+		<row>0000000000ff00000000000000</row>
+		<row>00000000ffffffffff00000000</row>
+		<row>00000000000000000000000000</row>
+		<row>00000000000000000000000000</row>
+		<row>00000000ffffffffff00000000</row>
+		<row>00000000000000000000000000</row>
+	</frame>
+</blm>

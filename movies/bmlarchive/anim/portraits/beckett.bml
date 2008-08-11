@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<blm width="26" height="20" bits="4">
+    <header>
+        <title>Samuel Beckett</title>
+		<author>Carsten Schaeffer</author>
+        <creator>blib 0.9</creator>
+        <duration>10000</duration>
+    </header>
+    <frame duration="10000">
+        <row>00000000000000000000000000</row>
+        <row>00000000000000000000000000</row>
+        <row>00000000112200000000000000</row>
+        <row>00000131002311100000000000</row>
+        <row>00001124000001210000000000</row>
+        <row>000001254357a9410230000000</row>
+        <row>0011029cdeeeedc98853000000</row>
+        <row>0000027ceddcccba9975787000</row>
+        <row>000000589bca85456786889100</row>
+        <row>00000003658b988aa865785000</row>
+        <row>00000038aa2accb99744750000</row>
+        <row>00000004a819cabb9655100000</row>
+        <row>0000000055027ab98763000000</row>
+        <row>00000000132368877763200000</row>
+        <row>000000000244579a8554300000</row>
+        <row>00000000400145553443410000</row>
+        <row>00000000575432344444310010</row>
+        <row>00122221112455556555211111</row>
+        <row>33333211267778777775111222</row>
+        <row>44322211389888888874012223</row>
+    </frame>
+</blm>

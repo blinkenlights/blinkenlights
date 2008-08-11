@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blm width="26" height="20" bits="4" channels="1">
+	<header>
+		<title>still-ac-labyrinth.bml</title>
+		<description></description>
+		<creator>ArcadePaint 1.1 Mac</creator>
+		<author></author>
+		<email></email>
+		<loop>yes</loop>
+		<duration>200</duration>
+	</header>
+
+	<frame duration="200">
+		<row>00000000000000000000000000</row>
+		<row>00000000000000000000000000</row>
+		<row>00000000fffffffffff0000000</row>
+		<row>000000000000008ff800000000</row>
+		<row>0000000000000ff50000000000</row>
+		<row>000000000000008ff800000000</row>
+		<row>00000000fffffffffff0000000</row>
+		<row>00000000000000000000000000</row>
+		<row>00000000fffffffffff0000000</row>
+		<row>00000000000000000000000000</row>
+		<row>00000000fffffffffff0000000</row>
+		<row>000000000000008ff800000000</row>
+		<row>0000000000008ff80000000000</row>
+		<row>00000000008ff8000000000000</row>
+		<row>00000000fffffffffff0000000</row>
+		<row>00000000000000000000000000</row>
+		<row>00000000fffffffffff0000000</row>
+		<row>00000000000000000000000000</row>
+		<row>00000000000000000000000000</row>
+		<row>00000000000000000000000000</row>
+	</frame>
+</blm>

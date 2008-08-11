@@ -1,0 +1,3 @@
+#!/bin/sh
+
+export DIM_STEP_LENGTH_NS=101010

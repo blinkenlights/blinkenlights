@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<blm width="26" height="20" bits="4">
+    <header>
+        <title>Wilber The GIMP Still</title>
+        <author>Tuomas Kuosmanen</author>
+        <creator>blib 0.9</creator>
+        <duration>5000</duration>
+    </header>
+    <frame duration="15000">
+        <row>eeeeedca887778bdeeeeeeeeee</row>
+        <row>eeeeedcb988776679bdeeeeeee</row>
+        <row>eeeeeedcb988776666789abccd</row>
+        <row>eeeeeeddcba987777789999777</row>
+        <row>eeeeeeeeeeeec979cdeeeeedb8</row>
+        <row>7bddbeeedc99ddbeeeeeeedeed</row>
+        <row>22577dee57203edeeeeba846bd</row>
+        <row>322358bd621259ceeee666105d</row>
+        <row>233445788767778bded831128a</row>
+        <row>344555666667777789aba98975</row>
+        <row>45566655566666666666665555</row>
+        <row>56667544555566666555555554</row>
+        <row>67765444444455555555444322</row>
+        <row>76544333344344443322222234</row>
+        <row>ca853221111101111122344555</row>
+        <row>ccbba976432211122333455443</row>
+        <row>ddccba98765443221111111111</row>
+        <row>eeddcbba988765544443333334</row>
+        <row>eeeeeddccbaa99988777777788</row>
+        <row>eeeeeeeeedddcccccbbbbbbbbb</row>
+    </frame>
+</blm>

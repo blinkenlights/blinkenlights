@@ -1,0 +1,181 @@
+<?xml version="1.0"?>
+<playlist>
+
+  <item loop="15">
+    <param key="movie" value="blmarchive/CCC/anims/heart_single.blm" />
+  </item>
+  <item> <param key="movie" value="blmarchive/anim/animals/camel.blm" /> </item>
+
+  <item type="BClock">
+    <param key="mode"     value="analog" />
+    <param key="lifetime" value="25000" />
+  </item>
+
+  <item type="BCountdown">
+    <param key="end"      value="1041375600" />
+  </item>
+  <item> <param key="movie" value="blmarchive/anim/silvester/fireworkz2.blm" /> </item>
+  <item> <param key="movie" value="blmarchive/anim/silvester/fireworkz3.blm" /> </item>
+  <item> <param key="movie" value="blmarchive/anim/silvester/fireworks.blm" /> </item>
+  <item> <param key="movie" value="blmarchive/anim/silvester/fireworks_marcus.blm" /> </item>
+  <item> <param key="movie" value="blmarchive/anim/silvester/fireworkz1.blm" /> </item>
+  <item> <param key="movie" value="blmarchive/anim/silvester/pang_pang_blopp.blm" /> </item>
+
+  <item><param key="movie" value="blmarchive/CCC/anims/illuminati.blm" /></item>
+  <item><param key="movie" value="blmarchive/CCC/anims/Chaosknoten.blm" /></item>
+ 
+  <item><param key="movie" value="blmarchive/anim/3D/spin.blm" /></item>
+
+  <item type="BCountdown">
+    <param key="end"      value="1041375600" />
+  </item>
+  <item> <param key="movie" value="blmarchive/anim/silvester/fireworks.blm" /> </item>
+  <item> <param key="movie" value="blmarchive/anim/silvester/fireworkz1.blm" /> </item>
+  <item> <param key="movie" value="blmarchive/anim/silvester/fireworkz2.blm" /> </item>
+  <item> <param key="movie" value="blmarchive/anim/silvester/fireworkz3.blm" /> </item>
+  <item> <param key="movie" value="blmarchive/anim/silvester/fireworks_marcus.blm" /> </item>
+  <item> <param key="movie" value="blmarchive/anim/silvester/pang_pang_blopp.blm" /> </item>
+ 
+  <item> <param key="movie" value="blmarchive/anim/animals/blubb.blm" /> </item>
+
+  <item> <param key="movie" value="blmarchive/anim/animals/kriechi_die_schlange.blm" /> </item>
+
+  <item><param key="movie" value="blmarchive/anim/human/supermaennchen.blm" /></item>
+
+  <item type="BClock">
+    <param key="mode"     value="digital" />
+    <param key="lifetime" value="25000" />
+  </item>
+
+  <item> <param key="movie" value="blmarchive/anim/xmas/pixie_on_christmas.blm" /> </item>
+
+  <item type="BCountdown">
+    <param key="end"      value="1041375600" />
+  </item>
+  <item> <param key="movie" value="blmarchive/anim/silvester/pang_pang_blopp.blm" /> </item>
+  <item> <param key="movie" value="blmarchive/anim/silvester/fireworks.blm" /> </item>
+  <item> <param key="movie" value="blmarchive/anim/silvester/fireworkz1.blm" /> </item>
+  <item> <param key="movie" value="blmarchive/anim/silvester/fireworkz2.blm" /> </item>
+  <item> <param key="movie" value="blmarchive/anim/silvester/fireworkz3.blm" /> </item>
+  <item> <param key="movie" value="blmarchive/anim/silvester/fireworks_marcus.blm" /> </item>
+
+  <item> <param key="movie" value="blmarchive/anim/human/klettermensch.blm" /> </item>
+
+  <item type="BMatrix">
+    <param key="lifetime" value="60000" />
+  </item>
+
+  <item> <param key="movie" value="blmarchive/anim/animals/the_fly.blm" /> </item>
+
+  <item type="BCountdown">
+    <param key="end"      value="1041375600" />
+  </item>
+  <item> <param key="movie" value="blmarchive/anim/silvester/fireworkz1.blm" /> </item>
+  <item> <param key="movie" value="blmarchive/anim/silvester/fireworkz2.blm" /> </item>
+  <item> <param key="movie" value="blmarchive/anim/silvester/fireworks.blm" /> </item>
+  <item> <param key="movie" value="blmarchive/anim/silvester/fireworks_marcus.blm" /> </item>
+  <item> <param key="movie" value="blmarchive/anim/silvester/fireworkz3.blm" /> </item>
+  <item> <param key="movie" value="blmarchive/anim/silvester/pang_pang_blopp.blm" /> </item>
+
+  <item> <param key="movie" value="blmarchive/anim/human/blinkenskate.blm" /> </item>
+  <item> <param key="movie" value="blmarchive/anim/animals/abthrax_02.blm" /> </item>
+
+  <item type="BClock">
+    <param key="mode"     value="analog" />
+    <param key="lifetime" value="25000" />
+  </item>
+
+  <item> <param key="movie" value="bmlarchive/bauschild/bb-gewaber.bml" /> </item>
+
+  <item type="BCountdown">
+    <param key="end"      value="1041375600" />
+  </item>
+  <item> <param key="movie" value="blmarchive/anim/silvester/fireworks.blm" /> </item>
+  <item> <param key="movie" value="blmarchive/anim/silvester/fireworks_marcus.blm" /> </item>
+  <item> <param key="movie" value="blmarchive/anim/silvester/fireworkz1.blm" /> </item>
+  <item> <param key="movie" value="blmarchive/anim/silvester/fireworkz2.blm" /> </item>
+  <item> <param key="movie" value="blmarchive/anim/silvester/fireworkz3.blm" /> </item>
+  <item> <param key="movie" value="blmarchive/anim/silvester/pang_pang_blopp.blm" /> </item>
+
+  <item> <param key="movie" value="blmarchive/anim/WTC/hdl_terror.blm" /> </item>
+  <item> <param key="movie" value="blmarchive/anim/commercial/bcc_2.blm" /> </item>
+
+  <item loop="5">
+	<param key="movie" value="blmarchive/CCC/anims/torus1x.blm" />
+  </item>
+
+  <item type="BClock">
+    <param key="mode"     value="digital" />
+    <param key="lifetime" value="25000" />
+  </item>
+
+  <item> <param key="movie" value="blmarchive/anim/games/quix_glitter.blm" /> </item>
+
+  <item type="BCountdown">
+    <param key="end"      value="1041375600" />
+  </item>
+  <item> <param key="movie" value="blmarchive/anim/silvester/fireworks.blm" /> </item>
+  <item> <param key="movie" value="blmarchive/anim/silvester/fireworks_marcus.blm" /> </item>
+  <item> <param key="movie" value="blmarchive/anim/silvester/fireworkz3.blm" /> </item>
+  <item> <param key="movie" value="blmarchive/anim/silvester/pang_pang_blopp.blm" /> </item>
+  <item> <param key="movie" value="blmarchive/anim/silvester/fireworkz1.blm" /> </item>
+  <item> <param key="movie" value="blmarchive/anim/silvester/fireworkz2.blm" /> </item>
+
+  <item> <param key="movie" value="blmarchive/anim/animals/chat_noir2.blm" /> </item>
+  <item> <param key="movie" value="blmarchive/anim/human/surprise.blm" /> </item>
+
+  <item type="BQix">
+    <param key="lifetime" value="60000" />
+  </item>
+
+  <item type="BCountdown">
+    <param key="end"      value="1041375600" />
+  </item>
+  <item> <param key="movie" value="blmarchive/anim/silvester/pang_pang_blopp.blm" /> </item>
+  <item> <param key="movie" value="blmarchive/anim/silvester/fireworkz1.blm" /> </item>
+  <item> <param key="movie" value="blmarchive/anim/silvester/fireworkz2.blm" /> </item>
+  <item> <param key="movie" value="blmarchive/anim/silvester/fireworks.blm" /> </item>
+  <item> <param key="movie" value="blmarchive/anim/silvester/fireworks_marcus.blm" /> </item>
+  <item> <param key="movie" value="blmarchive/anim/silvester/fireworkz3.blm" /> </item>
+
+  <item> <param key="movie" value="blmarchive/anim/human/fussballer.blm" /> </item>
+
+  <item> <param key="movie" value="blmarchive/anim/WTC/usa_boeser_witz1.blm" /> </item>
+
+  <item type="BClock">
+    <param key="mode"     value="analog" />
+    <param key="lifetime" value="25000" />
+  </item>
+
+  <item type="BFire">
+    <param key="lifetime" value="40000" />
+  </item>
+
+  <item> <param key="movie" value="blmarchive/anim/text/allyourbase.blm" /> </item>
+
+  <item type="BClock">
+    <param key="mode"     value="digital" />
+    <param key="lifetime" value="25000" />
+  </item>
+
+  <item loop="23">
+	<param key="movie" value="blmarchive/anim/pixel/tunnel3.blm" />
+  </item>
+
+  <item type="BCountdown">
+    <param key="end"      value="1041375600" />
+  </item>
+  <item> <param key="movie" value="blmarchive/anim/silvester/fireworks.blm" /> </item>
+  <item> <param key="movie" value="blmarchive/anim/silvester/fireworks_marcus.blm" /> </item>
+  <item> <param key="movie" value="blmarchive/anim/silvester/fireworkz1.blm" /> </item>
+  <item> <param key="movie" value="blmarchive/anim/silvester/fireworkz2.blm" /> </item>
+  <item> <param key="movie" value="blmarchive/anim/silvester/fireworkz3.blm" /> </item>
+  <item> <param key="movie" value="blmarchive/anim/silvester/pang_pang_blopp.blm" /> </item>
+
+  <item loop="10">
+	<param key="movie" value="blmarchive/anim/pixel/gewaber.blm" />
+  </item>
+  <item> <param key="movie" value="blmarchive/anim/misc/invasion.blm" /> </item>
+
+</playlist>
+

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<blm width="26" height="20" bits="4">
+    <header>
+        <title>masque.gif</title>
+        <creator>blib 0.9</creator>
+        <duration>1000</duration>
+    </header>
+    <frame duration="1000">
+        <row>ffeefffdbfffbbffebffffeeff</row>
+        <row>ffcefffee8a8789abeeeffecff</row>
+        <row>ffcefffededdcbdddceeffecff</row>
+        <row>ffceffeecfedccdefcdfffecff</row>
+        <row>ffceffeeeea8778addeeffecff</row>
+        <row>ffcecdd864334444438ddddcff</row>
+        <row>ffcdbde645544555546debddff</row>
+        <row>ffcaec84665656455647ceacff</row>
+        <row>ffa698675e848745e566796aff</row>
+        <row>ff73788756965567a5788737ff</row>
+        <row>ffb766789ced44dec987667bff</row>
+        <row>ffda446cfffc44cfffc544adff</row>
+        <row>fdbb8444cffa44affc4448edee</row>
+        <row>edece7448ff9449ff8447ededd</row>
+        <row>ccedff848dd8559dd848eedeec</row>
+        <row>ececefeabcbbcccbcbaffedecc</row>
+        <row>ededefffea6444469efffcdede</row>
+        <row>fdecffffffedaadefffffdcecf</row>
+        <row>fdbeffffffffeeffffffffeddf</row>
+        <row>ffeffffffffffffffffffffeff</row>
+    </frame>
+</blm>

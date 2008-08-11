@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<blm width="26" height="20" bits="4">
+    <header>
+        <title>Karl Marx</title>
+        <author>Carsten Schaeffer</author>
+        <creator>blib 0.9</creator>
+        <duration>10000</duration>
+    </header>
+    <frame duration="10000">
+        <row>11112122235665433211111111</row>
+        <row>1222223567abcccbba73111111</row>
+        <row>2222248a9bcdddddccd9311111</row>
+        <row>22225786acddddddcccd931100</row>
+        <row>223576449cdcccddbcdcda5210</row>
+        <row>2355683233684489abacccb930</row>
+        <row>24634624667da8a9aa88aaaa82</row>
+        <row>35544516a7589cddb766777884</row>
+        <row>343244112111146999a9655442</row>
+        <row>223445201122100489bb610000</row>
+        <row>3344566457789997acbc910000</row>
+        <row>33356568999acdccbcbba50000</row>
+        <row>22112567778abccccba8620000</row>
+        <row>10000276566899986443000000</row>
+        <row>111148a7664231100000000000</row>
+        <row>1139dddda30000000000000111</row>
+        <row>38deeec7201111111011002211</row>
+        <row>bdddc830011111110010000012</row>
+        <row>ccb84101001111001100000023</row>
+        <row>97200110000000000000000121</row>
+    </frame>
+</blm>

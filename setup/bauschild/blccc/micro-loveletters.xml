@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+
+<!-- Example loveletters file -->
+
+  <loveletters>
+    <movie id="2662" vanity="ANNA" href="blmarchive/anim/loveletter/anna.blm"/>
+  </loveletters>

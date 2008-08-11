@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blm width="26" height="20" bits="3" channels="1">
+	<header>
+		<title>Peace</title>
+		<description>Peace Sign</description>
+		<creator>ArcadePaint 1.1.1 PC</creator>
+		<author>Marian Dubiel</author>
+		<email>marian-dubiel@gmx.de</email>
+		<loop>no</loop>
+		<duration>200</duration>
+	</header>
+
+	<frame duration="200">
+		<row>00000000000000000000000000</row>
+		<row>00000000000000000000000000</row>
+		<row>00000000257777775200000000</row>
+		<row>00002577775277257777520000</row>
+		<row>00257752000277200025775200</row>
+		<row>02775200000277200000257720</row>
+		<row>25772000000277200000027752</row>
+		<row>77520000002577520000002577</row>
+		<row>77520000257777775200002577</row>
+		<row>23772025775277257752027752</row>
+		<row>02775577520277202577557720</row>
+		<row>00257775200277200257775200</row>
+		<row>00002577775277257777520000</row>
+		<row>00000000257777775200000000</row>
+		<row>00000000000000000000000000</row>
+		<row>00000000000000000000000000</row>
+		<row>00000000000000000000000000</row>
+		<row>00000000000000000000000000</row>
+		<row>00000000000000000000000000</row>
+		<row>00000000000000000000000000</row>
+	</frame>
+</blm>
+

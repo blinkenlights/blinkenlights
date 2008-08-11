@@ -1,0 +1,3 @@
+#!/bin/sh
+
+export PULSE_LENGTH_STEPS=1
