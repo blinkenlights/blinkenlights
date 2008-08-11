@@ -1,0 +1,14 @@
+<!-- DTD for blccc playlists -->
+
+<!ELEMENT playlist (item+)>
+
+<!ELEMENT item (param*)>
+<!ATTLIST item
+          type  CDATA "BMoviePlayer">
+
+<!ELEMENT param EMPTY>
+<!ATTLIST param
+          key   CDATA #REQUIRED
+          value CDATA #REQUIRED>
+
+<!-- end of the DTD          -->

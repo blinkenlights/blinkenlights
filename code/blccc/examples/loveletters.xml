@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+
+<!-- Example loveletters file -->
+
+  <loveletters>
+
+    <module id="default" type="BPong"   />
+    <module id="0"       type="BSnake"  />
+    <module id="1"       type="BClock"  />
+    <module id="2"       type="BMatrix" />
+
+    <movie id="2662" vanity="ANNA" href="movies/anna.blm" />
+
+    <!-- the next vanity code is intentionally wrong to force a warning -->
+    <movie id="2663" vanity="ANNB" href="movies/annb.blm" />
+
+  </loveletters>

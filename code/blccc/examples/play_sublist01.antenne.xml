@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<playlist>
+
+  <!-- 
+  play sublist01
+  -->  
+
+
+  <list>sublist01.speed.antenne.xml</list>
+  <list>sublist02.speed.antenne.xml</list>
+  <list>sublist03.speed.antenne.xml</list>
+  <list>sublist04.speed.antenne.xml</list>
+  <list>sublist05.speed.antenne.xml</list>
+  <list>sublist06.speed.antenne.xml</list>
+  <list>sublist07.speed.antenne.xml</list>
+  <list>sublist08.speed.antenne.xml</list>
+  <list>sublist09.speed.antenne.xml</list>
+  <list>sublist10.speed.antenne.xml</list>
+  <list>sublist11.speed.antenne.xml</list>
+  <list>sublist12.speed.antenne.xml</list>
+  <list>sublist13.speed.antenne.xml</list>
+  <list>sublist14.speed.antenne.xml</list>
+  <list>sublist15.speed.antenne.xml</list>
+  <list>sublist16.speed.antenne.xml</list>
+  <list>sublist17.speed.antenne.xml</list>
+  <list>sublist18.speed.antenne.xml</list>
+  <list>sublist19.speed.antenne.xml</list>
+
+
+  <!-- 
+  
+  possible funktion-tags:
+  
+  <item loop="2">movies/test-horizontal-fast.blm</item>
+  <item loop="2" reverse="yes">movies/test-horizontal-fast.blm</item>
+  <item invert="yes">movies/test-horizontal-fast.blm</item>
+  <item hflip="yes">movies/test-horizontal-fast.blm</item>
+  <item vflip="yes">movies/test-horizontal-fast.blm</item>
+  <item mirror="left">movies/test-horizontal-fast.blm</item>
+  <item mirror="right">movies/test-horizontal-fast.blm</item>
+  <item speed="0,1">movies/test-horizontal-fast.blm</item>
+  <item speed="10">movies/test-horizontal-fast.blm</item>
+  -->
+
+</playlist>

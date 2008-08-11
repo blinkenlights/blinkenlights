@@ -1,0 +1,141 @@
+<!-- ##### SECTION Title ##### -->
+BUtils
+
+<!-- ##### SECTION Short_Description ##### -->
+a collection of utility functions, mainly used from parsers
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### FUNCTION b_filename_from_utf8 ##### -->
+<para>
+
+</para>
+
+@name: 
+@root: 
+@error: 
+@Returns: 
+
+
+<!-- ##### FUNCTION b_parse_int ##### -->
+<para>
+
+</para>
+
+@str: 
+@value: 
+@Returns: 
+
+
+<!-- ##### FUNCTION b_parse_boolean ##### -->
+<para>
+
+</para>
+
+@str: 
+@value: 
+@Returns: 
+
+
+<!-- ##### FUNCTION b_parse_double ##### -->
+<para>
+
+</para>
+
+@str: 
+@value: 
+@Returns: 
+
+
+<!-- ##### FUNCTION b_parse_coordinates ##### -->
+<para>
+
+</para>
+
+@names: 
+@values: 
+@x: 
+@y: 
+@Returns: 
+
+
+<!-- ##### FUNCTION b_parse_rectangle ##### -->
+<para>
+
+</para>
+
+@names: 
+@values: 
+@rect: 
+@Returns: 
+
+
+<!-- ##### FUNCTION b_parse_color ##### -->
+<para>
+
+</para>
+
+@names: 
+@values: 
+@color: 
+@Returns: 
+
+
+<!-- ##### FUNCTION b_parse_param ##### -->
+<para>
+
+</para>
+
+@object: 
+@root: 
+@names: 
+@values: 
+@error: 
+@Returns: 
+
+
+<!-- ##### FUNCTION b_object_set_property ##### -->
+<para>
+
+</para>
+
+@object: 
+@key: 
+@value: 
+@root: 
+@error: 
+@Returns: 
+
+
+<!-- ##### FUNCTION b_rectangle_union ##### -->
+<para>
+
+</para>
+
+@src1: 
+@src2: 
+@dest: 
+
+
+<!-- ##### FUNCTION b_rectangle_intersect ##### -->
+<para>
+
+</para>
+
+@src1: 
+@src2: 
+@dest: 
+@Returns: 
+
+

@@ -1,0 +1,12 @@
+﻿<?xml version="1.0"?>
+<simple-playlist>
+	<movie file="foo.blm" reverse="no" />
+	<movie movie="foo.blm" speed="0.2" />
+	<movie movie="foo.blm" speed="2.4" reverse="yes" />
+	
+	<pong />
+	<pacman />
+	<qix lines="8" speed="1.2" lifetime="10000" />
+	<fire speed="0.6" lifetime="10000" />
+	<tetris />
+</simple-playlist>

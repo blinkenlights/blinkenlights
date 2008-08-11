@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+
+<!-- Example blccc config (HDL Reloaded, Berlin, Germany) -->
+
+<blccc>
+  <config>
+
+    <param key="width"        value="18" />
+    <param key="height"       value="8" />
+    <param key="aspect"       value="0.5" />
+    <param key="playlist"     value="playlist.default.xml" />
+    <param key="logfile"      value="/var/tmp/blccc.log" />
+    <param key="recipient"    value="localhost:2323" />
+
+    <param key="isdn-host"    value="10.0.1.98" />
+    <param key="isdn-port"    value="1234" />
+    <param key="isdn-listen"  value="1234" />
+
+  <!--  BlDispatch is the module of choice if only one phone line
+        is present. It starts with a default game or movie and allows
+        to change to other games or loveletters using *number#.  -->
+
+    <application name="Dispatch" type="BlDispatch"
+                 number="9876564" public="yes" soundloop="telekoma.alaw"> 
+      <param key="loveletters" value="loveletters.xml" />
+    </application>
+
+  <!--  If more numbers are available, applications can be preselect
+        by numbers. Below is a typical setup for such a setup.
+
+    <application name="Pong" type="BPong"
+                 number="9876564" public="yes" sound="telekoma.alaw"> 
+      <param key="lifetime" value="120000" />
+    </application>
+    
+    <application name="Loveletters" type="BlOnDemand"
+                 number="9876569" public="yes" sound="telekoma.alaw"> 
+      <param key="loveletters" value="loveletters.xml" />
+      <param key="lifetime"    value="24000" />
+    </application>
+
+   -->
+
+  </config>
+</blccc>

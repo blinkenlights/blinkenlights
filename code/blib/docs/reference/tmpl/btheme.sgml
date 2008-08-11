@@ -1,0 +1,216 @@
+<!-- ##### SECTION Title ##### -->
+BTheme
+
+<!-- ##### SECTION Short_Description ##### -->
+theme support to visualize Blinkenlights
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+A #BTheme object defines the dimensions, features and the look of a
+Blinkenlights installation. It allows to implement a graphical
+simulation. BLib comes with two widgets, #BViewGtk and #BViewDirectFB
+that hide the ugly details of #BTheme.
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+BViewDirectFB, BViewGtk
+</para>
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### STRUCT BColor ##### -->
+<para>
+The #BColor struct is used to store a single color. The color channels
+have values in the range from 0 to 255.
+</para>
+
+@a: alpha channel value (opacity)
+@r: red channel value
+@g: green channel value
+@b: blue channel value
+
+<!-- ##### STRUCT BRectangle ##### -->
+<para>
+The #BRectangle struct is used to store a rectangle. The coordinates
+are pixel values. The x coordinate advances from left to right, the
+y coordinate from top to bottom.
+</para>
+
+@x: horizontal offset from origin
+@y: vertical offset from origin
+@w: width
+@h: height
+
+<!-- ##### STRUCT BWindow ##### -->
+<para>
+The #BWindow struct defines a single overlay window used in a #BTheme.
+</para>
+
+@value: the value this window definition applies to
+@row: the row index
+@column: the column index
+@src_x: x coordinate in the upper left corner in the source image
+@src_y: y coordinate of the upper left corner in the source image
+@rect: the destination rectangle
+
+<!-- ##### MACRO B_WINDOW_VALUE_ALL ##### -->
+<para>
+A special value used to indicate that the window definition is valid
+for all possible values.
+</para>
+
+
+
+<!-- ##### STRUCT BOverlay ##### -->
+<para>
+The #BOverlay struct defines a set of overlay windows used in a #BTheme.
+</para>
+
+@image: an optional image to blend over the background
+@color: the color is only used when no @image is specified
+@windows: a #GList of #BWindow structs
+
+<!-- ##### STRUCT BTheme ##### -->
+<para>
+The #BTheme object defines the dimensions and the look of a
+Blinkenlights installation.
+</para>
+
+
+<!-- ##### FUNCTION b_theme_new_from_file ##### -->
+<para>
+
+</para>
+
+@filename: 
+@lazy_load: 
+@error: 
+@Returns: 
+
+
+<!-- ##### FUNCTION b_theme_new_from_scratch ##### -->
+<para>
+
+</para>
+
+@title: 
+@type: 
+@rows: 
+@columns: 
+@channels: 
+@maxval: 
+@width: 
+@height: 
+@Returns: 
+
+
+<!-- ##### FUNCTION b_theme_load ##### -->
+<para>
+
+</para>
+
+@theme: 
+@error: 
+@Returns: 
+
+
+<!-- ##### FUNCTION b_theme_unload ##### -->
+<para>
+
+</para>
+
+@theme: 
+
+
+<!-- ##### STRUCT BThemesQuery ##### -->
+<para>
+A structure that defines a query on the installed themes. Used by
+b_themes_query().
+</para>
+
+@flags: 
+@name: 
+@type: 
+@rows: 
+@columns: 
+@width: 
+@height: 
+
+<!-- ##### ENUM BThemesQueryFlags ##### -->
+<para>
+Flags that define which values of a BThemesQuery are valid.
+</para>
+
+@B_THEMES_QUERY_NONE: 
+@B_THEMES_QUERY_NAME: 
+@B_THEMES_QUERY_TYPE: 
+@B_THEMES_QUERY_ROWS: 
+@B_THEMES_QUERY_COLUMNS: 
+@B_THEMES_QUERY_WIDTH: 
+@B_THEMES_QUERY_HEIGHT: 
+
+<!-- ##### FUNCTION b_themes_query ##### -->
+<para>
+
+</para>
+
+@themepath: 
+@query: 
+@Returns: 
+
+
+<!-- ##### USER_FUNCTION BThemesForeachFunc ##### -->
+<para>
+This function is called for each theme found by b_themes_foreach().
+</para>
+
+@theme: 
+@callback_data: 
+@Returns: 
+
+
+<!-- ##### FUNCTION b_themes_foreach ##### -->
+<para>
+
+</para>
+
+@themepath: 
+@callback: 
+@callback_data: 
+
+
+<!-- ##### FUNCTION b_themes_foreach_theme ##### -->
+<para>
+
+</para>
+
+@themepath: 
+@callback: 
+@callback_data: 
+
+
+<!-- ##### FUNCTION b_themes_lookup_theme ##### -->
+<para>
+
+</para>
+
+@name: 
+@themepath: 
+@error: 
+@Returns: 
+
+
+<!-- ##### FUNCTION b_theme_frame_diff_boundary ##### -->
+<para>
+
+</para>
+
+@theme: 
+@prev_data: 
+@frame_data: 
+@bbox: 
+@Returns: 
+
+

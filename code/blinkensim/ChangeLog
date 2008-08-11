@@ -1,0 +1,444 @@
+2004-02-17 11:58  neo
+
+	* configure.in: nicer configure --help output
+
+2004-02-17 11:48  neo
+
+	* configure.in: Fixed --with-default configure option.
+
+2004-02-17 08:57  tim
+
+	* doc/blinkensim.1.in: more man page updates
+
+2004-02-17 06:08  tim
+
+	* doc/blinkensim.1.in: typo fixed
+
+2004-02-17 05:58  tim
+
+	* Makefile.am, configure.in, doc/Makefile.am, doc/blinkensim.1.in:
+	  documentation
+
+2004-02-17 05:58  tim
+
+	* doc/.cvsignore: ignore
+
+2004-02-17 04:18  neo
+
+	* configure.in, src/Makefile.am, src/main.c: Added configure option
+	  --with-default and added heuristic for default binary if not
+	  specified.
+
+2004-02-17 03:37  neo
+
+	* configure.in: bumped version to 2.7
+
+2004-02-17 03:36  neo
+
+	* src/main.c: command-line cosmetics
+
+2004-02-15 16:57  neo
+
+	* src/main.c: Commented out error message on packet mismatch.
+	  Print number of levels in theme list and for the theme that is
+	  being used.
+
+2004-02-06 05:36  tim
+
+	* darwinports/Portfile: final checkin before first submission
+
+2004-02-04 02:00  tim
+
+	* darwinports/Portfile: more changes
+
+2004-02-01 15:00  tim
+
+	* darwinports/Portfile: changed maintainer
+
+2004-02-01 11:48  tim
+
+	* darwinports/.cvsignore: cvsignore to allow direct application of
+	  Portfile
+
+2004-01-21 12:20  tim
+
+	* darwinports/Portfile: updated for blinkensim 2.6
+
+2004-01-20 02:05  neo
+
+	* ChangeLog, NEWS: Made 2.6 release.
+
+2004-01-07 21:11  neo
+
+	* configure.in: bumped version to 2.6
+
+2004-01-07 19:51  neo
+
+	* src/main.c: moved variable into the ifdef
+
+2004-01-07 02:14  tim
+
+	* darwinports/Portfile: DarwinPorts Portfile
+
+2004-01-06 23:57  neo
+
+	* src/main.c: don't use UNIX signals on Win32
+
+2003-12-31 04:12  neo
+
+	* ChangeLog: Made 2.5 release.
+
+2003-12-31 04:11  neo
+
+	* ChangeLog, NEWS, README: Updates for the 2.5 release.
+
+2003-12-31 03:55  neo
+
+	* src/gfx-aa.c: Close the aalib context in gfx_close().
+
+2003-12-31 02:33  neo
+
+	* src/gfx-aa.c: Follow blib API change.
+
+2003-12-30 21:39  neo
+
+	* ChangeLog, configure.in, src/.cvsignore, src/Makefile.am,
+	  src/gfx-aa.c: Added a first version of blinkensim-aa, contributed
+	  by pix.
+
+2003-12-30 21:39  neo
+
+	* src/main.c: fixed my latest change
+
+2003-12-30 17:23  neo
+
+	* configure.in, src/main.c: Depend on blib >= 1.1.4.  Set the
+	  listening port even in proxy mode if it was specified explicitely
+	  on the command-line.
+
+2003-12-29 22:15  neo
+
+	* src/main.c: cosmetics
+
+2003-12-25 21:00  neo
+
+	* ChangeLog: Made 2.4 release.
+
+2003-12-25 20:58  neo
+
+	* NEWS, README, src/main.c: Updates for the 2.4 release.
+
+2003-12-25 20:23  neo
+
+	* ChangeLog, configure.in, src/main.c: Updated version to 2.4.
+	  Handle command-line using getopt.
+
+2003-12-25 13:15  daniel
+
+	* src/main.c: dirty hack cleanups. eek.
+
+2003-12-24 20:07  daniel
+
+	* src/main.c: dirty hack to get blinkensim working trough NAT
+	  firewalls
+
+2003-12-24 04:38  neo
+
+	* src/gfx-gtk.c: fixed my last commit
+
+2003-12-24 04:36  neo
+
+	* ChangeLog, src/gfx-gtk.c: Improved handling of fullscreen mode.
+	  Also enter fullscreen mode when pressing F11 and quit fullscreen
+	  on Escape. Quit the app when Escape is again.
+
+2003-12-21 21:41  neo
+
+	* ChangeLog: Made 2.3 (development) release.
+
+2003-12-21 21:40  neo
+
+	* ChangeLog, NEWS, README, configure.in: Updated for 2.3 release.
+
+2003-12-21 18:38  neo
+
+	* src/main.c: Install a signal handler for SIGINT so you can safely
+	  exit a blinkensim running remotely by pressing Ctrl-C.
+
+2003-12-21 18:19  neo
+
+	* src/main.c: When heartbeat setup fails, display the reason.
+
+2003-12-21 13:13  neo
+
+	* src/main.c: Bind the heartbeat sender to the bml port.
+
+2003-12-21 12:10  neo
+
+	* src/main.c: Follow BSender API change and pass -1 as source port.
+
+2003-12-20 00:33  neo
+
+	* src/main.c: Adapt to blib changes.
+
+2003-12-19 23:49  neo
+
+	* src/main.c: Removed C99ism.
+
+2003-12-19 03:27  neo
+
+	* src/main.c: Follow blib API change.
+
+2003-05-23 16:36  neo
+
+	* src/main.c: some small code cleanup
+
+2003-05-23 16:32  neo
+
+	* configure.in, src/gfx-gtk.c: Check for blib >= 1.1.0.  Fixed some
+	  harmless warnings.
+
+2003-05-22 19:42  hannes
+
+	* src/main.c: added support for specifying listening port
+
+2003-05-22 18:40  hannes
+
+	* src/main.c: cleanup, added support for specify heartbeatport
+
+2003-05-21 02:03  hannes
+
+	* src/main.c: blinkenproxy changes
+
+2002-12-28 14:52  neo
+
+	* ChangeLog: Made 2.2 release.
+
+2002-12-28 14:40  neo
+
+	* README: Updates for the 2.2 release.
+
+2002-12-28 04:15  neo
+
+	* src/gfx-gtk.c: Fixed a typo.
+
+2002-12-27 22:00  neo
+
+	* src/gfx-gtk.c: Moved fullscreen code into its own function.
+
+2002-12-27 21:55  neo
+
+	* NEWS, src/gfx-gtk.c: Added a fullscreen mode for blinkensim-gtk.
+	  Requires gtk+-2.2.x and is thus completely untested...
+
+2002-12-27 19:02  neo
+
+	* ChangeLog, NEWS: Updated NEWS and ChangeLog for the 2.2 release.
+
+2002-12-18 19:55  neo
+
+	* src/gfx-directfb.c: Support running in windowed mode:
+	  (--dfb:force-windowed) - Don't quit when setting the cooperative
+	  level to fullscreen failed.  - Try to change the video mode to
+	  the size of the theme.  - Don't hide the cursor.
+
+2002-12-16 00:42  neo
+
+	* src/main.c: Fixed an overoptimization.
+
+2002-12-11 18:52  neo
+
+	* src/gfx-directfb.c: Split DirectFB initialization into init() and
+	  prepare() so we can parse the command-line w/o initializing
+	  DirectFB.
+
+2002-12-08 16:33  neo
+
+	* .cvsignore, src/gfx-directfb.c: follow DirectFB API changes
+
+2002-10-21 11:31  neo
+
+	* NEWS, README, configure.in, src/gfx-directfb.c, src/gfx-gtk.c,
+	  src/gfx.h, src/main.c: Fixed handling of the theme's maxval which
+	  used to be slightly wrong.  Bumped version number to 2.2.
+
+2002-09-10 04:21  neo
+
+	* ChangeLog, NEWS, README: Made 2.1 release.
+
+2002-09-10 04:02  neo
+
+	* src/main.c: Improved output when theme is not found.
+
+2002-09-10 01:46  neo
+
+	* src/main.c: removed a FIXME which has been fixed
+
+2002-09-10 01:40  neo
+
+	* configure.in, src/main.c: Limit the number of grayscale levels
+	  according to the theme's maxval.
+
+2002-09-09 18:22  neo
+
+	* src/main.c: Show a list of available themes when called with
+	  --list argument.
+
+2002-09-09 15:00  neo
+
+	* src/gfx-directfb.c: Clear the background since the view doesn't
+	  do that anymore.
+
+2002-09-08 15:37  neo
+
+	* configure.in, src/main.c: Check for blib >= 0.7. Adapt to BTheme
+	  changes.
+
+2002-09-06 13:49  neo
+
+	* ChangeLog, src/gfx-gtk.c, src/main.c: Don't dispatch any packets
+	  after the view has been destroyed.
+
+2002-09-06 03:02  neo
+
+	* ChangeLog, README, configure.in: Made 2.0 Release.
+
+2002-09-06 02:04  daniel
+
+	* autogen.sh, configure.in: make it compile again
+
+2002-09-06 00:20  neo
+
+	* README, src/gfx-directfb.c: Create the primary with backbuffer.
+	  Updated README.
+
+2002-09-06 00:12  neo
+
+	* configure.in, src/.cvsignore, src/Makefile.am,
+	  src/gfx-directfb.c, src/gfx-gtk.c, src/gfx.c, src/gfx.h,
+	  src/main.c: Use the views from blib and create a DirectFB and a
+	  GTK+ version of blinkensim.
+
+2002-09-05 17:57  neo
+
+	* src/: gfx.c, main.c: Adadpt to BTheme changes.
+
+2002-09-05 00:34  neo
+
+	* configure.in, src/gfx.c, src/main.c: Depend on blib >= 0.6. Use
+	  latest BTheme API changes.
+
+2002-09-04 16:51  neo
+
+	* README, src/main.c: Fixed off-by-one bug.
+
+2002-09-04 05:30  neo
+
+	* src/: gfx.c, main.c: Fixed the "incomplete theme" mode.
+
+2002-09-04 05:06  neo
+
+	* src/: gfx.c, gfx.h, main.c: Ignore theme->maxval, the gfx uses
+	  255 anyway.
+
+2002-09-04 04:49  neo
+
+	* src/: gfx.c, main.c: Added fallbacks for incomplete themes.
+
+2002-09-04 04:11  neo
+
+	* Makefile.am, README: Removed bsend which lives in blinkentools
+	  now.
+
+2002-09-04 04:02  neo
+
+	* src/: gfx.c, gfx.h, main.c: Made it work :-)
+
+2002-09-04 00:40  neo
+
+	* .cvsignore, Makefile.am, configure.in, src/Makefile.am,
+	  src/gfx.c, src/gfx.h, src/magic-values.h, src/main.c,
+	  src/network.c, src/network.h, src/walls.h: Ported blinkensim to
+	  blib. Needs blib >= 0.5.  Bumped version number to 2.0.
+
+2002-09-03 14:26  neo
+
+	* configure.in: Bumper version number to 0.7. This will probably
+	  never be released but it marks the state before the port to blib.
+
+2002-09-03 14:23  neo
+
+	* ChangeLog: Updated ChangeLog.
+
+2002-06-15 00:50  neo
+
+	* src/main.c: handle NULL frames correctly
+
+2002-06-15 00:47  neo
+
+	* src/network.c: Fixed braino in header verification.
+
+2002-06-03 11:56  neo
+
+	* configure.in, src/gfx.c: Use IDirectFBSurface::Clear() and check
+	  for DirectFB >= 0.9.11.
+
+2002-05-28 01:32  neo
+
+	* README, autogen.sh: Added a note about pkg-config to the README.
+
+2002-04-25 20:59  neo
+
+	* ChangeLog: Updated ChangeLog.
+
+2002-04-25 20:58  neo
+
+	* README: Mention that this version needs DirectFB >= 0.9.10.
+
+2002-04-17 13:12  neo
+
+	* configure.in, src/gfx.c: Follow DirectFB API changes in
+	  IDirectFBImageProvider::RenderTo().
+
+2002-04-14 17:08  neo
+
+	* ChangeLog: Generated ChangeLog from CVS log messages.
+
+2002-04-14 17:07  neo
+
+	* ChangeLog, README, configure.in, src/main.c, src/network.c:
+	  Bumped version number to 0.5. Simplified network setup. Misc
+	  small fixes.
+
+2002-03-29 02:44  neo
+
+	* configure.in, src/Makefile.am: bumped version number to 0.4,
+	  changed static build rules
+
+2002-03-26 16:13  neo
+
+	* src/main.c: More verbose error message when socket can not be
+	  opened.
+
+2002-03-16 21:58  neo
+
+	* src/main.c: Don't crash if setup_gfx() failed, for example
+	  because the images couldn't be found.
+
+2002-03-16 21:46  neo
+
+	* src/: .cvsignore, Makefile.am: Added a simple rule to build a
+	  static binary.
+
+2002-03-13 20:28  neo
+
+	* src/: main.c, network.c: fixed some minor bugs
+
+2002-03-13 01:13  neo
+
+	* .cvsignore, AUTHORS, ChangeLog, Makefile.am, NEWS, README,
+	  autogen.sh, configure.in, src/.cvsignore, src/Makefile.am,
+	  src/gfx.c, src/gfx.h, src/magic-values.h, src/main.c,
+	  src/network.c, src/network.h, src/walls.h: The "Too stoned to use
+	  CVS" initial commit of BlinkenSim.
+

@@ -1,0 +1,7 @@
+DirectPong -- Pong for DirectFB
+-------------------------------
+
+You need DirectFB version 0.9.5 available from www.directfb.org. 
+
+pkg-config version 0.8 or newer is helpful, if you don't have it, 
+compile by hand...

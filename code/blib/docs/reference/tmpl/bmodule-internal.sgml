@@ -1,0 +1,106 @@
+<!-- ##### SECTION Title ##### -->
+BModule Internal API
+
+<!-- ##### SECTION Short_Description ##### -->
+the internal API for users of #BModules
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### FUNCTION b_module_new ##### -->
+<para>
+
+</para>
+
+@module_type: 
+@width: 
+@height: 
+@buffer: 
+@paint_callback: 
+@paint_data: 
+@error: 
+@Returns: 
+
+
+<!-- ##### FUNCTION b_module_set_aspect ##### -->
+<para>
+
+</para>
+
+@module: 
+@aspect_ratio: 
+
+
+<!-- ##### FUNCTION b_module_prepare ##### -->
+<para>
+
+</para>
+
+@module: 
+@error: 
+@Returns: 
+
+
+<!-- ##### FUNCTION b_module_relax ##### -->
+<para>
+
+</para>
+
+@module: 
+
+
+<!-- ##### FUNCTION b_module_start ##### -->
+<para>
+
+</para>
+
+@module: 
+
+
+<!-- ##### FUNCTION b_module_stop ##### -->
+<para>
+
+</para>
+
+@module: 
+
+
+<!-- ##### FUNCTION b_module_event ##### -->
+<para>
+
+</para>
+
+@module: 
+@event: 
+
+
+<!-- ##### FUNCTION b_module_tick ##### -->
+<para>
+
+</para>
+
+@module: 
+@Returns: 
+
+
+<!-- ##### FUNCTION b_module_describe ##### -->
+<para>
+
+</para>
+
+@module: 
+@title: 
+@description: 
+@author: 
+
+

@@ -1,0 +1,141 @@
+<!-- ##### SECTION Title ##### -->
+BParser
+
+<!-- ##### SECTION Short_Description ##### -->
+an XML parser that offers a simplified SAX API
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+#GMarkupParser
+</para>
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### STRUCT BParser ##### -->
+<para>
+The #BParser struct is private.
+</para>
+
+
+<!-- ##### ENUM BParserState ##### -->
+<para>
+An enumeration used to indicate the state of a #BParser. Users of
+#BParser will want to add their own states; they may use any values
+equal or greater than %B_PARSER_STATE_USER.
+</para>
+
+@B_PARSER_STATE_UNKNOWN: 
+@B_PARSER_STATE_TOPLEVEL: 
+@B_PARSER_STATE_USER: 
+
+<!-- ##### USER_FUNCTION BParserStartFunc ##### -->
+<para>
+The function that is called when the parser hits the start of an
+element. Return %B_PARSER_STATE_UNKNOWN from this function to indicate
+an error which should cause the parser to abort.
+</para>
+
+@state: the current state of the parser
+@element_name: the name of the element
+@attribute_names: a %NULL-terminated list of attribute names
+@attribute_values: a %NULL-terminated list of attribute values
+@user_data: the data that was passed to b_parser_new()
+@error: the error pointer that was passed to b_parser_new()
+@Returns: the new state of the parser
+
+
+<!-- ##### USER_FUNCTION BParserEndFunc ##### -->
+<para>
+The function that is called when the parser hits the end of an
+element. Return %B_PARSER_STATE_UNKNOWN from this function to
+indicate an error which should cause the parser to abort.
+</para>
+
+@state: the current state of the parser
+@element_name: the name of the element
+@cdata: pointer to character data that occured between the opening
+and closing tags
+@cdata_len: the length of @cdata in bytes
+@user_data: the data that was passed to b_parser_new()
+@error: the error pointer that was passed to b_parser_new()
+@Returns: the new state of the parser
+
+
+<!-- ##### FUNCTION b_parser_new ##### -->
+<para>
+
+</para>
+
+@start_element: 
+@end_element: 
+@user_data: 
+@Returns: 
+
+
+<!-- ##### FUNCTION b_parser_free ##### -->
+<para>
+
+</para>
+
+@parser: 
+
+
+<!-- ##### FUNCTION b_parser_parse ##### -->
+<para>
+
+</para>
+
+@parser: 
+@text: 
+@text_len: 
+@error: 
+@Returns: 
+
+
+<!-- ##### FUNCTION b_parser_end_parse ##### -->
+<para>
+
+</para>
+
+@parser: 
+@error: 
+@Returns: 
+
+
+<!-- ##### FUNCTION b_parser_parse_io_channel ##### -->
+<para>
+
+</para>
+
+@parser: 
+@io: 
+@recode: 
+@error: 
+@Returns: 
+
+
+<!-- ##### FUNCTION b_parser_get_state ##### -->
+<para>
+
+</para>
+
+@parser: 
+@Returns: 
+
+
+<!-- ##### FUNCTION b_parse_encoding ##### -->
+<para>
+
+</para>
+
+@text: 
+@text_len: 
+@Returns: 
+
+

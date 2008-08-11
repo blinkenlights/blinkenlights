@@ -1,0 +1,4 @@
+test-blinkenlet is a script to easily start Blinkenjava
+is requieres test-module (from the blib/test-directory to be
+installed somewhere in the path)
+

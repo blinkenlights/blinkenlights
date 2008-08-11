@@ -1,0 +1,32 @@
+Capi version 0.03
+=================
+
+This is still very incomplete.
+
+INSTALLATION
+
+To install this module type the following:
+
+   perl Makefile.PL
+   make
+   make test
+   make install
+
+DEPENDENCIES
+
+This module requires these other modules and libraries:
+
+  Time::HiRes
+
+  libc20.a from the AVM CAPI ADK (available from ftp://ftp.avm.de)
+    It has to be placed in subfolder c20lib.
+
+  Of course CAPI itself has to be installed, including header files
+
+
+COPYRIGHT AND LICENCE
+
+Put the correct copyright and licence information here.
+
+Copyright (C) 2002 Tobias Engel <perlcapi@tobias.org>
+

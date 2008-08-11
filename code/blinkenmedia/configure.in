@@ -1,0 +1,57 @@
+AC_INIT(bsound/bsound.c)
+# Save this value here, since automake will set cflags later
+cflags_set=${CFLAGS+set}
+
+PACKAGE=blinkenmedia
+VERSION=2.0
+
+AM_INIT_AUTOMAKE($PACKAGE,$VERSION)
+
+AM_CONFIG_HEADER(config.h)
+
+AM_MAINTAINER_MODE
+
+ACLOCAL="$ACLOCAL $ACLOCAL_FLAGS"
+
+AC_PROG_CC
+AC_PROG_LN_S
+AM_PROG_CC_STDC
+
+changequote(,)dnl
+if test "x$GCC" = "xyes"; then
+  case " $CFLAGS " in
+  *[\ \	]-Wall[\ \	]*) ;;
+  *) CFLAGS="$CFLAGS -Wall" ;;
+  esac
+fi
+changequote([,])dnl
+
+AC_ARG_ENABLE(oldtools,
+  [  --enable-oldtools       build old-fashioned and obsoleted tools])
+AM_CONDITIONAL(ENABLE_OLDTOOLS, test "x$enable_oldtools" = "xyes")
+
+# Check for getopt_long
+AC_CHECK_HEADERS(getopt.h,
+  AC_CHECK_FUNC(getopt_long,
+    AC_DEFINE(HAVE_GETOPT_LONG, 1,
+    	      [Define to 1 if your libc has support for getopt_long().])))
+
+# Check for blib
+PKG_CHECK_MODULES(BLIB, blib >= 0.6)
+
+AC_CHECK_LIB(esd, esd_open_sound,
+	have_esd=yes
+	AC_DEFINE(HAVE_ESD, 1,
+        	  [Define to 1 if you have enlightenment sound daemon.])
+	LIBESD="-lesd")
+
+AC_SUBST(LIBESD)
+AM_CONDITIONAL(HAVE_ESD, test "$have_esd" = yes)
+
+AC_SUBST(PACAKGE)
+AC_SUBST(VERSION)
+
+AC_OUTPUT([
+Makefile
+bsound/Makefile
+])

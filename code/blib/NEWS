@@ -1,0 +1,120 @@
+blib 1.1.7 (development release)
+----------
+- added BViewPixbuf, renders still frames
+- let BViewGtk use BViewPixbuf
+- added BProxyServer, implementing the server side of the
+  blinkenproxy protocol
+
+blib 1.1.6 (development release)
+----------
+- optimizations to BViewGtk; makes blinkensim-gtk perform a lot better
+- bug-fixes in the XML loader
+- module fixes for multi-player
+
+blib 1.1.5 (development release)
+----------
+- added Win32 port
+
+blib 1.1.4 (development release)
+----------
+- added an aalib based BView
+- improved some modules, most namely BCountdown
+- bug-fixes in the GIF loader
+
+blib 1.1.3 (development release)
+----------
+- bug-fixes in the GIF loader
+- minor optimizations in the GTK+ view
+
+blib 1.1.2 (development release)
+----------
+- added BProxyClient to be used from blinkensim
+
+blib 1.1.1 (development release)
+----------
+- fixed use of network sockets on FreeBSD 
+- added files to build debian packages
+- some minor bugfixes
+
+blib 1.1.0 (development release)
+----------
+ - added new modules BRetris, BSnake, Bxxo
+ - added hooks to allow implementation of blinkenproxy (in blinkentools)
+ - added compatibility with the old-style blinken network protocol
+
+blib 1.0.1
+----------
+ - added new module BCountdown
+ - added a new large digits font
+ - fixed some bugs
+
+blib 1.0.0
+----------
+ - added new modules BClock, BDropout, BMatrix, BPushLine and BText
+ - extended themes framework to allow to specify overlay images for
+   the different intensity values
+ - added b_movie_apply_colormap()
+ - documented the API
+ - fixed some bugs
+
+blib 0.9
+--------
+ - more changes to BModule, added describe and relax methods
+ - added module properties to allow customization of modules
+ - added value transform functions so we can deserialize property values
+ - allow to register filename properties
+ - added lots of new modules: BPacman, BPong, BBreakout, BProxy and BDebug
+ - improved the existing module implementations
+ - added a first draft of the multiplayer API (still subject to changes)
+
+blib 0.8
+--------
+ - improved BModule API
+ - teached the BModule base class how to run a module
+ - added new modules BQix and BFire
+ - improved BMoviePlayer
+ - added simple graphics functions to be used by modules
+ - added optimized blending functions to the GTK+ view
+
+blib 0.7
+--------
+ - added BTetris, the tetris game as a BModule
+ - added BMoviePlayer, a builtin BModule that plays movies
+ - cleaned up bprotocol header file
+ - improved BThemes, the file format is more flexible but still simpler
+ - optimized the GTK+ view so that it is actually useable
+ - moved themes into their own package: blinkenthemes
+ - misc bug fixes and enhancements
+
+blib 0.6
+--------
+ - BModule improvements, the API looks reasonably well now
+ - reworked BTheme once again
+ - added a preliminary BNF and Gondwana themes
+ - added BViewGtk and BViewDirectFB that implement views using BTheme
+ - improved documentation of the file formats
+
+blib 0.5
+--------
+ - added BSender
+ - fixed various bugs
+ - more BTheme improvements, started to add more themes
+ - improved BModule a lot, added a simple game for testing
+ - fixed various bugs
+
+blib 0.4
+--------
+ - added BReceiver
+ - added BModule, the parent class of all game modules
+ - cleaned up the BML DTD
+ - cleaned up BTheme API
+ - fixed various bugs
+
+blib 0.3
+--------
+ - added simple frame and movie effects
+ - added BModule framework that we'll need for the games API
+
+blib 0.2
+--------
+ - initial public release 

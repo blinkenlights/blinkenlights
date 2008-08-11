@@ -1,0 +1,6 @@
+libblib_1.1.0_i386.deb libs optional
+libblib-dev_1.1.0_i386.deb devel optional
+libblib-directfb_1.1.0_i386.deb libs optional
+libblib-directfb-dev_1.1.0_i386.deb libs optional
+libblib-gtk_1.1.0_i386.deb libs optional
+libblib-gtk-dev_1.1.0_i386.deb libs optional

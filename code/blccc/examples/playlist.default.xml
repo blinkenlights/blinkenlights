@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<playlist>
+  <playlist reverse="yes" invert="yes">
+    <item reverse="yes" speed="0.02" likely="0.1">
+      <param key="movie"    value="movies/camel.blm"/>
+      <param key="reverse"  value="yes"/>
+      <param key="speed"    value="100"/>
+    </item>
+    <item>
+      <param key="movie"    value="movies/camel.blm"/>
+      <param key="reverse"  value="yes"/>
+    </item>
+  </playlist>
+  <item type="BPong"/>
+  <item type="BPacman"/>
+  <item type="BQix">
+    <param key="lines"    value="8"/>
+    <param key="speed"    value="1.2"/>
+    <param key="lifetime" value="10000"/>
+  </item>
+  <item type="BFire">
+    <param key="speed"    value="0.6"/>
+    <param key="lifetime" value="10000"/>
+  </item>
+  <item>
+    <param key="movie"    value="movies/hdl-mask.bml"/>
+  </item>
+  <item>
+    <param key="movie"    value="movies/the_fly.blm"/>
+    <param key="h-align"  value="0.3"/>
+    <param key="v-align"  value="0.7"/>
+    <param key="clear"    value="no"/>
+  </item>
+  <item>
+    <param key="movie"    value="movies/white.bml"/>
+  </item>
+  <item type="BFire">
+    <param key="flames"   value="no"/>
+  </item>
+  <item type="BTetris"/>
+</playlist>
+

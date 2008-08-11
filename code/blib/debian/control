@@ -1,0 +1,70 @@
+Source: blib
+Priority: optional
+Maintainer: Sven Neumann <sven@gimp.org>
+Build-Depends: debhelper (>> 3.0.0), autoconf
+Standards-Version: 3.5.6
+
+Package: libblib
+Section: libs
+Architecture: any
+Depends: libglib2.0-0
+Description: a library of useful things to hack the Blinkenlights
+ blib contains some code that you will find useful if you want to
+ create any kind of software related to Blinkenlights,
+
+Package: libblib-dev
+Section: libs
+Architecture: any
+Depends: libblib (= ${Source-Version}), libc6-dev, libglib2.0-dev
+Section: devel
+Description: Blinkenlights library, development files
+ blib contains some code that you will find useful if you want to
+ create any kind of software related to Blinkenlights,
+ .
+ This package contains the files needed to compile and link 
+ programs which use blib.
+
+Package: libblib-directfb
+Section: libs
+Architecture: any
+Depends: libblib (= ${Source-Version}), libdirectfb-0.9-19
+Description: Blinkenlights display library using DirectFB
+ blib contains some code that you will find useful if you want to
+ create any kind of software related to Blinkenlights,
+ .
+ This packages contains the DirectFB backend of the Blinkenlights
+ display widget.
+
+Package: libblib-directfb-dev
+Section: libs
+Architecture: any
+Depends: libblib-dev (= ${Source-Version}), libdirectfb-dev
+Description: Blinkenlights display library using DirectFB
+ blib contains some code that you will find useful if you want to
+ create any kind of software related to Blinkenlights,
+ .
+ This packages contains the files needed to compile and link programs
+ that use the DirectFB backend of the Blinkenlights display widget.
+
+Package: libblib-gtk
+Section: libs
+Architecture: any
+Depends: ${shlibs:Depends}, libblib (= ${Source-Version}), libgtk2.0-0
+Description: Blinkenlights display library using GTK+
+ blib contains some code that you will find useful if you want to
+ create any kind of software related to Blinkenlights,
+ .
+ This packages contains the DirectFB backend of the Blinkenlights
+ display widget.
+
+Package: libblib-gtk-dev
+Section: libs
+Architecture: any
+Depends: libblib-dev (= ${Source-Version}), libgtk2.0-dev
+Description: Blinkenlights display library using GTK+
+ blib contains some code that you will find useful if you want to
+ create any kind of software related to Blinkenlights,
+ .
+ This packages contains the files needed to compile and link programs
+ that use the GTK+ backend of the Blinkenlights display widget.
+

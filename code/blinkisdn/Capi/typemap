@@ -1,0 +1,41 @@
+_cbyte						T_U_CHAR
+_cbyte *					T_PV
+_cdword						T_UV
+_cmsg						T_OPAQUE_STRUCT
+_cmsg *						T_PTROBJ
+_cmstruct					T_UV
+_cstruct					T_CSTRUCT
+_cword						T_UV
+const char *					T_PV
+long int					T_IV
+unsigned *					T_PV
+unsigned char **				T_PV
+#############################################################################
+INPUT
+T_OPAQUE_STRUCT
+        if (sv_derived_from($arg, \"${ntype}\")) {
+            STRLEN len;
+            char  *s = SvPV((SV*)SvRV($arg), len);
+
+            if (len != sizeof($var))
+                croak(\"Size %d of packed data != expected %d\",
+                        len, sizeof($var));
+            $var = *($type *)s;
+        }
+        else
+            croak(\"$var is not of type ${ntype}\")
+T_CSTRUCT
+	$var = ($type)SvPV_nolen($arg)
+#############################################################################
+OUTPUT
+T_OPAQUE_STRUCT
+        sv_setref_pvn($arg, \"${ntype}\", (char *)&$var, sizeof($var));
+T_CSTRUCT
+	{
+		STRLEN len = ${var}[0];
+		if(len == 0xff)
+			len = ${var}[1] + (${var}[2] << 8) + 3;
+		else
+			len++;
+		sv_setpvn((SV*)$arg, $var, len);
+	}

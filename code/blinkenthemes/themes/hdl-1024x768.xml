@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<blinkentheme title="Haus des Lehrers (Berlin)"
+  columns="18" rows="8" channels="1" maxval="1" width="1024" height="768"
+  type="hdl">
+
+  <background image="images/hdl-1024x768-bg.png"/>
+  <overlay image="images/hdl-1024x768-ov.png">
+    <span dx="30">
+      <window row="0" x="347" y="74"  width="30" height="55"/>
+    </span>
+    <span dx="30">
+      <window row="1" x="347" y="129" width="30" height="55"/>
+    </span>
+    <span dx="30">
+      <window row="2" x="347" y="184" width="30" height="55"/>
+    </span>
+    <span dx="30">
+      <window row="3" x="347" y="239" width="30" height="55"/>
+    </span>
+    <span dx="30">
+      <window row="4" x="347" y="294" width="30" height="55"/>
+    </span>
+    <span dx="30">
+      <window row="5" x="347" y="349" width="30" height="55"/>
+    </span>
+    <span dx="30">
+      <window row="6" x="347" y="404" width="30" height="55"/>
+    </span>
+    <span dx="30">
+      <window row="7" x="347" y="459" width="30" height="55" src-y="55"/>
+    </span>
+  </overlay>
+
+</blinkentheme>
+

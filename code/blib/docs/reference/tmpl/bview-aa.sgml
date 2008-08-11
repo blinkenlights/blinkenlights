@@ -1,0 +1,47 @@
+<!-- ##### SECTION Title ##### -->
+BViewAA
+
+<!-- ##### SECTION Short_Description ##### -->
+display Blinkenlights on a text console using aalib
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### STRUCT BViewAA ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### FUNCTION b_view_aa_new ##### -->
+<para>
+
+</para>
+
+@aac: 
+@rows: 
+@columns: 
+@channels: 
+@error: 
+@Returns: 
+
+
+<!-- ##### FUNCTION b_view_aa_update ##### -->
+<para>
+
+</para>
+
+@view: 
+@frame_data: 
+
+

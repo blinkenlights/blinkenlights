@@ -1,0 +1,50 @@
+<!-- ##### SECTION Title ##### -->
+BMoviePlayer
+
+<!-- ##### SECTION Short_Description ##### -->
+a #BModule that implements a #BMovie player
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### STRUCT BMoviePlayer ##### -->
+<para>
+The #BMoviePlayer struct is considered private.
+</para>
+
+
+<!-- ##### ARG BMoviePlayer:clear ##### -->
+<para>
+
+</para>
+
+<!-- ##### ARG BMoviePlayer:h-align ##### -->
+<para>
+
+</para>
+
+<!-- ##### ARG BMoviePlayer:movie ##### -->
+<para>
+
+</para>
+
+<!-- ##### ARG BMoviePlayer:reverse ##### -->
+<para>
+
+</para>
+
+<!-- ##### ARG BMoviePlayer:v-align ##### -->
+<para>
+
+</para>
+

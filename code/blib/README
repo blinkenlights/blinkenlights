@@ -1,0 +1,102 @@
+BLib - Library of useful things to hack the Blinkenlights
+---------------------------------------------------------
+
+This version (1.1.7) is a development release that adds a number of
+new features that haven't seen much testing yet. Future 1.1.x releases
+might change the newly added API. When the new API has settled and all
+new features are tested, we will do a stable blib-1.2 release.
+
+This library contains some code that you will find useful if
+you want to create any kind of software related to Blinkenlights.
+If you have never heard about Blinkenlights, you want to check
+http://www.blinkenlights.de/ first.
+
+There is code to read and write the old-style BLM movie format
+as well as code to handle GIF files and the new Blinkenlights
+Markup Language. Actually you don't have to care much since this
+is all hidden in the BMovie object.
+
+Both sides of the Blinkenlights network protocol are implemented
+so that you don't have to care about the details.
+
+The BModule object defines an API for games and the like. The
+modules directory contains some BModule implementations.
+
+Last but not least there is code that reads Blinkenthemes. Based on
+these themes, there are views for DirectFB, GTK+-2.0, GdkPixbuf and
+aalib that you can use to implement graphical viewers and editors.
+You will want to download the blinkenthemes package.
+
+We suggest you also download blinkentools and blinkensim. Both
+packages make heavy use of BLib.
+
+
+Requirements:
+-------------
+
+BLib requires glib-2.0. You'll also need pkg-config to build BLib.
+The configure script should detect whether you have DirectFB, GTK+-2.0
+and/or aalib installed and will skip building some parts of BLib if
+you don't have these libraries.
+
+This software is known to compile and work on Linux, FreeBSD, MacOS X
+and Win32 (using the MinGW environment; see http://www.mingw.org/).
+
+
+Installation:
+-------------
+
+BLib is configured, built and installed the usual way. Read the file
+INSTALL or simply try to run
+  
+  ./configure; make; make install
+
+BLib will install a couple of pkg-config files into the prefix. These
+are used by application to detect your blib installation. If BLib is
+installed into a different prefix than the pkg-config utility, you
+will want to adapt your PKG_CONFIG_PATH accordingly. See the man-page
+for pkg-config(1).
+
+
+Legal Disclaimer:
+-----------------
+
+ (c) Copyright 2002-2007  The Blinkenlights Crew   All rights reversed.
+
+This library is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+The complete text of the license is found in the file COPYING. 
+
+A list of authors is included with this package in the file AUTHORS.
+
+
+The BFire module contains code taken from aafire which is distributed
+with aalib. AAlib rules, nuff respect to the AA crew!
+
+
+BQix was inspired by the qix hack from the xscreensaver distribution.
+I haven't copied from the code but since I had a look at the
+implementation, let's credit Jamie Zawinski as well.
+
+
+BMatrix is based on the Matrix hack from the xscreensaver package which
+comes with the following copyright notice:
+
+ Permission to use, copy, modify, distribute, and sell this software and
+ its documentation for any purpose is hereby granted without fee, provided
+ that the above copyright notice appear in all copies and that both that
+ copyright notice and this permission notice appear in supporting
+ documentation.  No representations are made about the suitability of this
+ software for any purpose.  It is provided "as is" without express or
+ implied warranty.
+
+
+The code to load and save GIF images contained in this package is
+loosely based on the GIF plug-in for The GIMP which appears to have
+had this copyright notices at one point in time:
+
+ GIMP plug-in written by Adam D. Moss  <adam@gimp.org> <adam@foxbox.org>
+ Based around original GIF code by David Koblas.

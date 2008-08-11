@@ -1,0 +1,48 @@
+<!-- DTD for the Blinkenlights Markup Language version 1.0       -->
+<!-- See http://www.blinkenlights.de/ for more information.      -->
+
+
+<!-- The toplevel blm element describes a Blinkenlights movie.   -->
+
+<!ELEMENT blm (header?, frame+)>
+<!ATTLIST blm
+          version   CDATA  #FIXED "1.0"
+          width     CDATA  #REQUIRED
+          height    CDATA  #REQUIRED
+          channels  CDATA  "1"
+          bits      CDATA  "1">
+
+
+<!-- The header element is optional and solely informative.      -->
+<!-- No application should rely on any information found herein. -->
+
+<!ELEMENT header (title,
+                  description?, creator?, author?, email?, url?,
+                  duration?, loop?)>
+<!ELEMENT title       ( #PCDATA )>
+<!ELEMENT description ( #PCDATA )>
+<!ELEMENT creator     ( #PCDATA )>
+<!ELEMENT author      ( #PCDATA )>
+<!ELEMENT email       ( #PCDATA )>
+<!ELEMENT url         ( #PCDATA )>
+<!ELEMENT duration    ( #PCDATA )>
+<!ELEMENT loop        ( #PCDATA )>
+
+
+<!-- The frame element describes a single frame.                 -->
+<!-- The frame duration is specified in milliseconds.            -->
+
+<!ELEMENT frame (row+)>
+<!ATTLIST frame
+          duration  CDATA  #REQUIRED>
+
+
+<!-- The row element describes one row of pixels.                -->
+<!-- Pixels values are specified in hexidecimal notation.        -->
+<!-- Depending on the number of significant bits defined in the  -->
+<!-- blm element there may be one or two characters per pixel.   -->
+
+<!ELEMENT row ( #PCDATA )>
+
+
+<!-- end of the DTD                                              -->

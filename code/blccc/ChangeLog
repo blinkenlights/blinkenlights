@@ -1,0 +1,1762 @@
+2004-04-08 18:58  neo
+
+	* examples/config.xml: added some more examples and a few comments
+
+2004-02-17 10:44  tim
+
+	* doc/: Makefile.am, blccc.1.in: documentation
+
+2004-02-17 10:43  tim
+
+	* doc/.cvsignore: ignore
+
+2004-02-17 10:42  tim
+
+	* Makefile.am, configure.in: generate doc section
+
+2004-02-17 10:22  tim
+
+	* src/main.c: changed short name for version option
+
+2003-12-29 19:35  neo
+
+	* src/blccc.c: [no log message]
+
+2003-12-29 19:33  neo
+
+	* src/blccc.c: removed some debugging output
+
+2003-12-29 17:42  neo
+
+	* src/blplaylist.c: try to fix handling of looped items and their
+	  likelihood to be played
+
+2003-12-29 04:57  neo
+
+	* src/blplaylist.c: only apply the probability on the first run,
+	  always run with full count or not at all
+
+2003-12-29 02:28  neo
+
+	* src/: bldispatch.c, bldispatch.h: transfer players (device ids)
+	  between modules
+
+2003-12-29 02:01  neo
+
+	* src/: bldispatch.c, bldispatch.h: don't attempt to stop the
+	  dispatcher when a module stops make it work instead
+
+2003-12-29 01:47  neo
+
+	* src/: bldispatch.c, bldispatch.h: disconnect the signal handlers
+	  before stopping the module
+
+2003-12-29 01:36  neo
+
+	* src/bldispatch.c: Another attempt at fixing the signal
+	  connections.
+
+2003-12-29 01:18  neo
+
+	* src/bldispatch.c: try with request_stop
+
+2003-12-29 01:11  neo
+
+	* src/bldispatch.c: Connect the stop signal correctly.
+
+2003-12-29 01:04  neo
+
+	* src/bldispatch.c: use loveletters instead of lovemodules for
+	  BlDispatch
+
+2003-12-29 01:03  neo
+
+	* examples/: Makefile.am, config.xml, lovemodules.xml: removed
+	  lovemodules, stick to the term loveletters
+
+2003-12-29 00:42  neo
+
+	* src/bldispatch.c: Loop the movie w/o fiddling with the class
+	  pointers.
+
+2003-12-29 00:22  neo
+
+	* examples/: Makefile.am, config.xml: Added a BlDispatch example to
+	  the config
+
+2003-12-29 00:17  neo
+
+	* examples/lovemodules.xml: Added an example lovemodules.xml file
+	  (to be used with BlDispatch).
+
+2003-12-29 00:09  neo
+
+	* src/bldispatch.c: don't stop an already stopped module
+
+2003-12-29 00:00  neo
+
+	* src/bldispatch.c: fixed an issue with my last change
+
+2003-12-28 23:50  neo
+
+	* src/bldispatch.c: Stop the dispatch module when the dispatched
+	  module stops.
+
+2003-12-28 23:38  neo
+
+	* src/bldispatch.c: Attempt to create a new module when *<num># was
+	  entered.  Replace the running module with the new one.  Create a
+	  BMoviePlayer module for loveletters.
+
+2003-12-28 22:58  neo
+
+	* src/bldispatch.c: /me is stupid
+
+2003-12-28 22:54  neo
+
+	* src/bldispatch.c: getting closer...
+
+2003-12-28 22:34  neo
+
+	* src/: bldispatch.c, bllovemodules.c, bllovemodules.h: Create the
+	  module in BlDispatch, not in the love modules list.
+
+2003-12-28 22:12  neo
+
+	* src/main.c: Register the dispatch module.
+
+2003-12-28 22:07  neo
+
+	* src/bldispatch.c: A hack to dispatch the number of maximal
+	  players.
+
+2003-12-28 22:02  neo
+
+	* src/: bldispatch.c, bllovemodules.c, bllovemodules.h: Implemented
+	  large parts of BlDispatch.
+
+2003-12-28 21:12  neo
+
+	* examples/loveletters.xml, src/bldispatch.c, src/bldispatch.h,
+	  src/bllovemodules.c, src/bllovemodules.h: Use "default" as id for
+	  the default module instead of hardcoding it.
+
+2003-12-28 20:56  neo
+
+	* src/: bldispatch.c, bllovemodules.c, bllovemodules.h: added
+	  support for a default module
+
+2003-12-28 20:19  neo
+
+	* examples/config.xml, examples/loveletters.xml, src/Makefile.am,
+	  src/blccc.c, src/bldispatch.c, src/bldispatch.h,
+	  src/blloveletters.c, src/blloveletters.h, src/bllovemodules.c,
+	  src/bllovemodules.h, src/bltypes.h: Added some new stuff for
+	  parsing lovemodule files.
+
+2003-12-28 18:28  neo
+
+	* src/: Makefile.am, bldispatch.c, bldispatch.h, bltypes.h: Added
+	  framework for new module BlDispatch which is supposed to make
+	  everyone's favorite return to the screen: LoveLetters.
+
+2003-12-28 17:09  tim
+
+	* autogen.sh: support for glibtool naming on Mac OS X
+
+2003-12-28 00:59  neo
+
+	* examples/playlist.default.xml, src/blccc.c,
+	  src/blplaylist-parse.c, src/blplaylist.c, src/blplaylist.h,
+	  src/blplaylistitem.c, src/blplaylistitem.h, src/bltheater.c:
+	  Implement a likelihood attribute for all playlist items.
+
+2003-12-27 06:34  neo
+
+	* src/: blccc.c, blplaylist.c, blplaylistitem.c: more minor stuff
+	  while searching for a bug with the reload command
+
+2003-12-27 05:58  neo
+
+	* src/blccc.c: minor code cleanup
+
+2003-12-27 04:31  neo
+
+	* src/blccc.c: some debugging output
+
+2003-12-27 04:16  neo
+
+	* src/blccc.c: some code cleanup
+
+2003-12-27 04:02  neo
+
+	* src/blccc.c: Only push a new item for the first player.
+
+2003-12-27 03:56  neo
+
+	* src/blccc.c: another try
+
+2003-12-27 03:12  neo
+
+	* src/blapp.c: Use "soundloop", not "sound_loop" as attribute name
+	  in the config file.
+
+2003-12-27 02:59  neo
+
+	* src/blccc.c: fixes to multi-player handling
+
+2003-12-27 02:19  neo
+
+	* ChangeLog, examples/config.xml, src/blapp.c, src/blapp.h,
+	  src/blccc.c, src/blisdn.c, src/blisdn.h: Renamed vamp/wamp
+	  parameter to sound and added sound_loop.  Implemented playback of
+	  an intro sound file followed by a looping sample.
+
+2003-12-27 01:03  neo
+
+	* src/: blapp.c, blapp.h, blccc.c: Try to implement multi-player
+	  applications.
+
+2003-12-25 15:02  daniel
+
+	* src/blplaylist.c: fixed shuffle mode
+
+2003-12-24 02:46  neo
+
+	* src/blplaylist.c: Fixed bl_playlist_shuffle() implementation.
+
+2003-12-24 00:59  neo
+
+	* src/blondemand.c: Don't unref a string, free it instead.  Added a
+	  finalizer to BlOnDemand so we don't leak it's config string.
+
+2003-12-23 03:40  neo
+
+	* src/: blplaylist-parse.c, blplaylist.c, blplaylist.h: Added
+	  "shuffle" parameter for playlists.
+
+2003-12-21 12:11  neo
+
+	* configure.in: Depend on blib >= 1.1.0.
+
+2003-12-21 12:11  neo
+
+	* src/bltheater.c: Follow BSender API change and pass -1 as source
+	  port.
+
+2003-12-19 04:23  neo
+
+	* src/: blaccept.c, blccc.c, blplaylistitem.c: fixed a possible
+	  crash
+
+2003-12-19 02:49  neo
+
+	* configure.in: Removed unnecessary autoconf macros.
+
+2003-08-04 19:05  neo
+
+	* src/blaccept.c: [no log message]
+
+2003-07-08 19:04  neo
+
+	* src/: blapp.c, blconfig.c: include <string.h>
+
+2003-02-26 15:07  neo
+
+	* src/blaccept.c: fixed more BlAccept issues
+
+2003-02-26 01:25  neo
+
+	* src/blaccept.c: Rewrote large parts of blaccept.c.
+
+2002-12-28 19:48  neo
+
+	* ChangeLog, examples/config.xml: Commented out the ISDN-related
+	  parts in the example config file.  blccc won't start w/o
+	  blinkenisdn otherwise.
+
+2002-12-28 14:54  neo
+
+	* examples/config.xml: Added example loveletters configuration.
+
+2002-12-27 19:25  neo
+
+	* ChangeLog: Updated ChangeLog for 1.99 release.
+
+2002-12-27 19:17  neo
+
+	* Makefile.am, configure.in, stylesheets/.cvsignore,
+	  stylesheets/Makefile.am, stylesheets/examples/.cvsignore,
+	  stylesheets/examples/Makefile.am,
+	  stylesheets/examples/simple.default.xml,
+	  stylesheets/examples/simple.xml: Inlcude the newly added
+	  stylesheets into the distribution.
+
+2002-12-27 16:05  neo
+
+	* examples/config.xml, src/blccc.c, src/blconfig.c, src/blconfig.h,
+	  src/blisdn.c: Changed the names of the isdn port configuration.
+
+2002-12-27 15:45  neo
+
+	* examples/config.xml, src/blccc.c, src/blconfig.c, src/blconfig.h,
+	  src/blisdn.c: Allow to configure the sendind and receiving ports
+	  for communication with the ISDN system independently. Removed
+	  Tim's hack.
+
+2002-12-24 05:26  tim
+
+	* src/blisdn.c: quick and pretty dirty	hack to allow blccc and
+	  blinkisdn to run on the same machine
+
+2002-12-21 02:36  tim
+
+	* stylesheets/: simple-playlist.xslt, examples/simple.default.xml:
+	  new xslt stylesheets to convert to complex playlist format
+
+2002-12-11 18:56  neo
+
+	* configure.in, src/main.c: Follow API change in blib. Check for
+	  blib >= 1.0.0.
+
+2002-12-08 16:42  neo
+
+	* .cvsignore, autogen.sh, configure.in, src/main.c: Updated
+	  autogen.sh for newer versions of automake.  Added a missing
+	  AM_CONFIG_HEADER() to configure.in.  Include config.h from main.c
+	  for definition of VERSION.
+
+2002-10-05 19:42  neo
+
+	* src/: Makefile.am, blccc.c, bltheater.c: some changes that
+	  accumulated on blccc
+
+2002-10-03 01:01  mitch
+
+	* src/: blconfig.c, blconfig.h, main.c: Made the telnet port
+	  configurable via config.xml
+
+2002-10-02 21:39  mitch
+
+	* src/blccc.c: when the line goes onhook, remove the player and
+	  finish the item *only* if it's the theater's playing item (fixes
+	  problem where the item stops itself).
+
+2002-10-02 20:40  mitch
+
+	* src/blccc.c: don't finish the current item twice...
+
+2002-10-02 20:37  mitch
+
+	* src/blccc.c: fixed segfault in new app handling code.
+
+2002-10-02 19:58  mitch
+
+	* src/: blccc.c, blisdn.h, blmarshal.list, bltheater.c,
+	  bltheater.h: A new version of ISDN <-> APP handling.
+
+	  - added line->app - change line->app and app->line *only* in
+	  state_changed - added "gboolean pushed" to the theater's
+	  "item_finished" - pop the item in the callback only if "pushed"
+	  is TRUE.
+
+2002-09-30 19:56  neo
+
+	* src/blplaylist.c: added a missing newline
+
+2002-09-29 22:59  neo
+
+	* src/: blconfig.c, blplaylist-parse.c: Plugged some smaller
+	  memleaks.
+
+2002-09-29 00:07  mitch
+
+	* src/: blccc.c, blplaylistitem.c: - don't loop the playlist but
+	  reload it when it's finished.  - fixed
+	  bl_playlist_item_describe() to not new NULL movie_player->movie
+
+2002-09-28 01:35  neo
+
+	* ChangeLog, examples/playlist.default.xml,
+	  examples/movies/hdl-mask.bml, src/blisdn.c: Play the vamp in a
+	  loop.
+
+2002-09-28 01:20  neo
+
+	* src/: blaccept.c, blccc.c: enabling/disabling apps thru the
+	  telnet interface seems to work now
+
+2002-09-28 01:08  neo
+
+	* src/blccc.c: maybe g_strstrip() helps
+
+2002-09-28 01:03  neo
+
+	* src/blccc.c: improved output
+
+2002-09-28 00:59  neo
+
+	* src/: blaccept.c, blapp.c, blapp.h, blccc.c, blccc.h, blconfig.c:
+	  Added support for enabling and disabling applications.
+
+2002-09-27 23:50  neo
+
+	* src/blondemand.c: oops
+
+2002-09-27 21:32  neo
+
+	* src/bllogger.c: Add the movie filename to the logfile.
+
+2002-09-27 20:11  neo
+
+	* src/blccc.c: Aquire the global lock in isdn_state_changed before
+	  calling bl_theater_finish().
+
+2002-09-27 20:00  neo
+
+	* src/blondemand.c: Tuning.
+
+2002-09-27 19:31  neo
+
+	* src/blondemand.c: Added a describe implementation.
+
+2002-09-27 19:17  neo
+
+	* src/blccc.c: Report status of ISDN lines again.
+
+2002-09-27 00:12  neo
+
+	* src/blloveletters.c: Fixed vanity code check.
+
+2002-09-26 20:19  mitch
+
+	* src/: blplaylist.c, bltheater.c: - #if 0 last night's HACK -
+	  print the item's description to the console after logging it.
+
+2002-09-26 19:37  neo
+
+	* src/blondemand.c: Improved debug output.
+
+2002-09-26 19:24  neo
+
+	* src/blplaylist.c: Changed debug output.
+
+2002-09-26 18:50  neo
+
+	* src/: blondemand.c, blondemand.h: Redone the logic in a sane
+	  state of mind.
+
+2002-09-25 22:57  neo
+
+	* src/: blccc.c, blplaylist.c: A dirty hack so that I can go back
+	  to the party.
+
+2002-09-25 20:32  neo
+
+	* src/: blloveletters.c, blondemand.c: small fixes
+
+2002-09-25 20:21  neo
+
+	* src/blondemand.c: Dirty, but a usleep seems to help here. More
+	  verbose output.
+
+2002-09-25 19:50  neo
+
+	* src/blondemand.c: yet another fix
+
+2002-09-25 19:01  mitch
+
+	* src/blccc.c: Send PLAYER_ENTERS and PLAYER_LEFT events in
+	  isdn_state_changed(), not in isdn_incoming_call().
+
+2002-09-25 18:48  mitch
+
+	* src/blccc.c: add players to the module in isdn_incoming_call().
+
+2002-09-25 18:40  neo
+
+	* src/blondemand.c: set max_players to 1
+
+2002-09-25 18:20  neo
+
+	* src/: blondemand.c, blondemand.h: Added advanced property and
+	  made it work...
+
+2002-09-25 17:54  neo
+
+	* src/: blondemand.c, blondemand.h: Extra features for the OnDemand
+	  module.
+
+2002-09-25 17:22  neo
+
+	* src/: blccc.c, main.c: Handle SIGINT with the sigterm handler.
+	  Lock blccc in blccc_kill() to avoid race conditions.
+
+2002-09-25 17:16  neo
+
+	* src/: blapp.c, blapp.h, blccc.c, blisdn.c, blondemand.c: Renamed
+	  application property wamp to vamp. Added yet unused app priority.
+
+2002-09-25 16:37  neo
+
+	* ChangeLog, src/blccc.c, src/bltheater.c, src/bltheater.h: Call
+	  bl_logger_stop() when blccc is terminated.
+
+2002-09-25 11:12  mitch
+
+	* src/: blplaylist.c, blplaylist.h: - Made looping items work again
+	  in bl_playlist_load_next_item().  - Added (#if 0 and definitely
+	  wrong) implementation of   bl_playlist_peek_next_item().
+
+2002-09-25 08:02  neo
+
+	* src/blondemand.c: ooops
+
+2002-09-25 07:49  neo
+
+	* src/blondemand.c: I'm getting tired ...
+
+2002-09-25 07:08  neo
+
+	* src/main.c: dealy module initialization a bit
+
+2002-09-25 06:51  neo
+
+	* src/blondemand.c: Improved BlOnDemand.
+
+2002-09-25 06:17  neo
+
+	* src/blccc.c: Don't throw out the call we are handling.
+
+2002-09-25 06:00  neo
+
+	* examples/config.xml, src/blccc.c: Unbelievable, but it really
+	  seems to work :-))
+
+2002-09-25 05:48  neo
+
+	* src/: blccc.c, blisdn.c, blisdn.h: Resurrected BlIsdn (the
+	  gethostbyname change was obviously wrong somehow).
+
+2002-09-25 05:20  neo
+
+	* src/: blaccept.c, blapp.c, blapp.h, blccc.c, blccc.h, blconfig.c,
+	  blconfig.h, blisdn.h: Applications should work now :-)
+
+2002-09-25 04:17  neo
+
+	* src/blconfig.c: query the registered applications with the config
+	  parameters
+
+2002-09-25 03:58  neo
+
+	* examples/config.xml, src/blapp.c, src/blapp.h, src/blccc.c,
+	  src/blconfig.c, src/blconfig.h, src/blisdn.c, src/main.c: Added
+	  code to parse the application setup from the config file.
+
+2002-09-25 02:35  neo
+
+	* src/blisdn.c: added debugging code to BlIsdn
+
+2002-09-25 02:30  neo
+
+	* src/: Makefile.am, blapp.c, blapp.h, blisdn.c, blisdn.h,
+	  bltypes.h: Lookup hostname for BlIsdn only on startup.  Added
+	  framework for what we will call applications.
+
+2002-09-24 22:25  neo
+
+	* src/blondemand.c: Override the request_stop method of the
+	  BMoviePlayer.
+
+2002-09-24 21:08  neo
+
+	* src/: blondemand.c, blondemand.h: This might actually work now.
+
+2002-09-24 20:28  neo
+
+	* src/: blondemand.c, blondemand.h: more work on BlOnDemand
+
+2002-09-24 20:13  neo
+
+	* src/: Makefile.am, blondemand.c, blondemand.h, bltypes.h: Added
+	  BlOnDemand, derived from BMoviePlayer.
+
+2002-09-24 19:36  neo
+
+	* src/: blccc.c, blconfig.c, blconfig.h, blisdn.c, blisdn.h: Added
+	  caller authorization and improved BlIsdn API.
+
+2002-09-24 18:22  neo
+
+	* src/: blisdn.c, blisdn.h: Include calling and caller number in
+	  BlIsdnLine struct.
+
+2002-09-24 18:08  neo
+
+	* src/blccc.c: Use bl_ccc_event() to dispatch module events.
+
+2002-09-24 15:51  neo
+
+	* src/: blccc.c, blisdn.c, blisdn.h: Just a preliminary hack:
+	  dispatch key events to the active module.
+
+2002-09-24 15:34  neo
+
+	* src/: blccc.c, blloveletters.c: Insert complete filenames into
+	  the loveletters hash table using b_filename_from_utf8().
+
+2002-09-24 15:27  neo
+
+	* src/blisdn.c: Throw out all callers on bl_isdn_block().  Accept
+	  incoming calls (unconditionally for now).
+
+2002-09-24 15:01  neo
+
+	* src/: blconfig.c, blisdn.c, blisdn.h: More work on ISDN.
+
+2002-09-24 03:14  neo
+
+	* src/: blccc.c, blisdn.c, blisdn.h: Finished implementation of
+	  ISDN keepalive protocol.
+
+2002-09-24 02:19  neo
+
+	* examples/playlist.default.xml: Added BPacman to the example
+	  playlist.
+
+2002-09-24 00:43  neo
+
+	* src/: blccc.c, blisdn.c, blisdn.h: Added heartbeat code to
+	  BlIsdn.
+
+2002-09-24 00:18  mitch
+
+	* src/: blaccept.c, blccc.c, blccc.h: - added
+	  bl_theater_on_demand().  - pop the on-demand item on
+	  "item_finished".  - added "love <id>" command to BlAccept.
+
+2002-09-24 00:11  mitch
+
+	* src/bltheater.c: bl_theater_pop_item(): only unref theater->item
+	  if it is not NULL.
+
+2002-09-23 23:59  neo
+
+	* src/: blccc.c, blisdn.c, blisdn.h: First attempts to talk Tobias'
+	  new ISDN protocol.
+
+2002-09-23 23:25  neo
+
+	* src/: blccc.c, blisdn.c, blisdn.h: ISDN connection setup seems to
+	  work now.
+
+2002-09-23 23:07  neo
+
+	* examples/config.xml, src/blccc.c: don't crash if no isdn host if
+	  configured
+
+2002-09-23 23:01  neo
+
+	* src/blisdn.c: more updates
+
+2002-09-23 22:31  neo
+
+	* src/: blccc.c, blisdn.c, blisdn.h, bllogger.c, main.c: one our
+	  way ...
+
+2002-09-23 21:56  neo
+
+	* src/: blisdn.c, blisdn.h: Make it compile.
+
+2002-09-23 21:49  daniel
+
+	* src/blisdn.c: isdn code contribution
+
+2002-09-23 21:28  neo
+
+	* examples/config.xml, examples/loveletters.xml, src/blccc.c,
+	  src/blconfig.c, src/blconfig.h, src/blisdn.c, src/bllisten.c:
+	  More work on ISDN stuff...
+
+2002-09-23 20:23  neo
+
+	* src/blloveletters.c: code cleanup
+
+2002-09-23 20:16  neo
+
+	* examples/config.xml, examples/loveletters.xml,
+	  src/blloveletters.c: Check vanity codes and ids for correctness.
+
+2002-09-23 19:42  neo
+
+	* src/blloveletters.c: make it work
+
+2002-09-23 19:28  mitch
+
+	* examples/playlist.default.xml, src/blplaylist-parse.c,
+	  src/blplaylistitem.c: - merge "speed" and "reverse" settings of
+	  the BlPlaylistItem and   it's BModule after parsing.	-
+	  simplified bl_playlist_item_real_apply_effects().  - a more
+	  sophisticated default playlist.
+
+2002-09-23 18:54  neo
+
+	* src/: blloveletters.c, blloveletters.h: completed BlLoveletters
+	  API
+
+2002-09-23 18:44  neo
+
+	* src/: blccc.c, blccc.h, blconfig.c, blconfig.h, blloveletters.c,
+	  blloveletters.h, bltypes.h: Added loveletters config option and
+	  use it.
+
+2002-09-23 18:26  neo
+
+	* examples/Makefile.am, examples/loveletters.xml, src/Makefile.am,
+	  src/blloveletters.c, src/blloveletters.h, src/bltypes.h: added
+	  new files for BlLoveLetters feature
+
+2002-09-23 18:22  mitch
+
+	* src/bltheater.c: - added bl_theater_stop_callback().	- don't
+	  call bl_theater_pause() from bl_theater_item_finished().  - added
+	  "gboolean relax" to bl_theater_item_finished() so we don't
+	  relax modules which have not been prepared.  - optimized
+	  bl_theater_paint_callback() a bit.  - don't access
+	  module->running.  - cleanup.
+
+2002-09-23 17:52  mitch
+
+	* src/blaccept.c: Fixed setting of the global effects.
+
+2002-09-23 17:15  mitch
+
+	* examples/playlist.default.xml: Added a Pong game.
+
+2002-09-23 17:09  neo
+
+	* src/: blccc.c, blisdn.c, blisdn.h, blmarshal.list: More ISDN
+	  cleanups.
+
+2002-09-23 16:51  neo
+
+	* src/: blisdn.c, blisdn.h: bye bye old ISDN cruft
+
+2002-09-23 16:11  neo
+
+	* src/: blccc.c, blplaylist-parse.c, blplaylist.c, blplaylist.h:
+	  Pass a the BlPlaylist a reference to BlConfig. Set the aspect
+	  ratio on all modules we create.
+
+2002-09-23 15:47  neo
+
+	* examples/config.xml, examples/playlist.default.xml,
+	  src/blconfig.c, src/blconfig.h: Added aspect ratio config option.
+
+2002-09-23 15:24  neo
+
+	* src/: Makefile.am, blccc.c, blccc.h, blpong.c, blpong.h,
+	  bltypes.h: Die, BlPong, die.
+
+2002-09-23 15:07  neo
+
+	* src/: blccc.c, blconfig.c, blconfig.h, blisdn.c, blisdn.h,
+	  bltypes.h: Started to rip BlIsdn apart.
+
+2002-09-23 14:03  neo
+
+	* examples/playlist.default.xml: Adapted the example playlist to
+	  the fact that the fire module stops itself now.
+
+2002-09-23 13:16  neo
+
+	* examples/config.xml, src/blccc.c, src/blccc.h, src/blconfig.c,
+	  src/blconfig.h, src/bltheater.c, src/bltheater.h, src/main.c:
+	  Parse recipients from the config file instead of the
+	  command-line.  Added bl_theater_add_recipient() and
+	  bl_theater_remove_recipient().
+
+2002-09-23 01:25  neo
+
+	* src/: blccc.c, blconfig.c, blconfig.h: Added the ISDN port to
+	  BlConfig.
+
+2002-09-23 00:46  neo
+
+	* examples/playlist.default.xml: added a nice fadeout effect
+
+2002-09-22 20:00  neo
+
+	* examples/: playlist.default.xml, movies/hdl-mask.bml: Added a HDL
+	  mask and demonstrate its use in the example playlist.
+
+2002-09-22 19:50  neo
+
+	* examples/playlist.default.xml, src/blplaylistitem.c: Apply the
+	  item's reverse setting on the movie_players reverse state.  Added
+	  some good old HDL movies to the example playlist.
+
+2002-09-22 18:22  neo
+
+	* examples/config.xml, src/blccc.c, src/blconfig.c, src/blconfig.h,
+	  src/blplaylist-parse.c, src/blplaylist.c, src/blplaylist.h,
+	  src/bltheater.c, src/bltheater.h: Simplified the code by dropping
+	  support for maxval != 255 and channels != 1.
+
+2002-09-22 17:56  neo
+
+	* src/: blccc.c, blplaylist-parse.c, blplaylist.c, blplaylist.h,
+	  main.c: Share one frame buffer among all modules in a playlist.
+
+2002-09-22 17:29  neo
+
+	* src/: blccc.c, blplaylist-parse.c, bltheater.c, bltheater.h:
+	  Adapted to blib API changes.
+
+2002-09-21 22:30  neo
+
+	* Makefile.am, configure.in, data/.cvsignore, data/Makefile.am,
+	  data/playlist.dtd: Added a first draft of a DTD for the playlist.
+	  It's missing item attributes.
+
+2002-09-21 22:14  neo
+
+	* src/bllogger.c: Open the logfile using "a", not "wa".
+
+2002-09-21 22:11  neo
+
+	* examples/config.xml, src/blccc.c, src/blconfig.c, src/bllogger.c,
+	  src/bltheater.c, src/bltheater.h: Enabled writing of logfiles.
+
+2002-09-21 21:44  neo
+
+	* examples/config.xml, src/blccc.c, src/blccc.h, src/blconfig.c,
+	  src/blconfig.h, src/bllogger.c, src/bltheater.c, src/main.c:
+	  Removed most command-line options and use BlConfig instead.
+
+2002-09-21 20:40  neo
+
+	* examples/playlist.default.xml, src/bllogger.c, src/bltheater.c,
+	  src/bltheater.h: Allow a NULL filename in
+	  bl_logger_new_from_file() and make it write to stdout. Integrated
+	  the logger into BlTheater.
+
+2002-09-21 20:28  neo
+
+	* src/: blplaylist-parse.c, main.c: Got rid of atoi() and atof().
+
+2002-09-21 19:43  neo
+
+	* src/: blconfig.c, blplaylist-parse.c: Removed lots of code and
+	  use blib functions instead.
+
+2002-09-21 18:02  neo
+
+	* examples/config.xml, src/blaccept.c, src/blconfig.c,
+	  src/blconfig.h: Improved BlConfig further.
+
+2002-09-21 16:32  neo
+
+	* examples/Makefile.am, examples/config.xml, src/blconfig.c: More
+	  work on config file parsing and a simple example.
+
+2002-09-21 16:08  neo
+
+	* configure.in, src/blplaylist-parse.c, src/bltheater.c: Prepare
+	  and relax the modules in BlTheater. This is ugly and needs to
+	  change.
+
+2002-09-21 14:01  neo
+
+	* src/blplaylistitem.c: Respect current setting of module->speed
+	  when applying effects.  This makes playlist syntax <param
+	  key="speed" value="2.0"> work.
+
+2002-09-21 13:50  neo
+
+	* examples/playlist.default.xml, src/blplaylist-parse.c,
+	  src/main.c: Use g_object_set_property() instead of g_object_set()
+	  and b_init() instead of g_type_init(). This makes integer, double
+	  and boolean properties work in playlists.
+
+2002-09-20 21:35  mitch
+
+	* examples/playlist.default.xml: ported the "camel & fly" playlist
+	  to the new format.
+
+2002-09-20 21:15  mitch
+
+	* src/: blccc.c, blccc.h, blplaylist-parse.c, blplaylist-parse.h,
+	  blplaylist.c, blplaylist.h, blplaylistitem.c, blplaylistitem.h,
+	  bltheater.c, bltheater.h: Ported to new BModule API:
+
+	  - replaces BlPlaylistItem's "module_type" and "movie" by the
+	  module   itself.  - create modules while parsing.  - parse
+	  <param> elements.  - apply all effects in the "paint" callback,
+	  so they work for all	 kinds of modules, not just movies.  - tons
+	  of related changes...
+
+2002-09-20 20:04  neo
+
+	* src/blconfig.c: started to work on the config file parser
+
+2002-09-20 18:05  neo
+
+	* src/: Makefile.am, blconfig.c, blconfig.h, bltypes.h: Basic
+	  framework for configuration file parsing and saving.
+
+2002-09-20 15:27  neo
+
+	* src/: bllogger.c, bllogger.h: Finished BlLogger.
+
+2002-09-20 15:01  neo
+
+	* src/: bllogger.c, bllogger.h: Almost there.
+
+2002-09-20 14:43  neo
+
+	* src/: Makefile.am, bllogger.c, bllogger.h, bltypes.h: Added
+	  logging framework.
+
+2002-09-20 14:23  neo
+
+	* src/bltheater.h: Removed copies of the same #defines.
+
+2002-09-20 13:28  neo
+
+	* configure.in: Check for blib >= 0.8.
+
+2002-09-20 13:17  mitch
+
+	* src/: blccc.c, bltheater.c: Made it compile with current blib
+	  (will definitely not work yet),
+
+2002-09-15 13:51  mitch
+
+	* src/: blplaylist-parse.c, blplaylist-parse.h, blplaylist.c: -
+	  Pass the playlist itself, not just filename, width etc. to
+	  bl_playlist_parse().	- Enabled effects for the <playlist>
+	  element.  - Allow nested <playlist> elements. Effects are applied
+	  recursively.
+
+2002-09-14 15:21  mitch
+
+	* src/: blccc.c, blplaylist-parse.c, blplaylist.c, blplaylist.h: -
+	  Removed the "filename" paramater from bl_playlist_new().  - Added
+	  bl_playlist_new_from_file().
+
+2002-09-11 20:19  mitch
+
+	* src/: blccc.c, blplaylist-parse.c, blplaylist.c, blplaylist.h,
+	  blplaylistitem.c, blplaylistitem.h: - Enables playlists as
+	  playlist items.  - Apply item effects recursively to
+	  sub-playlist.  - Lots of related changes.
+
+2002-09-11 20:17  mitch
+
+	* src/blaccept.c: fixed if((()(()())) foobar
+
+2002-09-10 23:32  mitch
+
+	* src/: blccc.c, blplaylist.c, blplaylist.h, blplaylistitem.c,
+	  blplaylistitem.h: - made BlPlaylist a BlPlaylistItem subclass.  -
+	  virtualized bl_playlist_item_describe() - removed public
+	  bl_playlist_list_items() and made it a describe()
+	  implementation.
+
+2002-09-10 02:21  mitch
+
+	* src/: blaccept.c, blccc.c, blplaylist-parse.c, blplaylist.c,
+	  blplaylistitem.c, blplaylistitem.h, bltheater.c: - Made
+	  BPlaylistItem a BObject.  - cleanup.
+
+2002-09-10 01:39  mitch
+
+	* src/blccc.c: code formating paranoia...
+
+2002-09-10 00:50  mitch
+
+	* src/: blaccept.c, blccc.c, blplaylist-parse.c, blplaylistitem.c,
+	  blplaylistitem.h, bltheater.c: Various cleanups all over the
+	  place.
+
+2002-09-10 00:15  daniel
+
+	* src/: bllisten.c, blpong.c, bltheater.c: pedantic include fixes
+
+2002-09-10 00:06  mitch
+
+	* src/: Makefile.am, blccc.c, blplaylist-parse.c, blplaylist.c,
+	  blplaylist.h, blplaylistitem.c, blplaylistitem.h, bltheater.c: -
+	  moved BlPlaylistItem to it's own files.  - changed includes
+	  accordingly.	- cleaned up includes.
+
+2002-09-09 22:44  mitch
+
+	* src/: blaccept.c, blccc.c, blccc.h, bltheater.c, bltheater.h: -
+	  Added event dispatching to BlTheater and BlCcc.  - Send events
+	  from BlAccept.
+
+2002-09-09 21:36  mitch
+
+	* src/: bltheater.c, main.c: Allow startup without any recipients.
+	  Warn if none were passed but continue anyway.
+
+2002-09-09 21:24  mitch
+
+	* src/: blaccept.c, blccc.c, blccc.h, bltheater.c, bltheater.h:
+	  Added support for adding/removing recipients to BlCcc and
+	  BlAccept.
+
+2002-09-09 20:25  mitch
+
+	* src/: blccc.c, blplaylist.c: cleanup, indentation, nothing...
+
+2002-09-09 19:21  mitch
+
+	* src/: blccc.c, blplaylist.c, blplaylist.h: factored out
+	  bl_playlist_item_describe() and use it.
+
+2002-09-09 18:58  mitch
+
+	* src/: bltheater.c, bltheater.h: - made real GList based stacks
+	  out of theater->item_stack and   thater->module_stack.  - added
+	  theater->frame_buffer where the theater's effects (if any)   are
+	  applied before sending.
+
+2002-09-09 18:41  mitch
+
+	* src/: blccc.c, bltheater.c: Reduced newly added code duplication
+	  in BlTheater and moved static functions to the end of the file.
+
+2002-09-09 18:18  mitch
+
+	* src/: blccc.c, blmarshal.list, blplaylist-parse.c, blplaylist.c,
+	  blplaylist.h, bltheater.c, bltheater.h, bltypes.h: - added a
+	  refcount to BlPlaylistItem - changed BlTheater massively, It now
+	  operates on playlist items   instead of movies and creates
+	  BModules to display stuff.  - lots of changes...
+
+2002-09-09 16:16  mitch
+
+	* src/: blccc.c, blplaylist.c, blplaylist.h: Renamed
+	  bl_playlist_list_movies() bl_playlist_list_items() and made it
+	  handle non-movie items.
+
+2002-09-09 16:08  mitch
+
+	* src/: blccc.c, blplaylist-parse.c, blplaylist.c, blplaylist.h: -
+	  added a GType for the module type to BlPlaylistItem - ref the
+	  BMoviePlayer class in BlCcc so it is always available.  - parse
+	  playlist item module types and set item->type accordingly.  -
+	  interpret CDATA as movie name only if item->data is
+	  G_TYPE_MOVIE_PLAYER.
+
+2002-09-09 15:08  mitch
+
+	* src/blplaylist-parse.c: minor cleanup.
+
+2002-09-09 15:07  mitch
+
+	* src/: blccc.c, blplaylist-parse.c, blplaylist.c, blplaylist.h:
+	  Made BlPlaylist a BObject subclass.
+
+2002-09-09 14:54  mitch
+
+	* src/: blplaylist-parse.c, blplaylist-parse.h, blplaylist.c:
+	  Ported playlist parser to BParser.
+
+2002-09-09 14:20  mitch
+
+	* src/: blccc.c, blccc.h, blplaylist-parse.c, blplaylist-parse.h,
+	  blplaylist.c, blplaylist.h, bltheater.c, bltheater.h, main.c:
+	  Replaced all "maxval" parameters and assertions by "channels" and
+	  made "maxval" configurable on a per-movie basis (just reconfigure
+	  the BSender).
+
+2002-09-09 13:48  mitch
+
+	* src/: blccc.c, main.c: - don't pass argv[0] as hostname.  - scan
+	  the blib default module dir and report present modules in
+	  bl_ccc_status().
+
+2002-09-05 14:22  mitch
+
+	* configure.in, src/bltheater.c, src/bltheater.h: - require blib >=
+	  0.6 - ported to new BSender API
+
+2002-09-03 13:56  mitch
+
+	* src/modules/Makefile.am: Install the modules in
+	  <prefix>/lib/blccc/modules
+
+2002-09-03 03:11  neo
+
+	* configure.in, src/Makefile.am, src/blaccept.c, src/blccc.c,
+	  src/blccc.h, src/bleffects.c, src/bleffects.h,
+	  src/blplaylist-parse.c, src/blplaylist.c, src/blplaylist.h,
+	  src/bltheater.c, src/bltheater.h: Removed BlEffects, use BEffects
+	  from blib.
+
+2002-08-31 22:38  daniel
+
+	* src/main.c: include string.h to get rid of a warning.
+
+2002-08-29 21:10  daniel
+
+	* configure.in, src/Makefile.am, src/modules/.cvsignore,
+	  src/modules/Makefile.am, src/modules/test.c, src/modules/test.h:
+	  start tu use BModule stuff
+
+2002-08-29 13:55  neo
+
+	* src/: blccc.c, blplaylist-parse.c: Adapt to blib API changes.
+
+2002-08-29 02:04  neo
+
+	* configure.in: Check for blib >= 0.2.
+
+2002-08-28 05:55  daniel
+
+	* src/: bltheater.c, bltheater.h: update.
+
+2002-08-28 04:39  daniel
+
+	* src/bltheater.c: foo
+
+2002-08-28 04:38  daniel
+
+	* src/: bltheater.c, bltheater.h: make use of BSender and ease the
+	  code here a lot. untested!
+
+2002-08-27 21:07  mitch
+
+	* src/: blccc.c, bleffects.c, blplaylist-parse.c, blplaylist.c: -
+	  use name and filename from BObject.  - fixed double g_free() in
+	  playlist sarsing.
+
+2002-08-27 01:47  neo
+
+	* configure.in, src/blccc.c, src/blplaylist-parse.c: Check for blib
+	  >= 0.1.0 and adapt to blib API changes.
+
+2002-08-21 16:27  neo
+
+	* src/: blccc.c, blplaylist-parse.c, blplaylist.c, bltheater.c:
+	  Adapt to BLib changes.
+
+2002-08-20 22:26  mitch
+
+	* src/: Makefile.am, blccc.c, blmovie-blm.c, blmovie-blm.h,
+	  blmovie-bml.c, blmovie-bml.h, blmovie-gif.c, blmovie-gif.h,
+	  blmovie.c, blmovie.h, blplaylist-parse.c, blplaylist.c,
+	  blplaylist.h, bltheater.c, bltheater.h, bltypes.h, main.c: -
+	  Removed all movie classes and use the ones from blib.  - Moved
+	  bl_movie_apply_effects() to bl_playlist_apply_movie_effects().
+
+2002-08-13 03:54  mitch
+
+	* src/blmovie-bml.c: Some minor fixes after testing it the first
+	  time.
+
+2002-08-13 03:28  mitch
+
+	* src/blmovie-bml.c: Row parsing. ugly, untested, too stoned to
+	  hack loops...
+
+2002-08-13 02:16  mitch
+
+	* src/blmovie-bml.c: Theoretically, it should now parse correct BML
+	  files into a movie with empty frames of the correct size...
+
+2002-08-13 01:49  mitch
+
+	* src/blmovie-bml.c: Require valid bits="foo" and channels="bar"
+	  attributes to be passed and reject <row>s with wrong lengths
+	  (still untested).
+
+2002-08-13 01:15  mitch
+
+	* src/blmovie-bml.c: Accept only movies with correct attibute
+	  values.
+
+2002-08-13 00:51  mitch
+
+	* src/: Makefile.am, blmovie-blm.c, blmovie-bml.c, blmovie-bml.h,
+	  blmovie-gif.c, blmovie.c, blmovie.h: Initial BML support:
+
+	  - added all metadata attributes from the BML <header> to BlMovie.
+	   - initial blmovie-bml implementation which is totally untested
+	  but should currectly parse the XML structure and metadata.  -
+	  changed BLM and GIF loaders to use movie->title instead of
+	  movie->name.
+
+2002-08-12 21:37  mitch
+
+	* src/: Makefile.am, blmovie-blm.c, blmovie-gif.c, blmovie.c,
+	  blplaylist-parse.c, blplaylist.c, blutils.c, blutils.h: Removed
+	  blutils.[ch] and use the stuff from blib instead.
+
+2002-08-12 21:05  mitch
+
+	* configure.in, src/Makefile.am, src/blmovie-gif.c, src/gif-load.c,
+	  src/gif-load.h: - depend on blib - removed gif-load.[ch] - use
+	  GIF stuff from blib
+
+2002-07-16 20:12  mitch
+
+	* examples/movies/antenne/: d01_doppelpulse_25.gif,
+	  d01c_twopulse_55.gif, d02_double-bind_41.gif,
+	  d02_singlepulse_25.gif, d02b_single-bind_41.gif,
+	  d03_firemonsta_41.gif, d04_monsta_41.gif, d04b_monstare_82.gif,
+	  d05_twinkle_10.gif, d05b_twinkletoo_42.gif, d06_move_26.gif,
+	  d07_movecross_26.gif, d08_popups_25.gif, d09_popupstoo_26.gif,
+	  d10_popwelle_27.gif, d11_mixedpopflow_26.gif,
+	  s01a_atmen_simple_82.gif, s01b_atmensimple_82.gif,
+	  s01c_atmensimple_82.gif, s01d_atmens_links_42.gif,
+	  s02_atmen_psycho-short_72.gif, s03_atmen_psych2_51.gif,
+	  s05_atmen_foo_76.gif, s06_atmen_pulse_49.gif,
+	  s07_atmen_pulse2_49.gif: Added more movies from Antenne.
+
+2002-07-16 20:09  mitch
+
+	* examples/movies/blinkenwald/: waber_1.gif, waber_10.gif,
+	  waber_2.gif, waber_3.gif, waber_4.gif, waber_5.gif, waber_6.gif,
+	  waber_7.gif, waber_8.gif, waber_9.gif, zooloo_1.gif,
+	  zooloo_2.gif, zooloo_3.gif, zooloo_4.gif, zooloo_5.gif: Added
+	  more movies from Bjoern.
+
+2002-07-12 18:24  mitch
+
+	* examples/: playlist01.antenne.xml, playlist02.antenne.xml,
+	  playlist03.antenne.xml, playlist04.antenne.xml: some more
+	  playlists (this time without sublist inclusion).
+
+2002-07-12 18:23  mitch
+
+	* examples/play_sublist01.antenne.xml: the meta list using the
+	  sublists.
+
+2002-07-12 18:21  mitch
+
+	* examples/: sublist01.speed.antenne.xml,
+	  sublist02.speed.antenne.xml, sublist03.speed.antenne.xml,
+	  sublist04.speed.antenne.xml, sublist05.speed.antenne.xml,
+	  sublist06.speed.antenne.xml, sublist07.speed.antenne.xml,
+	  sublist08.speed.antenne.xml, sublist09.speed.antenne.xml,
+	  sublist10.speed.antenne.xml, sublist11.speed.antenne.xml,
+	  sublist12.speed.antenne.xml, sublist13.speed.antenne.xml,
+	  sublist14.speed.antenne.xml, sublist15.speed.antenne.xml,
+	  sublist16.speed.antenne.xml, sublist17.speed.antenne.xml,
+	  sublist18.speed.antenne.xml, sublist19.speed.antenne.xml: Added
+	  lots of list snipplets to be used by a still to commit meta-list.
+
+2002-07-12 18:20  mitch
+
+	* src/blplaylist-parse.c: Added parsing of
+	  <list>playlist.xml</list> tags which load sublists.
+
+2002-07-12 17:51  mitch
+
+	* examples/movies/antenne/: 01_2frames.gif, 02_7frames.gif,
+	  03_2frames.gif, 04_3frames.gif, 05_6frames.gif, 06_7frames.gif,
+	  07_7frames.gif, 08_3frames.gif, 09line_4frames.gif,
+	  10grow_6frames.gif, 11grow_8frames.gif, 12wave_10frames.gif,
+	  13wave_15frames.gif, 14wave_14frames.gif, 15wave_58frames.gif,
+	  16farben+16frames.gif, 16flash_6frames.gif, 17flash_7frames.gif,
+	  18flash_9frames.gif, 19wave_15frames.gif: 19 times more blinken
+
+2002-07-12 14:37  mitch
+
+	* src/bleffects.c: Fixed the debugging "switch single pixel on"
+	  effect.
+
+2002-07-12 14:00  mitch
+
+	* examples/: playlist.antenne.xml,
+	  movies/antenne/16farben_on-2foff.gif,
+	  movies/antenne/16farben_on.gif, movies/antenne/air01_71.gif,
+	  movies/antenne/air02_71.gif, movies/antenne/air03_35.gif,
+	  movies/antenne/air04_18.gif, movies/antenne/arrow-fast_25.gif,
+	  movies/antenne/arrow-slow_39.gif,
+	  movies/antenne/atman-random_82frames.gif,
+	  movies/antenne/atman-single_43frames.gif,
+	  movies/antenne/atman3_82frames.gif,
+	  movies/antenne/atman_42frames.gif,
+	  movies/antenne/balken_links_35.gif,
+	  movies/antenne/balken_rechts_35.gif, movies/antenne/blow_54.gif,
+	  movies/antenne/blowing_35frames.gif,
+	  movies/antenne/bounce_38.gif, movies/antenne/burstback_34.gif,
+	  movies/antenne/bushfire_60frames.gif,
+	  movies/antenne/bzzz_40frames.gif, movies/antenne/downdrop_13.gif,
+	  movies/antenne/few_27frames.gif, movies/antenne/flow_82.gif,
+	  movies/antenne/kurve_4.gif, movies/antenne/more_particles_18.gif,
+	  movies/antenne/movement_66.gif, movies/antenne/outwards2_20.gif,
+	  movies/antenne/outwards_8.gif,
+	  movies/antenne/particles-left_36.gif,
+	  movies/antenne/ping-double_33.gif,
+	  movies/antenne/ping-slow_44.gif, movies/antenne/ping_21.gif,
+	  movies/antenne/pixelrain_9.gif, movies/antenne/raus-slow_46.gif,
+	  movies/antenne/raus_28.gif, movies/antenne/simple_burst_17.gif,
+	  movies/antenne/upndown_64frames.gif,
+	  movies/antenne/upward_12frames.gif, movies/antenne/welle_69.gif:
+	  Added antenne's movies + playlist.
+
+2002-07-12 13:33  mitch
+
+	* src/: blmovie.c, blmovie.h, blplaylist-parse.c, blplaylist.c,
+	  blplaylist.h, bltheater.c: - added speed="factor" XML attribute
+	  (0.1 <= value <= 10.0) - set TIME_CORRECTION magic in bltheater.c
+	  to 0
+
+2002-07-12 13:11  mitch
+
+	* src/blmovie-gif.c: Workaround for Björn's broken GIF writer: Set
+	  frame duration to 100ms if specified as 0ms.
+
+2002-07-11 18:50  tim
+
+	* examples/movies/blinkenwald/: bushfire1.gif, bushfire10.gif,
+	  bushfire11.gif, bushfire12.gif, bushfire13.gif, bushfire14.gif,
+	  bushfire2.gif, bushfire3.gif, bushfire4.gif, bushfire5.gif,
+	  bushfire6.gif, bushfire7.gif, bushfire8.gif, bushfire9.gif: new
+	  animations
+
+2002-07-11 18:41  mitch
+
+	* src/: blplaylist.c, bltheater.c: - fixed evil bug (it's a bad
+	  idea to g_free() a GObject.  - cleanups while searching it.
+
+2002-07-11 17:15  mitch
+
+	* src/main.c: added --g-fatal-warnings command line option.
+
+2002-07-11 16:52  mitch
+
+	* examples/playlist.gondwana.xml, src/bleffects.c, src/bleffects.h,
+	  src/blmovie.c, src/blplaylist-parse.c: - added BlEffectScope enum
+	  which restricts effects to either   ALL, LEFT or RIGHT (works for
+	  all effects except reverst and mirror).  - changed example
+	  playlist accordingly.
+
+2002-07-09 14:57  neo
+
+	* src/blplaylist.c: cleaned up after myself
+
+2002-07-09 14:50  neo
+
+	* src/: blccc.c, blmovie-blm.c, blmovie-gif.c, blmovie.c,
+	  blmovie.h, blplaylist-parse.c, blplaylist.c: Added a full
+	  filename to BlMovie. This is an absolute path build from the
+	  basedir of the playlist and is in the filesystem encoding.
+
+2002-07-09 13:41  neo
+
+	* src/blplaylist-parse.c: Fixed encoding conversion, replaced
+	  memmem() with g_strstr_len().
+
+2002-07-09 00:07  mitch
+
+	* src/blplaylist-parse.c: Added local ENSURE_EFFECTS() macro to
+	  make the code more readable.
+
+2002-07-09 00:00  mitch
+
+	* examples/playlist.gondwana.xml, src/blplaylist-parse.c: - Changed
+	  lmirror="arbitrary" and rmirror="arbitrary" attributes   to
+	  mirror="left|right" because they are mutually exclusive.  -
+	  Changed example playlist accordingly.
+
+2002-07-08 22:40  tim
+
+	* examples/playlist.gondwana.xml: boolean attribute values set to
+	  yes
+
+2002-07-08 22:22  mitch
+
+	* examples/playlist.gondwana.xml, src/blccc.c, src/blccc.h,
+	  src/bleffects.c, src/bleffects.h, src/blmovie-blm.c,
+	  src/blmovie.c, src/blmovie.h, src/blplaylist-parse.c,
+	  src/blplaylist-parse.h, src/blplaylist.c, src/blplaylist.h,
+	  src/bltheater.c, src/bltheater.h: - added "maxval" parameters /
+	  fields all over the place where needed.  - multiply BLM pixels
+	  with maxval on loading.  - take maxval into account when applying
+	  effects.  - added a per BlPlaylistItem effect object.  - added
+	  effect parsing to the XML parser.  - added "reverse§" effect.  -
+	  changed playlist.gondwana.xml to document the effects' usage.
+
+	  (left the telnet-controllable effects object there because it's
+	  still useful for live performance).
+
+2002-07-08 18:22  mitch
+
+	* examples/playlist.default, examples/playlist.default.xml,
+	  examples/playlist.gondwana.xml,
+	  examples/movies/test-horizontal-fast.blm,
+	  examples/movies/test-horizontal.blm,
+	  examples/movies/test-vertical.blm, src/Makefile.am, src/blccc.c,
+	  src/blccc.h, src/blplaylist-parse.c, src/blplaylist-parse.h,
+	  src/blplaylist.c, src/blplaylist.h, src/main.c: XML Playlists!
+
+	  - added blplaylist-parse.[ch] which contains a GMarkup based XML
+	   parser mostly taken from DFBPoint.  - added -l (--list) command
+	  line option to specify an initial playlist.  - default to
+	  "playlist.default.xml" - ported the example playlist.  - added
+	  "playlist.gondwana.xml" - added some example 16x3 movies.
+
+2002-07-08 04:35  mitch
+
+	* src/: blaccept.c, bleffects.c, bleffects.h, bltheater.c, main.c:
+	  - added a debugging "effect" which switches one pixel on.  -
+	  removed the limitation of the original HDL protocol to 18x8
+	  (hacked, will clean up tomorrow)
+
+2002-07-07 17:02  tim
+
+	* src/bltheater.c: tries to convert command line arguments to IP
+	  addresses when they can't be resolved with gethostbyname(3).
+	  Enables entering of arbitrary IP addresses on systems where
+	  gethostbyname(3) does not accept plain IP addresses like Mac OS X
+	  10.1.
+
+2002-07-05 14:14  mitch
+
+	* src/: Makefile.am, blaccept.c, blccc.c, blccc.h, bleffects.c,
+	  bleffects.h, bltheater.c, bltheater.h, bltypes.h: - Added a very
+	  simple BlEffect object using the code from gondwana.	- Added
+	  effect commands to BlAccept.	- Apply the effects before sending
+	  the packets.
+
+	  - Fixed longstanding parenthesis misplacment in blaccept.c which
+	  caused   the connection to be terminated on each command shorter
+	  than 2 chars.    (and no, it was no gcc bug ;-)
+
+2002-07-03 17:50  mitch
+
+	* src/blmovie-gif.c: Conditionalized debugging output with #ifdef
+	  DEBUG_GIF
+
+2002-07-03 17:47  mitch
+
+	* examples/: playlist.default, movies/Makefile.am,
+	  movies/bushfire-test.gif, movies/bushfire_60frames.gif: Fixed
+	  playlist.default which was broken by my last commit and added two
+	  example GIF animations.
+
+2002-07-03 17:41  mitch
+
+	* examples/playlist.default, src/Makefile.am, src/blccc.c,
+	  src/blccc.h, src/blisdn.h, src/bllisten.h, src/blmovie-blm.c,
+	  src/blmovie-blm.h, src/blmovie-gif.c, src/blmovie-gif.h,
+	  src/blmovie.c, src/blmovie.h, src/blplaylist.h, src/blpong.h,
+	  src/bltheater.c, src/bltheater.h, src/gif-load.c, src/gif-load.h,
+	  src/main.c: Added support for loading GIF animations and extended
+	  the protocol.
+
+	  - the default behaviour (without command line options) is exactly
+	  as before.  - added --protocol command line option, where '1' is
+	  the original	 HDL 18x8 monochrome protocol, '2' is graysale with
+	  arbitrary width   and height (--width and --height options).	-
+	  added new magic 0xFEEDBEEF for protocol version 2.  - create the
+	  pong and isdn objects only for 18x8 matrices.  - added
+	  G_CONST_RETURN to all bl_*_get_type() functions.  - made BlMovie
+	  an abstract base class.  - moved BLM code to blmovie-blm.[ch].  -
+	  added blmovie-gif.[ch].  - added automatic file format detection
+	  using magic header values.  - added gif-load.[ch] from
+	  blinkentools.
+
+2002-07-02 22:52  mitch
+
+	* src/: blccc.c, blisdn.c, bllisten.c, blmovie.c, blplaylist.c,
+	  blpong.c, bltheater.c: Chain up unconditionally in all finalize()
+	  implementations.  Removed G_FILE_TEST_EXISTS from all calls to
+	  g_file_test() because G_FILE_TEST_IS_REGULAR already checks for
+	  existance.
+
+2002-07-01 23:12  neo
+
+	* src/: blccc.c, main.c: Handle failure of bl_theater_new();
+
+2002-06-24 17:59  tim
+
+	* src/: blccc.c, bltheater.c, bltheater.h: removed extra padding at
+	  end of bl_frame data packet
+
+2002-06-22 17:29  tim
+
+	* src/blisdn.c: added <sys/time.h> to include list for darwin
+	  support
+
+2002-06-19 12:47  neo
+
+	* src/blaccept.c: added missing includes of <sys/time.h> and
+	  <sys/types.h>
+
+2002-04-14 16:58  neo
+
+	* ChangeLog: Generated ChangeLog from CVS log messages.
+
+2002-04-14 16:56  neo
+
+	* README, src/bltheater.c: misc small fixes
+
+2002-04-14 16:31  neo
+
+	* README, configure.in: Bumped version number to 1.0.  Updated
+	  README.
+
+2002-04-14 16:07  neo
+
+	* Makefile.am, configure.in, examples/.cvsignore,
+	  examples/Makefile.am, examples/playlist.default,
+	  examples/movies/.cvsignore, examples/movies/Makefile.am,
+	  examples/movies/camel.blm, examples/movies/the_fly.blm,
+	  examples/on-demand/.cvsignore, examples/on-demand/4467.blm,
+	  examples/on-demand/Makefile.am: Added some examples.
+
+2002-04-14 15:39  neo
+
+	* src/: blaccept.c, blaccept.h, blccc.c, blccc.h, blisdn.c,
+	  blisdn.h, bllisten.c, bllisten.h, blmovie.c, blmovie.h,
+	  blplaylist.c, blplaylist.h, blpong.c, blpong.h, bltheater.c,
+	  bltheater.h, bltypes.h, blutils.c, blutils.h, main.c: eeek,
+	  blinkenlights was spelled wrong all over the place
+
+2002-04-14 15:17  neo
+
+	* README, autogen.sh, configure.in, src/blaccept.c, src/blaccept.h,
+	  src/blccc.c, src/blccc.h, src/blisdn.c, src/blisdn.h,
+	  src/bllisten.c, src/bllisten.h, src/blmovie.c, src/blmovie.h,
+	  src/blplaylist.c, src/blplaylist.h, src/blpong.c, src/blpong.h,
+	  src/bltheater.c, src/bltheater.h, src/bltypes.h, src/blutils.c,
+	  src/blutils.h: Updated README, updated copyright, unified
+	  spelling of Blinkenlights...
+
+2002-03-29 03:16  neo
+
+	* README: A first draft of some basic usage guidelines.
+
+2002-02-10 19:01  neo
+
+	* src/blccc.c: Reload playlist using '*0#'.
+
+2001-12-31 21:45  neo
+
+	* src/blccc.c: fixed a bug in the "start" command
+
+2001-12-31 17:59  neo
+
+	* src/bltheater.c: time correction (subtract 15ms from each frame)
+
+2001-12-31 16:49  neo
+
+	* src/main.c: ignore SIGPIPE
+
+2001-12-30 18:53  neo
+
+	* src/: blaccept.c, blccc.c, blccc.h: New command "start" to load a
+	  new playlist and immidiately start it.
+
+2001-12-30 18:23  neo
+
+	* src/: blaccept.c, blccc.c, blccc.h, blisdn.c, blisdn.h: Added
+	  commands to block and unblock control through isdn lines.
+
+2001-12-30 17:27  neo
+
+	* src/: Makefile.am, blisdn.c, blisdn.h: Fixed error in
+	  Makefile.am.	Added functionality to block the BlIsdn object (it
+	  won't emit signals if blocked).
+
+2001-12-30 16:30  neo
+
+	* configure.in, src/.cvsignore, src/Makefile.am, src/blccc.c,
+	  src/blisdn.c, src/blmarshal.list, src/blmovie.c, src/blpong.c,
+	  src/bltheater.c: Bumped version number to 0.9.  Require latest
+	  GLib. Cleaned up marshallers. Simplified Makefile.
+
+2001-12-10 11:38  neo
+
+	* src/blisdn.h: enlarged admin_tones buffer to allow longer
+	  Loveletter numbers
+
+2001-11-29 17:43  neo
+
+	* src/blccc.c: Simple fix for the bug that cause trouble with
+	  on-demand movies and two active ISDN lines.
+
+2001-11-06 15:12  neo
+
+	* src/blccc.c: Load movies on demand from directory on-demand.
+	  Show on demand state in status message.
+
+2001-11-05 02:03  neo
+
+	* configure.in, src/blccc.c, src/blccc.h, src/blisdn.c,
+	  src/blisdn.h, src/blmovie.c, src/blplaylist.c, src/blplaylist.h,
+	  src/bltheater.c, src/bltheater.h: Bumped version number to 0.8.
+	  Require glib-1.3.10.	Added loop feature (indicated in the
+	  playlist by a TAB followed by a number).  Added Freudinnen
+	  feature (press *nnn# while  playing Pong to load movie
+	  on_demand/nnn.blm).  Unload movies after emitting
+	  "movie_finished", so movies aren't reloaded when they are set
+	  again in the signal handler.
+
+2001-10-24 17:41  neo
+
+	* src/: blccc.c, blisdn.c, blisdn.h, blpong.c, blpong.h: Added a
+	  new signal to BlIsdn that is emitted if the same dialtone is
+	  pressed three times in a row on the same line.
+
+	  Use it for a debugging mode: Press # three times to invert Pong.
+
+2001-10-14 20:48  neo
+
+	* src/: blccc.c, blisdn.c, blpong.c: Better UDP handling in BlIsdn.
+	  Slightly faster Pong.  Don't reset Pong paddles after the ball
+	  left the field.
+
+2001-10-02 12:39  neo
+
+	* src/: blccc.c, bltheater.c: Argh, my last fix introduced a
+	  deadlock.
+
+2001-10-01 21:05  neo
+
+	* src/bllisten.c: bind to INADDR_LOOPBACK for security reasons
+
+2001-09-30 19:55  neo
+
+	* configure.in, src/blmovie.c, src/blplaylist.c, src/bltheater.c,
+	  src/bltheater.h: Hopefully fixed the bug that caused the screen
+	  to sometimes stay blank after Pong finished. Bumped version
+	  number to 0.7.
+
+2001-09-29 00:36  neo
+
+	* src/: blccc.c, blccc.h, bllisten.c, main.c: install a handler for
+	  SIGTERM and blank the screen before exiting
+
+2001-09-28 22:20  neo
+
+	* src/blccc.c: start with playlist.default
+
+2001-09-28 22:18  neo
+
+	* src/: blaccept.c, blccc.c, blccc.h, blpong.c, blpong.h,
+	  bltheater.c, bltheater.h: skip to next movie via next
+
+2001-09-28 21:37  neo
+
+	* src/: blccc.c, blplaylist.c, blplaylist.h: Don't load a default
+	  playlist.  Start the first movie when loading a new playlist and
+	  no movie was active.
+
+2001-09-28 21:14  neo
+
+	* src/: blaccept.c, blccc.c, blccc.h: Allow to load a different
+	  playlist.
+
+2001-09-28 20:35  neo
+
+	* src/: blaccept.c, blaccept.h, blccc.c, blccc.h, bllisten.c,
+	  bllisten.h, blmovie.c, blplaylist.c, blplaylist.h, bltheater.c,
+	  bltheater.h, main.c: Implemented a bunch of commands, connect via
+	  tcp/2323 and try:
+
+	    bye     - closes the connection
+	    help    - shows a list of supported commands
+	    list    - list current playlist
+	    reload  - reload current playlist
+	    status  - show status info
+
+	  The default playlist is still 'default_pl'. This will change ...
+
+2001-09-28 16:59  neo
+
+	* src/blaccept.c: Close connection after 10 minutes of inactivity.
+
+2001-09-26 16:50  neo
+
+	* src/: blccc.c, blmovie.c, blplaylist.c, bltheater.c, bltheater.h:
+	  various misc fixes and changes
+
+2001-09-26 14:28  neo
+
+	* src/: blmovie.c, blplaylist.c: it works :-)
+
+	  The old functionality is restored by using a default playlist.
+	  I'll add more controls now.
+
+2001-09-26 00:56  neo
+
+	* src/: blccc.c, blplaylist.c, blplaylist.h, bltheater.c,
+	  bltheater.h: Completed BlPlaylist implementation, use it from
+	  BlCcc.
+
+2001-09-26 00:18  neo
+
+	* src/: Makefile.am, blmovie.c, blplaylist.c, blplaylist.h,
+	  blutils.c, blutils.h: Moved fgets_line() to blutils.c and renamed
+	  it to bl_fgets().  Added implementation for BlPlayList.
+
+2001-09-25 23:39  neo
+
+	* src/: Makefile.am, blmovie.c, blplaylist.c, blplaylist.h,
+	  bltypes.h: Added framework of BlPlaylist object.
+
+2001-09-25 23:12  neo
+
+	* src/: blmovie.c, blmovie.h: changed movie load semantics in
+	  preparaion of the upcoming new BlPlayList.
+
+2001-09-23 01:06  neo
+
+	* src/: blccc.c, blccc.h, bltheater.c, bltheater.h, main.c: Create
+	  BlIsdn, BlPong and BlTheater from BlCcc. Connect BlPong signals.
+	  blccc can play Pong again.
+
+2001-09-23 00:25  neo
+
+	* src/: bltheater.c, bltheater.h: Don't allow to set frame data
+	  while a movie is playing.
+
+2001-09-23 00:16  neo
+
+	* src/: blccc.c, bltheater.c, bltheater.h, main.c: BlTheater know
+	  nothing about BlPong anymore. Moved control into BlCcc.  Still
+	  unusable ...
+
+2001-09-22 23:46  neo
+
+	* src/: blccc.c, blpong.c, blpong.h, main.c: BlPong now knows
+	  nothing about BlIsdn anymore. Moved the signal handlers for
+	  BlIsdn into BlCcc. Does not work at all at the moment...
+
+2001-09-22 22:53  neo
+
+	* src/: Makefile.am, blccc.c, blccc.h, blisdn.c, bllisten.c,
+	  blmovie.c, blpong.c, bltypes.h, main.c: Removed old usage of
+	  blccc.h and added framework for BlCcc object.
+
+2001-09-22 21:47  neo
+
+	* src/: blaccept.c, blaccept.h, blisdn.c, blpong.c, bltypes.h,
+	  main.c: BlAccept is no longer an object, bl_accept_new creates a
+	  new thread to accept an incoming connection and dies when it has
+	  handled it.
+
+	  Cleaned up dial_tone handling in BlIsdn and BlPong.
+
+2001-09-21 18:47  neo
+
+	* .cvsignore, AUTHORS, ChangeLog, Makefile.am, NEWS, README,
+	  autogen.sh, configure.in, src/.cvsignore, src/Makefile.am,
+	  src/blaccept.c, src/blaccept.h, src/blccc.h, src/blisdn.c,
+	  src/blisdn.h, src/bllisten.c, src/bllisten.h, src/blmarshal.list,
+	  src/blmovie.c, src/blmovie.h, src/blpong.c, src/blpong.h,
+	  src/bltheater.c, src/bltheater.h, src/bltypes.h, src/main.c:
+	  Added blccc2, the beginning of rewrite of blccc the to the
+	  repository.
+

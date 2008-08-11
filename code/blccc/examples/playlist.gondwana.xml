@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<playlist>
+  <item loop="1">movies/test-horizontal-fast.blm</item>
+  <item loop="1" reverse="yes">movies/test-horizontal-fast.blm</item>
+
+  <item invert="yes">movies/test-horizontal-fast.blm</item>
+  <item invert="left">movies/test-horizontal-fast.blm</item>
+  <item invert="right">movies/test-horizontal-fast.blm</item>
+
+  <item hflip="yes">movies/test-horizontal-fast.blm</item>
+  <item hflip="left">movies/test-horizontal-fast.blm</item>
+  <item hflip="right">movies/test-horizontal-fast.blm</item>
+
+  <item vflip="yes">movies/test-horizontal-fast.blm</item>
+  <item vflip="left">movies/test-horizontal-fast.blm</item>
+  <item vflip="right">movies/test-horizontal-fast.blm</item>
+
+  <item mirror="left">movies/test-horizontal-fast.blm</item>
+  <item mirror="right">movies/test-horizontal-fast.blm</item>
+
+  <item>movies/bushfire-test.gif</item>
+
+  <!--
+  <item>movies/test-horizontal.blm</item>
+  <item loop="2">movies/test-vertical.blm</item>
+  -->
+</playlist>

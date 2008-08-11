@@ -1,0 +1,48 @@
+<!-- ##### SECTION Title ##### -->
+BProxyClient
+
+<!-- ##### SECTION Short_Description ##### -->
+requests and receives a stream from a Blinkenlights proxy server
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### STRUCT BProxyClient ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### FUNCTION b_proxy_client_new ##### -->
+<para>
+
+</para>
+
+@proxy_host: 
+@proxy_port: 
+@listen_port: 
+@callback: 
+@callback_data: 
+@error: 
+@Returns: 
+
+
+<!-- ##### FUNCTION b_proxy_client_send_heartbeat ##### -->
+<para>
+
+</para>
+
+@client: 
+@Returns: 
+
+

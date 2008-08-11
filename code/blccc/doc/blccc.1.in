@@ -1,0 +1,55 @@
+.\" blccc man page
+.\"
+.\" Project Blinkenlights 2004
+.\"
+.Dd February 24, 2004
+.Dt BLCCC 1
+.Os
+.Sh NAME
+.Nm blccc
+.Nd the Blinkenlights Chaos Control Center
+.Sh SYNOPSIS
+.Nm
+.Op Fl options
+.Ar config-file
+.Sh DESCRIPTION
+.Nm
+is the central process for a Blinkenlights installation. When started
+.Nm
+reads the
+.Ar config-file
+and sets up everything according to its content. See
+.Xr blconfig 7
+for an explanation of available options.
+.Pp
+.Nm
+maintains a playlist and constantly sends out Blinkenlights Protocol
+data streams to receivers like
+.Xr blinkensim 1
+or Matrix Control Units. In addition, it manages incoming telephone calls
+and activates configured plug-ins (games) depending on configuration.
+.Sh OPTIONS
+The following options are recognized by blccc.
+.Pp
+.Bl -tag -width "--concatenate" -compact
+.Pp
+.It Fl ?
+.It Fl -help
+Display help
+.Pp
+.It Fl V
+.It Fl -version
+Display version number and quit immediately.
+.El
+.Sh AUTHOR
+.An Sven Neumann Aq sven@gimp.org
+.Sh SEE ALSO
+Project Blinkenlights Home Page http://www.blinkenlights.de/
+.Pp
+.Xr blinkenproxy 1 ,
+.Xr blinkensim 1 ,
+.Xr blib 3 ,
+.Xr blconfig 7 ,
+.Xr blplaylist 7
+.Sh DIAGNOSTICS
+.Ex -std

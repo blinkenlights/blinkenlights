@@ -1,0 +1,66 @@
+This is version 2.9 of blinkentools, the next generation set of
+command-line utilities for Blinkenlights.
+
+Check out http://www.blinkenlights.de/ to learn more about the
+Blinkenlights project.
+
+This release of blinkentools includes the following tools:
+  
+ b2b    - a converter between the different formats for Blinkenlights movies.
+	  It is best used thru one of its aliases: b2blm, b2bml and b2gif.
+
+ b2mng  - converts Blinkenlights movies to MNG files. 
+ b2png  - converts single Blinkenlights movie frames to PNG images.
+ b2jpeg - converts single Blinkenlights movie frames to JPEG images.
+          (these three tools use the same themes that blinkensim uses)
+
+ blinkenproxy - an advanced multiplexer that acts as a server from which
+                clients can request a stream of Blinkenlights UDP packets
+
+ bmultiplexer - forwards a stream of Blinkenlights UDP packets to multiple
+	        recipients.
+
+ bplay  - shows Blinkenlights movies on the text console (needs aalib)
+
+ bsend  - reads Blinkenlights movies and sends them over the net using the
+          Blinkenlights network protocol.
+
+If you pass the --enable-oldtools option to configure, the following
+obsoleted tools are built as well:
+
+ blm2gif  - creates animated GIFs from Blinkenlights movies
+ gif2blm  - creates Blinkenlights movies from animated GIFs
+ blmplay  - plays Blinkenlights movies to the text console
+
+More tools may be added in future releases.
+
+
+The scripts directory holds a shell script called b2avi that uses b2b,
+b2png and mencoder (from the mplayer package) to create a DivX4 from a
+Blinkenlights movie.
+
+
+blinkentools-2.9 depends on blib >= 1.1.7 and glib-2.0. The b2mng
+utility depends on libmng-1.0 (the newer the better). You will also
+need pkg-config in order to compile blinkentools. If you installed
+blib into a different prefix than pkg-config, you may need to adapt
+the PKG_CONFIG_PATH environment variable. See the pkg-config(1)
+man-page.
+
+The file INSTALL has generic installation instructions. It all boils
+down to calling './configure' in the toplevel dir, then 'make' followed
+by 'make install'.
+
+
+The code is released under the terms of the GNU General Public License
+version 2 any later version. You will find a copy of this license in the
+file COPYING.
+
+
+Feel free to send questions, bug-reports, feature requests and patches
+to the author Sven Neumann <sven@gimp.org>.
+
+
+Have Blinkenfun,
+
+   Sven Neumann

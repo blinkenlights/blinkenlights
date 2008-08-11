@@ -1,0 +1,20 @@
+#include "blib/blib.h"
+
+b_effects_get_type
+b_module_get_type
+b_module_info_get_type
+b_movie_get_type
+b_movie_bml_get_type
+b_movie_blm_get_type
+b_movie_gif_get_type
+b_movie_player_get_type
+b_object_get_type
+b_proxy_client_get_type
+b_receiver_get_type
+b_sender_get_type
+b_theme_get_type
+
+@DIRECTFB_VIEW_TYPE@
+@PIXBUF_VIEW_TYPE@
+@GTK_VIEW_TYPE@
+@AA_VIEW_TYPE@

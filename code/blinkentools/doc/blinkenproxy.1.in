@@ -1,0 +1,78 @@
+.\" blinkenproxy man page
+.\"
+.\" Project Blinkenlights 2004
+.\"
+.Dd April 22, 2004
+.Dt BLINKENPROXY 1
+.Os
+.Sh NAME
+.Nm blinkenproxy
+.Nd redistribute Blinkenlights Protocol streams on request
+.Sh SYNOPSIS
+.Nm
+.Op Fl options
+.Op Ar hostname[:port]
+.Op Ar receive-port
+.Op Ar heartbeat-port
+.Sh DESCRIPTION
+.Nm
+receives a Blinkenlights Protocol data stream and redistributes it to multiple hosts
+on request. Any host that wants to receive a copy of the stream has to send a
+Blinkenlights Protocol Heartbeat Packet at least once a minute.
+.Nm
+in return sends a copy of the data stream to the requesting host.
+.Pp
+Support for
+.Nm
+is built into
+.Xr blinkensim 1
+to have the simulator receive a permanent stream from an unkown source via
+.Nm
+.Pp
+.Nm
+is similar to
+.Xr bmultiplexer 1
+but does redistribution on-demand instead of explicitly.
+.Pp
+.Ar hostname[:port]
+specifies an upstream blinkenproxy to request the stream from.
+.Pp
+.Ar receive-port
+is the port where
+.Nm
+receives Blinkenlights Protocol data packets. If 
+.Ar receive-port
+is omitted, the default port (2323) is used. Don't use this option if
+you specified an upstream proxy already.
+.Pp
+.Ar heartbeat-port
+is the port where 
+.Nm
+waits for new requests to arrive. If 
+.Ar heartbeat-port
+is omitted, the default port (4242) is used.
+.Sh OPTIONS
+The following options are recognized by
+.Nm
+.
+.Bl -tag -width "--concatenate" -compact
+.Pp
+.It Fl ?
+.It Fl -help
+Display help
+.Pp
+.It Fl V
+.It Fl -version
+Display version number and quit immediately.
+.El
+.Sh AUTHOR
+.An Sven Neumann Aq sven@gimp.org
+.Sh SEE ALSO
+Project Blinkenlights Home Page http://www.blinkenlights.de/
+.Pp
+.Xr bmultiplexer 1 ,
+.Xr bsend 1 ,
+.Xr blinkensim 1 ,
+.Xr blib 3
+.Sh DIAGNOSTICS
+.Ex -std

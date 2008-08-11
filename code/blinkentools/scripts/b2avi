@@ -1,0 +1,37 @@
+#!/bin/sh
+#
+# Simple script to create an MPEG-4 from a Blinkenlights movie.
+# Needs b2b, b2png and mencoder.
+#
+# Usage: b2avi <themename> <movie>
+
+theme=$1
+movie=$2
+
+verbose="--verbose"
+fps="25"
+codec="-ovc lavc -lavcopts vcodec=mpeg4"
+
+output=`mktemp -t bmovieXXXXXX`
+
+(b2b --fps $fps $movie | \
+ b2png $verbose --all --link --output $output --theme $theme) || exit -1
+
+movie=`basename $movie .bml`.avi
+
+rm -f divx2pass.log
+
+echo "Encoding (pass 1)"
+mencoder "mf://$output*.png" -mf fps=$fps -o $movie $codec:vpass=1 || exit -1
+
+echo "Encoding (pass 2)"
+mencoder "mf://$output*.png" -mf fps=$fps -o $movie $codec:vpass=2 || exit -1
+
+echo "Wrote $movie"
+
+echo -n "Removing temporary files... "
+
+rm divx2pass.log
+rm $output*.png
+
+echo "done"

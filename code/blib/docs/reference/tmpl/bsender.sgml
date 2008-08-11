@@ -1,0 +1,118 @@
+<!-- ##### SECTION Title ##### -->
+BSender
+
+<!-- ##### SECTION Short_Description ##### -->
+sends Blinkenlights packets
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+The #BSender object sends Blinkenlights UDP packets to a number of
+recipients. Recipients can be added and removed at run-time.
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+#BReceiver, #BPacket
+</para>
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### STRUCT BSender ##### -->
+<para>
+The #BSender struct is considered private.
+</para>
+
+
+<!-- ##### FUNCTION b_sender_new ##### -->
+<para>
+
+</para>
+
+@Returns: 
+
+
+<!-- ##### FUNCTION b_sender_add_recipient ##### -->
+<para>
+
+</para>
+
+@sender: 
+@src_port: 
+@dest_host: 
+@dest_port: 
+@error: 
+@Returns: 
+<!-- # Unused Parameters # -->
+@host: 
+@port: 
+
+
+<!-- ##### FUNCTION b_sender_remove_recipient ##### -->
+<para>
+
+</para>
+
+@sender: 
+@dest_host: 
+@dest_port: 
+@error: 
+@Returns: 
+<!-- # Unused Parameters # -->
+@host: 
+@port: 
+
+
+<!-- ##### FUNCTION b_sender_list_recipients ##### -->
+<para>
+
+</para>
+
+@sender: 
+@Returns: 
+
+
+<!-- ##### FUNCTION b_sender_configure ##### -->
+<para>
+
+</para>
+
+@sender: 
+@width: 
+@height: 
+@channels: 
+@maxval: 
+@Returns: 
+
+
+<!-- ##### FUNCTION b_sender_send_frame ##### -->
+<para>
+
+</para>
+
+@sender: 
+@data: 
+@Returns: 
+
+
+<!-- ##### FUNCTION b_sender_send_heartbeat ##### -->
+<para>
+
+</para>
+
+@sender: 
+@Returns: 
+<!-- # Unused Parameters # -->
+@port: 
+@data: 
+
+
+<!-- ##### FUNCTION b_sender_set_verbose ##### -->
+<para>
+
+</para>
+
+@sender: 
+@verbose: 
+
+

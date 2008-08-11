@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<blinkentheme title="Blinkenleds"
+  columns="18" rows="8" channels="1" maxval="1" width="166" height="110"
+  type="leds">
+
+  <background image="images/leds-166x110-bg.png"/>
+  <overlay image="images/leds-166x110-ov.png">
+    <grid dx="9" dy="13" sx="9" sy="13">
+      <window x="1" y="3" width="9" height="13"/>
+    </grid>
+  </overlay>
+
+</blinkentheme>

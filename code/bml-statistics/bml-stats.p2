@@ -1,0 +1,9 @@
+set data style lines
+set contour base
+set surface
+set dgrid3 20,100,8
+set view 60,15,1.0,1.0
+set xlabel 'Consumption (watts)' 
+set ylabel 'Level'
+set zlabel 'Time (seconds)'
+splot 'video-playlist.power.data'

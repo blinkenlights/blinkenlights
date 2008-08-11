@@ -1,0 +1,18 @@
+#!/bin/sh
+# test script. needs "test-module" from blib/test to be installed / in PATH
+if test -z "$1"; then
+	cat <<- EOF
+Script to test Blinkenjava. 
+Usage: test-blinkenlet <classname> <hostname> 
+EOF
+	exit
+fi
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+vm=@VM@
+jdklib=@JAVA_HOME@/jre/lib/i386
+LD_LIBRARY_PATH=$LD_LIBRARY_PATH:@libdir@:${jdklib}/${vm}:${jdklib}:${jdklib}/native_threads
+export LD_LIBRARY_PATH
+classname=$1
+shift
+test-module @BLIB_MODULEPATH@ Blinkenjava --property:class=${classname} $* 

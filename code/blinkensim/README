@@ -1,0 +1,91 @@
+Blinkensim 2 - the next generation Blinkenlights simulator
+----------------------------------------------------------
+
+If you have no clue what Blinkenlights is, take a look at
+http://www.blinkenlights.de/ first.
+
+Blinkensim is a Blinkenlights simulator. It understands the network
+protocol that we use for the Blinkenlights installations. If you
+haven't seen Blinkenlights you missed something, but this simulator
+will probably make you understand the Blinkenhype.
+
+Starting with version 2.3 blinkensim has support for requesting a
+blinkenlights stream from a server running blinkenproxy (as found in
+the blinkentools package).
+
+This version is built upon blib and thus speaks the next generation
+Blinkenlights protocol. Since almost all functionality is in blib,
+there is only very few code here. You will need blib >= 1.1.2 in order
+to compile this software.  The simulator needs blinkenthemes to work
+so you will also want to install the blinkenthemes package.
+
+There are three version of blinkensim:
+
+- blinkensim-directfb uses DirectFB to draw to the Linux frame buffer
+  device.
+
+- blinkensim-gtk uses GTK+-2.0 and is thus mainly targetted at the
+  X11 window system on Unix flavours like Linux, BSD and Mac OS X.
+  It should however be possible to compile a version for Win32.
+
+- blinkensim-aa uses aalib and displays ascii art on a text console.
+
+
+You also need pkg-config, a small utility that helps to locate
+installed software such as DirectFB. pkg-config is available from
+http://www.freedesktop.org/software/pkgconfig/. If you installed blib
+into a different prefix than pkg-config, you may need to adapt the
+PKG_CONFIG_PATH environment variable. See the pkg-config(1) man-page.
+
+
+Installation
+------------
+
+Change to the toplevel source directory and type
+
+  ./configure
+  make
+  make install
+
+You can pass the usual options to configure (try ./configure --help).
+
+
+Usage
+-----
+
+Usage is very simple, just start it and pass it a theme on the
+command-line. For example:
+
+  blinkensim-gtk hdl-640x480
+
+Themes are by default searched first in the current directory, then in
+the blinkentheme path as defined by blib ($prefix/share/blib-1.1/themes).
+Or, if the environment variable B_THEME_PATH is set, in the directories
+defined therein. You can use the --list command-line option to get a
+list of available themes.
+
+If you want to connect to a blinkenproxy, add the name (and optionally
+the port number) on the command-line:
+
+  blinkensim-gtk hdl-640x480 [host[:port]]
+
+Try the --help command-line option to see what else you can do.
+
+blinkensim-directfb also supports the usual options for DirectFB
+applications (use --dfb-help to get a list). This version defaults to
+fullscreen mode and exits when either the Q or ESC keys are pressed.
+
+The GTK+ version creates a window the size of the theme. If you use
+GTK+-2.2 you can switch to full-screen mode by pressing the F11 key.
+
+
+But it doesn't blink
+--------------------
+
+blinkensim implements only one half of the Blinkenlights setup. You
+still need a source for UDP packets. A good choice is to the utility
+bsend that you can find in the blinkentools package.
+
+
+Have Blinkenfun,
+	Sven Neumann  <sven@gimp.org>

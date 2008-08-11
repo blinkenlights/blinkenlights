@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<playlist>
+
+  <!-- 
+  sublist17.speed.antenne.xml   - gif-animation: "17flash_7frames.gif"
+  
+  all *bold*animation-gifs - increasing/decreasing speed="0.1" - "10" 
+  						   - increasing/decreasing loop="1"-"19"
+  
+  -->  
+ 
+  <item loop="1" speed="0.1">movies/antenne/17flash_7frames.gif</item>
+  <item loop="2" speed="0.2">movies/antenne/17flash_7frames.gif</item>
+  <item loop="3" speed="0.3">movies/antenne/17flash_7frames.gif</item>
+  <item loop="4" speed="0.4">movies/antenne/17flash_7frames.gif</item>
+  <item loop="5" speed="0.5">movies/antenne/17flash_7frames.gif</item>
+  <item loop="6" speed="0.6">movies/antenne/17flash_7frames.gif</item>
+  <item loop="7" speed="0.7">movies/antenne/17flash_7frames.gif</item>
+  <item loop="8" speed="0.8">movies/antenne/17flash_7frames.gif</item>
+  <item loop="9" speed="0.9">movies/antenne/17flash_7frames.gif</item>
+  <item loop="10" speed="1">movies/antenne/17flash_7frames.gif</item>
+  <item loop="11" speed="2">movies/antenne/17flash_7frames.gif</item>
+  <item loop="12" speed="3">movies/antenne/17flash_7frames.gif</item>
+  <item loop="13" speed="4">movies/antenne/17flash_7frames.gif</item>
+  <item loop="14" speed="5">movies/antenne/17flash_7frames.gif</item>
+  <item loop="15" speed="6">movies/antenne/17flash_7frames.gif</item>
+  <item loop="16" speed="7">movies/antenne/17flash_7frames.gif</item>
+  <item loop="17" speed="8">movies/antenne/17flash_7frames.gif</item>
+  <item loop="18" speed="9">movies/antenne/17flash_7frames.gif</item>
+  <item loop="19" speed="10">movies/antenne/17flash_7frames.gif</item> 
+  <item loop="18" speed="9">movies/antenne/17flash_7frames.gif</item> 
+  <item loop="17" speed="8">movies/antenne/17flash_7frames.gif</item> 
+  <item loop="16" speed="7">movies/antenne/17flash_7frames.gif</item> 
+  <item loop="15" speed="6">movies/antenne/17flash_7frames.gif</item> 
+  <item loop="14" speed="5">movies/antenne/17flash_7frames.gif</item> 
+  <item loop="12" speed="3">movies/antenne/17flash_7frames.gif</item> 
+  <item loop="11" speed="2">movies/antenne/17flash_7frames.gif</item> 
+  <item loop="10" speed="1">movies/antenne/17flash_7frames.gif</item> 
+  <item loop="9" speed="0.9">movies/antenne/17flash_7frames.gif</item> 
+  <item loop="8" speed="0.8">movies/antenne/17flash_7frames.gif</item> 
+  <item loop="7" speed="0.7">movies/antenne/17flash_7frames.gif</item>
+  <item loop="6" speed="0.6">movies/antenne/17flash_7frames.gif</item>
+  <item loop="5" speed="0.5">movies/antenne/17flash_7frames.gif</item>
+  <item loop="4" speed="0.4">movies/antenne/17flash_7frames.gif</item>
+  <item loop="3" speed="0.3">movies/antenne/17flash_7frames.gif</item>
+  <item loop="2" speed="0.2">movies/antenne/17flash_7frames.gif</item>
+
+
+  <!-- 
+  
+  possible funktion-tags:
+  
+  <item loop="2">movies/test-horizontal-fast.blm</item>
+  <item loop="2" reverse="yes">movies/test-horizontal-fast.blm</item>
+  <item invert="yes">movies/test-horizontal-fast.blm</item>
+  <item hflip="yes">movies/test-horizontal-fast.blm</item>
+  <item vflip="yes">movies/test-horizontal-fast.blm</item>
+  <item mirror="left">movies/test-horizontal-fast.blm</item>
+  <item mirror="right">movies/test-horizontal-fast.blm</item>
+  <item speed="0,1">movies/test-horizontal-fast.blm</item>
+  <item speed="10">movies/test-horizontal-fast.blm</item>
+  -->
+
+</playlist>

@@ -1,0 +1,47 @@
+<!-- ##### SECTION Title ##### -->
+BViewDirectFB
+
+<!-- ##### SECTION Short_Description ##### -->
+a DirectFB widget to display Blinkenlights
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+BViewGtk
+</para>
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### STRUCT BViewDirectFB ##### -->
+<para>
+The #BViewDirectFB struct shouldn't be accessed directly. Its members
+are considered private.
+</para>
+
+
+<!-- ##### FUNCTION b_view_directfb_new ##### -->
+<para>
+
+</para>
+
+@theme: 
+@dfb: 
+@dest: 
+@error: 
+@Returns: 
+
+
+<!-- ##### FUNCTION b_view_directfb_update ##### -->
+<para>
+
+</para>
+
+@view: 
+@frame_data: 
+
+

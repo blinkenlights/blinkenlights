@@ -1,0 +1,62 @@
+.\" bmultiplexer man page
+.\"
+.\" Project Blinkenlights 2004
+.\"
+.Dd February 24, 2004
+.Dt BMULTIPLEXER 1
+.Os
+.Sh NAME
+.Nm bmultiplexer
+.Nd receive Blinkenlights Protocol streams and forward them to multiple hosts
+.Sh SYNOPSIS
+.Nm
+.Op Fl options
+.Ar receive-port
+.Ar host Ns Op : Ns port
+.Ar ...
+.Sh DESCRIPTION
+.Nm
+redistributes a Blinkenlights Protocol data stream to multiple hosts. Each
+packet received is instantly passed to every host that is specified on the 
+command line.
+.Pp
+.Ar receive-port
+is the UDP port where
+.Nm
+waits for Blinkenlights Protocol data packets to arrive.
+If
+.Ar port
+is not specified,
+.Ar receive-port
+will be used for redistribution to the specified host.
+.Pp
+.Nm
+is similar to
+.Xr blinkenproxy 1
+but does redistribution explicity instead of on-demand.
+.Sh OPTIONS
+The following options are recognized by
+.Nm
+.
+.Pp
+.Bl -tag -width "--concatenate" -compact
+.Pp
+.It Fl ?
+.It Fl -help
+Display help
+.Pp
+.It Fl V
+.It Fl -version
+Display version number and quit immediately.
+.El
+.Sh AUTHOR
+.An Daniel Mack Aq daniel@yoobay.net
+.Sh SEE ALSO
+Project Blinkenlights Home Page http://www.blinkenlights.de/
+.Pp
+.Xr blinkenproxy 1 ,
+.Xr bsend 1 ,
+.Xr blinkensim 1 ,
+.Xr blib 3
+.Sh DIAGNOSTICS
+.Ex -std

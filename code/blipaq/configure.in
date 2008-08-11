@@ -1,0 +1,63 @@
+AC_INIT(src/display.c)
+
+PACKAGE=blipaq
+VERSION=0.7
+
+AM_INIT_AUTOMAKE($PACKAGE,$VERSION)
+
+AC_SUBST(PACAKGE)
+AC_SUBST(VERSION)
+
+dnl Initialize maintainer mode
+AM_MAINTAINER_MODE
+
+ACLOCAL="$ACLOCAL $ACLOCAL_FLAGS"
+
+AC_CANONICAL_HOST
+
+AC_PROG_CC
+AM_PROG_CC_STDC
+
+changequote(,)dnl
+if test "x$GCC" = "xyes"; then
+  case " $CFLAGS " in
+  *[\ \	]-Wall[\ \	]*) ;;
+  *) CFLAGS="$CFLAGS -Wall" ;;
+  esac
+fi
+changequote([,])dnl
+
+AC_ARG_ENABLE(rotation, [  --enable-rotation=ROT   default screen rotation [none,left,right]])
+  case "$enable_rotation" in
+    left)
+      AC_MSG_RESULT(default screen rotation: to the left)
+      ROTATION=ROTATE_LEFT
+      ;;
+    right)
+      AC_MSG_RESULT(default screen rotation: to the right)
+      ROTATION=ROTATE_RIGHT
+      ;;
+    *)
+      AC_MSG_RESULT(default screen rotation: none)
+      ROTATION=ROTATE_NONE
+      ;;
+  esac
+AC_SUBST(ROTATION)
+
+AC_ARG_ENABLE(debug, [  --enable-debug          turn on debugging [default=no]],
+if eval "test x$enable_debug = xyes"; then
+  DEBUGFLAG="-g"
+fi)
+
+PKG_CHECK_MODULES(DIRECTFB, directfb >= 0.9.11)
+
+DATADIR=$datadir
+AC_SUBST(DATADIR)
+
+AC_OUTPUT([
+Makefile
+data/Makefile
+src/Makefile
+])
+
+

@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<playlist>
+
+  <!-- 
+  antenne playlist 04:   
+  
+  all *bold*animation-gifs - increasing/decreasing speed="0.1" - "10" 
+  						   - increasing/decreasing loop="1"-"19"
+  
+  -->  
+ 
+  <item loop="1" speed="0.1">movies/antenne/01_2frames.gif</item>
+  <item loop="2" speed="0.2">movies/antenne/01_2frames.gif</item>
+  <item loop="3" speed="0.3">movies/antenne/01_2frames.gif</item>
+  <item loop="4" speed="0.4">movies/antenne/01_2frames.gif</item>
+  <item loop="5" speed="0.5">movies/antenne/01_2frames.gif</item>
+  <item loop="6" speed="0.6">movies/antenne/01_2frames.gif</item>
+  <item loop="7" speed="0.7">movies/antenne/01_2frames.gif</item>
+  <item loop="8" speed="0.8">movies/antenne/01_2frames.gif</item>
+  <item loop="9" speed="0.9">movies/antenne/01_2frames.gif</item>
+  <item loop="10" speed="1">movies/antenne/01_2frames.gif</item>
+  <item loop="11" speed="2">movies/antenne/01_2frames.gif</item>
+  <item loop="12" speed="3">movies/antenne/01_2frames.gif</item>
+  <item loop="13" speed="4">movies/antenne/01_2frames.gif</item>
+  <item loop="14" speed="5">movies/antenne/01_2frames.gif</item>
+  <item loop="15" speed="6">movies/antenne/01_2frames.gif</item>
+  <item loop="16" speed="7">movies/antenne/01_2frames.gif</item>
+  <item loop="17" speed="8">movies/antenne/01_2frames.gif</item>
+  <item loop="18" speed="9">movies/antenne/01_2frames.gif</item>
+  <item loop="19" speed="10">movies/antenne/01_2frames.gif</item> 
+  <item loop="18" speed="9">movies/antenne/01_2frames.gif</item> 
+  <item loop="17" speed="8">movies/antenne/01_2frames.gif</item> 
+  <item loop="16" speed="7">movies/antenne/01_2frames.gif</item> 
+  <item loop="15" speed="6">movies/antenne/01_2frames.gif</item> 
+  <item loop="14" speed="5">movies/antenne/01_2frames.gif</item> 
+  <item loop="12" speed="3">movies/antenne/01_2frames.gif</item> 
+  <item loop="11" speed="2">movies/antenne/01_2frames.gif</item> 
+  <item loop="10" speed="1">movies/antenne/01_2frames.gif</item> 
+  <item loop="9" speed="0.9">movies/antenne/01_2frames.gif</item> 
+  <item loop="8" speed="0.8">movies/antenne/01_2frames.gif</item> 
+  <item loop="7" speed="0.7">movies/antenne/01_2frames.gif</item>
+  <item loop="6" speed="0.6">movies/antenne/01_2frames.gif</item>
+  <item loop="5" speed="0.5">movies/antenne/01_2frames.gif</item>
+  <item loop="4" speed="0.4">movies/antenne/01_2frames.gif</item>
+  <item loop="3" speed="0.3">movies/antenne/01_2frames.gif</item>
+  <item loop="2" speed="0.2">movies/antenne/01_2frames.gif</item>
+
+
+  <!--  
+  <item>movies/antenne/02_7frames.gif</item>
+  <item>movies/antenne/03_2frames.gif</item>
+  <item>movies/antenne/04_3frames.gif</item>
+  <item>movies/antenne/05_6frames.gif</item>
+  <item>movies/antenne/06_7frames.gif</item>
+  <item>movies/antenne/07_7frames.gif</item>
+  <item>movies/antenne/08_3 frames.gif</item>
+  <item>movies/antenne/09line_4frames.gif</item>
+  <item>movies/antenne/10grow_6frames.gif</item>
+  <item>movies/antenne/11grow_8frames.gif</item>
+  <item>movies/antenne/12wave_10frames.gif</item>
+  <item>movies/antenne/13wave_15frames.gif</item>
+  <item>movies/antenne/14wave_14frames.gif</item>
+  <item>movies/antenne/15wave_58frames.gif</item>
+  <item>movies/antenne/15wave_58frames.gif</item>
+  <item>movies/antenne/16flash_6frames.gif</item>
+  <item>movies/antenne/17flash_7frames.gif</item>
+  <item>movies/antenne/18flash_9frames.gif</item>
+  <item>movies/antenne/19wave_15frames.gif</item>
+  -->
+
+  <!-- 
+  
+  possible funktion-tags:
+  
+  <item loop="2">movies/test-horizontal-fast.blm</item>
+  <item loop="2" reverse="yes">movies/test-horizontal-fast.blm</item>
+  <item invert="yes">movies/test-horizontal-fast.blm</item>
+  <item hflip="yes">movies/test-horizontal-fast.blm</item>
+  <item vflip="yes">movies/test-horizontal-fast.blm</item>
+  <item mirror="left">movies/test-horizontal-fast.blm</item>
+  <item mirror="right">movies/test-horizontal-fast.blm</item>
+  <item speed="0,1">movies/test-horizontal-fast.blm</item>
+  <item speed="10">movies/test-horizontal-fast.blm</item>
+  -->
+
+</playlist>

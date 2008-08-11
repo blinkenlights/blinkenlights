@@ -1,0 +1,83 @@
+<!-- DTD for Blinkenlights Themes                                   -->
+<!-- See http://www.blinkenlights.de/ for more information.         -->
+
+<!-- Implied numerical values are 0, implied strings are empty!     -->
+
+
+<!-- The toplevel blinkentheme element describes a Blinkentheme.    -->
+<!-- The width and height attributes define the themes screen       -->
+<!-- dimensions.                                                    -->
+
+<!ELEMENT blinkentheme (background?, overlay+)>
+<!ATTLIST blinkentheme
+          version   CDATA  #FIXED "1.0"
+          title     CDATA  #REQUIRED
+          columns   CDATA  #REQUIRED
+          rows      CDATA  #REQUIRED
+          maxval    CDATA  "1"
+          channels  CDATA  "1"
+          width     CDATA  #REQUIRED
+          height    CDATA  #REQUIRED
+          type      CDATA>
+
+
+<!-- The background element describes a color and/or an image used  -->
+<!-- to draw the background. The image attribute is the path to a   -->
+<!-- PNG image. The path must be either absolute or relative to the -->
+<!-- blinkentheme XML file. A color can specified be specified as   -->
+<!-- #aarrggbb. If the alpha channel is omitted, full opacity is    -->
+<!-- implied.                                                       -->
+
+<!ELEMENT background  EMPTY>
+<!ATTLIST background
+          color     CDATA  "#ff000000"
+          image     CDATA
+          x         CDATA  "0"
+          y         CDATA  "0">
+
+
+<!-- The overlay element describes a color and/or an image used     -->
+<!-- to lighten the windows. See the background element for         -->
+<!-- comments about the image and color attributes.                 -->
+
+<!ELEMENT overlay  (grid*, span*, window*)>
+<!ATTLIST overlay
+          color     CDATA  "#ffffffff"
+          image     CDATA>
+
+
+<!-- The grid element describes how to a create a rectilinear grid  -->
+<!-- of windows.                                                    -->
+
+<!ELEMENT grid   (window+)>
+<!ATTLIST grid
+          dx        CDATA  #REQUIRED
+          dy        CDATA  #REQUIRED
+          sx        CDATA  "0"
+          sy        CDATA  "0">
+
+
+<!-- The span element describes how to create a row of windows.     -->
+
+<!ELEMENT span   (window+)>
+<!ATTLIST span
+          dx        CDATA  #REQUIRED
+          sx        CDATA  "0">
+
+
+<!-- The window element describes a window.                         -->
+
+<!ELEMENT window  EMPTY>
+<!ATTLIST window
+          value     CDATA  "all"
+          row       CDATA  #IMPLIED
+          column    CDATA  #IMPLIED
+          x         CDATA  #IMPLIED
+          y         CDATA  #IMPLIED
+          width     CDATA  #IMPLIED
+          height    CDATA  #IMPLIED
+          src-x     CDATA  "0"
+          src-y     CDATA  "0">
+
+
+<!-- end of the DTD                                                 -->

@@ -1,0 +1,33 @@
+2.7
+---
+- install a default binary
+- added blinkensim(1) manpage
+
+2.6
+---
+ - added Win32 port
+
+2.5
+---
+ - added blinkensim-aa based on blib-aa
+ - better support for using multiple blinkensim simultanously
+
+2.4
+---
+ - use BProxyClient from blib >= 1.1.2; works through NAT routers now
+ - improved command-line handling
+
+2.3 (development release)
+---
+ - added experimental blinkenproxy support
+
+2.2
+---
+ - fixed handling of the theme's maxval which was slightly wrong in 2.1
+ - fixed forced window mode in blinkensim-directfb 
+ - added fullscreen mode for blinkensim-gtk (requires gtk+-2.2.x)
+
+2.1
+---
+ - adapted to blib 0.7
+ - added --list command-line option

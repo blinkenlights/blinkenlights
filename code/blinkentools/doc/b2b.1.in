@@ -1,0 +1,135 @@
+.\" b2b man page
+.\"
+.\" Project Blinkenlights 2004
+.\"
+.Dd February 24, 2004
+.Dt B2B 1
+.Os
+.Sh NAME
+.Nm b2b ,
+.Nm b2bml ,
+.Nm b2blm ,
+.Nm b2gif
+.Nd convert Blinkenlights movies
+.Sh SYNOPSIS
+.Nm
+.Op Fl options
+.Op Ar filename
+.Sh DESCRIPTION
+.Nm
+is designed to read, write and convert Blinkenlights movies in various
+file formats. You can use it as a filter program reading movies in all
+supported formats from standard input and writing it to standard output
+in another format. The supported file types are BML, BLM and GIF.
+.Nm
+automatically detects the file type by looking at the incoming data.
+.Pp
+If
+.Ar filename
+is omitted, the data is read via standard input. The output is sent to
+standard output unless an output file is given via the command line.
+.Sh OPTIONS
+The following options are recognized by b2b.
+.Pp
+.Bl -tag -width "--concatenate" -compact
+.It Fl o Ar outfile
+.It Fl -output Ar outfile
+Send output to
+.Ar outfile
+instead of standard output.
+.Pp
+.It Fl t Ar [blm|bml|gif]
+.It Fl -type Ar [blm|bml|gif]
+Specifies output file type. If
+.Nm
+has been invoked as 
+.Nm b2bml ,
+.Nm b2blm ,
+or
+.Nm b2gif
+the corresdonding output format is assumed automatically. The option
+can then be omitted.
+.Pp
+.It Fl b Ar number
+.It Fl -bits Ar number
+Specify movie resoultion in bits.
+.Pp
+.It Fl B Ar value
+.It Fl -maxval Ar value
+Specify maximum movie resolution in value
+.Pp
+.It Fl i
+.It Fl -invert
+Invert the file. This works for both monochrome and greyscale movies.
+.Pp
+.It Fl g Ar factor
+.It Fl -gamma Ar factor
+Change gamma value.
+.Pp
+.It Fl f
+.It Fl -hflip
+Flip the movie horizontally
+.Pp
+.It Fl F
+.It Fl -vflip
+Flip the movie vertically
+.Pp
+.It Fl r
+.It Fl -reverse
+Reverse playback of the file.
+.Pp
+.It Fl s Ar factor
+.It Fl -speed Ar factor
+Changes the playback speed of the file. Speed is stated as a factor relative
+to the current playback speed. For example, a value of 0.5 slows down
+playback of the movie to 50%. A value of 2 bumps playback speed to 200%.
+.Pp
+.It Fl c Ar frames-per-second
+.It Fl -fps Ar frames-per-second
+Reformats the movie to fixed-duration frames. The duration is defined by
+.Ar frames-per-second
+which specifies how many frames per seconds will be created. This option
+can be used in combination with the single image converter
+.Xr b2image
+to create images for movie compression.
+A low
+.Fl frames-per-second
+together with short frame durations in the source movie might skip certain
+frames effectively removing them from the movie.
+.Pp
+.It Fl x
+.It Fl -loop-hint
+Generate a loop hint information in the output file. If the output file format
+is GIF, a endlessly repeating GIF animation is created. In case of BLM and BML
+a loop hint is included in the file.
+.It Fl X
+.It Fl -no-loop-hint
+Generate a loop hint information in the output file. If the output file format
+is GIF, a endlessly repeating GIF animation is created. In case of BLM and BML
+a loop hint is included in the file.
+.Ar number
+times
+.Pp
+.It Fl m
+.It Fl -meta
+Display meta information of the file
+.Pp
+.It Fl ?
+.It Fl -help
+Display help
+.Pp
+.It Fl V
+.It Fl -version
+Display version number and quit immediately.
+.El
+.Sh AUTHOR
+.An Sven Neumann Aq sven@gimp.org
+.Sh SEE ALSO
+Project Blinkenlights Home Page http://www.blinkenlights.de/
+.Pp
+.Xr b2image 1 ,
+.Xr b2mng 1 ,
+.Xr bsend 1 ,
+.Xr blib 3
+.Sh DIAGNOSTICS
+.Ex -std

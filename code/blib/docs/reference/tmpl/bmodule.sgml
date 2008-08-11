@@ -1,0 +1,151 @@
+<!-- ##### SECTION Title ##### -->
+BModule
+
+<!-- ##### SECTION Short_Description ##### -->
+definition of the Blinkenlights Game API
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### STRUCT BModule ##### -->
+<para>
+The #BModule struct has a couple of fields that may be read directly
+from a #BModule implementation. You must however not change any
+members directly. Usually a #BModule uses the
+<structfield>width</structfield>, <structfield>height</structfield>,
+<structfield>channels</structfield>,
+<structfield>maxval</structfield>, <structfield>aspect</structfield>
+and <structfield>num_players</structfield> fields.
+</para>
+<para>
+The <structfield>buffer</structfield> variable is the only one a
+#BModule may write to. It does so when it needs to update the frame
+buffer. It is however recommened to use utility functions like
+b_module_fill() instead of writing into the
+<structfield>buffer</structfield>. All other fields of #BModule are
+considered private.
+</para>
+
+
+<!-- ##### SIGNAL BModule::start ##### -->
+<para>
+
+</para>
+
+@bmodule: the object which received the signal.
+
+<!-- ##### SIGNAL BModule::stop ##### -->
+<para>
+
+</para>
+
+@bmodule: the object which received the signal.
+
+<!-- ##### ARG BModule:lifetime ##### -->
+<para>
+
+</para>
+
+<!-- ##### ARG BModule:speed ##### -->
+<para>
+
+</para>
+
+<!-- ##### STRUCT BModuleEvent ##### -->
+<para>
+The #BModuleEvent struct defines an event delivered to a #BModule.
+The <structfield>key</structfield> field is only valid if the type
+is %B_EVENT_TYPE_KEY. More field may be added when new event types
+are added.
+</para>
+
+@device_id: the event source
+@type: the type of event
+@key: the key
+
+<!-- ##### ENUM BModuleEventType ##### -->
+<para>
+This enumeration classifies an event into a number of types.
+</para>
+
+@B_EVENT_TYPE_UNKNOWN: 
+@B_EVENT_TYPE_KEY: 
+@B_EVENT_TYPE_PLAYER_ENTERED: 
+@B_EVENT_TYPE_PLAYER_LEFT: 
+
+<!-- ##### ENUM BModuleKey ##### -->
+<para>
+Enumeration of the possible key values in an event of type
+%B_EVENT_TYPE_KEY.
+</para>
+
+@B_KEY_0: 
+@B_KEY_1: 
+@B_KEY_2: 
+@B_KEY_3: 
+@B_KEY_4: 
+@B_KEY_5: 
+@B_KEY_6: 
+@B_KEY_7: 
+@B_KEY_8: 
+@B_KEY_9: 
+@B_KEY_HASH: 
+@B_KEY_ASTERISK: 
+
+<!-- ##### USER_FUNCTION BModulePaintCallback ##### -->
+<para>
+A callback that is registered when a #BModule is created using
+b_module_new(). It is called from b_module_paint() and typically
+causes a Blinkenlights frame packet to be emitted. You don't need
+to care about this if you are implementing a #BModule.
+</para>
+
+@bmodule: 
+@buffer: 
+@data: 
+@Returns: 
+
+
+<!-- ##### FUNCTION b_module_ticker_start ##### -->
+<para>
+
+</para>
+
+@module: 
+@timeout: 
+
+
+<!-- ##### FUNCTION b_module_ticker_stop ##### -->
+<para>
+
+</para>
+
+@module: 
+
+
+<!-- ##### FUNCTION b_module_request_stop ##### -->
+<para>
+
+</para>
+
+@module: 
+
+
+<!-- ##### FUNCTION b_module_paint ##### -->
+<para>
+
+</para>
+
+@module: 
+
+

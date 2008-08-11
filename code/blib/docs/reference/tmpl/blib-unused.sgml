@@ -1,0 +1,18 @@
+<!-- ##### SIGNAL BProxyServer::client-added ##### -->
+<para>
+
+</para>
+
+@bproxyserver: the object which received the signal.
+@arg1: 
+@arg2: 
+
+<!-- ##### SIGNAL BProxyServer::client-removed ##### -->
+<para>
+
+</para>
+
+@bproxyserver: the object which received the signal.
+@arg1: 
+@arg2: 
+

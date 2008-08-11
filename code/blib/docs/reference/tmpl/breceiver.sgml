@@ -1,0 +1,86 @@
+<!-- ##### SECTION Title ##### -->
+BReceiver
+
+<!-- ##### SECTION Short_Description ##### -->
+receives Blinkenlights packets
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+The #BReceiver object listens for Blinkenlights UDP packets. For each
+frame that matches the receiver configuration, a user-defined callback
+is called with the received packet.
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+#BSender, #BPacket
+</para>
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### STRUCT BReceiver ##### -->
+<para>
+The #BReceiver struct is considered private.
+</para>
+
+
+<!-- ##### ARG BReceiver:callback ##### -->
+<para>
+
+</para>
+
+<!-- ##### ARG BReceiver:callback-data ##### -->
+<para>
+
+</para>
+
+<!-- ##### USER_FUNCTION BReceiverCallback ##### -->
+<para>
+The function that gets called to dispatch incoming packets.
+</para>
+
+@receiver: the #BReceiver object that received the packet
+@packet: the received #BPacket converted to host byteorder
+@callback_data: the data that was passed to b_receiver_new()
+@Returns: %TRUE if you want to be called again
+
+
+<!-- ##### FUNCTION b_receiver_new ##### -->
+<para>
+
+</para>
+
+@callback: 
+@callback_data: 
+@Returns: 
+
+
+<!-- ##### FUNCTION b_receiver_listen ##### -->
+<para>
+
+</para>
+
+@receiver: 
+@port: 
+@Returns: 
+
+
+<!-- ##### FUNCTION b_receiver_listen_fd ##### -->
+<para>
+
+</para>
+
+@receiver: 
+@fd: 
+@Returns: 
+
+
+<!-- ##### FUNCTION b_receiver_stop ##### -->
+<para>
+
+</para>
+
+@receiver: 
+
+

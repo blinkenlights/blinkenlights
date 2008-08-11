@@ -1,0 +1,20 @@
+Main Authors:
+
+  Sven Neumann <sven@gimp.org>
+  Michael Natterer <mitch@gimp.org>
+  Daniel Mack <daniel@yoobay.net>
+
+
+Blinkenproxy code was originally done by Hannes Mehnert. The Win32 port
+wouldn't have been possible without the help from Michael Schumacher.
+
+
+Modules contributed by:
+
+  1stein <1stein@1stein.no-ip.com>  (Pacman, Breakout, Retris, Snake, Xxo)
+  Simon Budig <simon@gimp.org>  (Matrix)
+
+
+Views contributed by:
+
+  pix <pix@test.at> (BView-AA)

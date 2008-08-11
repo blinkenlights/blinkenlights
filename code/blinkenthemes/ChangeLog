@@ -1,0 +1,242 @@
+2004-02-17 09:28  tim
+
+	* darwinports/Portfile: added mandir
+
+2004-02-15 23:00  neo
+
+	* themes/: hdl2-1024x768.xml, hdl2-128x96.xml, hdl2-160x120.xml,
+	  hdl2-320x240.xml, hdl2-640x480.xml, hdl2-800x600.xml: removed
+	  redundant information
+
+2004-02-15 16:50  neo
+
+	* themes/leds-166x110.xml: fixed typo in Blinkenleds theme
+
+2004-02-15 16:32  neo
+
+	* themes/bnf-72x54.xml: use the same title as the other BNF themes
+
+2004-02-15 14:35  neo
+
+	* themes/hdl2-320x240.xml: fixed vertical offsets (fix by Bjoern)
+
+2004-02-15 10:14  neo
+
+	* ChangeLog, themes/Makefile.am, themes/hdl2-1024x768.xml,
+	  themes/hdl2-128x96.xml, themes/hdl2-160x120.xml,
+	  themes/hdl2-320x240.xml, themes/hdl2-640x480.xml,
+	  themes/hdl2-800x600.xml, themes/images/Makefile.am,
+	  themes/images/hdl2-1024x768-bg.png,
+	  themes/images/hdl2-1024x768-ov.png,
+	  themes/images/hdl2-128x96-bg.png,
+	  themes/images/hdl2-128x96-ov.png,
+	  themes/images/hdl2-160x120-bg.png,
+	  themes/images/hdl2-160x120-ov.png,
+	  themes/images/hdl2-320x240-bg.png,
+	  themes/images/hdl2-320x240-ov.png,
+	  themes/images/hdl2-640x480-bg.png,
+	  themes/images/hdl2-640x480-ov.png,
+	  themes/images/hdl2-800x600-bg.png,
+	  themes/images/hdl2-800x600-ov.png: More HDL2 themes done by
+	  Bjoern.
+
+2004-02-14 20:52  neo
+
+	* themes/: hdl-1024x768.xml, hdl-144x108.xml, hdl-320x240.xml,
+	  hdl-640x480.xml, hdl-800x600.xml: Reset all HDL themes to
+	  maxval=1.
+
+2004-02-13 16:00  neo
+
+	* themes/: Makefile.am, bnf-288x216.xml, hdl2-640x480-8.xml,
+	  hdl2-640x480.xml, images/Makefile.am,
+	  images/hdl2-640x480-1-ov.png, images/hdl2-640x480-2-ov.png,
+	  images/hdl2-640x480-3-ov.png, images/hdl2-640x480-4-ov.png,
+	  images/hdl2-640x480-5-ov.png, images/hdl2-640x480-6-ov.png,
+	  images/hdl2-640x480-7-ov.png, images/hdl2-640x480-8-bg.png,
+	  images/hdl2-640x480-bg.png, images/hdl2-640x480-ov.png: Fixed the
+	  hdl2-640x480 theme.
+
+2004-02-13 01:33  tim
+
+	* themes/hdl2-640x480-8.xml: fixed positions
+
+2004-02-13 01:19  tim
+
+	* configure.in: bumped to version 1.0
+
+2004-02-13 01:18  tim
+
+	* .cvsignore, themes/.cvsignore, themes/images/.cvsignore: ignore
+	  mac os x junk
+
+2004-02-13 01:17  tim
+
+	* themes/: hdl2-640x480-8.xml, images/hdl2-640x480-1-ov.png,
+	  images/hdl2-640x480-2-ov.png, images/hdl2-640x480-3-ov.png,
+	  images/hdl2-640x480-4-ov.png, images/hdl2-640x480-5-ov.png,
+	  images/hdl2-640x480-6-ov.png, images/hdl2-640x480-7-ov.png,
+	  images/hdl2-640x480-8-bg.png, Makefile.am, images/Makefile.am:
+	  new theme
+
+2004-02-12 17:13  neo
+
+	* themes/images/: hdl-320x240-bg.png, hdl-320x240-ov.png: Commit
+	  the PNG files this time, not some AppleDouble foobar.
+
+2004-02-12 16:55  neo
+
+	* themes/: Makefile.am, hdl-320x240.xml, images/Makefile.am,
+	  images/hdl-320x240-bg.png, images/hdl-320x240-ov.png: Added
+	  320x240 resolution of the HDL theme. Thanks to Bjoern for making
+	  this one.
+
+2004-02-06 05:36  tim
+
+	* darwinports/Portfile: final checkin before first submission
+
+2004-02-04 02:00  tim
+
+	* darwinports/Portfile: more changes
+
+2004-02-01 14:59  tim
+
+	* darwinports/Portfile: changed maintainer
+
+2004-02-01 14:59  tim
+
+	* darwinports/.cvsignore: ignore work area
+
+2004-01-07 02:15  tim
+
+	* darwinports/Portfile: DarwinPorts Portfile
+
+2003-12-21 21:45  neo
+
+	* autogen.sh: cosmetics
+
+2003-12-21 21:43  neo
+
+	* ChangeLog: Made 0.9 release.
+
+2003-12-19 00:33  neo
+
+	* configure.in, themes/hdl-1024x768.xml, themes/hdl-144x108.xml,
+	  themes/hdl-640x480.xml, themes/hdl-800x600.xml: Bumped version
+	  number to 0.9.  Set maxval for all HDL themese to 7
+	  (Blinkenlights Reloaded!).
+
+2002-12-27 20:32  neo
+
+	* ChangeLog: Made 0.8 release.
+
+2002-12-27 20:25  neo
+
+	* themes/images/bnf-640x480-ov.png: Reverted the image as well.
+
+2002-12-27 20:23  neo
+
+	* ChangeLog, configure.in, themes/bnf-640x480.xml: Backed out the
+	  new version of the BNF theme. We need better pics before we can
+	  include this in a release.
+
+2002-12-17 02:09  neo
+
+	* themes/: bnf-144x108.xml, bnf-288x216.xml, bnf-576x432.xml,
+	  bnf-640x480.xml, bnf-72x54.xml, bnf-800x600.xml,
+	  gondwana-640x120.xml, hdl-1024x768.xml, hdl-144x108.xml,
+	  hdl-640x480.xml, hdl-800x600.xml, leds-166x110.xml: Added type
+	  attributes to all themes.
+
+2002-12-08 16:45  neo
+
+	* .cvsignore: updated for newer versions of automake
+
+2002-10-21 18:05  neo
+
+	* themes/: hdl-144x108.xml, images/hdl-144x108-bg.png,
+	  images/hdl-144x108-ov.png: Updated small HDL theme.
+
+2002-10-21 17:25  neo
+
+	* themes/images/hdl-800x600-bg.png: new background image
+
+2002-10-21 15:00  neo
+
+	* themes/: bnf-144x108.xml, bnf-288x216.xml, bnf-576x432.xml,
+	  bnf-640x480.xml, bnf-800x600.xml, hdl-1024x768.xml,
+	  hdl-144x108.xml, hdl-640x480.xml, hdl-800x600.xml: Added location
+	  to theme titles.
+
+2002-10-21 13:19  neo
+
+	* themes/images/: bnf-144x108-bg.png, bnf-288x216-bg.png,
+	  bnf-576x432-bg.png, bnf-72x54-bg.png: Flattened BNF background
+	  images.
+
+2002-10-21 13:12  neo
+
+	* themes/: hdl-1024x768.xml, hdl-640x480.xml, hdl-800x600.xml,
+	  images/hdl-1024x768-bg.png, images/hdl-1024x768-ov.png,
+	  images/hdl-640x480-bg.png, images/hdl-640x480-ov.png,
+	  images/hdl-800x600-ov.png: Started to integrate new version of
+	  the HDL themes that have the last row of windows fixed.
+
+2002-10-21 11:27  neo
+
+	* configure.in, themes/bnf-640x480.xml,
+	  themes/images/bnf-640x480-ov.png: Added overlay images for all
+	  intensity values. First draft, the image needs to change...
+
+2002-10-15 18:00  neo
+
+	* configure.in, themes/Makefile.am, themes/bnf-144x108.xml,
+	  themes/bnf-288x216.xml, themes/bnf-576x432.xml,
+	  themes/bnf-72x54.xml, themes/images/Makefile.am,
+	  themes/images/bnf-144x108-bg.png,
+	  themes/images/bnf-144x108-ov.png,
+	  themes/images/bnf-288x216-bg.png,
+	  themes/images/bnf-288x216-ov.png,
+	  themes/images/bnf-576x432-bg.png,
+	  themes/images/bnf-576x432-ov.png, themes/images/bnf-72x54-bg.png,
+	  themes/images/bnf-72x54-ov.png: Added smaller versions of the BNF
+	  theme created by Bjoern.  Bumped version number to 0.8.
+
+2002-09-26 20:26  neo
+
+	* themes/: bnf-640x480.xml, bnf-800x600.xml: Set maxval to 7 since
+	  that's what we actually use on the BNF.
+
+2002-09-10 04:20  neo
+
+	* ChangeLog: Made 0.7 release.
+
+2002-09-10 03:04  neo
+
+	* AUTHORS, README: some explanatory words
+
+2002-09-10 02:51  neo
+
+	* .cvsignore, AUTHORS, ChangeLog, Makefile.am, NEWS, README,
+	  autogen.sh, configure.in, themes/.cvsignore, themes/Makefile.am,
+	  themes/bnf-640x480.xml, themes/bnf-800x600.xml,
+	  themes/gondwana-640x120.xml, themes/hdl-1024x768.xml,
+	  themes/hdl-144x108.xml, themes/hdl-640x480.xml,
+	  themes/hdl-800x600.xml, themes/leds-166x110.xml,
+	  themes/images/.cvsignore, themes/images/Makefile.am,
+	  themes/images/bnf-640x480-bg.png,
+	  themes/images/bnf-640x480-ov.png,
+	  themes/images/bnf-800x600-bg.png,
+	  themes/images/bnf-800x600-ov.png,
+	  themes/images/hdl-1024x768-bg.png,
+	  themes/images/hdl-1024x768-ov.png,
+	  themes/images/hdl-144x108-bg.png,
+	  themes/images/hdl-144x108-ov.png,
+	  themes/images/hdl-640x480-bg.png,
+	  themes/images/hdl-640x480-ov.png,
+	  themes/images/hdl-800x600-bg.png,
+	  themes/images/hdl-800x600-ov.png,
+	  themes/images/leds-166x110-bg.png,
+	  themes/images/leds-166x110-ov.png: Moved themes into their own
+	  package.
+

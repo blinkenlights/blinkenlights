@@ -1,0 +1,52 @@
+<!-- ##### SECTION Title ##### -->
+BModule Utilities
+
+<!-- ##### SECTION Short_Description ##### -->
+utility functions for #BModule implementations
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### FUNCTION b_module_draw_point ##### -->
+<para>
+
+</para>
+
+@module: 
+@x: 
+@y: 
+@value: 
+
+
+<!-- ##### FUNCTION b_module_draw_line ##### -->
+<para>
+
+</para>
+
+@module: 
+@x1: 
+@y1: 
+@x2: 
+@y2: 
+@value: 
+
+
+<!-- ##### FUNCTION b_module_fill ##### -->
+<para>
+
+</para>
+
+@module: 
+@value: 
+
+

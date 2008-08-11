@@ -1,0 +1,48 @@
+[Version]
+Signature="$Windows NT$"
+Class=Ports
+ClassGuid={4D36E978-E325-11CE-BFC1-08002BE10318}
+Provider=%bitmanufaktur%
+LayoutFile=layout.inf
+DriverVer=2007-06-03,1.0.31.1
+
+[MANUFACTURER]
+%OpenBeacon%=OpenBeacon
+
+[OpenBeacon]
+%OpenBeacon_CDC%=Reader,USB\VID_16C0&PID_08AC
+
+[Reader_Install.NTx86]
+;Windows2000
+
+[DestinationDirs]
+DefaultDestDir=12
+Reader.NT.Copy=12
+
+[Reader.NT]
+CopyFiles=Reader.NT.Copy
+AddReg=Reader.NT.AddReg
+
+[Reader.NT.Copy]
+usbser.sys
+
+[Reader.NT.AddReg]
+HKR,,NTMPDriver,,*ntkern
+HKR,,NTMPDriver,,usbser.sys
+HKR,,EnumPropPages32,,"MsPorts.dll,SerialPortPropPageProvider"
+[Reader.NT.Services]
+AddService = usbser, 0x00000002,Service_Inst
+
+[Service_Inst]
+DisplayName = %Serial.SvcDesc%
+ServiceType = 1 ; SERVICE_KERNEL_DRIVER
+StartType = 3 ; SERVICE_DEMAND_START
+ErrorControl = 1 ;SERVICE_ERROR_NORMAL
+ServiceBinary = %12%\usbser.sys
+LoadOrderGroup = Base
+
+[Strings]
+bitmanufaktur = "Bitmanufaktur IT Solutions"
+OpenBeacon = "OpenBeaconUSB 2.4GHz"
+OpenBeacon_CDC = "OpenBeaconUSB 2.4GHz CDC"
+Serial.SvcDesc = "OpenBeaconUSB Serial Port"

@@ -1,0 +1,110 @@
+#!/bin/sh
+
+# blm2xml
+# convert .blm files into their XML representation
+
+# the core blm.xml format is just
+#
+# <blm format="18x8">
+#     <frame ms="200">
+#           <row>011010010110001100</row>
+#           ...
+#     </frame>
+#     ...
+# </blm>
+#
+# Additional header info may be placed at the top of the file
+# using the <header> element which may contain any element.
+#
+# blm2xml takes headers from the starting comments preceeding the
+# first frame. Any header in following comments will be ignored.
+
+blmpath=$1
+blmfile=`basename $blmpath`
+blmid=`echo $blmfile | sed 's/.blm//'`
+
+# echo $blmid >&2
+
+awk -v blmid=$blmid '
+BEGIN {
+	print "<?xml version=\"1.0\"?>"
+
+	in_frame=0
+	in_header=0
+	frame_no=0
+}
+
+/^# BlinkenLights Movie.*$/ {
+	gsub("^# BlinkenLights Movie ", "", $0);
+	split($0,size,"x");
+	print "<blm id=\""blmid"\" width=\""size[1]"\" height=\""size[2]"\">"
+#	print "<blm format=\""$0"\">"
+	next
+}
+
+# header
+
+/^# \w+ = .*$/ {
+	# skip headers beyond first frame
+	if(in_frame)
+		next
+
+	# insert header tag before first header
+	if(!in_header) {
+		in_header=1
+		print "\t<header>"
+	}
+
+	# insert header
+	gsub("^# ", "::", $0)
+	gsub(" = ", "::", $0)
+	split($0, header, "::");
+
+	# escape XML special characters
+	gsub("&", "\\&amp;", header[3])
+	gsub("<", "\\&lt;", header[3])
+	gsub(">", "\\&gt;", header[3])
+
+
+
+	print "\t\t<"header[2]">"header[3]"</"header[2]">"
+	next
+}
+
+# frame
+
+/^@.*$/ {
+
+	if(in_header) {
+		in_header=0
+		print "\t</header>"
+	}
+
+	in_frame=1
+	frame_no=frame_no+1
+
+	split($0, ms, "@");
+
+	print ""
+#	print "\t<frame id=\""frame_no"\" ms=\""ms[2]"\">"
+	print "\t<frame ms=\""ms[2]"\">"
+	next
+}
+
+/^[01]/ {
+	print "\t\t<row>"$0"</row>"
+	next
+}
+
+/^$/ {
+	if(in_frame)
+		print "\t</frame>"
+	in_frame=0
+	next
+}
+
+END {
+	if(in_frame)
+		print "\t</frame>"
+	print "</blm>"
+}' $1

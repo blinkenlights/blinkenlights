@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<playlist>
+
+  <!-- 
+  antenne playlist 01:   all animation-gifs once - without effects 
+  -->  
+
+
+  <item>movies/antenne/16farben_on.gif</item>
+  <item>movies/antenne/16farben_on/off.gif</item>
+  
+  <item>movies/antenne/01_2frames.gif</item>
+  <item>movies/antenne/02_7frames.gif</item>
+  <item>movies/antenne/03_2frames.gif</item>
+  <item>movies/antenne/04_3frames.gif</item>
+  <item>movies/antenne/05_6frames.gif</item>
+  <item>movies/antenne/06_7frames.gif</item>
+  <item>movies/antenne/07_7frames.gif</item>
+  <item>movies/antenne/08_3 frames.gif</item>
+  <item>movies/antenne/09line_4frames.gif</item>
+  <item>movies/antenne/10grow_6frames.gif</item>
+  <item>movies/antenne/11grow_8frames.gif</item>
+  <item>movies/antenne/12wave_10frames.gif</item>
+  <item>movies/antenne/13wave_15frames.gif</item>
+  <item>movies/antenne/14wave_14frames.gif</item>
+  <item>movies/antenne/15wave_58frames.gif</item>
+  <item>movies/antenne/15wave_58frames.gif</item>
+  <item>movies/antenne/16flash_6frames.gif</item>
+  <item>movies/antenne/17flash_7frames.gif</item>
+  <item>movies/antenne/18flash_9frames.gif</item>
+  <item>movies/antenne/19wave_15frames.gif</item>
+
+  <item>movies/antenne/air01_71.gif</item>
+  <item>movies/antenne/air02_71.gif</item>
+  <item>movies/antenne/air03_35.gif</item>
+  <item>movies/antenne/air04_18.gif</item>
+  <item>movies/antenne/arrow-fast_25.gif</item>
+  <item>movies/antenne/arrow-slow_39.gif</item>
+  <item>movies/antenne/atman-random_82frames.gif</item>
+  <item>movies/antenne/atman-single_43frames.gif</item>
+  <item>movies/antenne/atman3_82frames.gif</item>
+  <item>movies/antenne/atman_42frames.gif</item>
+  <item>movies/antenne/balken_links_35.gif</item>
+  <item>movies/antenne/balken_rechts_35.gif</item>
+  <item>movies/antenne/blowing_35frames.gif</item>
+  <item>movies/antenne/blow_54.gif</item>
+  <item>movies/antenne/bounce_38.gif</item>
+  <item>movies/antenne/burstback_34.gif</item>
+  <item>movies/antenne/bushfire_60frames.gif</item>
+  <item>movies/antenne/bzzz_40frames.gif</item>
+  <item>movies/antenne/downdrop_13.gif</item>
+  <item>movies/antenne/few_27frames.gif</item>
+  <item>movies/antenne/flow_82.gif</item>
+  <item>movies/antenne/kurve_4.gif</item>
+  <item>movies/antenne/more_particles_18.gif</item>
+  <item>movies/antenne/movement_66.gif</item>
+  <item>movies/antenne/outwards2_20.gif</item>
+  <item>movies/antenne/outwards_8.gif</item>
+  <item>movies/antenne/particles-left_36.gif</item>
+  <item>movies/antenne/ping-double_33.gif</item>
+  <item>movies/antenne/ping-slow_44.gif</item>
+  <item>movies/antenne/ping_21.gif</item>
+  <item>movies/antenne/pixelrain_9.gif</item>
+  <item>movies/antenne/raus-slow_46.gif</item>
+  <item>movies/antenne/raus_28.gif</item>
+  <item>movies/antenne/simple_burst_17.gif</item>
+  <item>movies/antenne/upndown_64frames.gif</item>
+  <item>movies/antenne/upward_12frames.gif</item>
+  <item>movies/antenne/welle_69.gif</item>
+
+
+  <!-- 
+  
+  possible funktion-tags:
+  
+  <item loop="2">movies/test-horizontal-fast.blm</item>
+  <item loop="2" reverse="yes">movies/test-horizontal-fast.blm</item>
+  <item invert="yes">movies/test-horizontal-fast.blm</item>
+  <item hflip="yes">movies/test-horizontal-fast.blm</item>
+  <item vflip="yes">movies/test-horizontal-fast.blm</item>
+  <item mirror="left">movies/test-horizontal-fast.blm</item>
+  <item mirror="right">movies/test-horizontal-fast.blm</item>
+  <item speed="0,1">movies/test-horizontal-fast.blm</item>
+  <item speed="10">movies/test-horizontal-fast.blm</item>
+  -->
+
+</playlist>

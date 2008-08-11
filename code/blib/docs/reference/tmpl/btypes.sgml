@@ -1,0 +1,36 @@
+<!-- ##### SECTION Title ##### -->
+BTypes
+
+<!-- ##### SECTION Short_Description ##### -->
+Additional GTypes registered by BLib
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### MACRO B_TYPE_FILENAME ##### -->
+<para>
+The filename type is derived from %G_TYPE_STRING and is used to
+indicate that a string should be interpreted as a filename. This
+macro returns the #GType for this type.
+</para>
+
+
+
+<!-- ##### MACRO B_VALUE_HOLDS_FILENAME ##### -->
+<para>
+Return whether the given #GValue can hold values of type %B_TYPE_FILENAME.
+</para>
+
+@value: a #GValue
+
+

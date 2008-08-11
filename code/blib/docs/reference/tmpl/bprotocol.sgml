@@ -1,0 +1,116 @@
+<!-- ##### SECTION Title ##### -->
+BProtocol
+
+<!-- ##### SECTION Short_Description ##### -->
+definiton of the Blinkenlights Network Protocol
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+The bprotocol.h header file defines the Blinkenlights Network
+Protocol. It contains structure definitions for the different network
+packets as well as defines for magic numbers.
+</para>
+
+<para>
+This header file doesn't use any GLib types to make it possible to
+include it from applications that can not or don't want to use BLib.
+As a user of BLib you don't need to care about the details of the
+protocol described here. Use the #BSender and #BReceiver instead.
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+#BPacket, #BSender, #BReceiver
+</para>
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### MACRO MAGIC_MCU_SETUP ##### -->
+<para>
+The magic number that identifies a setup packet.
+</para>
+
+
+
+<!-- ##### MACRO MAGIC_MCU_FRAME ##### -->
+<para>
+The magic number that identifies a frame packet.
+</para>
+
+
+
+<!-- ##### MACRO MAGIC_MCU_DEVCTRL ##### -->
+<para>
+The magic number that identifies a device control packet.
+</para>
+
+
+
+<!-- ##### MACRO MAGIC_BLFRAME ##### -->
+<para>
+The magic number that identifies a frame packet in the old
+Blinkenlights protocol. BLib doesn't support this old version.
+</para>
+
+
+
+<!-- ##### MACRO MAGIC_BLFRAME_256 ##### -->
+<para>
+The magic number that identifies a frame packet in an extension to the
+old Blinkenlights protocol. BLib doesn't support this old version.
+</para>
+
+
+
+<!-- ##### MACRO MAGIC_HEARTBEAT ##### -->
+<para>
+The magic number that identifies a heartbeat package as used with
+the BlinkenProxy protocol.
+</para>
+
+
+
+<!-- ##### MACRO MCU_LISTENER_PORT ##### -->
+<para>
+The default port a matrox control unit listens too.
+</para>
+
+
+
+<!-- ##### MACRO MCU_ID_ANY ##### -->
+<para>
+Use this value in a setup packet to address all listening matrix
+control units.
+</para>
+
+
+
+<!-- ##### MACRO MCU_DEVCTRL_OFF ##### -->
+<para>
+Use this value in a device control packet to switch a device off.
+</para>
+
+
+
+<!-- ##### MACRO MCU_DEVCTRL_ON ##### -->
+<para>
+Use this value in a device control packet to switch a device on.
+</para>
+
+
+
+<!-- ##### MACRO B_HEARTBEAT_PORT ##### -->
+<para>
+The default port number for BlinkenProxy heartbeat packets.
+</para>
+
+
+
+<!-- ##### MACRO B_HEARTBEAT_INTERVAL ##### -->
+<para>
+The default timeout in milliseconds between BlinkenProxy heartbeat packets.
+</para>
+
+
+

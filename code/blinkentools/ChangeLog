@@ -1,0 +1,928 @@
+2004-04-22 22:29  neo
+
+	* src/Makefile.am: fixed EXTRA_DIST
+
+2004-04-22 22:26  neo
+
+	* ChangeLog: Made 2.9 release.
+
+2004-04-22 22:23  neo
+
+	* NEWS, doc/blinkenproxy.1.in, src/blinkenproxy.c: document the
+	  changed blinkenproxy command-line
+
+2004-04-14 20:16  neo
+
+	* src/blinkenproxy.c: send the first heartbeat immidiately
+
+2004-04-14 18:59  neo
+
+	* src/blinkenproxy.c: Use the new BProxyServer object.
+
+2004-04-14 05:17  neo
+
+	* src/blinkenproxy.c: reverted last change, need to come up with a
+	  proper fix
+
+2004-04-14 04:44  neo
+
+	* src/blinkenproxy.c: don't bind the sender to an already used port
+	  for no good reason
+
+2004-04-14 04:05  neo
+
+	* src/blinkenproxy.c: only pull from an upstream proxy if there are
+	  any clients
+
+2004-04-14 03:37  neo
+
+	* src/blinkenproxy.c: Allow to specify a blinkenproxy host on the
+	  command-line from which this blinkenproxy should request packages
+	  from.
+
+2004-04-13 14:07  tim
+
+	* src/.cvsignore: ignore .DS_Store
+
+2004-04-11 12:19  neo
+
+	* src/b2image.c: Improved error handling for the case that the call
+	  to link() failed.
+
+2004-04-09 01:10  neo
+
+	* src/b2image.c: made the --format option mandatory when the tool
+	  is called as b2image
+
+2004-04-09 00:59  neo
+
+	* doc/b2image.1.in, scripts/b2avi, src/b2image.c, src/bplay.c: Made
+	  the theme parameter for b2image optional.
+
+2004-04-08 23:12  neo
+
+	* README, doc/b2image.1.in, src/b2image.c: renamed some
+	  command-line options to make way for a --theme option
+
+2004-04-08 22:27  neo
+
+	* doc/: Makefile.am, b2b.1.in, b2image.1.in: Install symlinks for
+	  the alternative executable names.
+
+2004-04-08 13:41  neo
+
+	* NEWS, src/b2image.c: fixed --type command-line option
+
+2004-04-08 13:30  tim
+
+	* src/b2image.c: start numbering frames with 1 to be congruent to
+	  BlinkenPaint an have it reflect the 'number of frames' for the
+	  user
+
+2004-04-08 11:25  tim
+
+	* src/b2image.c: change image count suffix to five digits because
+	  it looks more professional ;)  ---  The Goddess Eris Prevails
+
+2004-04-08 11:23  tim
+
+	* NEWS: update news for b2image
+
+2004-04-08 11:04  neo
+
+	* src/b2image.c: Do actually parse the --type option and don't set
+	  it to "image" when being called as "b2image".
+
+2004-04-08 10:58  tim
+
+	* src/b2image.c: error message refered to unkown --theme option -
+	  fixed
+
+2004-04-08 04:33  neo
+
+	* configure.in, doc/.cvsignore, doc/Makefile.am, doc/b2b.1.in,
+	  doc/b2image.1.in, doc/b2jpeg.1.in, doc/b2png.1.in,
+	  src/.cvsignore, src/Makefile.am, src/b2image.c, src/b2jpeg.c,
+	  src/b2png.c, src/bsnap.c: Combined b2png and b2jpeg into a single
+	  binary b2image.
+
+2004-04-08 03:49  tim
+
+	* doc/b2b.1.in: added --fps documentation
+
+2004-04-08 03:47  neo
+
+	* doc/b2jpeg.1.in, doc/b2png.1.in, scripts/b2avi, src/Makefile.am,
+	  src/b2jpeg.c, src/b2png.c, src/bsnap.c: Merged b2png.c and b2jpeg
+	  into bsnap.c.  Default not to create links, added --link option
+	  and use it from b2avi.
+
+2004-04-08 03:36  tim
+
+	* doc/b2b.1.in, src/b2b.c: change speed designation from
+	  'percentage' to 'factor'
+
+2004-04-08 02:28  neo
+
+	* src/: b2jpeg.c, b2png.c: Create hardlinks for duplicate frames;
+	  speeds up b2avi quite a bit.
+
+2004-04-08 01:44  tim
+
+	* src/bmovie-mng.c: Changed tEXt element name from 'title' to
+	  'Title' as described in the MNG spec
+
+2004-04-07 20:25  neo
+
+	* scripts/b2avi: minor improvements to the script
+
+2004-04-07 20:20  neo
+
+	* ChangeLog, Makefile.am, doc/b2jpeg.1.in, doc/b2mng.1.in,
+	  doc/b2png.1.in, doc/bsend.1.in, scripts/b2avi, src/b2jpeg.c,
+	  src/b2png.c: Fixed bug in b2png and b2jpeg.  Mention --verbose in
+	  the man-pages.  Added a simple shell script to create MPEG-4 AVI
+	  files using blinkentools and mencoder.
+
+2004-04-07 19:25  neo
+
+	* src/: b2jpeg.c, b2mng.c, b2png.c: document the --verbose
+	  command-line option
+
+2004-04-07 19:06  neo
+
+	* src/: b2jpeg.c, b2png.c: be verbose when --all and --verbose is
+	  specified
+
+2004-04-07 18:47  neo
+
+	* src/b2b.c: Added the new b2b option --fps. Allows to set a fixed
+	  framerate.
+
+2004-04-07 18:44  neo
+
+	* configure.in: output the blib version also
+
+2004-04-07 17:53  neo
+
+	* configure.in, src/b2jpeg.c: Generate the b2jpeg man-page.
+	  Corrected a minor problem with b2jpeg --all.
+
+2004-04-07 16:26  neo
+
+	* NEWS, README, doc/.cvsignore, doc/Makefile.am, doc/b2jpeg.1.in,
+	  doc/b2png.1.in, src/.cvsignore, src/Makefile.am, src/b2jpeg.c,
+	  src/b2png.c, src/bmovie-mng.c: Changed b2png command-line
+	  options.  Added b2jpeg, basically a copy of b2png.
+
+2004-04-07 14:26  neo
+
+	* doc/.cvsignore, src/b2png.c, src/bmovie-mng.c: Follow blib
+	  changes.
+
+2004-04-07 01:54  neo
+
+	* NEWS, README, configure.in, doc/.cvsignore, doc/Makefile.am,
+	  doc/b2mng.1.in, doc/b2png.1.in, src/b2png.c: number frames
+	  starting from 1 (?) added b2png man-page, updated NEWS and README
+
+2004-04-07 01:30  neo
+
+	* src/b2png.c: Follow changes in BViewPixbuf. Added --all
+	  command-line option to b2png.
+
+2004-04-07 00:19  neo
+
+	* configure.in, src/.cvsignore, src/Makefile.am, src/b2png.c,
+	  src/bmovie-mng.c: Depend on blib-1.1.7, use b_rectangle utilities
+	  from bmovie-mng.c.  Added rough prototype of b2png.
+
+2004-04-06 04:06  tim
+
+	* doc/b2mng.1.in: typo fixed
+
+2004-04-06 03:46  neo
+
+	* ChangeLog: Made 2.8 release.
+
+2004-04-06 03:19  tim
+
+	* doc/b2mng.1.in: more highlighting for the command
+
+2004-04-06 03:11  neo
+
+	* src/bmovie-mng.h: updated date in the header file
+
+2004-04-02 19:41  neo
+
+	* NEWS, README, configure.in: Bumped version number to 2.8, updated
+	  NEWS and README.
+
+2004-04-02 19:35  neo
+
+	* doc/b2mng.1.in, src/b2mng.c, src/bmovie-mng.c, src/bmovie-mng.h:
+	  Added --loops command-line option to b2mng similar to the bsend
+	  options.
+
+2004-04-02 18:47  neo
+
+	* configure.in, doc/.cvsignore, doc/Makefile.am, doc/b2b.1.in,
+	  doc/b2mng.1.in: Added a manpage for b2mng. Mention b2mng(1) in
+	  the b2b manpage.
+
+2004-04-02 17:47  neo
+
+	* src/bmovie-mng.c: Clip the frame to the bounding box of changed
+	  pixels and skip windows that fall completely outside the bounding
+	  box. Makes a lot of our animations a good deal smaller.
+
+2004-04-01 12:48  neo
+
+	* src/bmovie-mng.c: Store info about the loaded image and don't use
+	  BASI/PAST if the loaded image is already a single window with
+	  zero offsets.
+
+2004-04-01 12:25  neo
+
+	* src/bmovie-mng.c: merged PNG and JNG parsers
+
+2004-04-01 11:48  neo
+
+	* src/bmovie-mng.c: write an empty FRAM chunk when the delay does
+	  _not_ change
+
+2004-03-31 23:19  neo
+
+	* src/bmovie-mng.c: added support for JNG image data (w/o alpha
+	  channel)
+
+2004-03-31 22:25  neo
+
+	* src/bmovie-mng.c: use MNG_COLORTYPE_RGBA for more flexibility
+
+2004-03-31 19:45  neo
+
+	* src/bmovie-mng.c: optimize using LOOP/ENDL
+
+2004-03-31 18:57  neo
+
+	* src/bmovie-mng.c: prepare for optimizations using LOOP/ENDL, not
+	  used yet
+
+2004-03-31 13:35  neo
+
+	* src/bmovie-mng.c: Optimize the MNG file by doing the clipping
+	  beforehand instead of doing it for each and every window. Cuts
+	  down file-size quite a bit but seems to crash libmng :(
+
+2004-03-30 04:23  neo
+
+	* src/b2mng.c: made the --verbose mode more verbose
+
+2004-03-30 04:13  neo
+
+	* src/b2mng.c: added --verbose command-line option
+
+2004-03-30 04:01  neo
+
+	* src/bmovie-mng.c: first working version :)
+
+2004-03-30 03:50  neo
+
+	* src/bmovie-mng.c: redone large parts of BMovieMNG based on
+	  suggestions by Gerard Juyn on mng-list
+
+2004-03-17 21:12  neo
+
+	* src/bmovie-mng.c: corrected clipping parameters
+
+2004-03-17 12:55  neo
+
+	* src/bmovie-mng.c: check PNG file signature before accessing PNG
+	  chunks from a file
+
+2004-03-17 12:36  neo
+
+	* src/bmovie-mng.c: Don't hide objects from the last frame. I don't
+	  think it should be needed and at the moment, nothing is visible
+	  anyway...
+
+2004-03-17 12:34  neo
+
+	* src/bmovie-mng.c: better loop handling, don't start all from the
+	  beginning
+
+2004-03-17 12:13  neo
+
+	* src/bmovie-mng.c: further reduced file size by sorting before
+	  compressing SHOW calls
+
+2004-03-17 02:30  neo
+
+	* src/bmovie-mng.c: more cleanup before attempting a new
+	  approach...
+
+2004-03-17 01:59  neo
+
+	* src/bmovie-mng.c: minimal cleanup
+
+2004-03-17 01:30  neo
+
+	* src/bmovie-mng.c: compress adjacent shows
+
+2004-03-17 00:37  neo
+
+	* src/bmovie-mng.c: some fixes to the MNG header, don't specify a
+	  wrong number of layers
+
+2004-03-17 00:30  neo
+
+	* src/bmovie-mng.c: Don't set the background image invisible,
+	  stupid!
+
+2004-03-17 00:25  neo
+
+	* src/bmovie-mng.c: removed optimizations that only made the
+	  created files larger :(
+
+2004-03-17 00:06  neo
+
+	* configure.in: explicitely link zlib with libmng
+
+2004-03-16 23:57  neo
+
+	* src/: b2mng.c, bmovie-mng.c: started to work on b2mng again ...
+
+2004-03-16 23:55  neo
+
+	* src/b2b.c: fixed bug in short options string
+
+2004-03-10 00:10  neo
+
+	* ChangeLog, NEWS, README: Make 2.7 release.
+
+2004-02-17 10:41  tim
+
+	* doc/: b2b.1.in, blinkenproxy.1.in, bmultiplexer.1.in, bplay.1.in,
+	  bsend.1.in: added home page link
+
+2004-02-17 09:21  tim
+
+	* doc/.cvsignore: ignore more
+
+2004-02-17 08:57  tim
+
+	* configure.in, doc/Makefile.am, doc/blinkenproxy.1.in,
+	  doc/bmultiplexer.1.in: more man page updates
+
+2004-02-17 08:55  tim
+
+	* .cvsignore: ignore mac stuff
+
+2004-02-17 06:07  tim
+
+	* doc/bsend.1.in: typo fixed
+
+2004-02-17 04:24  tim
+
+	* src/b2b.c: changed loop-hint options to x and X
+
+2004-02-17 04:21  tim
+
+	* doc/: b2b.1.in, bplay.1.in, bsend.1.in: man page changes
+
+2004-02-17 03:46  neo
+
+	* src/b2b.c: changed --loop command-line handling once more
+
+2004-02-17 03:30  neo
+
+	* src/b2mng.c: removed leading newline from usage information
+
+2004-02-17 03:24  neo
+
+	* src/: b2b.c, bplay.c, bsend.c: command-line cleanup
+
+2004-02-17 03:15  tim
+
+	* Makefile.am, configure.in, doc/.cvsignore, doc/Makefile.am,
+	  doc/b2b.1.in, doc/bplay.1.in, doc/bsend.1.in: new manual pages
+
+2004-02-17 03:14  neo
+
+	* src/bsend.c: fixed implementation of loops
+
+2004-02-17 02:02  neo
+
+	* ChangeLog, src/bsend.c: added speed and reverse command-line
+	  arguments
+
+2004-02-17 01:50  neo
+
+	* configure.in, src/bsend.c: Bumped version number to 2.7, depend
+	  on blib-1.1.6.  Set the BSender verbosity in bsend from the
+	  command-line option.
+
+2004-02-17 01:44  neo
+
+	* src/: b2b.c, b2mng.c, blinkenproxy.c, bplay.c, bsend.c: more
+	  command-line cleanup
+
+2004-02-17 01:18  neo
+
+	* src/: b2b.c, b2mng.c, blinkenproxy.c, bplay.c, bsend.c:
+	  command-line options cleanup
+
+2004-02-16 23:23  neo
+
+	* src/b2b.c: renamed --info to --meta to avoid a clash of the short
+	  option with --invert
+
+2004-01-20 01:59  neo
+
+	* ChangeLog, NEWS, README: Made 2.6 release.
+
+2004-01-07 21:11  neo
+
+	* configure.in: bumped version to 2.6
+
+2004-01-07 21:10  neo
+
+	* src/bsend.c: On win32 use Sleep() instead of usleep().
+
+2004-01-07 20:15  neo
+
+	* src/bplay.c: same fix here
+
+2004-01-07 20:11  neo
+
+	* src/blinkenproxy.c: moved variable inside the ifdefs so the code
+	  compiles on win32
+
+2004-01-06 23:49  neo
+
+	* src/: blinkenproxy.c, bplay.c: Don't use UNIX signals on Win32.
+
+2003-12-31 04:14  neo
+
+	* ChangeLog: Made 2.5 release.
+
+2003-12-31 04:13  neo
+
+	* ChangeLog, NEWS, README, configure.in: Updates for the 2.5
+	  release.
+
+2003-12-31 03:42  neo
+
+	* src/bplay.c: Install a signal handler to catch Ctrl-C and close
+	  the aalib context.
+
+2003-12-31 03:30  neo
+
+	* src/bplay.c: Implemented bplay --loop.
+
+2003-12-31 03:19  neo
+
+	* configure.in, src/.cvsignore, src/Makefile.am, src/bplay.c: Added
+	  a new tool named bplay, that plays movies on the console using
+	  the new aa view.
+
+2003-12-25 21:10  neo
+
+	* ChangeLog: Made 2.4 release.
+
+2003-12-25 21:09  neo
+
+	* Makefile.am: Fixed EXTRA_DIST rule
+
+2003-12-25 21:05  neo
+
+	* ChangeLog, Makefile.am, NEWS, README, configure.in: Added debian
+	  files to EXTRA_DIST.	Bumped the version to 2.4.  Updated the
+	  README and NEWS files.
+
+2003-12-25 20:40  neo
+
+	* src/blinkenproxy.c: Cleaned up command-line handling.
+
+2003-12-25 19:38  neo
+
+	* debian/: .cvsignore, changelog, control, copyright, dirs, docs,
+	  rules: Added first draft of rules to build a debian package.
+	  Needs more work.
+
+2003-12-24 00:41  neo
+
+	* configure.in, src/blinkenproxy.c: Depend on blib-1.1.1.  Check
+	  the heartbeat protocol version.  Sanity check values before
+	  reconfiguring the sender.
+
+2003-12-22 13:46  neo
+
+	* src/blinkenproxy.c: Print the number of clients when receiving
+	  SIGUSR1.
+
+2003-12-22 13:38  neo
+
+	* src/blinkenproxy.c: Fixed a stupid bug that caused clients to be
+	  removed twice.  Caused the proxy to crash pretty soon.
+
+2003-12-21 21:32  neo
+
+	* ChangeLog: Made 2.3 (development) release.
+
+2003-12-21 20:41  neo
+
+	* ChangeLog, NEWS, README, configure.in: Updates for the 2.3
+	  development release.
+
+2003-12-21 18:31  neo
+
+	* src/blinkenproxy.c: Fixed a minor issue with the signal handler.
+
+2003-12-21 17:58  neo
+
+	* src/blinkenproxy.c: Install a signal handler for SIGINT so you
+	  can cleanly quit the proxy by pressing Ctrl-C.
+
+2003-12-21 17:49  neo
+
+	* src/blinkenproxy.c: Need to create BSender before using it :-/
+	  Added some useful output and removed useless debugging stuff.
+
+2003-12-21 14:36  neo
+
+	* src/blinkenproxy.c: Rewrote blinkenproxy:
+
+	  Keep a hash table of clients. For each client, register a timeout
+	  that removes it after 12 * B_HEARTBEAT_INTERVAL. If a hearbeat
+	  packet arrives, remove this timeout and set a new one.
+
+2003-12-21 13:53  neo
+
+	* src/: b2b.c, b2mng.c, blinkenproxy.c, bsend.c: Made all tools
+	  call b_init(), not g_type_init().
+
+2003-12-21 13:43  neo
+
+	* src/blinkenproxy.c: Follow BReceiver changes in blib.
+
+2003-12-21 12:12  neo
+
+	* configure.in: We use the blib-1.1 API now, so depend on it.
+
+2003-12-21 12:09  neo
+
+	* src/: blinkenproxy.c, bmultiplexer.c, bsend.c: Follow BSender API
+	  change and pass -1 as source port.
+
+2003-12-19 23:48  neo
+
+	* src/blinkenproxy.c: Check magic packet headers before accessing
+	  the data.
+
+2003-12-19 03:32  neo
+
+	* src/blinkenproxy.c: Follow blib API changes.
+
+2003-12-19 02:47  neo
+
+	* configure.in: Removed unnecessary autoconf macro.
+
+2003-05-22 18:22  hannes
+
+	* src/blinkenproxy.c: cleaned up code
+
+2003-05-21 02:02  hannes
+
+	* src/: blinkenproxy.c, bmultiplexer.c: blinkenproxy
+
+2003-04-26 02:09  hannes
+
+	* src/.cvsignore: added blinkenproxy
+
+2003-04-26 02:07  hannes
+
+	* src/: Makefile.am, blinkenproxy.c: blinkenproxy
+
+2002-12-28 14:49  neo
+
+	* ChangeLog: Made 2.2 release.
+
+2002-12-28 14:41  neo
+
+	* NEWS, README: Updates for the 2.2. release.
+
+2002-12-28 03:20  neo
+
+	* configure.in, src/Makefile.am, src/b2b.c: Allow to gamma adjust
+	  movies using b2b --gamma <factor>.  Requires blib >= 1.0.0.
+
+2002-12-27 19:05  neo
+
+	* ChangeLog: Updated ChangeLog for 2.2 release.
+
+2002-12-27 15:30  neo
+
+	* autogen.sh, configure.in, src/b2b.c, src/b2mng.c, src/bsend.c:
+	  Warn if getopt_long is not available and mention that long
+	  command-line options won't work.
+
+2002-12-08 16:25  neo
+
+	* .cvsignore: updated .cvsignore for newer versions of automake
+
+2002-10-21 11:30  neo
+
+	* NEWS, configure.in, src/bsend.c: bsend uses localhost if no host
+	  is specified.  Bumped version number to 2.2.
+
+2002-09-29 18:37  neo
+
+	* ChangeLog: Made 2.1 Release.
+
+2002-09-29 18:34  neo
+
+	* AUTHORS, README: updates
+
+2002-09-29 18:27  neo
+
+	* ChangeLog, NEWS, configure.in, src/bmultiplexer.c: final touch
+
+2002-09-29 17:41  neo
+
+	* src/b2b.c: Include number of frames in info output.
+
+2002-09-28 17:18  neo
+
+	* src/b2b.c: improved output of --help
+
+2002-09-28 17:16  neo
+
+	* src/b2b.c: Added --info command-line flag.
+
+2002-09-27 18:12  neo
+
+	* NEWS, src/bmultiplexer.c: Use MCU_LISTENER_PORT as defined in
+	  bprotocol.h. Updated NEWS.
+
+2002-09-27 18:06  neo
+
+	* src/.cvsignore: shut up CVS
+
+2002-09-27 17:13  daniel
+
+	* src/: fft.c, fft.h: wech.
+
+2002-09-27 16:58  daniel
+
+	* configure.in: wech.
+
+2002-09-27 16:54  daniel
+
+	* src/: Makefile.am, audio.c, audio.h, bsound.c, bsound.h, midi.c,
+	  midi.h: removed bsound - will move to blinkenmedia
+
+2002-09-25 17:40  daniel
+
+	* src/bmultiplexer.c: verbosity
+
+2002-09-25 17:36  daniel
+
+	* src/: Makefile.am, bmultiplexer.c: added bmultiplex, a udp
+	  multiplexer
+
+2002-09-23 13:17  neo
+
+	* src/bsend.c: Use MCU_LISTENER_PORT as defined in
+	  blib/bprotocol.h.
+
+2002-09-21 20:35  daniel
+
+	* src/: bsound.c, bsound.h: started to rework bsound
+
+2002-09-19 19:26  neo
+
+	* configure.in: Use AC_CHECK_LIB() to test for libesd.
+
+2002-09-19 14:12  neo
+
+	* src/bsend.c: Ignore the movies loop flag.  The new default is not
+	  to loop; use --loop to loop the movie.
+
+2002-09-19 14:05  daniel
+
+	* src/audio.c: fix
+
+2002-09-19 13:51  daniel
+
+	* src/audio.c: fix
+
+2002-09-13 18:05  daniel
+
+	* src/: audio.c, audio.h, bsound.c: more blinkensound
+
+2002-09-13 17:47  daniel
+
+	* src/: audio.c, bsound.c: lots of work in bsound
+
+2002-09-10 15:51  neo
+
+	* src/bsend.c: Changed output on error.
+
+2002-09-10 04:54  neo
+
+	* README: typo
+
+2002-09-10 04:10  daniel
+
+	* src/Makefile.am: -lm
+
+2002-09-10 04:08  daniel
+
+	* configure.in, src/Makefile.am, src/audio.c: esd stuff
+
+2002-09-10 02:29  daniel
+
+	* configure.in, src/.cvsignore, src/Makefile.am, src/audio.c,
+	  src/audio.h, src/bsound.c, src/bsound.h, src/fft.c, src/fft.h,
+	  src/midi.c, src/midi.h: copied sound stuff from old repository.
+	  does not work at all, dont try this at home
+
+2002-09-09 17:00  daniel
+
+	* src/: b2b.c, b2mng.c: include fixes
+
+2002-09-05 14:24  neo
+
+	* configure.in, src/b2b.c, src/bsend.c: Use new parser functions
+	  from blib.
+
+2002-09-04 18:41  neo
+
+	* src/bsend.c: Better error reporting.
+
+2002-09-04 15:55  neo
+
+	* src/bsend.c: Output more information about the movie that is
+	  being played.
+
+2002-09-04 15:45  neo
+
+	* src/bsend.c: Improved command-line handling. Allow to set/unset
+	  the loop flag. Read from stdin when - is given as filename. Allow
+	  to specify host:port.
+
+2002-09-04 05:27  neo
+
+	* ChangeLog, README, configure.in: Made 0.5 release, depends on
+	  blib >= 0.5.
+
+2002-09-04 04:08  neo
+
+	* ChangeLog, NEWS, README, src/.cvsignore, src/Makefile.am,
+	  src/bsend.c: Moved bsend utility from blinkensim to blinkentools.
+
+2002-09-03 17:36  neo
+
+	* NEWS, src/bmovie-mng.c: misc minor changes
+
+2002-09-03 12:45  neo
+
+	* src/bmovie-mng.c: Some code cleanup.
+
+2002-09-03 11:03  neo
+
+	* ChangeLog, NEWS, README, src/Makefile.am, src/b2mng.c,
+	  src/bmovie-mng.c, src/bmovie-mng.h: Moved MNG functions into a
+	  seperate file.
+
+2002-09-03 02:35  neo
+
+	* configure.in, src/b2b.c: Check for blib >= 0.4.  When converting
+	  from GIF to BML, default to bits = 4.
+
+2002-09-03 00:32  neo
+
+	* README: Updated README.
+
+2002-09-03 00:25  neo
+
+	* .cvsignore: shut up CVS
+
+2002-09-03 00:23  neo
+
+	* src/b2b.c: Allow to set/unset the loop flag via --loop.
+
+2002-09-03 00:07  neo
+
+	* src/b2mng.c: Added --loop command-line option to force looped
+	  animations.
+
+2002-09-02 23:54  neo
+
+	* src/b2mng.c: Improved b2mng.
+
+2002-09-02 22:42  neo
+
+	* configure.in, src/.cvsignore, src/Makefile.am, src/b2mng.c: Added
+	  first draft of b2mng. Still has timing problems and no theme
+	  support.
+
+2002-09-02 22:03  daniel
+
+	* src/: blm2gif.c, blmplay.c, gif2blm.c: included config.h in a
+	  couple of files to make the old tools build again.
+
+2002-09-02 16:54  neo
+
+	* src/b2b.c: Added a sanity checks so we catch the case that blib
+	  doesn't set an error (which is a bug in blib of course).
+
+2002-09-02 12:33  neo
+
+	* configure.in, src/b2b.c: Made support for long command-line
+	  options optional.
+
+2002-08-30 16:16  neo
+
+	* src/b2b.c: Added flip effect (unfortunately vertical flip is
+	  broken in blib-0.3).
+
+2002-08-30 15:07  neo
+
+	* src/b2b.c: Use the effects as provided by blib.
+
+2002-08-30 13:53  neo
+
+	* configure.in, src/Makefile.am: Create symlinks b2blm, b2bml and
+	  b2gif.
+
+2002-08-30 13:45  neo
+
+	* configure.in, src/.cvsignore, src/Makefile.am, src/b2b.c: Bumped
+	  version number to 2.0. Depend on blib >= 0.3.  Added new tool b2b
+	  which will replace the old ones. Left old code in place since it
+	  doesn't collide and it has some special features not (yet) in
+	  b2b.
+
+2002-01-31 13:35  tim
+
+	* README: changed documentation on gif2blm --hdl feature
+
+2002-01-29 22:45  neo
+
+	* AUTHORS, NEWS, README, src/Makefile.am, src/blm2gif.c,
+	  src/gif2blm.c, src/hdl.h: Added --hdl mode to gif2blm based on a
+	  patch by Tino Schwarze.  Very cool feature ;-)
+
+2002-01-29 21:53  neo
+
+	* NEWS, configure.in, src/.cvsignore, src/Makefile.am,
+	  src/blm2gif.c, src/hdl-huge.h, src/hdl.h: Added --hdl-huge mode
+	  to blm2gif.  Bumped version number to 1.1.
+
+2001-11-29 17:19  neo
+
+	* ChangeLog, NEWS, configure.in: Made 1.0 release.
+
+2001-11-21 19:55  neo
+
+	* src/blmplay.c: Rewrote mysleep() function. Hopefully works better
+	  on MacOS X now.
+
+2001-11-21 04:09  neo
+
+	* ChangeLog, src/blmplay.c: 2001-11-21	Sven Neumann
+	  <sven@gimp.org>
+
+		  * src/blmplay.c: improved frame timing.
+
+2001-11-21 02:34  neo
+
+	* ChangeLog, NEWS, README, configure.in, src/.cvsignore,
+	  src/Makefile.am, src/blm2gif.c, src/blmplay.c, src/blutils.c,
+	  src/blutils.h: 2001-11-21  Sven Neumann  <sven@gimp.org>
+
+		  * NEWS
+		  * README
+		  * configure.in: Made 0.9.2 release.
+
+		  * src/Makefile.am:
+		  * src/blutils.[ch]: new files with common code to read
+	  blm files.
+
+		  * src/blm2gif.c: use routine from blutils.
+
+		  * src/blmplay.c: new tool to play blm files on the text
+	  console.
+
+2001-11-21 00:18  neo
+
+	* .cvsignore, AUTHORS, ChangeLog, Makefile.am, NEWS, README,
+	  autogen.sh, configure.in, src/.cvsignore, src/Makefile.am,
+	  src/blm2gif.c, src/gif-load.c, src/gif-load.h, src/gif-save.c,
+	  src/gif-save.h, src/gif2blm.c, src/hdl-large.h, src/hdl-medium.h,
+	  src/hdl-small.h, src/hdl.h: Import of blinkentools version 0.9.1
+	  into CVS.
+

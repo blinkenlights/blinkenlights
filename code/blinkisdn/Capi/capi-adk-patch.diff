@@ -1,0 +1,23 @@
+*** capi-adk/c20lib/source/msg.c	Wed Aug 30 15:23:30 2000
+--- capi-adk/c20lib/source/msg.c	Thu Sep 12 19:09:32 2002
+***************
+*** 738,746 ****
+      clock_t lclock;
+  #endif
+      _cmsg   cmsg;
+      p = buf;
+      p[0]=0;
+-     if (buf==NULL || signal==NULL) return;
+  
+      cmsg.m = msg;
+      cmsg.l = 8;
+--- 738,746 ----
+      clock_t lclock;
+  #endif
+      _cmsg   cmsg;
++     if (buf==NULL || signal==NULL) return;
+      p = buf;
+      p[0]=0;
+  
+      cmsg.m = msg;
+      cmsg.l = 8;

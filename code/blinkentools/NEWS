@@ -1,0 +1,78 @@
+Version 2.9
+-----------
+- Let blinkenproxy use the new BProxyServer object from blib.
+- Allow hierachical blinkenproxies.  
+- Added --fps command-line option for b2b.
+- Added new tool b2image, based on BViewPixbuf.
+  Allows creation of PNG, JPEG and BMP still image files.
+- Added example script b2avi. Uses b2b, b2image and mencoder to create
+  MPEG-4 movies from Blinkenlights Movie files.
+
+Version 2.8
+-----------
+- Implemented theme mode for b2mng, added b2mng man-page.
+
+Version 2.7
+-----------
+- Cleaned up command-line options, added some new ones.
+- Added manpages (so that you know what changed...)
+
+Version 2.6
+-----------
+- Added Win32 port.
+
+Version 2.5
+-----------
+- Added bplay, a text console movie player based on blib-aa.
+
+Version 2.4
+-----------
+- Fixed some bugs in blinkenproxy.
+- Added rules to build a debian package.
+
+Version 2.3 (development release using blib-1.1)
+-----------
+- Added blinkenproxy.
+
+Version 2.2
+-----------
+- Added --gamma option to b2b.
+- Made bsend send to localhost if no host is specified.
+
+Version 2.1
+-----------
+- Added bmultiplexer.
+- Improved bsend and b2b.
+
+Version 2.0 - the next generation blinkentools
+----------------------------------------------
+- Added b2b, the swiss army knife of blinkenlights.
+- Added a first prototype of b2mng.
+- Added bsend, a simple movie sender that works nicely with blinkensim.
+- Declared the old tools blm2gif, gif2blm and blmplay as obsolete.
+  You can still build them by passing --enable-oldtools to configure.
+
+
+Version 1.1
+-----------
+- Added --hdl-huge mode to blm2gif.
+- Added --hdl mode to gif2blm based on a patch from 
+  Tino Schwarze <tino.schwarze@informatik.tu-chemnitz.de>.
+
+Version 1.0
+-----------
+- Fixed blmplay timing. 
+- Declared code as stable.
+
+Version 0.9.2
+-------------
+- Added blmplay. 
+- Moved common code into blutils.[ch].
+
+Version 0.9.1
+-------------
+- Improved GIF optimization of blm2gif. Up to 40% smaller files.
+
+Version 0.9
+-----------
+- Initial public release, contains blm2gif and gif2blm.

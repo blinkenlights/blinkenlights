@@ -1,0 +1,4 @@
+usr/include/*
+usr/lib/libb.a
+usr/lib/libb.la
+usr/lib/pkgconfig/blib.pc

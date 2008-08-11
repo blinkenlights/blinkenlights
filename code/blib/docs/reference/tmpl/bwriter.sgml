@@ -1,0 +1,82 @@
+<!-- ##### SECTION Title ##### -->
+BWriter
+
+<!-- ##### SECTION Short_Description ##### -->
+writes XML files
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### STRUCT BWriter ##### -->
+<para>
+The #BWriter struct is private.
+</para>
+
+
+<!-- ##### FUNCTION b_writer_new ##### -->
+<para>
+
+</para>
+
+@stream: 
+@indent: 
+@Returns: 
+
+
+<!-- ##### FUNCTION b_writer_free ##### -->
+<para>
+
+</para>
+
+@writer: 
+
+
+<!-- ##### FUNCTION b_write_header ##### -->
+<para>
+
+</para>
+
+@writer: 
+@encoding: 
+
+
+<!-- ##### FUNCTION b_write_open_tag ##### -->
+<para>
+
+</para>
+
+@writer: 
+@tag: 
+@Varargs: 
+
+
+<!-- ##### FUNCTION b_write_close_tag ##### -->
+<para>
+
+</para>
+
+@writer: 
+@tag: 
+
+
+<!-- ##### FUNCTION b_write_element ##### -->
+<para>
+
+</para>
+
+@writer: 
+@tag: 
+@value: 
+@Varargs: 
+
+

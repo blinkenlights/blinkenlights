@@ -1,0 +1,48 @@
+<!-- ##### SECTION Title ##### -->
+BMovieEffects
+
+<!-- ##### SECTION Short_Description ##### -->
+simple effects on a movie
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### FUNCTION b_movie_normalize ##### -->
+<para>
+
+</para>
+
+@movie: 
+@maxval: 
+
+
+<!-- ##### FUNCTION b_movie_apply_colormap ##### -->
+<para>
+
+</para>
+
+@movie: 
+@map: 
+
+
+<!-- ##### FUNCTION b_movie_apply_effects ##### -->
+<para>
+
+</para>
+
+@movie: 
+@effects: 
+@reverse: 
+@speed: 
+
+

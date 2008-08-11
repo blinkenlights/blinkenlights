@@ -1,0 +1,103 @@
+.\" b2image man page
+.\"
+.\" Project Blinkenlights 2004
+.\"
+.Dd April 8, 2004
+.Dt B2IMAGE 1
+.Os
+.Sh NAME
+.Nm b2image ,
+.Nm b2jpeg ,
+.Nm b2png
+.Nd renders an image from a Blinkenlights movie frame
+.Sh SYNOPSIS
+.Nm
+.Op Fl options
+.Op Ar filename
+.Sh DESCRIPTION
+.Nm
+takes a Blinkenlights movie (in BML, BLM or GIF format) and creates an
+image of a single frame.
+.Nm
+can also use blinkenthemes and create
+the same output that blinkensim diplays.
+.Nm
+automatically detects the file type by looking at the incoming data.
+.Pp
+If
+.Ar filename
+is omitted, the data is read via standard input. The output is written to
+the specified output file.
+.Nm
+can not (yet) write to stdout.
+.Sh OPTIONS
+The following options are recognized by
+.Nm .
+.Pp
+.Bl -tag -width "--concatenate" -compact
+.It Fl o Ar outfile
+.It Fl -output Ar outfile
+Send output to
+.Ar outfile .
+When the --all option is used, this value is used as a prefix for all
+output files.
+.Pp
+.It Fl t Ar name
+.It Fl -theme Ar name
+Use the theme with the given
+.Ar name .
+Themes are searched in the blib themes directory or in the directories
+specified in the B_THEME_PATH environment variable.
+.Pp
+.It Fl f Ar [png|jpeg]
+.It Fl -format Ar [png|jpeg]
+Specifies output file format. If
+.Nm
+has been invoked as 
+.Nm b2jpeg
+or
+.Nm b2png
+the corresdonding output format is assumed automatically. The option
+can then be omitted.
+.Pp
+.It Fl i
+.It Fl -index Ar number
+Create an image from the frame with the given index. Frames are numbered
+starting with 1. If this options is omitted the first frame is used.
+.Pp
+.It Fl a
+.It Fl -all
+Create a numbered sequence of images from all frames in the movie.
+.Pp
+.It Fl q
+.It Fl -quality Ar number
+Controls the JPEG compression factor. This is a value between 0 and 100,
+the default quality is 75.
+.Pp
+.It Fl l
+.It Fl -link
+Use hardlinks for duplicate frames. Saves time and disk space.
+.Pp
+.It Fl v
+.It Fl -verbose
+Be more verbose.
+.Pp
+.It Fl ?
+.It Fl -help
+Display help
+.Pp
+.It Fl V
+.It Fl -version
+Display version number and quit immediately.
+.El
+.Sh AUTHOR
+.An Sven Neumann Aq sven@gimp.org
+.Sh SEE ALSO
+Project Blinkenlights Home Page http://www.blinkenlights.de/
+.Pp
+.Xr b2b 1 ,
+.Xr b2mng 1 ,
+.Xr blinkensim 1 ,
+.Xr blib 3
+.Sh DIAGNOSTICS
+.Ex -std

@@ -1,0 +1,3 @@
+usr/lib/libb-${Source-Version}.so.*
+usr/lib/blib/module/*.so
+usr/share/blib*

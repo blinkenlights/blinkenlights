@@ -1,0 +1,56 @@
+<!-- ##### SECTION Title ##### -->
+BEffects
+
+<!-- ##### SECTION Short_Description ##### -->
+simple effects on a single movie frame
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### STRUCT BEffects ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### ENUM BEffectScope ##### -->
+<para>
+
+</para>
+
+@B_EFFECT_SCOPE_NONE: 
+@B_EFFECT_SCOPE_LEFT: 
+@B_EFFECT_SCOPE_RIGHT: 
+@B_EFFECT_SCOPE_ALL: 
+
+<!-- ##### FUNCTION b_effects_new ##### -->
+<para>
+
+</para>
+
+@Returns: 
+
+
+<!-- ##### FUNCTION b_effects_apply ##### -->
+<para>
+
+</para>
+
+@effects: 
+@frame_data: 
+@width: 
+@height: 
+@channels: 
+@maxval: 
+
+

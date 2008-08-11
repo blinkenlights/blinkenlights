@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<blinkentheme title="Stereoscope (Toronto City Hall)"
+  columns="96" rows="32" channels="1" maxval="7" width="800" height="600"
+  type="tch">
+
+  <background image="images/tch-800x600-bg.png"/>
+  <overlay image="images/tch-800x600-ov.png">
+    <grid dx="8" dy="14" sx="8" sy="11">
+      <window src-y="0" x="16" y="103" width="8" height="11"/>
+    </grid>
+  </overlay>
+
+</blinkentheme>

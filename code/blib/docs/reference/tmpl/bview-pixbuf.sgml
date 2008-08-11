@@ -1,0 +1,75 @@
+<!-- ##### SECTION Title ##### -->
+BViewPixbuf
+
+<!-- ##### SECTION Short_Description ##### -->
+renders Blinkenlights frames to pixbufs
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### STRUCT BViewPixbuf ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### FUNCTION b_view_pixbuf_new ##### -->
+<para>
+
+</para>
+
+@rows: 
+@columns: 
+@channels: 
+@error: 
+@Returns: 
+<!-- # Unused Parameters # -->
+@theme: 
+
+
+<!-- ##### FUNCTION b_view_pixbuf_new_theme ##### -->
+<para>
+
+</para>
+
+@theme: 
+@image_preload: 
+@error: 
+@Returns: 
+<!-- # Unused Parameters # -->
+@preload: 
+
+
+<!-- ##### FUNCTION b_view_pixbuf_load_image ##### -->
+<para>
+
+</para>
+
+@view: 
+@filename: 
+@error: 
+@Returns: 
+
+
+<!-- ##### FUNCTION b_view_pixbuf_render ##### -->
+<para>
+
+</para>
+
+@view: 
+@frame_data: 
+@clip: 
+@error: 
+@Returns: 
+
+

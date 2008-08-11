@@ -1,0 +1,78 @@
+BlinkenIPAQ - a simple Blinkenlights Movie Viewer for the iPaq
+--------------------------------------------------------------
+
+If you have no clue what Blinkenlights is, take a look at
+http://www.blinkenlights.de/ first.
+
+This is a simple Blinkenlights movie viewer designed to be used on an
+iPaq or any other handheld device with a color screen of at least
+240x320 pixels. It also works on a PC, but the resolution is fixed to
+the small screen size of the iPaq.
+
+
+Requirements
+------------
+
+blipaq uses DirectFB to draw on the Linux framebuffer. You will need a
+recent version of DirectFB (>= 0.9.11) installed with header files to
+compile BlinkenSim. DirectFB is available from http://www.directfb.org/.
+
+You also need pkg-config, a small utility that helps to locate
+installed software such as DirectFB. pkg-config is available from
+http://www.freedesktop.org/software/pkgconfig/.
+
+
+Installation
+------------
+
+Change to the toplevel source directory and type
+
+  ./configure
+
+You can pass the usual options to configure (try ./configure --help).
+Additionally you should specify the default screen rotation needed for
+your framebuffer:
+
+ --enable-rotatation=left   should work for older iPaqs
+ --enable-rotatation=right  should work for newer iPaqs
+ --enable-rotatation=none   is what you want to use for your PC
+
+Then type
+
+  make
+  make install
+
+This should build and install blipaq for you. Make sure your
+framebuffer is configured correctly for DirectFB. Please check the
+DirectFB FAQ if you encounter problems.
+
+
+Usage
+-----
+
+Just start blipaq passing it the filename of a Blinkenlights movie:
+
+ blipaq [options] <moviefile>
+
+You can pass the usual options supported by all DirectFB apps (use
+--dfb-help to get a list of these options). Additionally you can
+choose the screen rotation if you need a different setting than
+the default specified at compile time:
+
+ blipaq --rotate [left|right|none] <moviefile>
+
+When running blipaq can be controlled using the PC keyboard or the
+iPaq buttons:
+
+ Right            next frame
+ Left             previous frame
+ Up, Down, Space  toggle Play/Pause
+ Esc, Q           quit blipaq
+
+
+If you need some movies, check http://www.blinkenlights.de/gallery/.
+
+
+
+Have Blinkenfun,
+	Sven Neumann  <sven@gimp.org>

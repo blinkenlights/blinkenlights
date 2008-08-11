@@ -1,0 +1,11 @@
+blinkenthemes
+-------------
+
+This package contains themes for Blinkenlights. If you have never
+heard about Blinkenlights, you want to check http://www.blinkenlights.de/
+first. The themes format is defined in the blib package which also
+contains code to parse the format as well as display widgets for GTK+
+and DirectFB that make use of the themes.
+
+This package depends on blib being installed. It requires pkg-config
+to find the blib library.

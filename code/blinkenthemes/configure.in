@@ -1,0 +1,27 @@
+dnl Process this file with autoconf to produce a configure script.
+AC_INIT(themes/hdl-640x480.xml)
+
+VERSION=0.10
+PACKAGE=blinkenthemes
+
+AM_INIT_AUTOMAKE($PACKAGE, $VERSION)
+
+AM_MAINTAINER_MODE
+
+PKG_CHECK_MODULES(BLIB, blib >= 1.0.0)
+
+BLIB_THEMEPATH=`$PKG_CONFIG --variable=themepath blib`
+
+AC_SUBST(BLIB_THEMEPATH)
+
+AC_OUTPUT([
+Makefile
+themes/Makefile
+themes/images/Makefile
+])
+
+AC_MSG_RESULT([
+Build options:
+  Version      $VERSION
+  Theme path   $BLIB_THEMEPATH
+]);

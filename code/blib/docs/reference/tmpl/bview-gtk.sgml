@@ -1,0 +1,45 @@
+<!-- ##### SECTION Title ##### -->
+BViewGtk
+
+<!-- ##### SECTION Short_Description ##### -->
+a GTK+ widget to display Blinkenlights
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+BViewDirectFB
+</para>
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### STRUCT BViewGtk ##### -->
+<para>
+The #BViewGtk struct shouldn't be accessed directly. Its members are
+considered private.
+</para>
+
+
+<!-- ##### FUNCTION b_view_gtk_new ##### -->
+<para>
+
+</para>
+
+@theme: 
+@error: 
+@Returns: 
+
+
+<!-- ##### FUNCTION b_view_gtk_update ##### -->
+<para>
+
+</para>
+
+@view: 
+@frame_data: 
+
+

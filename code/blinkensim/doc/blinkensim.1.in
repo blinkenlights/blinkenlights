@@ -1,0 +1,86 @@
+.\" blinkensim man page
+.\"
+.\" Project Blinkenlights 2004
+.\"
+.Dd February 24, 2004
+.Dt BLINKENSIM 1
+.Os
+.Sh NAME
+.Nm blinkensim
+.Nd visual simulator for Blinkenlights
+.Sh SYNOPSIS
+.Nm
+.Op Fl options
+.Ar theme
+.Op host Ns Op : Ns port
+.Sh DESCRIPTION
+.Nm
+is a visual simulator for Blinkenlights Movies sent using
+the UDP-based Blinkenlights Protocol.
+.Nm
+load a user-specified graphical theme to display incoming movie
+data in real-time achieving a realistic view of how the original
+Blinkenlights installations looked like.
+.Pp
+.Nm
+can use either GTK2, DirectFB as its graphical subsystem. While
+DirectFB performs a lot better than the typical X11-based GTK
+installation, it is much more portable and should run on all
+typical X11 installations.
+.Pp
+If 
+.Ar host
+is given, blinkensim requests data automatically from a remote 
+proxy host by notifing
+the specified host with UDP Blinkenlights Heartbeat Packets. As long
+as Heartbeat Packets are being sent, the proxy host should respond
+by sending movie streams using the Blinkenlights Protocol.
+If 
+.Ar port
+is given, the specified port number is used to contact the proxy host.
+If 
+.Ar port
+is omitted, default port (4242) is used.
+.Sh OPTIONS
+.Pp
+If AA-Lib is available, a special version of
+.Nm
+can display the output on the console ignoring all graphical
+data from the theme (it just takes the resolution from the theme).
+.Pp
+.Bl -tag -width "--concatenate" -compact
+.Pp
+.It Fl p Ar port
+.It Fl -port Ar port
+Use 
+.Ar port
+to as port number for all incoming requests. If no
+.Fl -port
+option is given then use the default port value (2323).
+.Pp
+.It Fl l
+.It Fl -list
+List the available themes
+.Ar number
+times.
+.Pp
+.It Fl v
+.It Fl -verbose
+Be much more verbose on simulator activity and errors.
+.Pp
+.It Fl ?
+.It Fl -help
+Display help
+.Pp
+.It Fl V
+.It Fl -version
+Display version number and exit immediately.
+.El
+.Sh AUTHOR
+.An Sven Neumann Aq sven@gimp.org
+.Sh SEE ALSO
+.Xr blinkenproxy 1 ,
+.Xr bsend 1 ,
+.Xr blib 3
+.Sh DIAGNOSTICS
+.Ex -std

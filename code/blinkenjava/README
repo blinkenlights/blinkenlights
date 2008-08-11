@@ -1,0 +1,65 @@
+To build blinkenjava you must have a JDK 1.3.x installed. Specify it during
+configure time with --with-jdk. Of course you will need the blinkenlights
+library (blib), . Don't forget to make sure that pkg-config will find the
+configuration files for blib, so usually you will have to add s.th. like
+/usr/local/lib/pkgconfig to your PKG_CONFIG_PATH, if you configured 'blib' with
+"--prefix=/usr/local" (or with nothing, as this is the default)
+
+# ./autogen.sh --with-jdk=/your/path/to/jdk1.3.x
+
+followed by 
+
+# make; make install
+
+and maybe
+
+# make javadoc
+
+(This will build java docmentation into build/dist)
+
+The Blinkenjava module will install itself into the
+blib-modules-directory. To use it, you will add some path to
+your LD_LIBRARY_PATH, the output of autogen.sh will show you what
+exactly you will need. if you didn't specify an VM type explicitly
+(using --with-vm=[client|server|classic]), these are:
+
+JDK_HOME/jre/lib/i386
+JDK_HOME/jre/lib/i386/client
+JDK_HOME/jre/lib/i386/native_threads
+
+To try it, do the following (assuming blib installed itself in
+/usr/local/lib/blib-1.0):
+
+Start your blinkensim or whatever you do to watch the output.
+
+# cd BLIB_SRC_HOME/test 
+# ./test-module /usr/local/lib/blib-1.0 Blinkenjava <hostname> \
+#      --property:class=<fully qualified classname of blinkenlet>
+
+Try "de.blinkenlights.examples.Blinkenlife": this should fire up a game of life
+on the display.
+
+Alternatively, install "test-module" somewhere in your path
+and call 
+# test-blinkenlet <classname> <hostname>
+
+CLASSPATH: Usually you will not need to set a classpath. Blinkenjava will
+install its own classes as a file "blinken.jar" in directory
+$BLIB_DATADIR/classes (e.g.  /usr/local/share/blib-1.0/classes/blinken.jar).
+When the module is initialized it will print to stdout where it will search the
+classes.  Additionally, you can set a CLASSPATH. It will be evaluated and takes
+precedence over the builtin path. (This concept might need to change, when we
+add jars provided by blinkenlet coders, so they can not replace the
+original blinkenlet classes). If you provide you own blinkenlet, simply put
+them in the classpath.
+
+
+Problems? Report to
+miriam@convergence.de, enno@selfish.org or blinkenlights@lists.ccc.de
+
+
+Note:
+- tested with SUN JDK 1.3 (and quickly with JDK1.4.1)
+- uses 1.2 JNI features, so will not work with 1.1
+- we got problems using IBMs JDK ... 
+

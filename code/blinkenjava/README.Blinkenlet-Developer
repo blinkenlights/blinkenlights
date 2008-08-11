@@ -1,0 +1,8 @@
+if you only want to develop a blinkenlet, you will need only the files
+build/dist/blinken.jar and the documentation in build/doc
+
+What you have to do:
+- if you want to see you blinkenlet, install blib, blinkensim, blinkensim-themes.
+- read documentation for class de.blinkenlights.blinkenlet.Blinkenlet in build/doc
+- implement your own Blinkenlet (just extends the class)
+- contact blinkenlights@lists.ccc.de

@@ -1,0 +1,71 @@
+Blinkenlights Chaos Control Center
+----------------------------------
+
+If you have no clue what Blinkenlights is, take a look at
+http://www.blinkenlights.de/ first.
+
+This is a rewrite of the master control program for Blinkenlights. Our
+first implementation used to be a GTK+ application that allowed
+previewing of movies and run-time modification of the playlist using a
+graphical user interface. It turned out that we need a way to control
+the Blinkenlights remotely, so this new implementation runs as a
+daemon controllable via telnet connections. We started to use this
+software for the Blinkenlights installation at the end of September
+2001.
+
+Some parts of the code could definitely be redone better but keep in
+mind that this software evolved over time since we kept on adding new
+features while the Blinkenlights installation was already running
+every night from dusk till dawn. Actually we kept the software running
+all the time and just switched off power from the relais during the
+days. So this software has prooven to work reliable over a couple of
+months.
+
+
+How to compile:
+
+You need to have blib-1.1.x installed. A simple
+
+  ./configure; make; make install
+
+should do the trick. You may have to adjust your PKG_CONFIG_PATH
+environment variable so that blib.pc is found.
+
+
+How to use:
+
+Have a look at the examples directory. There's a default config and a
+minimal set of resources, enough to make blccc work. Change to the
+directory and start it:
+
+ blccc config.xml
+
+blccc will read the config file and start with parameters given
+there. It now sends UDP packets to the configured recipients (there
+can be more than one recipient). You can connect to blccc using
+telnet. It listens on port 2323 on the local interface (and only on
+the local interface, you cannot login remotely).  Type 'telnet
+localhost 2323' and it should welcome you. Try the 'help' command to
+get an idea of what is possible. You can use netcat (nc) to send
+commands to blccc so that you can control the installation from
+scripts or cronjobs.
+
+Now it's time to start blinkensim to visualize the stream of UDP 
+packets:
+
+ blinkensim
+
+
+blccc can be configured to communicate with a blinkenisdn daemon (not
+part of this package). Applications, which are basically BModules, can
+be bound to phone numbers.  The example config shows different
+setups. A typical setup is to use BlDispatch.  If the line goes
+off-hook, the pong game is started. The game is controlled thru dial
+tones. The special sequence *<digits># can be bound to other games,
+movies or any other BModule you'd like to use. As soon as all
+telephone lines are on-hook again, blccc continues to play movies from
+the playlist.
+
+
+Have Blinkenfun,
+	Sven  <sven@gimp.org>

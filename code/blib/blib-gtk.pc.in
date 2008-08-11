@@ -1,0 +1,11 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+includedir=@includedir@
+
+Name: blib-gtk
+Description: Library to display the Blinkenlights on GTK+
+Version: @VERSION@
+Requires: blib-pixbuf = @VERSION@, gtk+-2.0 >= 2.0.3
+Libs: -L${libdir} -lb-gtk
+Cflags: -I@INCLUDEDIR@

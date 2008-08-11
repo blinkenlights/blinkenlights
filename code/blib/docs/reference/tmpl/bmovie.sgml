@@ -1,0 +1,160 @@
+<!-- ##### SECTION Title ##### -->
+BMovie
+
+<!-- ##### SECTION Short_Description ##### -->
+base class for Blinkenlights movies
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+The #BMovie class defines a common interface to a Blinkenlights
+movie. BLib comes with a couple of implementations that correspond to
+the different file formats. They are referred to by their #GType:
+#B_TYPE_MOVIE_BML, #B_TYPE_MOVIE_BLM and #B_TYPE_MOVIE_GIF.
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### MACRO B_MOVIE_MIN_DELAY ##### -->
+<para>
+The minimum time for a frame in milliseconds. Shorter frame delays
+will be set to this value.
+</para>
+
+
+
+<!-- ##### MACRO B_MOVIE_DEFAULT_DELAY ##### -->
+<para>
+The default time for a frame in milliseconds. Frames with no specified
+delay will be set to this value.
+</para>
+
+
+
+<!-- ##### STRUCT BMovie ##### -->
+<para>
+The #BMovie struct has various members that may be read directly since
+not all of them has accessor functions. You must however not change
+any of the fields.
+</para>
+
+
+<!-- ##### STRUCT BMovieFrame ##### -->
+<para>
+The #BMovieFrame struct defines a single movie frame.
+</para>
+
+@start: the start time of the frame in milliseconds
+@duration: the duration of the frame in milliseconds
+@data: frame data according to the values in the #BMovie that owns this frame
+
+<!-- ##### MACRO B_TYPE_MOVIE_BML ##### -->
+<para>
+Type derived from #BMovie that handles movies in the Blinkenlights Markup
+Language (BML).
+</para>
+
+
+
+<!-- ##### MACRO B_TYPE_MOVIE_BLM ##### -->
+<para>
+Type derived from #BMovie that handles movies in old-fashioned BLM format.
+</para>
+
+
+
+<!-- ##### MACRO B_TYPE_MOVIE_GIF ##### -->
+<para>
+Type derived from #BMovie that handles movies in the GIF format.
+</para>
+
+
+
+<!-- ##### FUNCTION b_movie_new_from_file ##### -->
+<para>
+
+</para>
+
+@filename: 
+@lazy_load: 
+@error: 
+@Returns: 
+
+
+<!-- ##### FUNCTION b_movie_new_from_fd ##### -->
+<para>
+
+</para>
+
+@fd: 
+@error: 
+@Returns: 
+
+
+<!-- ##### FUNCTION b_movie_load ##### -->
+<para>
+
+</para>
+
+@movie: 
+@error: 
+@Returns: 
+
+
+<!-- ##### FUNCTION b_movie_unload ##### -->
+<para>
+
+</para>
+
+@movie: 
+
+
+<!-- ##### FUNCTION b_movie_save ##### -->
+<para>
+
+</para>
+
+@movie: 
+@stream: 
+@error: 
+@Returns: 
+
+
+<!-- ##### FUNCTION b_movie_save_as ##### -->
+<para>
+
+</para>
+
+@movie: 
+@movie_type: 
+@stream: 
+@error: 
+@Returns: 
+
+
+<!-- ##### FUNCTION b_movie_get_frame_at_time ##### -->
+<para>
+
+</para>
+
+@movie: 
+@seed: 
+@time: 
+@Returns: 
+
+
+<!-- ##### FUNCTION b_movie_prepend_frame ##### -->
+<para>
+
+</para>
+
+@movie: 
+@duration: 
+@data: 
+
+

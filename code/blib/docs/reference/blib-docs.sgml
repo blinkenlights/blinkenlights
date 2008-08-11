@@ -1,0 +1,169 @@
+<?xml version="1.0"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+               "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
+
+<book id="index" xmlns:xi="http://www.w3.org/2001/XInclude">
+
+  <bookinfo>
+    <title>BLib Reference Manual</title>
+    <releaseinfo>
+      for BLib <xi:include href="version" parse="text"/>
+    </releaseinfo>
+    <author>
+      <firstname>Sven</firstname>
+      <surname>Neumann</surname>
+    </author>
+  </bookinfo>
+
+  <warning>
+    <para>
+      This room is fullfilled mit special electronische equippment.
+      Fingergrabbing and pressing the cnoeppkes from the computers is
+      allowed for die experts only! So all the "lefthanders" stay away
+      and do not disturben the brainstorming von here working
+      intelligencies. Otherwise you will be out thrown and kicked
+      anderswhere! Also: please keep still and only watchen astaunished
+      the blinkenlights.
+    </para>
+  </warning>
+
+  <chapter id="blib">
+    <title>BLib Overview</title>  
+    <para>
+      BLib is a library of useful things to hack the <ulink
+	url="http://www.blinkenlights.de/">Blinkenlights</ulink>.  The
+      software used for the original Blinkenlights installation in
+      Berlin didn't fit our needs when we planned the installation in
+      Paris, dubbed <ulink
+	url="http://www.blinkenlights.de/arcade/">Arcade</ulink>. We
+      decided we need something more generic and developed BLib.
+    </para>
+
+    <para>
+      BLib was written by Daniel Mack, Michael Natterer and Sven
+      Neumann with modules contributed by 1stein (BPacman, BBreakout)
+      and Simon Budig (BMatrix).
+    </para>
+
+    <para>
+      There are a couple of software packages that use BLib:
+      <variablelist>
+	<varlistentry>
+	  <term>blinkentools</term>
+	  <listitem>
+	    <para>
+	      A set of command-line utilities related to Blinkenlights.
+              It includes b2b, a converter for Blinkenmovies that can
+              apply some simple effects, b2mng, which creates MNG
+              animations from Blinkenmovies, and bsend, which sends movies
+              over the net using the Blinkenlights Network Protocol.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>blinkensim</term>
+	  <listitem>
+	    <para>
+	      A graphical Blinkenlights simulator that displays the UDP
+	      packets it receives according to the Blinkenlights Network
+	      Protocol. It supports themes and comes with <ulink
+		url="http://www.directfb.org/">DirectFB</ulink> and <ulink
+		url="http://www.gtk.org/">GTK+</ulink> backends.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>blccc</term>
+	  <listitem>
+	    <para>
+	      The Blinkenlights Chaos Control center is the heart of
+	      every Blinkenlights installation. This is the master
+	      process that controls the lights. It makes heavy use of
+	      BLib.
+	    </para>
+	  </listitem>
+	</varlistentry>
+      </variablelist>
+    </para>
+    
+    <para>
+      BLib depends on <ulink url="http://www.gtk.org/">GLib</ulink>
+      version 2.0 (or newer). For the optional DirectFB view you need
+      <ulink url="http://www.directfb.org/">DirectFB</ulink> version
+      0.9.11 (or newer) and the GTK+ view requires at least <ulink
+      url="http://www.gtk.org/">GTK+</ulink> version 2.0.3.
+    </para>
+    
+    <para>
+      BLib is released under the GNU General Public License (GPL).
+    </para>
+  </chapter>
+
+  <chapter id="blib-utils">
+    <title>Blinkenlights Utilities</title>
+    <para>
+      A collection of utilities that aren't that useful in itself but
+      are used from all over the Blinkenlights library.
+    </para>
+    <xi:include href="xml/blib.xml"/>
+    <xi:include href="xml/bobject.xml"/>
+    <xi:include href="xml/btypes.xml"/>
+    <xi:include href="xml/bparams.xml"/>
+    <xi:include href="xml/butils.xml"/>
+    <xi:include href="xml/bparser.xml"/>
+    <xi:include href="xml/bwriter.xml"/>
+  </chapter>
+
+  <chapter id="blib-movies">
+    <title>Blinkenlights Movies</title>
+    <para>
+      Support for loading and saving the various Blinkenlights Movie
+      formats. Some simple effects and a movie player module.
+    </para>
+    <xi:include href="xml/bmovie.xml"/>
+    <xi:include href="xml/bmovie-effects.xml"/>
+    <xi:include href="xml/beffects.xml"/>
+    <xi:include href="xml/bmovieplayer.xml"/>
+    
+  </chapter>
+
+  <chapter id="blib-network">
+    <title>Blinkenlights Network Protocol</title>
+    <para>
+      Support for speaking the Blinkenlights Network Protocol, a
+      simple UDP protocol layer.
+    </para>
+    <xi:include href="xml/bprotocol.xml"/>
+    <xi:include href="xml/bpacket.xml"/>
+    <xi:include href="xml/bproxyclient.xml"/>
+    <xi:include href="xml/bproxyserver.xml"/>
+    <xi:include href="xml/breceiver.xml"/>
+    <xi:include href="xml/bsender.xml"/>
+    <xi:include href="xml/bsocket.xml"/>
+  </chapter>
+
+
+  <chapter id="blib-modules">
+    <title>Blinkenlights Modules</title>
+    <para>
+      Loadable modules that define our Game API. 
+    </para>
+    <xi:include href="xml/bmodule.xml"/>
+    <xi:include href="xml/bmodule-utils.xml"/>
+    <xi:include href="xml/bmoduleinfo.xml"/>
+    <xi:include href="xml/bmodule-internal.xml"/>
+  </chapter>
+
+  <chapter id="blib-sim">
+    <title>Blinkenlights Simulation</title>
+    <para>
+      Themeable visualization of Blinkenlights Movies.
+    </para>
+    <xi:include href="xml/btheme.xml"/>
+    <xi:include href="xml/bview-aa.xml"/>
+    <xi:include href="xml/bview-directfb.xml"/>
+    <xi:include href="xml/bview-pixbuf.xml"/>
+    <xi:include href="xml/bview-gtk.xml"/>
+  </chapter>
+
+</book>

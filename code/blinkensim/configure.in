@@ -1,0 +1,93 @@
+AC_INIT(src/gfx.h)
+
+PACKAGE=blinkensim
+VERSION=2.8
+
+AM_INIT_AUTOMAKE($PACKAGE,$VERSION)
+
+AM_CONFIG_HEADER(config.h)
+
+AC_PROG_CC
+AC_PROG_INSTALL
+AC_PROG_LN_S
+
+AC_HEADER_STDC
+
+# Check for getopt_long
+AC_CHECK_HEADER(getopt.h,
+  [AC_CHECK_FUNC(getopt_long,
+     have_getopt_long=yes
+     AC_DEFINE(HAVE_GETOPT_LONG, 1,
+    	       [Define to 1 if your libc has support for getopt_long().]))])
+
+if test x$have_getopt_long != xyes; then
+  AC_MSG_WARN([
+*** Looks as if your libc doesn't have support for getopt_long().  ***
+*** Long command-line options starting with two dashes won't work. ***
+])
+fi
+
+
+AC_SUBST(PACKAGE)
+AC_SUBST(VERSION)
+
+
+PKG_CHECK_MODULES(BLIB, blib >= 1.1.7)
+BLIB_VERSION=`$PKG_CONFIG --modversion blib`
+
+
+PKG_CHECK_MODULES(GTK, blib-gtk = $BLIB_VERSION,
+	          have_gtk=yes, have_gtk=no)
+AM_CONDITIONAL(HAVE_GTK, test $have_gtk = "yes")
+
+PKG_CHECK_MODULES(DIRECTFB, blib-directfb = $BLIB_VERSION,
+	          have_directfb=yes, have_directfb=no)
+AM_CONDITIONAL(HAVE_DIRECTFB, test $have_directfb = "yes")
+
+PKG_CHECK_MODULES(AA, blib-aa = $BLIB_VERSION,
+	          have_aa=yes, have_aa=no)
+AM_CONDITIONAL(HAVE_AA, test $have_aa = "yes")
+
+
+AC_ARG_WITH(default,
+  [  --with-default=[[gtk|directfb|aa]]
+                          install a default blinkensim binary [[auto]]],
+  default=$with_default, default=auto)
+
+case $default in
+  gtk|directfb|aa)
+    default_binary="blinkensim-$default"
+    ;;
+  auto)
+    if test x$have_gtk = xyes; then
+      default_binary=blinkensim-gtk;
+    elif test x$have_directfb = xyes; then
+      default_binary=blinkensim-directfb;
+    elif test x$have_aa = xyes; then
+      default_binary=blinkensim-aa;
+    fi
+    ;;
+  *)
+    default_binary=none
+    ;;
+esac
+
+AM_CONDITIONAL(DEFAULT_BINARY, test x$default_binary != xnone)
+AC_SUBST(default_binary)
+
+
+AC_OUTPUT([
+Makefile
+src/Makefile
+doc/Makefile
+doc/blinkensim.1
+])
+
+AC_MSG_RESULT([
+Build options:
+  Version              :  $VERSION
+  blinkensim-gtk       :  $have_gtk
+  blinkensim-directfb  :  $have_directfb
+  blinkensim-aa        :  $have_aa
+  default binary       :  $default_binary
+])

@@ -1,0 +1,6 @@
+Revision history for Perl extension Capi.
+
+0.01  Sat Aug 31 16:10:17 2002
+	- original version; created by h2xs 1.21 with options
+		-Oxn Capi -F '-D__restrict= -D__const=const -DDONT_INST_STD' capi20.h
+

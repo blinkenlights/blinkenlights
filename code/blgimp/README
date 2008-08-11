@@ -1,0 +1,7 @@
+blgimp -- a plug-in for GIMP 1.2 that saves Blinkenlights Movies.
+
+If you have no clue what Blinkenlights is, take a look at
+http://www.blinkenlights.de/ first.
+
+Compile and install with into your personal .gimp directory using
+'gimptool --install blgimp.c'.

@@ -1,0 +1,112 @@
+dnl Process this file with autoconf to produce a configure script.
+AC_INIT(src/c/blinkenjava.c)
+
+VERSION=0.9
+PACKAGE=blinkenjava
+
+AM_INIT_AUTOMAKE($PACKAGE, $VERSION)
+
+AM_MAINTAINER_MODE
+ACLOCAL="$ACLOCAL $ACLOCAL_FLAGS"
+
+AC_CANONICAL_HOST
+
+AC_PROG_CC
+AC_PROG_INSTALL
+AC_PROG_LN_S
+AM_PROG_CC_STDC
+AM_PROG_LIBTOOL
+
+PKG_CHECK_MODULES(BLIB, blib >= 0.9)
+PKG_CHECK_MODULES(GLIB, glib-2.0 >= 2.0)
+
+BLIB_MODULEPATH=`$PKG_CONFIG --variable=modulepath blib`
+BLIB_DATADIR=`$PKG_CONFIG --variable=datadir blib`
+
+AC_MSG_CHECKING(jdk)
+AC_ARG_WITH(jdk, [  --with-jdk		  location of JDK], [], [AC_MSG_ERROR(You need to specify the path to a JDK installation: --with-jdk=<path>)])
+JDK=$with_jdk
+JAVACMD=$JDK/bin/java
+JAVA_HOME=$JDK
+
+
+# some sanity checks for JDK
+test -x $JAVACMD || AC_MSG_ERROR([no java found in $JDK/bin])
+JAVA_VER=`$JAVACMD -version 2>&1 | grep -iv ibm | grep "Java(TM) 2 Runtime Environment"`
+test -z "$JAVA_VER" && AC_MSG_ERROR([JDK found, but please check version. Don't use IBM JDK])
+
+#test for include file
+test -f $JDK/include/jni.h || AC_MSG_ERROR([couldn't find jni.h in $JDK/include])
+
+AC_MSG_RESULT($JDK)
+
+AC_MSG_CHECKING(VM type)
+AC_ARG_WITH(vm, [ --with-vm               vm type: classic, client, server [default: client], depends on jdk], [], [with_vm=client])
+VM=$with_vm
+AC_SUBST(VM)
+AC_SUBST(JDK)
+
+#check if necessary libs are there
+JRE_LIB_HOME=$JDK/jre/lib/i386
+VMLIB=$JRE_LIB_HOME/$VM/libjvm.so
+THREADLIB=$JRE_LIB_HOME/native_threads/libhpi.so
+for i in $VMLIB $THREADLIB; do
+	test -f $i || AC_MSG_ERROR([$i not found. please check vm type (was: $VM)])
+done
+AC_MSG_RESULT($with_vm)
+
+
+JNI_CFLAGS="-I$JAVA_HOME/include -I$JAVA_HOME/include/linux"
+JNI_LIBS="-L$JRE_LIB_HOME -L$JRE_LIB_HOME/$VM -L$JRE_LIB_HOME/native_threads -ljvm -lhpi"
+
+AC_SUBST(JNI_CFLAGS)
+AC_SUBST(JNI_LIBS)
+AC_SUBST(JAVA_HOME)
+
+AC_SUBST(BLIB_MODULEPATH)
+AC_SUBST(BLIB_DATADIR)
+
+AC_PATH_PROG(JIKES, jikes)
+if test -z "$JIKES"; then
+	JAVA_COMPILER=$JAVA_HOME/bin/javac
+	COMPILECP="build/classes"
+	JAVAC="$JAVA_HOME/bin/javac -d build/classes"
+else
+	JAVA_COMPILER=$JIKES
+	JIKESPATH=$JAVA_HOME/jre/lib/rt.jar
+	COMPILECP="build/classes:$JIKESPATH"
+	JAVAC="$JIKES -d build/classes"
+fi
+AC_SUBST(JAVAC)
+AC_SUBST(COMPILECP)
+
+AC_DEFINE_UNQUOTED(BLINKENJAR, "$BLIB_DATADIR/classes/blinken.jar")
+AC_DEFINE_UNQUOTED(BLIB_MODULEPATH, "$BLIB_MODULEPATH")
+AC_SUBST(DEFS)
+
+# tools
+AC_PATH_PROG(ZIP, zip)
+test -z "$ZIP" && AC_MSG_ERROR(['zip' needs to be installed to build blinkenjava])
+
+AC_OUTPUT([
+Makefile
+src/Makefile
+src/c/Makefile
+build/Makefile
+build/dist/Makefile
+test/test-blinkenlet
+test/Makefile
+])
+
+AC_MSG_RESULT([
+Build options:
+  Version         $VERSION
+  JRE             $JAVA_VER
+  Java Compiler   $JAVA_COMPILER
+  JVM typ	  $VM
+
+Please add the following entries to LD_LIBRARY_PATH when using Blinkenjava 
+  $JRE_LIB_HOME 
+  $JRE_LIB_HOME/$VM
+  $JRE_LIB_HOME/native_threads
+]);

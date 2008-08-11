@@ -1,0 +1,43 @@
+<!-- ##### SECTION Title ##### -->
+BModuleInfo
+
+<!-- ##### SECTION Short_Description ##### -->
+handling of loadable modules
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### STRUCT BModuleInfo ##### -->
+<para>
+The #BModuleInfo struct is considered private.
+</para>
+
+
+<!-- ##### FUNCTION b_module_info_new ##### -->
+<para>
+
+</para>
+
+@filename: 
+@Returns: 
+
+
+<!-- ##### FUNCTION b_module_infos_scan_dir ##### -->
+<para>
+
+</para>
+
+@dirname: 
+@Returns: 
+
+

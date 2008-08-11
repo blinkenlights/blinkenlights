@@ -1,0 +1,73 @@
+<!-- ##### SECTION Title ##### -->
+BPacket
+
+<!-- ##### SECTION Short_Description ##### -->
+the UDP packet used to transport a single frame
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+A #BPacket consists of a mcu_frame_header struct followed by the
+actual frame data. It corresponds to a single animation frame.
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### STRUCT BPacket ##### -->
+<para>
+The #BPacket struct has a variable size which is determined by the
+values passed to b_packet_new().
+</para>
+
+@header: the Blinkenlights frame header
+@data: the frame data
+
+<!-- ##### UNION BPacketHeader ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### FUNCTION b_packet_new ##### -->
+<para>
+
+</para>
+
+@width: 
+@height: 
+@channels: 
+@maxval: 
+@data_size: 
+@Returns: 
+
+
+<!-- ##### FUNCTION b_packet_size ##### -->
+<para>
+
+</para>
+
+@packet: 
+@Returns: 
+
+
+<!-- ##### FUNCTION b_packet_hton ##### -->
+<para>
+
+</para>
+
+@packet: 
+
+
+<!-- ##### FUNCTION b_packet_ntoh ##### -->
+<para>
+
+</para>
+
+@packet: 
+
+

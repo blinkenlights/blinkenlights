@@ -1,0 +1,340 @@
+dnl Process this file with autoconf to produce a configure script.
+AC_INIT(blib/blib.h)
+
+# Save this values here, since automake will set cflags later
+cflags_set="${CFLAGS}set"
+
+# Making releases:
+#   BLIB_MICRO_VERSION += 1;
+#   BLIB_INTERFACE_AGE += 1;
+#   BLIB_BINARY_AGE += 1;
+# if any functions have been added, set BLIB_INTERFACE_AGE to 0.
+# if backwards compatibility has been broken,
+# set BLIB_BINARY_AGE and BLIB_INTERFACE_AGE to 0.
+#
+BLIB_MAJOR_VERSION=1
+BLIB_MINOR_VERSION=1
+BLIB_MICRO_VERSION=7
+BLIB_INTERFACE_AGE=0
+BLIB_BINARY_AGE=0
+BLIB_API_VERSION=$BLIB_MAJOR_VERSION.$BLIB_MINOR_VERSION
+BLIB_VERSION=$BLIB_MAJOR_VERSION.$BLIB_MINOR_VERSION.$BLIB_MICRO_VERSION
+
+AC_SUBST(BLIB_MAJOR_VERSION)
+AC_SUBST(BLIB_MINOR_VERSION)
+AC_SUBST(BLIB_MICRO_VERSION)
+AC_SUBST(BLIB_INTERFACE_AGE)
+AC_SUBST(BLIB_BINARY_AGE)
+AC_SUBST(BLIB_VERSION)
+
+AC_DEFINE_UNQUOTED(BLIB_VERSION,"$BLIB_VERSION",[The Blib version])
+
+# libtool versioning
+LT_RELEASE=$BLIB_MAJOR_VERSION.$BLIB_MINOR_VERSION
+LT_CURRENT=`expr $BLIB_MICRO_VERSION - $BLIB_INTERFACE_AGE`
+LT_REVISION=$BLIB_INTERFACE_AGE
+LT_AGE=`expr $BLIB_BINARY_AGE - $BLIB_INTERFACE_AGE`
+
+AC_SUBST(LT_RELEASE)
+AC_SUBST(LT_CURRENT)
+AC_SUBST(LT_REVISION)
+AC_SUBST(LT_AGE)
+
+VERSION=$BLIB_VERSION
+PACKAGE=blib
+
+AM_INIT_AUTOMAKE($PACKAGE, $VERSION)
+
+AM_CONFIG_HEADER(config.h)
+
+AM_MAINTAINER_MODE
+
+AM_PROG_LIBTOOL
+
+AC_ISC_POSIX
+AM_SANITY_CHECK
+AM_PROG_CC_STDC
+AC_PROG_INSTALL
+AC_PROG_MAKE_SET
+AC_HEADER_STDC
+AC_C_CONST
+
+AC_CHECK_HEADERS(unistd.h)
+
+
+AC_MSG_CHECKING([for target architecture])
+case x"$target" in
+  xNONE | x)
+    target_or_host="$host" ;;
+  *)
+    target_or_host="$target" ;;
+esac
+AC_MSG_RESULT([$target_or_host])
+
+
+AC_MSG_CHECKING([for native Win32])
+case "$target_or_host" in
+  *-*-mingw*)
+    os_win32=yes
+    ;;
+  *)
+    os_win32=no
+    ;;
+esac
+AC_MSG_RESULT([$os_win32])
+AM_CONDITIONAL(OS_WIN32, test "$os_win32" = "yes")
+
+
+if test x"$os_win32" = xyes; then
+WIN32_LIBS=-lwsock32
+fi
+AC_SUBST(WIN32_LIBS)
+
+
+# Ensure MSVC-compatible struct packing convention is used when
+# compiling for Win32 with gcc.
+# What flag to depends on gcc version: gcc3 uses "-mms-bitfields", while
+# gcc2 uses "-fnative-struct".
+if test x"$os_win32" = xyes; then
+  if test x"$GCC" = xyes; then
+    msnative_struct=''
+    AC_MSG_CHECKING([how to get MSVC-compatible struct packing])
+    if test -z "$ac_cv_prog_CC"; then
+      our_gcc="$CC"
+    else
+      our_gcc="$ac_cv_prog_CC"
+    fi
+    case `$our_gcc --version | sed -e 's,\..*,.,' -e q` in
+      2.)
+	if $our_gcc -v --help 2>/dev/null | grep fnative-struct >/dev/null; then
+	  msnative_struct='-fnative-struct'
+	fi
+	;;
+      *)
+	if $our_gcc -v --help 2>/dev/null | grep ms-bitfields >/dev/null; then
+	  msnative_struct='-mms-bitfields'
+	fi
+	;;
+    esac
+    if test x"$msnative_struct" = x ; then
+      AC_MSG_RESULT([no way])
+      AC_MSG_WARN([build will be incompatible with GTK+ DLLs])
+    else
+      WIN32_CFLAGS=$msnative_struct
+      AC_MSG_RESULT([$WIN32_CFLAGS])
+    fi
+  fi
+fi
+
+AC_SUBST(WIN32_CFLAGS)
+
+
+if test "x$GCC" = xyes; then
+  CFLAGS="$CFLAGS -Wall $WIN32_CFLAGS"
+fi
+
+AC_SUBST(CFLAGS)
+
+
+DATADIR=$datadir/blib-$BLIB_API_VERSION
+INCLUDEDIR=$includedir/blib-$BLIB_API_VERSION
+THEMEPATH=$datadir/blib-$BLIB_API_VERSION/themes
+MODULEPATH=$libdir/blib-$BLIB_API_VERSION/modules
+
+AC_SUBST(DATADIR)
+AC_SUBST(INCLUDEDIR)
+AC_SUBST(THEMEPATH)
+AC_SUBST(MODULEPATH)
+
+AM_PATH_GLIB_2_0(2.4.0,,
+	AC_MSG_ERROR([
+*** blib depends on glib-2.0 which doesn't seem to be available.]),
+	gobject gmodule)
+
+
+AC_ARG_ENABLE(directfb,
+   [  --disable-directfb      disable support for DirectFB [default=auto]], ,
+   enable_directfb=yes)
+
+if test "x$enable_directfb" = "xyes"; then
+  PKG_CHECK_MODULES(DIRECTFB, directfb >= 0.9.11,
+		              have_directfb=yes, have_directfb=no)
+else
+  have_directfb=no
+fi
+
+if test $have_directfb = yes; then
+  DIRECTFB_VIEW_TYPE=b_view_directfb_get_type
+fi
+
+AC_SUBST(DIRECTFB_VIEW_TYPE)
+
+AM_CONDITIONAL(HAVE_DIRECTFB, test $have_directfb = yes)
+
+
+AC_ARG_ENABLE(gdk_pixbuf,
+   [  --disable-gdk-pixbuf    disable support for gdk-pixbuf [default=auto]], ,
+   enable_gdk_pixbuf=yes)
+
+if test "x$enable_gdk_pixbuf" = "xyes"; then
+  PKG_CHECK_MODULES(GDK_PIXBUF, gdk-pixbuf-2.0 >= 2.2.0,
+have_pixbuf=yes, have_pixbuf=no)
+else
+  have_pixbuf=no
+fi
+
+if test $have_pixbuf = yes; then
+  PIXBUF_VIEW_TYPE=b_view_pixbuf_get_type
+fi
+
+AC_SUBST(PIXBUF_VIEW_TYPE)
+
+AM_CONDITIONAL(HAVE_PIXBUF, test $have_pixbuf = yes)
+
+
+AC_ARG_ENABLE(gtk,
+   [  --disable-gtk           disable support for GTK+-2.0 [default=auto]], ,
+   enable_gtk=yes)
+
+if test "x$enable_gtk" = "xyes"; then
+  PKG_CHECK_MODULES(GTK, gtk+-2.0 >= 2.0.3,
+  	                 have_gtk=yes, have_gtk=no)
+else
+  have_gtk=no
+fi
+
+if test $have_gtk = yes; then
+  GTK_VIEW_TYPE=b_view_gtk_get_type
+fi
+
+AC_SUBST(GTK_VIEW_TYPE)
+
+AM_CONDITIONAL(HAVE_GTK, test $have_gtk = yes)
+
+
+AC_ARG_ENABLE(aa,
+   [  --disable-aa            disable support for AA-lib [default=auto]], ,
+   enable_aa=yes)
+
+have_aa=no
+if test "x$enable_aa" = "xyes"; then
+  AC_CHECK_LIB(aa, aa_fastrender,
+               [AC_CHECK_HEADER(aalib.h,
+                                have_aa=yes
+                                AA_LIBS='-laa')])
+fi
+
+AC_SUBST(AA_LIBS)
+
+if test $have_aa = yes; then
+  AA_VIEW_TYPE=b_view_aa_get_type
+fi
+
+AC_SUBST(AA_VIEW_TYPE)
+
+AM_CONDITIONAL(HAVE_AA, test $have_aa = "yes")
+
+
+AC_ARG_ENABLE(modules,
+   [  --disable-modules       disable the build of modules], ,
+   enable_modules=yes)
+
+AM_CONDITIONAL(BUILD_MODULES, test $enable_modules = yes)
+
+
+dnl **************************
+dnl *** Checks for gtk-doc ***
+dnl **************************
+
+AC_ARG_WITH(html-dir, [  --with-html-dir=PATH    path to installed docs])
+
+if test "x$with_html_dir" = "x" ; then
+  HTML_DIR='${datadir}/gtk-doc/html'
+else
+  HTML_DIR=$with_html_dir
+fi
+
+AC_SUBST(HTML_DIR)
+
+AC_CHECK_PROG(GTKDOC, gtkdoc-mkdb, true, false)
+
+gtk_doc_min_version=0.10
+if $GTKDOC ; then
+    gtk_doc_version=`gtkdoc-mkdb --version`
+    AC_MSG_CHECKING([gtk-doc version ($gtk_doc_version) >= $gtk_doc_min_version])
+
+    IFS="${IFS=         }"; blib_save_IFS="$IFS"; IFS="."
+    set $gtk_doc_version
+    for min in $gtk_doc_min_version ; do
+        cur=$1; shift
+        if test -z $min ; then break; fi
+        if test -z $cur ; then GTKDOC=false; break; fi
+        if test $cur -gt $min ; then break ; fi
+        if test $cur -lt $min ; then GTKDOC=false; break ; fi
+    done
+    IFS="$blib_save_IFS"
+
+    if $GTKDOC ; then
+      AC_MSG_RESULT(yes)
+    else
+      AC_MSG_RESULT(no)
+    fi
+fi
+
+AM_CONDITIONAL(HAVE_GTK_DOC, $GTKDOC)
+AC_SUBST(HAVE_GTK_DOC)
+
+AC_CHECK_PROG(DB2HTML, db2html, true, false)
+AM_CONDITIONAL(HAVE_DOCBOOK, $DB2HTML)
+
+dnl Let people disable the gtk-doc stuff.
+AC_ARG_ENABLE(gtk-doc, [  --enable-gtk-doc        use gtk-doc to build documentation [default=auto]], enable_gtk_doc="$enableval", enable_gtk_doc=no)
+
+if test x$enable_gtk_doc = xyes ; then
+  if test x$GTKDOC = xtrue ; then
+    enable_gtk_doc=yes
+  else
+    enable_gtk_doc=no 
+  fi
+fi
+
+dnl NOTE: We need to use a separate automake conditional for this
+dnl       to make this work with the tarballs.
+AM_CONDITIONAL(ENABLE_GTK_DOC, test x$enable_gtk_doc = xyes)
+
+
+AC_OUTPUT([
+blib.pc
+blib-aa.pc
+blib-directfb.pc
+blib-gtk.pc
+blib-pixbuf.pc
+Makefile
+blib/Makefile
+data/Makefile
+docs/Makefile
+docs/reference/Makefile
+docs/reference/blib.types
+docs/reference/version
+gfx/Makefile
+modules/Makefile
+test/Makefile
+test/movies/Makefile
+test/modules/Makefile
+])
+
+AC_MSG_RESULT([
+Build options:
+  Version           $VERSION
+  Install prefix    $prefix
+  Include dir       $INCLUDEDIR
+  Data dir          $DATADIR
+  Theme path        $THEMEPATH
+  Module path       $MODULEPATH
+
+Views:
+  DirectFB          $have_directfb
+  GdkPixbuf         $have_pixbuf
+  GTK+-2.0          $have_gtk
+  AA-lib            $have_aa
+]);

@@ -1,0 +1,57 @@
+<!-- ##### SECTION Title ##### -->
+BProxyServer
+
+<!-- ##### SECTION Short_Description ##### -->
+implements the Blinkenlights proxy server
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### STRUCT BProxyServer ##### -->
+<para>
+
+</para>
+
+@parent_instance: 
+@fd: 
+@clients: 
+
+<!-- ##### FUNCTION b_proxy_server_new ##### -->
+<para>
+
+</para>
+
+@port: 
+@error: 
+@Returns: 
+
+
+<!-- ##### FUNCTION b_proxy_server_send_packet ##### -->
+<para>
+
+</para>
+
+@server: 
+@packet: 
+@Returns: 
+
+
+<!-- ##### FUNCTION b_proxy_server_num_clients ##### -->
+<para>
+
+</para>
+
+@server: 
+@Returns: 
+
+

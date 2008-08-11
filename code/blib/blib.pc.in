@@ -1,0 +1,16 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+includedir=@includedir@
+datarootdir=@datarootdir@
+
+datadir=@DATADIR@
+modulepath=@MODULEPATH@
+themepath=@THEMEPATH@
+
+Name: blib
+Description: Library of useful things to hack the Blinkenlights
+Version: @VERSION@
+Requires: gobject-2.0 >= 2.0.1
+Libs: -L${libdir} -lb @WIN32_LIBS@
+Cflags: -I@INCLUDEDIR@ @WIN32_CFLAGS@

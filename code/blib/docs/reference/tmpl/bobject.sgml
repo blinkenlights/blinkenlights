@@ -1,0 +1,73 @@
+<!-- ##### SECTION Title ##### -->
+BObject
+
+<!-- ##### SECTION Short_Description ##### -->
+an abstract base class derived from #GObject
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+#BObject is directly derived from #GObject and adds name and filename
+ properties.
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### STRUCT BObject ##### -->
+<para>
+The #BObject struct shouldn't be accessed directly. Its members are
+considered private.
+</para>
+
+
+<!-- ##### ARG BObject:filename ##### -->
+<para>
+
+</para>
+
+<!-- ##### ARG BObject:name ##### -->
+<para>
+
+</para>
+
+<!-- ##### FUNCTION b_object_set_filename ##### -->
+<para>
+
+</para>
+
+@object: 
+@filename: 
+
+
+<!-- ##### FUNCTION b_object_set_name ##### -->
+<para>
+
+</para>
+
+@object: 
+@name: 
+
+
+<!-- ##### FUNCTION b_object_get_filename ##### -->
+<para>
+
+</para>
+
+@object: 
+@Returns: 
+
+
+<!-- ##### FUNCTION b_object_get_name ##### -->
+<para>
+
+</para>
+
+@object: 
+@Returns: 
+
+

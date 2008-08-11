@@ -1,0 +1,9 @@
+- redone BNF themes
+- JNG variants of the favorite themes (for b2mng)
+
+0.10
+----
+- HDL theme in 320x240
+- HDL2 themes in various sizes
+- reset HDL themes to maxval 1
+- cleanup

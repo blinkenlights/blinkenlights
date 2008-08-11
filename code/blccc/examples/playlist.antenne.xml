@@ -1,0 +1,166 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<playlist>
+  <!--
+  <item loop="2">movies/test-horizontal-fast.blm</item>
+  <item loop="2" reverse="yes">movies/test-horizontal-fast.blm</item>
+  <item invert="yes">movies/test-horizontal-fast.blm</item>
+  <item hflip="yes">movies/test-horizontal-fast.blm</item>
+  <item vflip="yes">movies/test-horizontal-fast.blm</item>
+  <item mirror="left">movies/test-horizontal-fast.blm</item>
+  <item mirror="right">movies/test-horizontal-fast.blm</item>
+  -->
+
+  <item loop="2">movies/bushfire-test.gif</item>
+
+  <!--
+  <item>movies/test-horizontal.blm</item>
+  <item loop="2">movies/test-vertical.blm</item>
+  -->
+
+  <!-- all gifs once - without effects -->
+  <!--
+  <item>movies/antenne/16farben_on.gif</item>
+  <item>movies/antenne/16farben_on/off.gif</item>
+
+  <item>movies/antenne/air01_71.gif</item>
+  <item>movies/antenne/air02_71.gif</item>
+  <item>movies/antenne/air03_35.gif</item>
+  <item>movies/antenne/air04_18.gif</item>
+  <item>movies/antenne/arrow-fast_25.gif</item>
+  <item>movies/antenne/arrow-slow_39.gif</item>
+  <item>movies/antenne/atman-random_82frames.gif</item>
+  <item>movies/antenne/atman-single_43frames.gif</item>
+  <item>movies/antenne/atman3_82frames.gif</item>
+  <item>movies/antenne/atman_42frames.gif</item>
+  <item>movies/antenne/balken_links_35.gif</item>
+  <item>movies/antenne/balken_rechts_35.gif</item>
+  <item>movies/antenne/blowing_35frames.gif</item>
+  <item>movies/antenne/blow_54.gif</item>
+  <item>movies/antenne/bounce_38.gif</item>
+  <item>movies/antenne/burstback_34.gif</item>
+  <item>movies/antenne/bushfire_60frames.gif</item>
+  <item>movies/antenne/bzzz_40frames.gif</item>
+  <item>movies/antenne/downdrop_13.gif</item>
+  <item>movies/antenne/few_27frames.gif</item>
+  <item>movies/antenne/flow_82.gif</item>
+  <item>movies/antenne/kurve_4.gif</item>
+  <item>movies/antenne/more_particles_18.gif</item>
+  <item>movies/antenne/movement_66.gif</item>
+  <item>movies/antenne/outwards2_20.gif</item>
+  <item>movies/antenne/outwards_8.gif</item>
+  <item>movies/antenne/particles-left_36.gif</item>
+  <item>movies/antenne/ping-double_33.gif</item>
+  <item>movies/antenne/ping-slow_44.gif</item>
+  <item>movies/antenne/ping_21.gif</item>
+  <item>movies/antenne/pixelrain_9.gif</item>
+  <item>movies/antenne/raus-slow_46.gif</item>
+  <item>movies/antenne/raus_28.gif</item>
+  <item>movies/antenne/simple_burst_17.gif</item>
+  <item>movies/antenne/upndown_64frames.gif</item>
+  <item>movies/antenne/upward_12frames.gif</item>
+  <item>movies/antenne/welle_69.gif</item>
+  -->
+        
+  <!-- antenna-gifplaylist effect-test -->
+
+  <item>movies/antenne/pixelrain_9.gif</item>
+  <item reverse="yes">movies/antenne/pixelrain_9.gif</item>
+  <item hflip="yes">movies/antenne/pixelrain_9.gif</item>
+  <item vflip="yes">movies/antenne/pixelrain_9.gif</item>
+  <item mirror="left">movies/antenne/pixelrain_9.gif</item>
+  <item mirror="right">movies/antenne/pixelrain_9.gif</item>
+  <item invert="yes" hflip="yes">movies/antenne/pixelrain_9.gif</item>
+  <item invert="yes" vflip="yes">movies/antenne/pixelrain_9.gif</item>
+  <item invert="yes" mirror="left">movies/antenne/pixelrain_9.gif</item>
+  <item invert="yes" mirror="right">movies/antenne/pixelrain_9.gif</item>
+    
+   <!--
+  <item loop="2">movies/test-horizontal-fast.blm</item>
+  <item loop="2" reverse="yes">movies/test-horizontal-fast.blm</item>
+  <item invert="yes">movies/test-horizontal-fast.blm</item>
+  <item hflip="yes">movies/test-horizontal-fast.blm</item>
+  <item vflip="yes">movies/test-horizontal-fast.blm</item>
+  <item mirror="left">movies/test-horizontal-fast.blm</item>
+  <item mirror="right">movies/test-horizontal-fast.blm</item>
+  -->
+
+  <!-- antenna-gifplaylist -->
+
+  <item>movies/antenne/pixelrain_9.gif</item>
+  <item>movies/antenne/upward_12frames.gif</item>
+  <item invert="yes">movies/antenne/pixelrain_9.gif</item>
+  <item invert="yes">movies/antenne/downdrop_13.gif</item>
+  <item reverse="yes">movies/antenne/pixelrain_9.gif</item>
+  <item>movies/antenne/upward_12frames.gif</item>
+  <item reverse="yes">movies/antenne/upward_12frames.gif</item>
+  <item>movies/antenne/downdrop_13.gif</item>
+  <item>movies/antenne/downdrop_13.gif</item>
+  <item>movies/antenne/downdrop_13.gif</item>
+  <item>movies/antenne/raus-slow_46.gif</item>
+  <item>movies/antenne/raus_28.gif</item>
+  <item>movies/antenne/raus-slow_46.gif</item>
+  <item>movies/antenne/outwards2_20.gif</item>
+  <item>movies/antenne/outwards_8.gif</item>
+  <item>movies/antenne/raus_28.gif</item>
+  <item>movies/antenne/raus-slow_46.gif</item>
+  <item>movies/antenne/raus_28.gif</item>
+  <item>movies/antenne/balken_links_35.gif</item>
+  <item>movies/antenne/balken_rechts_35.gif</item>
+  <item>movies/antenne/arrow-fast_25.gif</item>
+  <item>movies/antenne/arrow-slow_39.gif</item>
+  <item>movies/antenne/arrow-fast_25.gif</item>
+  <item>movies/antenne/arrow-slow_39.gif</item>
+  <item loop="2">movies/antenne/arrow-fast_25.gif</item>
+  <item loop="2" reverse="yes">movies/antenne/arrow-fast_25.gif</item>
+  <item loop="2">movies/antenne/movement_66.gif</item>
+  <item loop="2">movies/antenne/more_particles_18.gif</item>
+  <item loop="2">movies/antenne/bounce_38.gif</item>
+  <item loop="2" inverse="yes">movies/antenne/bushfire_60frames.gif</item>
+  <item loop="2">movies/antenne/ping-double_33.gif</item>
+  <item loop="2">movies/antenne/particles-left_36.gif</item>
+  <item loop="2">movies/antenne/flow_82.gif</item>
+        
+  <item>movies/antenne/particles-left_36.gif</item>
+  <item reverse="yes">movies/antenne/particles-left_36.gif</item>
+  <item hflip="yes">movies/antenne/particles-left_36.gif</item>
+  <item vflip="yes">movies/antenne/particles-left_36.gif</item>
+  <item mirror="left">movies/antenne/particles-left_36.gif</item>
+  <item mirror="right">movies/antenne/particles-left_36.gif</item>
+  <item invert="yes" hflip="yes">particles-left_36.gif</item>
+  <item invert="yes" vflip="yes">particles-left_36.gif</item>
+  <item invert="yes" mirror="left">particles-left_36.gif</item>
+  <item invert="yes" mirror="right">particles-left_36.gif</item>
+
+  <item>movies/antenne/more_particles_18.gif</item>
+  <item reverse="yes">movies/antenne/more_particles_18.gif.gif</item>
+  <item hflip="yes">movies/antenne/more_particles_18.gif</item>
+  <item vflip="yes">movies/antenne/more_particles_18.gif</item>
+  <item mirror="left">movies/antenne/more_particles_18.gif</item>
+  <item mirror="right">movies/antenne/more_particles_18.gif</item>
+  <item invert="yes" hflip="yes">movies/antenne/more_particles_18.gif</item>
+  <item invert="yes" vflip="yes">movies/antenne/more_particles_18.gif</item>
+  <item invert="yes" mirror="left">movies/antenne/more_particles_18.gif</item>
+  <item invert="yes" mirror="right">movies/antenne/more_particles_18.gif</item>
+
+  <item>movies/antenne/particles-left_36.gif</item>
+  <item reverse="yes">movies/antenne/particles-left_36.gif</item>
+  <item hflip="yes">movies/antenne/particles-left_36.gif</item>
+  <item vflip="yes">movies/antenne/particles-left_36.gif</item>
+  <item mirror="left">movies/antenne/particles-left_36.gif</item>
+  <item mirror="right">movies/antenne/particles-left_36.gif</item>
+  <item invert="yes" hflip="yes">movies/antenne/particles-left_36.gif</item>
+  <item invert="yes" vflip="yes">movies/antenne/particles-left_36.gif</item>
+  <item invert="yes" mirror="left">movies/antenne/particles-left_36.gif</item>
+  <item invert="yes" mirror="right">movies/antenne/particles-left_36.gif</item>
+
+  <item>movies/antenne/upndown_64frames.gif</item>        
+  <item hflip="yes">movies/antenne/upndown_64frames.gif</item>    
+  <item>movies/antenne/upndown_64frames.gif</item>     
+
+  <item inverse="yes">movies/antenne/more_particles_18.gif</item>
+  <item reverse="yes">movies/antenne/more_particles_18.gif</item>
+  <item>movies/antenne/more_particles_18.gif</item>
+  <item>movies/antenne/more_particles_18.gif</item>
+  <item reverse="yes" inverse="yes">movies/antenne/more_particles_18.gif</item>
+
+</playlist>

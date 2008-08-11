@@ -1,0 +1,85 @@
+2002-05-28 01:28  neo
+
+	* README, autogen.sh, configure.in, src/main.c: Follow DirectFB API
+	changes, require DirectFB-0.9.11.  Bumped version number to 0.7. 
+	Dropped the workaround for a missing pkg-config, require it
+	instead.
+
+2002-04-25 20:57  neo
+
+	* ChangeLog: Updated ChangeLog.
+
+2002-04-25 20:56  neo
+
+	* README: Mention that this version needs DirectFB >= 0.9.10.
+
+2002-04-17 13:18  neo
+
+	* src/main.c: Use new function IDirectFBEventBuffer::HasEvent().
+
+2002-04-17 13:12  neo
+
+	* configure.in, src/display.c, src/progress.c: Follow DirectFB API
+	changes in IDirectFBImageProvider::RenderTo().
+
+2002-04-15 14:41  neo
+
+	* ChangeLog: Generated ChangeLog from CVS log messages.
+
+2002-04-15 14:40  neo
+
+	* README, configure.in, src/main.c: Updated README, made Space key
+	toggle between Play/Pause.
+
+2002-04-09 14:22  neo
+
+	* configure.in, data/Makefile.am, src/Makefile.am, src/display.c,
+	src/display.h, src/main.c, src/progress.c: bumped version number to
+	0.5 fixed timing problems for frames that display longer than a
+	second use a software backbuffer so we can do rotated flips allow
+	to specify screen rotation on command-line allow to specify default
+	screen rotation at configure time
+
+2002-03-22 19:01  neo
+
+	* configure.in, src/main.c: Less agressive key event handling.
+	Perhaps this helps with the IPaq.  Bumped version number to 0.4.
+
+2002-02-09 22:30  neo
+
+	* configure.in, data/light.png, data/light_r.png,
+	src/blipaqtypes.h, src/display.c, src/main.c: New light PNGs in
+	correct size. Fixed vertical offset.  Bumped version number to 0.3.
+
+2002-02-08 20:33  neo
+
+	* configure.in: fallback in case pkg-config is not available
+
+2002-02-08 20:32  neo
+
+	* src/main.c: follow DirectFB API changes, exit on all IPAQ buttons
+
+2002-02-06 16:30  neo
+
+	* configure.in, src/display.c, src/main.c, src/progress.c,
+	src/progress.h: Use a more reasonable shift for the progress value
+	so even long movies work correctly (silvester_countdown).  Fixed
+	wrong vertical size of windows.  Bumped version to 0.2.
+
+2002-02-06 15:00  neo
+
+	* data/Makefile.am, data/house_r.png, data/light_r.png,
+	data/progress_r.png, data/thru_r.png, src/display.c, src/main.c,
+	src/progress.c: Added rotated images for IPAQ.	Automatically
+	choose rotated display if framebuffer is 320x240.
+
+2002-02-06 14:16  neo
+
+	* .cvsignore, AUTHORS, ChangeLog, Makefile.am, NEWS, README,
+	autogen.sh, configure.in, data/.cvsignore, data/Makefile.am,
+	data/house.png, data/light.png, data/progress.png, data/thru.png,
+	src/.cvsignore, src/Makefile.am, src/blipaqtypes.h, src/display.c,
+	src/display.h, src/main.c, src/movie.c, src/movie.h,
+	src/progress.c, src/progress.h: Initial import of blipaq, a simple
+	blinkenlights movie viewer.
+

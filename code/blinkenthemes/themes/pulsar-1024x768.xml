@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<blinkentheme title="Pulsar (Wrocław)"
+  columns="35" rows="21" channels="1" maxval="7" width="1024" height="768"
+  type="pulsar">
+
+  <background image="images/pulsar-1024x768-bg.png"/>
+
+  <overlay image="images/pulsar-1024x768-ov.png">
+    <grid dx="8" dy="21">
+      <window value="1" src-x="0"  row="0" x="481" y="175" width="8" height="12" />
+      <window value="2" src-x="8"  row="0" x="481" y="175" width="8" height="12" />
+      <window value="3" src-x="16" row="0" x="481" y="175" width="8" height="12" />
+      <window value="4" src-x="24" row="0" x="481" y="175" width="8" height="12" />
+      <window value="5" src-x="32" row="0" x="481" y="175" width="8" height="12" />
+      <window value="6" src-x="40" row="0" x="481" y="175" width="8" height="12" />
+      <window value="7" src-x="48" row="0" x="481" y="175" width="8" height="12" />
+    </grid>
+  </overlay>
+
+</blinkentheme>
