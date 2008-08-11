@@ -30,17 +30,9 @@
 #include <semphr.h>
 #include <led.h>
 
+#include "debug_printf.h"
 #include "network.h"
 #include "SAM7_EMAC.h"
-
-/* lwIP includes. */
-#include "lwip/api.h"
-#include "lwip/tcpip.h"
-#include "lwip/memp.h"
-#include "lwip/stats.h"
-#include "lwip/dhcp.h"
-#include "lwip/udp.h"
-#include "netif/loopif.h"
 #include "env.h"
 #include "USB-CDC.h"
 

@@ -15,6 +15,7 @@
 #include <ctype.h>
 #include <stdio.h>
 #include "proto.h"
+#include "debug_printf.h"
 
 unsigned long
 simple_strtoul (const char *cp, char **endp, unsigned int base)

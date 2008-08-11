@@ -15,11 +15,6 @@ NETWORK_SRC= \
   network/port/emac/SAM7_EMAC.c \
   network/port/emac/SAM7_EMAC_ISR.c \
   network/port/sys_arch.c \
-  network/src/api/api_lib.c \
-  network/src/api/api_msg.c \
-  network/src/api/err.c \
-  network/src/api/netbuf.c \
-  network/src/api/tcpip.c \
   network/src/core/dhcp.c \
   network/src/core/init.c \
   network/src/core/ipv4/icmp.c \
@@ -32,15 +27,12 @@ NETWORK_SRC= \
   network/src/core/pbuf.c \
   network/src/core/raw.c \
   network/src/core/stats.c \
-  network/src/core/sys.c \
-  network/src/core/tcp.c \
-  network/src/core/tcp_in.c \
-  network/src/core/tcp_out.c \
   network/src/core/udp.c \
   network/src/netif/etharp.c \
   network/src/netif/ethernetif.c
 
-#  network/src/core/ipv4/ip_frag.c
+#  network/src/core/sys.c
+
 APP_SRC= \
   application/debug_printf.c \
   application/led.c \

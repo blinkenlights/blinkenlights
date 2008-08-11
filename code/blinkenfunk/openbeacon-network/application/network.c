@@ -41,8 +41,8 @@
 #include "bprotocol.h"
 
 /* lwIP includes. */
-#include "lwip/api.h"
-#include "lwip/tcpip.h"
+#include "lwip/ip.h"
+#include "lwip/init.h"
 #include "lwip/memp.h"
 #include "lwip/stats.h"
 #include "lwip/dhcp.h"
@@ -61,7 +61,7 @@ vNetworkThread (void *pvParameters)
   static struct ip_addr xIpAddr, xNetMask, xGateway;
   
   /* Initialize lwIP and its interface layer. */
-  tcpip_init ( NULL,NULL );
+  lwip_init ();
 
   /* Create and configure the EMAC interface. */
   IP4_ADDR (&xIpAddr, emacIPADDR0, emacIPADDR1, emacIPADDR2, emacIPADDR3);
@@ -70,7 +70,7 @@ vNetworkThread (void *pvParameters)
   IP4_ADDR (&xGateway, emacGATEWAY_ADDR0, emacGATEWAY_ADDR1,
 	    emacGATEWAY_ADDR2, emacGATEWAY_ADDR3);
   netif_add (&EMAC_if, &xIpAddr, &xNetMask, &xGateway, NULL, ethernetif_init,
-	     tcpip_input);
+	     ip_input);
 
   /* make it the default interface */
   netif_set_default (&EMAC_if);

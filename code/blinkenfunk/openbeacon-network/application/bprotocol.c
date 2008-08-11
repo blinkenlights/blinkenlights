@@ -30,18 +30,14 @@
 #include <semphr.h>
 #include <led.h>
 
+#include "debug_printf.h"
 #include "network.h"
 #include "SAM7_EMAC.h"
+#include "env.h"
 
 /* lwIP includes. */
-#include "lwip/api.h"
-#include "lwip/tcpip.h"
-#include "lwip/memp.h"
-#include "lwip/stats.h"
-#include "lwip/dhcp.h"
+#include "lwip/ip.h"
 #include "lwip/udp.h"
-#include "netif/loopif.h"
-#include "env.h"
 
 /* Blinkenlights includes. */
 #include "bprotocol.h"
