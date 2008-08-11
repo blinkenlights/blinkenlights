@@ -126,10 +126,9 @@ typedef struct mcu_devctrl_header  mcu_devctrl_header_t;
 struct mcu_devctrl_header
 {
   unsigned int magic;         /* == MAGIC_MCU_DEVCTRL                    */
-  unsigned short pixels;      /* number of pixels used (starting from 0) */
-  unsigned short _reserved;   /* 32 bit padding                          */
   unsigned int command;       /* MCU_DEVCTRL_COMMAND_*                   */
   unsigned int value;
+  unsigned int param;
 };
 
 /*

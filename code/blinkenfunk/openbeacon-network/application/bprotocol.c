@@ -125,9 +125,9 @@ static int b_parse_mcu_devctrl(mcu_devctrl_header_t *header, int maxlen)
 
 	debug_printf(" %s() cmd %04x\n", __func__, header->command);
 
-	switch (header->command) {
+	switch (LWIP_PLATFORM_HTONL(header->command)) {
 		case MCU_DEVCTRL_COMMAND_SET_LINE:
-			env.e.assigned_line = header->value;
+			env.e.assigned_line = LWIP_PLATFORM_HTONL(header->value);
 			debug_printf("new assigned line received: %d\n", env.e.assigned_line);
 			env_store();
 			break;
@@ -139,8 +139,6 @@ static int b_parse_mcu_devctrl(mcu_devctrl_header_t *header, int maxlen)
 static void b_recv(void *arg, struct udp_pcb *pcb, struct pbuf *p, struct ip_addr *addr, u16_t port)
 {
 	unsigned int off = 0;
-
-debug_printf("%s(): %d bytes\n", __func__, p->len);
 
 	if (p->len < sizeof(unsigned int) || p->len > sizeof(payload)) {
 		pbuf_free(p);
@@ -157,7 +155,7 @@ debug_printf("%s(): %d bytes\n", __func__, p->len);
 
 		debug_printf(" magic %04x\n", magic);
 
-		switch (magic) {
+		switch (LWIP_PLATFORM_HTONL(magic)) {
 			case MAGIC_MCU_FRAME:
 				consumed = b_parse_mcu_frame((mcu_frame_header_t *) payload + off, p->len - off);
 				break;
