@@ -19,7 +19,6 @@ NETWORK_SRC= \
   network/src/api/api_msg.c \
   network/src/api/err.c \
   network/src/api/netbuf.c \
-  network/src/api/sockets.c \
   network/src/api/tcpip.c \
   network/src/core/dhcp.c \
   network/src/core/init.c \
@@ -27,7 +26,6 @@ NETWORK_SRC= \
   network/src/core/ipv4/inet_chksum.c \
   network/src/core/ipv4/ip_addr.c \
   network/src/core/ipv4/ip.c \
-  network/src/core/ipv4/ip_frag.c \
   network/src/core/mem.c \
   network/src/core/memp.c \
   network/src/core/netif.c \
@@ -42,6 +40,7 @@ NETWORK_SRC= \
   network/src/netif/etharp.c \
   network/src/netif/ethernetif.c
 
+#  network/src/core/ipv4/ip_frag.c
 APP_SRC= \
   application/debug_printf.c \
   application/led.c \
