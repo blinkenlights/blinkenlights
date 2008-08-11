@@ -80,8 +80,8 @@
 /* task priorities               */
 /*-------------------------------*/
 
-#define TASK_NET_PRIORITY	( tskIDLE_PRIORITY + 1 )
-#define TASK_NET_STACK		( 1024 )
+#define TASK_USBSHELL_PRIORITY	( tskIDLE_PRIORITY)
+#define TASK_USBSHELL_STACK	( 512 )
 
 #define TASK_USB_PRIORITY	( tskIDLE_PRIORITY + 2 )
 #define TASK_USB_STACK		( 512 )
@@ -89,8 +89,8 @@
 #define TASK_NRF_PRIORITY	( tskIDLE_PRIORITY + 3 )
 #define TASK_NRF_STACK		( 512 )
 
-#define TASK_USBSHELL_PRIORITY	( tskIDLE_PRIORITY + 4 )
-#define TASK_USBSHELL_STACK	( 512 )
+#define TASK_NET_PRIORITY	( tskIDLE_PRIORITY + 4 )
+#define TASK_NET_STACK		( 1024 )
 
 /*-------------------------------*/
 /* configuration structure       */
