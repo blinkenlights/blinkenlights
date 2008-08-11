@@ -149,6 +149,8 @@ static void b_recv(void *arg, struct udp_pcb *pcb, struct pbuf *p, struct ip_add
 		return;
 	}
 
+debug_printf("%s(): %d bytes\n", __func__, p->len);
+
 	/* package payload has to be copied to a local buffer for whatever reason */
 	memcpy(payload, p->payload, p->len);
 	

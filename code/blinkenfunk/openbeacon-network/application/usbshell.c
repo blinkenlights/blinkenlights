@@ -88,25 +88,31 @@ has_cr(const portCHAR *buf, int size)
 static void
 usbshell_task (void *pvParameters)
 {
-	portCHAR buf[32];
+	portCHAR buf[512];
 	int bufpos = 0;
 
 	bzero(buf, sizeof(buf));
 	
-	vTaskDelay(1000);
+	vTaskDelay(1000 / portTICK_RATE_MS);
 	shell_printf(PROMPT);
 
 	for(;;) {
-		int len = vUSBRecvByte(buf + bufpos, sizeof(buf) - bufpos, 0);
+		portCHAR in;
+		int len = vUSBRecvByte(&in, 1, 10000 / portTICK_RATE_MS);
 
-		if (len <= 0) {
-			vTaskDelay(100);
+		if (len <= 0)
+			continue;
+
+		buf[bufpos++] = in;
+		
+		/* echo */
+		shell_printf("%c", in);
+
+		if (bufpos == sizeof(buf)) {
+			bzero(buf, sizeof(buf));
+			bufpos = 0;
 			continue;
 		}
-
-		/* echo */
-		shell_printf("%s", buf + bufpos);
-		bufpos += len;
 
 		if (!has_cr(buf, sizeof(buf)))
 			continue;
