@@ -150,12 +150,12 @@ static void b_recv(void *arg, struct udp_pcb *pcb, struct pbuf *p, struct ip_add
 	memcpy(payload, p->payload, p->len);
 	
 	do {
-		unsigned int magic = *(unsigned int *) payload + off;
+		unsigned int magic = LWIP_PLATFORM_HTONL(*(unsigned int *) payload + off);
 		unsigned int consumed = 0;
 
 		debug_printf(" magic %04x\n", magic);
 
-		switch (LWIP_PLATFORM_HTONL(magic)) {
+		switch (magic) {
 			case MAGIC_MCU_FRAME:
 				consumed = b_parse_mcu_frame((mcu_frame_header_t *) payload + off, p->len - off);
 				break;
