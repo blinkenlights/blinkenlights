@@ -68,8 +68,8 @@ PtInitNRF (void)
 
   nRFAPI_SetPipeSizeRX (0, 16);
   nRFAPI_SetTxPower (3);
-  nRFAPI_SetRxMode (1);
-  nRFCMD_CE (1);
+  nRFAPI_SetRxMode (0);
+  nRFCMD_CE (0);
 
   return 1;
 }
@@ -129,17 +129,61 @@ PtDumpStringToUSB (const char *text)
   unsigned char data;
 
   if (text)
-    while ((data = *text++) != 0) {
-      vUSBSendByte (data);
-      if (data == '\n')
-        vUSBSendByte ('\r');
-    }
+    while ((data = *text++) != 0)
+      {
+	vUSBSendByte (data);
+	if (data == '\n')
+	  vUSBSendByte ('\r');
+      }
+}
+
+void
+vnRFtaskTx (void)
+{
+  unsigned short crc;
+
+  // turn on redLED for TX indication
+  vLedSetRed (1);
+
+  // disable receive mode
+  nRFCMD_CE (0);
+
+  // set TX mode
+  nRFAPI_SetRxMode (0);
+
+  // setup vote stats package 
+  memset (&g_Beacon, 0, sizeof (g_Beacon));
+
+  // update crc
+  crc =
+    crc16 (g_Beacon.datab, sizeof (g_Beacon.pkt) - sizeof (g_Beacon.pkt.crc));
+  g_Beacon.pkt.crc = swapshort (crc);
+
+  // encrypt the data
+  shuffle_tx_byteorder ();
+  xxtea_encode ();
+  shuffle_tx_byteorder ();
+
+  // upload data to nRF24L01
+  nRFAPI_TX (g_Beacon.datab, sizeof (g_Beacon));
+
+  // transmit data
+  nRFCMD_CE (1);
+
+  // wait till packet is transmitted    
+  vTaskDelay ( 10 / portTICK_RATE_MS);
+
+  // switch to RX mode again
+  nRFAPI_SetRxMode (1);
+
+  // turn off red TX indication LED
+  vLedSetRed (0);
 }
 
 void
 vnRFtaskRx (void *parameter)
 {
-  u_int16_t crc;
+//  u_int16_t crc;
   (void) parameter;
 
   if (!PtInitNRF ())
@@ -149,7 +193,7 @@ vnRFtaskRx (void *parameter)
 
   for (;;)
     {
-      if (nRFCMD_WaitRx (10))
+/*      if (nRFCMD_WaitRx (100))
 	{
 	  vLedSetRed (1);
 
@@ -185,7 +229,11 @@ vnRFtaskRx (void *parameter)
 
 	  vLedSetRed (0);
 	}
-      nRFAPI_ClearIRQ (MASK_IRQ_FLAGS);
+      nRFAPI_ClearIRQ (MASK_IRQ_FLAGS);*/
+
+      /* schedule tx */
+      vnRFtaskTx ();
+      vTaskDelay (100 / portTICK_RATE_MS);
     }
 }
 

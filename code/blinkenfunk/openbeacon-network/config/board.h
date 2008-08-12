@@ -73,8 +73,8 @@
 /* utils settings                */
 /*-------------------------------*/
 
-//#define DISABLE_WATCHDOG
 #define CONFIG_TEA_ENABLEDECODE
+#define CONFIG_TEA_ENABLEENCODE
 
 /*-------------------------------*/
 /* task priorities               */
