@@ -53,7 +53,7 @@ if action == -1:
 	usage()
 
 if action == SET_LINE:
-	packet = struct.pack("!III", MCUCTRL_MAGIC, 0, line)
+	packet = struct.pack("!IIII", MCUCTRL_MAGIC, 0, line, 0)
 elif action == SET_LAMPID:
 	if lampmac == 0:
 		usage()
