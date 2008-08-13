@@ -26,7 +26,6 @@
 #include <string.h>
 #include <board.h>
 #include <beacontypes.h>
-#include <USB-CDC.h>
 #include "led.h"
 #include "xxtea.h"
 #include "proto.h"
@@ -106,38 +105,6 @@ crc16 (const unsigned char *buffer, int size)
 }
 
 void
-PtDumpUIntToUSB (unsigned int data)
-{
-  int i = 0;
-  unsigned char buffer[10], *p = &buffer[sizeof (buffer)];
-
-  do
-    {
-      *--p = '0' + (unsigned char) (data % 10);
-      data /= 10;
-      i++;
-    }
-  while (data);
-
-  while (i--)
-    vUSBSendByte (*p++);
-}
-
-void
-PtDumpStringToUSB (const char *text)
-{
-  unsigned char data;
-
-  if (text)
-    while ((data = *text++) != 0)
-      {
-	vUSBSendByte (data);
-	if (data == '\n')
-	  vUSBSendByte ('\r');
-      }
-}
-
-void
 vnRFtaskTx (void)
 {
   unsigned short crc;
@@ -188,8 +155,6 @@ vnRFtaskRx (void *parameter)
 
   if (!PtInitNRF ())
     return;
-
-  PtDumpStringToUSB ("INFO: 'RX: oid,seq,strength,flags'");
 
   for (;;)
     {

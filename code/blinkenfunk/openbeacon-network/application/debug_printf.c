@@ -9,13 +9,14 @@
  * Wirzenius wrote this portably, Torvalds fucked it up :-)
  */
 
+#include <FreeRTOS.h>
 #include <board.h>
 #include <stdarg.h>
 #include <string.h>
 #include <ctype.h>
 #include <stdio.h>
-#include "proto.h"
-#include "debug_printf.h"
+#include <stdio.h>
+#include <USB-CDC.h>
 
 unsigned long
 simple_strtoul (const char *cp, char **endp, unsigned int base)
@@ -373,7 +374,7 @@ vsprintf (char *buf, const char *fmt, va_list args)
 int
 debug_printf (const char *fmt, ...)
 {
-  char buf[128];
+  char buf[128],*p,c;
   va_list args;
   int i;
 
@@ -381,7 +382,9 @@ debug_printf (const char *fmt, ...)
   i = vsnprintf (buf, sizeof (buf), fmt, args);
   va_end (args);
 
-  PtDumpStringToUSB (buf);
+  p = buf;
+  while((c=*p++)!='\0')
+    vUSBSendByte (c);
 
   return i;
 }
