@@ -36,7 +36,7 @@
 #include "env.h"
 #include "USB-CDC.h"
 
-#define PROMPT "WMCU> "
+#define PROMPT "\n\rWMCU> "
 
 #define shell_printf(x...) debug_printf(x)
 

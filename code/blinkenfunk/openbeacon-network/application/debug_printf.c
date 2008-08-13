@@ -94,7 +94,9 @@ static char *
 number (char *str, long num, unsigned int base, int size, int precision,
 	int type)
 {
-  char c, sign, tmp[66];
+  char c, sign;
+  static char tmp[66];
+
   const char *digits = "0123456789abcdefghijklmnopqrstuvwxyz";
   int i;
 
@@ -374,7 +376,8 @@ vsprintf (char *buf, const char *fmt, va_list args)
 int
 debug_printf (const char *fmt, ...)
 {
-  char buf[128],*p,c;
+  static char buf[128];
+  char *p,c;
   va_list args;
   int i;
 

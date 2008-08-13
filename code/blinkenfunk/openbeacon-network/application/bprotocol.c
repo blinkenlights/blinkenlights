@@ -182,6 +182,6 @@ void bprotocol_init(void)
 
 	udp_recv(b_pcb, b_recv, NULL);
 	udp_bind(b_pcb, IP_ADDR_ANY, MCU_LISTENER_PORT);
-	debug_printf("%s()\n", __func__);
+	debug_printf("%s()\n\r", __func__);
 }
 
