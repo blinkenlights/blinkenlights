@@ -74,8 +74,9 @@
 	return YES;
 }
 
+
 - (CGColorSpaceRef) imageColorSpace {
-	return [[NSColorSpace genericRGBColorSpace] CGColorSpace];
+	return [[NSColorSpace deviceRGBColorSpace] CGColorSpace];
 }
 
 
