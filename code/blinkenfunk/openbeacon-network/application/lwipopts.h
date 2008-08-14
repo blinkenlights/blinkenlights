@@ -121,7 +121,7 @@ a lot of data that needs to be copied, this should be set high. */
    turning this on does currently not work. */
 #define LWIP_DHCP               1
 #define LWIP_ARP                1
-#define LWIP_ICMP               0
+#define LWIP_ICMP               1
 #define LWIP_UDP                1
 #define LWIP_SOCKET             0
 

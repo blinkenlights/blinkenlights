@@ -386,8 +386,11 @@ debug_printf (const char *fmt, ...)
   va_end (args);
 
   p = buf;
-  while((c=*p++)!='\0')
+  while((c=*p++)!='\0') {
     vUSBSendByte (c);
+    if (c == '\n')
+      vUSBSendByte('\r');
+  }
 
   return i;
 }
