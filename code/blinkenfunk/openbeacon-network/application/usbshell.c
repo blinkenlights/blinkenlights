@@ -65,6 +65,8 @@ cmd_status (const portCHAR * cmd)
 static void
 cmd_help (const portCHAR *cmd)
 {
+  struct netif *nic = &EMAC_if;
+ 
   shell_printf("Blinkenlights command shell help.\n");
   shell_printf("---------------------------------\n");
   shell_printf("\n");
@@ -75,7 +77,11 @@ cmd_help (const portCHAR *cmd)
   shell_printf("	Set the MAC address of this unit.\n");
   shell_printf("	Address xxyy is given in two hexadecimal 8bit numbers with\n");
   shell_printf("	no separator, crc is optional and is ignored when not given.\n");
-  shell_printf("	When given it needs to be MAC_L ^ MAC_H\n");
+  shell_printf("	When given, it needs to be MAC_L ^ MAC_H, otherwise the\n");
+  shell_printf("	command is rejected. The two values which are set here are\n");
+  shell_printf("	the last two digits only with a unchangable prefix, hence\n");
+  shell_printf("	the full MAC would be %02x:%02x:%02x:%02x:xx:yy.\n",
+  	nic->hwaddr[0], nic->hwaddr[1], nic->hwaddr[2],	nic->hwaddr[3]);
   shell_printf("\n");
   shell_printf("status\n");
   shell_printf("	Print status information about this unit. Try it, it's fun.\n");
