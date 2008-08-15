@@ -45,23 +45,6 @@
 
 #define shell_printf(x...) debug_printf(x)
 
-#define HELPTEXT \
-	"Blinkenlights command shell help.\n"					\
-	"---------------------------------\n"					\
-	"\n"									\
-	"help\n"								\
-	"	This screen\n"							\
-	"\n"									\
-	"[wmcu-]mac <xxyy> [<crc>]\n"						\
-	"	Set the MAC address of this unit.\n"				\
-	"	Address xxyy is given in two hexadecimal 8bit numbers with\n"	\
-	"	no separator, crc is optional and is ignored when not given.\n"	\
-	"	When given it needs to be MAC_L ^ MAC_H\n"			\
-	"\n"									\
-	"status\n"								\
-	"	Print status information about this unit. Try it, it's fun.\n"	\
-	""
-
 static void
 cmd_status (const portCHAR * cmd)
 {
@@ -82,7 +65,24 @@ cmd_status (const portCHAR * cmd)
 static void
 cmd_help (const portCHAR *cmd)
 {
-  shell_printf(HELPTEXT);
+  shell_printf("Blinkenlights command shell help.\n");
+  shell_printf("---------------------------------\n");
+  shell_printf("\n");
+  shell_printf("help\n");
+  shell_printf("	This screen\n");
+  shell_printf("\n");
+  shell_printf("[wmcu-]mac <xxyy> [<crc>]\n");
+  shell_printf("	Set the MAC address of this unit.\n");
+  shell_printf("	Address xxyy is given in two hexadecimal 8bit numbers with\n");
+  shell_printf("	no separator, crc is optional and is ignored when not given.\n");
+  shell_printf("	When given it needs to be MAC_L ^ MAC_H\n");
+  shell_printf("\n");
+  shell_printf("status\n");
+  shell_printf("	Print status information about this unit. Try it, it's fun.\n");
+  shell_printf("\n");
+  shell_printf("env\n");
+  shell_printf("	Show variables currently stored in the non-volatile flash memory\n");
+  shell_printf("");
 }
 
 static void
