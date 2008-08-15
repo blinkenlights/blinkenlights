@@ -351,6 +351,7 @@ ethernetif_init (struct netif *netif)
 {
   struct ethernetif *ethernetif;
 
+debug_printf("%s\n", __func__);
   ethernetif = mem_malloc (sizeof (struct ethernetif));
 
   if (ethernetif == NULL)

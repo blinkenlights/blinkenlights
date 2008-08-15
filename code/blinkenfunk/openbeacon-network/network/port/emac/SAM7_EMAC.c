@@ -169,7 +169,7 @@ static volatile AT91S_TxTdDescriptor xTxDescriptors[NB_TX_BUFFERS];
 static volatile AT91S_RxTdDescriptor xRxDescriptors[NB_RX_BUFFERS];
 
 /* The IP and Ethernet addresses are read from the header files. */
-const portCHAR cMACAddress[6] =
+portCHAR cMACAddress[6] =
   { emacETHADDR0, emacETHADDR1, emacETHADDR2, emacETHADDR3, emacETHADDR4,
   emacETHADDR5
 };
@@ -583,6 +583,7 @@ xEMACInit (void)
     } __asm volatile ("NOP");
 
   /* Setup the pins. */
+debug_printf(" -- %s()\n", __func__);
   AT91C_BASE_PIOB->PIO_ASR = emacPERIPHERAL_A_SETUP;
   AT91C_BASE_PIOB->PIO_PDR = emacPERIPHERAL_A_SETUP;
 
@@ -770,6 +771,8 @@ prvSetupMACAddress (void)
     ((unsigned portLONG) cMACAddress[1] << 8) | cMACAddress[0];
   AT91C_BASE_EMAC->EMAC_SA1H =
     ((unsigned portLONG) cMACAddress[5] << 8) | cMACAddress[4];
+
+debug_printf(" LALALALA ::: %02x %02x\n", cMACAddress[4], cMACAddress[5]);
 }
 
 /*-----------------------------------------------------------*/

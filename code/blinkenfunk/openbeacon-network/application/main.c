@@ -38,6 +38,7 @@
 #include "led.h"
 #include "proto.h"
 #include "usbshell.h"
+#include "env.h"
 
 /**********************************************************************/
 static inline void
@@ -70,9 +71,9 @@ int
 main (void)
 {
   prvSetupHardware ();
-
   vLedInit ();
-
+  env_init ();
+  env_load ();
   vNetworkInit ();
 
   xTaskCreate (vUSBCDCTask, (signed portCHAR *) "USB", TASK_USB_STACK,

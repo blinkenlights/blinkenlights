@@ -36,14 +36,53 @@
 #include "env.h"
 #include "USB-CDC.h"
 
-#define PROMPT "\n\rWMCU> "
+/* lwIP includes */
+#include "lwip/inet.h"
+#include "lwip/ip_addr.h"
+#include "lwip/netif.h"
+
+#define PROMPT "\nWMCU> "
 
 #define shell_printf(x...) debug_printf(x)
+
+#define HELPTEXT \
+	"Blinkenlights command shell help.\n"					\
+	"---------------------------------\n"					\
+	"\n"									\
+	"help\n"								\
+	"	This screen\n"							\
+	"\n"									\
+	"[wmcu-]mac <xxyy> [<crc>]\n"						\
+	"	Set the MAC address of this unit.\n"				\
+	"	Address xxyy is given in two hexadecimal 8bit numbers with\n"	\
+	"	no separator, crc is optional and is ignored when not given.\n"	\
+	"	When given it needs to be MAC_L ^ MAC_H\n"			\
+	"\n"									\
+	"status\n"								\
+	"	Print status information about this unit. Try it, it's fun.\n"	\
+	""
 
 static void
 cmd_status (const portCHAR * cmd)
 {
-  shell_printf ("alled schnafte\n");
+  struct netif *nic = &EMAC_if;
+
+  shell_printf ("WMCU status:\n");
+  shell_printf ("	MAC address:	%02x:%02x:%02x:%02x:%02x:%02x\n",
+  	nic->hwaddr[0], nic->hwaddr[1], nic->hwaddr[2],
+  	nic->hwaddr[3], nic->hwaddr[4], nic->hwaddr[5]);
+  shell_printf ("	IP address:	%d.%d.%d.%d\n",
+  	ip4_addr1(&nic->ip_addr), ip4_addr2(&nic->ip_addr), ip4_addr3(&nic->ip_addr), ip4_addr4(&nic->ip_addr));
+  shell_printf ("	Network mask:	%d.%d.%d.%d\n",
+  	ip4_addr1(&nic->netmask), ip4_addr2(&nic->netmask), ip4_addr3(&nic->netmask), ip4_addr4(&nic->netmask));
+  shell_printf ("	Gateway addr:	%d.%d.%d.%d\n",
+  	ip4_addr1(&nic->gw), ip4_addr2(&nic->gw), ip4_addr3(&nic->gw), ip4_addr4(&nic->gw));
+}
+
+static void
+cmd_help (const portCHAR *cmd)
+{
+  shell_printf(HELPTEXT);
 }
 
 static void
@@ -102,11 +141,21 @@ cmd_mac (const portCHAR * cmd)
 	 }
     }
    
-    shell_printf("parsed MAC: %02x%02x\n", mac_h, mac_l);
+    shell_printf("setting new MAC: %02x%02x\n", mac_h, mac_l);
 
     /* set it ... */
+    if (env.e.mac_h != 0xff && env.e.mac_l != 0xff)
+      {
+        /* a MAC was set before. Hence, we need to stop the network thread
+	 * before we start it again later. */
+	/* TODO */
+      }
+
     env.e.mac_h = mac_h;
     env.e.mac_l = mac_l;
+    env_store();
+
+    vNetworkInit();
 }
 
 static void
@@ -117,21 +166,38 @@ cmd_env (const portCHAR * cmd)
   shell_printf ("   mac = %02x%02x\n", env.e.mac_h, env.e.mac_l);
 }
 
+
+static struct cmd_t {
+	const portCHAR *command;
+	void (*callback) (const portCHAR *cmd);
+} commands[] = {
+	{ "help",	&cmd_help },
+	{ "status",	&cmd_status },
+	{ "mac",	&cmd_mac },
+	{ "wmcu-mac",	&cmd_mac },
+	{ "env",	&cmd_env },
+	/* end marker */
+	{ NULL, NULL }
+};
+
 static void
 parse_cmd (const portCHAR * cmd)
 {
+  struct cmd_t *c;
+
   if (strlen (cmd) == 0)
     return;
 
-  if (strcmp (cmd, "status") == 0)
-    cmd_status (cmd);
-  else if (strcmp (cmd, "env") == 0)
-    cmd_env (cmd);
-  else if (strncmp (cmd, "mac", strlen("mac")) == 0 || 
-           strncmp (cmd, "wmcu-mac", strlen("wmc-mac")) == 0)
-    cmd_mac (cmd);
-  else
-    shell_printf ("unknown command '%s'\n", cmd);
+  for (c = commands; c && c->command && c->callback; c++)
+    {
+      if (strncmp (cmd, c->command, strlen(c->command)) == 0 && c->callback)
+        {
+          c->callback(cmd);
+	  return;
+	}
+    }
+
+  shell_printf ("unknown command '%s'\n", cmd);
 }
 
 static void
