@@ -208,6 +208,29 @@ vnRFtaskRx (void *parameter)
     }
 }
 
+void __attribute__((section (".ramfunc"))) vnRF_PhaseIRQ_Handler(void)
+{
+    static int i=0;
+    static unsigned int prev_time=0;
+
+    if( AT91C_BASE_TC2->TC_SR & AT91C_TC_ETRGS )
+    {
+	vLedSetGreen (i&1);    
+	i++;
+	
+	(AT91C_BASE_TC0->TC_CV & 0xFFFF) - prev_time;;
+    }
+        
+    AT91C_BASE_AIC->AIC_EOICR = 0;
+}
+
+void __attribute__((naked, section (".ramfunc"))) vnRF_PhaseIRQ(void)
+{
+    portSAVE_CONTEXT();
+    vnRF_PhaseIRQ_Handler();
+    portRESTORE_CONTEXT();
+}
+
 static inline void
 vUpdateDimmer (int Percent)
 {
@@ -229,26 +252,51 @@ vInitDimmer (void)
   AT91F_PIO_CfgPeriph (AT91C_BASE_PIOA, 0, TRIGGER_PIN | PHASE_PIN);
   AT91F_PIO_CfgInputFilter (AT91C_BASE_PIOA, TRIGGER_PIN | PHASE_PIN);
 
-  /* Configure Timer/Counter */
+  /* Configure Timer/Counter 0 */
+  AT91F_TC0_CfgPMC ();
+  AT91C_BASE_TC0->TC_IDR = 0xFF;
+  AT91C_BASE_TC0->TC_CCR = AT91C_TC_CLKDIS;
+  AT91C_BASE_TC0->TC_CMR =
+    AT91C_TC_CLKS_TIMER_DIV2_CLOCK |
+    AT91C_TC_WAVE |
+    AT91C_TC_WAVESEL_UP_AUTO;
+  AT91C_BASE_TC0->TC_CCR = AT91C_TC_CLKEN;
+
+  /* Configure Timer/Counter 1 */
+  AT91F_TC1_CfgPMC ();
+  AT91C_BASE_TC1->TC_IDR = 0xFF;
+  AT91C_BASE_TC1->TC_CCR = AT91C_TC_CLKDIS;
+  AT91C_BASE_TC1->TC_CMR =
+    AT91C_TC_CLKS_TIMER_DIV2_CLOCK |
+    AT91C_TC_LDBSTOP |
+    AT91C_TC_ETRGEDG_FALLING |
+    AT91C_TC_ABETRG |    
+    AT91C_TC_LDRA_RISING |
+    AT91C_TC_LDRB_FALLING;       
+  AT91C_BASE_TC1->TC_CCR = AT91C_TC_CLKEN;
+  AT91F_AIC_ConfigureIt(AT91C_ID_TC1, 7, AT91C_AIC_SRCTYPE_INT_POSITIVE_EDGE, vnRF_PulseIRQ );
+  AT91C_BASE_TC1->TC_IER = AT91C_TC_ETRGS;  
+  AT91F_AIC_EnableIt ( AT91C_ID_TC1 );
+
+  /* Configure Timer/Counter 2 */
   AT91F_TC2_CfgPMC ();
   AT91C_BASE_TC2->TC_IDR = 0xFF;
-  AT91C_BASE_TC2->TC_IER = 0x10;
   AT91C_BASE_TC2->TC_CCR = AT91C_TC_CLKDIS;
   AT91C_BASE_TC2->TC_CMR =
     AT91C_TC_CLKS_TIMER_DIV2_CLOCK |
     AT91C_TC_CPCSTOP |
-    AT91C_TC_EEVTEDG_RISING |
-    AT91C_TC_EEVT_TIOB |
-    AT91C_TC_ENETRG |
     AT91C_TC_WAVE |
     AT91C_TC_WAVESEL_UP_AUTO | AT91C_TC_ACPA_SET | AT91C_TC_ACPC_CLEAR;
   vUpdateDimmer (0);
   AT91C_BASE_TC2->TC_RC = ((PWM_CMR_CLOCK_FREQUENCY * 95) / (100 * 100));
   AT91C_BASE_TC2->TC_CCR = AT91C_TC_CLKEN;
+  AT91F_AIC_ConfigureIt(AT91C_ID_TC2, 7, AT91C_AIC_SRCTYPE_INT_POSITIVE_EDGE, vnRF_PhaseIRQ );
+  AT91C_BASE_TC2->TC_IER = AT91C_TC_ETRGS;  
+  AT91F_AIC_EnableIt ( AT91C_ID_TC2 );
 
   AT91C_BASE_TCB->TCB_BCR = AT91C_TCB_SYNC;
-  AT91C_BASE_TCB->TCB_BMR =
-    AT91C_TCB_TC0XC0S_NONE | AT91C_TCB_TC1XC1S_NONE | AT91C_TCB_TC2XC2S_NONE;
+  AT91C_BASE_TCB->TCB_BMR = AT91C_TCB_TC0XC0S_NONE | AT91C_TCB_TC1XC1S_NONE | AT91C_TCB_TC2XC2S_NONE;
+     
 }
 
 void
