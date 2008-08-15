@@ -33,12 +33,14 @@
 #include "nRF24L01/nRF_HW.h"
 #include "nRF24L01/nRF_CMD.h"
 #include "nRF24L01/nRF_API.h"
+#include "../scripts/gammatable.h"
 
 const unsigned char broadcast_mac[NRF_MAX_MAC_SIZE] = { 1, 2, 3, 2, 1 };
 TBeaconEnvelope g_Beacon;
 
-#define PWM_CMR_PRESCALER 0x3
-#define PWM_CMR_CLOCK_FREQUENCY (MCK/(1<<PWM_CMR_PRESCALER))
+#define LINE_HERTZ 50
+
+#define PWM_CMR_CLOCK_FREQUENCY (MCK/8)
 
 // set dimmer default brightness to 50%
 #define PWM_CMR_DEFAULT_DIMMER  (PWM_CMR_CLOCK_FREQUENCY/200)
@@ -149,9 +151,9 @@ vnRFtaskRx (void *parameter)
 {
   u_int16_t crc;
   (void) parameter;
-  int DidBlink=0;
-  portTickType Ticks=0;
-  
+  int DidBlink = 0;
+  portTickType Ticks = 0;
+
   if (!PtInitNRF ())
     return;
 
@@ -159,12 +161,12 @@ vnRFtaskRx (void *parameter)
     {
       if (nRFCMD_WaitRx (10))
 	{
-	  if(!DidBlink)
-	  {
-	    vLedSetGreen (1);
-	    Ticks = xTaskGetTickCount();
-	    DidBlink = 1;
-	  }
+	  if (!DidBlink)
+	    {
+	      vLedSetGreen (1);
+	      Ticks = xTaskGetTickCount ();
+	      DidBlink = 1;
+	    }
 
 	  do
 	    {
@@ -197,89 +199,113 @@ vnRFtaskRx (void *parameter)
 	  while ((nRFAPI_GetFifoStatus () & FIFO_RX_EMPTY) == 0);
 	}
       nRFAPI_ClearIRQ (MASK_IRQ_FLAGS);
-    
-      if( DidBlink && ((xTaskGetTickCount()-Ticks)>BLINK_INTERVAL_MS) )
-      {
-        DidBlink=0;
-	vLedSetGreen(0);
-      }
+
+      if (DidBlink && ((xTaskGetTickCount () - Ticks) > BLINK_INTERVAL_MS))
+	{
+	  DidBlink = 0;
+	  vLedSetGreen (0);
+	}
     }
 }
 
 static inline void
 vUpdateDimmer (int Percent)
 {
-    int t;
+  if (Percent < 0)
+    Percent = 0;    
+  else if (Percent > (GAMMA_SIZE-1))
+    Percent = GAMMA_SIZE-1;
     
-    if(Percent<1)
-      Percent=1;
-    else
-	if(Percent>90)
-	    Percent=90;
-	    
-    t = ((PWM_CMR_CLOCK_FREQUENCY*Percent)/(100*120));
-    AT91C_BASE_TC2->TC_RA = t;
-    AT91C_BASE_TC2->TC_RC = t+PWM_CMR_DIMMER_LED_TIME;
+  // add fixed brightness to increase lamp life time
+  Percent = 10+((Percent * 90)/100);
+    
+  AT91C_BASE_TC2->TC_RA = (GammaTable[Percent]*((unsigned long long)PWM_CMR_CLOCK_FREQUENCY))/(GAMMA_RANGE * 2 * LINE_HERTZ);
 }
 
 static inline void
 vInitDimmer (void)
 {
-    /* Enable Peripherals */
-    AT91F_PIO_CfgPeriph(AT91C_BASE_PIOA, 0, TRIGGER_PIN|PHASE_PIN);
+  /* Enable Peripherals */
+  AT91F_PIO_CfgPeriph (AT91C_BASE_PIOA, 0, TRIGGER_PIN | PHASE_PIN);
+  AT91F_PIO_CfgInputFilter (AT91C_BASE_PIOA, TRIGGER_PIN | PHASE_PIN);
 
-    /* Configure Timer/Counter */    
-    AT91F_TC2_CfgPMC();
-    AT91C_BASE_TC2->TC_IDR = 0xFF;
-    AT91C_BASE_TC2->TC_CCR = AT91C_TC_CLKDIS;
-    AT91C_BASE_TC2->TC_CMR =
-	AT91C_TC_CLKS_TIMER_DIV2_CLOCK |
-	AT91C_TC_CPCSTOP |
-	AT91C_TC_EEVTEDG_RISING |
-	AT91C_TC_EEVT_TIOB |
-	AT91C_TC_ENETRG |
-	AT91C_TC_WAVE |
-	AT91C_TC_WAVESEL_UP_AUTO |
-	AT91C_TC_ACPA_SET |
-	AT91C_TC_ACPC_CLEAR;
-    AT91C_BASE_TC2->TC_RA = PWM_CMR_DEFAULT_DIMMER;
-    AT91C_BASE_TC2->TC_RC = PWM_CMR_DEFAULT_DIMMER+PWM_CMR_DIMMER_LED_TIME;
-    AT91C_BASE_TC2->TC_CCR = AT91C_TC_CLKEN;
+  /* Configure Timer/Counter */
+  AT91F_TC2_CfgPMC ();
+  AT91C_BASE_TC2->TC_IDR = 0xFF;
+  AT91C_BASE_TC2->TC_IER = 0x10;
+  AT91C_BASE_TC2->TC_CCR = AT91C_TC_CLKDIS;
+  AT91C_BASE_TC2->TC_CMR =
+    AT91C_TC_CLKS_TIMER_DIV2_CLOCK |
+    AT91C_TC_CPCSTOP |
+    AT91C_TC_EEVTEDG_RISING |
+    AT91C_TC_EEVT_TIOB |
+    AT91C_TC_ENETRG |
+    AT91C_TC_WAVE |
+    AT91C_TC_WAVESEL_UP_AUTO | AT91C_TC_ACPA_SET | AT91C_TC_ACPC_CLEAR;
+  vUpdateDimmer (0);
+  AT91C_BASE_TC2->TC_RC = ((PWM_CMR_CLOCK_FREQUENCY * 95) / (100 * 100));
+  AT91C_BASE_TC2->TC_CCR = AT91C_TC_CLKEN;
 
-    AT91C_BASE_TCB->TCB_BCR=AT91C_TCB_SYNC;
-    AT91C_BASE_TCB->TCB_BMR=AT91C_TCB_TC0XC0S_NONE|AT91C_TCB_TC1XC1S_NONE|AT91C_TCB_TC2XC2S_NONE;
+  AT91C_BASE_TCB->TCB_BCR = AT91C_TCB_SYNC;
+  AT91C_BASE_TCB->TCB_BMR =
+    AT91C_TCB_TC0XC0S_NONE | AT91C_TCB_TC1XC1S_NONE | AT91C_TCB_TC2XC2S_NONE;
 }
 
 void
-vnRFtaskDimmer (void *parameter)
+vnRFtaskCmd (void *parameter)
 {
-    (void) parameter;
-    int Percent=0,Sign=1;
+  (void) parameter;
+  portCHAR c;
+  int Percent = 0;
+  bool_t Changed;
 
-    (void) parameter;
-    
-    while(1)
+  while (1)
     {
-	vTaskDelay(20 / portTICK_RATE_MS);	
-	
-	Percent+=Sign;
-	if(Percent>=70)
-	    Sign=-1;
-	else
-	    if(Percent<=20)
-		Sign=1;
-	
-	vUpdateDimmer(Percent);
+      if (vUSBRecvByte (&c, sizeof (c), 100))
+	{
+	  Changed = false;
+
+	  if (c >= '0' && c <= '9')
+	  {
+	    Percent = (c - '0') * 10;
+	    Changed = pdTRUE;
+	  }
+	  else
+	    switch (c)
+	      {
+	      case '+':
+		if (Percent < 99)
+		  {
+		    Percent++;
+		    Changed = pdTRUE;
+		  }
+		break;
+	      case '-':
+		if (Percent > 0)
+		  {
+		    Percent--;
+		    Changed = pdTRUE;
+		  }
+		break;
+	      }
+
+	  if (Changed)
+	    {
+	      DumpUIntToUSB (Percent);
+	      DumpStringToUSB ("DIM %\n\r");
+	      vUpdateDimmer (Percent);
+	    }
+	}
     }
 }
 
 void
 vInitProtocolLayer (void)
 {
-    vInitDimmer ();
-    xTaskCreate (vnRFtaskRx, (signed portCHAR *) "nRF_Rx", TASK_NRF_STACK,
-	NULL, TASK_NRF_PRIORITY, NULL);
-    
-    xTaskCreate (vnRFtaskDimmer, (signed portCHAR *) "Dimmer", TASK_NRF_STACK,
-	NULL, TASK_NRF_PRIORITY, NULL);
+  vInitDimmer ();
+/*  xTaskCreate (vnRFtaskRx, (signed portCHAR *) "nRF_Rx", TASK_NRF_STACK,
+	       NULL, TASK_NRF_PRIORITY, NULL);*/
+
+  xTaskCreate (vnRFtaskCmd, (signed portCHAR *) "nRF_Cmd", TASK_CMD_STACK,
+	       NULL, TASK_CMD_PRIORITY, NULL);
 }

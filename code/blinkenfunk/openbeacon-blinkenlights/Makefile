@@ -12,7 +12,7 @@ APP_SRC= \
   application/xxtea.c
   
 all: $(TARGET).bin
-  
+
 app_clean:
 	find application -name '*.o' -exec rm \{\} \;
 
