@@ -47,10 +47,74 @@ cmd_status (const portCHAR * cmd)
 }
 
 static void
+cmd_mac (const portCHAR * cmd)
+{
+  portCHAR buf[4], mac_l, mac_h;
+  unsigned int i;
+
+  while (*cmd && *cmd != ' ')
+  	cmd++;
+
+  cmd++;
+
+  for (i = 0; i < sizeof(buf); i++) {
+    if (!*cmd) {
+      shell_printf("bogus command.\n");
+      return;
+    }
+
+    buf[i] = *cmd++;
+    if (buf[i] >= 'A' && buf[i] <= 'F')
+      buf[i] -= 'A';
+    else if (buf[i] >= 'a' && buf[i] <= 'f')
+      buf[i] -= 'a';
+    else if (buf[i] >= '0' && buf[i] <= '9')
+      buf[i] -= '0';
+    else
+      {
+        shell_printf("invalid MAC!\n");
+        return;
+      }
+  }
+
+  mac_h = buf[0] << 4 | buf[1];
+  mac_l = buf[2] << 4 | buf[3];
+
+  /* checksum given? */
+  if (*cmd == ' ')
+    {
+       portCHAR crc;
+
+       buf[0] = *cmd++;
+       if (!*cmd)
+         {
+	   shell_printf("bogus checksum!\n");
+	   return;
+	 }
+       
+       buf[1] = *cmd++;
+       crc = buf[0] << 4 | buf[1];
+
+       if (crc != (mac_l ^ mac_h))
+         {
+	   shell_printf("invalid checksum - command ignored\n");
+	   return;
+	 }
+    }
+   
+    shell_printf("parsed MAC: %02x%02x\n", mac_h, mac_l);
+
+    /* set it ... */
+    env.e.mac_h = mac_h;
+    env.e.mac_l = mac_l;
+}
+
+static void
 cmd_env (const portCHAR * cmd)
 {
   shell_printf ("Current values in non-volatile flash storage:\n");
   shell_printf ("   assigned_line = %d\n", env.e.assigned_line);
+  shell_printf ("   mac = %02x%02x\n", env.e.mac_h, env.e.mac_l);
 }
 
 static void
@@ -63,6 +127,9 @@ parse_cmd (const portCHAR * cmd)
     cmd_status (cmd);
   else if (strcmp (cmd, "env") == 0)
     cmd_env (cmd);
+  else if (strncmp (cmd, "mac", strlen("mac")) == 0 || 
+           strncmp (cmd, "wmcu-mac", strlen("wmc-mac")) == 0)
+    cmd_mac (cmd);
   else
     shell_printf ("unknown command '%s'\n", cmd);
 }
