@@ -35,18 +35,11 @@
 #include "nRF24L01/nRF_API.h"
 #include "../scripts/gammatable.h"
 
-const unsigned char broadcast_mac[NRF_MAX_MAC_SIZE] = { 1, 2, 3, 2, 1 };
-TBeaconEnvelope g_Beacon;
-
 #define LINE_HERTZ 50
 
+#define LINE_HERTZ_LOWPASS_SIZE 50
+
 #define PWM_CMR_CLOCK_FREQUENCY (MCK/8)
-
-// set dimmer default brightness to 50%
-#define PWM_CMR_DEFAULT_DIMMER  (PWM_CMR_CLOCK_FREQUENCY/200)
-
-// set LED flash time for triac trigger to 250us
-#define PWM_CMR_DIMMER_LED_TIME (PWM_CMR_CLOCK_FREQUENCY/400)
 
 #define BLINK_INTERVAL_MS (50 / portTICK_RATE_MS)
 
@@ -56,6 +49,13 @@ TBeaconEnvelope g_Beacon;
                         g_Beacon.datab[b]=tmp;
 
 /**********************************************************************/
+
+const unsigned char broadcast_mac[NRF_MAX_MAC_SIZE] = { 1, 2, 3, 2, 1 };
+TBeaconEnvelope g_Beacon;
+
+static int line_hz_table[LINE_HERTZ_LOWPASS_SIZE], line_hz_pos, line_hz_sum, line_hz;
+static int line_hz_enabled, dimmer_percent;
+
 void RAMFUNC
 shuffle_tx_byteorder (void)
 {
@@ -208,53 +208,64 @@ vnRFtaskRx (void *parameter)
     }
 }
 
-unsigned int freq;
-
-void __attribute__((section (".ramfunc"))) vnRF_PulseIRQ_Handler(void)
+void __attribute__ ((section (".ramfunc"))) vnRF_PulseIRQ_Handler (void)
 {
-    static unsigned int led=0,timer_prev=0;
-    unsigned int pulse_length,rb;
-    
-    if(AT91C_BASE_TC1->TC_SR & AT91C_TC_LDRBS)
-    {
-	rb = AT91C_BASE_TC1->TC_RB;
-	pulse_length = (rb-AT91C_BASE_TC1->TC_RA)&0xFFFF;
-	
-	if(pulse_length>1000)
-	{
-	    AT91C_BASE_TC2->TC_CCR = AT91C_TC_SWTRG;
-	    
-	    freq = (rb-timer_prev)&0xFFFF;
-	    timer_prev = rb;
+  static unsigned int timer_prev = 0;
+  int pulse_length, rb, period_length;
 
-	    vLedSetGreen (led&1);    
-	    led++;
+  if (AT91C_BASE_TC1->TC_SR & AT91C_TC_LDRBS)
+    {
+      rb = AT91C_BASE_TC1->TC_RB;
+      pulse_length = (rb - AT91C_BASE_TC1->TC_RA) & 0xFFFF;
+
+      if (pulse_length > 1000)
+	{
+	  if (line_hz_enabled)
+	    {
+	      AT91C_BASE_TC2->TC_RA = (dimmer_percent >= GAMMA_SIZE) ?
+		1 : (GammaTable[dimmer_percent] * line_hz) / GAMMA_RANGE;
+	      AT91C_BASE_TC2->TC_CCR = AT91C_TC_SWTRG;
+	    }
+
+	  period_length = (rb - timer_prev) & 0xFFFF;
+	  timer_prev = rb;
+
+	  line_hz_sum += period_length - line_hz_table[line_hz_pos];
+	  line_hz = line_hz_sum / LINE_HERTZ_LOWPASS_SIZE;
+	  AT91C_BASE_TC2->TC_RC = (line_hz * 95) / 100;
+
+	  line_hz_table[line_hz_pos++] = period_length;
+	  if (line_hz_pos >= LINE_HERTZ_LOWPASS_SIZE)
+	    {
+	      line_hz_enabled = pdTRUE;
+	      line_hz_pos = 0;
+	    }
 	}
     }
 
-    AT91C_BASE_AIC->AIC_EOICR = 0;
+  AT91C_BASE_AIC->AIC_EOICR = 0;
 }
 
-void __attribute__((naked, section (".ramfunc"))) vnRF_PulseIRQ(void)
+void __attribute__ ((naked, section (".ramfunc"))) vnRF_PulseIRQ (void)
 {
-    portSAVE_CONTEXT();
-    vnRF_PulseIRQ_Handler();
-    portRESTORE_CONTEXT();
+  portSAVE_CONTEXT ();
+  vnRF_PulseIRQ_Handler ();
+  portRESTORE_CONTEXT ();
 }
 
 static inline void
 vUpdateDimmer (int Percent)
 {
-  if (Percent < 0)
-    Percent = 0;
-    
-  AT91C_BASE_TC2->TC_RA = (Percent >= GAMMA_SIZE) ?
-    1:(GammaTable[Percent]*((unsigned long long)PWM_CMR_CLOCK_FREQUENCY))/(GAMMA_RANGE * 2 * LINE_HERTZ);
+  dimmer_percent = (Percent < 0) ? 0 : Percent;
 }
 
 static inline void
 vInitDimmer (void)
 {
+  bzero (&line_hz_table, sizeof (line_hz_table));
+  line_hz_pos = line_hz_sum = line_hz = line_hz_enabled = 0;
+  dimmer_percent = 0;
+
   /* Enable Peripherals */
   AT91F_PIO_CfgPeriph (AT91C_BASE_PIOA, 0, TRIGGER_PIN | PHASE_PIN);
   AT91F_PIO_CfgInputFilter (AT91C_BASE_PIOA, TRIGGER_PIN | PHASE_PIN);
@@ -265,12 +276,12 @@ vInitDimmer (void)
   AT91C_BASE_TC1->TC_IDR = 0xFF;
   AT91C_BASE_TC1->TC_CMR =
     AT91C_TC_CLKS_TIMER_DIV2_CLOCK |
-    AT91C_TC_LDRA_RISING |
-    AT91C_TC_LDRB_FALLING;       
+    AT91C_TC_LDRA_RISING | AT91C_TC_LDRB_FALLING;
   AT91C_BASE_TC1->TC_CCR = AT91C_TC_CLKEN;
-  AT91F_AIC_ConfigureIt(AT91C_ID_TC1, 7, AT91C_AIC_SRCTYPE_INT_POSITIVE_EDGE, vnRF_PulseIRQ );
-  AT91C_BASE_TC1->TC_IER = AT91C_TC_LDRBS;  
-  AT91F_AIC_EnableIt ( AT91C_ID_TC1 );
+  AT91F_AIC_ConfigureIt (AT91C_ID_TC1, 7, AT91C_AIC_SRCTYPE_INT_POSITIVE_EDGE,
+			 vnRF_PulseIRQ);
+  AT91C_BASE_TC1->TC_IER = AT91C_TC_LDRBS;
+  AT91F_AIC_EnableIt (AT91C_ID_TC1);
 
   /* Configure Timer/Counter 2 */
   AT91F_TC2_CfgPMC ();
@@ -282,11 +293,11 @@ vInitDimmer (void)
     AT91C_TC_WAVE |
     AT91C_TC_WAVESEL_UP_AUTO | AT91C_TC_ACPA_SET | AT91C_TC_ACPC_CLEAR;
   vUpdateDimmer (0);
-  AT91C_BASE_TC2->TC_RC = ((PWM_CMR_CLOCK_FREQUENCY * 95) / (100 * 100));
   AT91C_BASE_TC2->TC_CCR = AT91C_TC_CLKEN;
 
   AT91C_BASE_TCB->TCB_BCR = AT91C_TCB_SYNC;
-  AT91C_BASE_TCB->TCB_BMR = AT91C_TCB_TC0XC0S_NONE | AT91C_TCB_TC1XC1S_NONE | AT91C_TCB_TC2XC2S_NONE;     
+  AT91C_BASE_TCB->TCB_BMR =
+    AT91C_TCB_TC0XC0S_NONE | AT91C_TCB_TC1XC1S_NONE | AT91C_TCB_TC2XC2S_NONE;
 }
 
 void
@@ -304,10 +315,10 @@ vnRFtaskCmd (void *parameter)
 	  Changed = false;
 
 	  if (c >= '0' && c <= '9')
-	  {
-	    Percent = (c - '0') * 10;
-	    Changed = pdTRUE;
-	  }
+	    {
+	      Percent = (c - '0') * 10;
+	      Changed = pdTRUE;
+	    }
 	  else
 	    switch (c)
 	      {
@@ -329,11 +340,9 @@ vnRFtaskCmd (void *parameter)
 
 	  if (Changed)
 	    {
-	      DumpStringToUSB ("Pulse ");
-	      DumpUIntToUSB (freq);
-	      DumpStringToUSB (" ");
+	      DumpStringToUSB ("DIM=");
 	      DumpUIntToUSB (Percent);
-	      DumpStringToUSB ("DIM %\n\r");
+	      DumpStringToUSB ("%\n\r");
 	      vUpdateDimmer (Percent);
 	    }
 	}
