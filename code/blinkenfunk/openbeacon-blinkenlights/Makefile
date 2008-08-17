@@ -3,7 +3,8 @@ ARCH=AT91SAM7S64
 DEBUG=-g
 OPTIM=-O2
 
-APP_CFLAGS=-Iapplication    
+APP_CFLAGS=-Iapplication
+APP_LDFLAGS=-lm
 
 APP_SRC= \
   application/main.c \

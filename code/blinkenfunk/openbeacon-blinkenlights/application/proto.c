@@ -24,6 +24,7 @@
 #include <semphr.h>
 #include <task.h>
 #include <string.h>
+#include <math.h>
 #include <board.h>
 #include <beacontypes.h>
 #include <USB-CDC.h>
@@ -33,13 +34,19 @@
 #include "nRF24L01/nRF_HW.h"
 #include "nRF24L01/nRF_CMD.h"
 #include "nRF24L01/nRF_API.h"
-#include "../scripts/gammatable.h"
 
 #define LINE_HERTZ_LOWPASS_SIZE 50
 
 #define PWM_CMR_CLOCK_FREQUENCY (MCK/8)
 
 #define BLINK_INTERVAL_MS (50 / portTICK_RATE_MS)
+
+// specify minimum brightness to increase lamp life (0.0 to 1.0)
+#define DIMMER_MINIMUM_BRIGHTNESS 0.25
+
+// specify gamma table range and size
+#define GAMMA_RANGE (0xFFFF)
+#define GAMMA_SIZE  (100)
 
 /**********************************************************************/
 #define SHUFFLE(a,b)    tmp=g_Beacon.datab[a];\
@@ -52,7 +59,9 @@ const unsigned char broadcast_mac[NRF_MAX_MAC_SIZE] = { 1, 2, 3, 2, 1 };
 TBeaconEnvelope g_Beacon;
 
 static unsigned short line_hz_table[LINE_HERTZ_LOWPASS_SIZE];
-static int line_hz_pos, line_hz_sum, line_hz, line_hz_enabled, dimmer_percent;
+static int line_hz_pos, line_hz_sum, line_hz, line_hz_enabled;
+static int dimmer_value;
+static unsigned short gamma_table[GAMMA_SIZE];
 
 void RAMFUNC
 shuffle_tx_byteorder (void)
@@ -220,8 +229,7 @@ void __attribute__ ((section (".ramfunc"))) vnRF_PulseIRQ_Handler (void)
 	{
 	  if (line_hz_enabled)
 	    {
-	      AT91C_BASE_TC2->TC_RA = (dimmer_percent >= GAMMA_SIZE) ?
-		1 : (GammaTable[dimmer_percent] * line_hz) / GAMMA_RANGE;
+	      AT91C_BASE_TC2->TC_RA = dimmer_value;
 	      AT91C_BASE_TC2->TC_CCR = AT91C_TC_SWTRG;
 	    }
 
@@ -251,18 +259,41 @@ void __attribute__ ((naked, section (".ramfunc"))) vnRF_PulseIRQ (void)
   portRESTORE_CONTEXT ();
 }
 
+static void
+vGammaRecalc (unsigned char Gamma)
+{
+  int i;
+
+  for (i = 0; i < GAMMA_SIZE; i++)
+    gamma_table[i] =
+      round(GAMMA_RANGE *
+	      acos (2 *
+		    pow (DIMMER_MINIMUM_BRIGHTNESS +
+			 ((i * (1 - DIMMER_MINIMUM_BRIGHTNESS)) / GAMMA_SIZE),
+			 Gamma / 100.0) - 1) / M_PI);
+}
+
 static inline void
 vUpdateDimmer (int Percent)
 {
-  dimmer_percent = (Percent < 0) ? 0 : Percent;
+  if (Percent < 0)
+    Percent = 0;
+
+  if (Percent >= GAMMA_SIZE)
+    dimmer_value = 1;
+  else
+    dimmer_value = (gamma_table[Percent] * line_hz) / GAMMA_RANGE;
 }
 
 static inline void
 vInitDimmer (void)
 {
+  /* reset Dimmer and gamma correction to default value */
+  vGammaRecalc (GAMMA_DEFAULT);
+
   bzero (&line_hz_table, sizeof (line_hz_table));
   line_hz_pos = line_hz_sum = line_hz = line_hz_enabled = 0;
-  dimmer_percent = 0;
+  dimmer_value = 0;
 
   /* Enable Peripherals */
   AT91F_PIO_CfgPeriph (AT91C_BASE_PIOA, 0, TRIGGER_PIN | PHASE_PIN);
@@ -306,13 +337,24 @@ vnRFtaskCmd (void *parameter)
   int Percent = 0;
   bool_t Changed;
 
+  /* Init Dimmer and wait till initial frequency is measured */
+  vInitDimmer ();
+  while (!line_hz_enabled)
+    vTaskDelay (100 / portTICK_RATE_MS);
+  vUpdateDimmer (0);
+
   while (1)
     {
       if (vUSBRecvByte (&c, sizeof (c), 100))
 	{
 	  Changed = false;
 
-	  if (c >= '0' && c <= '9')
+	  if (c >= 'a' && c <= 'q')
+	    {
+	      Percent = (c - 'a') * 6;
+	      Changed = pdTRUE;
+	    }
+	  else if (c >= '0' && c <= '9')
 	    {
 	      Percent = (c - '0') * 10;
 	      Changed = pdTRUE;
@@ -350,7 +392,6 @@ vnRFtaskCmd (void *parameter)
 void
 vInitProtocolLayer (void)
 {
-  vInitDimmer ();
   xTaskCreate (vnRFtaskRx, (signed portCHAR *) "nRF_Rx", TASK_NRF_STACK,
 	       NULL, TASK_NRF_PRIORITY, NULL);
 

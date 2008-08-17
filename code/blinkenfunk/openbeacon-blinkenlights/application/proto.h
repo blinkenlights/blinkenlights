@@ -25,6 +25,7 @@
 
 #include "openbeacon.h"
 
+#define GAMMA_DEFAULT 200
 #define FIFO_DEPTH 256
 
 typedef struct
