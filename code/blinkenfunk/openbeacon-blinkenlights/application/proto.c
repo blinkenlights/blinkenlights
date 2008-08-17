@@ -35,8 +35,6 @@
 #include "nRF24L01/nRF_API.h"
 #include "../scripts/gammatable.h"
 
-#define LINE_HERTZ 50
-
 #define LINE_HERTZ_LOWPASS_SIZE 50
 
 #define PWM_CMR_CLOCK_FREQUENCY (MCK/8)
@@ -353,8 +351,8 @@ void
 vInitProtocolLayer (void)
 {
   vInitDimmer ();
-/*  xTaskCreate (vnRFtaskRx, (signed portCHAR *) "nRF_Rx", TASK_NRF_STACK,
-	       NULL, TASK_NRF_PRIORITY, NULL);*/
+  xTaskCreate (vnRFtaskRx, (signed portCHAR *) "nRF_Rx", TASK_NRF_STACK,
+	       NULL, TASK_NRF_PRIORITY, NULL);
 
   xTaskCreate (vnRFtaskCmd, (signed portCHAR *) "nRF_Cmd", TASK_CMD_STACK,
 	       NULL, TASK_CMD_PRIORITY, NULL);
