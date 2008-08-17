@@ -37,6 +37,8 @@
 
 #define LINE_HERTZ_LOWPASS_SIZE 50
 
+#define MINIMAL_PULSE_LENGH_US 160
+
 #define PWM_CMR_CLOCK_FREQUENCY (MCK/8)
 
 #define BLINK_INTERVAL_MS (50 / portTICK_RATE_MS)
@@ -225,7 +227,7 @@ void __attribute__ ((section (".ramfunc"))) vnRF_PulseIRQ_Handler (void)
       rb = AT91C_BASE_TC1->TC_RB;
       pulse_length = (rb - AT91C_BASE_TC1->TC_RA) & 0xFFFF;
 
-      if (pulse_length > 1000)
+      if (pulse_length > ((MINIMAL_PULSE_LENGH_US*PWM_CMR_CLOCK_FREQUENCY)/1000000))
 	{
 	  if (line_hz_enabled)
 	    {
