@@ -51,8 +51,8 @@
 const unsigned char broadcast_mac[NRF_MAX_MAC_SIZE] = { 1, 2, 3, 2, 1 };
 TBeaconEnvelope g_Beacon;
 
-static int line_hz_table[LINE_HERTZ_LOWPASS_SIZE], line_hz_pos, line_hz_sum, line_hz;
-static int line_hz_enabled, dimmer_percent;
+static unsigned short line_hz_table[LINE_HERTZ_LOWPASS_SIZE];
+static int line_hz_pos, line_hz_sum, line_hz, line_hz_enabled, dimmer_percent;
 
 void RAMFUNC
 shuffle_tx_byteorder (void)
@@ -232,7 +232,7 @@ void __attribute__ ((section (".ramfunc"))) vnRF_PulseIRQ_Handler (void)
 	  line_hz = line_hz_sum / LINE_HERTZ_LOWPASS_SIZE;
 	  AT91C_BASE_TC2->TC_RC = (line_hz * 95) / 100;
 
-	  line_hz_table[line_hz_pos++] = period_length;
+	  line_hz_table[line_hz_pos++] = (unsigned short) period_length;
 	  if (line_hz_pos >= LINE_HERTZ_LOWPASS_SIZE)
 	    {
 	      line_hz_enabled = pdTRUE;
