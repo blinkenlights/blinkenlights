@@ -208,26 +208,37 @@ vnRFtaskRx (void *parameter)
     }
 }
 
-void __attribute__((section (".ramfunc"))) vnRF_PhaseIRQ_Handler(void)
-{
-    static int i=0;
-    static unsigned int prev_time=0;
+unsigned int freq;
 
-    if( AT91C_BASE_TC2->TC_SR & AT91C_TC_ETRGS )
+void __attribute__((section (".ramfunc"))) vnRF_PulseIRQ_Handler(void)
+{
+    static unsigned int led=0,timer_prev=0;
+    unsigned int pulse_length,rb;
+    
+    if(AT91C_BASE_TC1->TC_SR & AT91C_TC_LDRBS)
     {
-	vLedSetGreen (i&1);    
-	i++;
+	rb = AT91C_BASE_TC1->TC_RB;
+	pulse_length = (rb-AT91C_BASE_TC1->TC_RA)&0xFFFF;
 	
-	(AT91C_BASE_TC0->TC_CV & 0xFFFF) - prev_time;;
+	if(pulse_length>1000)
+	{
+	    AT91C_BASE_TC2->TC_CCR = AT91C_TC_SWTRG;
+	    
+	    freq = (rb-timer_prev)&0xFFFF;
+	    timer_prev = rb;
+
+	    vLedSetGreen (led&1);    
+	    led++;
+	}
     }
-        
+
     AT91C_BASE_AIC->AIC_EOICR = 0;
 }
 
-void __attribute__((naked, section (".ramfunc"))) vnRF_PhaseIRQ(void)
+void __attribute__((naked, section (".ramfunc"))) vnRF_PulseIRQ(void)
 {
     portSAVE_CONTEXT();
-    vnRF_PhaseIRQ_Handler();
+    vnRF_PulseIRQ_Handler();
     portRESTORE_CONTEXT();
 }
 
@@ -235,14 +246,10 @@ static inline void
 vUpdateDimmer (int Percent)
 {
   if (Percent < 0)
-    Percent = 0;    
-  else if (Percent > (GAMMA_SIZE-1))
-    Percent = GAMMA_SIZE-1;
+    Percent = 0;
     
-  // add fixed brightness to increase lamp life time
-  Percent = 10+((Percent * 90)/100);
-    
-  AT91C_BASE_TC2->TC_RA = (GammaTable[Percent]*((unsigned long long)PWM_CMR_CLOCK_FREQUENCY))/(GAMMA_RANGE * 2 * LINE_HERTZ);
+  AT91C_BASE_TC2->TC_RA = (Percent >= GAMMA_SIZE) ?
+    1:(GammaTable[Percent]*((unsigned long long)PWM_CMR_CLOCK_FREQUENCY))/(GAMMA_RANGE * 2 * LINE_HERTZ);
 }
 
 static inline void
@@ -252,36 +259,23 @@ vInitDimmer (void)
   AT91F_PIO_CfgPeriph (AT91C_BASE_PIOA, 0, TRIGGER_PIN | PHASE_PIN);
   AT91F_PIO_CfgInputFilter (AT91C_BASE_PIOA, TRIGGER_PIN | PHASE_PIN);
 
-  /* Configure Timer/Counter 0 */
-  AT91F_TC0_CfgPMC ();
-  AT91C_BASE_TC0->TC_IDR = 0xFF;
-  AT91C_BASE_TC0->TC_CCR = AT91C_TC_CLKDIS;
-  AT91C_BASE_TC0->TC_CMR =
-    AT91C_TC_CLKS_TIMER_DIV2_CLOCK |
-    AT91C_TC_WAVE |
-    AT91C_TC_WAVESEL_UP_AUTO;
-  AT91C_BASE_TC0->TC_CCR = AT91C_TC_CLKEN;
-
   /* Configure Timer/Counter 1 */
   AT91F_TC1_CfgPMC ();
-  AT91C_BASE_TC1->TC_IDR = 0xFF;
   AT91C_BASE_TC1->TC_CCR = AT91C_TC_CLKDIS;
+  AT91C_BASE_TC1->TC_IDR = 0xFF;
   AT91C_BASE_TC1->TC_CMR =
     AT91C_TC_CLKS_TIMER_DIV2_CLOCK |
-    AT91C_TC_LDBSTOP |
-    AT91C_TC_ETRGEDG_FALLING |
-    AT91C_TC_ABETRG |    
     AT91C_TC_LDRA_RISING |
     AT91C_TC_LDRB_FALLING;       
   AT91C_BASE_TC1->TC_CCR = AT91C_TC_CLKEN;
   AT91F_AIC_ConfigureIt(AT91C_ID_TC1, 7, AT91C_AIC_SRCTYPE_INT_POSITIVE_EDGE, vnRF_PulseIRQ );
-  AT91C_BASE_TC1->TC_IER = AT91C_TC_ETRGS;  
+  AT91C_BASE_TC1->TC_IER = AT91C_TC_LDRBS;  
   AT91F_AIC_EnableIt ( AT91C_ID_TC1 );
 
   /* Configure Timer/Counter 2 */
   AT91F_TC2_CfgPMC ();
-  AT91C_BASE_TC2->TC_IDR = 0xFF;
   AT91C_BASE_TC2->TC_CCR = AT91C_TC_CLKDIS;
+  AT91C_BASE_TC2->TC_IDR = 0xFF;
   AT91C_BASE_TC2->TC_CMR =
     AT91C_TC_CLKS_TIMER_DIV2_CLOCK |
     AT91C_TC_CPCSTOP |
@@ -290,13 +284,9 @@ vInitDimmer (void)
   vUpdateDimmer (0);
   AT91C_BASE_TC2->TC_RC = ((PWM_CMR_CLOCK_FREQUENCY * 95) / (100 * 100));
   AT91C_BASE_TC2->TC_CCR = AT91C_TC_CLKEN;
-  AT91F_AIC_ConfigureIt(AT91C_ID_TC2, 7, AT91C_AIC_SRCTYPE_INT_POSITIVE_EDGE, vnRF_PhaseIRQ );
-  AT91C_BASE_TC2->TC_IER = AT91C_TC_ETRGS;  
-  AT91F_AIC_EnableIt ( AT91C_ID_TC2 );
 
   AT91C_BASE_TCB->TCB_BCR = AT91C_TCB_SYNC;
-  AT91C_BASE_TCB->TCB_BMR = AT91C_TCB_TC0XC0S_NONE | AT91C_TCB_TC1XC1S_NONE | AT91C_TCB_TC2XC2S_NONE;
-     
+  AT91C_BASE_TCB->TCB_BMR = AT91C_TCB_TC0XC0S_NONE | AT91C_TCB_TC1XC1S_NONE | AT91C_TCB_TC2XC2S_NONE;     
 }
 
 void
@@ -322,7 +312,7 @@ vnRFtaskCmd (void *parameter)
 	    switch (c)
 	      {
 	      case '+':
-		if (Percent < 99)
+		if (Percent < 100)
 		  {
 		    Percent++;
 		    Changed = pdTRUE;
@@ -339,6 +329,9 @@ vnRFtaskCmd (void *parameter)
 
 	  if (Changed)
 	    {
+	      DumpStringToUSB ("Pulse ");
+	      DumpUIntToUSB (freq);
+	      DumpStringToUSB (" ");
 	      DumpUIntToUSB (Percent);
 	      DumpStringToUSB ("DIM %\n\r");
 	      vUpdateDimmer (Percent);

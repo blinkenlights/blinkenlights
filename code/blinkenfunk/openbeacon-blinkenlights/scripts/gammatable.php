@@ -30,6 +30,8 @@
 define('GAMMA_SIZE' ,100);
 define('GAMMA_RANGE',0xFFFF);
 define('GAMMA',2);
+define('DIMMER_MINIMUM_BRIGHTNESS',0.1);
+
 
 printf("#define GAMMA       (%d)\n",GAMMA);
 printf("#define GAMMA_SIZE  (%d)\n",GAMMA_SIZE);
@@ -39,7 +41,7 @@ echo 'static unsigned short GammaTable[GAMMA_SIZE]={';
 
 for($i=0; $i<GAMMA_SIZE; $i++)
 {
-    $ts = round((GAMMA_RANGE*acos(2*pow($i/GAMMA_SIZE,GAMMA)-1))/M_PI);
+    $ts = round((GAMMA_RANGE*acos(2*((pow($i/GAMMA_SIZE,GAMMA)*(1-DIMMER_MINIMUM_BRIGHTNESS))+DIMMER_MINIMUM_BRIGHTNESS)-1))/M_PI);
         
     if(($i%5)==0)
 	printf("\n\t");
