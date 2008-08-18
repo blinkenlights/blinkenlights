@@ -37,6 +37,8 @@
 
 #define LINE_HERTZ_LOWPASS_SIZE 50
 
+#define DIMMER_TICKS 10000
+
 #define MINIMAL_PULSE_LENGH_US 160
 
 #define PWM_CMR_CLOCK_FREQUENCY (MCK/8)
@@ -62,7 +64,7 @@ TBeaconEnvelope g_Beacon;
 
 static unsigned short line_hz_table[LINE_HERTZ_LOWPASS_SIZE];
 static int line_hz_pos, line_hz_sum, line_hz, line_hz_enabled;
-static int dimmer_value;
+static int dimmer_percent;
 //static unsigned short gamma_table[GAMMA_SIZE];
 
 void RAMFUNC
@@ -230,8 +232,9 @@ void __attribute__ ((section (".ramfunc"))) vnRF_PulseIRQ_Handler (void)
       if (pulse_length > ((MINIMAL_PULSE_LENGH_US*PWM_CMR_CLOCK_FREQUENCY)/1000000))
 	{
 	  if (line_hz_enabled)
-	    {
-	      AT91C_BASE_TC2->TC_RA = dimmer_value;
+	    {	      
+	      pulse_length = (line_hz * dimmer_percent) / DIMMER_TICKS;
+	      AT91C_BASE_TC2->TC_RA = pulse_length ? pulse_length : 1;
 	      AT91C_BASE_TC2->TC_CCR = AT91C_TC_SWTRG;
 	    }
 
@@ -240,7 +243,7 @@ void __attribute__ ((section (".ramfunc"))) vnRF_PulseIRQ_Handler (void)
 
 	  line_hz_sum += period_length - line_hz_table[line_hz_pos];
 	  line_hz = line_hz_sum / LINE_HERTZ_LOWPASS_SIZE;
-	  AT91C_BASE_TC2->TC_RC = (line_hz * 95) / 100;
+	  AT91C_BASE_TC2->TC_RC = (line_hz * 82) / 100;
 
 	  line_hz_table[line_hz_pos++] = (unsigned short) period_length;
 	  if (line_hz_pos >= LINE_HERTZ_LOWPASS_SIZE)
@@ -260,6 +263,7 @@ void __attribute__ ((naked, section (".ramfunc"))) vnRF_PulseIRQ (void)
   vnRF_PulseIRQ_Handler ();
   portRESTORE_CONTEXT ();
 }
+
 /*
 static void
 vGammaRecalc (unsigned char Gamma)
@@ -287,27 +291,28 @@ vUpdateDimmer (int Percent)
     dimmer_value = (gamma_table[Percent] * line_hz) / GAMMA_RANGE;
 }
 */
+
 static inline void
 vUpdateDimmer (int Percent)
 {
-  if (Percent < 0)
-    Percent = 0;
-    
-  if (Percent >= 10000)
-    dimmer_value = 1;
+  if (Percent <= 0)
+    dimmer_percent = DIMMER_TICKS;
   else
-    dimmer_value = (line_hz * (10000-Percent)) / 10000;
+    if (Percent >= DIMMER_TICKS)
+	dimmer_percent = 0;
+    else
+	dimmer_percent = DIMMER_TICKS-Percent;
 }
 
 static inline void
 vInitDimmer (void)
 {
   /* reset Dimmer and gamma correction to default value */
-//  vGammaRecalc (GAMMA_DEFAULT);
+  /* vGammaRecalc (GAMMA_DEFAULT); */
 
   bzero (&line_hz_table, sizeof (line_hz_table));
   line_hz_pos = line_hz_sum = line_hz = line_hz_enabled = 0;
-  dimmer_value = 0;
+  dimmer_percent = 0;
 
   /* Enable Peripherals */
   AT91F_PIO_CfgPeriph (AT91C_BASE_PIOA, 0, TRIGGER_PIN | PHASE_PIN);
@@ -354,8 +359,9 @@ vnRFtaskCmd (void *parameter)
   /* Init Dimmer and wait till initial frequency is measured */
   vInitDimmer ();
   while (!line_hz_enabled)
-    vTaskDelay (100 / portTICK_RATE_MS);
+    vTaskDelay (250 / portTICK_RATE_MS);
   vUpdateDimmer (Percent);
+  
 
   while (1)
     {

@@ -24,7 +24,7 @@
 #ifndef __OPENBEACON_H__
 #define __OPENBEACON_H__
 
-#define TEA_ENCRYPTION_BLOCK_COUNT 4
+#include <xxtea.h>
 
 #define RFB_RFOPTIONS		0x0F
 

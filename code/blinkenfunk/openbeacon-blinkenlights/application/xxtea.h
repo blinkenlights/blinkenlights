@@ -26,6 +26,8 @@
 #ifndef __XXTEA_H__
 #define __XXTEA_H__
 
+#define TEA_ENCRYPTION_BLOCK_COUNT 8
+
 #ifdef  CONFIG_TEA_ENABLEENCODE
 extern void
 xxtea_encode (void)

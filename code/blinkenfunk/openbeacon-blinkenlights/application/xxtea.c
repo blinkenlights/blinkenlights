@@ -42,7 +42,7 @@ const long tea_key[4] = { 0x00112233, 0x44556677, 0x8899AABB, 0xCCDDEEFF };
 unsigned long z, y, sum, tmp, mx;
 unsigned char e;
 
-#define TEA_ROUNDS_COUNT (6+52/4)
+#define TEA_ROUNDS_COUNT (6+52/TEA_ENCRYPTION_BLOCK_COUNT)
 #define MX ((((z>>5)^(y<<2))+((y>>3)^(z<<4)))^((sum^y)+(tea_key[(p&3)^e]^z)))
 #define DELTA 0x9E3779B9L
 
@@ -65,7 +65,7 @@ xxtea_encode (void)
 {
   int q;
 
-  z = g_Beacon.data[3];
+  z = g_Beacon.data[7];
   sum = 0;
 
   q = TEA_ROUNDS_COUNT;
@@ -89,10 +89,31 @@ xxtea_encode (void)
       mx_encode (2);
       g_Beacon.data[2] = z;
 
-      y = g_Beacon.data[0];
+      y = g_Beacon.data[4];
       tmp = g_Beacon.data[3];
       mx_encode (3);
       g_Beacon.data[3] = z;
+
+      y = g_Beacon.data[5];
+      tmp = g_Beacon.data[4];
+      mx_encode (4);
+      g_Beacon.data[4] = z;
+
+      y = g_Beacon.data[6];
+      tmp = g_Beacon.data[5];
+      mx_encode (5);
+      g_Beacon.data[5] = z;
+
+      y = g_Beacon.data[7];
+      tmp = g_Beacon.data[6];
+      mx_encode (6);
+      g_Beacon.data[6] = z;
+
+      y = g_Beacon.data[0];
+      tmp = g_Beacon.data[7];
+      mx_encode (7);
+      g_Beacon.data[7] = z;
+
     }
 }
 #endif /*CONFIG_TEA_ENABLEENCODE */
@@ -115,6 +136,26 @@ xxtea_decode (void)
     {
       e = sum >> 2 & 3;
 
+      z = g_Beacon.data[6];
+      tmp = g_Beacon.data[7];
+      mx_decode (7);
+      g_Beacon.data[7] = y;
+
+      z = g_Beacon.data[5];
+      tmp = g_Beacon.data[6];
+      mx_decode (6);
+      g_Beacon.data[6] = y;
+
+      z = g_Beacon.data[4];
+      tmp = g_Beacon.data[5];
+      mx_decode (5);
+      g_Beacon.data[5] = y;
+
+      z = g_Beacon.data[3];
+      tmp = g_Beacon.data[4];
+      mx_decode (4);
+      g_Beacon.data[4] = y;
+
       z = g_Beacon.data[2];
       tmp = g_Beacon.data[3];
       mx_decode (3);
@@ -130,7 +171,7 @@ xxtea_decode (void)
       mx_decode (1);
       g_Beacon.data[1] = y;
 
-      z = g_Beacon.data[3];
+      z = g_Beacon.data[7];
       tmp = g_Beacon.data[0];
       mx_decode (0);
       g_Beacon.data[0] = y;
