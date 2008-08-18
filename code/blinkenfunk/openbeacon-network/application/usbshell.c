@@ -147,7 +147,8 @@ cmd_mac (const portCHAR * cmd)
 	 }
     }
    
-    shell_printf("setting new MAC: %02x%02x\n", mac_h, mac_l);
+    shell_printf("setting new MAC: %02x%02x.\n", mac_h, mac_l);
+    shell_printf("Please power-cycle the device to make this change take place.\n");
 
     /* set it ... */
     if (env.e.mac_h != 0xff && env.e.mac_l != 0xff)
