@@ -296,7 +296,7 @@ vUpdateDimmer (int Percent)
   if (Percent >= 10000)
     dimmer_value = 1;
   else
-    dimmer_value = (line_hz * (10000-Percent) * 4) / 50000;
+    dimmer_value = (line_hz * (10000-Percent)) / 10000;
 }
 
 static inline void
@@ -348,14 +348,14 @@ vnRFtaskCmd (void *parameter)
 {
   (void) parameter;
   portCHAR c;
-  int Percent = 0;
+  int Percent = 2000;
   bool_t Changed;
 
   /* Init Dimmer and wait till initial frequency is measured */
   vInitDimmer ();
   while (!line_hz_enabled)
     vTaskDelay (100 / portTICK_RATE_MS);
-  vUpdateDimmer (0);
+  vUpdateDimmer (Percent);
 
   while (1)
     {
@@ -365,12 +365,12 @@ vnRFtaskCmd (void *parameter)
 
 	  if (c >= 'a' && c <= 'q')
 	    {
-	      Percent = (c - 'a') * 600;
+	      Percent = 2000 + (c - 'a') * 500;
 	      Changed = pdTRUE;
 	    }
 	  else if (c >= '0' && c <= '9')
 	    {
-	      Percent = (c - '0') * 1000;
+	      Percent = 2000 + (c - '0') * 889;
 	      Changed = pdTRUE;
 	    }
 	  else
@@ -380,8 +380,7 @@ vnRFtaskCmd (void *parameter)
 	        if(Percent % 100)
 		    Percent -= Percent % 100;
 		else
-		    if(Percent >= 100)
-			Percent -=100;
+		    Percent -=100;
 		Changed = pdTRUE;
 	    	break;	      
 	      case '*':
@@ -389,29 +388,26 @@ vnRFtaskCmd (void *parameter)
 		    Percent += 100-(Percent % 100);
 		else
 		    Percent +=100;
-		if(Percent>10000)
-		    Percent=10000;
 		Changed = pdTRUE;
 	    	break;	      
 	      case '+':
-		if (Percent < 10000)
-		  {
-		    Percent++;
-		    Changed = pdTRUE;
-		  }
+		Percent++;
+		Changed = pdTRUE;
 		break;
 	      case '-':
-		if (Percent > 0)
-		  {
-		    Percent--;
-		    Changed = pdTRUE;
-		  }
+		Percent--;
+		Changed = pdTRUE;
 		break;
 	      }
 
 	  if (Changed)
 	    {
 	      DumpStringToUSB ("DIM=");
+	      if(Percent>10000)
+	        Percent=10000;
+	      else
+	        if(Percent<2000)
+		    Percent=2000;
 	      DumpUIntToUSB (Percent);
 	      DumpStringToUSB ("%%\n\r");
 	      vUpdateDimmer (Percent);
