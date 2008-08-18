@@ -63,7 +63,7 @@ TBeaconEnvelope g_Beacon;
 static unsigned short line_hz_table[LINE_HERTZ_LOWPASS_SIZE];
 static int line_hz_pos, line_hz_sum, line_hz, line_hz_enabled;
 static int dimmer_value;
-static unsigned short gamma_table[GAMMA_SIZE];
+//static unsigned short gamma_table[GAMMA_SIZE];
 
 void RAMFUNC
 shuffle_tx_byteorder (void)
@@ -260,7 +260,7 @@ void __attribute__ ((naked, section (".ramfunc"))) vnRF_PulseIRQ (void)
   vnRF_PulseIRQ_Handler ();
   portRESTORE_CONTEXT ();
 }
-
+/*
 static void
 vGammaRecalc (unsigned char Gamma)
 {
@@ -286,12 +286,24 @@ vUpdateDimmer (int Percent)
   else
     dimmer_value = (gamma_table[Percent] * line_hz) / GAMMA_RANGE;
 }
+*/
+static inline void
+vUpdateDimmer (int Percent)
+{
+  if (Percent < 0)
+    Percent = 0;
+    
+  if (Percent >= 10000)
+    dimmer_value = 1;
+  else
+    dimmer_value = (line_hz * (10000-Percent) * 4) / 50000;
+}
 
 static inline void
 vInitDimmer (void)
 {
   /* reset Dimmer and gamma correction to default value */
-  vGammaRecalc (GAMMA_DEFAULT);
+//  vGammaRecalc (GAMMA_DEFAULT);
 
   bzero (&line_hz_table, sizeof (line_hz_table));
   line_hz_pos = line_hz_sum = line_hz = line_hz_enabled = 0;
@@ -353,19 +365,36 @@ vnRFtaskCmd (void *parameter)
 
 	  if (c >= 'a' && c <= 'q')
 	    {
-	      Percent = (c - 'a') * 6;
+	      Percent = (c - 'a') * 600;
 	      Changed = pdTRUE;
 	    }
 	  else if (c >= '0' && c <= '9')
 	    {
-	      Percent = (c - '0') * 10;
+	      Percent = (c - '0') * 1000;
 	      Changed = pdTRUE;
 	    }
 	  else
 	    switch (c)
 	      {
+	      case '/':
+	        if(Percent % 100)
+		    Percent -= Percent % 100;
+		else
+		    if(Percent >= 100)
+			Percent -=100;
+		Changed = pdTRUE;
+	    	break;	      
+	      case '*':
+	        if(Percent % 100)
+		    Percent += 100-(Percent % 100);
+		else
+		    Percent +=100;
+		if(Percent>10000)
+		    Percent=10000;
+		Changed = pdTRUE;
+	    	break;	      
 	      case '+':
-		if (Percent < 100)
+		if (Percent < 10000)
 		  {
 		    Percent++;
 		    Changed = pdTRUE;
@@ -384,7 +413,7 @@ vnRFtaskCmd (void *parameter)
 	    {
 	      DumpStringToUSB ("DIM=");
 	      DumpUIntToUSB (Percent);
-	      DumpStringToUSB ("%\n\r");
+	      DumpStringToUSB ("%%\n\r");
 	      vUpdateDimmer (Percent);
 	    }
 	}
