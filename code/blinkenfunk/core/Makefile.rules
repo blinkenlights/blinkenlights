@@ -44,6 +44,7 @@ CORE=../core/
 
 CFLAGS= \
 -D __$(CPU)__ \
+-D __$(ARCH)__ \
 -Iconfig \
 -I$(CORE)openbeacon \
 -I$(CORE)openbeacon/nRF24L01 \
