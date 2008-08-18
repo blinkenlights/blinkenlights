@@ -101,16 +101,19 @@ static xTaskHandle networkTaskHandle = NULL;
 void
 vNetworkInit (void)
 {
-  if (env.e.mac_l == 0xff && env.e.mac_h == 0xff)
+  env_init ();
+  env_load ();
+
+  if ((env.e.mac_l == 0xff && env.e.mac_h == 0xff) ||
+      (env.e.mac_l == 0x00 && env.e.mac_h == 0x00))
     {
       debug_printf ("Mac address not set, skipping network intialization\n");
       debug_printf ("Use the 'mac' command to set it.\n");
       return;
     }
 
-  cMACAddress[4] = env.e.mac_l;
-  cMACAddress[5] = env.e.mac_h;
-  debug_printf(" --- ENV: %02x, %02x\n", cMACAddress[4], cMACAddress[5]);
+  cMACAddress[4] = env.e.mac_h;
+  cMACAddress[5] = env.e.mac_l;
 
   if (networkTaskHandle)
     {

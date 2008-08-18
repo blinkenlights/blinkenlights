@@ -103,7 +103,7 @@ typedef struct
   unsigned int magic, size, crc16;
   signed int assigned_line;
   unsigned char mac_h, mac_l;
-} TEnvironment;
+} __attribute__((aligned (8))) TEnvironment;
 
 /*----------------------------------*/
 /* define debug baud rate if needed */

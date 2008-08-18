@@ -771,8 +771,6 @@ prvSetupMACAddress (void)
     ((unsigned portLONG) cMACAddress[1] << 8) | cMACAddress[0];
   AT91C_BASE_EMAC->EMAC_SA1H =
     ((unsigned portLONG) cMACAddress[5] << 8) | cMACAddress[4];
-
-debug_printf(" LALALALA ::: %02x %02x\n", cMACAddress[4], cMACAddress[5]);
 }
 
 /*-----------------------------------------------------------*/
