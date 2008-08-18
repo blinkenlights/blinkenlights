@@ -53,14 +53,14 @@ mx_update (unsigned char p)
 }
 
 #ifdef  CONFIG_TEA_ENABLEENCODE
-static inline void RAMFUNC
+static inline void
 mx_encode (unsigned char p)
 {
   mx_update (p);
   z = tmp + mx;
 }
 
-void RAMFUNC
+void
 xxtea_encode (void)
 {
   int q;
@@ -119,14 +119,14 @@ xxtea_encode (void)
 #endif /*CONFIG_TEA_ENABLEENCODE */
 
 #ifdef  CONFIG_TEA_ENABLEDECODE
-static inline void RAMFUNC
+static inline void
 mx_decode (unsigned char p)
 {
   mx_update (p);
   y = tmp - mx;
 }
 
-void RAMFUNC
+void
 xxtea_decode (void)
 {
   y = g_Beacon.data[0];

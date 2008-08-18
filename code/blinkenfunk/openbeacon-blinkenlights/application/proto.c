@@ -67,19 +67,28 @@ static int line_hz_pos, line_hz_sum, line_hz, line_hz_enabled;
 static int dimmer_percent;
 //static unsigned short gamma_table[GAMMA_SIZE];
 
-void RAMFUNC
+void
 shuffle_tx_byteorder (void)
 {
   unsigned char tmp;
 
-  SHUFFLE (0 + 0, 3 + 0);
-  SHUFFLE (1 + 0, 2 + 0);
-  SHUFFLE (0 + 4, 3 + 4);
-  SHUFFLE (1 + 4, 2 + 4);
-  SHUFFLE (0 + 8, 3 + 8);
-  SHUFFLE (1 + 8, 2 + 8);
+  SHUFFLE (0 +  0, 3 +  0);
+  SHUFFLE (1 +  0, 2 +  0);
+  SHUFFLE (0 +  4, 3 +  4);
+  SHUFFLE (1 +  4, 2 +  4);
+  SHUFFLE (0 +  8, 3 +  8);
+  SHUFFLE (1 +  8, 2 +  8);
   SHUFFLE (0 + 12, 3 + 12);
   SHUFFLE (1 + 12, 2 + 12);
+  SHUFFLE (0 + 16, 3 + 16);
+  SHUFFLE (1 + 16, 2 + 16);
+  SHUFFLE (0 + 20, 3 + 20);
+  SHUFFLE (1 + 20, 2 + 20);
+  SHUFFLE (0 + 24, 3 + 24);
+  SHUFFLE (1 + 24, 2 + 24);
+  SHUFFLE (0 + 28, 3 + 28);
+  SHUFFLE (1 + 28, 2 + 28);
+
 }
 
 static inline s_int8_t
@@ -90,7 +99,7 @@ PtInitNRF (void)
        ENABLED_NRF_FEATURES))
     return 0;
 
-  nRFAPI_SetPipeSizeRX (0, 16);
+  nRFAPI_SetPipeSizeRX (0, sizeof(g_Beacon.data));
   nRFAPI_SetTxPower (3);
   nRFAPI_SetRxMode (1);
   nRFCMD_CE (1);
