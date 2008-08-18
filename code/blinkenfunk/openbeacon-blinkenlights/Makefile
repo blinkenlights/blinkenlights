@@ -1,5 +1,6 @@
 TARGET=openbeacon-blinkenlights
-ARCH=AT91SAM7S64
+ARCH=AT91SAM7S
+CPU=$(ARCH)64
 DEBUG=-g
 OPTIM=-O2
 

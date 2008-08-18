@@ -1,5 +1,6 @@
 TARGET=openbeacon-network
-ARCH=AT91SAM7X256
+ARCH=AT91SAM7X
+CPU=$(ARCH)256
 DEBUG=-g
 OPTIM=-O2
 
@@ -31,8 +32,6 @@ NETWORK_SRC= \
   network/src/core/udp.c \
   network/src/netif/etharp.c \
   network/src/netif/ethernetif.c
-
-#  network/src/core/sys.c
 
 APP_SRC= \
   application/debug_printf.c \

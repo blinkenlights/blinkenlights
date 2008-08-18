@@ -43,7 +43,7 @@ CORE=../core/
 #
 
 CFLAGS= \
--D __$(ARCH)__ \
+-D __$(CPU)__ \
 -Iconfig \
 -I$(CORE)openbeacon \
 -I$(CORE)openbeacon/nRF24L01 \
@@ -74,7 +74,7 @@ LINKER_FLAGS=$(APP_LDFLAGS) -Xlinker -o$(TARGET).elf -Xlinker -M -Xlinker -Map=$
 #
 # Source files that must be built to ARM mode.
 #
-ARM_SRC= \
+ARM_SRC_COMMON= \
   $(APP_SRC) \
   $(CORE)openbeacon/dbgu.c \
   $(CORE)openbeacon/env.c \
@@ -85,13 +85,21 @@ ARM_SRC= \
   $(CORE)os/core/list.c \
   $(CORE)os/core/queue.c \
   $(CORE)os/core/tasks.c \
-  $(CORE)os/core/ARM7_AT91SAM7/lib_AT91SAM7.c \
   $(CORE)os/core/port.c \
   $(CORE)os/core/portISR.c \
   $(CORE)os/core/MemMang/heap_2.c \
   $(CORE)os/usb/USB-CDC.c \
   $(CORE)os/usb/USBIsr.c
 
+ifeq ($(ARCH),AT91SAM7S)
+ARM_SRC= \
+  $(ARM_SRC_COMMON) \
+  $(CORE)os/core/ARM7_AT91SAM7/lib_AT91SAM7.c
+else
+ARM_SRC= \
+  $(ARM_SRC_COMMON) 
+endif
+ 
 #
 # Define all object files.
 #
