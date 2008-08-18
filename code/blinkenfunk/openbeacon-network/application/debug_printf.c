@@ -382,7 +382,7 @@ debug_printf (const char *fmt, ...)
   int i;
 
   va_start (args, fmt);
-  i = vsnprintf (buf, sizeof (buf), fmt, args);
+  i = vsprintf (buf, fmt, args);
   va_end (args);
 
   p = buf;
