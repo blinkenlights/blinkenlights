@@ -28,11 +28,12 @@
 #	port sections of the online documentation.
 #	***************************************************************************
 
-CC=$(CROSS)arm-elf-gcc
-LD=$(CROSS)arm-elf-ld
-OBJCOPY=$(CROSS)arm-elf-objcopy
-OBJDUMP=$(CROSS)arm-elf-objdump
-AR=$(CROSS)arm-elf-ar
+CROSS=arm-none-eabi-
+CC=$(CROSS)gcc
+LD=$(CROSS)ld
+OBJCOPY=$(CROSS)objcopy
+OBJDUMP=$(CROSS)objdump
+AR=$(CROSS)ar
 LDSCRIPT=config/atmel-rom.ld
 
 CORE=../core/
@@ -68,7 +69,7 @@ CRT0=$(CORE)os/boot/boot.s
 #-ffunction-sections \
 #-fdata-sections \
 #LINKER_FLAGS=-Xlinker -s -Xlinker -static -Xlinker --gc-sections -Xlinker -o$(TARGET).elf -Xlinker -M -Xlinker -Map=$(TARGET).map
-LINKER_FLAGS=-Xlinker -o$(TARGET).elf -Xlinker -M -Xlinker -Map=$(TARGET).map
+LINKER_FLAGS=$(APP_LDFLAGS) -Xlinker -o$(TARGET).elf -Xlinker -M -Xlinker -Map=$(TARGET).map
 
 #
 # Source files that must be built to ARM mode.
