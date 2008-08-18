@@ -7,12 +7,13 @@ import struct
 
 def usage():
 	print("Blinkenlights Wireless MCU setup tool\n")
-	print("Usage: %s [--help] [--host <ip>] [--port <port>] [--set key=value]" % sys.argv[0])
+	print("Usage: %s [--help] [--host <ip>] [--port <port>] [--set-line value] [--set-lamp-id value]" % sys.argv[0])
 	print("\t--help			this screen")
 	print("\t--host <ip>		the IP address to connect to")
 	print("\t--port <port>		the port to use, defaults to 2323")
 	print("\t--set-line <line>	configure the WMCU to listen to line #<line>")
-	print("\t--set-lamp-id <id>	")
+	print("\t--set-lamp-id <id>	sets the id of an lamp, requires --lamp-mac")
+	print("\t--lamp-mac <id>	specify the lamp MAC address to use for other commands")
 	sys.exit(1)
 
 action = -1
