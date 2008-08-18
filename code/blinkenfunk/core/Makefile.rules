@@ -36,6 +36,7 @@ OBJDUMP=$(CROSS)objdump
 AR=$(CROSS)ar
 LDSCRIPT=config/atmel-rom.ld
 
+
 CORE=../core/
 
 #
@@ -75,7 +76,7 @@ LINKER_FLAGS=$(APP_LDFLAGS) -Xlinker -o$(TARGET).elf -Xlinker -M -Xlinker -Map=$
 #
 # Source files that must be built to ARM mode.
 #
-ARM_SRC_COMMON= \
+ARM_SRC= \
   $(APP_SRC) \
   $(CORE)openbeacon/dbgu.c \
   $(CORE)openbeacon/env.c \
@@ -83,6 +84,7 @@ ARM_SRC_COMMON= \
   $(CORE)openbeacon/nRF24L01/nRF_API.c \
   $(CORE)openbeacon/nRF24L01/nRF_CMD.c \
   $(CORE)os/boot/Cstartup_SAM7.c \
+  $(CORE)os/core/ARM7_AT91SAM7/lib_AT91SAM7.c \
   $(CORE)os/core/list.c \
   $(CORE)os/core/queue.c \
   $(CORE)os/core/tasks.c \
@@ -92,15 +94,6 @@ ARM_SRC_COMMON= \
   $(CORE)os/usb/USB-CDC.c \
   $(CORE)os/usb/USBIsr.c
 
-ifeq ($(ARCH),AT91SAM7S)
-ARM_SRC= \
-  $(ARM_SRC_COMMON) \
-  $(CORE)os/core/ARM7_AT91SAM7/lib_AT91SAM7.c
-else
-ARM_SRC= \
-  $(ARM_SRC_COMMON) 
-endif
- 
 #
 # Define all object files.
 #
