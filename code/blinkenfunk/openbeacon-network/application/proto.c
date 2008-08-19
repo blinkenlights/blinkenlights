@@ -82,8 +82,10 @@ swapshort (unsigned short src)
 static inline unsigned long
 swaplong (unsigned long src)
 {
-  return (src >> 24) | (src << 24) | ((src >> 8) & 0x0000FF00) | ((src << 8) &
-								  0x00FF0000);
+  return (src >> 24) |
+  	 (src << 24) | 
+	 ((src >> 8) & 0x0000FF00) |
+	 ((src << 8) & 0x00FF0000);
 }
 
 static inline short
@@ -104,8 +106,7 @@ crc16 (const unsigned char *buffer, int size)
   return crc;
 }
 
-void
-vnRFtaskTx (void)
+void vnRFTransmitPacket(BRFPacket *pkg)
 {
   unsigned short crc;
 
@@ -118,21 +119,17 @@ vnRFtaskTx (void)
   // set TX mode
   nRFAPI_SetRxMode (0);
 
-  // setup vote stats package 
-  memset (&g_Beacon, 0, sizeof (g_Beacon));
-
   // update crc
-  crc =
-    crc16 (g_Beacon.datab, sizeof (g_Beacon.pkt) - sizeof (g_Beacon.pkt.crc));
-  g_Beacon.pkt.crc = swapshort (crc);
+  crc = crc16 ((unsigned char *) pkg, sizeof(*pkg) - sizeof(pkg->crc));
+  pkg->crc = swapshort (crc);
 
   // encrypt the data
   shuffle_tx_byteorder ();
-  xxtea_encode ();
+  xxtea_encode ((long *) pkg, sizeof(*pkg) / sizeof(long));
   shuffle_tx_byteorder ();
 
   // upload data to nRF24L01
-  nRFAPI_TX (g_Beacon.datab, sizeof (g_Beacon));
+  nRFAPI_TX ((unsigned char *) pkg, sizeof (*pkg));
 
   // transmit data
   nRFCMD_CE (1);
@@ -145,6 +142,7 @@ vnRFtaskTx (void)
 
   // turn off red TX indication LED
   vLedSetRed (0);
+
 }
 
 void
@@ -196,8 +194,7 @@ vnRFtaskRx (void *parameter)
 	}
       nRFAPI_ClearIRQ (MASK_IRQ_FLAGS);*/
 
-      /* schedule tx */
-      vnRFtaskTx ();
+      /* schedule */
       vTaskDelay (100 / portTICK_RATE_MS);
     }
 }

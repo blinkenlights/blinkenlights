@@ -42,6 +42,9 @@
 /* Blinkenlights includes. */
 #include "bprotocol.h"
 
+/* RF includes */
+#include "proto.h"
+
 #define MAX_WIDTH 100
 #define MAX_HEIGHT 100
 #define MAX_CHANNELS 3
@@ -49,6 +52,7 @@
 
 static struct udp_pcb *b_pcb;
 static unsigned char payload[2048];
+static BRFPacket rfpkg;
 
 static void b_output_line(int width, unsigned char *data)
 {
@@ -116,6 +120,19 @@ static int b_parse_mcu_setup(mcu_setup_header_t *header, int maxlen)
 	return len;
 }
 
+static void b_set_lamp_id(int lamp_id, int lamp_mac)
+{
+	debug_printf("lamp MAC %08x -> ID %d\n", lamp_id, lamp_mac);
+	rfpkg.cmd = RF_CMD_SET_LAMP_ID;
+	rfpkg.param = lamp_id;
+	rfpkg.payload[0] = lamp_mac >> 24;
+	rfpkg.payload[1] = lamp_mac >> 16;
+	rfpkg.payload[2] = lamp_mac >> 8;
+	rfpkg.payload[3] = lamp_mac;
+
+	vnRFTransmitPacket(&rfpkg);
+}
+
 static int b_parse_mcu_devctrl(mcu_devctrl_header_t *header, int maxlen)
 {
 	int len = sizeof(*header);
@@ -131,6 +148,12 @@ static int b_parse_mcu_devctrl(mcu_devctrl_header_t *header, int maxlen)
 			debug_printf("new assigned line received: %d\n", env.e.assigned_line);
 			env_store();
 			break;
+		case MCU_DEVCTRL_COMMAND_SET_LAMP_ID: {
+			int lamp_id = LWIP_PLATFORM_HTONL((unsigned int) header->value);
+			int lamp_mac = LWIP_PLATFORM_HTONL((unsigned int) header->param);
+			b_set_lamp_id(lamp_id, lamp_mac);
+			break;
+		}
 	}
 
 	return 0; //len;
@@ -144,7 +167,6 @@ static void b_recv(void *arg, struct udp_pcb *pcb, struct pbuf *p, struct ip_add
 		pbuf_free(p);
 		return;
 	}
-
 
 	/* package payload has to be copied to a local buffer for whatever reason */
 	memcpy(payload, p->payload, p->len);

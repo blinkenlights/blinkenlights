@@ -120,7 +120,7 @@ struct mcu_setup_header
  */
 
 #define MCU_DEVCTRL_COMMAND_SET_LINE	0	/* set MCU's configured line */
-
+#define MCU_DEVCTRL_COMMAND_SET_LAMP_ID	1	/* set the ID of a lamp (MAC in *param) */
 typedef struct mcu_devctrl_header  mcu_devctrl_header_t;
 
 struct mcu_devctrl_header
