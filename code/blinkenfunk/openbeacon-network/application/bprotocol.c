@@ -167,6 +167,14 @@ static void b_write_gamma_curve(int lamp_mac)
 	vnRFTransmitPacket(&rfpkg);
 }
 
+static void b_set_lamp_jitter(int lamp_mac, int jitter)
+{
+	memset(&rfpkg, 0, sizeof(rfpkg));
+	rfpkg.cmd = RF_CMD_SET_JITTER;
+	rfpkg.mac = lamp_mac;
+	rfpkg.set_jitter.jitter = jitter;
+	vnRFTransmitPacket(&rfpkg);
+}
 
 static int b_parse_mcu_devctrl(mcu_devctrl_header_t *header, int maxlen)
 {
@@ -203,6 +211,12 @@ static int b_parse_mcu_devctrl(mcu_devctrl_header_t *header, int maxlen)
 		case MCU_DEVCTRL_COMMAND_WRITE_GAMMA: {
 			int lamp_mac = LWIP_PLATFORM_HTONL(header->mac);
 			b_write_gamma_curve(lamp_mac);
+			break;
+		}
+		case MCU_DEVCTRL_COMMAND_SET_JITTER: {
+			int lamp_mac = LWIP_PLATFORM_HTONL(header->mac);
+			int jitter = LWIP_PLATFORM_HTONL(header->value);
+			b_set_lamp_jitter(lamp_mac, jitter);
 			break;
 		}
 	}

@@ -123,6 +123,7 @@ struct mcu_setup_header
 #define MCU_DEVCTRL_COMMAND_SET_LAMP_ID	1	/* set the ID of a lamp (MAC in *param) 	*/
 #define MCU_DEVCTRL_COMMAND_SET_GAMMA	2	/* set the gamma curve of a lamp		*/
 #define MCU_DEVCTRL_COMMAND_WRITE_GAMMA	3	/* tell the MCU to write the gamma curve	*/
+#define MCU_DEVCTRL_COMMAND_SET_JITTER	4	/* set the jitter for a lamp			*/
 typedef struct mcu_devctrl_header  mcu_devctrl_header_t;
 
 struct mcu_devctrl_header

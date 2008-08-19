@@ -33,6 +33,7 @@ enum {
   RF_CMD_SET_LAMP_ID,
   RF_CMD_SET_GAMMA,
   RF_CMD_WRITE_GAMMA,
+  RF_CMD_SET_JITTER,
 };
 
 typedef struct
@@ -52,6 +53,10 @@ typedef struct
     struct {
       unsigned short val[8];
     } set_gamma;
+
+    struct {
+      unsigned short jitter;
+    } set_jitter;
 
   }; /* union */
 
