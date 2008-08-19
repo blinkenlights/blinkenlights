@@ -122,14 +122,17 @@ static int b_parse_mcu_setup(mcu_setup_header_t *header, int maxlen)
 
 static void b_set_lamp_id(int lamp_id, int lamp_mac)
 {
-	debug_printf("lamp MAC %08x -> ID %d\n", lamp_id, lamp_mac);
+	debug_printf("lamp MAC %08x -> ID %d\n", lamp_mac, lamp_id);
+	
+	memset(&rfpkg, 0, sizeof(rfpkg));
+/*
 	rfpkg.cmd = RF_CMD_SET_LAMP_ID;
 	rfpkg.param = lamp_id;
 	rfpkg.payload[0] = lamp_mac >> 24;
 	rfpkg.payload[1] = lamp_mac >> 16;
 	rfpkg.payload[2] = lamp_mac >> 8;
 	rfpkg.payload[3] = lamp_mac;
-
+*/
 	vnRFTransmitPacket(&rfpkg);
 }
 

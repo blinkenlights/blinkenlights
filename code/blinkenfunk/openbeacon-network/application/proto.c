@@ -33,7 +33,7 @@
 #include "nRF24L01/nRF_CMD.h"
 #include "nRF24L01/nRF_API.h"
 
-const unsigned char broadcast_mac[NRF_MAX_MAC_SIZE] = { 1, 2, 3, 2, 1 };
+const unsigned char broadcast_mac[NRF_MAX_MAC_SIZE] = { 'D', 'E', 'C', 'A', 'D' };
 TBeaconEnvelope g_Beacon;
 
 /**********************************************************************/
@@ -124,9 +124,9 @@ void vnRFTransmitPacket(BRFPacket *pkg)
   pkg->crc = swapshort (crc);
 
   // encrypt the data
-  shuffle_tx_byteorder ();
-  xxtea_encode ((long *) pkg, sizeof(*pkg) / sizeof(long));
-  shuffle_tx_byteorder ();
+//  shuffle_tx_byteorder ();
+//  xxtea_encode ((long *) pkg, sizeof(*pkg) / sizeof(long));
+//  shuffle_tx_byteorder ();
 
   // upload data to nRF24L01
   nRFAPI_TX ((unsigned char *) pkg, sizeof (*pkg));
