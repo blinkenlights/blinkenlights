@@ -61,9 +61,11 @@ static void b_output_line(int width, unsigned char *data)
 	memset(&rfpkg, 0, sizeof(rfpkg));
 	rfpkg.cmd = RF_CMD_SET_VALUES;
 	rfpkg.line = env.e.assigned_line;
+	rfpkg.mac = 0xffff; /* send to all MACs */
 
-	for (i = 0; i < width && i < RF_PAYLOAD_SIZE; i++)
-		rfpkg.payload[i] = data[i];
+	for (i = 0; (i * 2 < width) && (i < RF_PAYLOAD_SIZE); i++)
+		rfpkg.payload[i] = (data[i * 2 + 0] << 4) |
+				   (data[i * 2 + 1] & 0xf);
 
 	vnRFTransmitPacket(&rfpkg);
 }
