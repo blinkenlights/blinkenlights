@@ -26,7 +26,8 @@
 #include "openbeacon.h"
 
 #define FIFO_DEPTH	256
-#define RF_PAYLOAD_SIZE	28
+#define RF_PAYLOAD_SIZE	26
+
 enum {
   RF_CMD_SET_VALUES,
   RF_CMD_SET_LAMP_ID,
