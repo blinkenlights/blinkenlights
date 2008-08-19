@@ -35,28 +35,6 @@
 #include "debug_printf.h"
 
 const unsigned char broadcast_mac[NRF_MAX_MAC_SIZE] = { 'D', 'E', 'C', 'A', 'D' };
-TBeaconEnvelope g_Beacon;
-
-/**********************************************************************/
-#define SHUFFLE(a,b)    tmp=g_Beacon.datab[a];\
-                        g_Beacon.datab[a]=g_Beacon.datab[b];\
-                        g_Beacon.datab[b]=tmp;
-
-/**********************************************************************/
-void RAMFUNC
-shuffle_tx_byteorder (void)
-{
-  unsigned char tmp;
-
-  SHUFFLE (0 + 0, 3 + 0);
-  SHUFFLE (1 + 0, 2 + 0);
-  SHUFFLE (0 + 4, 3 + 4);
-  SHUFFLE (1 + 4, 2 + 4);
-  SHUFFLE (0 + 8, 3 + 8);
-  SHUFFLE (1 + 8, 2 + 8);
-  SHUFFLE (0 + 12, 3 + 12);
-  SHUFFLE (1 + 12, 2 + 12);
-}
 
 static inline s_int8_t
 PtInitNRF (void)
@@ -88,6 +66,16 @@ swaplong (unsigned long src)
 	 ((src >> 8) & 0x0000FF00) |
 	 ((src << 8) & 0x00FF0000);
 }
+
+static void
+shuffle_tx_byteorder (unsigned long *v, int len)
+{
+  while(len--) {
+    *v = swaplong(*v);
+    v++;
+  }
+}
+
 
 static inline short
 crc16 (const unsigned char *buffer, int size)
@@ -125,9 +113,9 @@ void vnRFTransmitPacket(BRFPacket *pkg)
   pkg->crc = swapshort (crc);
 
   // encrypt the data
-//  shuffle_tx_byteorder ();
-//  xxtea_encode ((long *) pkg, sizeof(*pkg) / sizeof(long));
-//  shuffle_tx_byteorder ();
+  shuffle_tx_byteorder ((unsigned long *) pkg, sizeof(*pkg) / sizeof(long));
+  xxtea_encode ((long *) pkg, sizeof(*pkg) / sizeof(long));
+  shuffle_tx_byteorder ((unsigned long *) pkg, sizeof(*pkg) / sizeof(long));
 
   // upload data to nRF24L01
  

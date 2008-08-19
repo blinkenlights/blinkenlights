@@ -59,8 +59,8 @@ static void b_output_line(int width, unsigned char *data)
 	int i;
 
 	memset(&rfpkg, 0, sizeof(rfpkg));
-//	rfpkg.cmd = RF_CMD_SET_LAMP_ID;
-//	rfpkg.param = lamp_id;
+	rfpkg.cmd = RF_CMD_SET_VALUES;
+	rfpkg.line = env.e.assigned_line;
 
 	for (i = 0; i < width && i < RF_PAYLOAD_SIZE; i++)
 		rfpkg.payload[i] = data[i];
@@ -129,20 +129,42 @@ static int b_parse_mcu_setup(mcu_setup_header_t *header, int maxlen)
 	return len;
 }
 
-static void b_set_lamp_id(int lamp_id, int lamp_mac)
+static void b_set_lamp_id(int lamp_id, int lamp_line, int lamp_mac)
 {
 	debug_printf("lamp MAC %08x -> ID %d\n", lamp_mac, lamp_id);
-	
+
 	memset(&rfpkg, 0, sizeof(rfpkg));
 	rfpkg.cmd = RF_CMD_SET_LAMP_ID;
-	rfpkg.param = lamp_id;
-	rfpkg.payload[0] = lamp_mac >> 24;
-	rfpkg.payload[1] = lamp_mac >> 16;
-	rfpkg.payload[2] = lamp_mac >> 8;
-	rfpkg.payload[3] = lamp_mac;
+	
+	rfpkg.mac = lamp_mac;
+	rfpkg.line = 0xff;
+	rfpkg.set_lamp_id.id = lamp_id;
+	rfpkg.set_lamp_id.line = lamp_line;
+	vnRFTransmitPacket(&rfpkg);
+}
+
+static void b_set_gamma_curve(int lamp_mac, unsigned short *gamma)
+{
+	int i;
+
+	memset(&rfpkg, 0, sizeof(rfpkg));
+	rfpkg.cmd = RF_CMD_SET_GAMMA;
+	rfpkg.mac = lamp_mac;
+
+	for (i = 0; i < 8; i++)
+		rfpkg.set_gamma.val[i] = gamma[i];
 
 	vnRFTransmitPacket(&rfpkg);
 }
+
+static void b_write_gamma_curve(int lamp_mac)
+{
+	memset(&rfpkg, 0, sizeof(rfpkg));
+	rfpkg.cmd = RF_CMD_WRITE_GAMMA;
+	rfpkg.mac = lamp_mac;
+	vnRFTransmitPacket(&rfpkg);
+}
+
 
 static int b_parse_mcu_devctrl(mcu_devctrl_header_t *header, int maxlen)
 {
@@ -160,9 +182,25 @@ static int b_parse_mcu_devctrl(mcu_devctrl_header_t *header, int maxlen)
 			env_store();
 			break;
 		case MCU_DEVCTRL_COMMAND_SET_LAMP_ID: {
-			int lamp_id = LWIP_PLATFORM_HTONL((unsigned int) header->value);
-			int lamp_mac = LWIP_PLATFORM_HTONL((unsigned int) header->param);
-			b_set_lamp_id(lamp_id, lamp_mac);
+			int lamp_mac = LWIP_PLATFORM_HTONL(header->mac);
+			int lamp_id = LWIP_PLATFORM_HTONL(header->value);
+			int lamp_line = LWIP_PLATFORM_HTONL(header->param[0]);
+			b_set_lamp_id(lamp_id, lamp_line, lamp_mac);
+			break;
+		}
+		case MCU_DEVCTRL_COMMAND_SET_GAMMA: {
+			unsigned short i, gamma[8];
+			int lamp_mac = LWIP_PLATFORM_HTONL(header->mac);
+			
+			for (i = 0; i < 8; i++)
+				gamma[i] = LWIP_PLATFORM_HTONL(header->param[i]);
+			
+			b_set_gamma_curve(lamp_mac, gamma);
+			break;
+		}
+		case MCU_DEVCTRL_COMMAND_WRITE_GAMMA: {
+			int lamp_mac = LWIP_PLATFORM_HTONL(header->mac);
+			b_write_gamma_curve(lamp_mac);
 			break;
 		}
 	}

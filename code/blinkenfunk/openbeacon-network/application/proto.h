@@ -28,15 +28,32 @@
 #define FIFO_DEPTH	256
 #define RF_PAYLOAD_SIZE	28
 enum {
+  RF_CMD_SET_VALUES,
   RF_CMD_SET_LAMP_ID,
-  RF_CMD_SET_VALUES
+  RF_CMD_SET_GAMMA,
+  RF_CMD_WRITE_GAMMA,
 };
 
 typedef struct
 {
-  char cmd;
-  char param;
-  char payload[RF_PAYLOAD_SIZE];
+  unsigned char cmd;
+  unsigned short mac;
+  unsigned char line;
+
+  union {
+    unsigned char payload[RF_PAYLOAD_SIZE];
+    
+    struct {
+      unsigned char id;
+      unsigned char line;
+    } set_lamp_id;
+
+    struct {
+      unsigned short val[8];
+    } set_gamma;
+
+  }; /* union */
+
   unsigned short crc;
 } __attribute__ ((packed)) BRFPacket;
 
