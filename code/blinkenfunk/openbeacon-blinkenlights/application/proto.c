@@ -60,7 +60,8 @@
 /**********************************************************************/
 
 TBeaconEnvelope g_Beacon;
-const unsigned char broadcast_mac[NRF_MAX_MAC_SIZE] = { 'D', 'E', 'C', 'A', 'D' };
+const unsigned char broadcast_mac[NRF_MAX_MAC_SIZE] =
+  { 'D', 'E', 'C', 'A', 'D' };
 
 static unsigned short line_hz_table[LINE_HERTZ_LOWPASS_SIZE];
 static int line_hz_pos, line_hz_sum, line_hz, line_hz_enabled;
@@ -72,12 +73,12 @@ shuffle_tx_byteorder (void)
 {
   unsigned char tmp;
 
-  SHUFFLE (0 +  0, 3 +  0);
-  SHUFFLE (1 +  0, 2 +  0);
-  SHUFFLE (0 +  4, 3 +  4);
-  SHUFFLE (1 +  4, 2 +  4);
-  SHUFFLE (0 +  8, 3 +  8);
-  SHUFFLE (1 +  8, 2 +  8);
+  SHUFFLE (0 + 0, 3 + 0);
+  SHUFFLE (1 + 0, 2 + 0);
+  SHUFFLE (0 + 4, 3 + 4);
+  SHUFFLE (1 + 4, 2 + 4);
+  SHUFFLE (0 + 8, 3 + 8);
+  SHUFFLE (1 + 8, 2 + 8);
   SHUFFLE (0 + 12, 3 + 12);
   SHUFFLE (1 + 12, 2 + 12);
   SHUFFLE (0 + 16, 3 + 16);
@@ -88,7 +89,6 @@ shuffle_tx_byteorder (void)
   SHUFFLE (1 + 24, 2 + 24);
   SHUFFLE (0 + 28, 3 + 28);
   SHUFFLE (1 + 28, 2 + 28);
-
 }
 
 static inline s_int8_t
@@ -99,7 +99,7 @@ PtInitNRF (void)
        ENABLED_NRF_FEATURES))
     return 0;
 
-  nRFAPI_SetPipeSizeRX (0, sizeof(g_Beacon.data));
+  nRFAPI_SetPipeSizeRX (0, sizeof (g_Beacon.data));
   nRFAPI_SetTxPower (3);
   nRFAPI_SetRxMode (1);
   nRFCMD_CE (1);
@@ -181,12 +181,7 @@ vnRFtaskRx (void *parameter)
     {
       if (nRFCMD_WaitRx (10))
 	{
-	  if (!DidBlink)
-	    {
-	      vLedSetGreen (1);
-	      Ticks = xTaskGetTickCount ();
-	      DidBlink = 1;
-	    }
+
 
 	  do
 	    {
@@ -205,14 +200,18 @@ vnRFtaskRx (void *parameter)
 		       sizeof (g_Beacon) - sizeof (g_Beacon.pkt.crc));
 	      if ((swapshort (g_Beacon.pkt.crc) == crc))
 		{
+
+		  if (!DidBlink)
+		    {
+		      vLedSetGreen (1);
+		      Ticks = xTaskGetTickCount ();
+		      DidBlink = 1;
+		    }
+
 		  DumpStringToUSB ("RX: ");
-		  DumpUIntToUSB (swaplong (g_Beacon.pkt.oid));
+		  DumpUIntToUSB (g_Beacon.datab[0]);
 		  DumpStringToUSB (",");
-		  DumpUIntToUSB (swaplong (g_Beacon.pkt.seq));
-		  DumpStringToUSB (",");
-		  DumpUIntToUSB (g_Beacon.pkt.strength);
-		  DumpStringToUSB (",");
-		  DumpUIntToUSB (g_Beacon.pkt.flags);
+		  DumpUIntToUSB (g_Beacon.datab[1]);
 		  DumpStringToUSB ("\n\r");
 		}
 	    }
@@ -238,10 +237,11 @@ void __attribute__ ((section (".ramfunc"))) vnRF_PulseIRQ_Handler (void)
       rb = AT91C_BASE_TC1->TC_RB;
       pulse_length = (rb - AT91C_BASE_TC1->TC_RA) & 0xFFFF;
 
-      if (pulse_length > ((MINIMAL_PULSE_LENGH_US*PWM_CMR_CLOCK_FREQUENCY)/1000000))
+      if (pulse_length >
+	  ((MINIMAL_PULSE_LENGH_US * PWM_CMR_CLOCK_FREQUENCY) / 1000000))
 	{
 	  if (line_hz_enabled)
-	    {	      
+	    {
 	      pulse_length = (line_hz * dimmer_percent) / DIMMER_TICKS;
 	      AT91C_BASE_TC2->TC_RA = pulse_length ? pulse_length : 1;
 	      AT91C_BASE_TC2->TC_CCR = AT91C_TC_SWTRG;
@@ -306,11 +306,10 @@ vUpdateDimmer (int Percent)
 {
   if (Percent <= 0)
     dimmer_percent = DIMMER_TICKS;
+  else if (Percent >= DIMMER_TICKS)
+    dimmer_percent = 0;
   else
-    if (Percent >= DIMMER_TICKS)
-	dimmer_percent = 0;
-    else
-	dimmer_percent = DIMMER_TICKS-Percent;
+    dimmer_percent = DIMMER_TICKS - Percent;
 }
 
 static inline void
@@ -370,7 +369,7 @@ vnRFtaskCmd (void *parameter)
   while (!line_hz_enabled)
     vTaskDelay (250 / portTICK_RATE_MS);
   vUpdateDimmer (Percent);
-  
+
 
   while (1)
     {
@@ -392,19 +391,19 @@ vnRFtaskCmd (void *parameter)
 	    switch (c)
 	      {
 	      case '/':
-	        if(Percent % 100)
-		    Percent -= Percent % 100;
+		if (Percent % 100)
+		  Percent -= Percent % 100;
 		else
-		    Percent -=100;
+		  Percent -= 100;
 		Changed = pdTRUE;
-	    	break;	      
+		break;
 	      case '*':
-	        if(Percent % 100)
-		    Percent += 100-(Percent % 100);
+		if (Percent % 100)
+		  Percent += 100 - (Percent % 100);
 		else
-		    Percent +=100;
+		  Percent += 100;
 		Changed = pdTRUE;
-	    	break;	      
+		break;
 	      case '+':
 		Percent++;
 		Changed = pdTRUE;
@@ -418,11 +417,10 @@ vnRFtaskCmd (void *parameter)
 	  if (Changed)
 	    {
 	      DumpStringToUSB ("DIM=");
-	      if(Percent>10000)
-	        Percent=10000;
-	      else
-	        if(Percent<2000)
-		    Percent=2000;
+	      if (Percent > 10000)
+		Percent = 10000;
+	      else if (Percent < 2000)
+		Percent = 2000;
 	      DumpUIntToUSB (Percent);
 	      DumpStringToUSB ("%%\n\r");
 	      vUpdateDimmer (Percent);

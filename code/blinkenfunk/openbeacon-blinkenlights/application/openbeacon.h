@@ -32,11 +32,7 @@
 
 typedef struct
 {
-  TBeaconHeader hdr;
-  u_int8_t flags, strength;
-  u_int32_t seq;
-  u_int32_t oid;
-  u_int16_t reserved;
+  u_int8_t dummy[30];
   u_int16_t crc;
 } __attribute__ ((packed)) TBeaconTracker;
 
