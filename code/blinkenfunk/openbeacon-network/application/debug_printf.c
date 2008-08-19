@@ -394,3 +394,35 @@ debug_printf (const char *fmt, ...)
 
   return i;
 }
+
+void hex_dump (const unsigned char *buf, unsigned int addr, unsigned int len)
+{
+        unsigned int start, i, j;
+        char c;
+
+        start = addr & ~0xf;
+
+        for (j=0; j<len; j+=16) {
+                debug_printf("%08x:", start+j);
+
+                for (i=0; i<16; i++) {
+                        if (start+i+j >= addr && start+i+j < addr+len)
+                                debug_printf(" %02x", buf[start+i+j]);
+                        else
+                                debug_printf("   ");
+                }
+                debug_printf("  |");
+                for (i=0; i<16; i++) {
+                        if (start+i+j >= addr && start+i+j < addr+len) {
+                                c = buf[start+i+j];
+                                if (c >= ' ' && c < 127)
+                                        debug_printf("%c", c);
+                                else
+                                        debug_printf(".");
+                        } else
+                                debug_printf(" ");
+                }
+                debug_printf("|\n");
+        }
+}
+

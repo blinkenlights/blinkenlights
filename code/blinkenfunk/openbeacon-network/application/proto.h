@@ -25,17 +25,18 @@
 
 #include "openbeacon.h"
 
-#define FIFO_DEPTH 256
-
+#define FIFO_DEPTH	256
+#define RF_PAYLOAD_SIZE	28
 enum {
-  RF_CMD_SET_LAMP_ID
+  RF_CMD_SET_LAMP_ID,
+  RF_CMD_SET_VALUES
 };
 
 typedef struct
 {
   char cmd;
   char param;
-  char payload[28];
+  char payload[RF_PAYLOAD_SIZE];
   unsigned short crc;
 } __attribute__ ((packed)) BRFPacket;
 

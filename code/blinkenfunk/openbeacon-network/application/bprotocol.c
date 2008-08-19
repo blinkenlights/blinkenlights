@@ -56,7 +56,16 @@ static BRFPacket rfpkg;
 
 static void b_output_line(int width, unsigned char *data)
 {
-	// ...
+	int i;
+
+	memset(&rfpkg, 0, sizeof(rfpkg));
+//	rfpkg.cmd = RF_CMD_SET_LAMP_ID;
+//	rfpkg.param = lamp_id;
+
+	for (i = 0; i < width && i < RF_PAYLOAD_SIZE; i++)
+		rfpkg.payload[i] = data[i];
+
+	vnRFTransmitPacket(&rfpkg);
 }
 
 static int b_parse_mcu_frame(mcu_frame_header_t *header, int maxlen)
@@ -125,14 +134,13 @@ static void b_set_lamp_id(int lamp_id, int lamp_mac)
 	debug_printf("lamp MAC %08x -> ID %d\n", lamp_mac, lamp_id);
 	
 	memset(&rfpkg, 0, sizeof(rfpkg));
-/*
 	rfpkg.cmd = RF_CMD_SET_LAMP_ID;
 	rfpkg.param = lamp_id;
 	rfpkg.payload[0] = lamp_mac >> 24;
 	rfpkg.payload[1] = lamp_mac >> 16;
 	rfpkg.payload[2] = lamp_mac >> 8;
 	rfpkg.payload[3] = lamp_mac;
-*/
+
 	vnRFTransmitPacket(&rfpkg);
 }
 
