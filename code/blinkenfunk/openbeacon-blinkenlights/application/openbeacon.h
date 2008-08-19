@@ -24,24 +24,8 @@
 #ifndef __OPENBEACON_H__
 #define __OPENBEACON_H__
 
-#include <xxtea.h>
-
 #define RFB_RFOPTIONS 0x0F
 #define RFBPROTO_BLINKENLIGHTS 42
 #define ENABLED_NRF_FEATURES 0x0
-
-typedef struct
-{
-  u_int8_t dummy[30];
-  u_int16_t crc;
-} __attribute__ ((packed)) TBeaconTracker;
-
-typedef union
-{
-  TBeaconTracker pkt;
-  u_int32_t data[TEA_ENCRYPTION_BLOCK_COUNT];
-  u_int8_t datab[TEA_ENCRYPTION_BLOCK_COUNT * sizeof (u_int32_t)];
-}
-__attribute__ ((packed)) TBeaconEnvelope;
 
 #endif/*__OPENBEACON_H__*/

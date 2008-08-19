@@ -25,17 +25,43 @@
 
 #include "openbeacon.h"
 
-#define GAMMA_DEFAULT 200
-#define FIFO_DEPTH 256
+#define GAMMA_DEFAULT	200
+#define FIFO_DEPTH	256
+#define RF_PAYLOAD_SIZE	26
+enum {
+  RF_CMD_SET_VALUES,
+  RF_CMD_SET_LAMP_ID,
+  RF_CMD_SET_GAMMA,
+  RF_CMD_WRITE_GAMMA,
+  RF_CMD_SET_JITTER,
+};
 
 typedef struct
 {
-  u_int16_t tag_oid;
-  u_int8_t tag_strength;
-  u_int8_t packet_count;
-} __attribute__ ((packed)) TBeaconSort;
+  unsigned char cmd;
+  unsigned short mac;
+  unsigned char line;
 
-extern TBeaconEnvelope g_Beacon;
+  union {
+    unsigned char payload[RF_PAYLOAD_SIZE];
+    
+    struct {
+      unsigned char id;
+      unsigned char line;
+    } set_lamp_id;
+
+    struct {
+      unsigned short val[8];
+    } set_gamma;
+
+    struct {
+      unsigned short jitter;
+    } set_jitter;
+
+  }; /* union */
+
+  unsigned short crc;
+} __attribute__ ((packed)) BRFPacket;
 
 extern void vInitProtocolLayer (void);
 extern int PtSetFifoLifetimeSeconds (int Seconds);

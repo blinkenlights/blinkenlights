@@ -52,44 +52,13 @@
 #define GAMMA_RANGE (0xFFFF)
 #define GAMMA_SIZE  (100)
 
-/**********************************************************************/
-#define SHUFFLE(a,b)    tmp=g_Beacon.datab[a];\
-                        g_Beacon.datab[a]=g_Beacon.datab[b];\
-                        g_Beacon.datab[b]=tmp;
-
-/**********************************************************************/
-
-TBeaconEnvelope g_Beacon;
-const unsigned char broadcast_mac[NRF_MAX_MAC_SIZE] =
-  { 'D', 'E', 'C', 'A', 'D' };
+static BRFPacket pkt;
+const unsigned char broadcast_mac[NRF_MAX_MAC_SIZE] = { 'D', 'E', 'C', 'A', 'D' };
 
 static unsigned short line_hz_table[LINE_HERTZ_LOWPASS_SIZE];
 static int line_hz_pos, line_hz_sum, line_hz, line_hz_enabled;
 static int dimmer_percent;
 //static unsigned short gamma_table[GAMMA_SIZE];
-
-void
-shuffle_tx_byteorder (void)
-{
-  unsigned char tmp;
-
-  SHUFFLE (0 + 0, 3 + 0);
-  SHUFFLE (1 + 0, 2 + 0);
-  SHUFFLE (0 + 4, 3 + 4);
-  SHUFFLE (1 + 4, 2 + 4);
-  SHUFFLE (0 + 8, 3 + 8);
-  SHUFFLE (1 + 8, 2 + 8);
-  SHUFFLE (0 + 12, 3 + 12);
-  SHUFFLE (1 + 12, 2 + 12);
-  SHUFFLE (0 + 16, 3 + 16);
-  SHUFFLE (1 + 16, 2 + 16);
-  SHUFFLE (0 + 20, 3 + 20);
-  SHUFFLE (1 + 20, 2 + 20);
-  SHUFFLE (0 + 24, 3 + 24);
-  SHUFFLE (1 + 24, 2 + 24);
-  SHUFFLE (0 + 28, 3 + 28);
-  SHUFFLE (1 + 28, 2 + 28);
-}
 
 static inline s_int8_t
 PtInitNRF (void)
@@ -99,7 +68,7 @@ PtInitNRF (void)
        ENABLED_NRF_FEATURES))
     return 0;
 
-  nRFAPI_SetPipeSizeRX (0, sizeof (g_Beacon.data));
+  nRFAPI_SetPipeSizeRX (0, sizeof(pkt));
   nRFAPI_SetTxPower (3);
   nRFAPI_SetRxMode (1);
   nRFCMD_CE (1);
@@ -116,8 +85,19 @@ swapshort (unsigned short src)
 static inline unsigned long
 swaplong (unsigned long src)
 {
-  return (src >> 24) | (src << 24) | ((src >> 8) & 0x0000FF00) | ((src << 8) &
-								  0x00FF0000);
+  return (src >> 24) | 
+  	 (src << 24) | 
+	 ((src >> 8) & 0x0000FF00) |
+	 ((src << 8) & 0x00FF0000);
+}
+
+static void
+shuffle_tx_byteorder (unsigned long *v, int len)
+{
+  while(len--) {
+    *v = swaplong(*v);
+    v++;
+  }
 }
 
 static inline short
@@ -181,42 +161,37 @@ vnRFtaskRx (void *parameter)
     {
       if (nRFCMD_WaitRx (10))
 	{
-
-
 	  do
 	    {
 	      // read packet from nRF chip
-	      nRFCMD_RegReadBuf (RD_RX_PLOAD, g_Beacon.datab,
-				 sizeof (g_Beacon));
+	      nRFCMD_RegReadBuf (RD_RX_PLOAD, (unsigned char *) &pkt, sizeof(pkt));
 
 	      // adjust byte order and decode
-	      shuffle_tx_byteorder ();
-	      xxtea_decode ();
-	      shuffle_tx_byteorder ();
+	      shuffle_tx_byteorder ((unsigned long *) &pkt, sizeof (pkt) / sizeof(long));
+	      xxtea_decode ((long *) &pkt, sizeof(pkt) / sizeof(long));
+	      shuffle_tx_byteorder ((unsigned long *) &pkt, sizeof (pkt) / sizeof(long));
 
 	      // verify the crc checksum
-	      crc =
-		crc16 (g_Beacon.datab,
-		       sizeof (g_Beacon) - sizeof (g_Beacon.pkt.crc));
-	      if ((swapshort (g_Beacon.pkt.crc) == crc))
-		{
+	      crc = crc16 ((unsigned char *) &pkt, sizeof(pkt) - sizeof(pkt.crc));
 
-		  if (!DidBlink)
-		    {
-		      vLedSetGreen (1);
-		      Ticks = xTaskGetTickCount ();
-		      DidBlink = 1;
-		    }
+	      if (crc != swapshort(pkt.crc))
+	        continue;
 
-		  DumpStringToUSB ("RX: ");
-		  DumpUIntToUSB (g_Beacon.datab[0]);
-		  DumpStringToUSB (",");
-		  DumpUIntToUSB (g_Beacon.datab[1]);
-		  DumpStringToUSB ("\n\r");
+              // valid paket
+              if (!DidBlink)
+                {
+		  vLedSetGreen (1);
+		  Ticks = xTaskGetTickCount ();
+		  DidBlink = 1;
 		}
+
+		DumpStringToUSB ("RX cmd: ");
+		DumpUIntToUSB (pkt.cmd);
+		DumpStringToUSB ("\n\r");
 	    }
 	  while ((nRFAPI_GetFifoStatus () & FIFO_RX_EMPTY) == 0);
-	}
+	} // if
+
       nRFAPI_ClearIRQ (MASK_IRQ_FLAGS);
 
       if (DidBlink && ((xTaskGetTickCount () - Ticks) > BLINK_INTERVAL_MS))
@@ -224,7 +199,7 @@ vnRFtaskRx (void *parameter)
 	  DidBlink = 0;
 	  vLedSetGreen (0);
 	}
-    }
+    } // for (;;)
 }
 
 void __attribute__ ((section (".ramfunc"))) vnRF_PulseIRQ_Handler (void)
