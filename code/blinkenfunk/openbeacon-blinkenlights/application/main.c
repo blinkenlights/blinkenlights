@@ -49,8 +49,7 @@ prvSetupHardware (void)
   AT91C_BASE_AIC->AIC_EOICR = 0;
 
   /*  Enable the peripheral clock. */
-  AT91C_BASE_PMC->PMC_PCER = 1 << AT91C_ID_PIOA;
-  AT91C_BASE_PMC->PMC_PCER = 1 << AT91C_ID_PIOB;
+  AT91C_BASE_PMC->PMC_PCER = (1 << AT91C_ID_PIOA) | (1 << AT91C_ID_PIOB);
 }
 
 /**********************************************************************/

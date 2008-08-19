@@ -59,8 +59,8 @@
 
 /**********************************************************************/
 
-const unsigned char broadcast_mac[NRF_MAX_MAC_SIZE] = { 1, 2, 3, 2, 1 };
 TBeaconEnvelope g_Beacon;
+const unsigned char broadcast_mac[NRF_MAX_MAC_SIZE] = { 'D', 'E', 'A', 'D', 'E' };
 
 static unsigned short line_hz_table[LINE_HERTZ_LOWPASS_SIZE];
 static int line_hz_pos, line_hz_sum, line_hz, line_hz_enabled;

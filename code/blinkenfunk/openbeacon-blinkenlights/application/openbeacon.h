@@ -26,15 +26,8 @@
 
 #include <xxtea.h>
 
-#define RFB_RFOPTIONS		0x0F
-
-#define RFBPROTO_BEACONTRACKER	23
-
-#define RFBFLAGS_ACK		0x01
-#define RFBFLAGS_SENSOR		0x02
-#define RFBFLAGS_VOTE_MASK      0x1C
-#define RFBFLAGS_REQUEST_VOTE_TRANSMISSION  0x20
-
+#define RFB_RFOPTIONS 0x0F
+#define RFBPROTO_BLINKENLIGHTS 42
 #define ENABLED_NRF_FEATURES 0x0
 
 typedef struct
