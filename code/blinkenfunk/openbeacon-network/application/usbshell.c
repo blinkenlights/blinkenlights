@@ -103,6 +103,23 @@ cmd_help (const portCHAR *cmd)
   shell_printf("");
 }
 
+static int
+hex_to_int(char *nibble)
+{
+    if (*nibble >= 'A' && *nibble <= 'F') {
+      *nibble -= 'A';
+      *nibble += 10;
+    } else if (*nibble >= 'a' && *nibble <= 'f') {
+      *nibble -= 'a';
+      *nibble += 10;
+    } else if (*nibble >= '0' && *nibble <= '9')
+      *nibble -= '0';
+    else
+      return -1;
+
+    return 0;
+}
+
 static void
 cmd_mac (const portCHAR * cmd)
 {
@@ -121,13 +138,7 @@ cmd_mac (const portCHAR * cmd)
     }
 
     buf[i] = *cmd++;
-    if (buf[i] >= 'A' && buf[i] <= 'F')
-      buf[i] -= 'A';
-    else if (buf[i] >= 'a' && buf[i] <= 'f')
-      buf[i] -= 'a';
-    else if (buf[i] >= '0' && buf[i] <= '9')
-      buf[i] -= '0';
-    else
+    if (hex_to_int(buf + i) < 0)
       {
         shell_printf("invalid MAC!\n");
         return;
@@ -150,6 +161,8 @@ cmd_mac (const portCHAR * cmd)
 	 }
        
        buf[1] = *cmd++;
+       hex_to_int(buf + 0);
+       hex_to_int(buf + 1);
        crc = buf[0] << 4 | buf[1];
 
        if (crc != (mac_l ^ mac_h))
