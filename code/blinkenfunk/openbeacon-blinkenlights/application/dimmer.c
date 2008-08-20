@@ -47,18 +47,23 @@ static unsigned short line_hz_table[LINE_HERTZ_LOWPASS_SIZE];
 static int line_hz_pos, line_hz_sum, line_hz, line_hz_enabled;
 static int dimmer_step;
 
-int dimmer_line_hz_enabled(void)
+int
+dimmer_line_hz_enabled (void)
 {
   return line_hz_enabled;
 }
 
-static inline unsigned int PtRandom(void)
+static inline unsigned int
+PtRandom (void)
 {
-    static unsigned int v1 = 0x52f7d319;
-    static unsigned int v2 = 0x6e28014a;
+  static unsigned int v1 = 0x52f7d319;
+  static unsigned int v2 = 0x6e28014a;
 
-    // MWC generator, period length 1014595583
-    return ((v1 = 36969 * (v1 & 0xffff) + (v1 >> 16)) << 16) ^ (v2 = 30963 * (v2 & 0xffff) + (v2 >> 16));
+  // MWC generator, period length 1014595583
+  return ((v1 = 36969 * (v1 & 0xffff) + (v1 >> 16)) << 16) ^ (v2 =
+							      30963 *
+							      (v2 & 0xffff) +
+							      (v2 >> 16));
 }
 
 void __attribute__ ((section (".ramfunc"))) vnRF_PulseIRQ_Handler (void)
@@ -78,9 +83,11 @@ void __attribute__ ((section (".ramfunc"))) vnRF_PulseIRQ_Handler (void)
 	  if (line_hz_enabled)
 	    {
 	      pulse_length = (line_hz * dimmer_percent) / DIMMER_TICKS;
-              pulse_length += (PtRandom()%(DIMMER_JITTER_TICKS*2))-DIMMER_JITTER_TICKS;
+	      pulse_length +=
+		(PtRandom () % (DIMMER_JITTER_TICKS * 2)) -
+		DIMMER_JITTER_TICKS;
 
-              AT91C_BASE_TC2->TC_RA = pulse_length>0 ? pulse_length : 1;
+	      AT91C_BASE_TC2->TC_RA = pulse_length > 0 ? pulse_length : 1;
 	      AT91C_BASE_TC2->TC_CCR = AT91C_TC_SWTRG;
 	    }
 
@@ -128,8 +135,13 @@ vGetDimmerStep (void)
 void
 vSetDimmerGamma (int entry, int val)
 {
-  if (entry >= GAMMA_SIZE || val > DIMMER_TICKS)
+  if (entry >= GAMMA_SIZE)
     return;
+
+  if (val < 0)
+    val = 0;
+  else if (val >= DIMMER_TICKS)
+    val = DIMMER_TICKS;
 
   env.e.gamma_table[entry] = val;
 }
@@ -177,5 +189,3 @@ vInitDimmer (void)
   AT91C_BASE_TCB->TCB_BMR =
     AT91C_TCB_TC0XC0S_NONE | AT91C_TCB_TC1XC1S_NONE | AT91C_TCB_TC2XC2S_NONE;
 }
-
-
