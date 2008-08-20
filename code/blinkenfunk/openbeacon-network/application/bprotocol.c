@@ -52,7 +52,6 @@
 
 static struct udp_pcb *b_pcb;
 static unsigned char payload[2048];
-static short lamp_map[RF_PAYLOAD_SIZE * 2] = { 0xffff };
 static BRFPacket rfpkg;
 
 static void b_output_line(int width, unsigned char *data)
@@ -127,12 +126,8 @@ debug_printf(" -- w %d h %d chns %d bpp %d\n",
 	/* ... */
 	memset(&rfpkg.payload, 0, RF_PAYLOAD_SIZE);
 	for (i = 0; i < RF_PAYLOAD_SIZE; i++) {
-		if (i == 0) {
-		//	debug_printf("lamp_map[0] == %04x\n", lamp_map[0]);
-		//	hex_dump((unsigned char *) header, 0, maxlen);
-		}
-		rfpkg.payload[i] = (b_mcu_frame_get_pixel_val(header, lamp_map[i*2], maxlen) & 0xf)
-				 | (b_mcu_frame_get_pixel_val(header, lamp_map[i*2 + 1], maxlen) << 4);
+		rfpkg.payload[i] = (b_mcu_frame_get_pixel_val(header, env.e.lamp_map[i*2], maxlen) & 0xf)
+				 | (b_mcu_frame_get_pixel_val(header, env.e.lamp_map[i*2 + 1], maxlen) << 4);
 	}
 	/* funk it. */
 	b_output_line(header->width, payload);
@@ -178,8 +173,6 @@ static inline void b_set_gamma_curve(int lamp_mac, unsigned int block, unsigned 
 {
 	int i;
 
-debug_printf(" ... SET GAMMA\n");
-
 	memset(&rfpkg, 0, sizeof(rfpkg));
 	rfpkg.cmd = RF_CMD_SET_GAMMA;
 	rfpkg.mac = lamp_mac;
@@ -212,8 +205,12 @@ static inline void b_set_assigned_lamps(unsigned int *map)
 {
 	int i;
 
-	for (i = 0; i < RF_PAYLOAD_SIZE * 2; i++)
-		lamp_map[i] = map[i];
+	for (i = 0; i < MAX_LAMPS; i++) {
+		env.e.lamp_map[i] = map[i];
+	}
+
+	env_store();
+	debug_printf("new assigned lamps set.\n");
 }
 
 static int b_parse_mcu_devctrl(mcu_devctrl_header_t *header, int maxlen)
@@ -312,8 +309,6 @@ static void b_recv(void *arg, struct udp_pcb *pcb, struct pbuf *p, struct ip_add
 void bprotocol_init(void)
 {
 	b_pcb = udp_new();
-
-lamp_map[0] = 0;
 
 	udp_recv(b_pcb, b_recv, NULL);
 	udp_bind(b_pcb, IP_ADDR_ANY, MCU_LISTENER_PORT);

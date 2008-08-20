@@ -72,8 +72,8 @@ main (void)
 {
   prvSetupHardware ();
   vLedInit ();
-//  env_init ();
-//  env_load ();
+  env_init ();
+  env_load ();
   vNetworkInit ();
 
   xTaskCreate (vUSBCDCTask, (signed portCHAR *) "USB", TASK_USB_STACK,
