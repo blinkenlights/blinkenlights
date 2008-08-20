@@ -119,7 +119,7 @@ void vnRFTransmitPacket(BRFPacket *pkg)
 
   // upload data to nRF24L01
  
-  hex_dump((unsigned char *) pkg, 0, sizeof(*pkg));
+  //hex_dump((unsigned char *) pkg, 0, sizeof(*pkg));
   nRFAPI_TX ((unsigned char *) pkg, sizeof(*pkg));
 
   // transmit data

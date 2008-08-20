@@ -58,10 +58,10 @@ static void b_output_line(int width, unsigned char *data)
 {
 	memset(&rfpkg, 0, sizeof(rfpkg) - RF_PAYLOAD_SIZE);
 	rfpkg.cmd = RF_CMD_SET_VALUES;
-	rfpkg.line = env.e.mcu_id;
+	rfpkg.wmcu_id = env.e.mcu_id;
 	rfpkg.mac = 0xffff; /* send to all MACs */
 
-	hex_dump((unsigned char *) rfpkg.payload, 0, RF_PAYLOAD_SIZE);
+	//hex_dump((unsigned char *) rfpkg.payload, 0, RF_PAYLOAD_SIZE);
 	/* rfpkg.payload pre-filled */
 	vnRFTransmitPacket(&rfpkg);
 }
@@ -155,7 +155,7 @@ static int b_parse_mcu_setup(mcu_setup_header_t *header, int maxlen)
 	return len;
 }
 
-static inline void b_set_lamp_id(int lamp_id, int lamp_line, int lamp_mac)
+static inline void b_set_lamp_id(int lamp_id, int lamp_mac)
 {
 	debug_printf("lamp MAC %08x -> ID %d\n", lamp_mac, lamp_id);
 
@@ -163,9 +163,9 @@ static inline void b_set_lamp_id(int lamp_id, int lamp_line, int lamp_mac)
 	rfpkg.cmd = RF_CMD_SET_LAMP_ID;
 	
 	rfpkg.mac = lamp_mac;
-	rfpkg.line = 0xff;
+	rfpkg.wmcu_id = 0xff;
 	rfpkg.set_lamp_id.id = lamp_id;
-	rfpkg.set_lamp_id.line = lamp_line;
+	rfpkg.set_lamp_id.wmcu_id = env.e.mcu_id;
 	vnRFTransmitPacket(&rfpkg);
 }
 
@@ -231,8 +231,7 @@ static int b_parse_mcu_devctrl(mcu_devctrl_header_t *header, int maxlen)
 		case MCU_DEVCTRL_COMMAND_SET_LAMP_ID: {
 			int lamp_mac = header->mac;
 			int lamp_id = header->value;
-			int lamp_line = env.e.mcu_id;
-			b_set_lamp_id(lamp_id, lamp_line, lamp_mac);
+			b_set_lamp_id(lamp_id, lamp_mac);
 			break;
 		}
 		case MCU_DEVCTRL_COMMAND_SET_GAMMA: {
@@ -259,6 +258,19 @@ static int b_parse_mcu_devctrl(mcu_devctrl_header_t *header, int maxlen)
 		}
 		case MCU_DEVCTRL_COMMAND_SET_ASSIGNED_LAMPS: {
 			b_set_assigned_lamps(header->param);
+			break;
+		}
+		case MCU_DEVCTRL_COMMAND_OUTPUT_RAW: {
+			int i;
+
+			rfpkg.cmd = header->param[0];
+			rfpkg.mac = header->param[1];
+			rfpkg.wmcu_id = header->param[2];
+			for (i = 0; i < RF_PAYLOAD_SIZE; i++)
+				rfpkg.payload[i] = header->param[i+3];
+		
+			hex_dump((unsigned char *) &rfpkg, 0, sizeof(rfpkg));
+			vnRFTransmitPacket(&rfpkg);
 			break;
 		}
 	}

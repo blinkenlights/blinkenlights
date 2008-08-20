@@ -52,6 +52,7 @@ cmd_status (const portCHAR * cmd)
   struct netif *nic = &EMAC_if;
 
   shell_printf ("WMCU status:\n");
+  shell_printf ("	WMCU ID: %d\n", env.e.mcu_id);
   shell_printf ("	MAC address:	%02x:%02x:%02x:%02x:%02x:%02x\n",
   	nic->hwaddr[0], nic->hwaddr[1], nic->hwaddr[2],
   	nic->hwaddr[3], nic->hwaddr[4], nic->hwaddr[5]);
@@ -220,6 +221,7 @@ parse_cmd (const portCHAR * cmd)
   if (strlen (cmd) == 0)
     return;
 
+  shell_printf ("\n");
   for (c = commands; c && c->command && c->callback; c++)
     {
       if (strncmp (cmd, c->command, strlen(c->command)) == 0 && c->callback)
@@ -235,36 +237,33 @@ parse_cmd (const portCHAR * cmd)
 static void
 usbshell_task (void *pvParameters)
 {
-  int size = 0;
   static portCHAR buf[128], c, *p = buf;
-  bool_t overflow = pdFALSE;
-  
+  shell_printf (PROMPT);
+
   for (;;)
     {
-      if (vUSBRecvByte (&c, sizeof (c), 100))
-	{
-	  vUSBSendByte (c);
+      if (!vUSBRecvByte (&c, sizeof(c), 100))
+        continue;
 
-	  if (c < ' ')
-	    {
-	      *p = '\0';
-	      if (overflow)
-		overflow = pdFALSE;
-	      else
-		parse_cmd (buf);
+      if (c == '\n' || c == '\r')
+        {
+          *p = '\0';
+          parse_cmd(buf);
 
-	      p = buf;
-	      size = 0;
-	      shell_printf (PROMPT);
-	    }
-	  else if (size < ((int) sizeof (buf) - 1))
-	    {
-	      *p++ = c;
-	      size++;
-	    }
-	  else
-	    overflow = pdTRUE;
-	}
+          p = buf;
+          shell_printf(PROMPT);
+          continue;
+        }
+
+      if (p == buf + sizeof(buf) - 1)
+        {
+          p = buf;
+          *p = '\0';
+        }
+
+      /* local echo */
+      vUSBSendByte(c);
+      *p++ = c;
     }
 }
 

@@ -40,14 +40,14 @@ typedef struct
 {
   unsigned char cmd;
   unsigned short mac;
-  unsigned char line;
+  unsigned char wmcu_id;
 
   union {
     unsigned char payload[RF_PAYLOAD_SIZE];
     
     struct {
       unsigned char id;
-      unsigned char line;
+      unsigned char wmcu_id;
     } set_lamp_id;
 
     struct {
