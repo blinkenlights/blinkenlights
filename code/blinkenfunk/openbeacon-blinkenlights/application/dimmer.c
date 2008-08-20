@@ -33,19 +33,18 @@
 #include "xxtea.h"
 #include "proto.h"
 #include "env.h"
+#include "dimmer.h"
 #include "debug_print.h"
 
 #define LINE_HERTZ_LOWPASS_SIZE		50
-#define DIMMER_TICKS			10000
 #define MINIMAL_PULSE_LENGH_US		160
 #define PWM_CMR_CLOCK_FREQUENCY		(MCK/8)
-//#define DIMMER_JITTER_US_DEFAULT	150
 
 static unsigned short line_hz_table[LINE_HERTZ_LOWPASS_SIZE];
 static int line_hz_pos, line_hz_sum, line_hz, line_hz_enabled;
 static int dimmer_step;
-static unsigned int v1 = 0x52f7d319;
-static unsigned int v2 = 0x6e28014a;
+static unsigned int random_seed_v1 = 0x52f7d319;
+static unsigned int random_seed_v2 = 0x6e28014a;
 
 int
 dimmer_line_hz_enabled (void)
@@ -54,23 +53,24 @@ dimmer_line_hz_enabled (void)
 }
 
 void
-vSetDimmerJitterUS(int us)
+vSetDimmerJitterUS (int us)
 {
-  DumpStringToUSB("new JITTER: ");
-  DumpUIntToUSB(us);
-  DumpStringToUSB("\n");
+  DumpStringToUSB ("new JITTER: ");
+  DumpUIntToUSB (us);
+  DumpStringToUSB ("\n");
 
-  env.e.dimmer_jitter = ((int)((us * ((unsigned long)PWM_CMR_CLOCK_FREQUENCY)) / 1000000));
+  env.e.dimmer_jitter =
+    ((int) ((us * ((unsigned long) PWM_CMR_CLOCK_FREQUENCY)) / 1000000));
 }
 
 static inline unsigned int
 PtRandom (void)
 {
   // MWC generator, period length 1014595583
-  return ((v1 = 36969 * (v1 & 0xffff) + (v1 >> 16)) << 16) ^ (v2 =
+  return ((random_seed_v1 = 36969 * (random_seed_v1 & 0xffff) + (random_seed_v1 >> 16)) << 16) ^ (random_seed_v2 =
 							      30963 *
-							      (v2 & 0xffff) +
-							      (v2 >> 16));
+							      (random_seed_v2 & 0xffff) +
+							      (random_seed_v2 >> 16));
 }
 
 void __attribute__ ((section (".ramfunc"))) vnRF_PulseIRQ_Handler (void)
@@ -158,12 +158,10 @@ vInitDimmer (void)
 {
   /* reset Dimmer and gamma correction to default value */
   /* vGammaRecalc (GAMMA_DEFAULT); */
-    
-  /* set the random seed */  
-  v1 ^= (env.e.mac << 24) | (env.e.mac << 16) | (env.e.mac << 8) | (env.e.mac);
-  v2 ^= (env.e.mac << 24) | (env.e.mac << 16) | (env.e.mac << 8) | (env.e.mac);
 
-//  vSetDimmerJitterUS(DIMMER_JITTER_US_DEFAULT);
+  /* set the random seed */
+  random_seed_v1 += env.e.mac;
+  random_seed_v2 -= env.e.mac;
 
   bzero (&line_hz_table, sizeof (line_hz_table));
   line_hz_pos = line_hz_sum = line_hz = line_hz_enabled = 0;
