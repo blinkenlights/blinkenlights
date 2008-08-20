@@ -57,7 +57,7 @@ try:
 	opts, args = getopt.getopt(sys.argv[1:],
 		"hh:p:s:s:s:ws:l:s:", 
 		["help", "host=", "port=", "set-mcu-id=", "set-lamp-id=", 
-		 "set-gamma=", "write-gamma", "set-dimmer-jitter=", "lamp-mac=",
+		 "set-gamma=", "write-config", "set-dimmer-jitter=", "lamp-mac=",
 		 "set-assigned-lamps="])
 
 except getopt.GetoptError, err:
@@ -82,7 +82,7 @@ for o, a in opts:
 	if o == "--set-gamma":
 		action = SET_GAMMA
 		gamma_filename = a;
-	if o == "--write-gamma":
+	if o == "--write-config":
 		action = WRITE_CONFIG
 	if o == "--set-dimmer-jitter":
 		action = SET_JITTER

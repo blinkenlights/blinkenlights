@@ -43,7 +43,7 @@ cmd_status (const portCHAR * cmd)
 {
   int i;
 
-  shell_print("Current WDIM state:\n");
+  shell_print("WDIM state:\n");
   shell_print("   MAC = ");
   DumpHexToUSB(env.e.mac, 2);
   shell_print("\n");
@@ -55,18 +55,22 @@ cmd_status (const portCHAR * cmd)
   shell_print("   WMCU ID = ");
   DumpUIntToUSB(env.e.wmcu_id);
   shell_print("\n");
-
-  shell_print("   GAMMA table: ");
-  for (i = 0; i < GAMMA_SIZE; i++)
-    {
-      DumpUIntToUSB(env.e.gamma_table[i]);
-      shell_print(", ");
-    }
-  shell_print("\n");
-
+  
   shell_print("   current dim value = ");
   DumpUIntToUSB(vGetDimmerStep());
   shell_print("\n");
+
+  shell_print("   GAMMA table:\t");
+  for (i = 0; i < GAMMA_SIZE; i++)
+    {
+      DumpUIntToUSB(env.e.gamma_table[i]);
+      shell_print(" ");
+
+      if (i % 8 == 7)
+        shell_print("\n\t\t");
+    }
+  shell_print("\n");
+
 }
 
 static void
@@ -75,18 +79,10 @@ cmd_help (const portCHAR *cmd)
   shell_print("Blinkenlights command shell help.\n");
   shell_print("---------------------------------\n");
   shell_print("\n");
-  shell_print("help\n");
-  shell_print("	This screen\n");
-  shell_print("\n");
-  shell_print("[wdim-]mac <xxyy> [<crc>]\n");
-  shell_print("	Set the MAC address of this unit.\n");
-  shell_print("\n");
-  shell_print("status\n");
-  shell_print("	Print status information about this unit. Try it, it's fun.\n");
-  shell_print("\n");
-  shell_print("dim <value>\n");
-  shell_print("	Set the dimmer to a value (between 0 and 15)\n");
-  shell_print("");
+  shell_print("help				This screen\n");
+  shell_print("[wdim-]mac <xxyy> [<crc>]	Set the MAC address of this unit.\n");
+  shell_print("status				Print status information about this unit.\n");
+  shell_print("dim <value>			Set the dimmer to a value (between 0 and 15)\n");
 }
 
 static int hex_to_int(char *nibble)
@@ -154,13 +150,6 @@ cmd_mac (const portCHAR * cmd)
 
        crc = buf[0] << 4 | buf[1];
 
-DumpHexToUSB(mac_l, 1);
-shell_print("\n");
-DumpHexToUSB(mac_h, 1);
-shell_print("\n");
-DumpHexToUSB(crc, 1);
-shell_print("\n");
-
        if (crc != (mac_l ^ mac_h))
          {
 	   shell_print("invalid checksum - command ignored\n");
@@ -221,6 +210,7 @@ parse_cmd (const portCHAR * cmd)
   if (strlen (cmd) == 0)
     return;
 
+  shell_print("\n");
   for (c = commands; c && c->command && c->callback; c++)
     {
       if (strncmp (cmd, c->command, strlen(c->command)) == 0 && c->callback)
@@ -238,36 +228,33 @@ parse_cmd (const portCHAR * cmd)
 static void
 usbshell_task (void *pvParameters)
 {
-  int size = 0;
   static portCHAR buf[128], c, *p = buf;
-  bool_t overflow = pdFALSE;
+  shell_print (PROMPT);
   
   for (;;)
     {
-      if (vUSBRecvByte (&c, sizeof (c), 100))
-	{
-	  vUSBSendByte (c);
+      if (!vUSBRecvByte (&c, sizeof(c), 100))
+        continue;
 
-	  if (c < ' ')
-	    {
-	      *p = '\0';
-	      if (overflow)
-		overflow = pdFALSE;
-	      else
-		parse_cmd (buf);
+      if (c == '\n' || c == '\r')
+        {
+          *p = '\0';
+          parse_cmd(buf);
 
-	      p = buf;
-	      size = 0;
-	      shell_print (PROMPT);
-	    }
-	  else if (size < ((int) sizeof (buf) - 1))
-	    {
-	      *p++ = c;
-	      size++;
-	    }
-	  else
-	    overflow = pdTRUE;
+	  p = buf;
+	  shell_print(PROMPT);
+	  continue;
 	}
+
+      if (p == buf + sizeof(buf) - 1)
+        {
+	  p = buf;
+	  *p = '\0';
+	}
+
+      /* local echo */
+      vUSBSendByte(c);
+      *p++ = c;
     }
 }
 
