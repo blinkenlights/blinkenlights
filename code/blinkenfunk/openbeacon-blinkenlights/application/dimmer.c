@@ -127,9 +127,12 @@ void __attribute__ ((naked, section (".ramfunc"))) vnRF_PulseIRQ (void)
 void
 vUpdateDimmer (int step)
 {
-  if (step > GAMMA_SIZE || step < 0)
-    return;
-
+  if (step >= GAMMA_SIZE)
+    step = (GAMMA_SIZE-1);
+  else
+    if(step <0)
+      step=0;
+ 
   dimmer_step = step;
 }
 
@@ -157,7 +160,6 @@ void
 vInitDimmer (void)
 {
   /* reset Dimmer and gamma correction to default value */
-  /* vGammaRecalc (GAMMA_DEFAULT); */
 
   /* set the random seed */
   random_seed_v1 += env.e.mac;
