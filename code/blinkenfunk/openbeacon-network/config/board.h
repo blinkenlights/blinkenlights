@@ -101,7 +101,7 @@
 typedef struct
 {
   unsigned int magic, size, crc16;
-  signed int assigned_line;
+  signed int mcu_id;
   unsigned char mac_h, mac_l;
 } __attribute__((aligned (8))) TEnvironment;
 

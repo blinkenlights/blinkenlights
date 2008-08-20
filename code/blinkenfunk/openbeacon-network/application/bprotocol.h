@@ -119,11 +119,12 @@ struct mcu_setup_header
  * MCU Device Control packet
  */
 
-#define MCU_DEVCTRL_COMMAND_SET_LINE	0	/* set MCU's configured line			*/
-#define MCU_DEVCTRL_COMMAND_SET_LAMP_ID	1	/* set the ID of a lamp (MAC in *param) 	*/
-#define MCU_DEVCTRL_COMMAND_SET_GAMMA	2	/* set the gamma curve of a lamp		*/
-#define MCU_DEVCTRL_COMMAND_WRITE_GAMMA	3	/* tell the MCU to write the gamma curve	*/
-#define MCU_DEVCTRL_COMMAND_SET_JITTER	4	/* set the jitter for a lamp			*/
+#define MCU_DEVCTRL_COMMAND_SET_MCU_ID		0	/* set MCU's ID					*/
+#define MCU_DEVCTRL_COMMAND_SET_LAMP_ID		1	/* set the ID of a lamp (MAC in *param) 	*/
+#define MCU_DEVCTRL_COMMAND_SET_GAMMA		2	/* set the gamma curve of a lamp		*/
+#define MCU_DEVCTRL_COMMAND_WRITE_GAMMA		3	/* tell the MCU to write the gamma curve	*/
+#define MCU_DEVCTRL_COMMAND_SET_JITTER		4	/* set the jitter for a lamp			*/
+#define MCU_DEVCTRL_COMMAND_SET_ASSIGNED_LAMPS	5	/* set lamps assigned to this MCU		*/
 typedef struct mcu_devctrl_header  mcu_devctrl_header_t;
 
 struct mcu_devctrl_header
@@ -132,7 +133,7 @@ struct mcu_devctrl_header
   unsigned int command;       /* MCU_DEVCTRL_COMMAND_*                   */
   unsigned int mac;           /* LAMP MAC address                        */
   unsigned int value;
-  unsigned int param[8];
+  unsigned int param[64];
 };
 
 /*

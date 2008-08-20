@@ -169,7 +169,7 @@ static void
 cmd_env (const portCHAR * cmd)
 {
   shell_printf ("Current values in non-volatile flash storage:\n");
-  shell_printf ("   assigned_line = %d\n", env.e.assigned_line);
+  shell_printf ("   mcu_id = %d\n", env.e.mcu_id);
   shell_printf ("   mac = %02x%02x\n", env.e.mac_h, env.e.mac_l);
 }
 

@@ -11,7 +11,7 @@ def usage():
 	print("\t--help				this screen")
 	print("\t--host <ip>			the IP address to connect to")
 	print("\t--port <port>			the port to use, defaults to 2323")
-	print("\t--set-line <line>		configure the WMCU to listen to line #<line>")
+	print("\t--set-mcu-id <id>		configure the WMCU's ID")
 	print("\t--set-lamp-id <id>		sets the id of an lamp, requires --lamp-mac")
 	print("\t--set-gamma <g1>,<g2>,...<g8>	sets the gamma curve for a lamp");
 	print("\t--write-gamma			makes the lamp write its gamma curve");
@@ -27,7 +27,7 @@ params		= [0, 0, 0, 0, 0, 0, 0, 0];
 host 		= ""
 port		= 2323
 
-SET_LINE 	= 0
+SET_MCUID	= 0
 SET_LAMPID 	= 1
 SET_GAMMA 	= 2
 WRITE_GAMMA 	= 3

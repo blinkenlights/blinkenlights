@@ -69,5 +69,6 @@ extern int PtSetFifoLifetimeSeconds (int Seconds);
 extern int PtGetFifoLifetimeSeconds (void);
 extern void PtDumpUIntToUSB (unsigned int data);
 extern void PtDumpStringToUSB (const char *text);
+void shuffle_tx_byteorder (unsigned long *v, int len);
 
 #endif/*__PROTO_H__*/

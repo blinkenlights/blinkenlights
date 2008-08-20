@@ -67,7 +67,7 @@ swaplong (unsigned long src)
 	 ((src << 8) & 0x00FF0000);
 }
 
-static void
+void
 shuffle_tx_byteorder (unsigned long *v, int len)
 {
   while(len--) {

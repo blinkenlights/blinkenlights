@@ -128,6 +128,7 @@ struct mcu_devctrl_header
   guint32 magic;        /* == MAGIC_MCU_DEVCTRL                    */
   guint32 command;      /* MCU_DEVCTRL_COMMAND_*                   */
   guint32 value;
+  guint32 parameter;
 };
 
 /*
