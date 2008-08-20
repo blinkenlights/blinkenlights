@@ -16,6 +16,8 @@ APP_SRC=			\
   application/debug_print.c	\
   application/xxtea.c
   
+BOOTLOADER=application/update.s
+
 all: $(TARGET).bin
 
 app_clean:
