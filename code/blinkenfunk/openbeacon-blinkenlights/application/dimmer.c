@@ -36,8 +36,12 @@
 
 #define LINE_HERTZ_LOWPASS_SIZE		50
 #define DIMMER_TICKS			10000
+#define DIMMER_JITTER_US		150
 #define MINIMAL_PULSE_LENGH_US		160
 #define PWM_CMR_CLOCK_FREQUENCY		(MCK/8)
+
+
+#define DIMMER_JITTER_TICKS ((int)((DIMMER_JITTER_US * ((unsigned long long)PWM_CMR_CLOCK_FREQUENCY)) / 1000000))
 
 static unsigned short line_hz_table[LINE_HERTZ_LOWPASS_SIZE];
 static int line_hz_pos, line_hz_sum, line_hz, line_hz_enabled;
@@ -46,6 +50,15 @@ static int dimmer_step;
 int dimmer_line_hz_enabled(void)
 {
   return line_hz_enabled;
+}
+
+static inline unsigned int PtRandom(void)
+{
+    static unsigned int v1 = 0x52f7d319;
+    static unsigned int v2 = 0x6e28014a;
+
+    // MWC generator, period length 1014595583
+    return ((v1 = 36969 * (v1 & 0xffff) + (v1 >> 16)) << 16) ^ (v2 = 30963 * (v2 & 0xffff) + (v2 >> 16));
 }
 
 void __attribute__ ((section (".ramfunc"))) vnRF_PulseIRQ_Handler (void)
@@ -65,7 +78,9 @@ void __attribute__ ((section (".ramfunc"))) vnRF_PulseIRQ_Handler (void)
 	  if (line_hz_enabled)
 	    {
 	      pulse_length = (line_hz * dimmer_percent) / DIMMER_TICKS;
-	      AT91C_BASE_TC2->TC_RA = pulse_length ? pulse_length : 1;
+              pulse_length += (PtRandom()%(DIMMER_JITTER_TICKS*2))-DIMMER_JITTER_TICKS;
+
+              AT91C_BASE_TC2->TC_RA = pulse_length>0 ? pulse_length : 1;
 	      AT91C_BASE_TC2->TC_CCR = AT91C_TC_SWTRG;
 	    }
 
