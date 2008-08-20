@@ -29,12 +29,13 @@ def usage():
 	print("\t--set-gamma <filename>			sets the gamma curve for a lamp");
 	print("\t--set-dimmer-jitter <jitter>		sets the dimmer jitter for a lamp (in us)");
 	print("\t--write-config				makes the lamp write its config (gamma and jitter)");
-	print("\t--set-assigned-lamps <filename>	set the lamps assigned to an WMCU");
-	print("\t--lamp-mac <id>			specify the lamp MAC address to use for other commands (0xffff for broadcast)")
+	print("\t--set-assigned-lamps <filename>		set the lamps assigned to an WMCU");
+	print("\t--lamp-mac <id>				specify the lamp MAC address to use for other commands (0xffff for broadcast)")
+	print("\t--enter-update-mode			makes an MCU enter its update mode. USE WITH CARE!");
 	sys.exit(1)
 
 action = -1
-line = -1
+mcu_id = -1
 lampmac = 0
 
 params		= [0, 0, 0, 0, 0, 0, 0, 0];
@@ -50,15 +51,17 @@ SET_GAMMA 		= 2
 WRITE_CONFIG 		= 3
 SET_JITTER		= 4
 SET_ASSIGNED_LAMPS	= 5
+ENTER_UPDATE_MODE	= 0x3f
+DEBUG_SEND_RAW		= 0xff
 
 MCUCTRL_MAGIC 	= 0x23542667
 
 try:
 	opts, args = getopt.getopt(sys.argv[1:],
-		"hh:p:s:s:s:ws:l:s:", 
+		"hh:p:s:s:s:ws:l:s:e", 
 		["help", "host=", "port=", "set-mcu-id=", "set-lamp-id=", 
 		 "set-gamma=", "write-config", "set-dimmer-jitter=", "lamp-mac=",
-		 "set-assigned-lamps="])
+		 "set-assigned-lamps=", "enter-update-mode"])
 
 except getopt.GetoptError, err:
 	print str(err)
@@ -75,7 +78,7 @@ for o, a in opts:
 		lampmac = int(a, 16)
 	if o == "--set-mcu-id":
 		action = SET_MCUID
-		line = int(a)
+		mcu_id = int(a)
 	if o == "--set-lamp-id":
 		action = SET_LAMPID
 		lampid = int(a)
@@ -90,13 +93,15 @@ for o, a in opts:
 	if o == "--set-assigned-lamps":
 		action = SET_ASSIGNED_LAMPS
 		lamp_list_file = a
+	if o == "--enter-update-mode":
+		action = ENTER_UPDATE_MODE
 
 if action == -1:
 	print("need an action to perform.\n")
 	usage()
 
 if action == SET_MCUID:
-	packet = struct.pack("!IIII8I", MCUCTRL_MAGIC, action, 0, line,
+	packet = struct.pack("!IIII8I", MCUCTRL_MAGIC, action, 0, mcu_id,
 			params[0], params[1], params[2], params[3],
 			params[4], params[5], params[6], params[7])
 
@@ -146,6 +151,16 @@ elif action == SET_ASSIGNED_LAMPS:
 			lamps[4],  lamps[5],  lamps[6],  lamps[7],
 			lamps[8],  lamps[9],  lamps[10], lamps[11],
 			lamps[12], lamps[13], lamps[14], lamps[15])
+
+elif action == ENTER_UPDATE_MODE:
+	if lampmac == 0:
+		usage()
+
+	print("sending dimmer to update mode. cross your fingers.")
+	packet = struct.pack("!IIIIIII4I", MCUCTRL_MAGIC, DEBUG_SEND_RAW, 0, 0,
+        	        0x3f, lampmac, 0,
+			0xde, 0xad, 0xbe, 0xef)
+
 
 if host == "":
 	usage()

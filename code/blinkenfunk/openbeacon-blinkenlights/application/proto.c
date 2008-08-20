@@ -103,10 +103,13 @@ crc16 (const unsigned char *buffer, int size)
 
 static inline void sendReply(void)
 {
-  DumpStringToUSB(" --- sending REPLY!\n");
-#if 1
-
   vTaskDelay(100 / portTICK_RATE_MS);
+  pkg.mac = env.e.mac;
+  pkg.wmcu_id = env.e.wmcu_id;
+
+  /* mark packet as being sent from an dimmer
+   * so it's ignored by other dimmers */
+  pkg.cmd |= 0x40;
 
   /* update crc */
   pkg.crc = crc16 ((unsigned char *) &pkg, sizeof(pkg) - sizeof(pkg.crc));
@@ -133,7 +136,6 @@ static inline void sendReply(void)
 
   /* switch to RX mode again */
   nRFAPI_SetRxMode (1);
-#endif
 }
 
 static inline void
@@ -141,7 +143,11 @@ bParsePacket (void)
 {
   int i, reply;
 
-  /* boardcast have to have the correct mcu_id set */
+  /* no MAC set yet? do nothing */
+  if (!env.e.mac)
+    return;
+
+  /* broadcasts have to have the correct wmcu_id set */
   if (pkg.mac == 0xffff &&
       pkg.wmcu_id != env.e.wmcu_id)
       return;
@@ -150,7 +156,11 @@ bParsePacket (void)
   if (pkg.mac != 0xffff &&
       pkg.mac != env.e.mac)
       return;
-
+  
+  /* ignore pakets sent from another dimmer */
+  if (pkg.cmd & 0x40)
+    return;
+ 
   reply = pkg.cmd & 0x80;
   pkg.cmd &= ~0x80;
 
@@ -204,6 +214,15 @@ bParsePacket (void)
     case RF_CMD_SET_JITTER:
       vSetDimmerJitterUS (pkg.set_jitter.jitter);
       break;
+    case RF_CMD_ENTER_UPDATE_MODE:
+      if (pkg.payload[0] != 0xDE ||
+          pkg.payload[1] != 0xAD ||
+	  pkg.payload[2] != 0xBE ||
+	  pkg.payload[3] != 0xEF)
+	break;
+
+      DumpStringToUSB(" ENTERING UPDATE MODE!\n");
+      /* ... */
     }
 
     if (reply)

@@ -55,9 +55,9 @@ dimmer_line_hz_enabled (void)
 void
 vSetDimmerJitterUS (int us)
 {
-  DumpStringToUSB ("new JITTER: ");
-  DumpUIntToUSB (us);
-  DumpStringToUSB ("\n");
+  DumpStringToUSB("new jitter: ");
+  DumpUIntToUSB(us);
+  DumpStringToUSB("\n");
 
   env.e.dimmer_jitter =
     ((int) ((us * ((unsigned long) PWM_CMR_CLOCK_FREQUENCY)) / 1000000));
