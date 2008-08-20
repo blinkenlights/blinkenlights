@@ -39,7 +39,7 @@
 #include "env.h"
 #include "debug_print.h"
 
-static BRFPacket pkt;
+static BRFPacket pkg;
 const unsigned char broadcast_mac[NRF_MAX_MAC_SIZE] =
   { 'D', 'E', 'C', 'A', 'D' };
 
@@ -48,12 +48,11 @@ const unsigned char broadcast_mac[NRF_MAX_MAC_SIZE] =
 static inline s_int8_t
 PtInitNRF (void)
 {
-  if (!nRFAPI_Init
-      (DEFAULT_CHANNEL, broadcast_mac, sizeof (broadcast_mac),
-       ENABLED_NRF_FEATURES))
+  if (!nRFAPI_Init (DEFAULT_CHANNEL, broadcast_mac, 
+  			sizeof (broadcast_mac), ENABLED_NRF_FEATURES))
     return 0;
 
-  nRFAPI_SetPipeSizeRX (0, sizeof (pkt));
+  nRFAPI_SetPipeSizeRX (0, sizeof (pkg));
   nRFAPI_SetTxPower (3);
   nRFAPI_SetRxMode (1);
   nRFCMD_CE (1);
@@ -102,22 +101,57 @@ crc16 (const unsigned char *buffer, int size)
   return crc;
 }
 
+static inline void sendReply(void)
+{
+  DumpStringToUSB(" --- sending REPLY!\n");
+#if 0
+  /* update crc */
+  pkg.crc = crc16 ((unsigned char *) &pkg, sizeof(pkg) - sizeof(pkg.crc));
+
+  /* encrypt data */
+  shuffle_tx_byteorder ((unsigned long *) &pkg, sizeof(pkg) / sizeof(long));
+  xxtea_encode ((long *) &pkg, sizeof(pkg) / sizeof(long));
+  shuffle_tx_byteorder ((unsigned long *) &pkg, sizeof(pkg) / sizeof(long));
+
+  /* disable RX mode */
+  nRFCMD_CE (0);
+
+  /* switch to TX mode */
+  nRFAPI_SetRxMode (0);
+
+  /* upload data to nRF24L01 */
+  nRFAPI_TX ((unsigned char *) &pkg, sizeof(pkg));
+
+  /* transmit data */
+  nRFCMD_CE (1);
+
+  /* wait until packet is transmitted */
+  vTaskDelay (10 / portTICK_RATE_MS);
+
+  /* switch to RX mode again */
+  nRFAPI_SetRxMode (1);
+#endif
+}
+
 static inline void
 bParsePacket (void)
 {
-  int i;
+  int i, reply;
 
   /* boardcast have to have the correct mcu_id set */
-  if (pkt.mac == 0xffff &&
-      pkt.wmcu_id != env.e.wmcu_id)
+  if (pkg.mac == 0xffff &&
+      pkg.wmcu_id != env.e.wmcu_id)
       return;
 
   /* for all other packets, we want our mac */
-  if (pkt.mac != 0xffff &&
-      pkt.mac != env.e.mac)
+  if (pkg.mac != 0xffff &&
+      pkg.mac != env.e.mac)
       return;
 
-  switch (pkt.cmd)
+  reply = pkg.cmd & 0x80;
+  pkg.cmd &= ~0x80;
+
+  switch (pkg.cmd)
     {
     case RF_CMD_SET_VALUES:
       {
@@ -126,7 +160,7 @@ bParsePacket (void)
 	if (env.e.lamp_id * 2 >= RF_PAYLOAD_SIZE)
 	  break;
 
-	v = pkt.payload[env.e.lamp_id / 2];
+	v = pkg.payload[env.e.lamp_id / 2];
 	if (env.e.lamp_id & 1)
 	  v >>= 4;
 
@@ -141,23 +175,23 @@ bParsePacket (void)
       }
     case RF_CMD_SET_LAMP_ID:
       DumpStringToUSB ("new lamp id: ");
-      DumpUIntToUSB (pkt.set_lamp_id.id);
+      DumpUIntToUSB (pkg.set_lamp_id.id);
       DumpStringToUSB (", wmcu id: ");
-      DumpUIntToUSB (pkt.set_lamp_id.wmcu_id);
+      DumpUIntToUSB (pkg.set_lamp_id.wmcu_id);
       DumpStringToUSB ("\n\r");
 
-      env.e.lamp_id = pkt.set_lamp_id.id;
-      env.e.wmcu_id = pkt.set_lamp_id.wmcu_id;
+      env.e.lamp_id = pkg.set_lamp_id.id;
+      env.e.wmcu_id = pkg.set_lamp_id.wmcu_id;
       vTaskDelay(100);
       env_store ();
 
       break;
     case RF_CMD_SET_GAMMA:
-      if (pkt.set_gamma.block > 1)
+      if (pkg.set_gamma.block > 1)
 	break;
 
       for (i = 0; i < 8; i++)
-	  vSetDimmerGamma (pkt.set_gamma.block * 8 + i, pkt.set_gamma.val[i]);
+	  vSetDimmerGamma (pkg.set_gamma.block * 8 + i, pkg.set_gamma.val[i]);
 
       DumpStringToUSB ("new gamme table received\n");
       break;
@@ -165,9 +199,12 @@ bParsePacket (void)
       env_store ();
       break;
     case RF_CMD_SET_JITTER:
-      vSetDimmerJitterUS (pkt.set_jitter.jitter);
+      vSetDimmerJitterUS (pkg.set_jitter.jitter);
       break;
     }
+
+    if (reply)
+      sendReply();
 }
 
 void
@@ -183,41 +220,39 @@ vnRFtaskRx (void *parameter)
 
   for (;;)
     {
-      if (nRFCMD_WaitRx (10))
+      if (!nRFCMD_WaitRx (10))
 	{
-	  do
-	    {
-	      // read packet from nRF chip
-	      nRFCMD_RegReadBuf (RD_RX_PLOAD, (unsigned char *) &pkt,
-				 sizeof (pkt));
+	  nRFAPI_ClearIRQ (MASK_IRQ_FLAGS);
+	  continue;
+	}
 
-	      // adjust byte order and decode
-	      shuffle_tx_byteorder ((unsigned long *) &pkt,
-				    sizeof (pkt) / sizeof (long));
-	      xxtea_decode ((long *) &pkt, sizeof (pkt) / sizeof (long));
-	      shuffle_tx_byteorder ((unsigned long *) &pkt,
-				    sizeof (pkt) / sizeof (long));
+	do
+	  {
+	    /* read packet from nRF chip */
+	    nRFCMD_RegReadBuf (RD_RX_PLOAD, (unsigned char *) &pkg, sizeof (pkg));
 
-	      // verify the crc checksum
-	      crc =
-		crc16 ((unsigned char *) &pkt,
-		       sizeof (pkt) - sizeof (pkt.crc));
+	    /* adjust byte order and decode */
+	    shuffle_tx_byteorder ((unsigned long *) &pkg, sizeof (pkg) / sizeof (long));
+	    xxtea_decode ((long *) &pkg, sizeof (pkg) / sizeof (long));
+	    shuffle_tx_byteorder ((unsigned long *) &pkg, sizeof (pkg) / sizeof (long));
 
-	      if (crc != swapshort (pkt.crc))
-		continue;
+	    /* verify the crc checksum */
+	    crc = crc16 ((unsigned char *) &pkg, sizeof (pkg) - sizeof (pkg.crc));
 
-	      // valid paket
-	      if (!DidBlink)
-		{
-		  vLedSetGreen (1);
-		  Ticks = xTaskGetTickCount ();
-		  DidBlink = 1;
-		}
+	    if (crc != swapshort (pkg.crc))
+              continue;
+
+	    /* valid paket */
+	    if (!DidBlink)
+	      {
+		 vLedSetGreen (1);
+		 Ticks = xTaskGetTickCount ();
+		 DidBlink = 1;
+	      }
 
 	      bParsePacket ();
-	    }
-	  while ((nRFAPI_GetFifoStatus () & FIFO_RX_EMPTY) == 0);
-	}			// if
+	  }
+	while ((nRFAPI_GetFifoStatus () & FIFO_RX_EMPTY) == 0);
 
       nRFAPI_ClearIRQ (MASK_IRQ_FLAGS);
 
@@ -226,7 +261,7 @@ vnRFtaskRx (void *parameter)
 	  DidBlink = 0;
 	  vLedSetGreen (0);
 	}
-    }				// for (;;)
+    } /* for (;;) */
 }
 
 void

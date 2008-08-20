@@ -28,7 +28,7 @@ while 1:
 	print (" val %02x" % val)
 
 	packet = struct.pack("!IIIIIII26I", MCUCTRL_MAGIC, DEBUG_SEND_RAW, 0, 0,
-			RF_CMD_SET_VALUES, 0x1122, 0,
+			RF_CMD_SET_VALUES, 0xffff, 0,
 			val, val, val, val, val, val, val, val,
 			val, val, val, val, val, val, val, val,
 			val, val, val, val, val, val, val, val,
