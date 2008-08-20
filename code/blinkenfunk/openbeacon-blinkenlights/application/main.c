@@ -41,6 +41,7 @@
 #include "usbshell.h"
 #include "debug_print.h"
 #include "dimmer.h"
+#include "env.h"
 
 /**********************************************************************/
 static inline void
@@ -70,6 +71,8 @@ main (void)
   prvSetupHardware ();
 
   vLedInit ();
+  env_init();
+  env_load();
 
   xTaskCreate (vUSBCDCTask, (signed portCHAR *) "USB", TASK_USB_STACK,
 	       NULL, TASK_USB_PRIORITY, NULL);

@@ -102,6 +102,7 @@
 /*-------------------------------*/
 
 #define TENVIRONMENT_MAGIC 0x0CCCBEEF
+#define GAMMA_SIZE 16
 
 typedef struct
 {
@@ -109,6 +110,7 @@ typedef struct
     unsigned short mac;
     unsigned char lamp_id;
     unsigned char wmcu_id;
+    unsigned short gamma_table[GAMMA_SIZE];
 } TEnvironment __attribute__ ((aligned (4)));
 
 /*----------------------------------*/

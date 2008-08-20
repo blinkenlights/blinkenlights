@@ -104,6 +104,8 @@ crc16 (const unsigned char *buffer, int size)
 
 static inline void bParsePacket(void)
 {
+  int i;
+
   DumpStringToUSB ("RX cmd: ");
   DumpUIntToUSB (pkt.cmd);
   DumpStringToUSB ("\n\r");
@@ -127,7 +129,7 @@ static inline void bParsePacket(void)
 	DumpUIntToUSB (v);
         DumpStringToUSB ("\n\r");
 
-	vUpdateDimmer((v * 500) + 2000);
+	vUpdateDimmer(v);
         break;
       }
       case RF_CMD_SET_LAMP_ID:
@@ -139,12 +141,28 @@ static inline void bParsePacket(void)
 
 	env.e.lamp_id = pkt.set_lamp_id.id;
 	env.e.wmcu_id = pkt.set_lamp_id.line;
-	// env_store();
+	env_store();
 
         break;
       case RF_CMD_SET_GAMMA:
+        if (pkt.set_gamma.block > 1)
+	  break;
+
+	DumpStringToUSB("GAMMA block ");
+	DumpUIntToUSB(pkt.set_gamma.block);
+	DumpStringToUSB(": ");
+
+	for (i = 0; i < 8; i++) {
+	  vSetDimmerGamma (pkt.set_gamma.block * 8 + i, pkt.set_gamma.val[i]);
+	
+	  DumpUIntToUSB(pkt.set_gamma.val[i]);
+	  DumpStringToUSB (", ");
+	}
+
+	DumpStringToUSB("\n");
         break;
       case RF_CMD_WRITE_GAMMA:
+        env_store();
         break;
       case RF_CMD_SET_JITTER:
         break;

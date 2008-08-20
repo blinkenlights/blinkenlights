@@ -51,6 +51,7 @@ typedef struct
     } set_lamp_id;
 
     struct {
+      unsigned char block;
       unsigned short val[8];
     } set_gamma;
 

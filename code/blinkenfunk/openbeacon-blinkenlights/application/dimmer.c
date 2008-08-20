@@ -32,26 +32,16 @@
 #include "led.h"
 #include "xxtea.h"
 #include "proto.h"
-#include "nRF24L01/nRF_HW.h"
-#include "nRF24L01/nRF_CMD.h"
-#include "nRF24L01/nRF_API.h"
+#include "env.h"
 
-#define LINE_HERTZ_LOWPASS_SIZE 50
-#define DIMMER_TICKS 10000
-#define MINIMAL_PULSE_LENGH_US 160
-#define PWM_CMR_CLOCK_FREQUENCY (MCK/8)
-
-// specify minimum brightness to increase lamp life (0.0 to 1.0)
-#define DIMMER_MINIMUM_BRIGHTNESS 0.25
-
-// specify gamma table range and size
-#define GAMMA_RANGE (0xFFFF)
-#define GAMMA_SIZE  (100)
+#define LINE_HERTZ_LOWPASS_SIZE		50
+#define DIMMER_TICKS			10000
+#define MINIMAL_PULSE_LENGH_US		160
+#define PWM_CMR_CLOCK_FREQUENCY		(MCK/8)
 
 static unsigned short line_hz_table[LINE_HERTZ_LOWPASS_SIZE];
 static int line_hz_pos, line_hz_sum, line_hz, line_hz_enabled;
-static int dimmer_percent;
-//static unsigned short gamma_table[GAMMA_SIZE];
+static int dimmer_step;
 
 int dimmer_line_hz_enabled(void)
 {
@@ -62,6 +52,7 @@ void __attribute__ ((section (".ramfunc"))) vnRF_PulseIRQ_Handler (void)
 {
   static unsigned int timer_prev = 0;
   int pulse_length, rb, period_length;
+  int dimmer_percent = DIMMER_TICKS - env.e.gamma_table[dimmer_step];
 
   if (AT91C_BASE_TC1->TC_SR & AT91C_TC_LDRBS)
     {
@@ -104,43 +95,22 @@ void __attribute__ ((naked, section (".ramfunc"))) vnRF_PulseIRQ (void)
   portRESTORE_CONTEXT ();
 }
 
-/*
-static void
-vGammaRecalc (unsigned char Gamma)
+void
+vUpdateDimmer (int step)
 {
-  int i;
+  if (step > GAMMA_SIZE || step < 0)
+    return;
 
-  for (i = 0; i < GAMMA_SIZE; i++)
-    gamma_table[i] =
-      round(GAMMA_RANGE *
-	      acos (2 *
-		    pow (DIMMER_MINIMUM_BRIGHTNESS +
-			 ((i * (1 - DIMMER_MINIMUM_BRIGHTNESS)) / GAMMA_SIZE),
-			 Gamma / 100.0) - 1) / M_PI);
+  dimmer_step = step;
 }
-
-static inline void
-vUpdateDimmer (int Percent)
-{
-  if (Percent < 0)
-    Percent = 0;
-
-  if (Percent >= GAMMA_SIZE)
-    dimmer_value = 1;
-  else
-    dimmer_value = (gamma_table[Percent] * line_hz) / GAMMA_RANGE;
-}
-*/
 
 void
-vUpdateDimmer (int Percent)
+vSetDimmerGamma (int entry, int val)
 {
-  if (Percent <= 0)
-    dimmer_percent = DIMMER_TICKS;
-  else if (Percent >= DIMMER_TICKS)
-    dimmer_percent = 0;
-  else
-    dimmer_percent = DIMMER_TICKS - Percent;
+  if (entry >= GAMMA_SIZE || val > DIMMER_TICKS)
+    return;
+
+  env.e.gamma_table[entry] = val;
 }
 
 void
@@ -151,7 +121,7 @@ vInitDimmer (void)
 
   bzero (&line_hz_table, sizeof (line_hz_table));
   line_hz_pos = line_hz_sum = line_hz = line_hz_enabled = 0;
-  dimmer_percent = 0;
+  dimmer_step = 0;
 
   /* Enable Peripherals */
   AT91F_PIO_CfgPeriph (AT91C_BASE_PIOA, 0, TRIGGER_PIN | PHASE_PIN);
