@@ -38,6 +38,9 @@
 
 #include "led.h"
 #include "proto.h"
+#include "usbshell.h"
+#include "debug_print.h"
+#include "dimmer.h"
 
 /**********************************************************************/
 static inline void
@@ -72,6 +75,10 @@ main (void)
 	       NULL, TASK_USB_PRIORITY, NULL);
 
   vInitProtocolLayer ();
+
+  vUSBShellInit ();
+
+  vInitDimmer ();
 
   vLedSetGreen (1);
 

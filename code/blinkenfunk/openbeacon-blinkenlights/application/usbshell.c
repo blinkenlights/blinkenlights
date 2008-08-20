@@ -32,6 +32,7 @@
 #include "debug_print.h"
 #include "env.h"
 #include "USB-CDC.h"
+#include "dimmer.h"
 
 #define PROMPT "\nWDIM> "
 
@@ -51,7 +52,7 @@ cmd_help (const portCHAR *cmd)
   shell_print("help\n");
   shell_print("	This screen\n");
   shell_print("\n");
-  shell_print("[wdimmer-]mac <xxyy> [<crc>]\n");
+  shell_print("[wdim-]mac <xxyy> [<crc>]\n");
   shell_print("	Set the MAC address of this unit.\n");
   shell_print("\n");
   shell_print("status\n");
@@ -59,6 +60,9 @@ cmd_help (const portCHAR *cmd)
   shell_print("\n");
   shell_print("env\n");
   shell_print("	Show variables currently stored in the non-volatile flash memory\n");
+  shell_print("\n");
+  shell_print("dim <value>\n");
+  shell_print("	Set the dimmer to a value (between 0 and 10000)\n");
   shell_print("");
 }
 
@@ -138,6 +142,29 @@ cmd_env (const portCHAR * cmd)
 //  shell_print ("   mac = %02x%02x\n", env.e.mac_h, env.e.mac_l);
 }
 
+static void
+cmd_dim (const portCHAR * cmd)
+{
+  int val = 0;
+
+  while (*cmd && *cmd != ' ')
+  	cmd++;
+
+  cmd++;
+
+  while (*cmd >= '0' && *cmd <= '9')
+    {
+      val *= 10;
+      val += *cmd - '0';
+      cmd++;
+    }
+
+  vUpdateDimmer(val);
+  shell_print("setting dimmer to value ");
+  DumpUIntToUSB(val);
+  shell_print("\n");
+}
+
 
 static struct cmd_t {
 	const portCHAR *command;
@@ -148,6 +175,7 @@ static struct cmd_t {
 	{ "mac",	&cmd_mac },
 	{ "wdim-mac",	&cmd_mac },
 	{ "env",	&cmd_env },
+	{ "dim",	&cmd_dim },
 	/* end marker */
 	{ NULL, NULL }
 };

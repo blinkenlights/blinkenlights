@@ -138,7 +138,7 @@ static inline void bParsePacket(void)
         DumpStringToUSB ("\n\r");
 
 	env.e.lamp_id = pkt.set_lamp_id.id;
-	env.e.line_id = pkt.set_lamp_id.line;
+	env.e.wmcu_id = pkt.set_lamp_id.line;
 	// env_store();
 
         break;
@@ -206,84 +206,8 @@ vnRFtaskRx (void *parameter)
 }
 
 void
-vnRFtaskCmd (void *parameter)
-{
-  (void) parameter;
-  portCHAR c;
-  int Percent = 2000;
-  bool_t Changed;
-
-  /* Init Dimmer and wait till initial frequency is measured */
-  vInitDimmer ();
-  while (!dimmer_line_hz_enabled())
-    vTaskDelay (250 / portTICK_RATE_MS);
-  vUpdateDimmer (Percent);
-
-
-  while (1)
-    {
-      if (vUSBRecvByte (&c, sizeof (c), 100))
-	{
-	  Changed = false;
-
-	  if (c >= 'a' && c <= 'q')
-	    {
-	      Percent = 2000 + (c - 'a') * 500;
-	      Changed = pdTRUE;
-	    }
-	  else if (c >= '0' && c <= '9')
-	    {
-	      Percent = 2000 + (c - '0') * 889;
-	      Changed = pdTRUE;
-	    }
-	  else
-	    switch (c)
-	      {
-	      case '/':
-		if (Percent % 100)
-		  Percent -= Percent % 100;
-		else
-		  Percent -= 100;
-		Changed = pdTRUE;
-		break;
-	      case '*':
-		if (Percent % 100)
-		  Percent += 100 - (Percent % 100);
-		else
-		  Percent += 100;
-		Changed = pdTRUE;
-		break;
-	      case '+':
-		Percent++;
-		Changed = pdTRUE;
-		break;
-	      case '-':
-		Percent--;
-		Changed = pdTRUE;
-		break;
-	      }
-
-	  if (Changed)
-	    {
-	      DumpStringToUSB ("DIM=");
-	      if (Percent > 10000)
-		Percent = 10000;
-	      else if (Percent < 2000)
-		Percent = 2000;
-	      DumpUIntToUSB (Percent);
-	      DumpStringToUSB ("%%\n\r");
-	      vUpdateDimmer (Percent);
-	    }
-	}
-    }
-}
-
-void
 vInitProtocolLayer (void)
 {
   xTaskCreate (vnRFtaskRx, (signed portCHAR *) "nRF_Rx", TASK_NRF_STACK,
 	       NULL, TASK_NRF_PRIORITY, NULL);
-
-  xTaskCreate (vnRFtaskCmd, (signed portCHAR *) "nRF_Cmd", TASK_CMD_STACK,
-	       NULL, TASK_CMD_PRIORITY, NULL);
 }

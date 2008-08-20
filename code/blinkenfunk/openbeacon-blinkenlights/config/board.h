@@ -83,16 +83,16 @@
 /* task priorities               */
 /*-------------------------------*/
 
-#define TASK_USBSHELL_PRIORITY  ( tskIDLE_PRIORITY)
+#define TASK_USBSHELL_PRIORITY  ( tskIDLE_PRIORITY + 0)
 #define TASK_USBSHELL_STACK     ( 512 )
 
-#define TASK_CMD_PRIORITY	( tskIDLE_PRIORITY + 2 )
+#define TASK_CMD_PRIORITY	( tskIDLE_PRIORITY + 1 )
 #define TASK_CMD_STACK		( 512 )
 
-#define TASK_USB_PRIORITY	( tskIDLE_PRIORITY + 3 )
+#define TASK_USB_PRIORITY	( tskIDLE_PRIORITY + 2 )
 #define TASK_USB_STACK		( 512 )
 
-#define TASK_NRF_PRIORITY	( tskIDLE_PRIORITY + 4 )
+#define TASK_NRF_PRIORITY	( tskIDLE_PRIORITY + 3 )
 #define TASK_NRF_STACK		( 512 )
 
 
@@ -108,7 +108,7 @@ typedef struct
     unsigned int magic, size, crc16;
     unsigned short mac;
     unsigned char lamp_id;
-    unsigned char line_id;
+    unsigned char wmcu_id;
 } TEnvironment __attribute__ ((aligned (4)));
 
 /*----------------------------------*/
