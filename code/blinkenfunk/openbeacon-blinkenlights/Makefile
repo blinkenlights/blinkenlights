@@ -4,14 +4,16 @@ CPU=$(ARCH)64
 DEBUG=-g
 OPTIM=-O2
 
-APP_CFLAGS=-Iapplication
+APP_CFLAGS=-Iapplication -Wno-unused-parameter
 APP_LDFLAGS=-lm
 
-APP_SRC=		\
-  application/main.c	\
-  application/led.c	\
-  application/proto.c	\
-  application/dimmer.c	\
+APP_SRC=			\
+  application/main.c		\
+  application/led.c		\
+  application/proto.c		\
+  application/dimmer.c		\
+  application/usbshell.c	\
+  application/debug_print.c	\
   application/xxtea.c
   
 all: $(TARGET).bin

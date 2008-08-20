@@ -36,6 +36,8 @@
 #include "nRF24L01/nRF_CMD.h"
 #include "nRF24L01/nRF_API.h"
 #include "dimmer.h"
+#include "env.h"
+#include "debug_print.h"
 
 static BRFPacket pkt;
 const unsigned char broadcast_mac[NRF_MAX_MAC_SIZE] = { 'D', 'E', 'C', 'A', 'D' };
@@ -100,34 +102,6 @@ crc16 (const unsigned char *buffer, int size)
   return crc;
 }
 
-static inline void
-DumpUIntToUSB (unsigned int data)
-{
-  int i = 0;
-  unsigned char buffer[10], *p = &buffer[sizeof (buffer)];
-
-  do
-    {
-      *--p = '0' + (unsigned char) (data % 10);
-      data /= 10;
-      i++;
-    }
-  while (data);
-
-  while (i--)
-    vUSBSendByte (*p++);
-}
-
-static inline void
-DumpStringToUSB (char *text)
-{
-  unsigned char data;
-
-  if (text)
-    while ((data = *text++) != 0)
-      vUSBSendByte (data);
-}
-
 static inline void bParsePacket(void)
 {
   DumpStringToUSB ("RX cmd: ");
@@ -137,8 +111,36 @@ static inline void bParsePacket(void)
   switch (pkt.cmd)
     {
       case RF_CMD_SET_VALUES:
+      {
+        char v;
+	
+	if (env.e.lamp_id * 2 >= RF_PAYLOAD_SIZE)
+	  break;
+	
+	v = pkt.payload[env.e.lamp_id / 2];
+	if (env.e.lamp_id & 1)
+	  v >>= 4;
+
+	v &= 0xf;
+        
+	DumpStringToUSB ("new lamp val: ");
+	DumpUIntToUSB (v);
+        DumpStringToUSB ("\n\r");
+
+	vUpdateDimmer((v * 500) + 2000);
         break;
+      }
       case RF_CMD_SET_LAMP_ID:
+        DumpStringToUSB ("new lamp id: ");
+	DumpUIntToUSB (pkt.set_lamp_id.id);
+        DumpStringToUSB (", new lamp line: ");
+	DumpUIntToUSB (pkt.set_lamp_id.line);
+        DumpStringToUSB ("\n\r");
+
+	env.e.lamp_id = pkt.set_lamp_id.id;
+	env.e.line_id = pkt.set_lamp_id.line;
+	// env_store();
+
         break;
       case RF_CMD_SET_GAMMA:
         break;
