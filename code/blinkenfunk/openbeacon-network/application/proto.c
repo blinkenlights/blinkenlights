@@ -143,9 +143,10 @@ vnRFtaskRx (void *parameter)
   if (!PtInitNRF ())
     return;
 
+  /* FIXME!!! THIS IS RACY AND NEEDS A LOCK!!! */
+
   for (;;)
     {
-#if 1
       if (nRFCMD_WaitRx (100))
 	{
 	  vLedSetRed (1);
@@ -155,7 +156,6 @@ vnRFtaskRx (void *parameter)
 	      /* read packet from nRF chip */
 	      nRFCMD_RegReadBuf (RD_RX_PLOAD, (unsigned char *) &rxpkg, sizeof(rxpkg));
 	      vLedSetRed (0);
-	      debug_printf(" RX command!\n");
 
 	      /* adjust byte order and decode */
 	      shuffle_tx_byteorder ((unsigned long *) & rxpkg, sizeof(rxpkg) / sizeof(long));
@@ -167,13 +167,23 @@ vnRFtaskRx (void *parameter)
 	      
 	      if (crc != swapshort (rxpkg.crc))
 	        continue;
+	      
+	      /* sort out packets from other domains */
+	      if (rxpkg.wmcu_id != env.e.wmcu_id)
+	        continue;
+
+	      /* require packet to be sent from an dimmer */
+	      if (~rxpkg.cmd & 0x40)
+	        continue;
+	      
+	      debug_printf(" RX command!\n");
 
 	    }
 	  while ((nRFAPI_GetFifoStatus () & FIFO_RX_EMPTY) == 0);
 
 	}
       nRFAPI_ClearIRQ (MASK_IRQ_FLAGS);
-#endif
+
       /* schedule */
       vTaskDelay (100 / portTICK_RATE_MS);
     }
