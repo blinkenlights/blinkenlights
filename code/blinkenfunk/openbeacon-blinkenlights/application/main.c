@@ -72,6 +72,7 @@ prvSetupHardware (void)
 	env.e.gamma_table[i] =
 	  DIMMER_OFFSET +
 	  (((DIMMER_TICKS - DIMMER_OFFSET) * i) / (GAMMA_SIZE - 1));
+	env.e.dimmer_jitter = 150;
     }
 }
 
