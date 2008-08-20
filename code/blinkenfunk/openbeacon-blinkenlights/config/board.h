@@ -111,6 +111,7 @@ typedef struct
     unsigned char lamp_id;
     unsigned char wmcu_id;
     unsigned short gamma_table[GAMMA_SIZE];
+    unsigned int dimmer_jitter;
 } TEnvironment __attribute__ ((aligned (4)));
 
 /*----------------------------------*/

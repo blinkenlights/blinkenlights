@@ -33,21 +33,19 @@
 #include "xxtea.h"
 #include "proto.h"
 #include "env.h"
+#include "debug_print.h"
 
 #define LINE_HERTZ_LOWPASS_SIZE		50
 #define DIMMER_TICKS			10000
-#define DIMMER_JITTER_US_DEFAULT	150
 #define MINIMAL_PULSE_LENGH_US		160
 #define PWM_CMR_CLOCK_FREQUENCY		(MCK/8)
-
-
+//#define DIMMER_JITTER_US_DEFAULT	150
 
 static unsigned short line_hz_table[LINE_HERTZ_LOWPASS_SIZE];
 static int line_hz_pos, line_hz_sum, line_hz, line_hz_enabled;
 static int dimmer_step;
 static unsigned int v1 = 0x52f7d319;
 static unsigned int v2 = 0x6e28014a;
-static int dimmer_jitter_ticks;
 
 int
 dimmer_line_hz_enabled (void)
@@ -58,7 +56,11 @@ dimmer_line_hz_enabled (void)
 void
 vSetDimmerJitterUS(int us)
 {
-  dimmer_jitter_ticks = ((int)((us * ((unsigned long)PWM_CMR_CLOCK_FREQUENCY)) / 1000000));
+  DumpStringToUSB("new JITTER: ");
+  DumpUIntToUSB(us);
+  DumpStringToUSB("\n");
+
+  env.e.dimmer_jitter = ((int)((us * ((unsigned long)PWM_CMR_CLOCK_FREQUENCY)) / 1000000));
 }
 
 static inline unsigned int
@@ -89,8 +91,8 @@ void __attribute__ ((section (".ramfunc"))) vnRF_PulseIRQ_Handler (void)
 	    {
 	      pulse_length = (line_hz * dimmer_percent) / DIMMER_TICKS;
 	      pulse_length +=
-		(PtRandom () % (dimmer_jitter_ticks * 2)) -
-		dimmer_jitter_ticks;
+		(PtRandom () % (env.e.dimmer_jitter * 2)) -
+		env.e.dimmer_jitter;
 
 	      AT91C_BASE_TC2->TC_RA = pulse_length > 0 ? pulse_length : 1;
 	      AT91C_BASE_TC2->TC_CCR = AT91C_TC_SWTRG;
@@ -161,7 +163,7 @@ vInitDimmer (void)
   v1 ^= (env.e.mac << 24) | (env.e.mac << 16) | (env.e.mac << 8) | (env.e.mac);
   v2 ^= (env.e.mac << 24) | (env.e.mac << 16) | (env.e.mac << 8) | (env.e.mac);
 
-  vSetDimmerJitterUS(DIMMER_JITTER_US_DEFAULT);
+//  vSetDimmerJitterUS(DIMMER_JITTER_US_DEFAULT);
 
   bzero (&line_hz_table, sizeof (line_hz_table));
   line_hz_pos = line_hz_sum = line_hz = line_hz_enabled = 0;
