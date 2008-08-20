@@ -71,15 +71,25 @@ static inline void RAMFUNC unlock_page(unsigned short page)
 	flash_cmd_wait();
 }
 
-static inline void RAMFUNC flash_page(const void *addr)
+void RAMFUNC env_flash_to(const void *addr)
 {
-	unsigned short page = page_from_ramaddr(addr) & 0x3ff;
+	unsigned int i,*src,*dst;
+
+	unsigned short page;
+	
+	src=env.data;
+	dst=(unsigned int*)addr;
+        for (i = 0; i < (sizeof(env.data)/sizeof(env.data[0])); i++)
+	    *dst++ = *src++;
+	
+	page = page_from_ramaddr(addr) & 0x3ff;
 
 	if (is_page_locked(page))
 	    unlock_page(page);
 
 	AT91F_MC_EFC_PerformCmd(AT91C_BASE_MC, AT91C_MC_FCMD_START_PROG |
 				AT91C_MC_CORRECT_KEY | (page << 8));
+					
 	flash_cmd_wait();
 }
 
@@ -114,13 +124,8 @@ void RAMFUNC env_store(void)
 	env.e.crc16=0;
 	env.e.size=sizeof(env);
 	env.e.crc16=env_crc16((unsigned char*)&env,sizeof(env));
-	
-	src=env.data;
-	dst=ENV_FLASH;
-        for (i = 0; i < (sizeof(env.data)/sizeof(env.data[0])); i++)
-	    *dst++ = *src++;
 
-	flash_page(ENV_FLASH);
+	env_flash_to(ENV_FLASH);
 	
 	portEXIT_CRITICAL();
 	xTaskResumeAll();
