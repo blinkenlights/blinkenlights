@@ -35,16 +35,16 @@
 #include "debug_printf.h"
 
 const unsigned char broadcast_mac[NRF_MAX_MAC_SIZE] = { 'D', 'E', 'C', 'A', 'D' };
+static BRFPacket rxpkg;
 
 static inline s_int8_t
 PtInitNRF (void)
 {
-  if (!nRFAPI_Init
-      (DEFAULT_CHANNEL, broadcast_mac, sizeof (broadcast_mac),
-       ENABLED_NRF_FEATURES))
+  if (!nRFAPI_Init(DEFAULT_CHANNEL, broadcast_mac,
+  	sizeof (broadcast_mac), ENABLED_NRF_FEATURES))
     return 0;
 
-  nRFAPI_SetPipeSizeRX (0, 16);
+  nRFAPI_SetPipeSizeRX (0, sizeof(rxpkg));
   nRFAPI_SetTxPower (3);
   nRFAPI_SetRxMode (0);
   nRFCMD_CE (0);
@@ -99,39 +99,38 @@ void vnRFTransmitPacket(BRFPacket *pkg)
 {
   unsigned short crc;
 
-  // turn on redLED for TX indication
+  /* turn on redLED for TX indication */
   vLedSetRed (1);
 
-  // disable receive mode
+  /* disable receive mode */
   nRFCMD_CE (0);
 
-  // set TX mode
+  /* set TX mode */
   nRFAPI_SetRxMode (0);
 
-  // update crc
+  /* update crc */
   crc = crc16 ((unsigned char *) pkg, sizeof(*pkg) - sizeof(pkg->crc));
   pkg->crc = swapshort (crc);
 
-  // encrypt the data
+  /* encrypt the data */
   shuffle_tx_byteorder ((unsigned long *) pkg, sizeof(*pkg) / sizeof(long));
   xxtea_encode ((long *) pkg, sizeof(*pkg) / sizeof(long));
   shuffle_tx_byteorder ((unsigned long *) pkg, sizeof(*pkg) / sizeof(long));
 
-  // upload data to nRF24L01
- 
+  /* upload data to nRF24L01 */
   //hex_dump((unsigned char *) pkg, 0, sizeof(*pkg));
   nRFAPI_TX ((unsigned char *) pkg, sizeof(*pkg));
 
-  // transmit data
+  /* transmit data */
   nRFCMD_CE (1);
 
-  // wait till packet is transmitted    
-  vTaskDelay ( 10 / portTICK_RATE_MS);
+  /* wait till packet is transmitted */
+  vTaskDelay (10 / portTICK_RATE_MS);
 
-  // switch to RX mode again
+  /* switch to RX mode again */
   nRFAPI_SetRxMode (1);
 
-  // turn off red TX indication LED
+  /* turn off red TX indication LED */
   vLedSetRed (0);
 
 }
@@ -139,52 +138,42 @@ void vnRFTransmitPacket(BRFPacket *pkg)
 void
 vnRFtaskRx (void *parameter)
 {
-//  u_int16_t crc;
-  (void) parameter;
+  u_int16_t crc;
 
   if (!PtInitNRF ())
     return;
 
   for (;;)
     {
-/*      if (nRFCMD_WaitRx (100))
+#if 1
+      if (nRFCMD_WaitRx (100))
 	{
 	  vLedSetRed (1);
 
 	  do
 	    {
-	      // read packet from nRF chip
-	      nRFCMD_RegReadBuf (RD_RX_PLOAD, g_Beacon.datab,
-				 sizeof (g_Beacon));
+	      /* read packet from nRF chip */
+	      nRFCMD_RegReadBuf (RD_RX_PLOAD, (unsigned char *) &rxpkg, sizeof(rxpkg));
+	      vLedSetRed (0);
 
-	      // adjust byte order and decode
-	      shuffle_tx_byteorder ();
-	      xxtea_decode ();
-	      shuffle_tx_byteorder ();
+	      /* adjust byte order and decode */
+	      shuffle_tx_byteorder ((unsigned long *) & rxpkg, sizeof(rxpkg) / sizeof(long));
+	      xxtea_decode ((long *) &rxpkg, sizeof(rxpkg) / sizeof(long));
+	      shuffle_tx_byteorder ((unsigned long *) & rxpkg, sizeof(rxpkg) / sizeof(long));
 
-	      // verify the crc checksum
-	      crc =
-		crc16 (g_Beacon.datab,
-		       sizeof (g_Beacon) - sizeof (g_Beacon.pkt.crc));
-	      if ((swapshort (g_Beacon.pkt.crc) == crc))
-		{
-		  PtDumpStringToUSB ("RX: ");
-		  PtDumpUIntToUSB (swaplong (g_Beacon.pkt.oid));
-		  PtDumpStringToUSB (",");
-		  PtDumpUIntToUSB (swaplong (g_Beacon.pkt.seq));
-		  PtDumpStringToUSB (",");
-		  PtDumpUIntToUSB (g_Beacon.pkt.strength);
-		  PtDumpStringToUSB (",");
-		  PtDumpUIntToUSB (g_Beacon.pkt.flags);
-		  PtDumpStringToUSB ("\n\r");
-		}
+	      /* verify the crc checksum */
+	      crc = crc16 ((unsigned char *) &rxpkg, sizeof(rxpkg) - sizeof(rxpkg.crc));
+	      
+	      if (crc != swapshort (rxpkg.crc))
+	        continue;
+
+	      debug_printf(" RX command!\n");
 	    }
 	  while ((nRFAPI_GetFifoStatus () & FIFO_RX_EMPTY) == 0);
 
-	  vLedSetRed (0);
 	}
-      nRFAPI_ClearIRQ (MASK_IRQ_FLAGS);*/
-
+      nRFAPI_ClearIRQ (MASK_IRQ_FLAGS);
+#endif
       /* schedule */
       vTaskDelay (100 / portTICK_RATE_MS);
     }
