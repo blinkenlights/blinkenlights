@@ -52,18 +52,17 @@
 
 static struct udp_pcb *b_pcb;
 static unsigned char payload[2048];
-static int lamp_map[RF_PAYLOAD_SIZE * 2] = { 0 };
+static short lamp_map[RF_PAYLOAD_SIZE * 2] = { 0xffff };
 static BRFPacket rfpkg;
 
 static void b_output_line(int width, unsigned char *data)
 {
-	memset(&rfpkg, 0, sizeof(rfpkg));
+	memset(&rfpkg, 0, sizeof(rfpkg) - RF_PAYLOAD_SIZE);
 	rfpkg.cmd = RF_CMD_SET_VALUES;
 	rfpkg.line = env.e.mcu_id;
 	rfpkg.mac = 0xffff; /* send to all MACs */
 
-	debug_printf("%s():: \n", __func__);
-	hex_dump((unsigned char *) &rfpkg.payload, 0, RF_PAYLOAD_SIZE);
+	hex_dump((unsigned char *) rfpkg.payload, 0, RF_PAYLOAD_SIZE);
 	/* rfpkg.payload pre-filled */
 	vnRFTransmitPacket(&rfpkg);
 }
@@ -71,18 +70,19 @@ static void b_output_line(int width, unsigned char *data)
 static unsigned char b_mcu_frame_get_pixel_val(mcu_frame_header_t *header, int pixel, unsigned int maxlen)
 {
 	unsigned char *payload = (unsigned char *) header + sizeof(*header);
-	unsigned int v, pos = (pixel * header->channels * header->bpp) / 8;
+	unsigned int v;
+	//unsigned int pos = (pixel * header->channels * header->bpp) / 8;
+	unsigned int pos = (pixel * header->channels);
 
 	if (pos >= maxlen - sizeof(*header))
 		return 0;
 
-	debug_printf(" --- pixel %04x -> pos %04x\n", pixel, pos);
-
 	v = payload[pos];
 
+/*
 	if ((header->bpp == 4) && (~pixel & 1))
 		v >>= 4;
-	
+*/	
 	return v;
 }
 
@@ -131,8 +131,8 @@ debug_printf(" -- w %d h %d chns %d bpp %d\n",
 		//	debug_printf("lamp_map[0] == %04x\n", lamp_map[0]);
 		//	hex_dump((unsigned char *) header, 0, maxlen);
 		}
-		rfpkg.payload[i] = (b_mcu_frame_get_pixel_val(header, lamp_map[i*2], maxlen) << 4)
-				 | (b_mcu_frame_get_pixel_val(header, lamp_map[i*2 + 1], maxlen) & 0xf);
+		rfpkg.payload[i] = (b_mcu_frame_get_pixel_val(header, lamp_map[i*2], maxlen) & 0xf)
+				 | (b_mcu_frame_get_pixel_val(header, lamp_map[i*2 + 1], maxlen) << 4);
 	}
 	/* funk it. */
 	b_output_line(header->width, payload);
@@ -174,13 +174,16 @@ static inline void b_set_lamp_id(int lamp_id, int lamp_line, int lamp_mac)
 	vnRFTransmitPacket(&rfpkg);
 }
 
-static inline void b_set_gamma_curve(int lamp_mac, unsigned short *gamma)
+static inline void b_set_gamma_curve(int lamp_mac, unsigned int block, unsigned short *gamma)
 {
 	int i;
+
+debug_printf(" ... SET GAMMA\n");
 
 	memset(&rfpkg, 0, sizeof(rfpkg));
 	rfpkg.cmd = RF_CMD_SET_GAMMA;
 	rfpkg.mac = lamp_mac;
+	rfpkg.set_gamma.block = block;
 
 	for (i = 0; i < 8; i++)
 		rfpkg.set_gamma.val[i] = gamma[i];
@@ -238,11 +241,12 @@ static int b_parse_mcu_devctrl(mcu_devctrl_header_t *header, int maxlen)
 		case MCU_DEVCTRL_COMMAND_SET_GAMMA: {
 			unsigned short i, gamma[8];
 			int lamp_mac = header->mac;
+			int block = header->value;
 			
 			for (i = 0; i < 8; i++)
 				gamma[i] = header->param[i];
 			
-			b_set_gamma_curve(lamp_mac, gamma);
+			b_set_gamma_curve(lamp_mac, block, gamma);
 			break;
 		}
 		case MCU_DEVCTRL_COMMAND_WRITE_GAMMA: {
@@ -308,6 +312,8 @@ static void b_recv(void *arg, struct udp_pcb *pcb, struct pbuf *p, struct ip_add
 void bprotocol_init(void)
 {
 	b_pcb = udp_new();
+
+lamp_map[0] = 0;
 
 	udp_recv(b_pcb, b_recv, NULL);
 	udp_bind(b_pcb, IP_ADDR_ANY, MCU_LISTENER_PORT);
