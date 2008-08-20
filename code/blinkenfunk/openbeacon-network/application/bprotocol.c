@@ -194,7 +194,7 @@ debug_printf(" ... SET GAMMA\n");
 static inline void b_write_gamma_curve(int lamp_mac)
 {
 	memset(&rfpkg, 0, sizeof(rfpkg));
-	rfpkg.cmd = RF_CMD_WRITE_GAMMA;
+	rfpkg.cmd = RF_CMD_WRITE_CONFIG;
 	rfpkg.mac = lamp_mac;
 	vnRFTransmitPacket(&rfpkg);
 }
@@ -249,7 +249,7 @@ static int b_parse_mcu_devctrl(mcu_devctrl_header_t *header, int maxlen)
 			b_set_gamma_curve(lamp_mac, block, gamma);
 			break;
 		}
-		case MCU_DEVCTRL_COMMAND_WRITE_GAMMA: {
+		case MCU_DEVCTRL_COMMAND_WRITE_CONFIG: {
 			int lamp_mac = header->mac;
 			b_write_gamma_curve(lamp_mac);
 			break;
