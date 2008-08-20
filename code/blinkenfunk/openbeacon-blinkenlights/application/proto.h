@@ -32,7 +32,7 @@ enum {
   RF_CMD_SET_VALUES,
   RF_CMD_SET_LAMP_ID,
   RF_CMD_SET_GAMMA,
-  RF_CMD_WRITE_GAMMA,
+  RF_CMD_WRITE_CONFIG,
   RF_CMD_SET_JITTER,
 };
 
@@ -40,7 +40,7 @@ typedef struct
 {
   unsigned char cmd;
   unsigned short mac;
-  unsigned char line;
+  unsigned char wmcu_id;
 
   union {
     unsigned char payload[RF_PAYLOAD_SIZE];

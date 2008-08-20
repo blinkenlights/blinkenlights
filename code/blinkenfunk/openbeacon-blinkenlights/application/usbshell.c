@@ -84,7 +84,7 @@ cmd_help (const portCHAR *cmd)
   shell_print("	Print status information about this unit. Try it, it's fun.\n");
   shell_print("\n");
   shell_print("dim <value>\n");
-  shell_print("	Set the dimmer to a value (between 0 and 10000)\n");
+  shell_print("	Set the dimmer to a value (between 0 and 15)\n");
   shell_print("");
 }
 

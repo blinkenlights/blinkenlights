@@ -27,7 +27,7 @@ def usage():
 	print("\t--set-mcu-id <id>		configure the WMCU's ID")
 	print("\t--set-lamp-id <id>		sets the id of an lamp, requires --lamp-mac")
 	print("\t--set-gamma <g1>,<g2>,...<g8>	sets the gamma curve for a lamp");
-	print("\t--write-gamma			makes the lamp write its gamma curve");
+	print("\t--write-config			makes the lamp write its config (gamma and jitter)");
 	print("\t--lamp-mac <id>		specify the lamp MAC address to use for other commands (0xffff for broadcast)")
 	sys.exit(1)
 
@@ -45,7 +45,7 @@ port		= 2323
 SET_MCUID	= 0
 SET_LAMPID 	= 1
 SET_GAMMA 	= 2
-WRITE_GAMMA 	= 3
+WRITE_CONFIG 	= 3
 MCUCTRL_MAGIC 	= 0x23542667
 
 try:
@@ -76,7 +76,7 @@ for o, a in opts:
 		action = SET_GAMMA
 		gamma_filename = a;
 	if o == "--write-gamma":
-		action = WRITE_GAMMA
+		action = WRITE_CONFIG
 
 if action == -1:
 	print("need an action to perform.\n")
@@ -109,7 +109,7 @@ elif action == SET_GAMMA:
 			gamma[12], gamma[13], gamma[14], gamma[15])
 
 
-elif action == WRITE_GAMMA:
+elif action == WRITE_CONFIG:
 	if lampmac == 0:
 		usage()
 	

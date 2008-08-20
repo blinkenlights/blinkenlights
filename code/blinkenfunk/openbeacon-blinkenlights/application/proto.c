@@ -107,6 +107,16 @@ bParsePacket (void)
 {
   int i;
 
+  /* boardcast have to have the correct mcu_id set */
+  if (pkt.mac == 0xffff &&
+      pkt.wmcu_id  != env.e.wmcu_id)
+      return;
+
+  /* for all other packets, we want our mac */
+  if (pkt.mac != 0xffff &&
+      pkt.mac != env.e.mac)
+      return;
+
   DumpStringToUSB ("RX cmd: ");
   DumpUIntToUSB (pkt.cmd);
   DumpStringToUSB ("\n\r");
@@ -163,10 +173,11 @@ bParsePacket (void)
 
       DumpStringToUSB ("\n");
       break;
-    case RF_CMD_WRITE_GAMMA:
+    case RF_CMD_WRITE_CONFIG:
       env_store ();
       break;
     case RF_CMD_SET_JITTER:
+      vSetDimmerJitterUS (pkt.set_jitter.jitter);
       break;
     }
 }
