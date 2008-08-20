@@ -104,7 +104,10 @@ crc16 (const unsigned char *buffer, int size)
 static inline void sendReply(void)
 {
   DumpStringToUSB(" --- sending REPLY!\n");
-#if 0
+#if 1
+
+  vTaskDelay(100 / portTICK_RATE_MS);
+
   /* update crc */
   pkg.crc = crc16 ((unsigned char *) &pkg, sizeof(pkg) - sizeof(pkg.crc));
 
