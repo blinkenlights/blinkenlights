@@ -188,7 +188,7 @@ cmd_dim (const portCHAR * cmd)
 
   vUpdateDimmer(val);
   shell_print("setting dimmer to value ");
-  DumpUIntToUSB(val);
+  DumpUIntToUSB(vGetDimmerStep());
   shell_print("\n");
 }
 
