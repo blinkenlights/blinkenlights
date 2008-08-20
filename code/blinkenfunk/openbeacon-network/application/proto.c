@@ -155,6 +155,7 @@ vnRFtaskRx (void *parameter)
 	      /* read packet from nRF chip */
 	      nRFCMD_RegReadBuf (RD_RX_PLOAD, (unsigned char *) &rxpkg, sizeof(rxpkg));
 	      vLedSetRed (0);
+	      debug_printf(" RX command!\n");
 
 	      /* adjust byte order and decode */
 	      shuffle_tx_byteorder ((unsigned long *) & rxpkg, sizeof(rxpkg) / sizeof(long));
@@ -167,7 +168,6 @@ vnRFtaskRx (void *parameter)
 	      if (crc != swapshort (rxpkg.crc))
 	        continue;
 
-	      debug_printf(" RX command!\n");
 	    }
 	  while ((nRFAPI_GetFifoStatus () & FIFO_RX_EMPTY) == 0);
 
