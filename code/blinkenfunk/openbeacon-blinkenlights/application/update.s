@@ -1,6 +1,6 @@
 .global bootloader
 .global bootloader_orig
-.global bootloader_orig_size
+.global bootloader_orig_end
 
 .section .bootloader,"ax"
          .code 32
@@ -15,7 +15,4 @@ bootloader:
 
 bootloader_orig:
 	 .incbin "application/update/AT91SAM7S64-bootloader-orig.bin"
-bootloader_end:
-
-bootloader_orig_size:
-	 .word bootloader_end-bootloader_orig
+bootloader_orig_end:

@@ -90,7 +90,6 @@ main (void)
 {
   prvSetupHardware ();
 
-
   xTaskCreate (vUSBCDCTask, (signed portCHAR *) "USB", TASK_USB_STACK,
 	       NULL, TASK_USB_PRIORITY, NULL);
 

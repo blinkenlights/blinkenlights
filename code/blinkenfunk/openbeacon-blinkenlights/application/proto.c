@@ -273,7 +273,7 @@ vnRFtaskRx (void *parameter)
 		 DidBlink = 1;
 	      }
 
-	      bParsePacket ();
+	    bParsePacket ();
 	  }
 	while ((nRFAPI_GetFifoStatus () & FIFO_RX_EMPTY) == 0);
 
