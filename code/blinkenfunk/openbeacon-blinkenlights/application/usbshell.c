@@ -87,6 +87,7 @@ cmd_help (const portCHAR *cmd)
   shell_print("[wdim-]mac <xxyy> [<crc>]	Set the MAC address of this unit.\n");
   shell_print("status				Print status information about this unit.\n");
   shell_print("dim <value>			Set the dimmer to a value (between 0 and 15)\n");
+  shell_print("update-mode			Enter update mode - DO NOT USE FOR FUN\n");
 }
 
 static int hex_to_int(char *nibble)
@@ -192,16 +193,22 @@ cmd_dim (const portCHAR * cmd)
   shell_print("\n");
 }
 
+static void
+cmd_update (const portCHAR * cmd)
+{
+  
+}
 
 static struct cmd_t {
 	const portCHAR *command;
 	void (*callback) (const portCHAR *cmd);
 } commands[] = {
-	{ "help",	&cmd_help },
-	{ "status",	&cmd_status },
-	{ "mac",	&cmd_mac },
-	{ "wdim-mac",	&cmd_mac },
-	{ "dim",	&cmd_dim },
+	{ "help",		&cmd_help },
+	{ "status",		&cmd_status },
+	{ "mac",		&cmd_mac },
+	{ "wdim-mac",		&cmd_mac },
+	{ "dim",		&cmd_dim },
+	{ "update-mode",	&cmd_update },
 	/* end marker */
 	{ NULL, NULL }
 };
