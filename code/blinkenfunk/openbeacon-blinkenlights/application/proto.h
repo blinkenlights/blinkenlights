@@ -47,7 +47,7 @@ typedef struct
     
     struct {
       unsigned char id;
-      unsigned char line;
+      unsigned char wmcu_id;
     } set_lamp_id;
 
     struct {

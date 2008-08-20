@@ -43,7 +43,7 @@ cmd_status (const portCHAR * cmd)
 {
   int i;
 
-  shell_print("WDIM state:\n");
+  shell_print("WDIM state, firmware version " VERSION "\n");
   shell_print("   MAC = ");
   DumpHexToUSB(env.e.mac, 2);
   shell_print("\n");
@@ -58,6 +58,10 @@ cmd_status (const portCHAR * cmd)
   
   shell_print("   current dim value = ");
   DumpUIntToUSB(vGetDimmerStep());
+  shell_print("\n");
+  
+  shell_print("   dimmer jitter = ");
+  DumpUIntToUSB(env.e.dimmer_jitter);
   shell_print("\n");
 
   shell_print("   GAMMA table:\t");
@@ -245,6 +249,8 @@ usbshell_task (void *pvParameters)
 	  shell_print(PROMPT);
 	  continue;
 	}
+      else if (c < ' ')
+        continue;
 
       if (p == buf + sizeof(buf) - 1)
         {

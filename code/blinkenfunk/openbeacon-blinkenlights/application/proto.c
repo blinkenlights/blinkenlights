@@ -109,17 +109,13 @@ bParsePacket (void)
 
   /* boardcast have to have the correct mcu_id set */
   if (pkt.mac == 0xffff &&
-      pkt.wmcu_id  != env.e.wmcu_id)
+      pkt.wmcu_id != env.e.wmcu_id)
       return;
 
   /* for all other packets, we want our mac */
   if (pkt.mac != 0xffff &&
       pkt.mac != env.e.mac)
       return;
-
-  DumpStringToUSB ("RX cmd: ");
-  DumpUIntToUSB (pkt.cmd);
-  DumpStringToUSB ("\n\r");
 
   switch (pkt.cmd)
     {
@@ -146,12 +142,13 @@ bParsePacket (void)
     case RF_CMD_SET_LAMP_ID:
       DumpStringToUSB ("new lamp id: ");
       DumpUIntToUSB (pkt.set_lamp_id.id);
-      DumpStringToUSB (", new lamp line: ");
-      DumpUIntToUSB (pkt.set_lamp_id.line);
+      DumpStringToUSB (", wmcu id: ");
+      DumpUIntToUSB (pkt.set_lamp_id.wmcu_id);
       DumpStringToUSB ("\n\r");
 
       env.e.lamp_id = pkt.set_lamp_id.id;
-      env.e.wmcu_id = pkt.set_lamp_id.line;
+      env.e.wmcu_id = pkt.set_lamp_id.wmcu_id;
+      vTaskDelay(100);
       env_store ();
 
       break;
@@ -159,19 +156,10 @@ bParsePacket (void)
       if (pkt.set_gamma.block > 1)
 	break;
 
-      DumpStringToUSB ("GAMMA block ");
-      DumpUIntToUSB (pkt.set_gamma.block);
-      DumpStringToUSB (": ");
-
       for (i = 0; i < 8; i++)
-	{
 	  vSetDimmerGamma (pkt.set_gamma.block * 8 + i, pkt.set_gamma.val[i]);
 
-	  DumpUIntToUSB (pkt.set_gamma.val[i]);
-	  DumpStringToUSB (", ");
-	}
-
-      DumpStringToUSB ("\n");
+      DumpStringToUSB ("new gamme table received\n");
       break;
     case RF_CMD_WRITE_CONFIG:
       env_store ();

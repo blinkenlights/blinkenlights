@@ -74,7 +74,7 @@ for o, a in opts:
 	if o == "--lamp-mac":
 		lampmac = int(a, 16)
 	if o == "--set-mcu-id":
-		action = SET_LINE
+		action = SET_MCUID
 		line = int(a)
 	if o == "--set-lamp-id":
 		action = SET_LAMPID
