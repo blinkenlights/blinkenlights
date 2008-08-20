@@ -104,6 +104,12 @@ vUpdateDimmer (int step)
   dimmer_step = step;
 }
 
+int
+vGetDimmerStep (void)
+{
+  return dimmer_step;
+}
+
 void
 vSetDimmerGamma (int entry, int val)
 {

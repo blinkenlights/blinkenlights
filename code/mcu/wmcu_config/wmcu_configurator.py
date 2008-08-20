@@ -109,6 +109,14 @@ elif action == SET_GAMMA:
 			gamma[12], gamma[13], gamma[14], gamma[15])
 
 
+elif action == WRITE_GAMMA:
+	if lampmac == 0:
+		usage()
+	
+	packet = struct.pack("!IIII8I", MCUCTRL_MAGIC, 3, lampmac, 0,
+			params[0], params[1], params[2], params[3],
+			params[4], params[5], params[6], params[7])
+
 if host == "":
 	usage()
 

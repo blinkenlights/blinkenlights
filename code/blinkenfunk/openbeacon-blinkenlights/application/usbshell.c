@@ -41,6 +41,31 @@
 static void
 cmd_status (const portCHAR * cmd)
 {
+  int i;
+
+  shell_print("Current WDIM state:\n");
+  shell_print("   MAC = ");
+  DumpHexToUSB(env.e.mac, 2);
+  shell_print("\n");
+
+  shell_print("   LAMP ID = ");
+  DumpUIntToUSB(env.e.lamp_id);
+  shell_print("\n");
+  
+  shell_print("   WMCU ID = ");
+  DumpUIntToUSB(env.e.wmcu_id);
+  shell_print("\n");
+
+  shell_print("   GAMMA table: ");
+  for (i = 0; i < GAMMA_SIZE; i++)
+    {
+      DumpUIntToUSB(env.e.gamma_table[i]);
+      shell_print(", ");
+    }
+
+  shell_print("   current dim value = ");
+  DumpUIntToUSB(vGetDimmerStep());
+  shell_print("\n");
 }
 
 static void
@@ -57,9 +82,6 @@ cmd_help (const portCHAR *cmd)
   shell_print("\n");
   shell_print("status\n");
   shell_print("	Print status information about this unit. Try it, it's fun.\n");
-  shell_print("\n");
-  shell_print("env\n");
-  shell_print("	Show variables currently stored in the non-volatile flash memory\n");
   shell_print("\n");
   shell_print("dim <value>\n");
   shell_print("	Set the dimmer to a value (between 0 and 10000)\n");
@@ -126,20 +148,8 @@ cmd_mac (const portCHAR * cmd)
     shell_print("Please power-cycle the device to make this change take place.\n");
 
     /* set it ... */
-
-/*
-    env.e.mac_h = mac_h;
-    env.e.mac_l = mac_l;
+    env.e.mac = (mac_h << 8) | mac_l;
     env_store();
-*/
-}
-
-static void
-cmd_env (const portCHAR * cmd)
-{
-  shell_print ("Current values in non-volatile flash storage:\n");
-//  shell_print ("   assigned_line = %d\n", env.e.assigned_line);
-//  shell_print ("   mac = %02x%02x\n", env.e.mac_h, env.e.mac_l);
 }
 
 static void
@@ -174,7 +184,6 @@ static struct cmd_t {
 	{ "status",	&cmd_status },
 	{ "mac",	&cmd_mac },
 	{ "wdim-mac",	&cmd_mac },
-	{ "env",	&cmd_env },
 	{ "dim",	&cmd_dim },
 	/* end marker */
 	{ NULL, NULL }

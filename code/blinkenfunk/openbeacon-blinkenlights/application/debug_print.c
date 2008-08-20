@@ -49,6 +49,37 @@ DumpUIntToUSB (unsigned int data)
     vUSBSendByte (*p++);
 }
 
+static void printnibble(unsigned char nib)
+{
+  char a;
+
+  nib &= 0xf;
+
+  if (nib >= 10)
+    a = nib - 10 + 'a';
+  else
+    a = nib + '0';
+
+  vUSBSendByte(a);
+}
+
+static void printbyte(unsigned char byte)
+{
+  printnibble(byte >> 4);
+  printnibble(byte);
+}
+
+void
+DumpHexToUSB (unsigned int v, char bytes)
+{
+  while (bytes)
+    {
+      char c = v >> ((bytes - 1) * 8);
+      printbyte(c);
+      bytes--;
+    }
+}
+
 void
 DumpStringToUSB (const char *text)
 {
