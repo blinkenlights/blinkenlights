@@ -218,7 +218,8 @@ bParsePacket (void)
       if (pkg.payload[0] != 0xDE ||
           pkg.payload[1] != 0xAD ||
 	  pkg.payload[2] != 0xBE ||
-	  pkg.payload[3] != 0xEF)
+	  pkg.payload[3] != 0xEF ||
+	  pkg.mac == 0xffff)
 	break;
 
       DumpStringToUSB(" ENTERING UPDATE MODE!\n");
