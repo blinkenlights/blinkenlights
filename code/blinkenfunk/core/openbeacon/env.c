@@ -112,8 +112,6 @@ unsigned short RAMFUNC env_crc16 (const unsigned char *buffer, int size)
 
 void RAMFUNC env_store(void)
 {
-	unsigned int i,*src,*dst;
-	
 	/* During flashing only RAMFUNC code may be executed. 
 	 * For now, this means that no other code whatsoever may
 	 * be run until this function returns. */
