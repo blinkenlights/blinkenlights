@@ -35,7 +35,7 @@ while 1:
 			val, val);
 
 	s.send(packet)
-	time.sleep(0.5)
+	time.sleep(0.25)
 
 s.close
 
