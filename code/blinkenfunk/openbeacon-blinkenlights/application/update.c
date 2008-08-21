@@ -52,9 +52,7 @@ void DeviceRevertToUpdateMode (void)
 
   env_flash_to (&bootloader);
 
-  vLedHaltBlinking (3);
-
-  portEXIT_CRITICAL ();
-  xTaskResumeAll ();
+  // endless loop to trigger watchdog reset    
+  while(1){};
 }
 

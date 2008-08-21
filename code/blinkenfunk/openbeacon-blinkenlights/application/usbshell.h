@@ -2,7 +2,6 @@
  *
  * Copyright (c) 2008  The Blinkenlights Crew
  *                          Daniel Mack <daniel@caiaq.de>
- *                          Milosch Meriac <meriac@openbeacon.de>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
