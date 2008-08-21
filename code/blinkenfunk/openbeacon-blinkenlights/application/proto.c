@@ -214,7 +214,13 @@ bParsePacket (void)
       env_store ();
       break;
     case RF_CMD_SET_JITTER:
+
       vSetDimmerJitterUS (pkg.set_jitter.jitter);
+
+      DumpStringToUSB("new jitter: ");
+      DumpUIntToUSB(vGetDimmerJitterUS());
+      DumpStringToUSB("\n");      
+
       break;
     case RF_CMD_CHECK_LAMP:
       DumpStringToUSB("checking lamp ...\n");

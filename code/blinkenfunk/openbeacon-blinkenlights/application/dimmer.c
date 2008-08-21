@@ -53,14 +53,16 @@ dimmer_line_hz_enabled (void)
 }
 
 void
-vSetDimmerJitterUS (int us)
+vSetDimmerJitterUS (unsigned char us)
 {
-  DumpStringToUSB("new jitter: ");
-  DumpUIntToUSB(us);
-  DumpStringToUSB("\n");
-
   env.e.dimmer_jitter =
     ((int) ((us * ((unsigned long) PWM_CMR_CLOCK_FREQUENCY)) / 1000000));
+}
+
+unsigned char
+vGetDimmerJitterUS (void)
+{
+    return (env.e.dimmer_jitter * 1000000)/PWM_CMR_CLOCK_FREQUENCY;
 }
 
 static inline unsigned int
@@ -145,7 +147,7 @@ vGetDimmerStep (void)
 void
 vSetDimmerGamma (int entry, int val)
 {
-  if (entry >= GAMMA_SIZE)
+  if ( (entry >= GAMMA_SIZE) || (entry<0) )
     return;
 
   if (val < 0)

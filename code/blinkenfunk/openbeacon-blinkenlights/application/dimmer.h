@@ -31,6 +31,7 @@ extern void vUpdateDimmer (int Percent);
 extern int dimmer_line_hz_enabled (void);
 extern void vSetDimmerGamma (int entry, int val);
 extern int vGetDimmerStep (void);
-extern void vSetDimmerJitterUS (int us);
+extern void vSetDimmerJitterUS (unsigned char us);
+extern unsigned char vGetDimmerJitterUS (void);
 
 #endif/*__DIMMER_H__*/

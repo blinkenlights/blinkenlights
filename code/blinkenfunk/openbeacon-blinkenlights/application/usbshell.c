@@ -64,7 +64,7 @@ cmd_status (const portCHAR * cmd)
   shell_print ("\n");
 
   shell_print ("   dimmer jitter = ");
-  DumpUIntToUSB (env.e.dimmer_jitter);
+  DumpUIntToUSB ( vGetDimmerJitterUS() );
   shell_print ("\n");
 
   shell_print ("   GAMMA table:\t");
