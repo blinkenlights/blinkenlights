@@ -165,10 +165,7 @@ vnRFtaskRx (void *parameter)
 
 	      /* verify the crc checksum */
 	      crc = crc16 ((unsigned char *) &rxpkg, sizeof(rxpkg) - sizeof(rxpkg.crc));
-	      
-	      if (crc != swapshort (rxpkg.crc))
-	        continue;
-	      
+	     
 	      /* sort out packets from other domains */
 	      if (rxpkg.wmcu_id != env.e.mcu_id)
 	        continue;
@@ -177,8 +174,8 @@ vnRFtaskRx (void *parameter)
 	      if (~rxpkg.cmd & 0x40)
 	        continue;
 	      
-	      debug_printf(" RX command!\n");
-
+	      debug_printf("dumping received packet:\n");
+	      hex_dump((unsigned char *) &rxpkg, 0, sizeof(rxpkg));
 	    }
 	  while ((nRFAPI_GetFifoStatus () & FIFO_RX_EMPTY) == 0);
 

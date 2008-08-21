@@ -213,6 +213,14 @@ static inline void b_set_assigned_lamps(unsigned int *map)
 	debug_printf("new assigned lamps set.\n");
 }
 
+static inline void b_check_lamp(unsigned int lamp_mac)
+{
+	memset(&rfpkg, 0, sizeof(rfpkg));
+	rfpkg.cmd = RF_CMD_CHECK_LAMP;
+	rfpkg.mac = lamp_mac;
+	vnRFTransmitPacket(&rfpkg);
+}
+
 static int b_parse_mcu_devctrl(mcu_devctrl_header_t *header, int maxlen)
 {
 //	int len = sizeof(*header);
@@ -258,6 +266,11 @@ static int b_parse_mcu_devctrl(mcu_devctrl_header_t *header, int maxlen)
 		}
 		case MCU_DEVCTRL_COMMAND_SET_ASSIGNED_LAMPS: {
 			b_set_assigned_lamps(header->param);
+			break;
+		}
+		case MCU_DEVCTRL_COMMAND_CHECK_LAMP: {
+			int lamp_mac = header->mac;
+			b_check_lamp(lamp_mac);
 			break;
 		}
 		case MCU_DEVCTRL_COMMAND_OUTPUT_RAW: {
