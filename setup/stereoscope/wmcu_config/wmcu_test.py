@@ -8,7 +8,7 @@ import time
 
 params		= [0, 0, 0, 0, 0, 0, 0, 0];
 
-host 		= "192.168.1.179"
+host 		= "169.254.17.34"
 port		= 2323
 
 RF_CMD_SET_VALUES	= 0
@@ -35,7 +35,7 @@ while 1:
 			val, val);
 
 	s.send(packet)
-	time.sleep(0.2)
+	time.sleep(0.5)
 
 s.close
 
