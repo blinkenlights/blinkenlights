@@ -2,6 +2,7 @@
  *
  * Copyright (c) 2008  The Blinkenlights Crew
  *                          Daniel Mack <daniel@caiaq.de>
+ *                          Milosch Meriac <meriac@openbeacon.de>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -35,6 +36,7 @@
 #include "dimmer.h"
 #include "update.h"
 #include "led.h"
+#include "usbshell.h"
 
 #define PROMPT "\nWDIM> "
 
@@ -176,8 +178,8 @@ cmd_mac (const portCHAR * cmd)
     }
 
   shell_print ("setting new MAC.\n");
-  shell_print
-    ("Please power-cycle the device to make this change take place.\n");
+  shell_print ("Please power-cycle the device to make"
+	       " this change take place.\n");
 
   /* set it ... */
   env.e.mac = (mac_h << 8) | mac_l;
@@ -207,26 +209,10 @@ cmd_dim (const portCHAR * cmd)
   shell_print ("\n");
 }
 
-static void
+void
 cmd_update (const portCHAR * cmd)
 {
-  /* During flashing only RAMFUNC code may be executed.
-   * For now, this means that no other code whatsoever may
-   * be run until this function returns. */
-  vTaskSuspendAll ();
-  portENTER_CRITICAL ();
-
-  memcpy (&env.data, &bootloader, sizeof (env.data));
-  memcpy (&env.data, &bootloader_orig,
-	  ((unsigned int) &bootloader_orig_end) -
-	  ((unsigned int) &bootloader_orig));
-
-  env_flash_to (&bootloader);
-
-  vLedHaltBlinking (3);
-
-  portEXIT_CRITICAL ();
-  xTaskResumeAll ();
+  DeviceRevertToUpdateMode ();
 }
 
 static struct cmd_t

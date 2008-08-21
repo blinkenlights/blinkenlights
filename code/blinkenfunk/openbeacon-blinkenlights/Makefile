@@ -12,6 +12,7 @@ APP_SRC=			\
   application/led.c		\
   application/proto.c		\
   application/dimmer.c		\
+  application/update.c		\
   application/usbshell.c	\
   application/debug_print.c	\
   application/xxtea.c

@@ -19,10 +19,42 @@
     with this program; if not, write to the Free Software Foundation, Inc.,
     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 */
+/* Scheduler includes. */
+#include <FreeRTOS.h>
+#include <board.h>
+#include <task.h>
+#include <beacontypes.h>
+#include <string.h>
+#include "debug_print.h"
+#include "env.h"
+#include "led.h"
+#include "USB-CDC.h"
+#include "update.h"
 
-#ifndef __UPDATE_H__
-#define __UPDATE_H__
+extern void bootloader;
+extern void bootloader_orig;
+extern void bootloader_orig_end;
 
-extern void DeviceRevertToUpdateMode (void);
+void DeviceRevertToUpdateMode (void)
+{
+  DumpStringToUSB ("resetting to default bootloader in update mode\n");
+  vTaskDelay (500 / portTICK_RATE_MS);
 
-#endif/*__UPDATE_H__*/
+  vTaskSuspendAll ();
+  portENTER_CRITICAL ();
+
+  vLedSetGreen (1);
+
+  memcpy (&env.data, &bootloader, sizeof (env.data));
+  memcpy (&env.data, &bootloader_orig,
+          ((unsigned int) &bootloader_orig_end) -
+          ((unsigned int) &bootloader_orig));
+
+  env_flash_to (&bootloader);
+
+  vLedHaltBlinking (3);
+
+  portEXIT_CRITICAL ();
+  xTaskResumeAll ();
+}
+

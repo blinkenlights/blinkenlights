@@ -24,6 +24,7 @@
 #define __PROTO_H__
 
 #include "openbeacon.h"
+#include "usbshell.h"
 
 #define GAMMA_DEFAULT	200
 #define FIFO_DEPTH	256

@@ -37,6 +37,7 @@
 #include "nRF24L01/nRF_API.h"
 #include "dimmer.h"
 #include "env.h"
+#include "update.h"
 #include "debug_print.h"
 
 static BRFPacket pkg;
@@ -223,7 +224,7 @@ bParsePacket (void)
 	break;
 
       DumpStringToUSB(" ENTERING UPDATE MODE!\n");
-      /* ... */
+      DeviceRevertToUpdateMode ();
     }
 
     if (reply)
