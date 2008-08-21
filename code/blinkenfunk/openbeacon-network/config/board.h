@@ -28,7 +28,7 @@
 #include <lib_AT91SAM7X.h>
 #include <beacontypes.h>
 
-#define VERSION "0.3"
+#define VERSION "0.4"
 
 /*---------------------------------*/
 /* SAM7Board Memories Definition   */
