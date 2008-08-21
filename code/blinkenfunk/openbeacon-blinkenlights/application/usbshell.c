@@ -67,6 +67,10 @@ cmd_status (const portCHAR * cmd)
   DumpUIntToUSB ( vGetDimmerJitterUS() );
   shell_print ("\n");
 
+  shell_print ("   EMI pulses = ");
+  DumpUIntToUSB ( vGetEmiPulses() );
+  shell_print ("\n");
+
   shell_print ("   GAMMA table:\t");
   for (i = 0; i < GAMMA_SIZE; i++)
     {

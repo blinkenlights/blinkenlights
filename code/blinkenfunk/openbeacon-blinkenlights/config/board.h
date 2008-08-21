@@ -71,8 +71,9 @@
 /* dimmer settings               */
 /*-------------------------------*/
 
-#define TRIGGER_PIN	(1L<<26)
-#define PHASE_PIN	(1L<<27)
+#define TRIGGER_PIN		(1L<<26)
+#define PHASE_PIN		(1L<<27)
+#define CURRENT_SENSE_PIN	(1L<<4)
 
 /*-------------------------------*/
 /* utils settings                */

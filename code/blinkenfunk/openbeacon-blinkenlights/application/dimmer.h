@@ -33,5 +33,6 @@ extern void vSetDimmerGamma (int entry, int val);
 extern int vGetDimmerStep (void);
 extern void vSetDimmerJitterUS (unsigned char us);
 extern unsigned char vGetDimmerJitterUS (void);
+extern int vGetEmiPulses (void);
 
 #endif/*__DIMMER_H__*/
