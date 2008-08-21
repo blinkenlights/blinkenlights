@@ -33,6 +33,7 @@
 #include "nRF24L01/nRF_CMD.h"
 #include "nRF24L01/nRF_API.h"
 #include "debug_printf.h"
+#include "env.h"
 
 const unsigned char broadcast_mac[NRF_MAX_MAC_SIZE] = { 'D', 'E', 'C', 'A', 'D' };
 static BRFPacket rxpkg;
@@ -169,7 +170,7 @@ vnRFtaskRx (void *parameter)
 	        continue;
 	      
 	      /* sort out packets from other domains */
-	      if (rxpkg.wmcu_id != env.e.wmcu_id)
+	      if (rxpkg.wmcu_id != env.e.mcu_id)
 	        continue;
 
 	      /* require packet to be sent from an dimmer */
