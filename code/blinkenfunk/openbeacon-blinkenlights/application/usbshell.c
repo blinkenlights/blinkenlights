@@ -91,14 +91,10 @@ cmd_help (const portCHAR * cmd)
   shell_print ("---------------------------------\n");
   shell_print ("\n");
   shell_print ("help				This screen\n");
-  shell_print
-    ("[wdim-]mac <xxyy> [<crc>]	Set the MAC address of this unit.\n");
-  shell_print
-    ("status				Print status information about this unit.\n");
-  shell_print
-    ("dim <value>			Set the dimmer to a value (between 0 and 15)\n");
-  shell_print
-    ("update				Enter update mode - DO NOT USE FOR FUN\n");
+  shell_print ("[wdim-]mac <xxyy> [<crc>]	Set the MAC address of this unit.\n");
+  shell_print ("status				Print status information about this unit.\n");
+  shell_print ("dim <value>			Set the dimmer to a value (between 0 and 15)\n");
+  shell_print ("update				Enter update mode - DO NOT USE FOR FUN\n");
 }
 
 static int
@@ -224,21 +220,15 @@ static struct cmd_t
   void (*callback) (const portCHAR * cmd);
 } commands[] =
 {
-  {
-  "help", &cmd_help},
-  {
-  "status", &cmd_status},
-  {
-  "mac", &cmd_mac},
-  {
-  "wdim-mac", &cmd_mac},
-  {
-  "dim", &cmd_dim},
-  {
-  "update", &cmd_update},
+  { "help", 	&cmd_help 	},
+  { "status", 	&cmd_status	},
+  { "mac", 	&cmd_mac 	},
+  { "MAC", 	&cmd_mac 	},
+  { "wdim-mac",	&cmd_mac	},
+  { "dim",	&cmd_dim	},
+  { "update",	&cmd_update	},
     /* end marker */
-  {
-  NULL, NULL}
+  { NULL, NULL }
 };
 
 static void
