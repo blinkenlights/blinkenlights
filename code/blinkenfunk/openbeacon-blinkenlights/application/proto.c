@@ -114,6 +114,7 @@ static inline void sendReply(void)
 
   /* update crc */
   pkg.crc = crc16 ((unsigned char *) &pkg, sizeof(pkg) - sizeof(pkg.crc));
+  pkg.crc = swapshort(pkg.crc);
 
   /* encrypt data */
   shuffle_tx_byteorder ((unsigned long *) &pkg, sizeof(pkg) / sizeof(long));
@@ -145,8 +146,8 @@ bParsePacket (void)
   int i, reply;
 
   /* no MAC set yet? do nothing */
-  if (!env.e.mac)
-    return;
+  //if (!env.e.mac)
+  //  return;
 
   /* broadcasts have to have the correct wmcu_id set */
   if (pkg.mac == 0xffff &&
@@ -180,9 +181,9 @@ bParsePacket (void)
 
 	v &= 0xf;
 
-	DumpStringToUSB ("new lamp val: ");
-	DumpUIntToUSB (v);
-	DumpStringToUSB ("\n\r");
+	//DumpStringToUSB ("new lamp val: ");
+	//DumpUIntToUSB (v);
+	//DumpStringToUSB ("\n\r");
 
 	vUpdateDimmer (v);
 	break;
@@ -214,6 +215,10 @@ bParsePacket (void)
       break;
     case RF_CMD_SET_JITTER:
       vSetDimmerJitterUS (pkg.set_jitter.jitter);
+      break;
+    case RF_CMD_CHECK_LAMP:
+      DumpStringToUSB("checking lamp ...\n");
+      pkg.payload[0] = 0x23; /* FIXME: correct value here! */
       break;
     case RF_CMD_ENTER_UPDATE_MODE:
       if (pkg.payload[0] != 0xDE ||

@@ -46,10 +46,10 @@ cmd_status (const portCHAR * cmd)
 {
   int i;
 
-  shell_print ("WDIM state, firmware version " VERSION "\n");
-  shell_print ("   MAC = ");
-  DumpHexToUSB (env.e.mac, 2);
-  shell_print ("\n");
+  shell_print("WDIM state, firmware version " VERSION "\n");
+  shell_print("   MAC = 0x");
+  DumpHexToUSB(env.e.mac, 2);
+  shell_print("\n");
 
   shell_print ("   LAMP ID = ");
   DumpUIntToUSB (env.e.lamp_id);

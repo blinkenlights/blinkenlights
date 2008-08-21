@@ -27,7 +27,7 @@
 
 #include "lib_AT91SAM7.h"
 
-#define VERSION "0.4"
+#define VERSION "0.5"
 
 /*---------------------------------*/
 /* SAM7Board Memories Definition   */

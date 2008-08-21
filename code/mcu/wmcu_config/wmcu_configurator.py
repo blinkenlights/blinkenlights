@@ -31,7 +31,8 @@ def usage():
 	print("\t--write-config				makes the lamp write its config (gamma and jitter)");
 	print("\t--set-assigned-lamps <filename>		set the lamps assigned to an WMCU");
 	print("\t--lamp-mac <id>				specify the lamp MAC address to use for other commands (0xffff for broadcast)")
-	print("\t--enter-update-mode			makes an MCU enter its update mode. USE WITH CARE!");
+	print("\t--check-lamp				queries the lamp function");
+	print("\t--enter-update-mode			makes a dimmer enter its update mode. USE WITH CARE!");
 	sys.exit(1)
 
 action = -1
@@ -51,6 +52,7 @@ SET_GAMMA 		= 2
 WRITE_CONFIG 		= 3
 SET_JITTER		= 4
 SET_ASSIGNED_LAMPS	= 5
+CHECK_LAMP		= 6
 ENTER_UPDATE_MODE	= 0x3f
 DEBUG_SEND_RAW		= 0xff
 
@@ -58,10 +60,10 @@ MCUCTRL_MAGIC 	= 0x23542667
 
 try:
 	opts, args = getopt.getopt(sys.argv[1:],
-		"hh:p:s:s:s:ws:l:s:e", 
+		"hh:p:s:s:s:ws:l:s:ec",
 		["help", "host=", "port=", "set-mcu-id=", "set-lamp-id=", 
 		 "set-gamma=", "write-config", "set-dimmer-jitter=", "lamp-mac=",
-		 "set-assigned-lamps=", "enter-update-mode"])
+		 "set-assigned-lamps=", "enter-update-mode", "check-lamp"])
 
 except getopt.GetoptError, err:
 	print str(err)
@@ -95,6 +97,8 @@ for o, a in opts:
 		lamp_list_file = a
 	if o == "--enter-update-mode":
 		action = ENTER_UPDATE_MODE
+	if o == "--check-lamp":
+		action = CHECK_LAMP
 
 if action == -1:
 	print("need an action to perform.\n")
@@ -151,6 +155,14 @@ elif action == SET_ASSIGNED_LAMPS:
 			lamps[4],  lamps[5],  lamps[6],  lamps[7],
 			lamps[8],  lamps[9],  lamps[10], lamps[11],
 			lamps[12], lamps[13], lamps[14], lamps[15])
+
+elif action == CHECK_LAMP:
+	if lampmac == 0:
+		usage()
+	
+	packet = struct.pack("!IIII8I", MCUCTRL_MAGIC, action, lampmac, 0,
+			params[0], params[1], params[2], params[3],
+			params[4], params[5], params[6], params[7])
 
 elif action == ENTER_UPDATE_MODE:
 	if lampmac == 0:
