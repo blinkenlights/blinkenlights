@@ -24,6 +24,12 @@
 /* Begin PBXBuildFile section */
 		16BA96310A7EB9AC001E4983 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16BA96300A7EB9AC001E4983 /* Quartz.framework */; };
 		8D5B49B4048680CD000E48DA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */; };
+		F2095A630E6057AF00BD59DB /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */; };
+		F2095A660E6057B200BD59DB /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16BA96300A7EB9AC001E4983 /* Quartz.framework */; };
+		F2095ABB0E60591300BD59DB /* StereoscopeAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2095AB90E60591300BD59DB /* StereoscopeAppController.m */; };
+		F2095ADB0E60675300BD59DB /* Stereoscope.icns in Resources */ = {isa = PBXBuildFile; fileRef = F2095ADA0E60675300BD59DB /* Stereoscope.icns */; };
+		F2095AEA0E606E2600BD59DB /* stop.png in Resources */ = {isa = PBXBuildFile; fileRef = F2095AE90E606E2600BD59DB /* stop.png */; };
+		F2095AEC0E606E2C00BD59DB /* record.png in Resources */ = {isa = PBXBuildFile; fileRef = F2095AEB0E606E2C00BD59DB /* record.png */; };
 		F244CBF60E293084007125EE /* BlinkensenderPlugIn.m in Sources */ = {isa = PBXBuildFile; fileRef = F244CBF50E293084007125EE /* BlinkensenderPlugIn.m */; };
 		F244CC110E2933C6007125EE /* BlinkenImageProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = F244CC100E2933C6007125EE /* BlinkenImageProvider.m */; };
 		F244CC480E29EABC007125EE /* UsefulAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F244CC470E29EABC007125EE /* UsefulAdditions.m */; };
@@ -31,6 +37,9 @@
 		F24851900DF3F78E00E0AA98 /* BlinkenproviderPlugIn.m in Sources */ = {isa = PBXBuildFile; fileRef = F248518C0DF3F78E00E0AA98 /* BlinkenproviderPlugIn.m */; };
 		F24851910DF3F78E00E0AA98 /* BlinkenListener.m in Sources */ = {isa = PBXBuildFile; fileRef = F248518E0DF3F78E00E0AA98 /* BlinkenListener.m */; };
 		F2BFA1570E4DC88900081601 /* BlinkenBMLWriterPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = F2BFA1550E4DC88900081601 /* BlinkenBMLWriterPlugin.m */; };
+		F2D819860E6055ED00D2B1D0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F2D8197B0E6055C800D2B1D0 /* InfoPlist.strings */; };
+		F2D819870E6055ED00D2B1D0 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2D8197D0E6055C800D2B1D0 /* MainMenu.xib */; };
+		F2D819880E6055F000D2B1D0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F2D8197F0E6055CF00D2B1D0 /* main.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +58,11 @@
 		16BA96300A7EB9AC001E4983 /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = /System/Library/Frameworks/Quartz.framework; sourceTree = "<absolute>"; };
 		8D5B49B6048680CD000E48DA /* Blinkenposer.plugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Blinkenposer.plugin; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D5B49B7048680CD000E48DA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F2095AB90E60591300BD59DB /* StereoscopeAppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StereoscopeAppController.m; sourceTree = "<group>"; };
+		F2095ABA0E60591300BD59DB /* StereoscopeAppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StereoscopeAppController.h; sourceTree = "<group>"; };
+		F2095ADA0E60675300BD59DB /* Stereoscope.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Stereoscope.icns; sourceTree = "<group>"; };
+		F2095AE90E606E2600BD59DB /* stop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stop.png; sourceTree = "<group>"; };
+		F2095AEB0E606E2C00BD59DB /* record.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = record.png; sourceTree = "<group>"; };
 		F244CBF40E293084007125EE /* BlinkensenderPlugIn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlinkensenderPlugIn.h; sourceTree = "<group>"; };
 		F244CBF50E293084007125EE /* BlinkensenderPlugIn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlinkensenderPlugIn.m; sourceTree = "<group>"; };
 		F244CC0F0E2933C6007125EE /* BlinkenImageProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlinkenImageProvider.h; sourceTree = "<group>"; };
@@ -64,6 +78,12 @@
 		F248518F0DF3F78E00E0AA98 /* BlinkenListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlinkenListener.h; sourceTree = "<group>"; };
 		F2BFA1550E4DC88900081601 /* BlinkenBMLWriterPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlinkenBMLWriterPlugin.m; sourceTree = "<group>"; };
 		F2BFA1560E4DC88900081601 /* BlinkenBMLWriterPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlinkenBMLWriterPlugin.h; sourceTree = "<group>"; };
+		F2D8196D0E60551700D2B1D0 /* Stereoscope.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stereoscope.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F2D8197C0E6055C800D2B1D0 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = InfoPlist.strings; sourceTree = "<group>"; };
+		F2D8197E0E6055C800D2B1D0 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = MainMenu.xib; sourceTree = "<group>"; };
+		F2D8197F0E6055CF00D2B1D0 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F2D819800E6055CF00D2B1D0 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F2D819810E6055CF00D2B1D0 /* Stereoscope_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stereoscope_Prefix.pch; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,15 +96,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F2D8196B0E60551700D2B1D0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F2095A660E6057B200BD59DB /* Quartz.framework in Frameworks */,
+				F2095A630E6057AF00BD59DB /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		089C166AFE841209C02AAC07 /* Quartz Composer Plug In */ = {
 			isa = PBXGroup;
 			children = (
-				08FB77AFFE84173DC02AAC07 /* Sources */,
-				32C88E010371C26100C91783 /* Other Sources */,
-				089C167CFE841241C02AAC07 /* Resources */,
+				F2D819660E6054E700D2B1D0 /* Blinkenposer.plugin */,
+				F2D819630E6054C300D2B1D0 /* Stereoscope */,
 				089C1671FE841209C02AAC07 /* Frameworks */,
 				19C28FB8FE9D52D311CA2CBB /* Products */,
 			);
@@ -128,6 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				8D5B49B6048680CD000E48DA /* Blinkenposer.plugin */,
+				F2D8196D0E60551700D2B1D0 /* Stereoscope.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -137,6 +166,28 @@
 			children = (
 				F248518B0DF3F78E00E0AA98 /* bprotocol.h */,
 				16AA5C440A7EEE7300888E31 /* Blinkenposer_Prefix.pch */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		F2095ABF0E60593500BD59DB /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F2095AEB0E606E2C00BD59DB /* record.png */,
+				F2095AE90E606E2600BD59DB /* stop.png */,
+				F2095ADA0E60675300BD59DB /* Stereoscope.icns */,
+				F2D8197D0E6055C800D2B1D0 /* MainMenu.xib */,
+				F2D819800E6055CF00D2B1D0 /* Info.plist */,
+				F2D8197B0E6055C800D2B1D0 /* InfoPlist.strings */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		F2095AC20E60594100BD59DB /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				F2D8197F0E6055CF00D2B1D0 /* main.m */,
+				F2D819810E6055CF00D2B1D0 /* Stereoscope_Prefix.pch */,
 			);
 			name = "Other Sources";
 			sourceTree = "<group>";
@@ -152,6 +203,27 @@
 				F248518C0DF3F78E00E0AA98 /* BlinkenproviderPlugIn.m */,
 			);
 			name = Patches;
+			sourceTree = "<group>";
+		};
+		F2D819630E6054C300D2B1D0 /* Stereoscope */ = {
+			isa = PBXGroup;
+			children = (
+				F2095ABA0E60591300BD59DB /* StereoscopeAppController.h */,
+				F2095AB90E60591300BD59DB /* StereoscopeAppController.m */,
+				F2095ABF0E60593500BD59DB /* Resources */,
+				F2095AC20E60594100BD59DB /* Other Sources */,
+			);
+			path = Stereoscope;
+			sourceTree = "<group>";
+		};
+		F2D819660E6054E700D2B1D0 /* Blinkenposer.plugin */ = {
+			isa = PBXGroup;
+			children = (
+				08FB77AFFE84173DC02AAC07 /* Sources */,
+				089C167CFE841241C02AAC07 /* Resources */,
+				32C88E010371C26100C91783 /* Other Sources */,
+			);
+			name = Blinkenposer.plugin;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -174,6 +246,23 @@
 			productReference = 8D5B49B6048680CD000E48DA /* Blinkenposer.plugin */;
 			productType = "com.apple.product-type.bundle";
 		};
+		F2D8196C0E60551700D2B1D0 /* Stereoscope */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F2D819720E60551800D2B1D0 /* Build configuration list for PBXNativeTarget "Stereoscope" */;
+			buildPhases = (
+				F2D819690E60551700D2B1D0 /* Resources */,
+				F2D8196A0E60551700D2B1D0 /* Sources */,
+				F2D8196B0E60551700D2B1D0 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Stereoscope;
+			productName = Stereoscope;
+			productReference = F2D8196D0E60551700D2B1D0 /* Stereoscope.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -188,9 +277,25 @@
 			targets = (
 				8D5B49AC048680CD000E48DA /* Blinkenposer */,
 				233E2C640A83C768005A62DF /* Build & Copy */,
+				F2D8196C0E60551700D2B1D0 /* Stereoscope */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F2D819690E60551700D2B1D0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F2D819860E6055ED00D2B1D0 /* InfoPlist.strings in Resources */,
+				F2D819870E6055ED00D2B1D0 /* MainMenu.xib in Resources */,
+				F2095ADB0E60675300BD59DB /* Stereoscope.icns in Resources */,
+				F2095AEA0E606E2600BD59DB /* stop.png in Resources */,
+				F2095AEC0E606E2C00BD59DB /* record.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
 		233E2C690A83C783005A62DF /* ShellScript */ = {
@@ -223,6 +328,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F2D8196A0E60551700D2B1D0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F2D819880E6055F000D2B1D0 /* main.m in Sources */,
+				F2095ABB0E60591300BD59DB /* StereoscopeAppController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -232,6 +346,27 @@
 			targetProxy = 233E2C650A83C76D005A62DF /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F2D8197B0E6055C800D2B1D0 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F2D8197C0E6055C800D2B1D0 /* English */,
+			);
+			name = InfoPlist.strings;
+			path = English.lproj;
+			sourceTree = "<group>";
+		};
+		F2D8197D0E6055C800D2B1D0 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F2D8197E0E6055C800D2B1D0 /* English */,
+			);
+			name = MainMenu.xib;
+			path = English.lproj;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		1DEB913B08733D840010E9CD /* Debug */ = {
@@ -305,6 +440,54 @@
 			};
 			name = Release;
 		};
+		F2D819700E60551700D2B1D0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Stereoscope/Stereoscope_Prefix.pch;
+				INFOPLIST_FILE = Stereoscope/Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = Stereoscope;
+			};
+			name = Debug;
+		};
+		F2D819710E60551700D2B1D0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Stereoscope/Stereoscope_Prefix.pch;
+				INFOPLIST_FILE = Stereoscope/Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = Stereoscope;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -331,6 +514,15 @@
 			buildConfigurations = (
 				233E2D8A0A83C7AC005A62DF /* Debug */,
 				233E2D8B0A83C7AC005A62DF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F2D819720E60551800D2B1D0 /* Build configuration list for PBXNativeTarget "Stereoscope" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F2D819700E60551700D2B1D0 /* Debug */,
+				F2D819710E60551700D2B1D0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
