@@ -4,7 +4,12 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)inNotification 
 {
+//	NSString *compositionPath = [[NSBundle mainBundle] pathForResource:@"Stereoscope" ofType:@"qtz"];
+//	NSLog(@"%s trying do load: %@",__FUNCTION__,compositionPath);
+//	[_ibQCView loadCompositionFromFile:compositionPath];
+
 	[_ibQCView setEventForwardingMask:NSAnyEventMask];
+	[_ibQCView startRendering];
 }
 
 - (IBAction)changeViewPosition:(id)sender {
