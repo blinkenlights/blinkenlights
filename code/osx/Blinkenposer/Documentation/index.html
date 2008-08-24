@@ -73,7 +73,10 @@
         The Blinkenprovider patch can listen to blinkenproxies and provides the an Image, the pixel dimensions and a structure representation of the received images.
         <table>
           <tr><th>Input</th><th>Type</th><th>Example</th><th>Description</th></tr>
-          <tr><td>Proxy&nbsp;Address</td><td>String</td><td>localhost:4242</td><td>The address and port of the blinkenproxy to listen to. &lt;address&gt;[:&lt;port&gt;] - if the port is omitted, 4242 is assumed. If the line is comepletely empty, then the Blinkenprovider will try to listen without a proxy.</td></tr>
+          <tr><td>Use&nbsp;Address</td><td>Index</td><td>0</td><td>This index determines if the provider listens to the localhost on the given local listening port or to the given proxy address</td></tr>
+          <tr><td>Local Listening Port</td><td>Number</td><td>2323</td><td>The port to listen to locally.</td></tr>
+          <tr><td>Proxy&nbsp;Address</td><td>String</td><td>localhost</td><td>The host address of the blinkenproxy to listen to.</td></tr>
+          <tr><td>Proxy&nbsp;Port</td><td>Number</td><td>4242</td><td>The port of the blinkenproxy to listen to.</td></tr>
         </table>
         <table>
           <tr><th>Output</th><th>Type</th><th>Example</th><th>Description</th></tr>
@@ -88,10 +91,12 @@
         The Blinkensender patch can send images or structures to a blinkenproxy.
         <table>
           <tr><th>Input</th><th>Type</th><th>Example</th><th>Description</th></tr>
-          <tr><td>Target&nbsp;Address</td><td>String</td><td>localhost:2323</td><td>The address and port of the blinkenproxy to Target. &lt;address&gt;[:&lt;port&gt;] - if the port is omitted, 2323 is assumed.</td></tr>
+          <tr><td>Target&nbsp;Address</td><td>String</td><td>localhost</td><td>The address of the blinkenproxy / blinkensim / bmix to Target.</td></tr>
+          <tr><td>Target&nbsp;Port</td><td>Number</td><td>2323</td><td>The port to target.</td></tr>
           <tr><td>Image</td><td>Image</td><td><img src="images/ExampleBlinkenImage.png" /></td><td>A Grayscale Image representation of what should be sent to the Blinkenproxy. The Data will be boiled down to 16 grayscale values.</td></tr>
           <tr><td>Blinken&nbsp;tructure</td><td>Array of Arrays</td><td>{{15,0},{0,15}}</td><td>A Blinken Structure to send out. If both Image and Structure are attached to this patch, the Image is taken. To see how that can be created using a javascript patch, have a look into the <tt>BasicTest.qtz</tt> Composition.</td></tr>
-          <tr><td>FPS Cap</td><td>Number</td><td>24</td><td>The max number of frames per second to send out. Please make sure this stays below thirty, because the installation can't display more FPS anyways.</td></tr>
+          <tr><td>FPS Cap</td><td>Number</td><td>15</td><td>The max number of frames per second to send out. Please make sure this stays below thirty, because the installation can't display more FPS anyways.</td></tr>
+          <tr><td>Min FPS</td><td>Number</td><td>1</td><td>The min number of frames per second to send out Important for when the input image doesn't change.</td></tr>
         </table>
         <table>
           <tr><th>Output</th><th>Type</th><th>Example</th><th>Description</th></tr>
@@ -100,6 +105,35 @@
           <tr><td>Pixel Height</td><td>Number</td><td>32</td><td>The Height of the received Image.</td></tr>
           <tr><td>Blinkenstructure</td><td>Array of Arrays</td><td>{{15,0},{0,15}}</td><td>The sent Data as a Structure that can be iterated through. This structure has values from 0 (black) to 15 (white). To see that in use you can look into the <tt>FlatStereoscopeToronto.qtz</tt> Composition.</td></tr>
         </table>
+
+        <h4>BlinkenBMLWriter</h4>
+        <img src="images/BlinkenBMLWriter.png" /><br/>
+        The Blinkensender patch can send images or structures to a blinkenproxy.
+        <table>
+          <tr><th>Input</th><th>Type</th><th>Example</th><th>Description</th></tr>
+          <tr><td>Enabled</td><td>BOOL</td><td>True</td><td>If this patch is enabled it records to a file in the Destination path. E.g. turning record on and off enables and disables the recording.</td></tr>
+          <tr><td>Blinken&nbsp;tructure</td><td>Array of Arrays</td><td>{{15,0},{0,15}}</td><td>A Blinken Structure to record.</td></tr>
+          <tr><td>FPS Cap</td><td>Number</td><td>15</td><td>The max number of frames per second to record at max. The BMLWriter already coalesces updates that don't change into one frame, so this can be high if the source is already capped</td></tr>
+          <tr><td>Destination Path</td><td>String</td><td>~/Desktop</td><td>The destination directory where the recorded files should be stored. Files are of the form YYYY-MM-DD_HH-MM_SS.bml</td></tr>
+        </table>
+
+
+        <h3>Composition Templates</h3>
+
+        For A quick start these are the templates you just open, change to your liking and save as again to have your own great blinkenlights animation.
+        <h4>AspectCorrectedTemplate.qtz</h4>
+        <img src="images/AspectCorrectedTemplate.png" />
+        <p>This is the ideal starting point if you have already a nice composition that you are basing yourself on. just put the composition you are based on in the top level render in image patch and remove the lightning scene in there. The scaling factor between the rendering and the output is such that it compensates for the pixel aspect ratio of the Stereoscope.</p>
+
+        <h4>DirectDestinationTemplate.qtz</h4>
+        <img src="images/DirectDestinationTemplate.png" />
+        <p>This is the ideal starting point if you want to work with pixels directly. e.g. bring sprites to life. As an added bonus there is the pixel exact image placement macro patch in there, that helps to place images 1:1 on the stereoscope</p>
+        
+
+
+        <h3>Stereoscope.app</h3>
+        <img src="images/Stereoscope.png" />
+        <p>Stereoscope.app is a blinkensim based on Stereoscope.qtz it displayes the two curved stereoscope buildings in a simplified way and can also record everthing as a bml.</p>
 
         <h3>Example Compositions</h3>
         <h4>FlatStereoscopeToronoto.qtz</h4>
