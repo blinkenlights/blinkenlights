@@ -1,0 +1,13 @@
+<bmoviesender>
+<sender movie="/Users/andrew/Downloads/blinkenlights/blinkenlights/bmlarchive/anim/3D/boing.bml" host="192.168.4.124" port="2325" loop="true" />
+<sender movie="/Users/andrew/Downloads/blinkenlights/blinkenlights/bmlarchive/anim/3D/cube.bml" host="192.168.4.124" port="2326" loop="true" />
+<sender movie="/Users/andrew/Downloads/blinkenlights/blinkenlights/bmlarchive/anim/3D/tubularbells.bml" host="192.168.4.124" port="2327" loop="true" />
+<sender movie="/Users/andrew/Downloads/blinkenlights/blinkenlights/bmlarchive/anim/3D/spin-arcade.bml" host="192.168.4.124" port="2328" loop="true" />
+
+<!-- <sender movie="/Users/andrew/temp/movies/michael_jackson.blm.xml" host="192.168.4.37" port="2324" loop="true" /> -->
+<!-- <sender movie="/Users/andrew/temp/movies/pacman_saga.blm.xml" host="192.168.4.125" port="2325" loop="true" /> -->
+<!-- <sender movie="/Users/andrew/temp/movies/pacman_forever.blm.xml" host="192.168.4.37" port="2326" loop="true" /> -->
+<!--  <sender movie="/Users/andrew/temp/movies/bb-rauten2.bml" host="192.168.4.37" port="2327" loop="true" /> -->
+<!--  <sender movie="/Users/andrew/temp/movies/bb-rauten3.bml" host="192.168.4.125" port="2329" loop="true" /> -->
+<sender movie="/Users/andrew/Downloads/blinkenlights/blinkenlights/bmlarchive/anim/3D/runner.bml" host="192.168.4.124" port="2329" loop="true" />
+</bmoviesender>

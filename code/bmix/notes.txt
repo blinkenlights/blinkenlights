@@ -1,0 +1,51 @@
+BMix Notes
+
+==To do==
+
+* figure how to properly configure logging
+* figure out how to (almost) never drop a packet
+* add magic command line arguments
+** disable gui
+** adjust output verbosity
+* max framerate
+* stop frames (waiting for more spec)
+* lamp gamma (optional)
+* input relay
+* configuration for chroma key color
+
+==Listeners==
+
+* receives data from blccc
+* listen port
+* relay destination ip / port (multiple)
+* idle timeout to mark input stream as invalid
+* stop frame would cause instant "idle" timeout
+
+==Mixer==
+
+* handles compositing of layers
+* handles application of compositing rules
+* master timing
+
+===Layers===
+
+* input/listener
+* viewport on virutal buffer
+* opacity
+* scale (normally 1:1)
+* key colour
+* z order
+* compositing rule
+
+==Outputs==
+
+* destination ip / port (multiple)
+* virtual buffer viewport
+** pixels outside virtual buffer are black
+* lamp gamma (optional)
+* max/min frame rate
+* blackout/freeze/disable
+
+==Other/Infrastructure== 
+
+* Check all code with Findbugs!

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<project name="BMix" default="tarball">
+	
+	<!-- this sets the bmix.version property -->
+	<property file="src/de/blinkenlights/bmix/version.properties"/>
+	
+    <target name="compile" description="Compiles the source code to the build directory">
+        <mkdir dir="build"/>
+    	<javac srcdir="src"
+             destdir="build"
+             debug="on" />
+    	<copy file="src/de/blinkenlights/bmix/version.properties" todir="build/de/blinkenlights/bmix/"/>
+    	<copy file="src/de/blinkenlights/bmix/bmix.dtd" todir="build/de/blinkenlights/bmix/"/>
+    </target>
+	
+	<target name="jar" depends="compile" description="Creates an executable JAR of the application">
+		<mkdir dir="dist"/>
+		<mkdir dir="dist/bmix-${bmix.version}"/>
+		<jar destfile="dist/bmix-${bmix.version}/bmix.jar"
+			 basedir="build"
+			 includes="**" manifest="etc/manifest"/>
+	</target>
+
+	<target name="tarball" depends="clean,jar" description="Creates the distribution tarball">
+		<copy file="bmix.xml" todir="dist/bmix-${bmix.version}/"/>
+		<copy file="etc/start.sh" todir="dist/bmix-${bmix.version}/"/>
+		<copy file="HISTORY" todir="dist/bmix-${bmix.version}/"/>
+		<chmod perm="755" file="dist/bmix-${bmix.version}/start.sh"/>
+		<tar destfile="dist/bmix-${bmix.version}.tar.gz"
+			 compression="gzip"
+			 basedir="dist"
+			 includes="bmix-${bmix.version}/**" />
+	</target>
+
+	<target name="clean">
+		<delete dir="." includes="dist/**" includeemptydirs="true"/>
+		<delete dir="." includes="build/**" includeemptydirs="true"/>
+	</target>
+	 
+</project>

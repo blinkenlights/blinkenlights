@@ -1,0 +1,44 @@
+<!ELEMENT bmix (input+,layer+,output*)>
+<!ATTLIST bmix version CDATA #REQUIRED>
+<!ATTLIST bmix vmatrix-width CDATA #REQUIRED>
+<!ATTLIST bmix vmatrix-height CDATA #REQUIRED>
+<!ATTLIST bmix max-frame-interval CDATA "100">
+
+
+<!ELEMENT input EMPTY>
+<!ATTLIST input id ID #REQUIRED>
+<!ATTLIST input listen-addr CDATA "0.0.0.0">
+<!ATTLIST input listen-port CDATA "2323">
+<!ATTLIST input heartbeat-dest-addr CDATA #IMPLIED>
+<!-- valid alpha-mode options:
+		opaque      alpha channel ignored even if present
+		chroma-key  one colour is fully transparent; all others are opaque
+		brightness  all pixels are full white, and opacity is set to brightness
+		native      magically delicious undocumented mode
+ -->
+<!ATTLIST input alpha-mode CDATA "native">
+
+<!-- HTML-style 24-bit hex string, prefixed by # just to be obnoxious (i.e. for forward compatibility) -->
+<!ATTLIST input chroma-key-colour CDATA "#000000">
+
+
+<!-- Layers are nestable rectangular regions that paint to the vmatrix. -->
+<!ELEMENT layer (layer*)>
+<!ATTLIST layer input IDREF #REQUIRED>
+<!ATTLIST layer opacity CDATA "100">
+<!ATTLIST layer x CDATA #REQUIRED>
+<!ATTLIST layer y CDATA #REQUIRED>
+<!ATTLIST layer width CDATA #REQUIRED>
+<!ATTLIST layer height CDATA #REQUIRED>
+
+<!-- outputs are rectangular viewports on the virtual buffer that extract and send frames
+     to a specified destination address using the same blprotocol accepted by inputs. -->
+<!ELEMENT output EMPTY>
+<!ATTLIST output x CDATA #REQUIRED>
+<!ATTLIST output y CDATA #REQUIRED>
+<!ATTLIST output width CDATA #REQUIRED>
+<!ATTLIST output height CDATA #REQUIRED>
+<!ATTLIST output dest-addr CDATA #REQUIRED>
+<!ATTLIST output dest-port CDATA #REQUIRED>
+
+<!-- TODO: relay (inputs and/or outputs) -->
