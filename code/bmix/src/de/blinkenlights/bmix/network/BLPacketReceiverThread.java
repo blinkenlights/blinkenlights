@@ -61,12 +61,14 @@ public class BLPacketReceiverThread extends Thread {
 
 	@Override
 	public void run() {
+		logger.info("poo");
 		// TODO be able to stop this thread
 		for (;;) {
 			long now = System.currentTimeMillis();
 			if (now > lastHeartBeatSendTime + heartBeatSendInterval) {
 				lastHeartBeatSendTime = now;
 				try {
+					logger.info("sending heartbeat!");
 					receiver.sendHeartBeat();
 				} catch (IOException e) {
 					logger.log(Level.WARNING,"couldn't send a heartbeat packet",e);

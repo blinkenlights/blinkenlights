@@ -35,13 +35,19 @@ public class BLHeartbeatPacket implements BLPacket {
 	 * @return the network protocol bytes
 	 */
 	public byte[] getNetworkBytes() {
-		byte buf[] = new byte[6];
+		byte buf[] = new byte[12];
 		buf[0] = 0x42;
 		buf[1] = 0x42;
 		buf[2] = 0x42;
 		buf[3] = 0x42;
 		buf[4] = (byte)((version & 0xff00) >> 8);
 		buf[5] = (byte)(version & 0x00ff);
+		buf[6] = 0x00;
+		buf[7] = 0x00;
+		buf[8] = 0x00;
+		buf[9] = 0x00;
+		buf[10] = 0x00;
+		buf[11] = 0x00;
 		return buf;
 	}	
 }
