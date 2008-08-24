@@ -236,11 +236,12 @@ public class BMix extends Monitor {
 		            if (heartBeatDestAddrString != null) {
 		            	heartBeatDestAddr = InetAddress.getByName(heartBeatDestAddrString);
 		            } 
+		            int heartBeatDestPort = Integer.parseInt(attributes.getValue("heartbeat-dest-port"));
 		            BLPacketReceiver receiver = 
 		                new BLPacketReceiver(
 		                        Integer.parseInt(listenPort),
 		                        InetAddress.getByName(listenAddr),
-		                        heartBeatDestAddr);
+		                        heartBeatDestAddr, heartBeatDestPort);
 		            inputs.put(id, receiver);
 		            
                 } else if (qName.equals("layer")) {

@@ -26,7 +26,7 @@ public class VFBMonitor extends Monitor {
 
 	public VFBMonitor() throws SocketException {
 		super("VFBMonitor", 100, 100, 640, 480, true);
-		this.bpr = new BLPacketReceiver(2323,null,null);
+		this.bpr = new BLPacketReceiver(2323,null,null,0);
 		
 		rootLayer = new Layer(new Rectangle(0, 0, 96, 32), AlphaComposite.Src);
 		

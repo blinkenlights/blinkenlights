@@ -10,6 +10,7 @@
 <!ATTLIST input listen-addr CDATA "0.0.0.0">
 <!ATTLIST input listen-port CDATA "2323">
 <!ATTLIST input heartbeat-dest-addr CDATA #IMPLIED>
+<!ATTLIST input heartbeat-dest-port CDATA "4242">
 <!-- valid alpha-mode options:
 		opaque      alpha channel ignored even if present
 		chroma-key  one colour is fully transparent; all others are opaque

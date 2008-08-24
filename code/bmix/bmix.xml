@@ -8,7 +8,7 @@
   <input id="Bottom-East" listen-port="2326"/>
   <input id="Top-West"    listen-port="2327"/>
   <input id="Bottom-West" listen-port="2328"/>
-  <input id="Background"  listen-port="2329" heartbeat-dest-addr="stereoscope.dyndns.tv"/>
+  <input id="Background"  listen-port="2329" heartbeat-dest-addr="stereoscope.dyndns.tv" heartbeat-dest-port="4242" />
 
   <layer input="Graffiti"    x="0"  y="0"  width="96" height="32" />
   <layer input="Foreground"  x="0"  y="0"  width="96" height="32" />

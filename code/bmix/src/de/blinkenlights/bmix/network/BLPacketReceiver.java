@@ -24,8 +24,6 @@ import de.blinkenlights.bmix.protocol.BLPacketFactory;
 public class BLPacketReceiver {
 	
 	private final static Logger logger = Logger.getLogger(BLPacketReceiver.class.getName());
-	
-	private static final int HEARTBEAT_PORT = 4242;
 	byte buf[] = new byte[65536];
     private final byte[] heartBeatBytes = new BLHeartbeatPacket(BLHeartbeatPacket.VERSION_NUMBER).getNetworkBytes();
     
@@ -47,6 +45,11 @@ public class BLPacketReceiver {
 	 *  the host to which we should send heartbeats, or null if we shouldn't send them.
 	 */
 	private InetAddress heartBeatDestination;
+
+	/** 
+	 * the port on the destination to which we should send heartbeats.
+	 */
+	private final int heartBeatDestPort;
 	
 	
 	
@@ -56,14 +59,16 @@ public class BLPacketReceiver {
 	 * @param port The UDP port number to listen on.
 	 * @param address The address to listen on (0.0.0.0 or null for all local addresses).
 	 * @param heartBeatDestination the host to which we should send heartbeats, or null if we shouldn't send them.
+	 * @param heartBeatDestPort the port on the proxy host to which we should send the heartbeats
 	 * @throws SocketException if binding to the specified port and address is not possible.
 	 */
-	public BLPacketReceiver(int port, InetAddress address, InetAddress heartBeatDestination) throws SocketException  {
+	public BLPacketReceiver(int port, InetAddress address, InetAddress heartBeatDestination, int heartBeatDestPort) throws SocketException  {
 		if (address == null) {
 			address = WILDCARD_ADDRESS;
 		}
 		this.port = port;
 		this.heartBeatDestination = heartBeatDestination;
+		this.heartBeatDestPort = heartBeatDestPort;
 		if(port < 1) {
 			throw new IllegalArgumentException("port must be > 0");
 		}		
@@ -111,7 +116,7 @@ public class BLPacketReceiver {
 			logger.log(Level.SEVERE,args[0]+" wasn't something that I could parse as a number!",e);
 			return;
 		}
-		BLPacketReceiver blfr = new BLPacketReceiver(port,null,null);
+		BLPacketReceiver blfr = new BLPacketReceiver(port,null,null,0);
 		while(true) {
 			BLPacket blp = blfr.receive();
 			if(blp instanceof BLFramePacket) {
@@ -123,8 +128,9 @@ public class BLPacketReceiver {
 	
 	public void sendHeartBeat() throws IOException {
 		if (heartBeatDestination != null) {
-			logger.fine("sending heartbeat to: "+heartBeatDestination);
-			DatagramPacket p = new DatagramPacket(heartBeatBytes, heartBeatBytes.length, heartBeatDestination, HEARTBEAT_PORT);
+			logger.fine("sending heartbeat to: "+heartBeatDestination+":"+heartBeatDestPort);
+			DatagramPacket p = new DatagramPacket(heartBeatBytes, heartBeatBytes.length, heartBeatDestination, heartBeatDestPort);
+
 			socket.send(p);
 		}
 	}
