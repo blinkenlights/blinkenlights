@@ -2,9 +2,6 @@ BMix Notes
 
 ==To do==
 
-===v1.1=== ** to be completed before dinner
-* BLproxy receiver
-
 ===v1.2===
 * max framerate
 * input relay
