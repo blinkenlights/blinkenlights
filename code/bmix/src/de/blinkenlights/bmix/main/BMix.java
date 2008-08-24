@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -137,6 +138,9 @@ public class BMix extends Monitor {
 		}
 		System.err.println("Setting log level to " + logLevel);
 		Logger.getLogger("").setLevel(logLevel);
+		for (Handler handler : Logger.getLogger("").getHandlers()) {
+		    handler.setLevel(logLevel);
+		}
 
 		new BMix(configFilename, guiEnabled).start();
 	}

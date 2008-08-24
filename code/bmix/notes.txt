@@ -3,7 +3,6 @@ BMix Notes
 ==To do==
 
 ===v1.1=== ** to be completed before dinner
-* figure how to properly configure logging
 * BLproxy receiver
 
 ===v1.2===
