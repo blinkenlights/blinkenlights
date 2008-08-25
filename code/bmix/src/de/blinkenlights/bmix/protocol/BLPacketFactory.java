@@ -33,11 +33,11 @@ public class BLPacketFactory {
 			if(len < 16) {
 				throw new BLPacketException("MCU_SETUP packet must have length >= 16 bytes");
 			}
-			int id = (int)data[4];
-			int height = ((int)data[8] << 8) | (int)data[9];
-			int width = ((int)data[10] << 8) | (int)data[11];
-			int channels = ((int)data[12] << 8) | (int)data[13];
-			int pixels = ((int)data[14] << 8) | (int)data[15];
+			int id = (int)(data[4] & 0xff);
+			int height = ((int)(data[8] & 0xff) << 8) | (int)(data[9] & 0xff);
+			int width = ((int)(data[10] & 0xff) << 8) | (int)(data[11] & 0xff);
+			int channels = ((int)(data[12] & 0xff) << 8) | (int)(data[13] & 0xff);
+			int pixels = ((int)(data[14] & 0xff) << 8) | (int)(data[15] & 0xff);
 			if(height < 1 || width < 1 || channels < 1 || pixels < 1) {
 				throw new BLPacketException("MCU_SETUP packet has 0 dimensional size, 0 channels or 0 ports");
 			}
@@ -56,7 +56,7 @@ public class BLPacketFactory {
 			if(len < 8) {
 				throw new BLPacketException("MCU_DEVCTRL packet must have length >= 8 bytes");
 			}
-			int pixels = ((int)data[4] << 8) | (int)data[5];
+			int pixels = ((int)(data[4] & 0xff) << 8) | (int)(data[5] & 0xff);
 			if(pixels < 1) {
 				throw new BLPacketException("MCU_DEVCTRL packet has 0 pixels");
 			}
@@ -75,7 +75,7 @@ public class BLPacketFactory {
 			if(len < 6) {
 				throw new BLPacketException("HEARTBEAT packet must have length = 6");
 			}
-			int version = ((int)data[4] << 8) | (int)data[5];
+			int version = ((int)(data[4] & 0xff) << 8) | (int)(data[5] & 0xff);
 			return new BLHeartbeatPacket(version);
 		}
 		
@@ -85,10 +85,10 @@ public class BLPacketFactory {
 			if(len < 12) {
 				throw new BLPacketException("MCU_FRAME packet must length >= 12 bytes");
 			}
-			int height = ((int)data[4] << 8) | (int)data[5];
-			int width = ((int)data[6] << 8) | (int)data[7];
-			int channels = ((int)data[8] << 8) | (int)data[9];
-			int maxval = ((int)data[10] << 8) | (int)data[11];
+			int height = ((int)(data[4] & 0xff) << 8) | (int)(data[5] & 0xff);
+			int width = ((int)(data[6] & 0xff) << 8) | (int)(data[7] & 0xff);
+			int channels = ((int)(data[8] & 0xff) << 8) | (int)(data[9] & 0xff);
+			int maxval = ((int)(data[10] & 0xff) << 8) | (int)(data[11] & 0xff);
 			if(height < 1 || width < 1 || channels < 1) {
 				throw new BLPacketException("MCU_FRAME packet has 0 dimensional size or 0 channels");
 			}
@@ -114,8 +114,8 @@ public class BLPacketFactory {
 			if(len < 12) {
 				throw new BLPacketException("LEGACY_FRAME must be length >= 12 bytes");
 			}
-			int width = ((int)data[8] << 8) | (int)data[9];
-			int height = ((int)data[10] << 8) | (int)data[11];
+			int width = ((int)(data[8] & 0xff) << 8) | (int)(data[9] & 0xff);
+			int height = ((int)(data[10] & 0xff) << 8) | (int)(data[11] & 0xff);
 			if(height < 1 || width < 1) {
 				throw new BLPacketException("LEGACY_FRAME packet has 0 dimensional size");
 			}
@@ -135,8 +135,8 @@ public class BLPacketFactory {
 			if(len < 12) {
 				throw new BLPacketException("LEGACY_FRAME must be length >= 12 bytes");
 			}
-			int width = ((int)data[8] << 8) | (int)data[9];
-			int height = ((int)data[10] << 8) | (int)data[11];
+			int width = ((int)(data[8] & 0xff) << 8) | (int)(data[9] & 0xff);
+			int height = ((int)(data[10] & 0xff) << 8) | (int)(data[11] & 0xff);
 			if(height < 1 || width < 1) {
 				throw new BLPacketException("LEGACY_FRAME packet has 0 dimensional size");
 			}
