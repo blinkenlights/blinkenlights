@@ -76,7 +76,12 @@ public class BMonitor {
 	static class ElementParser extends DefaultHandler {
 		LinkedList<NetworkStreamMonitorConfig> monitors;
 		Locator locator;
-		
+
+		@Override
+		public void setDocumentLocator(Locator locator) {
+			this.locator = locator;
+		}
+
 		/**
 		 * Creates a new ElementParser for parsing the document.
 		 * 
