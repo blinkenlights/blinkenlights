@@ -257,8 +257,9 @@ public class BMix extends Monitor {
                             layerSize,
                             AlphaComposite.getInstance(AlphaComposite.SRC_OVER, opacityPct / 100f));
                     currentLayer.addLayer(l);
-                    
-                    List<Layer> layersForThisInput = layerInputs.get(inputId);
+                   
+                    BLPacketReceiver receiver = inputs.get(inputId);
+                    List<Layer> layersForThisInput = layerInputs.get(receiver);
                     if (layersForThisInput == null) {
                         layersForThisInput = new ArrayList<Layer>();
                         BLPacketReceiver input = inputs.get(inputId);
