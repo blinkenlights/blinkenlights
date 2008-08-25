@@ -1,11 +1,11 @@
 BMix version history file
 
-BMix 1.1 - 20080815
+BMix 1.1 - 20080824
 
 -Added command line argument for verbosity level (-v)
 -Added command line argument to disable GUI preview (-d)
 -Added ability to consume streams of any maxval 1..255
--Added ability to optionally send heartbeat packets
+-Added ability to optionally send heartbeat packets to blproxy
  (heartbeat config is associated with input lines)
 -Cleaned up all "println" logging; now using logging framework
 -Overall code cleanup and preening
