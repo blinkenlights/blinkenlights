@@ -125,16 +125,16 @@ struct mcu_setup_header
 #define MCU_DEVCTRL_COMMAND_WRITE_CONFIG	3	/* tell the MCU to write the gamma curve	*/
 #define MCU_DEVCTRL_COMMAND_SET_JITTER		4	/* set the jitter for a lamp			*/
 #define MCU_DEVCTRL_COMMAND_SET_ASSIGNED_LAMPS	5	/* set lamps assigned to this MCU		*/
-#define MCU_DEVCTRL_COMMAND_CHECK_LAMP		6	/* check lamp functionality			*/
+#define MCU_DEVCTRL_COMMAND_SEND_WDIM_STATS	6	/* check WDIM statistics			*/
 #define MCU_DEVCTRL_COMMAND_OUTPUT_RAW		0xff	/* DEBUG: output raw RF packet			*/
 
 typedef struct mcu_devctrl_header  mcu_devctrl_header_t;
 
 struct mcu_devctrl_header
 {
-  unsigned int magic;         /* == MAGIC_MCU_DEVCTRL                    */
-  unsigned int command;       /* MCU_DEVCTRL_COMMAND_*                   */
-  unsigned int mac;           /* LAMP MAC address                        */
+  unsigned int magic;         /* == MAGIC_MCU_DEVCTRL			*/
+  unsigned int command;       /* MCU_DEVCTRL_COMMAND_*			*/
+  unsigned int mac;           /* LAMP MAC address (if needed)		*/
   unsigned int value;
   unsigned int param[64];
 };
@@ -148,7 +148,7 @@ typedef struct heartbeat_header heartbeat_header_t;
 struct heartbeat_header
 {
   unsigned int magic;        /* == MAGIC_HEARTBEAT                      */
-  unsigned short version;      /* hearbeat protocol version number (0)    */
+  unsigned short version;    /* hearbeat protocol version number (0)    */
 };
 
 

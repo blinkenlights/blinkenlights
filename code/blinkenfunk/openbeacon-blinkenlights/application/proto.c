@@ -41,6 +41,7 @@
 #include "debug_print.h"
 
 static BRFPacket pkg;
+static unsigned long packet_count;
 const unsigned char broadcast_mac[NRF_MAX_MAC_SIZE] =
   { 'D', 'E', 'C', 'A', 'D' };
 
@@ -168,6 +169,7 @@ bParsePacket (void)
 	//DumpStringToUSB ("\n\r");
 
 	vUpdateDimmer (v);
+	packet_count++;
 	break;
       }
     case RF_CMD_SET_LAMP_ID:
@@ -196,7 +198,6 @@ bParsePacket (void)
       env_store ();
       break;
     case RF_CMD_SET_JITTER:
-
       vSetDimmerJitterUS (pkg.set_jitter.jitter);
 
       DumpStringToUSB ("new jitter: ");
@@ -204,15 +205,9 @@ bParsePacket (void)
       DumpStringToUSB ("\n");
 
       break;
-    case RF_CMD_CHECK_LAMP:
-      DumpStringToUSB ("checking lamp ...\n");
-
-      i = vGetEmiPulses ();
-      pkg.payload[0] = (i >> 0) & 0xFF;
-      pkg.payload[1] = (i >> 8) & 0xFF;
-      pkg.payload[2] = 0;
-      pkg.payload[3] = 0;
-
+    case RF_CMD_SEND_STATISTICS:
+      pkg.statistics.emi_pulses = vGetEmiPulses ();
+      pkg.statistics.packet_count = packet_count;
       break;
     case RF_CMD_ENTER_UPDATE_MODE:
       if (pkg.payload[0] != 0xDE ||
@@ -236,6 +231,7 @@ vnRFtaskRx (void *parameter)
   (void) parameter;
   int DidBlink = 0;
   portTickType Ticks = 0;
+  packet_count = 0;
 
   if (!PtInitNRF ())
     return;

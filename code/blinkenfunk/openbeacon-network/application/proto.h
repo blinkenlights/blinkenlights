@@ -34,7 +34,7 @@ enum {
   RF_CMD_SET_GAMMA,
   RF_CMD_WRITE_CONFIG,
   RF_CMD_SET_JITTER,
-  RF_CMD_CHECK_LAMP,
+  RF_CMD_SEND_STATISTICS,
   RF_CMD_ENTER_UPDATE_MODE = 0x3f
 };
 
@@ -60,6 +60,11 @@ typedef struct
     struct {
       unsigned short jitter;
     } set_jitter;
+
+    struct {
+      unsigned short emi_pulses;
+      unsigned long packet_count;
+    } statistics;
 
   }; /* union */
 
