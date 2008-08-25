@@ -2,6 +2,7 @@ package de.blinkenlights.bmix.main;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -44,13 +45,13 @@ public class BMovieSender extends Thread {
 	 * @param port the port to send to
 	 * @param loop true if the movie should loop during playback
 	 */
-	public BMovieSender(String movieFilename, String hostname, int port, boolean loop) {
+	public BMovieSender(String movieFilename, String hostname, int port, boolean loop) throws BMovieException {
 		this.loop = loop;
-		movie = new BLMovie(movieFilename);
 		try {
+			movie = new BLMovie(movieFilename);
 			netSend = new BLPacketSender(hostname, port);
-		} catch (BLNetworkException e) {
-			e.printStackTrace();
+		} catch (Exception e) {
+			throw new BMovieException(e);
 		}
 	}
 	
@@ -66,7 +67,7 @@ public class BMovieSender extends Thread {
 				try {
 					Thread.sleep(1000);
 				} catch (InterruptedException e) {
-					e.printStackTrace();
+					// this is ignorable
 				}
 			}
 			for(int i = 0; i < movie.getNumFrames(); i ++) {
@@ -209,7 +210,11 @@ public class BMovieSender extends Thread {
 					throw new FileFormatException("loop must be specified", locator.getLineNumber(), locator.getColumnNumber());					
 				}
 				boolean loop = Boolean.parseBoolean(val);
-				senders.add(new BMovieSender(movie, host, port, loop));
+				try {
+					senders.add(new BMovieSender(movie, host, port, loop));
+				} catch (BMovieException e) {
+					throw new FileFormatException(locator.getLineNumber(), locator.getColumnNumber(), e);
+				}
 			}
 			else {
 				System.err.println("unrecognised entity: " + qName);

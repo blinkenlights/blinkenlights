@@ -99,7 +99,7 @@ public class BLPacketFactory {
 			byte pixels[] = new byte[len - 12];
 	
 			// find the magic maxval scale factor
-			double scaleFactor = 255 / maxval;
+			double scaleFactor = 255.0 / maxval;
 			
 			for (int i = 0; i < pixels.length; i++) {
 				pixels[i] = (byte) ((int) (data[i+12] * scaleFactor) & 0xff);

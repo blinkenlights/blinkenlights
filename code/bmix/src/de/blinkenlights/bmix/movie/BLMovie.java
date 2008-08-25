@@ -19,6 +19,7 @@ import org.xml.sax.Locator;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
+import de.blinkenlights.bmix.main.BMovieException;
 import de.blinkenlights.bmix.util.FileFormatException;
 
 /**
@@ -38,8 +39,10 @@ public class BLMovie {
 	 * Creates a BMovie from a BML XML file.
 	 * 
 	 * @param filename the BML movie to load
+	 * @throws SAXException 
+	 * @throws IOException 
 	 */
-	public BLMovie(String filename) {
+	public BLMovie(String filename) throws BMovieException, IOException, FileNotFoundException {
 		frames = new LinkedList<Frame>();
 		
 		if(filename.length() < 5) {
@@ -54,19 +57,17 @@ public class BLMovie {
 			ElementParser ep = new ElementParser(frames);
 			SAXParserFactory spf = SAXParserFactory.newInstance();
 			SAXParser sp = null;
-			try {
-				sp = spf.newSAXParser();
-				sp.parse(new File(filename), ep);	
-			} catch (ParserConfigurationException e) {
-				e.printStackTrace();
-				System.exit(1);
-			} catch (SAXException e) {
-				e.printStackTrace();
-				System.exit(1);
-			} catch (IOException e) {
-				e.printStackTrace();
-				System.exit(1);
-			}			
+
+				try {
+					sp = spf.newSAXParser();
+					sp.parse(new File(filename), ep);	
+				} catch (ParserConfigurationException e) {
+					throw new BMovieException(e);
+				} catch (SAXException e) {
+					throw new BMovieException(e);
+				} catch (IOException e) {
+					throw new BMovieException(e);
+				}
 		}
 		else {
 			System.err.println("file format not supported: " + suffix);
@@ -94,35 +95,38 @@ public class BLMovie {
 	 * 
 	 * @param filename the filename to parse
 	 */
-	private void parseLegacyMovie(String filename) {
+	private void parseLegacyMovie(String filename)
+			throws FileNotFoundException, IOException {
+		
 		BufferedReader in = null;
 		try {
 			in = new BufferedReader(new FileReader(filename));
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-			return;
-		}
-		
-		String line;
-		try {
+			String line;
+
 			int duration = 0;
-			LinkedList<String> rows = new LinkedList<String>();;
-			while((line = in.readLine()) != null) {
+			LinkedList<String> rows = new LinkedList<String>();
+
+			while ((line = in.readLine()) != null) {
 				line = line.trim();
 				// line contains data
-				if(line.length() > 1) {
+				if (line.length() > 1) {
 					// ignore comments
-					if(line.charAt(0) == '#') {
+					if (line.charAt(0) == '#') {
 						// do nothing
 					}
 					// get a frame duraction
-					else if(line.charAt(0) == '@') {
+					else if (line.charAt(0) == '@') {
 						try {
-							duration = Integer.parseInt(line.substring(1, line.length()));
-							if(duration < 1) throw new NumberFormatException("duration must be > 0");
+							duration = Integer.parseInt(line.substring(1, line
+									.length()));
+							if (duration < 1)
+								throw new NumberFormatException(
+								"duration must be > 0");
 							System.out.println("duration: " + duration);
-						} catch(NumberFormatException e) {
-							throw new IOException("error parsing duration for frame: " + e.getMessage());
+						} catch (NumberFormatException e) {
+							throw new IOException(
+									"error parsing duration for frame: "
+									+ e.getMessage());
 						}
 					}
 					// get pixels
@@ -133,27 +137,28 @@ public class BLMovie {
 				// line is blank
 				else {
 					// if we have rows let's make a frame from it
-					if(rows.size() > 0) {
+					if (rows.size() > 0) {
 						System.out.println("got some rows: " + rows.size());
-						if(duration < 1) {
+						if (duration < 1) {
 							throw new IOException("duration not set for frame!");
 						}
 						int width = rows.get(0).length();
 						int height = rows.size();
 						Frame frame = new Frame(width, height, 1, duration);
-						for(int i = 0; i < rows.size(); i ++) {
+						for (int i = 0; i < rows.size(); i++) {
 							frame.addRow(rows.get(i));
 						}
 						frames.addLast(frame);
 						rows.clear();
-					}
-					else {
+					} else {
 						System.out.println("there aren't any rows");
 					}
 				}
 			}
-		} catch (IOException e) {
-			e.printStackTrace();
+		} finally {
+			if (in != null) {
+				in.close();
+			}
 		}
 	}
 	

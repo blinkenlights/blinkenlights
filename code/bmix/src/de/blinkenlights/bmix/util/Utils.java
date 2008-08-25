@@ -54,27 +54,6 @@ public class Utils {
 		return addrA + "." + addrB + "." + addrC + "." + addrD;
 	}
 	
-	/**
-	 * Converts an address string into a buffer of bytes.
-	 * 
-	 * @param addr the String address with . notation
-	 * @return an array of 4 bytes, or null if the address is malformed
-	 */
-	public static byte[] addressStringToInt(String addr) {
-		byte buf[] = new byte[4];
-		String parts[] = addr.split(".");
-		if(parts.length < 4) {
-			return null;
-		}
-		for(int i = 0; i < 4; i ++) {
-			try {
-				buf[i] = (byte)Integer.parseInt(parts[i]);
-			} catch(NumberFormatException e) {
-				return null;
-			}
-		}
-		return buf;
-	}
 	
 	/**
 	 * Sets all pixels of the given image to black and fully transparent

@@ -48,7 +48,7 @@ public class Frame implements BLImage {
 		if(bits == 3) maxVal = 7;
 		if(bits == 2) maxVal = 3;
 		if(bits == 1) maxVal = 1;
-		double scaleFactor = 255 / maxVal;
+		double scaleFactor = 255.0 / maxVal;
 
 		for(int i = 0; i < len; i ++) {
 			int val = 0;
