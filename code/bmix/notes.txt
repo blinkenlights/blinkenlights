@@ -3,8 +3,7 @@ BMix Notes
 ==To do==
 
 ===v1.2===
-* max framerate
-* input relay
+* more status messages on debug
 
 ==Future Features==
 

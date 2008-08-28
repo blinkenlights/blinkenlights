@@ -1,5 +1,10 @@
 BMix version history file
 
+BMix 1.2
+
+-New option for maximum framerate per output (defaults to unlimited)
+-New input relay feature that sends copies of incoming data as it arrives
+
 BMix 1.1 - 20080824
 
 -Added command line argument for verbosity level (-v)

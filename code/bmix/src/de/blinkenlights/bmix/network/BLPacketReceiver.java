@@ -7,13 +7,14 @@ import java.net.InetAddress;
 import java.net.SocketException;
 import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import de.blinkenlights.bmix.protocol.BLFramePacket;
 import de.blinkenlights.bmix.protocol.BLHeartbeatPacket;
 import de.blinkenlights.bmix.protocol.BLPacket;
-import de.blinkenlights.bmix.protocol.BLPacketException;
 import de.blinkenlights.bmix.protocol.BLPacketFactory;
 
 /**
@@ -50,7 +51,12 @@ public class BLPacketReceiver {
 	 * the port on the destination to which we should send heartbeats.
 	 */
 	private final int heartBeatDestPort;
-	
+
+    /**
+     * Each of these BLPacketSenders will be given the received packet when we
+     * receive it.
+     */
+    private final List<BLPacketSender> relaySenders = new ArrayList<BLPacketSender>();
 	
 	
 	/**
@@ -84,13 +90,19 @@ public class BLPacketReceiver {
 		DatagramPacket packet = new DatagramPacket(buf, buf.length);
 		try {
 			socket.receive(packet);
-			return BLPacketFactory.parse(buf, packet.getLength());
+			BLPacket parsedPacket = BLPacketFactory.parse(buf, packet.getLength());
+			for (BLPacketSender sender : relaySenders) {
+			    try {
+			        sender.send(parsedPacket.getNetworkBytes());
+			    } catch (Exception e) {
+		            logger.log(Level.WARNING, "error relaying packet to " + sender, e);
+			    }
+			}
+            return parsedPacket;
 		} catch (SocketTimeoutException e) {
 			// this is ok, it's just time to send a heartbeat packet (or do some other interval-based work)
-		} catch (IOException e) {
-			logger.log(Level.WARNING,"error receiving packet",e);
-		} catch (BLPacketException e) {
-			logger.log(Level.WARNING,"error parsing received packet",e);
+		} catch (Exception e) {
+			logger.log(Level.WARNING, "error receiving packet", e);
 		}
 		return null;
 	}
@@ -134,4 +146,8 @@ public class BLPacketReceiver {
 			socket.send(p);
 		}
 	}
+
+    public void addRelaySender(BLPacketSender relaySender) {
+        relaySenders .add(relaySender);
+    }
 }

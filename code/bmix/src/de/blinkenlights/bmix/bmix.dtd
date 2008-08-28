@@ -5,7 +5,7 @@
 <!ATTLIST bmix max-frame-interval CDATA "100">
 
 
-<!ELEMENT input EMPTY>
+<!ELEMENT input (relay-target*)>
 <!ATTLIST input id ID #REQUIRED>
 <!ATTLIST input listen-addr CDATA "0.0.0.0">
 <!ATTLIST input listen-port CDATA "2323">
@@ -22,6 +22,10 @@
 <!-- HTML-style 24-bit hex string, prefixed by # just to be obnoxious (i.e. for forward compatibility) -->
 <!ATTLIST input chroma-key-colour CDATA "#000000">
 
+<!-- Relay targets receive a copy of every frame received on the input they belong to -->
+<!ELEMENT relay-target EMPTY>
+<!ATTLIST relay-target dest-addr CDATA #REQUIRED>
+<!ATTLIST relay-target dest-port CDATA #REQUIRED>
 
 <!-- Layers are nestable rectangular regions that paint to the vmatrix. -->
 <!ELEMENT layer (layer*)>

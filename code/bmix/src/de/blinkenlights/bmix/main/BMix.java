@@ -181,6 +181,11 @@ public class BMix extends Monitor {
          */
         private Layer currentLayer;
 
+        /**
+         * The input layer we're configuring/populating.
+         */
+        private BLPacketReceiver currentInput;
+        
         private BMixSession session;
 
         private long maxFrameInterval;
@@ -243,7 +248,14 @@ public class BMix extends Monitor {
 		                        InetAddress.getByName(listenAddr),
 		                        heartBeatDestAddr, heartBeatDestPort);
 		            inputs.put(id, receiver);
-		            
+		            currentInput = receiver;
+
+		        } else if (qName.equals("relay-target")) {
+                    String destAddr = attributes.getValue("dest-addr");
+                    int destPort = Integer.parseInt(attributes.getValue("dest-port"));
+                    BLPacketSender relaySender = new BLPacketSender(destAddr, destPort);
+                    currentInput.addRelaySender(relaySender);
+
                 } else if (qName.equals("layer")) {
                     String inputId = attributes.getValue("input");
                     float opacityPct = Float.parseFloat(attributes.getValue("opacity"));

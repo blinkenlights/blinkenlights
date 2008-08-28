@@ -5,11 +5,17 @@
   <input id="Graffiti"    listen-port="2323"/>
   <input id="Foreground"  listen-port="2324"/>
   <input id="Top-East"    listen-port="2325"/>
-  <input id="Bottom-East" listen-port="2326"/>
+  <input id="Bottom-East" listen-port="2326">
+    <relay-target dest-addr="192.168.4.161" dest-port="2002"/>
+    <relay-target dest-addr="192.168.4.161" dest-port="2003"/>
+  </input>
   <input id="Top-West"    listen-port="2327"/>
   <input id="Bottom-West" listen-port="2328"/>
-  <input id="Background"  listen-port="2329" heartbeat-dest-addr="10.0.1.4"/>
-
+  <input id="Background"  listen-port="2329" heartbeat-dest-addr="10.0.1.4">
+    <relay-target dest-addr="192.168.4.161" dest-port="2000"/>
+    <relay-target dest-addr="192.168.4.161" dest-port="2001"/>
+  </input>
+  
   <layer input="Graffiti"    x="0"  y="0"  width="96" height="32" />
   <layer input="Foreground"  x="0"  y="0"  width="96" height="32" />
   <layer input="Top-East"    x="51" y="5"  width="30" height="12" />
