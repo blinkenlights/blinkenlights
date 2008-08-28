@@ -7,6 +7,7 @@ BMix Notes
 
 ==Future Features==
 
+* "live" reconfigure without restart
 * configuration for chroma key color
 
 ==Other/Infrastructure== 
