@@ -16,9 +16,8 @@ public class PreviewPanel extends JPanel {
 	JPanel panel;
 	BufferedImage img;
 	long lastTime;
-	int frameCount;
-	int fps;
 	boolean lines = false;
+	NumberMuncher fps = new PeriodicAverage(new MovingAverage(1000), 1000);
 	
 	/**
 	 * Creates a new PreviewFrame.
@@ -26,8 +25,6 @@ public class PreviewPanel extends JPanel {
 	 */
 	public PreviewPanel() {
 		lastTime = System.currentTimeMillis();
-		frameCount = 0;
-		fps = 0;
 		setOpaque(true);
 	}
 	
@@ -39,14 +36,9 @@ public class PreviewPanel extends JPanel {
 	 */
 	public void setBlinkScreen(BufferedImage blinkScreen) {
 		this.img = blinkScreen;
-		frameCount ++;
 		long currentTime = System.currentTimeMillis();
-		if(currentTime - lastTime > 1000) {
-			fps = (int)Math.round(((double)currentTime - (double)lastTime) / 1000 * frameCount);
-			frameCount = 0;
-			lastTime = currentTime;
-		}
-		
+		fps.putValue(currentTime - lastTime);
+		lastTime = currentTime;
 		this.repaint();
 	}
 	
@@ -89,6 +81,6 @@ public class PreviewPanel extends JPanel {
 		// draw stats
 		g2.setColor(Color.WHITE);
 		g2.drawString("Source Size: " + img.getWidth() + " x " + img.getHeight(), 20, 20);
-		g2.drawString("Framerate: " + fps + " fps", 20, 20 + g2.getFontMetrics().getHeight());
+		g2.drawString(String.format("Framerate: %3.1f fps", 1000f / fps.getCurrentValue()), 20, 20 + g2.getFontMetrics().getHeight());
 	}
 }
