@@ -41,5 +41,6 @@
 <!ATTLIST output height CDATA #REQUIRED>
 <!ATTLIST output dest-addr CDATA #REQUIRED>
 <!ATTLIST output dest-port CDATA #REQUIRED>
+<!ATTLIST output min-frame-interval CDATA "0">
 
 <!-- TODO: relay (inputs and/or outputs) -->

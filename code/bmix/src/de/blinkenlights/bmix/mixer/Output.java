@@ -1,6 +1,7 @@
 package de.blinkenlights.bmix.mixer;
 
 import java.awt.Rectangle;
+import java.util.logging.Logger;
 
 import de.blinkenlights.bmix.network.BLNetworkException;
 import de.blinkenlights.bmix.network.BLPacketSender;
@@ -11,8 +12,23 @@ import de.blinkenlights.bmix.protocol.BLFramePacket;
  * BLFramePackets to a destination.
  */
 public class Output {
+    
+    private static final Logger logger = Logger.getLogger(Output.class.getName());
+    
     private final BLPacketSender sender;
     private final BLImageViewport viewport;
+
+    /**
+     * The minimum amount of time between packets. All attempts to send a packet
+     * less than this amount of time after the previously-sent packet will
+     * result in no output.
+     */
+    private final long minSendInterval;
+    
+    /**
+     * The last time a packet was sent. Dropped output packets are not counted.
+     */
+    private long lastSendTime;
 
     /**
      * Creates a new output definition with the given sender and viewport. You
@@ -27,9 +43,10 @@ public class Output {
      * @param viewport
      *            The region of the image that will be cropped out and sent.
      */
-    public Output(BLPacketSender sender, BLImage source, Rectangle viewport) {
+    public Output(BLPacketSender sender, BLImage source, Rectangle viewport, long minSendInterval) {
         super();
         this.sender = sender;
+        this.minSendInterval = minSendInterval;
         this.viewport = new BLImageViewport(source, viewport);
     }
 
@@ -40,8 +57,15 @@ public class Output {
      * @throws BLNetworkException if there was an error sending the packet
      */
     public void send() throws BLNetworkException {
-        BLFramePacket p = new BLFramePacket(viewport, 1, 255);
-        sender.send(p.getNetworkBytes());
+        long now = System.currentTimeMillis();
+        if (lastSendTime + minSendInterval > now) {
+            logger.fine("Suppressing output packet because it came " +
+                    (lastSendTime + minSendInterval - now) + "ms too soon");
+        } else {
+            lastSendTime = now;
+            BLFramePacket p = new BLFramePacket(viewport, 1, 255);
+            sender.send(p.getNetworkBytes());
+        }
     }
     
     @Override

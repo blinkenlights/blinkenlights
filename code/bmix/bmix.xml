@@ -18,7 +18,7 @@
   <layer input="Bottom-West" x="16" y="21" width="22" height="7" />
   <layer input="Background"  x="0"  y="0"  width="96" height="32" />
 
-  <output dest-addr="192.168.4.125" dest-port="2323" x="51" y="5"  width="30" height="12" />
+  <output dest-addr="localhost" dest-port="2322" x="51" y="5"  width="30" height="12" min-frame-interval="2000" />
   <output dest-addr="192.168.4.125" dest-port="2324" x="51" y="19" width="30" height="9" />
   <output dest-addr="192.168.4.125" dest-port="2325" x="16" y="11" width="22" height="8" />
   <output dest-addr="192.168.4.125" dest-port="2326" x="16" y="21" width="22" height="7" />

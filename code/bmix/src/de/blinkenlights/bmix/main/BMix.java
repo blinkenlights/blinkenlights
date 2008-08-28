@@ -278,10 +278,12 @@ public class BMix extends Monitor {
                     int y =  Integer.parseInt(attributes.getValue("y"));
                     int width =  Integer.parseInt(attributes.getValue("width"));
                     int height =  Integer.parseInt(attributes.getValue("height"));
+                    long minInterval = Long.parseLong(attributes.getValue("min-frame-interval"));
+                    
                     Rectangle viewport = new Rectangle(x, y, width, height);
 
                     BLPacketSender sender = new BLPacketSender(destAddr, destPort);
-                    Output output = new Output(sender, rootLayer, viewport);
+                    Output output = new Output(sender, rootLayer, viewport, minInterval);
                     outputs.add(output);
                     
 		        } else {
