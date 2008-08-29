@@ -3,10 +3,10 @@
 # == Synopsis 
 #   blinkenpackets listens on a port for blinkenpackets and prints out verbose descriptions for them
 # == Examples
-#   blinkenpackets.rb 2323
+#   blinkenpackets.rb -p 2323
 #
 #   Other examples:
-#     ruby_cl_skeleton -q bar.doc
+#     ruby_cl_skeleton -n -p 2324
 # == Usage 
 #   blinkenpackets.rb [-v | -h | -p PORT] [-n]
 #
@@ -44,7 +44,6 @@ class App
     @options = OpenStruct.new
     @options.port = 2323
     @options.showFrames = true
-    # TO DO - add additional defaults
   end
 
   # Parse options, check arguments, then process the command
