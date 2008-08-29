@@ -1,22 +1,22 @@
 #!/usr/bin/env ruby
 
 # == Synopsis 
-#   blinkenpackets listens on a port for blinkenpackets and prints out verbose descriptions for them
+#   blinkenmultiframer listens on a port for blinkenpackets and sends packets converted to 
 # == Examples
-#   blinkenpackets.rb -p 2323
+#   blinkenmultiframer.rb -p 2323
 #
 #   Other examples:
 #     ruby_cl_skeleton -n -p 2324
 # == Usage 
-#   blinkenpackets.rb [-v | -h | -p PORT] [-n]
+#   blinkenmultiframer.rb [-v | -h | -p PORT | -o PORT] [-n]
 #
-#   For help use: blinkenpackets.rb -h
+#   For help use: blinkenmultiframer.rb -h
 # == Options
 #   -h, --help          Displays help message
 #   -v, --version       Display the version, then exit
 #   -p, --port PORT     Port to listen to
-#   -n, --noframes      Do not output Frame content
-#   -t, --timestamp     Output 64-bit timestamp instead of human redable time
+#   -o, --outport PORT  Port to send packets to
+#   -b, --bitsperpixel BITS 4 or 8
 # == Author
 #   Dominik Wagner
 # == Copyright
@@ -43,7 +43,8 @@ class App
     # Set defaults
     @options = OpenStruct.new
     @options.port = 2323
-    @options.showFrames = true
+    @options.outport = 2324
+    @options.bits    = 8
   end
 
   # Parse options, check arguments, then process the command
@@ -74,8 +75,16 @@ class App
       opts.on('-h', '--help')       { output_help ; exit 0 }
       opts.on('-n', '--noframes')   { @options.showFrames = false }
       opts.on('-t', '--timestamp')  { @options.timestamp = true }
+      opts.on('-b', '--bitsperpixel BITS') do |bits|
+        if (bits == 4 || bits == 8)
+          @options.bits = bits
+        end
+      end
       opts.on('-p', '--port PORT') do |port|
         @options.port = port
+      end
+      opts.on('-o', '--outport PORT') do |port|
+        @options.outport = port
       end
       # TO DO - add additional options
             
@@ -124,7 +133,7 @@ class App
     
     def process_command
       
-      print "Listening for blinkenpackets on #{@options.port}:\n"
+      print "Listening for blinkenpackets on #{@options.port} - and sending them to #{@options.outport}\n"
       
       socket = UDPSocket.new
       socket.setsockopt(Socket::SOL_SOCKET, Socket::SO_REUSEADDR, true)
@@ -136,16 +145,12 @@ class App
       loop do
         data, sender = socket.recvfrom(10000)
         host = sender[3]
-        magic,ignore = data.unpack('N')
+        magic = data.unpack('N')
         now = Time.now
-        timestring = if @options.timestamp
-          "0x%016x" % (now.to_f * 1000).to_i
-        else
-          now.strftime("%Y-%m-%d %H:%M:%S") + ".%03d" % (now.usec / 1000)
-        end
-        print "[#{timestring}] <#{host}>: Received packet (#{data.length} bytes), magic: 0x#{"%08x" % magic} \n"
+        timestamp = (now.to_f * 1000).to_i
 
-        if (magic == 0x23542666) 
+        print "<#{host}>: Received packet (#{data.length} bytes), magic: 0x#{"%08x" % magic[0]} \n"
+        if (magic[0] == 0x23542666) 
       
       # struct mcu_frame_header
       # {
@@ -162,54 +167,25 @@ class App
           magic,height,width,channels,maxval = data.unpack('Nnnnn');
           baseByte = 12
           print "          MAGIC_MCU_FRAME #{width}x#{height} channel#:#{channels} maxval:#{maxval} - content length:#{data.length-baseByte} bytes\n"
-          if (@options.showFrames)
-            formatString = (maxval > 15) ? "%02x " : "%01x "
-            while (height > 0) 
-              print "          "
-              data[baseByte...(baseByte + width)].each_byte { |c| print formatString % c;}
-              print "\n"
-              height = height - 1
-              baseByte = baseByte + width
-            end
-          end
-        elsif (magic == 0x23542668)
-          magic,timestampBig,timestampLittle = data.unpack('NNN')
-          timestamp = ((timestampBig << 32) + timestampLittle)
-          timeAt = Time.at(timestamp / 1000.0);
-          timestring = timeAt.strftime("%Y-%m-%d %H:%M:%S") + ".%03d" % (timeAt.usec / 1000)
-          print "          MAGIC_MCU_MULTIFRAME Timestamp:0x%016x - #{timestring}\n" % [timestamp]
-          
-          subframeBaseByte = 12
-          subframeHeaderLength = 6
-          while (subframeBaseByte + subframeHeaderLength < data.length)
-          
-            screenID,bpp,subHeight,subWidth = data[subframeBaseByte...subframeBaseByte + subframeHeaderLength].unpack('CCnn')
-            print "            subframe screen#:#{screenID} bpp:#{bpp} #{subWidth}x#{subHeight}\n"
-
-            if (bpp == 4)
-              byteWidth = (subWidth + 1)/2
-              formatString = "%02x "
-            else
-              byteWidth = subWidth
-              formatString = "%01x "
-            end
-            
-            baseByte = subframeBaseByte + subframeHeaderLength
-
-            while (subHeight > 0)
-              print "            "
-              data[baseByte...(baseByte + byteWidth)].each_byte { |c| print formatString % c }
-              print "\n"
-               
-              baseByte = baseByte + byteWidth
-              subHeight = subHeight - 1
-            end
-            subframeBaseByte = baseByte
+          heightToReduce = height
+          formatString = (maxval > 15) ? "%02x " : "%01x "
+          while (heightToReduce > 0) 
+            print "          "
+            data[baseByte...(baseByte + width)].each_byte { |c| print formatString % c;}
+            print "\n"
+            heightToReduce = heightToReduce - 1
+            baseByte = baseByte + width
           end
           
+          # build my data
+          outdata = [0x23542668,timestamp>>32,timestamp & 0xFFFFFFFF].pack('NNN')
+          # if not stereoscope just put everything into screen number 0
+          outdata << [0,@options.bits,height,width].pack('CCnn')
+          outdata << data[12...(data.length)]
+          outdata << [1,@options.bits,height,width].pack('CCnn')
+          outdata << data[12...(data.length)]
+          UDPSocket.open.send(outdata, 0, '127.0.0.1', @options.outport)          
         end
-
-
       end
       
     rescue SignalException
