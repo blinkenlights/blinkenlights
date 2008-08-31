@@ -131,6 +131,19 @@ class App
       puts "#{File.basename(__FILE__)} version #{VERSION}"
     end
     
+    def dataforsubframe_with_origin_and_position(inData,inOriginX,inOriginY,inWidth,inHeight,originalWidth)
+      # (0,0) is top left
+      result = ""
+      position = inOriginY * originalWidth
+      while (inHeight > 0)
+        result << inData[(position + inOriginX)...(position + inOriginX + inWidth)]
+        position += originalWidth
+        inHeight -= 1
+      end
+      
+      result
+    end
+    
     def nibbledata_for_maxval_and_width(inData,inMaxval,inWidth)
       result = ""
       position = 0;
@@ -198,14 +211,32 @@ class App
             end
           end
           
+
           # build my data
           outdata = [0x23542668,timestamp>>32,timestamp & 0xFFFFFFFF].pack('NNN')
-          # if not stereoscope just put everything into screen number 0
-          outdata << [0,@options.bits,height,width].pack('CCnn')
-          if (@options.bits == 4)
-            outdata << self.nibbledata_for_maxval_and_width(data[12...(data.length)],maxval,width)
+          pixeldata = data[12...(data.length)]
+          if (width == 96 && height == 32)
+          #this is steroscope - lets cut it up ;)
+            for screen in [{:screenID => 5, :width => 22, :height =>16, :originY => 11, :originX => 16},
+                           {:screenID => 6, :width => 30, :height =>23, :originY =>  5, :originX => 50}]
+              subdata = self.dataforsubframe_with_origin_and_position(data[12...(data.length)],
+                screen[:originX],screen[:originY],
+                screen[:width],  screen[:height], width)
+              outdata << [screen[:screenID],@options.bits,screen[:height],screen[:width]].pack('CCnn')
+              if (@options.bits == 4)
+                outdata << self.nibbledata_for_maxval_and_width(subdata,maxval,screen[:width])
+              else
+                subdata.each_byte {|byte| outdata << (byte * 255.0 / maxval).round }
+              end
+            end
           else
-            data[12...(data.length)].each_byte {|byte| outdata << (byte * 255.0 / maxval).round }
+            # if not stereoscope just put everything into screen number 0
+            outdata << [0,@options.bits,height,width].pack('CCnn')
+            if (@options.bits == 4)
+              outdata << self.nibbledata_for_maxval_and_width(pixeldata,maxval,width)
+            else
+              pixeldata.each_byte {|byte| outdata << (byte * 255.0 / maxval).round }
+            end
           end
 
           UDPSocket.open.send(outdata, 0, '127.0.0.1', @options.outport)          
