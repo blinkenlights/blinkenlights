@@ -217,7 +217,7 @@ class App
           pixeldata = data[12...(data.length)]
           if (width == 96 && height == 32)
           #this is steroscope - lets cut it up ;)
-            for screen in [{:screenID => 5, :width => 22, :height =>16, :originY => 11, :originX => 16},
+            for screen in [{:screenID => 5, :width => 22, :height =>17, :originY => 11, :originX => 16},
                            {:screenID => 6, :width => 30, :height =>23, :originY =>  5, :originX => 50}]
               subdata = self.dataforsubframe_with_origin_and_position(data[12...(data.length)],
                 screen[:originX],screen[:originY],

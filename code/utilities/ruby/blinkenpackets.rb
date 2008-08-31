@@ -228,6 +228,7 @@ class App
               subHeight = subHeight - 1
             end
             subframeBaseByte = baseByte
+            print "\n"
           end
           
         end
