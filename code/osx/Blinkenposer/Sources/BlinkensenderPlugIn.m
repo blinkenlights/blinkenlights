@@ -319,7 +319,7 @@
 				
 				if ([blinkenStructure count] && [[blinkenStructure lastObject] count]) {
 					
-					[_blinkenImageProvider setFrameData:[BlinkenSender frameDataForBlinkenStructure:blinkenStructure] size:imageSize channels:1 maxValue:0xff];
+					[_blinkenImageProvider setFrameData:[BlinkenSender frameDataForBlinkenStructure:blinkenStructure] size:imageSize channels:1 maxValue:0xff bitsPerPixel:8];
 		
 					self.outputImage = _blinkenImageProvider;
 					self.outputBlinkenStructure = blinkenStructure;

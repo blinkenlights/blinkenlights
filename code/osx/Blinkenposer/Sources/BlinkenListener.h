@@ -21,9 +21,9 @@
     CFDataRef _proxyAddressData;
 }
 
-@property (retain) NSDate *lastDate;
-@property (retain) NSString *proxyAddressString;
-@property (retain) NSTimer *proxyTimer;
+@property (nonatomic,retain) NSDate *lastDate;
+@property (nonatomic,retain) NSString *proxyAddressString;
+@property (nonatomic,retain) NSTimer *proxyTimer;
 
 // if proxy address is set to nil, the listener listens locally on anyip instead of using a proxy. the address can contain a port
 - (void)setProxyAddress:(NSString *)inProxyAddress;
@@ -37,4 +37,24 @@
 
 @interface NSObject (BlinkenListenerDelegate)
 - (void)receivedFrameData:(NSData *)inFrameData ofSize:(CGSize)inSize channels:(int)inChannels maxValue:(unsigned char)inMaxValue;
+// timestamp can be 0 to indicate that no timestamp information was present
+- (void)blinkenListener:(BlinkenListener *)inListener receivedFrames:(NSArray *)inFrames atTimestamp:(uint64_t)inTimestamp;
+@end
+
+@interface BlinkenFrame : NSObject {
+	unsigned char _screenID;
+	NSData *_frameData;
+	CGSize  _frameSize;
+	unsigned char _maxValue;
+	unsigned char _bitsPerPixel;
+}
+
+@property unsigned char maxValue;
+@property unsigned char screenID;
+@property unsigned char bitsPerPixel;
+@property (copy) NSData *frameData;
+@property CGSize frameSize;
+
+- (id)initWithData:(NSData *)inData frameSize:(CGSize)inSize screenID:(unsigned char)inScreenID;
+
 @end

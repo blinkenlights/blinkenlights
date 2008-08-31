@@ -292,27 +292,68 @@ Here you need to declare the input / output properties as dynamic as Quartz Comp
 	[pool release];
 }
 
-- (void)receivedFrameData:(NSData *)inFrameData ofSize:(CGSize)inSize channels:(int)inChannels maxValue:(unsigned char)inMaxValue
-{
-//	NSLog(@"%s",__FUNCTION__);
+//- (void)receivedFrameData:(NSData *)inFrameData ofSize:(CGSize)inSize channels:(int)inChannels maxValue:(unsigned char)inMaxValue
+//{
+////	NSLog(@"%s",__FUNCTION__);
+//
+//	if (!_blinkenImageProvider)
+//	{
+//		_blinkenImageProvider = [BlinkenImageProvider new];
+//	}
+//	[_blinkenImageProvider setFrameData:inFrameData size:inSize channels:inChannels maxValue:inMaxValue];
+//	
+//	unsigned char * bytes = (unsigned char *)[inFrameData bytes];
+//	
+//	NSMutableArray *blinkenStructure = [NSMutableArray array];
+//	int y = 0;
+//	for (y=0;y<inSize.height;y++)
+//	{
+//		NSMutableArray *blinkenRow = [NSMutableArray array];
+//		int x = 0;
+//		for (x=0;x<inSize.width;x++)
+//		{
+//			[blinkenRow addObject:[NSNumber numberWithInt:(*bytes++)/(float)inMaxValue * 15.]];
+//		}
+//		[blinkenStructure addObject:blinkenRow];
+//	}
+//	self.blinkenStructure = blinkenStructure;
+//	
+//	_needsOutputUpdate = YES;
+//}
 
+- (void)blinkenListener:(BlinkenListener *)inListener receivedFrames:(NSArray *)inFrames atTimestamp:(uint64_t)inTimestamp
+{
+//	NSLog(@"%s frames:%@ ts:0x%016qx %@",__FUNCTION__,inFrames,inTimestamp,[NSDate dateWithTimeIntervalSince1970:inTimestamp / (double)1000.0]);
+
+	BlinkenFrame *frame = [inFrames lastObject];
+	CGSize frameSize = frame.frameSize;
+	unsigned char maxValue = frame.maxValue;
 	if (!_blinkenImageProvider)
 	{
 		_blinkenImageProvider = [BlinkenImageProvider new];
 	}
-	[_blinkenImageProvider setFrameData:inFrameData size:inSize channels:inChannels maxValue:inMaxValue];
+	[_blinkenImageProvider setFrameData:frame.frameData size:frameSize channels:1 maxValue:maxValue bitsPerPixel:frame.bitsPerPixel];
 	
-	unsigned char * bytes = (unsigned char *)[inFrameData bytes];
-	
+	unsigned char * bytes = (unsigned char *)[frame.frameData bytes];
+	unsigned char bitsPerPixel = frame.bitsPerPixel;
 	NSMutableArray *blinkenStructure = [NSMutableArray array];
 	int y = 0;
-	for (y=0;y<inSize.height;y++)
+	for (y=0;y<frameSize.height;y++)
 	{
 		NSMutableArray *blinkenRow = [NSMutableArray array];
 		int x = 0;
-		for (x=0;x<inSize.width;x++)
+		for (x=0;x<frameSize.width;x++)
 		{
-			[blinkenRow addObject:[NSNumber numberWithInt:(*bytes++)/(float)inMaxValue * 15.]];
+			if (bitsPerPixel == 8) {
+				[blinkenRow addObject:[NSNumber numberWithInt:(*bytes++)/(float)maxValue * 15.]];
+			} else {
+				[blinkenRow addObject:[NSNumber numberWithInt:((*bytes)>>4)/(float)maxValue * 15.]];
+				if (x<frameSize.width) {
+					[blinkenRow addObject:[NSNumber numberWithInt:((*bytes)& 0xF)/(float)maxValue * 15.]];
+					x++;
+				}
+				bytes++;
+			}
 		}
 		[blinkenStructure addObject:blinkenRow];
 	}

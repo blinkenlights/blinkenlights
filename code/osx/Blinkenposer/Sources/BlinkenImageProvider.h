@@ -15,11 +15,13 @@
 	NSSize _frameSize;
 	int    _numberOfChannels;
 	unsigned char _maxValue;
+	unsigned char _bitsPerPixel;
 }
 
+@property unsigned char bitsPerPixel;
 @property (retain) NSData *frameData;
 
-- (void)setFrameData:(NSData *)inFrameData size:(CGSize)inSize channels:(int)inChannels maxValue:(unsigned char)inMaxValue;
+- (void)setFrameData:(NSData *)inFrameData size:(CGSize)inSize channels:(int)inChannels maxValue:(unsigned char)inMaxValue bitsPerPixel:(unsigned char)inBitsPerPixel;
 
 @end
 

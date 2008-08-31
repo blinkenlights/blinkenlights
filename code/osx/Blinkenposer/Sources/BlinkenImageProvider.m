@@ -4,6 +4,7 @@
 @implementation BlinkenImageProvider
 
 @synthesize frameData = _frameData;
+@synthesize bitsPerPixel = _bitsPerPixel;
 
 - (void)dealloc
 {
@@ -11,13 +12,14 @@
 	[super dealloc];
 }
 
-- (void)setFrameData:(NSData *)inFrameData size:(CGSize)inSize channels:(int)inChannels maxValue:(unsigned char)inMaxValue
+- (void)setFrameData:(NSData *)inFrameData size:(CGSize)inSize channels:(int)inChannels maxValue:(unsigned char)inMaxValue bitsPerPixel:(unsigned char)inBitsPerPixel
 {
     @synchronized (self) {
         self.frameData = inFrameData;
         _frameSize = NSSizeFromCGSize(inSize);
         _numberOfChannels = inChannels;
         _maxValue = inMaxValue;
+        _bitsPerPixel = inBitsPerPixel;
     }
 }
 
@@ -41,7 +43,7 @@
         unsigned char *src, *dest;
         src = (unsigned char *)[self.frameData bytes];
         dest = inBaseAddress;
-        NSUInteger myRowBytes = _frameSize.width;
+        NSUInteger myRowBytes = (_bitsPerPixel == 4) ? (((int)_frameSize.width) + 1) / 2 : _frameSize.width;
     
         NSUInteger numberOfRows = MIN(_frameSize.height, inBounds.size.height);
     
@@ -55,8 +57,19 @@
             int x = 0;
             for (x=0;x<MIN(_frameSize.width, inBounds.size.width);x++) {
 				
-                unsigned char grayValue = (*sourceRow) * 255. / _maxValue;
-                sourceRow++;
+                unsigned char grayValue = 0;
+                if (_bitsPerPixel == 4) {
+                	if (x % 2 == 0) {
+                		grayValue = ((*sourceRow) >> 4);
+                	} else {
+	                	grayValue = ((*sourceRow) & 0xF);
+	                	sourceRow++;
+	                }
+                	grayValue *= 0x11;
+                } else {
+                	grayValue = (*sourceRow) * 255. / _maxValue;
+                	sourceRow++;
+                }
                 if (isBGRA) {
                     *destRow = grayValue; destRow++;  
                     *destRow = grayValue; destRow++; 

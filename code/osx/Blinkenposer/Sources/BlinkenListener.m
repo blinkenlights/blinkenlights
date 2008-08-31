@@ -39,7 +39,7 @@ static void readData (
 - (id)init
 {
 	if ((self=[super init])) {
-		_port = 2323;
+		_port = MCU_LISTENER_PORT;
 	}
 	
 	return self;
@@ -327,23 +327,52 @@ static void readData (
 			header->maxval   = ntohs(header->maxval);
 //			NSLog(@"%s %dx%d %d channels and max of %d",__FUNCTION__, header->width, header->height, header->channels, header->maxval);
 			bytes += sizeof(mcu_frame_header_t);
-//			int x = 0;
-//			int y = 0;
-//			for (y = 0; y < (header->height) && bytes < bytesEnd;y++)
-//			{
-//				for (x = 0; x < (header->width) && bytes < bytesEnd; x++)
-//				{
-//					printf("%2X",(*(bytes++)));
-//				}
-//				printf("\n");
-//			}
+
+			NSData *frameData = [[NSData alloc] initWithBytes:bytes length:bytesEnd-bytes];
+			CGSize frameSize = CGSizeMake(header->width,header->height);
 			if ([_delegate respondsToSelector:@selector(receivedFrameData:ofSize:channels:maxValue:)])
 			{
-				[_delegate receivedFrameData:[NSData dataWithBytes:bytes length:bytesEnd-bytes] ofSize:CGSizeMake(header->width,header->height) channels:header->channels maxValue:header->maxval];
+				[_delegate receivedFrameData:frameData ofSize:frameSize channels:header->channels maxValue:header->maxval];
 			}
-//			NSLog(@"%s bytes: %p, bytesEnd: %p",__FUNCTION__,bytes + header->width*header->height * header->channels,bytesEnd);
+
+			if ([_delegate respondsToSelector:@selector(blinkenListener:receivedFrames:atTimestamp:)]) {
+				BlinkenFrame *frame = [[BlinkenFrame alloc] initWithData:frameData frameSize:frameSize screenID:0];
+				frame.maxValue = header->maxval;
+				NSArray *framesArray = [[NSArray alloc] initWithObjects:frame,nil];
+				[frame release];
+				[_delegate blinkenListener:self receivedFrames:framesArray atTimestamp:0];
+				[framesArray release];
+			}
+			[frameData release];
 			break;
 		}
+		case MAGIC_MCU_MULTIFRAME:
+//			NSLog(@"%s was MAGIC_MCU_MULTIFRAME (0x%8X)",__FUNCTION__,magic_identifier);
+			if ([_delegate respondsToSelector:@selector(blinkenListener:receivedFrames:atTimestamp:)]) {
+				uint64_t timestamp = CFSwapInt64BigToHost(*((uint64_t *)(bytes + 4))); // Big is network byte order
+				unsigned char *subframeHeaderStart = bytes + 12;
+				NSMutableArray *framesArray = [NSMutableArray new];
+				while (subframeHeaderStart + sizeof(mcu_subframe_header_t) < bytesEnd) {
+					mcu_subframe_header_t *header = (mcu_subframe_header_t *)subframeHeaderStart;
+					header->height   = ntohs(header->height);
+					header->width    = ntohs(header->width);
+					CGSize frameSize = CGSizeMake(header->width,header->height);
+					uint32_t frameLength = header->height * ((header->bpp == 4) ? ((header->width + 1) / 2) : header->width);
+//					NSLog(@"%s size:%@ frameLength:%u",__FUNCTION__,NSStringFromSize(NSSizeFromCGSize(frameSize)),frameLength);
+					NSData *frameData = [[NSData alloc] initWithBytes:subframeHeaderStart + sizeof(mcu_subframe_header_t) length:frameLength];
+					BlinkenFrame *frame = [[BlinkenFrame alloc] initWithData:frameData frameSize:frameSize screenID:header->screen_id];
+					frame.bitsPerPixel = header->bpp;
+					frame.maxValue = (header->bpp == 4) ? 0xf : 0xff;
+					[frameData release];
+					[framesArray addObject:frame];
+					[frame release];
+					subframeHeaderStart += frameLength + sizeof(mcu_subframe_header_t);
+				}
+				
+				[_delegate blinkenListener:self receivedFrames:framesArray atTimestamp:timestamp];
+				[framesArray release];
+			}
+			break;
 		case MAGIC_MCU_DEVCTRL:
 			NSLog(@"%s was MAGIC_MCU_DEVCTRL (0x%8X)",__FUNCTION__,magic_identifier);
 			break;
@@ -375,4 +404,35 @@ static void readData (
 	NSString *senderAddressAndPort = [NSString stringWithAddressData:(NSData *)anAddress];
 	[blinkenListener readData:(NSData *)aData from:senderAddressAndPort];
 }
+
+@implementation BlinkenFrame
+@synthesize bitsPerPixel = _bitsPerPixel;
+@synthesize maxValue = _maxValue;
+@synthesize screenID = _screenID;
+@synthesize frameData = _frameData;
+@synthesize frameSize = _frameSize;
+
+- (id)initWithData:(NSData *)inData frameSize:(CGSize)inSize screenID:(unsigned char)inScreenID
+{
+	if ((self = [super init])) {
+		self.maxValue = 255;
+		self.screenID = inScreenID;
+		self.frameData = inData;
+		self.frameSize = inSize;
+		self.bitsPerPixel = 8;
+	}
+	return self;
+}
+
+- (void)dealloc {
+	self.frameData = nil;
+	[super dealloc];
+}
+
+- (NSString *)description {
+	return [NSString stringWithFormat:@"<%@ %p, screenID:%d maxValue:%d size:%@ bpp:%d dataLength:%u>",NSStringFromClass([self class]),self,self.screenID, self.maxValue, NSStringFromSize(NSSizeFromCGSize(self.frameSize)), self.bitsPerPixel, self.frameData.length];
+}
+
+@end
+
 
