@@ -8,7 +8,7 @@
 #   Other examples:
 #     ruby_cl_skeleton -n -p 2324
 # == Usage 
-#   blinkenpackets.rb [-v | -h | -p PORT] [-n]
+#   blinkenpackets.rb [-v | -h | -p PORT] [-n] [blinkenproxyaddress:port]
 #
 #   For help use: blinkenpackets.rb -h
 # == Options
@@ -33,7 +33,7 @@ require 'date'
 
 
 class App
-  VERSION = '0.0.2'
+  VERSION = '0.0.3'
   
   attr_reader :options
 
@@ -102,8 +102,13 @@ class App
 
     # True if required arguments were provided
     def arguments_valid?
-      # TO DO - implement your real logic here
-      true if @arguments.length == 0
+      if @arguments.length == 1
+        @options.proxyAddress, @options.proxyPort = @arguments[0].split(':')
+        @options.proxyPort = @options.proxyPort.to_i
+        @options.useProxy = true
+        return true
+      end
+      @arguments.length == 0
     end
     
     # Setup the arguments
@@ -124,30 +129,53 @@ class App
       puts "#{File.basename(__FILE__)} version #{VERSION}"
     end
     
+    def send_heartbeat
+      data = [0x42424242,0,0].pack("NNN")
+      @socket.send(data,0)
+      print Time.now.strftime("%Y-%m-%d %H:%M:%S") + ": -------> Sent ping to #{@options.proxyAddress} #{@options.proxyPort} \n"
+      sleep(5)
+    end
+    
     def process_command
       
-      print "Listening for blinkenpackets on #{@options.port}:\n"
       
       asciitable = ' .,:;+io!4768%@$'
       
-      socket = UDPSocket.new
-      socket.setsockopt(Socket::SOL_SOCKET, Socket::SO_REUSEADDR, true)
-      socket.setsockopt(Socket::SOL_SOCKET, Socket::SO_REUSEPORT, true)
-      socket.bind("0.0.0.0",@options.port)
-      addr  = '0.0.0.0'
-      host  = Socket.gethostname
-      # socket.setsockopt(Socket::IPPROTO_IP, Socket::IP_ADD_MEMBERSHIP, mreq)
+      @socket = UDPSocket.new
+      @socket.setsockopt(Socket::SOL_SOCKET, Socket::SO_REUSEADDR, true)
+      @socket.setsockopt(Socket::SOL_SOCKET, Socket::SO_REUSEPORT, true)
+
+      if @options.useProxy
+        print "connecting to #{@options.proxyAddress} on port #{@options.proxyPort}...\n" 
+        @socket.connect(@options.proxyAddress,@options.proxyPort)
+        Thread.start() do
+          while true
+            self.send_heartbeat
+          end
+        end
+      else
+        @socket.bind("0.0.0.0",@options.port)
+        print "Listening for blinkenpackets on #{@options.port}:\n"
+      end
+      
+      
       loop do
-        data, sender = socket.recvfrom(10000)
+        data, sender = @socket.recvfrom(10000)
         host = sender[3]
         magic,ignore = data.unpack('N')
+                
         now = Time.now
         timestring = if @options.timestamp
           "0x%016x" % (now.to_f * 1000).to_i
         else
           now.strftime("%Y-%m-%d %H:%M:%S") + ".%03d" % (now.usec / 1000)
         end
+
+
         print "[#{timestring}] <#{host}>: Received packet (#{data.length} bytes), magic: 0x#{"%08x" % magic} \n"
+        print "  first 12 bytes: "
+        data[0...12].each_byte {|b| print "%02x " % b }
+        print "\n"
 
         if (magic == 0x23542666) 
       
@@ -163,11 +191,12 @@ class App
       #    * unsigned char data[rows][columns][channels];
       #    */
       # };
+      
           magic,height,width,channels,maxval = data.unpack('Nnnnn');
           baseByte = 12
           print "          MAGIC_MCU_FRAME #{width}x#{height} channel#:#{channels} maxval:#{maxval} - content length:#{data.length-baseByte} bytes\n"
           if (@options.showFrames)
-            formatString = (maxval > 15) ? "%02x " : "%01x "
+            formatString = (maxval > 15 || maxval <= 0) ? "%02x " : "%01x "
             while (height > 0) 
               print "          "
               if (@options.ascii)

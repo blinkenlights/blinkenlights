@@ -12,11 +12,12 @@
 #
 #   For help use: blinkenmultiframer.rb -h
 # == Options
-#   -h, --help          Displays help message
-#   -v, --version       Display the version, then exit
-#   -p, --port PORT     Port to listen to
-#   -o, --outport PORT  Port to send packets to
-#   -b, --bitsperpixel BITS 4 or 8
+#   -h, --help               Displays help message
+#   -v, --version            Display the version, then exit
+#   -p, --port PORT          Port to listen to (default 2323)
+#   -o, --outport PORT       Port to send packets to (default 2324)
+#   -n, --noframes           Don't ouptut frames
+#   -b, --bitsperpixel BITS  4 or 8
 # == Author
 #   Dominik Wagner
 # == Copyright
@@ -45,6 +46,7 @@ class App
     @options.port = 2323
     @options.outport = 2324
     @options.bits    = 8
+    @options.showFrames = true
   end
 
   # Parse options, check arguments, then process the command
@@ -74,7 +76,6 @@ class App
       opts.on('-v', '--version')    { output_version ; exit 0 }
       opts.on('-h', '--help')       { output_help ; exit 0 }
       opts.on('-n', '--noframes')   { @options.showFrames = false }
-      opts.on('-t', '--timestamp')  { @options.timestamp = true }
       opts.on('-b', '--bitsperpixel BITS') do |bits|
         if (bits.to_i == 4)
           @options.bits = 4
@@ -199,7 +200,7 @@ class App
           magic,height,width,channels,maxval = data.unpack('Nnnnn');
           baseByte = 12
           print "          MAGIC_MCU_FRAME #{width}x#{height} channel#:#{channels} maxval:#{maxval} - content length:#{data.length-baseByte} bytes\n"
-          if (@options.noframes)
+          if (@options.showFrames)
             heightToReduce = height
             formatString = (maxval > 15) ? "%02x " : "%01x "
             while (heightToReduce > 0) 
