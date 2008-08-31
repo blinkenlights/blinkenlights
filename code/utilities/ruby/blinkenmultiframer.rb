@@ -3,10 +3,10 @@
 # == Synopsis 
 #   blinkenmultiframer listens on a port for blinkenpackets and sends packets converted to 
 # == Examples
-#   blinkenmultiframer.rb -p 2323
+#   blinkenmultiframer.rb -p 2323 -o 2324 -b 4
 #
 #   Other examples:
-#     ruby_cl_skeleton -n -p 2324
+#     blinkenmultiframer -n -p 2324
 # == Usage 
 #   blinkenmultiframer.rb [-v | -h | -p PORT | -o PORT] [-n]
 #
@@ -32,7 +32,7 @@ require 'date'
 
 
 class App
-  VERSION = '0.0.1'
+  VERSION = '0.0.2'
   
   attr_reader :options
 
@@ -76,8 +76,8 @@ class App
       opts.on('-n', '--noframes')   { @options.showFrames = false }
       opts.on('-t', '--timestamp')  { @options.timestamp = true }
       opts.on('-b', '--bitsperpixel BITS') do |bits|
-        if (bits == 4 || bits == 8)
-          @options.bits = bits
+        if (bits.to_i == 4)
+          @options.bits = 4
         end
       end
       opts.on('-p', '--port PORT') do |port|
@@ -131,6 +131,25 @@ class App
       puts "#{File.basename(__FILE__)} version #{VERSION}"
     end
     
+    def nibbledata_for_maxval_and_width(inData,inMaxval,inWidth)
+      result = ""
+      position = 0;
+      while (position < inData.length)
+        rowstart = position
+        while (position <= rowstart + inWidth - 2)
+           firstnibble  = (inData[position] * 15.0 / inMaxval).round
+          secondnibble  = (inData[position+1] * 15.0 / inMaxval).round
+          result << (firstnibble<<4)+secondnibble
+          position += 2
+        end
+        if (position < rowstart + inWidth)
+          result = (inData[position] * 15.0 / inMaxval).round << 4
+          position += 1
+        end
+      end
+      result
+    end
+    
     def process_command
       
       print "Listening for blinkenpackets on #{@options.port} - and sending them to #{@options.outport}\n"
@@ -167,23 +186,28 @@ class App
           magic,height,width,channels,maxval = data.unpack('Nnnnn');
           baseByte = 12
           print "          MAGIC_MCU_FRAME #{width}x#{height} channel#:#{channels} maxval:#{maxval} - content length:#{data.length-baseByte} bytes\n"
-          heightToReduce = height
-          formatString = (maxval > 15) ? "%02x " : "%01x "
-          while (heightToReduce > 0) 
-            print "          "
-            data[baseByte...(baseByte + width)].each_byte { |c| print formatString % c;}
-            print "\n"
-            heightToReduce = heightToReduce - 1
-            baseByte = baseByte + width
+          if (@options.noframes)
+            heightToReduce = height
+            formatString = (maxval > 15) ? "%02x " : "%01x "
+            while (heightToReduce > 0) 
+              print "          "
+              data[baseByte...(baseByte + width)].each_byte { |c| print formatString % c;}
+              print "\n"
+              heightToReduce = heightToReduce - 1
+              baseByte = baseByte + width
+            end
           end
           
           # build my data
           outdata = [0x23542668,timestamp>>32,timestamp & 0xFFFFFFFF].pack('NNN')
           # if not stereoscope just put everything into screen number 0
           outdata << [0,@options.bits,height,width].pack('CCnn')
-          outdata << data[12...(data.length)]
-          outdata << [1,@options.bits,height,width].pack('CCnn')
-          outdata << data[12...(data.length)]
+          if (@options.bits == 4)
+            outdata << self.nibbledata_for_maxval_and_width(data[12...(data.length)],maxval,width)
+          else
+            data[12...(data.length)].each_byte {|byte| outdata << (byte * 255.0 / maxval).round }
+          end
+
           UDPSocket.open.send(outdata, 0, '127.0.0.1', @options.outport)          
         end
       end

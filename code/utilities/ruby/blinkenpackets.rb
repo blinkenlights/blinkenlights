@@ -17,6 +17,7 @@
 #   -p, --port PORT     Port to listen to
 #   -n, --noframes      Do not output Frame content
 #   -t, --timestamp     Output 64-bit timestamp instead of human redable time
+#   -a, --asciidisplay  Output frames as ascii using ' .,:;+io!4768%@$'
 # == Author
 #   Dominik Wagner
 # == Copyright
@@ -32,7 +33,7 @@ require 'date'
 
 
 class App
-  VERSION = '0.0.1'
+  VERSION = '0.0.2'
   
   attr_reader :options
 
@@ -74,6 +75,7 @@ class App
       opts.on('-h', '--help')       { output_help ; exit 0 }
       opts.on('-n', '--noframes')   { @options.showFrames = false }
       opts.on('-t', '--timestamp')  { @options.timestamp = true }
+      opts.on('-a', '--asciidisplay')  { @options.ascii = true }
       opts.on('-p', '--port PORT') do |port|
         @options.port = port
       end
@@ -126,6 +128,8 @@ class App
       
       print "Listening for blinkenpackets on #{@options.port}:\n"
       
+      asciitable = ' .,:;+io!4768%@$'
+      
       socket = UDPSocket.new
       socket.setsockopt(Socket::SOL_SOCKET, Socket::SO_REUSEADDR, true)
       socket.setsockopt(Socket::SOL_SOCKET, Socket::SO_REUSEPORT, true)
@@ -166,7 +170,11 @@ class App
             formatString = (maxval > 15) ? "%02x " : "%01x "
             while (height > 0) 
               print "          "
-              data[baseByte...(baseByte + width)].each_byte { |c| print formatString % c;}
+              if (@options.ascii)
+                data[baseByte...(baseByte + width)].each_byte { |c| print asciitable[c * (asciitable.length-1) / maxval].chr }
+              else
+                data[baseByte...(baseByte + width)].each_byte { |c| print formatString % c}
+              end
               print "\n"
               height = height - 1
               baseByte = baseByte + width
@@ -188,19 +196,34 @@ class App
 
             if (bpp == 4)
               byteWidth = (subWidth + 1)/2
-              formatString = "%02x "
+              formatString = "%x"
             else
               byteWidth = subWidth
-              formatString = "%01x "
+              formatString = "%02x "
             end
             
             baseByte = subframeBaseByte + subframeHeaderLength
 
             while (subHeight > 0)
               print "            "
-              data[baseByte...(baseByte + byteWidth)].each_byte { |c| print formatString % c }
+              if (bpp == 4)
+                if (@options.ascii)
+                  data[baseByte...(baseByte + byteWidth)].each_byte { |c| 
+                    print asciitable[((c>>4) * (asciitable.length-1) / 15.0).round].chr;
+                    print asciitable[((c & 0xF) * (asciitable.length-1) / 15.0).round].chr  }
+                else
+                  data[baseByte...(baseByte + byteWidth)].each_byte { |c| print formatString % (c>>4) ; print formatString % (c & 0xF)}
+                end
+              else
+                if (@options.ascii)
+                  data[baseByte...(baseByte + byteWidth)].each_byte { |c| 
+                    print asciitable[(c * (asciitable.length-1) / 255.0).round].chr
+                  }
+                else
+                  data[baseByte...(baseByte + byteWidth)].each_byte { |c| print formatString % c }
+                end
+              end               
               print "\n"
-               
               baseByte = baseByte + byteWidth
               subHeight = subHeight - 1
             end
