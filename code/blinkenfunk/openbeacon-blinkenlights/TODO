@@ -6,3 +6,4 @@ Sollte Replay verhindern.
 4. Durchreichen von Wireless-Interface-Konfigurationsbefehlen. Damit kann man die Anlage auf andere Frequenzen umkonfigurieren (z.B  Stockwrkabhängig)
 Wenn kein SIgnal Empfangen, wird, resettet das Geräte sowieso.
 5. Paketstatistiken
+6. Lampen Auschaltmöglichkeit
