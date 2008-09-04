@@ -1,0 +1,308 @@
+Blinkenlights Telephony Protocol
+
+===============================
+        System Setup
+===============================
+
+The setup consists of a telephony server and one or more telephony
+clients. The telephony server provides access to the telephone system
+for clients by means of the Blinkenlights Telephony Protocol.
+
+The server should be able to handle multiple clients at the same time,
+each one being identified by a unique IP Address and Port Number. The
+protocol should work with both IPv4 and IPv6 addresses.
+
+The server is configured for a finite number of channels. This number
+either represents the amount of phone lines available (for a physical
+connection like T1 or ISDN) or the maximum number of wanted
+connections for a VoIP setup.
+
+
+===============================
+       Telephony Protocol
+===============================
+
+The protocol uses UDP packets with a payload consisting of non-zero
+terminated ASCII-strings representing individual commands or status
+messages. All communication is asynchronous so applications should be
+aware to receive packets at any time and to change internal state
+accordingly.
+
+The protocol is designed to run in a closed and trusted environment
+only as it does not allow for permissions or differentiation of
+clients (e.g. there is no "identity" string being passed along with
+the REGISTER command for the server to discriminate between clients if
+needed).
+
+This description reflects the protocol as it has been used for the
+Arcade light installation in Paris 2002. Changes to the protocol might
+break compatibility with the current protocol implementation in the
+blccc application program and should be introduced only after thorough
+testing and only if absolutely necessary to ensure proper operation
+with non-ISDN trunk interfaces.
+
+
+===============================
+        Command Syntax
+===============================
+
+Each command of the telephony protocol conforms to the following
+general command syntax:
+
+Usage: "<ch>:<command>[:<parameter>[:<parameter[...]]]"
+
+* <ch> is the telephony channel which could be any number from 1 up.
+  The value 0 is used for those commands who do not explicitly
+  reference a certain channel.
+
+* <command> is the command name
+
+* <parameter> is an optional, command-specific parameter.
+
+
+================================
+        Error Handling
+================================
+
+Any client should respond to ERROR commands at any time. If an ERROR
+command is unexpected, the ERROR _must_ be properly logged (e.g. using
+the syslog(3) facilty) and preventive measures should be taken
+(e.g. dropping all calls and resetting system state or terminating the
+program).
+
+
+===============================
+   Telephony server commands
+===============================
+
+The following commands are being sent from the server to the client.
+
+-------------------------
+         ONHOOK
+-------------------------
+
+Usage: "<ch>:onhook"
+
+The server reports that channel <ch> has dropped its connection and
+the channel is again available for communication. On initial reception
+of the ONHOOK command, any resource associated with the channel should
+be freed and proper clean up should be done by the client.
+
+Please note this command is repeatedly being sent by the server for
+each channel that is in the "onhook" state. Channels that are
+currently connected will be signaled by sending a CONNECTED command.
+
+
+-------------------------
+         SETUP
+-------------------------
+
+Usage: "<ch>:setup:<calling party number>:<called party number>"
+
+The server reports an incoming call on channel <ch>. <calling party
+number> identifies the number of the caller and <called party number>
+identifies the number that has been called. If no originating number
+has been passed along with the call, <called party number> is set to
+"unknown". All telephone numbers are expressed as fully qualified
+international E.164 numbers prefixed by "+" with country code, area
+code, telephone number and all escape digits omitted (e.g.
++14163957381).
+
+The client can now decide to either accept (by issuing a ACCEPT
+command) or reject the call (by issuing a HANGUP command) or ignore it
+altogether to give other clients a chance to respond. Clients should
+only react to SETUP commands that indicate a <called party number>
+they have been configured to handle.
+
+
+
+-------------------------
+        CONNECTED
+-------------------------
+
+Usage: "<ch>:connected"
+
+The server reports that there is a new connection on channel
+<ch>. This could be the result of either an incoming or outgoing call.
+
+Please note this command is repeatedly being sent by the server for
+each channel that is in the "connected" state. Channels that are
+currently disconnected will be signaled by sending an ONHOOK command.
+
+
+------------------------- 
+         DTMF 
+-------------------------
+
+Usage: "<ch>:dtmf:<digit>"
+
+The server reports that a DTMF touch tone has been properly detected
+on connected channel <ch>. <digit> is one (and only one) of the
+following characters "0123456789*#ABCD"
+
+
+-------------------------
+          ERROR
+-------------------------
+
+Usage: "<ch>:error:<reason>"
+
+The server reports that an error has occurred related to channel
+<ch>. The client should report this error to the user or perform a
+default handling. <reason> is a string explaining the error in
+human-readable form.
+
+
+===============================
+   Telephony client commands
+===============================
+
+The following commands are being sent from the client to the server.
+
+-------------------------
+         REGISTER
+-------------------------
+
+Usage: "0:register[:<dstport>]"
+
+This command registers the client with the server. The server sends
+all further commands to the client at the IP Address/Port combination
+the client used to send the register command.
+
+If <dstport> is given, the server uses a different port than the
+source port. Do not specify a different port if the connection between
+client and server has to traverse a NAT router unless the NAT is
+explicitly configured for this port.
+
+After successful registration, the server continuously (every second)
+reports the status of _all_ configured channels to the client by means
+of ONHOOK or CONNECTED status messages as long as the server receives
+HEARTBEAT commands form the client. This enables every client to
+monitor the state of every channel.
+
+
+-------------------------
+         HEARTBEAT
+-------------------------
+
+Usage: "0:heartbeat"
+
+This command must be sent to the server a client has registered with
+at least every 60 seconds or less. If the client stops sending
+heartbeat commands, the server forgets about the client and drops all
+connections associated with the client immediately.
+
+The heartbeat ensures that existing connections will be properly
+cleaned up in case of client failure. It is recommended to send one
+heartbeat every 15 seconds.
+
+
+-------------------------
+         ACCEPT
+-------------------------
+
+Usage: "<ch>:accept"
+
+By issuing an ACCEPT command, the client decides to accept an incoming
+call that was reported on Channel <ch> previously with a SETUP
+command.
+
+The telephony server responds with either a CONNECTED command
+indicating successful acceptance of the call or a ONHOOK command if
+the caller has already terminated the call before successful
+acceptance.
+
+The following ERROR commands should be expected in response to the
+ACCEPT command:
+
+If another client has accepted the call, other clients issuing an
+ACCEPT command will be notified with an ERROR command with <reason>
+set to "not your call".
+
+If the client tries to accept a call on a channel where no incoming
+call has been detected, the server sends an ERROR command with
+<reason> set to "no call on this channel".
+
+The following ERROR commands should be expected in response to the
+ACCEPT command:
+
+* "not your call"
+* "no call on this channel"
+
+
+-------------------------
+         HANGUP
+-------------------------
+
+Usage: "<ch>:hangup[:<reason>]"
+
+By issuing an HANGUP command, the client decides to either reject an
+incoming call that was reported on Channel <ch> previously with a
+SETUP command or drop an existing connection on a channel.
+
+The telephony server responds with a ONHOOK command indicating
+successful termination of the call.
+
+If a client tries to disconnect a connection of another client, the
+server responds with an ERROR command with <reason> set to "not your
+call".
+
+If the client tries to hangup a call on a channel that currently has
+no connection, the server sends an ERROR command with <reason> set to
+"no call on this channel".
+
+The following ERROR commands should be expected in response to the
+ACCEPT command:
+
+* "not your call"
+* "no call on this channel"
+
+
+
+-------------------------
+      PLAYBACKGROUND
+-------------------------
+
+Usage: "<ch>:playbackground:<filename>"
+
+By issuing a PLAYBACKGROUND command, the client tells the server to
+play back a certain sound file specified by <filename> on Channel
+<ch>. The sound file will be played back indefinitely until another
+PLAYBACKGROUND or PLAY command is issued.
+
+The file must be available on the server under the given name at the
+time the PLAYBACKGROUND command is issued. The format of <filename> is
+implementation specific but is expected to address a global directory
+of sound files available to any client.
+
+The following ERROR commands should be expected in response to the
+PLAYBACKGROUND command:
+
+* "no filename specified"
+* "file does not exist"
+* "not your call"
+* "no call on this channel"
+
+
+-------------------------
+          PLAY
+-------------------------
+
+Usage: "<ch>:play:<filename>"
+
+By issuing a PLAY command, the client tells the server to play back a
+certain sound file specified by <filename> on Channel <ch>. The sound
+file will be played back only once.
+
+The file must be available on the server under the given name at the
+time the PLAY command is issued. The format of <filename> is
+implementation specific but is expected to address a global directory
+of sound files available to any client.
+
+The following ERROR commands should be expected in response to the
+PLAY command:
+
+* "no filename specified"
+* "file does not exist"
+* "not your call"
+* "no call on this channel"
