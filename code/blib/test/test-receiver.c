@@ -32,11 +32,11 @@ callback (BReceiver *rec,
   gint w, h;
 
   g_print ("\033[2J\033[H");
-  g_print ("width %02d, height %02d, channels %02d, bpp %03d\n",
+  g_print ("width %02d, height %02d, channels %02d, maxval %03d\n",
            packet->header.mcu_frame_h.width,
            packet->header.mcu_frame_h.height,
            packet->header.mcu_frame_h.channels,
-           packet->header.mcu_frame_h.bpp);
+           packet->header.mcu_frame_h.maxval);
   
   for (h = 0; h < packet->header.mcu_frame_h.height; h++)
     {

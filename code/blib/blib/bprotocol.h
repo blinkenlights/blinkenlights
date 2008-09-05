@@ -74,10 +74,10 @@ struct mcu_frame_header
   guint16 height;    /* rows                                      */
   guint16 width;     /* columns                                   */
   guint16 channels;  /* Number of channels (mono/grey: 1, rgb: 3) */
-  guint16 bpp;       /* bits used per pixel information (only 4 and 8 supported */
+  guint16 maxval;    /* maximum pixel value (only 8 bits used)    */
   /*
    * followed by
-   * unsigned char data[rows * columns * channels * (bpp/8)];
+   * unsigned char data[rows][columns][channels];
    */
 };
 

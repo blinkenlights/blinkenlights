@@ -66,7 +66,7 @@ b_packet_new (gint  width,
   packet->header.mcu_frame_h.width    = width;
   packet->header.mcu_frame_h.height   = height;
   packet->header.mcu_frame_h.channels = channels;
-  packet->header.mcu_frame_h.bpp      = (1 << (maxval + 1)) - 1;
+  packet->header.mcu_frame_h.maxval   = maxval;
 
   if (data_size)
     *data_size = size;
@@ -122,7 +122,7 @@ b_packet_hton (BPacket *packet)
         header->width    = g_htons (header->width);
         header->height   = g_htons (header->height);
         header->channels = g_htons (header->channels);
-        header->bpp      = g_htons (header->bpp);
+        header->maxval   = g_htons (header->maxval);
       }
       break;
 
@@ -163,7 +163,7 @@ b_packet_ntoh (BPacket *packet)
         header->width    = g_ntohs (header->width);
         header->height   = g_ntohs (header->height);
         header->channels = g_ntohs (header->channels);
-        header->bpp      = g_ntohs (header->bpp);
+        header->maxval   = g_ntohs (header->maxval);
       }
       break;
 

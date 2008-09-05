@@ -91,9 +91,9 @@ callback (BReceiver *rec,
   if (packet->header.mcu_frame_h.width    == module->width  &&
       packet->header.mcu_frame_h.height   == module->height &&
       packet->header.mcu_frame_h.channels == 1              &&
-      packet->header.mcu_frame_h.bpp      > 0)
+      packet->header.mcu_frame_h.maxval   > 0)
     {
-      gint max = (1 << (packet->header.mcu_frame_h.bpp + 1)) - 1;
+      gint max = packet->header.mcu_frame_h.maxval;
 
       if (max == 255)
         {

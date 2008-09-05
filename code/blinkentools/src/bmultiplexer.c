@@ -30,7 +30,7 @@
 static gint width    = -1;
 static gint height   = -1;
 static gint channels = -1;
-static gint bpp      = -1;
+static gint maxval   = -1;
 
 
 static gboolean
@@ -43,14 +43,14 @@ callback (BReceiver *rec,
   if (packet->header.mcu_frame_h.width    != width    ||
       packet->header.mcu_frame_h.height   != height   ||
       packet->header.mcu_frame_h.channels != channels ||
-      packet->header.mcu_frame_h.bpp      != bpp)
+      packet->header.mcu_frame_h.maxval   != maxval)
     {
       width    = packet->header.mcu_frame_h.width;
       height   = packet->header.mcu_frame_h.height;
       channels = packet->header.mcu_frame_h.channels;
-      bpp      = packet->header.mcu_frame_h.bpp;
+      maxval   = packet->header.mcu_frame_h.maxval;
 
-      b_sender_configure (sender, width, height, channels, (1 << bpp) - 1);
+      b_sender_configure (sender, width, height, channels, maxval);
     }
 
 #ifdef HASH
