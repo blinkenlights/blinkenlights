@@ -130,7 +130,7 @@ class App
     end
     
     def send_heartbeat
-      data = [0x42424242,0,0].pack("NNN")
+      data = [0x42424242,0,0,0].pack("NnnN")
       @socket.send(data,0)
       print Time.now.strftime("%Y-%m-%d %H:%M:%S") + ": -------> Sent ping to #{@options.proxyAddress} #{@options.proxyPort} \n"
       sleep(5)

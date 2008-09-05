@@ -311,9 +311,11 @@ b_receiver_io_func (GIOChannel   *io,
   BReceiver          *receiver;
   mcu_frame_header_t *header;
   guchar              buf[0xfff];
+  guchar              multibuf[sizeof(buf)+4];
   BPacket            *packet = NULL;
   BPacket            *fake   = NULL;
   BPacket            *new    = NULL;
+  gpointer            multiframememory = NULL;
   gssize              buf_read;
   gboolean            success = TRUE;
 
@@ -361,6 +363,15 @@ b_receiver_io_func (GIOChannel   *io,
 	memcpy (fake->data, (guchar *) new + sizeof (BPacket), size);
 
 	packet = fake;
+      }
+      break;
+
+    case MAGIC_MCU_MULTIFRAME:
+      // beeing evil due to evil circumstances
+      {
+      	*((guint32 *)multibuf) = buf_read;
+	memcpy (multibuf+4, buf, buf_read);
+        packet = (BPacket *)(multibuf+4);
       }
       break;
 

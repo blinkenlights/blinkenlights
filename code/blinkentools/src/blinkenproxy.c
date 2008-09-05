@@ -81,7 +81,8 @@ frame_callback (BReceiver *receiver,
 {
   BProxyServer *server = B_PROXY_SERVER (data);
 
-  if (packet->header.mcu_frame_h.magic != MAGIC_MCU_FRAME)
+  if (packet->header.mcu_frame_h.magic != MAGIC_MCU_FRAME &&
+  	  packet->header.mcu_frame_h.magic != MAGIC_MCU_MULTIFRAME)
     return TRUE;
 
   b_proxy_server_send_packet (server, packet);

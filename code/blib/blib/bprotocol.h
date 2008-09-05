@@ -97,7 +97,7 @@ typedef struct mcu_multiframe_header mcu_multiframe_header_t;
 struct mcu_multiframe_header
 {
   guint32 magic;     /* == MAGIC_MCU_MULTIFRAME                   */
-  guint64 timeStamp; /* milliseconds since epoch - e.g. gettimeofday(&tv); 
+  guint64 timestamp; /* milliseconds since epoch - e.g. gettimeofday(&tv); 
                         timeStamp = tv->tv_sec * 1000 + tv->tv_usec / 1000.; */
   /*
    * followed by multiple subframe headers

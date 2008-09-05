@@ -92,7 +92,10 @@ b_packet_size (BPacket *packet)
         return (sizeof (BPacket) +
                 header->width * header->height * header->channels);
       }
-
+		case MAGIC_MCU_MULTIFRAME:
+			{
+				return *(magic-1);
+			}
     default:
       return (sizeof (BPacket));
     }
@@ -118,7 +121,6 @@ b_packet_hton (BPacket *packet)
       {
         mcu_frame_header_t *header = &packet->header.mcu_frame_h;
 
-        header->magic    = g_htonl (header->magic);
         header->width    = g_htons (header->width);
         header->height   = g_htons (header->height);
         header->channels = g_htons (header->channels);
@@ -130,15 +132,19 @@ b_packet_hton (BPacket *packet)
       {
         heartbeat_header_t *header = &packet->header.heartbeat_h;
 
-        header->magic    = g_htonl (header->magic);
         header->version  = g_htons (header->version);
       }
       break;
 
-    default:
-      *magic = g_htonl (magic);
+		case MAGIC_MCU_MULTIFRAME:
+			{
+				mcu_multiframe_header_t *header = &packet->header.mcu_multiframe_h;
+
+				header->timestamp = GINT64_TO_BE(header->timestamp);
+			}
       break;
     }
+		*magic = g_htonl (*magic);
 }
 
 /**
@@ -175,7 +181,12 @@ b_packet_ntoh (BPacket *packet)
       }
       break;
 
-    default:
+		case MAGIC_MCU_MULTIFRAME:
+			{
+				mcu_multiframe_header_t *header = &packet->header.mcu_multiframe_h;
+
+				header->timestamp = GINT64_FROM_BE(header->timestamp);
+			}
       break;
     }
 }

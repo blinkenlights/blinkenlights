@@ -356,6 +356,7 @@ b_client_send_packet (gpointer  key,
   gsize               size = b_packet_size (packet);
   BPacket            *copy = g_memdup (packet, size);
 
+
   b_packet_hton (copy);
 
   addr.sin_family      = AF_INET;

@@ -28,8 +28,9 @@ typedef union _BPacketHeader BPacketHeader;
 
 union _BPacketHeader
 {
-  mcu_frame_header_t  mcu_frame_h;
-  heartbeat_header_t  heartbeat_h;
+  mcu_frame_header_t       mcu_frame_h;
+  heartbeat_header_t       heartbeat_h;
+  mcu_multiframe_header_t  mcu_multiframe_h;
 };
 
 struct _BPacket
