@@ -1,0 +1,201 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 44;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A9394C9F0DBC4044003F6F36 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9394C9E0DBC4044003F6F36 /* main.cpp */; };
+		A9394CB00DBC409B003F6F36 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9394CAF0DBC409B003F6F36 /* OpenGL.framework */; };
+		A9394CB20DBC40B8003F6F36 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9394CB10DBC40B8003F6F36 /* GLUT.framework */; };
+		A9394CB90DBC40C9003F6F36 /* glm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9394CA10DBC4066003F6F36 /* glm.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A9394C930DBC400A003F6F36 /* f16 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = f16; sourceTree = BUILT_PRODUCTS_DIR; };
+		A9394C9E0DBC4044003F6F36 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		A9394CA00DBC4066003F6F36 /* glm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glm.h; sourceTree = "<group>"; };
+		A9394CA10DBC4066003F6F36 /* glm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = glm.cpp; sourceTree = "<group>"; };
+		A9394CAF0DBC409B003F6F36 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = /System/Library/Frameworks/OpenGL.framework; sourceTree = "<absolute>"; };
+		A9394CB10DBC40B8003F6F36 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = /System/Library/Frameworks/GLUT.framework; sourceTree = "<absolute>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A9394C910DBC400A003F6F36 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A9394CB00DBC409B003F6F36 /* OpenGL.framework in Frameworks */,
+				A9394CB20DBC40B8003F6F36 /* GLUT.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		08FB7794FE84155DC02AAC07 /* glm-example */ = {
+			isa = PBXGroup;
+			children = (
+				A9394CB10DBC40B8003F6F36 /* GLUT.framework */,
+				A9394CAF0DBC409B003F6F36 /* OpenGL.framework */,
+				08FB7795FE84155DC02AAC07 /* Source */,
+				C6A0FF2B0290797F04C91782 /* Documentation */,
+				1AB674ADFE9D54B511CA2CBB /* Products */,
+			);
+			name = "glm-example";
+			sourceTree = "<group>";
+		};
+		08FB7795FE84155DC02AAC07 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				A9394C9E0DBC4044003F6F36 /* main.cpp */,
+				A9394CA00DBC4066003F6F36 /* glm.h */,
+				A9394CA10DBC4066003F6F36 /* glm.cpp */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
+		1AB674ADFE9D54B511CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A9394C930DBC400A003F6F36 /* f16 */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C6A0FF2B0290797F04C91782 /* Documentation */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Documentation;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A9394C920DBC400A003F6F36 /* f16 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A9394C9C0DBC4017003F6F36 /* Build configuration list for PBXNativeTarget "f16" */;
+			buildPhases = (
+				A9394C900DBC400A003F6F36 /* Sources */,
+				A9394C910DBC400A003F6F36 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = f16;
+			productName = f16;
+			productReference = A9394C930DBC400A003F6F36 /* f16 */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		08FB7793FE84155DC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "glm-example" */;
+			compatibilityVersion = "Xcode 3.0";
+			hasScannedForEncodings = 1;
+			mainGroup = 08FB7794FE84155DC02AAC07 /* glm-example */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A9394C920DBC400A003F6F36 /* f16 */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A9394C900DBC400A003F6F36 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A9394CB90DBC40C9003F6F36 /* glm.cpp in Sources */,
+				A9394C9F0DBC4044003F6F36 /* main.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1DEB928A08733DD80010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.5.sdk";
+			};
+			name = Debug;
+		};
+		1DEB928B08733DD80010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					ppc,
+					i386,
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.5.sdk";
+			};
+			name = Release;
+		};
+		A9394C950DBC400A003F6F36 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				INSTALL_PATH = /usr/local/bin;
+				PREBINDING = NO;
+				PRODUCT_NAME = f16;
+				ZERO_LINK = YES;
+			};
+			name = Debug;
+		};
+		A9394C960DBC400A003F6F36 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = /usr/local/bin;
+				PREBINDING = NO;
+				PRODUCT_NAME = f16;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "glm-example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB928A08733DD80010E9CD /* Debug */,
+				1DEB928B08733DD80010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A9394C9C0DBC4017003F6F36 /* Build configuration list for PBXNativeTarget "f16" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A9394C950DBC400A003F6F36 /* Debug */,
+				A9394C960DBC400A003F6F36 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 08FB7793FE84155DC02AAC07 /* Project object */;
+}
