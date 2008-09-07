@@ -17,7 +17,7 @@ INCDEST	=	/usr/include/ac/
 CFLAGS=-g $(DEBUG)
 
 # Make sure to bring in math library
-LDFLAGS=-lm
+LDFLAGS=-lm -lc
 
 # These objects are part of the library
 #

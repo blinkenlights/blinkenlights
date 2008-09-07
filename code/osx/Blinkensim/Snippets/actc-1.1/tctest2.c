@@ -12,35 +12,16 @@
 /* SNIPPET "timer.c" Inducted Wed Nov 22 09:36:57 2000 */
 
 #include <sys/types.h>
-#include <malloc.h>
+#include <sys/malloc.h>
 
 #if !defined(MEM_CHART)
 #define chartedSetLabel(a)
 #endif
 
-#if defined(_POSIX93)
 #include <sys/time.h>
-#else /* POSIX93 */
-#if defined(__linux)
-#include <sys/time.h>
-#else /* __linux__ */
-#include <sys/timeb.h>
-#endif /* __linux */
-#endif /* POSIX93 */
 
 typedef struct {
-#if defined(_POSIX93)
-    struct timespec Ts;
-#else /* POSIX93 */
-#if defined(__linux__)
     struct timeval Ts;
-#else /* __linux__ */
-    struct _timeb Ts;
-#ifdef _WIN32
-    LONGLONG PerfCount;
-#endif /* _WIN32 */
-#endif /* __linux__ */
-#endif /* POSIX93 */
 } Timer;
 
 #ifdef _WIN32
@@ -65,49 +46,15 @@ timerInit(void)
 void
 timerReset(Timer *t)
 {
-#if defined(_POSIX93)
-    clock_gettime(CLOCK_REALTIME, &t->Ts);
-#else /* POSIX93 */
-#if defined(__linux__)
     gettimeofday(&t->Ts, NULL);
-#else /* __linux__ */
-#if defined(_WIN32)
-    if(useHighPerf) {
-        QueryPerformanceCounter(&scratch);
-	t->PerfCount = scratch.QuadPart;
-    } else
-#endif /* _WIN32 */
-        _ftime(&t->Ts);
-#endif /* __linux__ */
-#endif /* POSIX93 */
 }
 
 double
 timerGet(Timer *t)
 {
-#if defined(_POSIX93)
-    struct timespec ts;
-    clock_gettime(CLOCK_REALTIME, &ts);
-    return ts.tv_sec - t->Ts.tv_sec + (ts.tv_nsec - t->Ts.tv_nsec) / 1.e9;
-#else /* POSIX93 */
-#if defined(__linux__)
     struct timeval ts;
     gettimeofday(&ts, NULL);
     return ts.tv_sec - t->Ts.tv_sec + (ts.tv_usec - t->Ts.tv_usec) / 1.e6;
-#else /* __linux__ */
-    struct _timeb ts;
-#if defined(_WIN32)
-    if(useHighPerf) {
-        QueryPerformanceCounter(&scratch);
-        return (scratch.QuadPart - t->PerfCount) / (double)perfFreq;
-    } else
-#endif
-    {
-        _ftime(&ts);
-        return ts.time - t->Ts.time + 0.001 * (ts.millitm - t->Ts.millitm);
-    }
-#endif /* __linux__ */
-#endif /* POSIX93 */
 }
 
 Timer *timerNew(void)
