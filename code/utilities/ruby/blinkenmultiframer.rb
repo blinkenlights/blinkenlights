@@ -18,6 +18,7 @@
 #   -o, --outport PORT       Port to send packets to (default 2324)
 #   -n, --noframes           Don't ouptut frames
 #   -b, --bitsperpixel BITS  4 or 8
+#   -f, --alwaysfull         Don't split up big screens into small ones
 # == Author
 #   Dominik Wagner
 # == Copyright
@@ -47,6 +48,7 @@ class App
     @options.outport = 2324
     @options.bits    = 8
     @options.showFrames = true
+    @options.alwaysFull = false
   end
 
   # Parse options, check arguments, then process the command
@@ -76,6 +78,7 @@ class App
       opts.on('-v', '--version')    { output_version ; exit 0 }
       opts.on('-h', '--help')       { output_help ; exit 0 }
       opts.on('-n', '--noframes')   { @options.showFrames = false }
+      opts.on('-f', '--alwaysfull') { @options.alwaysFull = true }
       opts.on('-b', '--bitsperpixel BITS') do |bits|
         if (bits.to_i == 4)
           @options.bits = 4
@@ -216,7 +219,7 @@ class App
           # build my data
           outdata = [0x23542668,timestamp>>32,timestamp & 0xFFFFFFFF].pack('NNN')
           pixeldata = data[12...(data.length)]
-          if (width == 96 && height == 32)
+          if (!@options.alwaysFull && width == 96 && height == 32)
           #this is steroscope - lets cut it up ;)
             for screen in [{:screenID => 5, :width => 22, :height =>17, :originY => 11, :originX => 16},
                            {:screenID => 6, :width => 30, :height =>23, :originY =>  5, :originX => 50}]
