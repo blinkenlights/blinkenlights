@@ -52,8 +52,8 @@ float frameRate;
 #define WIDTH 320
 #define HEIGHT 480
 #define CAM_ASPECT	((float)WIDTH / (float) HEIGHT)
-#define CAM_NEAR	(1.0f)
-#define CAM_FAR		(10000.0f)
+#define CAM_NEAR	(4.0f)
+#define CAM_FAR		(5000.0f)
 
 #define SKYBOX_ZOOM			150.0f
 #define SKYBOX_ADJUSTUVS	true
@@ -63,7 +63,7 @@ float frameRate;
 #endif
 
 /* Texture IDs */
-GLuint balloonTex[7];
+GLuint meshTexture[7];
 GLuint skyboxTex[6];
 
 /* Print3D, Extension and POD Class Objects */
@@ -90,23 +90,18 @@ VECTOR3 vTo, vUp, vCameraPosition;
 void CameraGetMatrix();
 void ComputeViewMatrix();
 void DrawSkybox();
-void DrawBalloon();
+void DrawMesh();
 void CreateSkybox(float scale, bool adjustUV, int textureSize, VERTTYPE** Vertices, VERTTYPE** UVs);
 void DestroySkybox(VERTTYPE* Vertices, VERTTYPE* UVs);
 
 
 bool CShell::InitApplication()
 {
-	AppDisplayText = new CDisplayText;  
-	Textures = new CTexture;
-	
-	if(AppDisplayText->SetTextures(WindowHeight, WindowWidth))
-		printf("Display text textures loaded\n");
 
 	/* Init values to defaults */
 	fViewAngle = PIOVERTWO;
 	
-	fViewDistance = f2vt(100.0f);
+	fViewDistance = f2vt(200.0f);
 	fViewAmplitude = f2vt(60.0f);
 	fViewAmplitudeAngle = f2vt(0.0f);
 	
@@ -114,7 +109,7 @@ bool CShell::InitApplication()
 	fViewUpDownAngle = f2vt(0.0f);
 	
 	vTo.x = f2vt(0);
-	vTo.y = f2vt(0);
+	vTo.y = f2vt(10);
 	vTo.z = f2vt(0);
 	
 	vUp.x = f2vt(0);
@@ -150,7 +145,7 @@ bool CShell::InitApplication()
 	}
 	
 	sprintf(filename, "%s/CityHall_1024.pvr", buffer);
-	if(!Textures->LoadTextureFromPVR(filename, &balloonTex[0]))
+	if(!Textures->LoadTextureFromPVR(filename, &meshTexture[0]))
 	{
 		printf("**ERROR** Failed to load texture for Background.\n");
 	}
@@ -158,7 +153,7 @@ bool CShell::InitApplication()
 	myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
     sprintf(filename, "%s/Pavillon_1024.pvr", buffer);
-	if(!Textures->LoadTextureFromPVR(filename, &balloonTex[1]))
+	if(!Textures->LoadTextureFromPVR(filename, &meshTexture[1]))
 	{
 		printf("**ERROR** Failed to load texture for Background.\n");
 	}
@@ -166,7 +161,7 @@ bool CShell::InitApplication()
 	myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
     sprintf(filename, "%s/Ramp_1024.pvr", buffer);
-	if(!Textures->LoadTextureFromPVR(filename, &balloonTex[2]))
+	if(!Textures->LoadTextureFromPVR(filename, &meshTexture[2]))
 	{
 		printf("**ERROR** Failed to load texture for Background.\n");
 	}
@@ -174,7 +169,7 @@ bool CShell::InitApplication()
 	myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
     sprintf(filename, "%s/Window_On.pvr", buffer);
-	if(!Textures->LoadTextureFromPVR(filename, &balloonTex[3]))
+	if(!Textures->LoadTextureFromPVR(filename, &meshTexture[3]))
 	{
 		printf("**ERROR** Failed to load texture for Background.\n");
 	}
@@ -182,7 +177,7 @@ bool CShell::InitApplication()
 	myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
     sprintf(filename, "%s/Window_On.pvr", buffer);
-	if(!Textures->LoadTextureFromPVR(filename, &balloonTex[4]))
+	if(!Textures->LoadTextureFromPVR(filename, &meshTexture[4]))
 	{
 		printf("**ERROR** Failed to load texture for Background.\n");
 	}
@@ -190,7 +185,7 @@ bool CShell::InitApplication()
 	myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
     sprintf(filename, "%s/Window_On.pvr", buffer);
-	if(!Textures->LoadTextureFromPVR(filename, &balloonTex[5]))
+	if(!Textures->LoadTextureFromPVR(filename, &meshTexture[5]))
 	{
 		printf("**ERROR** Failed to load texture for Background.\n");
 	}
@@ -198,7 +193,7 @@ bool CShell::InitApplication()
 	myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
     sprintf(filename, "%s/Window_On.pvr", buffer);
-	if(!Textures->LoadTextureFromPVR(filename, &balloonTex[6]))
+	if(!Textures->LoadTextureFromPVR(filename, &meshTexture[6]))
 	{
 		printf("**ERROR** Failed to load texture for Background.\n");
 	}
@@ -223,7 +218,16 @@ bool CShell::InitApplication()
 	glLoadIdentity();
 	
 	myglMultMatrix(g_mProj.f);
+
+    // Rotate Viewport to portrait.
+    myglRotate(f2vt(-90), f2vt(0), f2vt(0), f2vt(1));
+
+ 	AppDisplayText = new CDisplayText;  
+    Textures = new CTexture;
 	
+	if(AppDisplayText->SetTextures(WindowWidth, WindowHeight))
+		printf("Display text textures loaded\n");
+    
 	/******************************
 	 ** GENERIC RENDER STATES     **
 	 ******************************/
@@ -271,7 +275,7 @@ bool CShell::InitApplication()
     myglLightv(GL_LIGHT0, GL_DIFFUSE, lightDiffuse);
     myglLightv(GL_LIGHT0, GL_SPECULAR, lightSpecular);
 	
-	/* Setup the balloon material */
+	/* FIXME Setup the balloon material */
 	VERTTYPE objectMatAmb[] = {f2vt(0.7f), f2vt(0.7f), f2vt(0.7f), f2vt(1.0f)};
 	VERTTYPE objectMatDiff[] = {f2vt(1.0f), f2vt(1.0f), f2vt(1.0f), f2vt(1.0f)};
 	VERTTYPE objectMatSpec[] = {f2vt(0.0f), f2vt(0.0f), f2vt(0.0f), f2vt(0.0f)};
@@ -294,7 +298,7 @@ bool CShell::QuitApplication()
 	/* Release all Textures */
 	for (i = 0; i < 7; i++)
 	{
-		Textures->ReleaseTexture(balloonTex[i]);
+		Textures->ReleaseTexture(meshTexture[i]);
 	}
 	for (i = 0; i < 6; i++)
 	{
@@ -335,7 +339,7 @@ bool CShell::UpdateScene()
 	if (currTime.tv_usec - time.tv_usec) 
 	{
 		frameRate = ((float)frames/((currTime.tv_usec - time.tv_usec) / 1000000.0f));
-		AppDisplayText->DisplayText(0, 10, 0.4f, RGBA(255,255,255,255), "fps: %3.2f", frameRate);
+		AppDisplayText->DisplayText(0, 0, 0.9f, RGBA(255,255,255,255), "fps: %3.2f", frameRate);
 		time = currTime;
 		frames = 0;
 	}
@@ -362,10 +366,10 @@ bool CShell::RenderScene()
 	DrawSkybox();
 	
 	/* Draw the balloon */
-	DrawBalloon();
+	DrawMesh();
 	
 	// show text on the display
-	AppDisplayText->DisplayDefaultTitle("Stereoscope", "Debug Info", eDisplayTextLogoNone);
+	//AppDisplayText->DisplayDefaultTitle("Stereoscope", "Debug Info", eDisplayTextLogoNone);
 	
 	AppDisplayText->Flush();	
 	
@@ -380,13 +384,13 @@ void ComputeViewMatrix()
 {
 	VECTOR3 vFrom;
 	
-	/* Calculate the distance to balloon */
+	/* Calculate the distance to mesh */
 	VERTTYPE distance = fViewDistance + VERTTYPEMUL(fViewAmplitude, SIN(fViewAmplitudeAngle));
 	distance = VERTTYPEDIV(distance, f2vt(5.0f));
 	fViewAmplitudeAngle += f2vt(.004f);
 	
 	/* Calculate the vertical position of the camera */
-	VERTTYPE updown = VERTTYPEMUL(fViewUpDownAmplitude, SIN(fViewUpDownAngle));
+	VERTTYPE updown = VERTTYPEMUL(fViewUpDownAmplitude, ABS(SIN(fViewUpDownAngle))+0.1);
 	updown = VERTTYPEDIV(updown, f2vt(5.0f));
 	fViewUpDownAngle += f2vt(0.005f);
 	
@@ -400,7 +404,8 @@ void ComputeViewMatrix()
 	MatrixLookAtRH(g_mView, vFrom, vTo, vUp);
 	glMatrixMode(GL_MODELVIEW);
 	myglLoadMatrix(g_mView.f);
-	
+	    
+    
 	/* Remember the camera position to draw the skybox around it */
 	vCameraPosition = vFrom;
 }
@@ -448,10 +453,10 @@ void DrawSkybox()
 }
 
 /*******************************************************************************
- * Function Name  : DrawBalloon
+ * Function Name  : DrawMesh
  * Description    : Draws the balloon
  *******************************************************************************/
-void DrawBalloon()
+void DrawMesh()
 {
 	glMatrixMode(GL_MODELVIEW);
 	glPushMatrix();
@@ -484,7 +489,7 @@ void DrawBalloon()
         mesh = &g_sScene.pMesh[meshNo];
         
         /* Bind the Texture */
-        glBindTexture(GL_TEXTURE_2D, balloonTex[meshNo]);
+        glBindTexture(GL_TEXTURE_2D, meshTexture[meshNo]);
 
         // Used to display interleaved geometry
         glVertexPointer(3, VERTTYPEENUM, mesh->sVertex.nStride, mesh->pInterleaved + (long)mesh->sVertex.pData);
@@ -531,6 +536,7 @@ void CameraGetMatrix()
 		fFOV = f2vt(PI / 6);
 	}
 	
+
 	/* View */
 	MatrixLookAtRH(g_mView, vFrom, vTo, vUp);
 	
