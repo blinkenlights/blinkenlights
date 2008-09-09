@@ -593,60 +593,60 @@ void CreateSkybox(float scale, bool adjustUV, int textureSize, VERTTYPE** Vertic
 	}
 	
 	// Front
-	SetVertex(Vertices, 0, -unit, +unit, -unit);
-	SetVertex(Vertices, 1, +unit, +unit, -unit);
-	SetVertex(Vertices, 2, -unit, -unit, -unit);
-	SetVertex(Vertices, 3, +unit, -unit, -unit);
+	SetVertex(Vertices, 0, -unit, 2*unit, -unit);
+	SetVertex(Vertices, 1, +unit, 2*unit, -unit);
+	SetVertex(Vertices, 2, -unit, 0, -unit);
+	SetVertex(Vertices, 3, +unit, 0, -unit);
 	SetUV(UVs, 0, a0, a1);
 	SetUV(UVs, 1, a1, a1);
 	SetUV(UVs, 2, a0, a0);
 	SetUV(UVs, 3, a1, a0);
 	
 	// Right
-	SetVertex(Vertices, 4, +unit, +unit, -unit);
-	SetVertex(Vertices, 5, +unit, +unit, +unit);
-	SetVertex(Vertices, 6, +unit, -unit, -unit);
-	SetVertex(Vertices, 7, +unit, -unit, +unit);
+	SetVertex(Vertices, 4, +unit, 2*unit, -unit);
+	SetVertex(Vertices, 5, +unit, 2*unit, +unit);
+	SetVertex(Vertices, 6, +unit, 0, -unit);
+	SetVertex(Vertices, 7, +unit, 0, +unit);
 	SetUV(UVs, 4, a0, a1);
 	SetUV(UVs, 5, a1, a1);
 	SetUV(UVs, 6, a0, a0);
 	SetUV(UVs, 7, a1, a0);
 	
 	// Back
-	SetVertex(Vertices, 8 , +unit, +unit, +unit);
-	SetVertex(Vertices, 9 , -unit, +unit, +unit);
-	SetVertex(Vertices, 10, +unit, -unit, +unit);
-	SetVertex(Vertices, 11, -unit, -unit, +unit);
+	SetVertex(Vertices, 8 , +unit, 2*unit, +unit);
+	SetVertex(Vertices, 9 , -unit, 2*unit, +unit);
+	SetVertex(Vertices, 10, +unit, 0, +unit);
+	SetVertex(Vertices, 11, -unit, 0, +unit);
 	SetUV(UVs, 8 , a0, a1);
 	SetUV(UVs, 9 , a1, a1);
 	SetUV(UVs, 10, a0, a0);
 	SetUV(UVs, 11, a1, a0);
 	
 	// Left
-	SetVertex(Vertices, 12, -unit, +unit, +unit);
-	SetVertex(Vertices, 13, -unit, +unit, -unit);
-	SetVertex(Vertices, 14, -unit, -unit, +unit);
-	SetVertex(Vertices, 15, -unit, -unit, -unit);
+	SetVertex(Vertices, 12, -unit, 2*unit, +unit);
+	SetVertex(Vertices, 13, -unit, 2*unit, -unit);
+	SetVertex(Vertices, 14, -unit, 0, +unit);
+	SetVertex(Vertices, 15, -unit, 0, -unit);
 	SetUV(UVs, 12, a0, a1);
 	SetUV(UVs, 13, a1, a1);
 	SetUV(UVs, 14, a0, a0);
 	SetUV(UVs, 15, a1, a0);
 	
 	// Top
-	SetVertex(Vertices, 16, -unit, +unit, +unit);
-	SetVertex(Vertices, 17, +unit, +unit, +unit);
-	SetVertex(Vertices, 18, -unit, +unit, -unit);
-	SetVertex(Vertices, 19, +unit, +unit, -unit);
+	SetVertex(Vertices, 16, -unit, +2*unit, +unit);
+	SetVertex(Vertices, 17, +unit, +2*unit, +unit);
+	SetVertex(Vertices, 18, -unit, +2*unit, -unit);
+	SetVertex(Vertices, 19, +unit, +2*unit, -unit);
 	SetUV(UVs, 16, a0, a1);
 	SetUV(UVs, 17, a1, a1);
 	SetUV(UVs, 18, a0, a0);
 	SetUV(UVs, 19, a1, a0);
 	
 	// Bottom
-	SetVertex(Vertices, 20, -unit, -unit, -unit);
-	SetVertex(Vertices, 21, +unit, -unit, -unit);
-	SetVertex(Vertices, 22, -unit, -unit, +unit);
-	SetVertex(Vertices, 23, +unit, -unit, +unit);
+	SetVertex(Vertices, 20, -unit, -0, -unit);
+	SetVertex(Vertices, 21, +unit, -0, -unit);
+	SetVertex(Vertices, 22, -unit, -0, +unit);
+	SetVertex(Vertices, 23, +unit, -0, +unit);
 	SetUV(UVs, 20, a0, a1);
 	SetUV(UVs, 21, a1, a1);
 	SetUV(UVs, 22, a0, a0);
