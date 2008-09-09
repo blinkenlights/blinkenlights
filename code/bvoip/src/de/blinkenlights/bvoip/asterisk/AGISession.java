@@ -32,6 +32,9 @@ public class AGISession {
 	
 	private final PrintWriter out;
 	private final BufferedReader in; 
+	private String dnid = "";
+	private String callerId ="";
+	
 	
 	AGISession(BufferedReader in, PrintWriter out) {
 		this.in = in;
@@ -51,7 +54,14 @@ public class AGISession {
 				logger.severe("Unexpected AGI header format from asterisk: \""+line+"\"");
 			}
 		}
+		if (headers.containsKey(AGI_CALLERID)) {
+			callerId = headers.get(AGI_CALLERID);
+		}
 		
+		if (headers.containsKey(AGI_DNID)) {
+			dnid = headers.get(AGI_DNID);
+		}
+
 		logger.fine("AGI Headers: " + headers);
 		
 		serverCommand("ANSWER");
@@ -63,6 +73,14 @@ public class AGISession {
 			digitLog.append((char) Integer.parseInt(response));
 			logger.fine("All digits this call: " + digitLog);
 		}
+	}
+	
+	public String getDnid() {
+		return dnid;
+	}
+	
+	public String getCallerId() {
+		return callerId;
 	}
 	
 	private String serverCommand(String command) throws CallEndedException, IOException {

@@ -6,6 +6,7 @@ import java.util.logging.Logger;
 
 import de.blinkenlights.bvoip.ChannelList;
 import de.blinkenlights.bvoip.asterisk.AGIServer;
+import de.blinkenlights.bvoip.blt.BLTClientManager;
 
 public class BVoip {
 	private static final Logger logger = Logger.getLogger(BVoip.class.getName());
@@ -18,10 +19,14 @@ public class BVoip {
 		logger.entering(getClass().getName(), getClass().getSimpleName());
 		
 		ChannelList channelList = new ChannelList(2);
+	
+		new Thread(new BLTClientManager(1234,channelList)).start();
 		
 		// TODO - make configurable port number
 		AGIServer agiServer = new AGIServer(4545, channelList);
 		agiServer.run();
+		
+		
 	}
 
 	

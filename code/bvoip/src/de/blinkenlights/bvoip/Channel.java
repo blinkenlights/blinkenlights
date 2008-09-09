@@ -1,7 +1,7 @@
 package de.blinkenlights.bvoip;
 
 import de.blinkenlights.bvoip.asterisk.AGISession;
-import de.blinkenlights.bvoip.blt.BLTClient;
+import de.blinkenlights.bvoip.blt.BLTClientManager;
 
 /**
  * A channel in the system. Once the channel has closed, it will be dead and
@@ -11,7 +11,7 @@ public class Channel {
 
 	private final int channelNum;
 	private AGISession agiSession;
-	private BLTClient client;
+	private BLTClientManager client;
 	private final ChannelList parentList;
 	private boolean closed = false;
 	
@@ -20,11 +20,11 @@ public class Channel {
 		this.channelNum = channelNum;
 	}
 
-	public BLTClient getClient() {
+	public BLTClientManager getClient() {
 		return client;
 	}
 
-	public void setClient(BLTClient client) {
+	public void setClient(BLTClientManager client) {
 		this.client = client;
 	}
 

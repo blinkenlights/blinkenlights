@@ -1,5 +1,9 @@
 package de.blinkenlights.bvoip;
 
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
+
 
 /**
  * The BLCCC phone protocol expects there to be a fixed number of telephone
@@ -13,8 +17,22 @@ public class ChannelList {
 
 	private final Channel[] channels;
 	
+	Set<ConnectionEventListener> connectionEventListeners = new HashSet<ConnectionEventListener>();
+	
 	public ChannelList(int nchannels) {
 		channels = new Channel[nchannels];
+	}
+	
+	public void addConnectionEventListener(ConnectionEventListener listener) {
+		if (listener != null) {
+			connectionEventListeners.add(listener);
+		}
+	}
+	
+	public void removeConnectionEventListener(ConnectionEventListener listener) {
+		if (listener != null) {
+			connectionEventListeners.remove(listener);
+		}
 	}
 	
 	public synchronized Channel acquire() {
@@ -22,11 +40,30 @@ public class ChannelList {
 			if (channels[i] == null) {
 				Channel c = new Channel(this, i);
 				channels[i] = c;
-				// TODO fire a connection event
+				
+				// TODO: this is the wrong place to fire an event, the agisession isn't set up yet!!
+				ConnectionEvent e = new ConnectionEvent(c);
+				for (Iterator<ConnectionEventListener> listenerIter = connectionEventListeners.iterator(); listenerIter
+						.hasNext();) {
+					ConnectionEventListener listener = listenerIter.next();
+					listener.channelConnected(e);
+				}
+				
 				return c;
 			}
 		}
 		return null; // throw exception?
+	}
+	
+	public int getNumChannels() {
+		return channels.length;
+	}
+	
+	public boolean isChannelActive(int channelNum) {
+		if (channelNum < 0 || channelNum >= channels.length) {
+			throw new IllegalArgumentException("channel is out of bounds, should be between 0 and "+(channels.length-1)+" but was "+channelNum);
+		}
+		return channels[channelNum] != null;
 	}
 	
 	synchronized void channelClosing(Channel c) {
