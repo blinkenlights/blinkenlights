@@ -101,10 +101,16 @@
 
 typedef struct
 {
+  unsigned short mac;
+  unsigned char x, y;
+} LampMap;
+
+typedef struct
+{
   unsigned int magic, size, crc16;
   signed int mcu_id;
   unsigned char mac_h, mac_l;
-  unsigned short lamp_map[26 * 2];
+  LampMap lamp_map[26 * 2];
 } __attribute__((aligned (8))) TEnvironment;
 
 /*----------------------------------*/

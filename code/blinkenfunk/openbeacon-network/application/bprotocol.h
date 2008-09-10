@@ -24,20 +24,21 @@
 #ifndef __B_PROTOCOL_H__
 #define __B_PROTOCOL_H__
 
-#define MAGIC_MCU_SETUP     0x2342FEED  /* MCU Configuration packet              */
-#define MAGIC_MCU_FRAME     0x23542666  /* MCU Frame packet                      */
-#define MAGIC_MCU_DEVCTRL   0x23542667  /* MCU Device Control packet             */
+#define MAGIC_MCU_SETUP    	0x2342FEED  /* MCU Configuration packet		*/
+#define MAGIC_MCU_FRAME     	0x23542666  /* MCU Frame packet			*/
+#define MAGIC_MCU_DEVCTRL   	0x23542667  /* MCU Device Control packet	*/
+#define MAGIC_MCU_MULTIFRAME	0x23542668  /* MCU MultiFrame packet		*/
 
-#define MAGIC_BLFRAME       0xDEADBEEF  /* Original BL Frame Packet              */
-#define MAGIC_BLFRAME_256   0xFEEDBEEF  /* Extendend BL Frame Packet (Greyscale) */
+#define MAGIC_BLFRAME		0xDEADBEEF  /* Original BL Frame Packet              */
+#define MAGIC_BLFRAME_256	0xFEEDBEEF  /* Extendend BL Frame Packet (Greyscale) */
 
-#define MAGIC_HEARTBEAT     0x42424242  /* Heartbeat packet                      */
+#define MAGIC_HEARTBEAT		0x42424242  /* Heartbeat packet                      */
 
-#define MCU_LISTENER_PORT    2323
-#define MCU_ID_ANY           -1
+#define MCU_LISTENER_PORT	2323
+#define MCU_ID_ANY		-1
 
-#define B_HEARTBEAT_PORT       4242
-#define B_HEARTBEAT_INTERVAL   5000     /* Heartbeat interval in ms    */
+#define B_HEARTBEAT_PORT	4242
+#define B_HEARTBEAT_INTERVAL	5000	/* Heartbeat interval in ms    */
 
 /***********************************************************/
 
@@ -80,6 +81,48 @@ struct mcu_frame_header
    */
 };
 
+/*
+ * MCU Multi Frame packet
+ *
+ *
+ * - One Multi Frame packet may contain multiple frames, but does not need to
+ * - If the number and ids of the subframes vary in consecutive multi frame packets 
+ *   then nothing is assumed about the missing subframes. This allows for incremental
+ *   updates for only the screens that did change. 
+ *
+ */
+
+typedef struct mcu_multiframe_header mcu_multiframe_header_t;
+
+struct mcu_multiframe_header
+{
+  unsigned int magic;		/* == MAGIC_MCU_MULTIFRAME                   */
+  unsigned long long timestamp;	/* milliseconds since epoch - e.g. gettimeofday(&tv); 
+				   timeStamp = tv->tv_sec * 1000 + tv->tv_usec / 1000.; */
+  /*
+   * followed by multiple subframe headers
+   */
+};
+
+typedef struct mcu_subframe_header mcu_subframe_header_t;
+
+struct mcu_subframe_header
+{
+  unsigned char screen_id;		/* screen id                                 */
+  unsigned char bpp;			/* bits per pixel, supported values: (4,8)   */
+					/* 4 means nibbles 8 means bytes             */
+  unsigned short height;		/* number of rows                            */
+  unsigned short width;			/* width in pixels of row                    */
+  /*
+   * followed by 
+   * nibbles in [rows][columns];
+   * if width is uneven one nibble is used as padding
+   * or bytes[]
+   *
+   * the bytesize of this can be calculated using height * width in the byte case 
+   *   and height * ((width + 1)/2) in case of nibbles (integer divison) 
+   */
+};
 
 /*
  * MCU Setup packet

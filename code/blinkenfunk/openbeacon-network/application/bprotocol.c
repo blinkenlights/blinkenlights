@@ -66,6 +66,7 @@ static void b_output_line(int width, unsigned char *data)
 	vnRFTransmitPacket(&rfpkg);
 }
 
+#if 0
 static unsigned char b_mcu_frame_get_pixel_val(mcu_frame_header_t *header, int pixel, unsigned int maxlen)
 {
 	unsigned char *payload = (unsigned char *) header + sizeof(*header);
@@ -84,10 +85,11 @@ static unsigned char b_mcu_frame_get_pixel_val(mcu_frame_header_t *header, int p
 */	
 	return v;
 }
+#endif
 
-static int b_parse_mcu_frame(mcu_frame_header_t *header, int maxlen)
+static int b_parse_mcu_multiframe(mcu_frame_header_t *header, int maxlen)
 {
-	int i, len = sizeof(*header);
+	int len = sizeof(*header);
 
 //	if (len > maxlen)
 //		return 0;
@@ -125,10 +127,12 @@ debug_printf(" -- w %d h %d chns %d bpp %d\n",
 
 	/* ... */
 	memset(&rfpkg.payload, 0, RF_PAYLOAD_SIZE);
+#if 0
 	for (i = 0; i < RF_PAYLOAD_SIZE; i++) {
 		rfpkg.payload[i] = (b_mcu_frame_get_pixel_val(header, env.e.lamp_map[i*2], maxlen) & 0xf)
 				 | (b_mcu_frame_get_pixel_val(header, env.e.lamp_map[i*2 + 1], maxlen) << 4);
 	}
+#endif
 	/* funk it. */
 	b_output_line(header->width, payload);
 	
@@ -206,7 +210,9 @@ static inline void b_set_assigned_lamps(unsigned int *map)
 	int i;
 
 	for (i = 0; i < MAX_LAMPS; i++) {
-		env.e.lamp_map[i] = map[i];
+		env.e.lamp_map[i].mac = (map[i] >> 16) & 0xffff;
+		env.e.lamp_map[i].x   = (map[i] >> 8) & 0xff;
+		env.e.lamp_map[i].y   = (map[i] & 0xff);
 	}
 
 	env_store();
@@ -311,8 +317,8 @@ static void b_recv(void *arg, struct udp_pcb *pcb, struct pbuf *p, struct ip_add
 		debug_printf(" magic %04x\n", magic);
 
 		switch (magic) {
-			case MAGIC_MCU_FRAME:
-				consumed = b_parse_mcu_frame((mcu_frame_header_t *) payload + off, p->len - off);
+			case MAGIC_MCU_MULTIFRAME:
+				consumed = b_parse_mcu_multiframe((mcu_frame_header_t *) payload + off, p->len - off);
 				break;
 			case MAGIC_MCU_SETUP:
 				consumed = b_parse_mcu_setup((mcu_setup_header_t *) payload + off, p->len - off);
