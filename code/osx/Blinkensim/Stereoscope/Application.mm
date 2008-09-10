@@ -34,7 +34,7 @@ subject to the following restrictions:
 #include <sys/time.h>
 
 #include "stereoscope.h"
-
+#include "AppController.h"
 
 
 CDisplayText * AppDisplayText;
@@ -222,11 +222,11 @@ bool CShell::InitApplication()
     // Rotate Viewport to portrait.
     myglRotate(f2vt(-90), f2vt(0), f2vt(0), f2vt(1));
 
- 	AppDisplayText = new CDisplayText;  
+// 	AppDisplayText = new CDisplayText;  
     Textures = new CTexture;
 	
-	if(AppDisplayText->SetTextures(WindowWidth, WindowHeight))
-		printf("Display text textures loaded\n");
+//	if(AppDisplayText->SetTextures(WindowWidth, WindowHeight))
+//		printf("Display text textures loaded\n");
     
 	/******************************
 	 ** GENERIC RENDER STATES     **
@@ -289,9 +289,9 @@ bool CShell::InitApplication()
 
 bool CShell::QuitApplication()
 {
-	AppDisplayText->ReleaseTextures();
+//	AppDisplayText->ReleaseTextures();
 	
-	delete AppDisplayText;
+//	delete AppDisplayText;
 	
 	int i;
 	
@@ -339,7 +339,8 @@ bool CShell::UpdateScene()
 	if (currTime.tv_usec - time.tv_usec) 
 	{
 		frameRate = ((float)frames/((currTime.tv_usec - time.tv_usec) / 1000000.0f));
-		AppDisplayText->DisplayText(0, 0, 0.9f, RGBA(255,255,255,255), "fps: %3.2f", frameRate);
+		[(AppController *)[[UIApplication sharedApplication] delegate] shellReportsFrameRate:frameRate];
+		// AppDisplayText->DisplayText(0, 0, 0.9f, RGBA(255,255,255,255), "fps: %3.2f", frameRate);
 		time = currTime;
 		frames = 0;
 	}
@@ -371,7 +372,7 @@ bool CShell::RenderScene()
 	// show text on the display
 	//AppDisplayText->DisplayDefaultTitle("Stereoscope", "Debug Info", eDisplayTextLogoNone);
 	
-	AppDisplayText->Flush();	
+	// AppDisplayText->Flush();	
 	
 	return true;
 }

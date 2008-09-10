@@ -21,13 +21,32 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>1.5</string>
+	<string>1SVNRevision</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>CFBundleShortVersionString</key>
+	<string>0.6</string>
+	<key>UIStatusBarHidden</key>
+	<false/>
+	<key>UIStatusBarStyle</key>
+	<string>UIStatusBarStyleBlackTranslucent</string>
+	<key>UIRequiresPersistentWiFi</key>
+	<true/>
+	<key>CFBundleURLTypes</key>
+	<array>
+    <dict>
+      <key>CFBundleTypeRole</key>
+      <string>Viewer</string>
+      <key>CFBundleURLName</key>
+      <string>net.blinkenlights.blinkenproxy</string>
+      <key>CFBundleURLSchemes</key>
+      <array>
+        <string>blinkenproxy</string>
+      </array>
+    </dict>
+  </array>
 	<key>NSMainNibFile</key>
 	<string>MainWindow</string>
-	<key>UIStatusBarHidden</key>
-	<true/>
 	<key>UIPrerenderedIcon</key>
 	<true/>
 </dict>

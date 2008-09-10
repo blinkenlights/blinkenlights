@@ -15,10 +15,14 @@ seeds.
 
 =====================
 
-File: main.m
-Abstract: The main function for the GLSprite application.
+File: EditingViewController.h
+Abstract: 
+Manages editing a single field of data in a Book. Dual mode editor, it supports
+both plain text field editing
+and date value editing with a UIDatePicker.
 
-Version: 1.2
+
+Version: 1.6
 
 Disclaimer: IMPORTANT:  This Apple software is supplied to you by Apple Inc.
 ("Apple") in consideration of your agreement to the following terms, and your
@@ -62,13 +66,31 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
 
 #import <UIKit/UIKit.h>
 
-int main(int argc, char *argv[])
-{
-	NSAutoreleasePool *pool = [NSAutoreleasePool new];
-	
-	UIApplicationMain(argc, argv, nil, nil);
-	
-	[pool release];
-	
-	return 0;
+
+@interface EditingViewController : UIViewController {
+    NSString *textValue;
+    id editedObject;
+    NSString *editedFieldKey;
+    NSString *titleString;
+    IBOutlet UITextField *textField;
+    BOOL dateEditing;
+    NSDate *dateValue;
+    IBOutlet UIDatePicker *datePicker;
+    NSDateFormatter *dateFormatter;
 }
+
+@property (nonatomic, retain) id editedObject;
+@property (nonatomic, retain) NSString *textValue;
+@property (nonatomic, retain) NSDate *dateValue;
+@property (nonatomic, retain) NSString *editedFieldKey;
+@property (nonatomic, retain) NSString *titleString;
+@property (nonatomic, assign) BOOL dateEditing;
+@property (nonatomic, readonly) UITextField *textField;
+@property (nonatomic, retain) NSDateFormatter *dateFormatter;
+
+- (IBAction)cancel:(id)sender;
+- (IBAction)save:(id)sender;
+- (IBAction)dateChanged:(id)sender;
+
+@end
+
