@@ -102,7 +102,7 @@ bool CShell::InitApplication()
 	fViewAngle = PIOVERTWO;
 	
 	fViewDistance = f2vt(200.0f);
-	fViewAmplitude = f2vt(60.0f);
+	fViewAmplitude = f2vt(30.0f);
 	fViewAmplitudeAngle = f2vt(0.0f);
 	
 	fViewUpDownAmplitude = f2vt(50.0f);
@@ -380,6 +380,9 @@ bool CShell::RenderScene()
  * Function Name  : ComputeViewMatrix
  * Description    : Calculate the view matrix turning around the balloon
  *******************************************************************************/
+
+float viewAngleStep = 0.003f;
+
 void ComputeViewMatrix()
 {
 	VECTOR3 vFrom;
@@ -398,7 +401,8 @@ void ComputeViewMatrix()
 	vFrom.x = VERTTYPEMUL(distance, COS(fViewAngle));
 	vFrom.y = updown;
 	vFrom.z = VERTTYPEMUL(distance, SIN(fViewAngle));
-	fViewAngle += f2vt(0.003f);
+	fViewAngle += f2vt(viewAngleStep);
+    if (ABS(fViewAngle-PIOVERTWO)>1) viewAngleStep = -viewAngleStep;
 	
 	/* Compute and set the matrix */
 	MatrixLookAtRH(g_mView, vFrom, vTo, vUp);
