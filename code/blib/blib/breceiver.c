@@ -358,10 +358,8 @@ b_receiver_io_func (GIOChannel   *io,
       {
 	gint size;
 
-	fake = b_packet_new (18, 8, 1, 1, &size);
-
+	fake = b_packet_new (18, 8, 1, 1, MAGIC_MCU_FRAME, &size);
 	memcpy (fake->data, (guchar *) new + sizeof (BPacket), size);
-
 	packet = fake;
       }
       break;

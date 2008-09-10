@@ -183,7 +183,7 @@ b_sender_configure (BSender *sender,
     g_free (sender->packet);
 
   sender->packet = b_packet_new (width, height, channels, maxval,
-                                 &sender->size);
+                                 MAGIC_MCU_FRAME, &sender->size);
 
   b_packet_hton (sender->packet);
 

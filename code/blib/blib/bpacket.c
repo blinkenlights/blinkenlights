@@ -48,6 +48,7 @@ b_packet_new (gint  width,
               gint  height,
               gint  channels,
               gint  maxval,
+	      guint magic,
               gint *data_size)
 {
   BPacket *packet;
@@ -62,7 +63,7 @@ b_packet_new (gint  width,
 
   packet = (BPacket *) g_new0 (guchar, sizeof (BPacket) + size);
 
-  packet->header.mcu_frame_h.magic    = MAGIC_MCU_FRAME;
+  packet->header.mcu_frame_h.magic    = magic;
   packet->header.mcu_frame_h.width    = width;
   packet->header.mcu_frame_h.height   = height;
   packet->header.mcu_frame_h.channels = channels;
@@ -92,10 +93,10 @@ b_packet_size (BPacket *packet)
         return (sizeof (BPacket) +
                 header->width * header->height * header->channels);
       }
-		case MAGIC_MCU_MULTIFRAME:
-			{
-				return *(magic-1);
-			}
+    case MAGIC_MCU_MULTIFRAME:
+      {
+        return *(magic-1);
+      }
     default:
       return (sizeof (BPacket));
     }
@@ -136,15 +137,15 @@ b_packet_hton (BPacket *packet)
       }
       break;
 
-		case MAGIC_MCU_MULTIFRAME:
-			{
-				mcu_multiframe_header_t *header = &packet->header.mcu_multiframe_h;
-
-				header->timestamp = GINT64_TO_BE(header->timestamp);
-			}
+    case MAGIC_MCU_MULTIFRAME:
+      {
+        mcu_multiframe_header_t *header = &packet->header.mcu_multiframe_h;
+        header->timestamp = GINT64_TO_BE(header->timestamp);
+      }
       break;
     }
-		*magic = g_htonl (*magic);
+
+  *magic = g_htonl (*magic);
 }
 
 /**
@@ -181,12 +182,12 @@ b_packet_ntoh (BPacket *packet)
       }
       break;
 
-		case MAGIC_MCU_MULTIFRAME:
-			{
-				mcu_multiframe_header_t *header = &packet->header.mcu_multiframe_h;
-
-				header->timestamp = GINT64_FROM_BE(header->timestamp);
-			}
+    case MAGIC_MCU_MULTIFRAME:
+      {
+        mcu_multiframe_header_t *header = &packet->header.mcu_multiframe_h;
+        header->timestamp = GINT64_FROM_BE(header->timestamp);
+      }
       break;
     }
 }
+
