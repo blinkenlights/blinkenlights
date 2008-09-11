@@ -44,6 +44,6 @@ public class BLTClient {
 
 	@Override
 	public String toString() {
-		return address.toString()+":"+sourcePort;
+		return address.toString()+":"+sourcePort+ "(destport "+destPort+")";
 	}
 }

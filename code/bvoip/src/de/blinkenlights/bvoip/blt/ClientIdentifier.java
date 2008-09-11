@@ -19,7 +19,7 @@ public class ClientIdentifier {
 	
 	@Override
 	public boolean equals(Object o) {
-		if (o != null && o instanceof ClientIdentifier) {
+		if (o instanceof ClientIdentifier) {
 			ClientIdentifier ci = (ClientIdentifier) o;
 			if (ci.address.equals(address) && ci.port == port) {
 				return true;

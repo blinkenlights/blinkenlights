@@ -1,6 +1,7 @@
 package de.blinkenlights.bvoip.blt;
 
-import java.util.Collection;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
@@ -34,8 +35,8 @@ public class BLTCommand {
 		this.command = command;
 	}
 	
-	public BLTCommand(int channelNum, CommandType command, List<String> args) {
-		this.args = new LinkedList<String>(args); // defensive copy!
+	public BLTCommand(int channelNum, CommandType command, String ... args) {
+		this.args = new ArrayList<String>(Arrays.asList(args));
 		this.channelNum = channelNum;
 		this.command = command;
 	}
@@ -103,6 +104,7 @@ public class BLTCommand {
 		else {
 			logger.warning("unknown command received: " + command);
 		}	
+		logger.finest("returning "+retval.command+" Command with arguments: "+retval.args);
 		return retval;
 	}
 
@@ -119,6 +121,7 @@ public class BLTCommand {
 	}
 
 	public byte[] getNetworkBytes() {
+		int channelNum = this.channelNum+1;
 		String output = "";
 		if (command == CommandType.ONHOOK) {
 			output = channelNum+":"+"onhook\n";
