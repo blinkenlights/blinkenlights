@@ -50,7 +50,7 @@ public class BLTCommand {
 			throw new IllegalArgumentException("not enough parts in message ("+data+")");
 		}
 		try {
-			channel = Integer.parseInt(parts[0]);
+			channel = Integer.parseInt(parts[0]) - 1;
 		} catch (NumberFormatException e) { 
 			throw new IllegalArgumentException("first part of message must be a number in message ("+data+")");			
 		}
@@ -124,28 +124,28 @@ public class BLTCommand {
 		int channelNum = this.channelNum+1;
 		String output = "";
 		if (command == CommandType.ONHOOK) {
-			output = channelNum+":"+"onhook\n";
+			output = channelNum+":"+"onhook";
 		}
 		else if (command == CommandType.SETUP) {
 			if (args.size() != 2) {
 				throw new IllegalArgumentException("setup requires 2 arguments, you provided "+args.size());
 			}
-			output = channelNum+":"+"setup:"+args.get(0)+":"+args.get(1)+"\n";
+			output = channelNum+":"+"setup:"+args.get(0)+":"+args.get(1);
 		}
 		else if (command == CommandType.CONNECTED) {
-			output = channelNum+":"+"connected\n";
+			output = channelNum+":"+"connected";
 		}
 		else if (command == CommandType.DTMF) {
 			if (args.size() != 1) {
 				throw new IllegalArgumentException("dtmf requires 1 argument, you provided "+args.size());
 			}
-			output = channelNum+":"+"dtmf:"+args.get(0)+"\n";
+			output = channelNum+":"+"dtmf:"+args.get(0);
 		}
 		else if (command == CommandType.ERROR) {
 			if (args.size() != 1) {
 				throw new IllegalArgumentException("error requires 1 argument, you provided "+args.size());
 			}
-			output = channelNum+":"+"error:"+args.get(0)+"\n";
+			output = channelNum+":"+"error:"+args.get(0);
 		}
 		return output.getBytes();
 	}

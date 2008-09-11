@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Map;
 import java.util.TreeMap;
+import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -32,18 +33,27 @@ public class AGISession {
 	
 	private final PrintWriter out;
 	private final BufferedReader in; 
-	private String dnid = "";
-	private String callerId ="";
+
+	private final Map<String, String> headers;
 	
+	/**
+	 * When other threads want to do telephony things, they will simply
+	 * add a command to this queue, and the thread responsible for this
+	 * AGI session will actually consume the command some time later. This
+	 * ensures any CallEndedException will be thrown on the correct thread. 
+	 */
+	private final ConcurrentLinkedQueue<String> agiCommandQueue = new ConcurrentLinkedQueue<String>();
 	
-	AGISession(BufferedReader in, PrintWriter out) {
+	/**
+	 * This is the list of digits we've detected from the phone call and
+	 * have not been consumed by a client yet.
+	 */
+	private final ConcurrentLinkedQueue<Character> digitQueue = new ConcurrentLinkedQueue<Character>();
+	
+	AGISession(BufferedReader in, PrintWriter out) throws IOException {
 		this.in = in;
 		this.out = out;
-	}
-	
-	public void handleCall() throws IOException, CallEndedException {
-		logger.entering("AGISession", "handleCall");
-		Map<String, String> headers = new TreeMap<String, String>();
+		headers = new TreeMap<String, String>();
 		Pattern agiHeader = Pattern.compile("^([^:]*): (.*)$");
 		String line;
 		while((line = in.readLine()).length() > 0) {
@@ -54,33 +64,36 @@ public class AGISession {
 				logger.severe("Unexpected AGI header format from asterisk: \""+line+"\"");
 			}
 		}
-		if (headers.containsKey(AGI_CALLERID)) {
-			callerId = headers.get(AGI_CALLERID);
-		}
-		
-		if (headers.containsKey(AGI_DNID)) {
-			dnid = headers.get(AGI_DNID);
-		}
 
 		logger.fine("AGI Headers: " + headers);
-		
-		serverCommand("ANSWER");
+	}
+	
+	public void handleCall() throws IOException, CallEndedException {
+		logger.entering("AGISession", "handleCall");
 		
 		StringBuilder digitLog = new StringBuilder();
 		for (;;) {
+			String command;
+			if ( (command = agiCommandQueue.poll()) != null) {
+				serverCommand(command); // TODO capture the return value into a Future
+			}
 			String response = serverCommand("WAIT FOR DIGIT 1000");
-			logger.fine("Digit: " + response);
-			digitLog.append((char) Integer.parseInt(response));
-			logger.fine("All digits this call: " + digitLog);
+			char digit = (char) Integer.parseInt(response);
+			if (digit > 0) {
+				logger.fine("Digit: " + response);
+				digitLog.append(digit);
+				digitQueue.offer(digit);
+				logger.fine("All digits this call: " + digitLog);
+			}
 		}
 	}
 	
 	public String getDnid() {
-		return dnid;
+		return headers.get(AGI_DNID);
 	}
 	
 	public String getCallerId() {
-		return callerId;
+		return headers.get(AGI_CALLERID);
 	}
 	
 	private String serverCommand(String command) throws CallEndedException, IOException {
@@ -96,5 +109,22 @@ public class AGISession {
 		} else {
 			throw new UnsupportedOperationException("Unexpected server response to command " + command + ": " + response);
 		}
+	}
+
+	/**
+	 * Answers the call.
+	 */
+	public void answer() {
+		agiCommandQueue.add("ANSWER");
+	}
+	
+	/**
+	 * Returns the next unconsumed digit that was received from Asterisk.
+	 * If there are no digits in the queueue, returnrns nulull.
+	 * 
+	 * @return One of the unicode characters that can be transmitted using DTMF.
+	 */
+	public Character getDigit() {
+		return digitQueue.poll();
 	}
 }

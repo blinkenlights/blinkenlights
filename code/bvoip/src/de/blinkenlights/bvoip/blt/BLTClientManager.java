@@ -6,17 +6,15 @@ import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.SocketTimeoutException;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 
 import de.blinkenlights.bvoip.Channel;
 import de.blinkenlights.bvoip.ChannelList;
 import de.blinkenlights.bvoip.asterisk.AGISession;
+import de.blinkenlights.bvoip.blt.BLTCommand.CommandType;
 
 /**
  * A Blinkenlights Telephony protocol client.
@@ -63,11 +61,18 @@ public class BLTClientManager implements Runnable  {
 					logger.fine("got packet from: "+p.getAddress()+": "+new String(p.getData()));
 					ClientIdentifier ci = new ClientIdentifier(p.getAddress(),p.getPort());
 					BLTCommand bltc = BLTCommand.parsePacket(new String(p.getData()));
+
 					if (bltc.getCommand() == BLTCommand.CommandType.REGISTER) {
 						handleRegister(p, ci, bltc);
-					}
-					else if (bltc.getCommand() == BLTCommand.CommandType.HEARTBEAT) {
-						handleHeartBeat(ci);
+					} else if (activeClients.containsKey(ci)) {
+						BLTClient client = activeClients.get(ci);
+						if (bltc.getCommand() == BLTCommand.CommandType.HEARTBEAT) {
+							handleHeartBeat(client);
+						} else if (bltc.getCommand() == BLTCommand.CommandType.ACCEPT) {
+							handleAccept(client, bltc.getChannelNum());
+						}
+					} else {
+						logger.fine("got "+bltc.getCommand()+" command from unregistered client: "+ci);
 					}
 				} catch (SocketTimeoutException e) {
 					logger.finest("timeout");
@@ -82,7 +87,35 @@ public class BLTClientManager implements Runnable  {
 				sendChannelStatus();
 				handleTimeouts();
 			}
+			sendDigits();
 		}	
+	}
+
+	/**
+	 * Sends all the digits to the clients they are due to.
+	 */
+	private void sendDigits() {
+		for (Channel channel : channelList.getChannels()) {
+			if (channel.isConnected()) {
+				Character digit = channel.getAgiSession().getDigit();
+				if (digit != null) {
+					BLTCommand digitCommand = new BLTCommand(channel.getChannelNum(), CommandType.DTMF, String.valueOf(digit));
+					sendToClient(channel.getClient(), digitCommand);
+				}
+			}
+		}
+	}
+
+	private void handleAccept(BLTClient client, int channelNum) {
+		Channel channel = channelList.getChannels().get(channelNum);
+		if (channel.getClient() != null) {
+			logger.fine("Rejecting ACCEPT command because channel is already accepted");
+			BLTCommand command = new BLTCommand(channelNum, CommandType.ERROR, "not your call");
+			sendToClient(client, command);
+		} else {
+			channel.setClient(client);
+			channel.getAgiSession().answer();
+		}
 	}
 
 	private void handleTimeouts() {
@@ -96,15 +129,8 @@ public class BLTClientManager implements Runnable  {
 		
 	}
 
-	private void handleHeartBeat(ClientIdentifier ci) {
-		if (activeClients.containsKey(ci)) {
-			BLTClient client = activeClients.get(ci);
-			if (client != null) {
-				client.heartBeat();
-			}
-		} else {
-			logger.fine("got heartbeat from unregistered client: "+ci);
-		}
+	private void handleHeartBeat(BLTClient client) {
+		client.heartBeat();
 	}
 
 	private void handleRegister(DatagramPacket p, ClientIdentifier ci,
@@ -134,14 +160,14 @@ public class BLTClientManager implements Runnable  {
 		for (Iterator<BLTClient> clientIter = activeClients.values().iterator(); clientIter.hasNext();) {
 			BLTClient client = clientIter.next();
 			StringBuffer channelScoreboard = new StringBuffer();
-			for (int i = 0; i < channelList.getNumChannels(); i++) {
+			for (Channel channel : channelList.getChannels()) {
 				BLTCommand command = null;
-				if (channelList.isChannelActive(i)) {
+				if (channel.isConnected()) {
 					channelScoreboard.append("C");
-					command = new BLTCommand(i,BLTCommand.CommandType.CONNECTED);
+					command = new BLTCommand(channel.getChannelNum(), BLTCommand.CommandType.CONNECTED);
 				} else {
 					channelScoreboard.append(".");
-					command = new BLTCommand(i,BLTCommand.CommandType.ONHOOK);
+					command = new BLTCommand(channel.getChannelNum(), BLTCommand.CommandType.ONHOOK);
 				}
 				sendToClient(client, command);
 			}
@@ -164,10 +190,12 @@ public class BLTClientManager implements Runnable  {
 	}
 	
 	private void channelConnected(Channel channel) {	
-		logger.fine("got channel connected event!");
 		// send SETUP to all connected clients
 		AGISession agiSession = channel.getAgiSession();
-		BLTCommand command = new BLTCommand(channel.getChannelNum(), BLTCommand.CommandType.SETUP, agiSession.getCallerId(), agiSession.getDnid());
+		String callerId = agiSession.getCallerId();
+		String dnid = agiSession.getDnid();
+		logger.fine("got channel connected event! callerID="+callerId+" dnid="+dnid);
+		BLTCommand command = new BLTCommand(channel.getChannelNum(), BLTCommand.CommandType.SETUP, callerId, dnid);
 		
 		for (Iterator<BLTClient> clientIter = activeClients.values().iterator(); clientIter.hasNext();) {
 			BLTClient client = clientIter.next();

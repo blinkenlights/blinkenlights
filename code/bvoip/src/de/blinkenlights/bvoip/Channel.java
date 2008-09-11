@@ -4,7 +4,7 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
 import de.blinkenlights.bvoip.asterisk.AGISession;
-import de.blinkenlights.bvoip.blt.BLTClientManager;
+import de.blinkenlights.bvoip.blt.BLTClient;
 
 /**
  * A channel in the system. Once the channel has closed, it will be dead and
@@ -14,7 +14,7 @@ public class Channel {
 
 	private final int channelNum;
 	private AGISession agiSession;
-	private BLTClientManager client;
+	private BLTClient client;
 	private final ChannelList parentList;
 	private boolean closed = false;
 	
@@ -25,32 +25,34 @@ public class Channel {
 		this.channelNum = channelNum;
 	}
 
-	public BLTClientManager getClient() {
+	public synchronized BLTClient getClient() {
 		return client;
 	}
 
-	public void setClient(BLTClientManager client) {
+	public synchronized void setClient(BLTClient client) {
+		BLTClient oldClient = this.client;
 		this.client = client;
+		pcs.firePropertyChange("client", oldClient, client);
 	}
 
 	public int getChannelNum() {
 		return channelNum;
 	}
 
-	public void setAgiSession(AGISession agiSession) {
+	public synchronized void setAgiSession(AGISession agiSession) {
 		AGISession oldSession = this.agiSession;
 		this.agiSession = agiSession;
 		pcs.firePropertyChange("agiSession", oldSession, agiSession);
 	}
 	
-	public AGISession getAgiSession() {
+	public synchronized AGISession getAgiSession() {
 		return agiSession;
 	}
 
 	public void close() {
-		closed = true;
+		closed = true; // TODO: fire event
 		setAgiSession(null);
-		parentList.channelClosing(this); // TODO: if setting it to closed fired an event, we wouldn't need this at all.
+		setClient(null);
 	}
 	
 	public boolean isClosed() {
@@ -69,8 +71,15 @@ public class Channel {
 		pcs.removePropertyChangeListener(listener);
 	}
 
-	public boolean isAvailable() {
+	public synchronized boolean isAvailable() {
 		return agiSession == null;
+	}
+
+	/**
+	 * Returns true if this channel has both an AGI session and a BL Client.
+	 */
+	public synchronized boolean isConnected() {
+		return agiSession != null && client != null;
 	}
 	
 	
