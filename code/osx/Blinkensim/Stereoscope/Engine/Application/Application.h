@@ -38,6 +38,8 @@ public:
 	// It is main application function in which you have to do your own rendering.  Will be
 	// called repeatedly until the application exits.
 	bool RenderScene();
+	
+	void UpdateWindows(unsigned char *inDisplayState);
 };
 
 

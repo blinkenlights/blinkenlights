@@ -72,7 +72,7 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
 @synthesize textValue, editedObject, editedFieldKey, dateEditing, dateValue, textField, dateFormatter, titleString;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
+    if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
         // Create a date formatter to convert the date to a string format.
         dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setDateStyle:NSDateFormatterMediumStyle];

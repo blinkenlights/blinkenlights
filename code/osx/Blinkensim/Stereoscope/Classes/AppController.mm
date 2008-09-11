@@ -16,6 +16,10 @@
 
 static CShell *shell = NULL;
 
+@interface AppController ()
+- (void)settingsChanged;
+@end
+
 @implementation AppController
 
 @synthesize hostToResolve = _hostToResolve;
@@ -45,6 +49,13 @@ static CShell *shell = NULL;
 		printf("ReleaseView error\n");	
 }
 
+- (void)resetTimeCompensation
+{
+	NSLog(@"%s",__FUNCTION__);
+	_maxTimeDifference = -999999999999999.0;
+	_timeSamplesTaken = 0;
+}
+
 - (void)startRendering
 {
 	if (!_updateTimer) {
@@ -61,6 +72,18 @@ static CShell *shell = NULL;
 - (void)applicationDidFinishLaunching:(UIApplication*)inApplication
 {
 	NSLog(@"%s",__FUNCTION__);
+	_frameQueue = [NSMutableArray new];
+
+	int maxcount = 23*54;
+	int value = 0;
+	for (int i=0;i<maxcount;i++)
+	{
+		*(((char *)displayState)+i)=value;
+		value = (i / 54) % 16;
+	}
+	
+	[self resetTimeCompensation];
+
 	CGRect	rect = [[UIScreen mainScreen] bounds];
 	inApplication.idleTimerDisabled = YES; // don't sleep when blinkenlights is on - we want to look at it!
 		
@@ -80,7 +103,7 @@ static CShell *shell = NULL;
 	
 	if(!shell->InitApplication())
 		printf("InitApplication error\n");
-
+	shell->UpdateWindows((unsigned char *)displayState);
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(settingsChanged) name:@"SettingChange" object:nil];
 
 }
@@ -157,7 +180,7 @@ static CShell *shell = NULL;
 
 - (void)dealloc
 {
-	[self stopAnimation];
+	[self stopRendering];
 	
 	if(!shell->QuitApplication())
 		printf("QuitApplication error\n");
@@ -216,6 +239,124 @@ static CShell *shell = NULL;
  	NSLog(@"%s %@ %@",__FUNCTION__,inHost, inError);
 }
 
+- (void)consumeFrame
+{
+	NSArray *frames = [_frameQueue lastObject];
+	for (BlinkenFrame *frame in frames)
+	{
+		CGSize frameSize = frame.frameSize;
+		NSData *frameData = frame.frameData;
+		BOOL isNibbles = frame.bitsPerPixel != 8;
+		unsigned char *bytes = (unsigned char *)frameData.bytes;
+		unsigned char *bytesEnd = bytes + frameData.length;
+		NSUInteger bytesPerRow = (NSUInteger)frameSize.width;
+		unsigned char maxValue = frame.maxValue;
+		if (isNibbles) bytesPerRow = (bytesPerRow + 1) / 2;
+
+		unsigned char screenID = frame.screenID;
+
+		if (screenID == 0)
+		{
+			if ((int)frameSize.width == 96 && (int)frameSize.height == 32)
+			{
+				int rowIndex = 0;
+				for (;bytes < bytesEnd;bytes+=bytesPerRow,rowIndex++)
+				{
+					if (rowIndex >= 5)
+					{
+						if (isNibbles)
+						{
+							int offset = 8;
+							for (offset = 8; offset < 8+11; offset++)
+							{
+								displayState[rowIndex - 5][(offset-8)*2]   = (((int)*(bytes + offset)) >>  4) * 15 / maxValue;
+								displayState[rowIndex - 5][(offset-8)*2+1] = (((int)*(bytes + offset)) & 0xf) * 15 / maxValue;
+							}
+							for (offset = 25; offset < 25+15; offset++)
+							{
+								displayState[rowIndex - 5][24+(offset-25)*2]   = (((int)*(bytes + offset)) >>  4) * 15 / maxValue;
+								displayState[rowIndex - 5][24+(offset-25)*2+1] = (((int)*(bytes + offset)) & 0xf) * 15 / maxValue;
+							}
+						}
+						else
+						{
+							int offset = 16;
+							for (offset = 16; offset < 16+22; offset++)
+							{
+								displayState[rowIndex - 5][offset - 16] = ((int)*(bytes + offset)) * 15 / maxValue;
+							}
+							for (offset = 50; offset < 50+30; offset++)
+							{
+								displayState[rowIndex - 5][offset - 50 + 24] = ((int)*(bytes + offset)) * 15 / maxValue;
+							}
+						}
+					}
+					if (rowIndex >= 31 - 4) break;
+				}
+			}
+		} 
+		else if (screenID == 5)
+		{
+			// this is the left tower probably
+			if ((int)frameSize.width == 22 && (int)frameSize.height == 17)
+			{
+				int rowIndex = 0;
+				for (;bytes < bytesEnd;bytes+=bytesPerRow,rowIndex++)
+				{
+					if (isNibbles)
+					{
+						int x = 0;
+						for (x = 0; x < 11; x++)
+						{
+							displayState[rowIndex + 6][x*2]   = (((int)*(bytes + x)) >>  4) * 15 / maxValue;
+							displayState[rowIndex + 6][x*2+1] = (((int)*(bytes + x)) & 0xf) * 15 / maxValue;
+						}
+					}
+					else
+					{
+						int x = 0;
+						for (x = 0; x < 22; x++)
+						{
+							displayState[rowIndex + 6][x] = ((int)*(bytes + x)) * 15 / maxValue;
+						}
+					}
+				}
+			}
+		}
+		else if (screenID == 6)
+		{
+			// this is the right tower probably
+			if ((int)frameSize.width == 30 && (int)frameSize.height == 23)
+			{
+				int rowIndex = 0;
+				for (;bytes < bytesEnd;bytes+=bytesPerRow,rowIndex++)
+				{
+					if (isNibbles)
+					{
+						int x = 0;
+						for (x = 0; x < 15; x++)
+						{
+							displayState[rowIndex][24+x*2]   = (((int)*(bytes + x)) >>  4) * 15 / maxValue;
+							displayState[rowIndex][24+x*2+1] = (((int)*(bytes + x)) & 0xf) * 15 / maxValue;
+						}
+					}
+					else
+					{
+						int x = 0;
+						for (x = 0; x < 30; x++)
+						{
+							displayState[rowIndex][24+x] = ((int)*(bytes + x)) * 15 / maxValue;
+						}
+					}
+				}
+			}
+		}
+	}
+	[_frameQueue removeLastObject];
+	shell->UpdateWindows((unsigned char *)displayState);
+}
+
+
 - (void)blinkenListener:(BlinkenListener *)inListener receivedFrames:(NSArray *)inFrames atTimestamp:(uint64_t)inTimestamp
 {
 	if (_loadingLabel.alpha > 0) {
@@ -225,7 +366,38 @@ static CShell *shell = NULL;
 		[UIView commitAnimations];
 		[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 	}
-	//[glView blinkenListener:inListener receivedFrames:inFrames atTimestamp:inTimestamp];
+
+
+	// handle the frame
+
+	[_frameQueue insertObject:inFrames atIndex:0];
+
+	if (inTimestamp != 0) 
+	{
+		NSTimeInterval now = [[NSDate date] timeIntervalSince1970] ;
+		NSTimeInterval timeDifference = now - ((NSTimeInterval)inTimestamp / 1000.0);
+		NSTimeInterval compensationTime = (_maxTimeDifference - timeDifference);
+		if (_timeSamplesTaken > 5 && ABS(timeDifference - _maxTimeDifference) > 3.0) 
+		{
+			[self resetTimeCompensation];
+		}
+		_maxTimeDifference = MAX(timeDifference,_maxTimeDifference);
+		if (_timeSamplesTaken <= 5 && compensationTime > 0)
+		{
+			_timeSamplesTaken++;
+			[self consumeFrame];
+		}
+		else
+		{
+			// compensate
+			[self performSelector:@selector(consumeFrame) withObject:nil afterDelay:compensationTime];
+			_maxTimeDifference -= 0.01; // shrink the time difference again to catch up if we only had one hickup
+		}
+		// NSLog(@"%s ts:0x%016qx %@ now: %@ 0x%016qx",__FUNCTION__,inTimestamp,[NSDate dateWithTimeIntervalSince1970:inTimestamp / (double)1000.0],now, (uint64_t)([now timeIntervalSince1970] * 1000));
+		//NSLog(@"time difference: %0.5f s - compensation %0.5f s",timeDifference,compensationTime);
+	} else {
+		[self consumeFrame];
+	}
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error

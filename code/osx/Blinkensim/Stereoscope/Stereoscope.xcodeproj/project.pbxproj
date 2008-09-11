@@ -57,6 +57,7 @@
 		F2607F620E7810D100B0A7BB /* SettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2607F560E7810D100B0A7BB /* SettingsController.m */; };
 		F2607F630E7810D100B0A7BB /* AppController.mm in Sources */ = {isa = PBXBuildFile; fileRef = F2607F590E7810D100B0A7BB /* AppController.mm */; };
 		F2607FC90E7818EE00B0A7BB /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2607FC80E7818EE00B0A7BB /* MainWindow.xib */; };
+		F26080BE0E790B9C00B0A7BB /* Windows256.png in Resources */ = {isa = PBXBuildFile; fileRef = F26080BD0E790B9C00B0A7BB /* Windows256.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -94,7 +95,7 @@
 		791F46720E174E2600E927FE /* Vertex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vertex.h; sourceTree = "<group>"; };
 		791F46730E174E2600E927FE /* VertexLookup.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VertexLookup.cpp; sourceTree = "<group>"; };
 		791F46740E174E2600E927FE /* VertexLookup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VertexLookup.h; sourceTree = "<group>"; };
-		791F46820E174E4200E927FE /* Application.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Application.h; sourceTree = "<group>"; };
+		791F46820E174E4200E927FE /* Application.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Application.h; path = ../Engine/Application/Application.h; sourceTree = "<group>"; };
 		791F46830E174E4200E927FE /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		791F46850E174E4200E927FE /* FixedPoint.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FixedPoint.cpp; sourceTree = "<group>"; };
 		791F46860E174E4200E927FE /* FixedPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FixedPoint.h; sourceTree = "<group>"; };
@@ -152,6 +153,7 @@
 		F2607F580E7810D100B0A7BB /* EditingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditingViewController.h; sourceTree = "<group>"; };
 		F2607F590E7810D100B0A7BB /* AppController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AppController.mm; sourceTree = "<group>"; };
 		F2607FC80E7818EE00B0A7BB /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
+		F26080BD0E790B9C00B0A7BB /* Windows256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Windows256.png; path = Media/Windows256.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -248,6 +250,7 @@
 		31DF06C00E767C220092C379 /* Textures */ = {
 			isa = PBXGroup;
 			children = (
+				F26080BD0E790B9C00B0A7BB /* Windows256.png */,
 				31685F310E75C5450061B921 /* CityHall_1024.pvr */,
 				31685F390E75C6900061B921 /* Pavillon_1024.pvr */,
 				31685F400E75C7AC0061B921 /* Window_On.pvr */,
@@ -275,6 +278,7 @@
 			children = (
 				F2607F4C0E7810D100B0A7BB /* AppController.h */,
 				F2607F590E7810D100B0A7BB /* AppController.mm */,
+				791F46820E174E4200E927FE /* Application.h */,
 				79235D4F0DAD2BEA00F918F8 /* Application.mm */,
 				F2607F450E7810D100B0A7BB /* BlinkenListener.h */,
 				F2607F440E7810D100B0A7BB /* BlinkenListener.m */,
@@ -359,7 +363,6 @@
 		791F46810E174E4200E927FE /* Application */ = {
 			isa = PBXGroup;
 			children = (
-				791F46820E174E4200E927FE /* Application.h */,
 				791F46830E174E4200E927FE /* main.m */,
 			);
 			name = Application;
@@ -479,6 +482,7 @@
 				F2607F3B0E78103B00B0A7BB /* Settings.xib in Resources */,
 				F2607F3C0E78103B00B0A7BB /* EditingView.xib in Resources */,
 				F2607FC90E7818EE00B0A7BB /* MainWindow.xib in Resources */,
+				F26080BE0E790B9C00B0A7BB /* Windows256.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

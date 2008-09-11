@@ -18,6 +18,11 @@
 	NSMutableData *_responseData;
 	NSMutableDictionary *_blinkenStreamsDict;
 	BlinkenListener    *_blinkenListener;
+	NSMutableArray *_frameQueue;
+	NSTimeInterval _maxTimeDifference;
+	int            _timeSamplesTaken;
+	NSTimeInterval _lastDrawTime;
+	char displayState[23][54];
 }
 
 @property (nonatomic, retain) NSURLConnection *proxyListConnection;

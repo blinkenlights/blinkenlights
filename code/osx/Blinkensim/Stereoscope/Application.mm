@@ -19,6 +19,7 @@ subject to the following restrictions:
 
 #import <OpenGLES/EAGL.h>
 #import <OpenGLES/ES1/gl.h>
+#import "Texture2D.h"
 
 #include "App.h"
 #include "Mathematics.h"
@@ -94,9 +95,119 @@ void DrawMesh();
 void CreateSkybox(float scale, bool adjustUV, int textureSize, VERTTYPE** Vertices, VERTTYPE** UVs);
 void DestroySkybox(VERTTYPE* Vertices, VERTTYPE* UVs);
 
+static GLfloat windowtextureCoords[16][12];
+
+// mesh 4 -> leftTop, mesh 5-> leftBottom, mesh6 -> rightTop, mesh7 -> rightBottom
+GLfloat *windowMeshTextureCoords[] = {NULL,NULL,NULL,NULL};
+GLfloat windowMeshTextureValues[16][2][2];
+
+void CShell::UpdateWindows(unsigned char *inDisplayState)
+{
+
+	// bottom left tower
+	GLfloat *originalTextureCoords = (GLfloat *)g_sScene.pMesh[4].psUVW[0].pData;
+	GLfloat *targetTextureCoords = windowMeshTextureCoords[1];
+	unsigned short *faceData =  (unsigned short *)g_sScene.pMesh[4].sFaces.pData;
+	for (int y=22;y>22-7;y--) {
+		unsigned char *rowStart = inDisplayState + y * 54;
+		for (int x=0;x<22;x++) {
+			unsigned char pixelValue = *(rowStart + x);
+			int vcount = 6; // change the next 6 vertixec that form 2 triangles = one window
+			// lookup the vertices and change the texcoords
+			while (vcount--)
+			{
+				unsigned short vertexIndex = (*faceData)*2; // two texture coords per vertex
+				int isUpperRight = (int)((originalTextureCoords[vertexIndex]) + 0.2);
+				targetTextureCoords[vertexIndex] = windowMeshTextureValues[pixelValue][0][isUpperRight];
+				
+				isUpperRight = (int)((originalTextureCoords[vertexIndex+1]) + 0.2);
+				targetTextureCoords[vertexIndex+1] = windowMeshTextureValues[pixelValue][1][isUpperRight];
+
+				faceData++;
+			}
+		}
+	}
+
+	// top left part
+	originalTextureCoords = (GLfloat *)g_sScene.pMesh[3].psUVW[0].pData;
+	targetTextureCoords = windowMeshTextureCoords[0];
+	faceData =  (unsigned short *)g_sScene.pMesh[3].sFaces.pData;
+	for (int y=22-9;y>5;y--) {
+		unsigned char *rowStart = inDisplayState + y * 54;
+		for (int x=0;x<22;x++) {
+			unsigned char pixelValue = *(rowStart + x);
+			int vcount = 6; // change the next 6 vertices that form 2 triangles = one window
+			// lookup the vertices and change the texcoords
+			while (vcount--)
+			{
+				unsigned short vertexIndex = (*faceData)*2; // two texture coords per vertex
+				int isUpperRight = (int)((originalTextureCoords[vertexIndex]) + 0.2);
+				targetTextureCoords[vertexIndex] = windowMeshTextureValues[pixelValue][0][isUpperRight];
+				
+				isUpperRight = (int)((originalTextureCoords[vertexIndex+1]) + 0.2);
+				targetTextureCoords[vertexIndex+1] = windowMeshTextureValues[pixelValue][1][isUpperRight];
+
+				faceData++;
+			}
+		}
+	}
+
+
+	// upper right tower
+	originalTextureCoords = (GLfloat *)g_sScene.pMesh[5].psUVW[0].pData;
+	targetTextureCoords = windowMeshTextureCoords[2];
+	faceData = (unsigned short *)g_sScene.pMesh[5].sFaces.pData;
+	
+	for (int y=11;y>=0;y--) {
+		unsigned char *rowStart = inDisplayState + y * 54 + 54-30;
+		for (int x=0;x<30;x++) {
+			unsigned char pixelValue = *(rowStart + x);
+			int vcount = 6; // change the next 6 vertixec that form 2 triangles = one window
+			// lookup the vertices and change the texcoords
+			while (vcount--)
+			{
+				unsigned short vertexIndex = (*faceData)*2; // two texture coords per vertex
+				int isUpperRight = (int)((originalTextureCoords[vertexIndex]) + 0.2);
+				targetTextureCoords[vertexIndex] = windowMeshTextureValues[pixelValue][0][isUpperRight];
+				
+				isUpperRight = (int)((originalTextureCoords[vertexIndex+1]) + 0.2);
+				targetTextureCoords[vertexIndex+1] = windowMeshTextureValues[pixelValue][1][isUpperRight];
+
+				faceData++;
+			}
+		}
+	}
+
+	// lower right tower
+	originalTextureCoords = (GLfloat *)g_sScene.pMesh[6].psUVW[0].pData;
+	targetTextureCoords = windowMeshTextureCoords[3];
+	faceData = (unsigned short *)g_sScene.pMesh[6].sFaces.pData;
+	
+	for (int y=22;y>22-9;y--) {
+		unsigned char *rowStart = inDisplayState + y * 54 + 54-30;
+		for (int x=0;x<30;x++) {
+			unsigned char pixelValue = *(rowStart + x);
+			int vcount = 6; // change the next 6 vertixec that form 2 triangles = one window
+			// lookup the vertices and change the texcoords
+			while (vcount--)
+			{
+				unsigned short vertexIndex = (*faceData)*2; // two texture coords per vertex
+				int isUpperRight = (int)((originalTextureCoords[vertexIndex]) + 0.2);
+				targetTextureCoords[vertexIndex] = windowMeshTextureValues[pixelValue][0][isUpperRight];
+				
+				isUpperRight = (int)((originalTextureCoords[vertexIndex+1]) + 0.2);
+				targetTextureCoords[vertexIndex+1] = windowMeshTextureValues[pixelValue][1][isUpperRight];
+
+				faceData++;
+			}
+		}
+	}
+
+}
 
 bool CShell::InitApplication()
 {
+
 
 	/* Init values to defaults */
 	fViewAngle = PIOVERTWO;
@@ -118,6 +229,45 @@ bool CShell::InitApplication()
 	
 	g_sScene.ReadFromMemory(c_STEREOSCOPE_H);
 	
+
+	// init textureCoordinates
+	for (int i = 0; i<16;i++) {
+		int row = i / 4;
+		int column = i % 4;
+		CGPoint topRight   = CGPointMake(0.0 + (column+1) * 0.25, 0.0 + (row+1) * 0.25);
+		CGPoint bottomLeft = CGPointMake(0.0 +  column    * 0.25, 0.0 +  row    * 0.25);
+	
+		NSLog(@"%s %d:%@ %@",__FUNCTION__,i,NSStringFromCGPoint(bottomLeft), NSStringFromCGPoint(topRight));
+		windowMeshTextureValues[i][0][0] = (GLfloat)bottomLeft.x;
+		windowMeshTextureValues[i][1][0] = (GLfloat)bottomLeft.y;
+		windowMeshTextureValues[i][0][1] = (GLfloat)topRight.x;
+		windowMeshTextureValues[i][1][1] = (GLfloat)topRight.y;
+		
+		
+		windowtextureCoords[i][0] = topRight.x;
+		windowtextureCoords[i][1] = bottomLeft.y;
+		windowtextureCoords[i][2] = topRight.x;
+		windowtextureCoords[i][3] = topRight.y;
+		windowtextureCoords[i][4] = bottomLeft.x;
+		windowtextureCoords[i][5] = topRight.y;
+		
+		windowtextureCoords[i][6] = topRight.x;
+		windowtextureCoords[i][7] = bottomLeft.y;
+		windowtextureCoords[i][8] = bottomLeft.x;
+		windowtextureCoords[i][9] = topRight.y;
+		windowtextureCoords[i][10] = bottomLeft.x;
+		windowtextureCoords[i][11] = bottomLeft.y;
+	}
+
+	// allocate space for our meshtexture coords
+	NSLog(@"%s allocating space",__FUNCTION__);
+	windowMeshTextureCoords[0] = (GLfloat *)calloc(2 * g_sScene.pMesh[3].nNumFaces * 3,sizeof(GLfloat));
+	windowMeshTextureCoords[1] = (GLfloat *)calloc(2 * g_sScene.pMesh[4].nNumFaces * 3,sizeof(GLfloat));
+	windowMeshTextureCoords[2] = (GLfloat *)calloc(2 * g_sScene.pMesh[5].nNumFaces * 3,sizeof(GLfloat));
+	windowMeshTextureCoords[3] = (GLfloat *)calloc(2 * g_sScene.pMesh[6].nNumFaces * 3,sizeof(GLfloat));
+
+
+
 	char *buffer = new char[2048];
 	
 	GetResourcePathASCII(buffer, 2048);
@@ -168,37 +318,53 @@ bool CShell::InitApplication()
 	myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_NEAREST);
 	myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
-    sprintf(filename, "%s/Window_On.pvr", buffer);
-	if(!Textures->LoadTextureFromPVR(filename, &meshTexture[3]))
-	{
-		printf("**ERROR** Failed to load texture for Background.\n");
-	}
-	myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_NEAREST);
-	myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
-    sprintf(filename, "%s/Window_On.pvr", buffer);
-	if(!Textures->LoadTextureFromPVR(filename, &meshTexture[4]))
-	{
-		printf("**ERROR** Failed to load texture for Background.\n");
-	}
-	myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_NEAREST);
-	myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
-    sprintf(filename, "%s/Window_On.pvr", buffer);
-	if(!Textures->LoadTextureFromPVR(filename, &meshTexture[5]))
-	{
-		printf("**ERROR** Failed to load texture for Background.\n");
-	}
-	myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_NEAREST);
-	myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	// setting up window textures
+	
+	meshTexture[3] = meshTexture[4] = meshTexture[5] =meshTexture[6] = [(Texture2D *)[[Texture2D alloc] initWithImagePath:@"Windows256.png"] name];
+	glBindTexture(GL_TEXTURE_2D,meshTexture[5]);
 
-    sprintf(filename, "%s/Window_On.pvr", buffer);
-	if(!Textures->LoadTextureFromPVR(filename, &meshTexture[6]))
+	// check mesh 3 tex coords
+	GLfloat *texcoords = (GLfloat *)g_sScene.pMesh[5].psUVW[0].pData;
+
+	for (int i = 0; i < 30 * 9 * 12; i+=12)
 	{
-		printf("**ERROR** Failed to load texture for Background.\n");
+//		NSLog(@"%s triangle 1: (%f,%f) (%f,%f) (%f,%f)",__PRETTY_FUNCTION__,texcoords[i],texcoords[i+1],texcoords[i+2],texcoords[i+3],texcoords[i+4],texcoords[i+5]);
+//		NSLog(@"%s triangle 2: (%f,%f) (%f,%f) (%f,%f)",__PRETTY_FUNCTION__,texcoords[i+6],texcoords[i+7],texcoords[i+8],texcoords[i+9],texcoords[i+10],texcoords[i+11]);
 	}
-	myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_NEAREST);
-	myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+//    sprintf(filename, "%s/Window_On.pvr", buffer);
+//	if(!Textures->LoadTextureFromPVR(filename, &meshTexture[3]))
+//	{
+//		printf("**ERROR** Failed to load texture for Background.\n");
+//	}
+//	myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_NEAREST);
+//	myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+//
+//    sprintf(filename, "%s/Window_On.pvr", buffer);
+//	if(!Textures->LoadTextureFromPVR(filename, &meshTexture[4]))
+//	{
+//		printf("**ERROR** Failed to load texture for Background.\n");
+//	}
+//	myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_NEAREST);
+//	myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+//    sprintf(filename, "%s/Window_On.pvr", buffer);
+//	if(!Textures->LoadTextureFromPVR(filename, &meshTexture[5]))
+//	{
+//		printf("**ERROR** Failed to load texture for Background.\n");
+//	}
+//	myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_NEAREST);
+//	myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+//    sprintf(filename, "%s/Window_On.pvr", buffer);
+//	if(!Textures->LoadTextureFromPVR(filename, &meshTexture[6]))
+//	{
+//		printf("**ERROR** Failed to load texture for Background.\n");
+//	}
+//	myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_NEAREST);
+//	myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     
 	delete [] filename;
 	delete [] buffer;
@@ -283,7 +449,7 @@ bool CShell::InitApplication()
 	myglMaterialv(GL_FRONT_AND_BACK, GL_DIFFUSE, objectMatDiff);
 	myglMaterialv(GL_FRONT_AND_BACK, GL_SPECULAR, objectMatSpec);
 	
-	
+
 	return true;
 }
 
@@ -366,7 +532,7 @@ bool CShell::RenderScene()
 	/* Draw the skybox */
 	DrawSkybox();
 	
-	/* Draw the balloon */
+	/* Draw the City Hall and stuff */
 	DrawMesh();
 	
 	// show text on the display
@@ -489,9 +655,13 @@ void DrawMesh()
 	/* Set Data Pointers */
 	SPODMesh* mesh;
 
+	// mesh 4 is in the lower left
+	// mesh 5 is the upper right
+
     int meshNo;
     for (meshNo=0;meshNo<7;meshNo++) {
         mesh = &g_sScene.pMesh[meshNo];
+        
         
         /* Bind the Texture */
         glBindTexture(GL_TEXTURE_2D, meshTexture[meshNo]);
@@ -499,8 +669,11 @@ void DrawMesh()
         // Used to display interleaved geometry
         glVertexPointer(3, VERTTYPEENUM, mesh->sVertex.nStride, mesh->pInterleaved + (long)mesh->sVertex.pData);
         glNormalPointer(VERTTYPEENUM, mesh->sNormals.nStride, mesh->pInterleaved + (long)mesh->sNormals.pData);
-        glTexCoordPointer(2, VERTTYPEENUM, mesh->psUVW[0].nStride, mesh->pInterleaved + (long)mesh->psUVW[0].pData);
-        
+        if (meshNo>=3) {
+	        glTexCoordPointer(2, VERTTYPEENUM, mesh->psUVW[0].nStride, windowMeshTextureCoords[meshNo-3]);
+        } else {
+	        glTexCoordPointer(2, VERTTYPEENUM, mesh->psUVW[0].nStride, mesh->pInterleaved + (long)mesh->psUVW[0].pData);
+		}
         
         /* Draw */
         glDrawElements(GL_TRIANGLES, mesh->nNumFaces*3, GL_UNSIGNED_SHORT, mesh->sFaces.pData);
