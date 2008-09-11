@@ -324,47 +324,6 @@ bool CShell::InitApplication()
 	
 	meshTexture[3] = meshTexture[4] = meshTexture[5] =meshTexture[6] = [(Texture2D *)[[Texture2D alloc] initWithImagePath:@"Windows256.png"] name];
 	glBindTexture(GL_TEXTURE_2D,meshTexture[5]);
-
-	// check mesh 3 tex coords
-	GLfloat *texcoords = (GLfloat *)g_sScene.pMesh[5].psUVW[0].pData;
-
-	for (int i = 0; i < 30 * 9 * 12; i+=12)
-	{
-//		NSLog(@"%s triangle 1: (%f,%f) (%f,%f) (%f,%f)",__PRETTY_FUNCTION__,texcoords[i],texcoords[i+1],texcoords[i+2],texcoords[i+3],texcoords[i+4],texcoords[i+5]);
-//		NSLog(@"%s triangle 2: (%f,%f) (%f,%f) (%f,%f)",__PRETTY_FUNCTION__,texcoords[i+6],texcoords[i+7],texcoords[i+8],texcoords[i+9],texcoords[i+10],texcoords[i+11]);
-	}
-
-//    sprintf(filename, "%s/Window_On.pvr", buffer);
-//	if(!Textures->LoadTextureFromPVR(filename, &meshTexture[3]))
-//	{
-//		printf("**ERROR** Failed to load texture for Background.\n");
-//	}
-//	myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_NEAREST);
-//	myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-//
-//    sprintf(filename, "%s/Window_On.pvr", buffer);
-//	if(!Textures->LoadTextureFromPVR(filename, &meshTexture[4]))
-//	{
-//		printf("**ERROR** Failed to load texture for Background.\n");
-//	}
-//	myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_NEAREST);
-//	myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-
-//    sprintf(filename, "%s/Window_On.pvr", buffer);
-//	if(!Textures->LoadTextureFromPVR(filename, &meshTexture[5]))
-//	{
-//		printf("**ERROR** Failed to load texture for Background.\n");
-//	}
-//	myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_NEAREST);
-//	myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-
-//    sprintf(filename, "%s/Window_On.pvr", buffer);
-//	if(!Textures->LoadTextureFromPVR(filename, &meshTexture[6]))
-//	{
-//		printf("**ERROR** Failed to load texture for Background.\n");
-//	}
-//	myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_NEAREST);
-//	myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     
 	delete [] filename;
 	delete [] buffer;
