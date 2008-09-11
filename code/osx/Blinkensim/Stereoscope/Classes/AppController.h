@@ -1,11 +1,7 @@
-//
-//  Delegate.h
-//
-//  Created by Wolfgang Engel on 3/21/08.
-//  Copyright __MyCompanyName__ 2008. All rights reserved.
-//
 #import "GraphicsDevice.h"
 #import "SettingsController.h"
+#import "TCMHost.h"
+#import "BlinkenListener.h"
 
 @interface AppController : NSObject
 {
@@ -17,8 +13,15 @@
 	IBOutlet SettingsController *_settingsController;
 	IBOutlet UINavigationController *_mainNavigationController;
 	NSTimer *_updateTimer;
+	TCMHost *_hostToResolve;
+	NSURLConnection *_proxyListConnection;
+	NSMutableData *_responseData;
+	NSMutableDictionary *_blinkenStreamsDict;
+	BlinkenListener    *_blinkenListener;
 }
 
+@property (nonatomic, retain) NSURLConnection *proxyListConnection;
+@property (nonatomic, retain) TCMHost *hostToResolve;
 @property (nonatomic, retain) UIWindow *window;
 @property (nonatomic, retain) UILabel *framerateLabel;
 @property (nonatomic, retain) UILabel *loadingLabel;
