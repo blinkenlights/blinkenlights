@@ -14,7 +14,7 @@
 
 - (id)initWithStyle:(UITableViewStyle)style {
 	NSLog(@"%s",__FUNCTION__);
-	if (self = [super initWithStyle:style]) {
+	if ((self = [super initWithStyle:style])) {
 		[self innerInit];
 	}
 	return self;
@@ -97,7 +97,9 @@
 		NSString *address = [NSString stringWithFormat:@"%@:%@",[proxy objectForKey:@"address"], [proxy objectForKey:@"port"]];
 		[[NSUserDefaults standardUserDefaults] setObject:address forKey:@"blinkenproxyAddress"];
 		[[NSNotificationCenter defaultCenter] postNotificationName:@"SettingChange" object:self];
-	    [self.navigationController popViewControllerAnimated:YES];
+//	    [self.navigationController popViewControllerAnimated:YES];
+		UIBarButtonItem *item = self.navigationController.navigationBar.topItem.leftBarButtonItem;
+		[item.target performSelector:item.action withObject:item];
 	} else {
 		// Create the editing view controller if necessary.
 		if (editingViewController == nil) {
