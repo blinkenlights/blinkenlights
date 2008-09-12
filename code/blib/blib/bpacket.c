@@ -32,6 +32,7 @@
  * @height: the number of pixels per column
  * @channels: the number of channels per pixels
  * @maxval: the maximum value
+ * @magic: the magic to use (MAGIC_MCU_FRAME or MAGIC_MCU_MULTIFRAME)
  * @data_size: returns the size of the packet data
  *
  * Allocates a new #BPacket structure and initializes it with the
@@ -44,30 +45,54 @@
  * Return value: a newly allocated #BPacket.
  **/
 BPacket *
-b_packet_new (gint  width,
-              gint  height,
-              gint  channels,
-              gint  maxval,
-	      guint magic,
-              gint *data_size)
+b_packet_new (gint   width,
+              gint   height,
+              gint   channels,
+              gint   maxval,
+	      guint  magic,
+              gsize *data_size)
 {
-  BPacket *packet;
-  gint     size;
+  BPacket *packet = NULL;
+  gint     size = 0;
 
   g_return_val_if_fail (width > 0, NULL);
   g_return_val_if_fail (height > 0, NULL);
   g_return_val_if_fail (channels > 0, NULL);
   g_return_val_if_fail (maxval > 0 && maxval <= 255, NULL);
 
-  size = width * height * channels;
+  switch (magic) {
+    case MAGIC_MCU_FRAME:
+      {
+        size = width * height * channels;
+        packet = (BPacket *) g_new0 (guchar, sizeof (BPacket) + size);
+        packet->header.mcu_frame_h.magic    = magic;
+        packet->header.mcu_frame_h.width    = width;
+        packet->header.mcu_frame_h.height   = height;
+        packet->header.mcu_frame_h.channels = channels;
+        packet->header.mcu_frame_h.maxval   = maxval;
+        break;
+      }
+    case MAGIC_MCU_MULTIFRAME:
+      {
+        gint bpp = (maxval < 255) ? 4 : 8;
 
-  packet = (BPacket *) g_new0 (guchar, sizeof (BPacket) + size);
+        size = width * height * channels;
+        if (bpp == 4)
+          size /= 2;
 
-  packet->header.mcu_frame_h.magic    = magic;
-  packet->header.mcu_frame_h.width    = width;
-  packet->header.mcu_frame_h.height   = height;
-  packet->header.mcu_frame_h.channels = channels;
-  packet->header.mcu_frame_h.maxval   = maxval;
+        size += sizeof (mcu_subframe_header_t);
+
+        /* hard-coded to one subframe */
+        packet = (BPacket *) g_new0 (guchar, sizeof (BPacket) + size * 1);
+        packet->header.mcu_multiframe_h.magic = magic;
+        packet->header.mcu_multiframe_h.subframe[0].bpp = bpp;
+        packet->header.mcu_multiframe_h.subframe[0].height = height;
+        packet->header.mcu_multiframe_h.subframe[0].width = width;
+        break;
+      }
+    default:
+      g_printerr ("Unknow magic to create a BPacket for.");
+  }
 
   if (data_size)
     *data_size = size;
@@ -141,6 +166,8 @@ b_packet_hton (BPacket *packet)
       {
         mcu_multiframe_header_t *header = &packet->header.mcu_multiframe_h;
         header->timestamp = GINT64_TO_BE(header->timestamp);
+	header->subframe[0].height = g_htons(header->subframe[0].height);
+	header->subframe[0].width  = g_htons(header->subframe[0].width);
       }
       break;
     }
@@ -186,6 +213,8 @@ b_packet_ntoh (BPacket *packet)
       {
         mcu_multiframe_header_t *header = &packet->header.mcu_multiframe_h;
         header->timestamp = GINT64_FROM_BE(header->timestamp);
+	header->subframe[0].height = g_ntohs(header->subframe[0].height);
+	header->subframe[0].width  = g_ntohs(header->subframe[0].width);
       }
       break;
     }

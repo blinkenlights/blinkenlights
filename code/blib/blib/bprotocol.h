@@ -92,25 +92,13 @@ struct mcu_frame_header
  *
  */
 
-typedef struct mcu_multiframe_header mcu_multiframe_header_t;
-
-struct mcu_multiframe_header
-{
-  guint32 magic;     /* == MAGIC_MCU_MULTIFRAME                   */
-  guint64 timestamp; /* milliseconds since epoch - e.g. gettimeofday(&tv); 
-                        timeStamp = tv->tv_sec * 1000 + tv->tv_usec / 1000.; */
-  /*
-   * followed by multiple subframe headers
-   */
-};
-
 typedef struct mcu_subframe_header mcu_subframe_header_t;
 
 struct mcu_subframe_header
 {
   unsigned char screen_id;         /* screen id                                 */
   unsigned char bpp;               /* bits per pixel, supported values: (4,8)   */
-  								   /* 4 means nibbles 8 means bytes             */
+  				   /* 4 means nibbles 8 means bytes             */
   guint16 height;                  /* number of rows                            */
   guint16 width;                   /* width in pixels of row                    */
   /*
@@ -122,9 +110,21 @@ struct mcu_subframe_header
    * the bytesize of this can be calculated using height * width in the byte case 
    *   and height * ((width + 1)/2) in case of nibbles (integer divison) 
    */
+  guchar data[0];
 };
 
+typedef struct mcu_multiframe_header mcu_multiframe_header_t;
 
+struct mcu_multiframe_header
+{
+  guint32 magic;     /* == MAGIC_MCU_MULTIFRAME                   */
+  guint64 timestamp; /* milliseconds since epoch - e.g. gettimeofday(&tv); 
+                        timeStamp = tv->tv_sec * 1000 + tv->tv_usec / 1000.; */
+  /*
+   * followed by multiple subframe headers
+   */
+  mcu_subframe_header_t subframe[0];
+};
 
 /*
  * MCU Setup packet

@@ -53,7 +53,7 @@ main (int   argc,
         }
     }
 
-  b_sender_configure (sender, 26, 20, 1, 255);
+  b_sender_configure (sender, 26, 20, 1, 255, MAGIC_MCU_FRAME);
 
   data = g_new (guchar, 20 * 26);
 

@@ -45,13 +45,14 @@ static const struct option options[] =
   { "reverse", no_argument,       NULL, 'r' },
   { "speed",   required_argument, NULL, 's' },
   { "verbose", no_argument,       NULL, 'v' },
+  { "screen",  required_argument, NULL, 'c' },
   { "help",    no_argument,       NULL, '?' },
   { "version", no_argument,       NULL, 'V' },
   { NULL,      0,                 NULL,  0  }
 };
 #endif
 
-static const gchar *option_str = "h:p:lL:rs:v?V";
+static const gchar *option_str = "h:p:lL:rs:c:v?V";
 
 
 static void
@@ -69,6 +70,8 @@ usage (const gchar *name)
   g_printerr ("   -l, --loop                    repeat the movie in an endless loop\n");
   g_printerr ("   -L, --loops <number>          repeat the movie as often as specified\n");
   g_printerr ("   -s, --speed <percentage>      adjust movie speed\n");
+  g_printerr ("   -c, --screen <id>             set the screen id to send to\n");
+  g_printerr ("                                 This implies sending MULTIFRAME packets\n");
   g_printerr ("   -v, --verbose                 be verbose\n");
   g_printerr ("   -?, --help                    output usage information\n");
   g_printerr ("   -V, --version                 output version information\n");
@@ -94,6 +97,7 @@ main (int   argc,
   gint         loops        = 1;
   gboolean     reverse      = FALSE;
   gboolean     verbose      = FALSE;
+  gint         screen       = -1;
   gint         n            = 0;
   gint         i, c;
 
@@ -160,6 +164,10 @@ main (int   argc,
 
         case 'v':
           verbose = TRUE;
+          break;
+
+        case 'c':
+          b_parse_int (optarg, &screen);
           break;
 
         case '?':
@@ -232,9 +240,19 @@ main (int   argc,
                  movie->n_frames,
                  movie->duration / 1000, (movie->duration % 1000) / 10);
 
-      b_sender_configure (sender,
-                          movie->width, movie->height,
-                          movie->channels, movie->maxval);
+      if (screen == -1)
+        {
+          b_sender_configure (sender,
+                              movie->width, movie->height,
+                              movie->channels, movie->maxval,
+                              MAGIC_MCU_FRAME);
+        } else {
+          b_sender_configure (sender,
+                              movie->width, movie->height,
+                              movie->channels, movie->maxval, 
+                              MAGIC_MCU_MULTIFRAME);
+          b_sender_set_screen_id (sender, screen);
+        }
 
       for (i = 0; loops < 0 || i < loops; i++)
         {

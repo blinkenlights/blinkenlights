@@ -64,7 +64,8 @@ main (int   argc,
   sender = b_sender_new ();
 
   b_sender_configure (sender,
-                      movie->width, movie->height, movie->channels, 255);
+                      movie->width, movie->height, movie->channels, 255,
+		      MAGIC_MCU_FRAME);
 
   for (i = 2; i < argc; i++)
     b_sender_add_recipient (sender, -1, argv[i], MCU_LISTENER_PORT, NULL);

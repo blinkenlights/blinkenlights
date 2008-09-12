@@ -325,7 +325,7 @@ main (int   argc,
 
   g_print (" added %d recipients.\n", nreceivers);
 
-  b_sender_configure (sender, WIDTH, HEIGHT, 1, 255);
+  b_sender_configure (sender, WIDTH, HEIGHT, 1, 255, MAGIC_MCU_FRAME);
 
 
   g_print ("Creating object of type '%s' ... ", argv[2]);

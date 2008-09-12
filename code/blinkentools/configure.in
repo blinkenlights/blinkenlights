@@ -1,7 +1,7 @@
 AC_INIT(src/b2b.c)
 
 PACKAGE=blinkentools
-VERSION=2.9
+VERSION=2.10
 
 AM_INIT_AUTOMAKE($PACKAGE,$VERSION)
 
@@ -47,7 +47,7 @@ fi
 
 
 # Check for blib
-PKG_CHECK_MODULES(BLIB, blib >= 1.1.7)
+PKG_CHECK_MODULES(BLIB, blib >= 1.1.8)
 BLIB_VERSION=`$PKG_CONFIG --modversion blib`
 
 # Check for blib-aa

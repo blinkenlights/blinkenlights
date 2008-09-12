@@ -44,7 +44,7 @@ BPacket * b_packet_new  (gint     width,
 			 gint     channels,
 			 gint     maxval,
 			 guint    magic,
-			 gint    *data_size);
+			 gsize   *data_size);
 gsize     b_packet_size (BPacket *packet);
 void      b_packet_hton (BPacket *packet);
 void      b_packet_ntoh (BPacket *packet);

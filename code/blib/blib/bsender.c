@@ -161,6 +161,7 @@ b_sender_new (void)
  * @height: number of pixels per column
  * @channels: number of channels per pixel
  * @maxval: the maximum value
+ * @magic: the packet type (MAGIC_MCU_FRAME or MAGIC_MCU_MULTIFRAME)
  *
  * Prepares @sender to send Blinkenlights UDP packets with the given
  * parameters.
@@ -173,7 +174,8 @@ b_sender_configure (BSender *sender,
                     gint     width,
                     gint     height,
                     gint     channels,
-                    gint     maxval)
+                    gint     maxval,
+		    guint    magic)
 {
   g_return_val_if_fail (B_IS_SENDER (sender), FALSE);
   g_return_val_if_fail (width > 0 && height > 0, FALSE);
@@ -182,13 +184,35 @@ b_sender_configure (BSender *sender,
   if (sender->packet)
     g_free (sender->packet);
 
+  sender->maxval = maxval;
   sender->packet = b_packet_new (width, height, channels, maxval,
-                                 MAGIC_MCU_FRAME, &sender->size);
-
-  b_packet_hton (sender->packet);
+                                 magic, &sender->size);
 
   return TRUE;
 }
+
+/**
+ * b_sender_set_screen_id:
+ * @sender: a #BSender object
+ * @screen_id: the screen id to configure the sender for
+ *
+ * Sets the screen id for a sender in case it was configured
+ * for MULTIFRAME magics.
+ *
+ * Return value: %TRUE if @sender was configured to send MULTIFRAME
+ * packages, %FALSE otherwise
+ **/
+gboolean
+b_sender_set_screen_id (BSender *sender,
+                        gint     screen_id)
+{
+  if (sender->packet->header.mcu_multiframe_h.magic != MAGIC_MCU_MULTIFRAME)
+    return FALSE;
+
+  sender->screen_id = screen_id;
+  return TRUE;
+}
+
 
 /**
  * b_sender_add_recipient:
@@ -395,11 +419,51 @@ b_sender_send_frame (BSender      *sender,
       return FALSE;
     }
 
-  if (data)
-    memcpy (sender->packet->data, data, sender->size);
-  else
-    memset (sender->packet->data, 0, sender->size);
+  switch (sender->packet->header.mcu_frame_h.magic)
+    {
+      case MAGIC_MCU_FRAME:
+        if (data)
+          memcpy (sender->packet->data, data, sender->size);
+        else
+          memset (sender->packet->data, 0, sender->size);
 
+        break;
+
+       case MAGIC_MCU_MULTIFRAME:
+         {
+           guint x, y;
+           GTimeVal tv;
+           mcu_subframe_header_t *sub;
+      
+           /* update the timestamp */
+           g_get_current_time (&tv);
+           sender->packet->header.mcu_multiframe_h.timestamp 
+             = (tv.tv_sec * 1000) + (tv.tv_usec / 1000);
+  
+           /* hard-coded for 4bpp */
+           sub = sender->packet->header.mcu_multiframe_h.subframe;
+           sub->bpp = 4;
+           sub->screen_id = sender->screen_id;
+
+           if (!data)
+	     break;
+
+           for (y = 0; y < sub->height; y++)
+             for (x = 0; x < sub->width; x += 2)
+               sub->data[((y * sub->width) + x) / 2] =
+	         (data[(y * sub->width) + x] << 4) |
+                 (data[(y * sub->width) + x + 1] & 0xf);
+         
+	   break;
+	 }
+      default:
+        g_warning ("Call b_sender_configure() before sending packages!");
+	return FALSE;
+
+    } /* switch */
+
+  b_packet_hton (sender->packet);
+  
   /* ...send it. */
   for (item = sender->recipients; item; item = item->next)
     {
@@ -415,6 +479,8 @@ b_sender_send_frame (BSender      *sender,
                         rec->hostname, g_strerror (errno));
         }
     }
+  
+  b_packet_ntoh (sender->packet);
 
   return TRUE;
 }

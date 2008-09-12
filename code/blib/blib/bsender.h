@@ -50,6 +50,8 @@ struct _BSender
 
   BPacket  *packet;
   gsize     size;
+  gint      maxval;
+  gint      screen_id;
 
   gboolean  verbose;
 };
@@ -72,7 +74,12 @@ gboolean   b_sender_configure        (BSender       *sender,
                                       gint           width,
                                       gint           height,
                                       gint           channels,
-                                      gint           maxval);
+                                      gint           maxval,
+				      guint          magic);
+
+gboolean   b_sender_set_screen_id    (BSender       *sender,
+                                      gint           screen_id);
+
 gboolean   b_sender_send_frame       (BSender       *sender,
                                       const guchar  *data);
 void       b_sender_set_verbose      (BSender       *sender,

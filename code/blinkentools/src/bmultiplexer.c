@@ -27,11 +27,11 @@
 
 #define HASH 0
 
-static gint width    = -1;
-static gint height   = -1;
-static gint channels = -1;
-static gint maxval   = -1;
-
+static gint  width    = -1;
+static gint  height   = -1;
+static gint  channels = -1;
+static gint  maxval   = -1;
+static guint magic    = (guint) -1;
 
 static gboolean
 callback (BReceiver *rec,
@@ -40,17 +40,21 @@ callback (BReceiver *rec,
 {
   BSender *sender = B_SENDER (callback_data);
 
-  if (packet->header.mcu_frame_h.width    != width    ||
-      packet->header.mcu_frame_h.height   != height   ||
-      packet->header.mcu_frame_h.channels != channels ||
-      packet->header.mcu_frame_h.maxval   != maxval)
+  if (packet->header.mcu_frame_h.magic      != magic    ||
+      ( packet->header.mcu_frame_h.magic    == MAGIC_MCU_FRAME &&
+       (packet->header.mcu_frame_h.width    != width    ||
+        packet->header.mcu_frame_h.height   != height   ||
+        packet->header.mcu_frame_h.channels != channels ||
+        packet->header.mcu_frame_h.maxval   != maxval))
+      )
     {
       width    = packet->header.mcu_frame_h.width;
       height   = packet->header.mcu_frame_h.height;
       channels = packet->header.mcu_frame_h.channels;
       maxval   = packet->header.mcu_frame_h.maxval;
 
-      b_sender_configure (sender, width, height, channels, maxval);
+      b_sender_configure (sender, width, height, channels, maxval,
+                          packet->header.mcu_frame_h.magic);
     }
 
 #ifdef HASH
