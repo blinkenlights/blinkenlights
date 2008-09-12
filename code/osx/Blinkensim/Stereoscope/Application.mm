@@ -260,7 +260,7 @@ bool CShell::InitApplication()
 	}
 
 	// allocate space for our meshtexture coords
-	NSLog(@"%s allocating space",__FUNCTION__);
+//	NSLog(@"%s allocating space",__FUNCTION__);
 	windowMeshTextureCoords[0] = (GLfloat *)calloc(2 * g_sScene.pMesh[3].nNumFaces * 3,sizeof(GLfloat));
 	windowMeshTextureCoords[1] = (GLfloat *)calloc(2 * g_sScene.pMesh[4].nNumFaces * 3,sizeof(GLfloat));
 	windowMeshTextureCoords[2] = (GLfloat *)calloc(2 * g_sScene.pMesh[5].nNumFaces * 3,sizeof(GLfloat));
@@ -324,6 +324,8 @@ bool CShell::InitApplication()
 	
 	meshTexture[3] = meshTexture[4] = meshTexture[5] =meshTexture[6] = [(Texture2D *)[[Texture2D alloc] initWithImagePath:@"Windows256.png"] name];
 	glBindTexture(GL_TEXTURE_2D,meshTexture[5]);
+//	myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_NEAREST);
+	myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     
 	delete [] filename;
 	delete [] buffer;
