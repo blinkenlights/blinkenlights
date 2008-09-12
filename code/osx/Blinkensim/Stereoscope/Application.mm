@@ -234,8 +234,8 @@ bool CShell::InitApplication()
 	for (int i = 0; i<16;i++) {
 		int row = i / 4;
 		int column = i % 4;
-		CGPoint topRight   = CGPointMake(0.0 + (column+1) * 0.25, 0.0 + (row+1) * 0.25);
-		CGPoint bottomLeft = CGPointMake(0.0 +  column    * 0.25, 0.0 +  row    * 0.25);
+		CGPoint topRight   = CGPointMake(0.0 + (column+1) * 0.25, 0.0 +  row    * 0.25);
+		CGPoint bottomLeft = CGPointMake(0.0 +  column    * 0.25, 0.0 + (row+1) * 0.25);
 	
 		NSLog(@"%s %d:%@ %@",__FUNCTION__,i,NSStringFromCGPoint(bottomLeft), NSStringFromCGPoint(topRight));
 		windowMeshTextureValues[i][0][0] = (GLfloat)bottomLeft.x;
