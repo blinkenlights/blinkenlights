@@ -100,7 +100,7 @@
 	
 	NSMenuItem *item = nil;
 	
-	item = [[[NSMenuItem alloc] initWithTitle:@"localhost:4343" action:@selector(selectProxy:) keyEquivalent:@""] autorelease];
+	item = [[[NSMenuItem alloc] initWithTitle:@"localhost:4242" action:@selector(selectProxy:) keyEquivalent:@""] autorelease];
 	[item setRepresentedObject:[NSDictionary dictionaryWithObjectsAndKeys:@"localhost",@"address",[NSNumber numberWithInt:4242],@"port",nil]];
 	[_ibStreamsMenu addItem:item];
 	
