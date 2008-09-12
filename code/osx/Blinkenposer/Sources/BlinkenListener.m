@@ -141,7 +141,7 @@ static void readData (
         NSLog(@"%s could not send ping to proxy (%d, %@, %@)",__FUNCTION__,err,[NSString stringWithAddressData:(NSData *)_proxyAddressData],s_heartBeatData);
         
     } else {
-        NSLog(@"%s did ping the proxy with: (%@, %@)",__FUNCTION__,[NSString stringWithAddressData:(NSData *)_proxyAddressData],s_heartBeatData);
+//        NSLog(@"%s did ping the proxy with: (%@, %@)",__FUNCTION__,[NSString stringWithAddressData:(NSData *)_proxyAddressData],s_heartBeatData);
     };
 }
 

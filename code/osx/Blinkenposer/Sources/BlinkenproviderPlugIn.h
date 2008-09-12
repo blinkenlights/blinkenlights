@@ -17,6 +17,7 @@
 	BOOL _stopListeningThread;
 	NSLock *_waitToStopLock;
 	NSArray *_blinkenStructure;
+	NSArray *_screenMetadata;
 	NSString *_proxyAddress;
 	NSInteger _listeningPort;
 	BOOL _executedOnce;
@@ -29,12 +30,14 @@ Declare here the Obj-C 2.0 properties to be used as input and output ports for t
 You can access their values in the appropriate plug-in methods using self.inputFoo or self.inputBar
 */
 @property (retain) NSArray *blinkenStructure;
+@property (retain) NSArray *screenMetadata;
 @property (retain) NSString *proxyAddress;
 
 @property (assign)id <QCPlugInOutputImageProvider> outputBlinkenImage;
 @property NSUInteger outputPixelWidth;
 @property NSUInteger outputPixelHeight;
-@property (assign) NSArray * outputBlinkenStructure;
+@property (assign) NSArray *outputBlinkenStructure;
+@property (assign) NSArray *outputScreenMetadata;
 
 @property NSUInteger inputUseProxyOption;
 @property NSUInteger inputListeningPort;

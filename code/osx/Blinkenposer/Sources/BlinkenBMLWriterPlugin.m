@@ -106,14 +106,14 @@
 
 - (BOOL)startExecution:(id<QCPlugInContext>)inContext
 {
-	NSLog(@"%s",__FUNCTION__);
+//	NSLog(@"%s",__FUNCTION__);
     _renderedOnce = NO;
 	return YES;
 }
 
 - (void)enableExecution:(id<QCPlugInContext>)inContext
 {
-	NSLog(@"%s",__FUNCTION__);
+//	NSLog(@"%s",__FUNCTION__);
 	_renderedOnce = NO;
 }
 
@@ -127,7 +127,7 @@
 
 
 - (void)startBMLFile {
-	NSLog(@"%s, %@",__FUNCTION__, self.blinkenStructure);
+//	NSLog(@"%s, %@",__FUNCTION__, self.blinkenStructure);
 	NSMutableString *xmlStart = [NSMutableString stringWithString:@"<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n"];
 	NSArray *structure = self.inputBlinkenStructure;
 	[xmlStart appendFormat:@"<blm width=\"%d\" height=\"32\" bits=\"4\">\n",[[structure lastObject] count],[structure count]];
@@ -239,14 +239,14 @@
 
 - (void)disableExecution:(id<QCPlugInContext>)inContext
 {
-	NSLog(@"%s",__FUNCTION__);
+//	NSLog(@"%s",__FUNCTION__);
 	[self finishBMLFile];
 	self.blinkenStructure = nil;
 }
 
 - (void)stopExecution:(id<QCPlugInContext>)context
 {
-	NSLog(@"%s",__FUNCTION__);
+//	NSLog(@"%s",__FUNCTION__);
 	[self finishBMLFile];
 	self.blinkenStructure = nil;
 }

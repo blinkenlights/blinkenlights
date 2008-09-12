@@ -17,9 +17,9 @@
 	<key>CFBundleGetInfoString</key>
 	<string>Blinkenposer version 1.0, Copyright TheCodingMonkeys.</string>
 	<key>CFBundleVersion</key>
-	<string>1.0</string>
+	<string>0</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.9</string>
+	<string>1.0</string>
 	<key>QCPlugInClasses</key>
 	<array>
 		<string>BlinkenproviderPlugIn</string>

@@ -15,6 +15,7 @@
 @dynamic outputPixelWidth;
 @dynamic outputPixelHeight;
 @dynamic outputBlinkenStructure;
+@dynamic outputScreenMetadata;
 
 @dynamic inputUseProxyOption;
 @dynamic inputListeningPort;
@@ -23,6 +24,7 @@
 
 @synthesize proxyAddress = _proxyAddress;
 @synthesize blinkenStructure = _blinkenStructure;
+@synthesize screenMetadata = _screenMetadata;
 /*
 Here you need to declare the input / output properties as dynamic as Quartz Composer will handle their implementation
 @dynamic inputFoo, outputBar;
@@ -34,6 +36,7 @@ Here you need to declare the input / output properties as dynamic as Quartz Comp
     	@"outputPixelWidth",
     	@"outputPixelHeight",
     	@"outputBlinkenStructure",
+    	@"outputScreenMetadata",
     	@"inputUseProxyOption",
     	@"inputListeningPort",
     	@"inputProxyAddress",
@@ -63,6 +66,11 @@ Here you need to declare the input / output properties as dynamic as Quartz Comp
 	if ([inKey isEqualToString:@"outputBlinkenStructure"])
         return [NSDictionary dictionaryWithObjectsAndKeys:
                 	@"Blinken Structure", QCPortAttributeNameKey,
+                nil];
+
+	if ([inKey isEqualToString:@"outputScreenMetadata"])
+        return [NSDictionary dictionaryWithObjectsAndKeys:
+                	@"Screen Metadata", QCPortAttributeNameKey,
                 nil];
 
 	if ([inKey isEqualToString:@"outputPixelWidth"])
@@ -234,6 +242,7 @@ Here you need to declare the input / output properties as dynamic as Quartz Comp
         NSRect imageBounds = [_blinkenImageProvider imageBounds];
 		self.outputBlinkenImage = (imageBounds.size.width != 0 && imageBounds.size.height != 0) ? _blinkenImageProvider : nil;
 		self.outputBlinkenStructure = self.blinkenStructure;
+		self.outputScreenMetadata = self.screenMetadata;
 		self.outputPixelHeight = NSHeight(imageBounds);
 		self.outputPixelWidth  = NSWidth(imageBounds);
 //		NSLog(@"%s",__FUNCTION__);
@@ -321,11 +330,68 @@ Here you need to declare the input / output properties as dynamic as Quartz Comp
 //	_needsOutputUpdate = YES;
 //}
 
+- (BlinkenFrame *)combinedFrameForFrames:(NSArray *)inFrames
+{
+	NSMutableArray *screenMetadata = [NSMutableArray array];
+	// collect dimensions
+	CGSize combinedSize = CGSizeZero;
+	for (BlinkenFrame *frame in inFrames)
+	{
+		combinedSize.width += frame.frameSize.width;
+		combinedSize.height = MAX(combinedSize.height,frame.frameSize.height);
+		[screenMetadata addObject:[NSDictionary dictionaryWithObjectsAndKeys:
+			[frame valueForKey:@"screenID"],@"screenID",
+			[NSNumber numberWithInt:frame.frameSize.width] ,@"width",
+			[NSNumber numberWithInt:frame.frameSize.height],@"height",
+			[NSNumber numberWithInt:frame.maxValue],@"maxValue",
+			[NSNumber numberWithInt:frame.bitsPerPixel],@"bitsPerPixel",
+			nil]];
+	}
+	self.screenMetadata = screenMetadata;
+	if (inFrames.count == 1) return inFrames.lastObject;
+
+	NSMutableData *resultFrameData = [[NSMutableData alloc] initWithLength:combinedSize.width * combinedSize.height];
+	unsigned char *resultBytes = (unsigned char *)resultFrameData.bytes;
+	int startX = 0;
+	for (BlinkenFrame *frame in inFrames)
+	{
+		CGSize frameSize = frame.frameSize;
+		unsigned char bitsPerPixel = frame.bitsPerPixel;
+		unsigned char *frameBytes = (unsigned char *)frame.frameData.bytes;
+		float maxValue = (float)frame.maxValue;
+		int startRow = combinedSize.height - frameSize.height;
+		int y = 0;
+		for (y = 0; y<frameSize.height; y++)
+		{	
+			unsigned char *targetRowBytes = resultBytes + (startRow + y) * (int)combinedSize.width + startX;
+			int x = 0;
+			for (x=0; x<frameSize.width; x++)
+			{
+				if (bitsPerPixel == 8) {
+					*targetRowBytes++ = (int) ((*frameBytes++)/ maxValue * 15.) * 0x11;
+				} else {
+					*targetRowBytes++ = (int)(((*frameBytes)>>4)/ maxValue * 15.) * 0x11;
+					if (x<frameSize.width) {
+						*targetRowBytes++ = (int)(((*frameBytes)& 0xF)/ maxValue * 15.) * 0x11;
+						x++;
+					}
+					frameBytes++;
+				}
+			}
+		}
+		
+		startX += frameSize.width;
+	}
+	
+	BlinkenFrame *resultingFrame = [[[BlinkenFrame alloc] initWithData:resultFrameData frameSize:combinedSize screenID:0] autorelease];
+	return resultingFrame;
+}
+
 - (void)blinkenListener:(BlinkenListener *)inListener receivedFrames:(NSArray *)inFrames atTimestamp:(uint64_t)inTimestamp
 {
 //	NSLog(@"%s frames:%@ ts:0x%016qx %@",__FUNCTION__,inFrames,inTimestamp,[NSDate dateWithTimeIntervalSince1970:inTimestamp / (double)1000.0]);
 
-	BlinkenFrame *frame = [inFrames lastObject];
+	BlinkenFrame *frame = [self combinedFrameForFrames:inFrames];
 	CGSize frameSize = frame.frameSize;
 	unsigned char maxValue = frame.maxValue;
 	if (!_blinkenImageProvider)
