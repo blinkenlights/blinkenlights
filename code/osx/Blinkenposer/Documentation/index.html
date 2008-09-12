@@ -61,8 +61,10 @@
         <p>The <tt>Blinkenposer.plugin</tt> requires Mac OS X 10.5</p>
 
         <h3>Installation</h3>
+        <p>Download and unzip <a href="Blinkenposer-1.0-r350.zip">Blinkenposer-1.0-r350.zip</a></p>
         <p>For the Blinkenposer packages to work with Quartz Composer, the <tt>Blinkenposer.plugin</tt> needs to be copied into either <tt>(~)/Library/Graphics/Quartz Composer Plug-Ins/</tt>. </p>
         <p>The <tt>FlatStereoscopeToronto.qtz</tt> composition can be used as a Screen Saver if put into <tt>(~)/Library/Screen Savers/</tt></p>
+        <p>Stereoscope is a quartz composer based Blinkensim that can also record its input as bml.</p>
         <p>If you want to create content using Quartz Composer you have to download and install the freely available <a href="http://developer.apple.com/mac/">Apple Developer Tools (Xcode 3.1)</a>, after installation Quartz Composer.app can be found in <tt>/Developer/Applications/Quartz Composer.app</tt> and you are ready to go!</p>
 
         <h3>Provided Patches</h3>
@@ -70,7 +72,7 @@
         
         <h4>Blinkenprovider</h4>
         <img src="images/Blinkenprovider.png" /><br/>
-        The Blinkenprovider patch can listen to blinkenproxies and provides the an Image, the pixel dimensions and a structure representation of the received images.
+        The Blinkenprovider patch can listen to blinkenproxies and provides an Image, the pixel dimensions and a structure representation of the received images.
         <table>
           <tr><th>Input</th><th>Type</th><th>Example</th><th>Description</th></tr>
           <tr><td>Use&nbsp;Address</td><td>Index</td><td>0</td><td>This index determines if the provider listens to the localhost on the given local listening port or to the given proxy address</td></tr>
@@ -84,6 +86,7 @@
           <tr><td>Pixel Width</td><td>Number</td><td>96</td><td>The width of the received Image.</td></tr>
           <tr><td>Pixel Height</td><td>Number</td><td>32</td><td>The Height of the received Image.</td></tr>
           <tr><td>Blinken&nbsp;Structure</td><td>Array of Arrays</td><td>{{15,0},{0,15}}</td><td>The received Data as a Structure that can be iterated through. This structure has values from 0 (black) to 15 (white). To see that in use you can look into the <tt>FlatStereoscopeToronto.qtz</tt> Composition.</td></tr>
+          <tr><td>Screen&nbsp;Metadata</td><td>Array of Dictioanries</td><td>{{"screenID"=&gt;0,"width"=&gt;96,"height"=&gt;12}</td><td>Metadata about the different screens all added as into the one image side by side if the new format is used</td></tr>
         </table>
 
         <h4>Blinkensender</h4>
