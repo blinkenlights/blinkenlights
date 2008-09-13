@@ -229,7 +229,7 @@ static int b_parse_mcu_devctrl(mcu_devctrl_header_t *header, int maxlen)
 //	if (len > maxlen)
 //		return 0;
 
-	debug_printf(" %s() cmd %04x\n", __func__, header->command);
+//	debug_printf(" %s() cmd %04x\n", __func__, header->command);
 
 	switch (header->command) {
 		case MCU_DEVCTRL_COMMAND_SET_MCU_ID:
@@ -283,7 +283,7 @@ static int b_parse_mcu_devctrl(mcu_devctrl_header_t *header, int maxlen)
 			for (i = 0; i < RF_PAYLOAD_SIZE; i++)
 				rfpkg.payload[i] = header->param[i+3];
 		
-			hex_dump((unsigned char *) &rfpkg, 0, sizeof(rfpkg));
+//			hex_dump((unsigned char *) &rfpkg, 0, sizeof(rfpkg));
 			vnRFTransmitPacket(&rfpkg);
 			break;
 		}
