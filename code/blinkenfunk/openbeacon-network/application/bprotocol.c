@@ -97,7 +97,7 @@ debug_printf(" parsing mcu multiframe\n");
 
 		for (i = 0; i < env.e.n_lamps; i++) {
 			LampMap *m = env.e.lamp_map + i;
-			int index = (m->y * sub->width) + m->x;
+			unsigned int index = (m->y * sub->width) + m->x;
 
 			if (index >= maxlen)
 				continue;
