@@ -104,7 +104,8 @@ cmd_help (const portCHAR *cmd)
   shell_printf("\n");
   shell_printf("env\n");
   shell_printf("	Show variables currently stored in the non-volatile flash memory\n");
-  shell_printf("");
+  shell_printf("update\n");
+  shell_printf("        Enter update mode - DO NOT USE FOR FUN\n\n");
 }
 
 static int
@@ -202,16 +203,25 @@ cmd_env (const portCHAR * cmd)
   shell_printf ("   mac = %02x%02x\n", env.e.mac_h, env.e.mac_l);
 }
 
+static void
+cmd_update (const portCHAR * cmd)
+{
+  shell_printf ("resetting to default bootloader in update mode\n");
+  vTaskDelay (500 / portTICK_RATE_MS);
+
+  env_reboot_to_update ();
+}
 
 static struct cmd_t {
 	const portCHAR *command;
 	void (*callback) (const portCHAR *cmd);
 } commands[] = {
-	{ "help",	&cmd_help },
-	{ "status",	&cmd_status },
-	{ "mac",	&cmd_mac },
-	{ "wmcu-mac",	&cmd_mac },
 	{ "env",	&cmd_env },
+	{ "help",	&cmd_help },
+	{ "mac",	&cmd_mac },
+	{ "status",	&cmd_status },
+	{ "update",	&cmd_update },
+	{ "wmcu-mac",	&cmd_mac },
 	/* end marker */
 	{ NULL, NULL }
 };
