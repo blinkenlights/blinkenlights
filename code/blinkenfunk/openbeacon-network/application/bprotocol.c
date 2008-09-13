@@ -309,7 +309,6 @@ static void b_recv(void *arg, struct udp_pcb *pcb, struct pbuf *p, struct ip_add
 		unsigned int magic = *(unsigned int *) payload + off;
 		unsigned int consumed = 0;
 
-		debug_printf(" magic %04x\n", magic);
 
 		switch (magic) {
 			case MAGIC_MCU_MULTIFRAME:
@@ -319,8 +318,10 @@ static void b_recv(void *arg, struct udp_pcb *pcb, struct pbuf *p, struct ip_add
 				consumed = b_parse_mcu_setup((mcu_setup_header_t *) payload + off, p->len - off);
 				break;
 			case MAGIC_MCU_DEVCTRL:
-				consumed = b_parse_mcu_devctrl((mcu_devctrl_header_t *) payload + off, p->len - off);
+				consumed = b_parse_mcu_devctrl((mcu_devctrl_header_t *) payload + off, p->len - off);			
 				break;
+			default:
+				debug_printf(" magic %04x\n", magic);			
 		}
 
 		if (consumed == 0)
