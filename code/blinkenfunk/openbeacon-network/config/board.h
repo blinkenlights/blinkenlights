@@ -99,10 +99,12 @@
 #define TENVIRONMENT_MAGIC 0x0DECADE
 #define MAX_LAMPS (26 * 2)
 
+extern unsigned char last_lamp_val[MAX_LAMPS];
+
 typedef struct
 {
   unsigned short mac;
-  unsigned char x, y;
+  unsigned short screen, x, y;
 } LampMap;
 
 typedef struct
@@ -110,6 +112,7 @@ typedef struct
   unsigned int magic, size, crc16;
   signed int mcu_id;
   unsigned char mac_h, mac_l;
+  unsigned int n_lamps;
   LampMap lamp_map[26 * 2];
 } __attribute__((aligned (8))) TEnvironment;
 

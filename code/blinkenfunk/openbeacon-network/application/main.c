@@ -74,6 +74,10 @@ main (void)
   vLedInit ();
   env_init ();
   env_load ();
+
+  if (env.e.n_lamps > MAX_LAMPS)
+    env.e.n_lamps = 0;
+
   vNetworkInit ();
 
   xTaskCreate (vUSBCDCTask, (signed portCHAR *) "USB", TASK_USB_STACK,

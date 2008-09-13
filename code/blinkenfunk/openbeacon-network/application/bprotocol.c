@@ -54,6 +54,9 @@ static struct udp_pcb *b_pcb;
 static unsigned char payload[2048];
 static BRFPacket rfpkg;
 
+unsigned char last_lamp_val[MAX_LAMPS] = { 0 };
+
+#if 0
 static void b_output_line(int width, unsigned char *data)
 {
 	memset(&rfpkg, 0, sizeof(rfpkg) - RF_PAYLOAD_SIZE);
@@ -65,81 +68,67 @@ static void b_output_line(int width, unsigned char *data)
 	/* rfpkg.payload pre-filled */
 	vnRFTransmitPacket(&rfpkg);
 }
-
-#if 0
-static unsigned char b_mcu_frame_get_pixel_val(mcu_frame_header_t *header, int pixel, unsigned int maxlen)
-{
-	unsigned char *payload = (unsigned char *) header + sizeof(*header);
-	unsigned int v;
-	//unsigned int pos = (pixel * header->channels * header->bpp) / 8;
-	unsigned int pos = (pixel * header->channels);
-
-	if (pos >= maxlen - sizeof(*header))
-		return 0;
-
-	v = payload[pos];
-
-/*
-	if ((header->bpp == 4) && (~pixel & 1))
-		v >>= 4;
-*/	
-	return v;
-}
 #endif
 
-static int b_parse_mcu_multiframe(mcu_frame_header_t *header, int maxlen)
+#define SUBSIZE ((sizeof(*sub) + sub->height * ((sub->width + 1) / 2)))
+
+static int b_parse_mcu_multiframe (mcu_multiframe_header_t *header, unsigned int maxlen)
 {
-	int len = sizeof(*header);
+	unsigned int i;
+	mcu_subframe_header_t *sub = header->subframe;
 
-//	if (len > maxlen)
-//		return 0;
-
-	/* HACK! */
-	header->channels = 1;
-	header->bpp = 4;
-
-
-debug_printf(" parsing mcu frame\n");
-debug_printf(" -- w %d h %d chns %d bpp %d\n",
-	header->width,
-	header->height,
-	header->channels,
-	header->bpp);
-
-	if (header->width >= MAX_WIDTH ||
-	    header->height >= MAX_HEIGHT ||
-	    header->channels > MAX_CHANNELS ||
-	    header->bpp > MAX_BPP || 
-	    header->bpp == 0)
-	    return 0;
-
-	len += (header->width * header->height * header->channels * header->bpp) / 8;
-
-//	if (len > maxlen)
-//		return 0;
-
-	debug_printf("!valid mcu frame! len = %d\n", len);
-
-	if (env.e.mcu_id == -1)
-		/* frame is valid but since there was no configure packet,
-		 * we have nothing to display yet */
+	if (maxlen < sizeof(*header))
 		return 0;
+
+	maxlen -= sizeof(*header);
+
+debug_printf(" parsing mcu multiframe\n");
+
+	while (maxlen) {
+		if (!sub)
+			sub = header->subframe;
+		else
+			sub = (mcu_subframe_header_t *) ((char *) sub + SUBSIZE);
+
+		if (sub->bpp != 4) {
+			maxlen -= SUBSIZE;
+			continue;
+		}
+
+		for (i = 0; i < env.e.n_lamps; i++) {
+			LampMap *m = env.e.lamp_map + i;
+			int index = (m->y * sub->width) + m->x;
+
+			if (index >= maxlen)
+				continue;
+
+			if (m->screen != sub->screen_id ||
+			    m->x >= sub->width 		|| 
+			    m->y >= sub->height)
+				continue;
+
+			last_lamp_val[i] = sub->data[index / 2];
+			if (index & 1)
+				last_lamp_val[i] >> 4;
+		}
+
+		maxlen -= SUBSIZE;
+	}
 
 	/* ... */
 	memset(&rfpkg.payload, 0, RF_PAYLOAD_SIZE);
-#if 0
-	for (i = 0; i < RF_PAYLOAD_SIZE; i++) {
-		rfpkg.payload[i] = (b_mcu_frame_get_pixel_val(header, env.e.lamp_map[i*2], maxlen) & 0xf)
-				 | (b_mcu_frame_get_pixel_val(header, env.e.lamp_map[i*2 + 1], maxlen) << 4);
-	}
-#endif
-	/* funk it. */
-	b_output_line(header->width, payload);
+
+	for (i = 0; i < RF_PAYLOAD_SIZE; i++)
+		rfpkg.payload[i] = (last_lamp_val[i * 2] & 0xf)
+				 | (last_lamp_val[(i * 2) + 1] << 4);
 	
-	return len;
+	/* funk it. */
+//	b_output_line(header->width, payload);
+	
+	return 0;
 }
 
-static int b_parse_mcu_setup(mcu_setup_header_t *header, int maxlen)
+static int b_parse_mcu_setup (mcu_setup_header_t *header, int maxlen)
 {
 	int len = sizeof(*header);
 	
@@ -205,18 +194,23 @@ static inline void b_set_lamp_jitter(int lamp_mac, int jitter)
 	vnRFTransmitPacket(&rfpkg);
 }
 
-static inline void b_set_assigned_lamps(unsigned int *map)
+static inline void b_set_assigned_lamps(unsigned int *map, unsigned int len)
 {
 	int i;
 
 	for (i = 0; i < MAX_LAMPS; i++) {
-		env.e.lamp_map[i].mac = (map[i] >> 16) & 0xffff;
-		env.e.lamp_map[i].x   = (map[i] >> 8) & 0xff;
-		env.e.lamp_map[i].y   = (map[i] & 0xff);
+		if (i * 4 * sizeof(int) > len)
+			break;
+
+		env.e.lamp_map[i].mac    = map[(i * 4) + 0];
+		env.e.lamp_map[i].screen = map[(i * 4) + 1];
+		env.e.lamp_map[i].x      = map[(i * 4) + 2];
+		env.e.lamp_map[i].y      = map[(i * 4) + 3];
 	}
 
+	env.e.n_lamps = i - 1;
 	env_store();
-	debug_printf("new assigned lamps set.\n");
+	debug_printf("%d new assigned lamps set.\n", env.e.n_lamps);
 }
 
 static inline void b_send_wdim_stats(unsigned int lamp_mac)
@@ -271,7 +265,7 @@ static int b_parse_mcu_devctrl(mcu_devctrl_header_t *header, int maxlen)
 			break;
 		}
 		case MCU_DEVCTRL_COMMAND_SET_ASSIGNED_LAMPS: {
-			b_set_assigned_lamps(header->param);
+			b_set_assigned_lamps(header->param, maxlen - sizeof(*header));
 			break;
 		}
 		case MCU_DEVCTRL_COMMAND_SEND_WDIM_STATS: {
@@ -318,7 +312,7 @@ static void b_recv(void *arg, struct udp_pcb *pcb, struct pbuf *p, struct ip_add
 
 		switch (magic) {
 			case MAGIC_MCU_MULTIFRAME:
-				consumed = b_parse_mcu_multiframe((mcu_frame_header_t *) payload + off, p->len - off);
+				consumed = b_parse_mcu_multiframe((mcu_multiframe_header_t *) payload + off, p->len - off);
 				break;
 			case MAGIC_MCU_SETUP:
 				consumed = b_parse_mcu_setup((mcu_setup_header_t *) payload + off, p->len - off);
@@ -343,6 +337,6 @@ void bprotocol_init(void)
 
 	udp_recv(b_pcb, b_recv, NULL);
 	udp_bind(b_pcb, IP_ADDR_ANY, MCU_LISTENER_PORT);
-	debug_printf("%s()\n\r", __func__);
+	debug_printf("%s()\n", __func__);
 }
 

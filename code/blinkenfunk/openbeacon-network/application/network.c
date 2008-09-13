@@ -65,12 +65,18 @@ vNetworkThread (void *pvParameters)
   lwip_init ();
 
   /* Create and configure the EMAC interface. */
-  //IP4_ADDR (&xIpAddr , 0, 0, 0 ,0);
-  //IP4_ADDR (&xNetMask, 0, 0, 0 ,0);
-  //IP4_ADDR (&xGateway, 0, 0, 0 ,0);
+  
+#if 1
+  IP4_ADDR (&xIpAddr , 0, 0, 0 ,0);
+  IP4_ADDR (&xNetMask, 0, 0, 0 ,0);
+  IP4_ADDR (&xGateway, 0, 0, 0 ,0);
+#endif
+
+#if 0
   IP4_ADDR (&xIpAddr , 169, 254, 0x11, 0x22);
   IP4_ADDR (&xNetMask, 255, 255, 0 ,0);
   IP4_ADDR (&xGateway, 192, 168, 5 ,1);
+#endif
 
   netif_add (&EMAC_if, &xIpAddr, &xNetMask, &xGateway, NULL, ethernetif_init,
 	     ip_input);
@@ -79,10 +85,12 @@ vNetworkThread (void *pvParameters)
   netif_set_default (&EMAC_if);
 
   /* dhcp kick-off */
-  //dhcp_coarse_tmr ();
-  //dhcp_fine_tmr ();
-  //dhcp_start (&EMAC_if);
-  
+#if 1
+  dhcp_coarse_tmr ();
+  dhcp_fine_tmr ();
+  dhcp_start (&EMAC_if);
+#endif
+
   /* bring it up */
   netif_set_up (&EMAC_if);
 

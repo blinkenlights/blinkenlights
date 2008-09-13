@@ -48,7 +48,7 @@
 static void
 cmd_status (const portCHAR * cmd)
 {
-  int i;
+  unsigned int i;
   struct netif *nic = &EMAC_if;
 
   shell_printf ("WMCU status:\n");
@@ -63,13 +63,16 @@ cmd_status (const portCHAR * cmd)
   shell_printf ("	Gateway addr:	%d.%d.%d.%d\n",
   	ip4_addr1(&nic->gw), ip4_addr2(&nic->gw), ip4_addr3(&nic->gw), ip4_addr4(&nic->gw));
 	
-  shell_printf("	assigned lamps:\n\t\t");
+  shell_printf("	assigned lamps (%d):\n", env.e.n_lamps);
+  shell_printf("		#lamp MAC	#screen		#x	#y	#last value\n");
 
-  for (i = 0; i < MAX_LAMPS; i++) {
-    debug_printf("%04x ", env.e.lamp_map[i]);
-    vTaskDelay(2);
-    if (i % 8 == 7)
-      debug_printf("\n\t\t");
+  for (i = 0; i < env.e.n_lamps; i++) {
+    debug_printf("\t\t0x%04x\t\t%d\t\t%d\t%d\t%d\n",
+    	env.e.lamp_map[i].mac,
+    	env.e.lamp_map[i].screen,
+    	env.e.lamp_map[i].x,
+    	env.e.lamp_map[i].y,
+	last_lamp_val[i]);
   }
 
   debug_printf("\n");

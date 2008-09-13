@@ -92,18 +92,6 @@ struct mcu_frame_header
  *
  */
 
-typedef struct mcu_multiframe_header mcu_multiframe_header_t;
-
-struct mcu_multiframe_header
-{
-  unsigned int magic;		/* == MAGIC_MCU_MULTIFRAME                   */
-  unsigned long long timestamp;	/* milliseconds since epoch - e.g. gettimeofday(&tv); 
-				   timeStamp = tv->tv_sec * 1000 + tv->tv_usec / 1000.; */
-  /*
-   * followed by multiple subframe headers
-   */
-};
-
 typedef struct mcu_subframe_header mcu_subframe_header_t;
 
 struct mcu_subframe_header
@@ -122,7 +110,22 @@ struct mcu_subframe_header
    * the bytesize of this can be calculated using height * width in the byte case 
    *   and height * ((width + 1)/2) in case of nibbles (integer divison) 
    */
+  unsigned char data[0];
 };
+
+typedef struct mcu_multiframe_header mcu_multiframe_header_t;
+
+struct mcu_multiframe_header
+{
+  unsigned int magic;		/* == MAGIC_MCU_MULTIFRAME                   */
+  unsigned long long timestamp;	/* milliseconds since epoch - e.g. gettimeofday(&tv); 
+				   timeStamp = tv->tv_sec * 1000 + tv->tv_usec / 1000.; */
+  /*
+   * followed by multiple subframe headers
+   */
+  mcu_subframe_header_t subframe[0];
+};
+
 
 /*
  * MCU Setup packet
@@ -179,7 +182,8 @@ struct mcu_devctrl_header
   unsigned int command;       /* MCU_DEVCTRL_COMMAND_*			*/
   unsigned int mac;           /* LAMP MAC address (if needed)		*/
   unsigned int value;
-  unsigned int param[64];
+  /* params consume the rest of the packet, up to MTU */
+  unsigned int param[0];
 };
 
 /*
