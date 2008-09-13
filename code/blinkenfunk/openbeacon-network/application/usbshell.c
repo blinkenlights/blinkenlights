@@ -208,6 +208,12 @@ cmd_update (const portCHAR * cmd)
 {
   shell_printf ("resetting to default bootloader in update mode\n");
   vTaskDelay (500 / portTICK_RATE_MS);
+  
+  AT91C_UDP_TRANSCEIVER_ENABLE = AT91C_UDP_TXVDIS;
+
+  /* disable USB */
+  AT91C_BASE_PIOA->PIO_SODR = AT91C_PIO_PA16;
+  vTaskDelay (500 / portTICK_RATE_MS);
 
   env_reboot_to_update ();
 }
