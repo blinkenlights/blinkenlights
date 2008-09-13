@@ -148,7 +148,7 @@ static int b_parse_mcu_setup (mcu_setup_header_t *header, int maxlen)
 	return len;
 }
 
-static inline void b_set_lamp_id(int lamp_id, int lamp_mac)
+static inline void b_set_lamp_id (int lamp_id, int lamp_mac)
 {
 	debug_printf("lamp MAC %08x -> ID %d\n", lamp_mac, lamp_id);
 
@@ -162,7 +162,7 @@ static inline void b_set_lamp_id(int lamp_id, int lamp_mac)
 	vnRFTransmitPacket(&rfpkg);
 }
 
-static inline void b_set_gamma_curve(int lamp_mac, unsigned int block, unsigned short *gamma)
+static inline void b_set_gamma_curve (int lamp_mac, unsigned int block, unsigned short *gamma)
 {
 	int i;
 
@@ -177,7 +177,7 @@ static inline void b_set_gamma_curve(int lamp_mac, unsigned int block, unsigned 
 	vnRFTransmitPacket(&rfpkg);
 }
 
-static inline void b_write_gamma_curve(int lamp_mac)
+static inline void b_write_gamma_curve (int lamp_mac)
 {
 	memset(&rfpkg, 0, sizeof(rfpkg));
 	rfpkg.cmd = RF_CMD_WRITE_CONFIG;
@@ -185,7 +185,7 @@ static inline void b_write_gamma_curve(int lamp_mac)
 	vnRFTransmitPacket(&rfpkg);
 }
 
-static inline void b_set_lamp_jitter(int lamp_mac, int jitter)
+static inline void b_set_lamp_jitter (int lamp_mac, int jitter)
 {
 	memset(&rfpkg, 0, sizeof(rfpkg));
 	rfpkg.cmd = RF_CMD_SET_JITTER;
@@ -194,7 +194,7 @@ static inline void b_set_lamp_jitter(int lamp_mac, int jitter)
 	vnRFTransmitPacket(&rfpkg);
 }
 
-static inline void b_set_assigned_lamps(unsigned int *map, unsigned int len)
+static inline void b_set_assigned_lamps (unsigned int *map, unsigned int len)
 {
 	int i;
 
@@ -211,6 +211,7 @@ static inline void b_set_assigned_lamps(unsigned int *map, unsigned int len)
 	env.e.n_lamps = i - 1;
 	env_store();
 	debug_printf("%d new assigned lamps set.\n", env.e.n_lamps);
+	memset(last_lamp_val, 0, sizeof(last_lamp_val));
 }
 
 static inline void b_send_wdim_stats(unsigned int lamp_mac)
