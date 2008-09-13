@@ -64,7 +64,7 @@ CFLAGS= \
 $(DEBUG)  \
 $(OPTIM) \
 -fomit-frame-pointer \
-$(APP_CFLAGS) \
+$(APP_CFLAGS)
 
 CRT0=$(CORE)os/boot/boot.s
 
