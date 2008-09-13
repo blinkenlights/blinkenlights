@@ -50,26 +50,26 @@ typedef struct
     struct {
       unsigned char id;
       unsigned char wmcu_id;
-    } set_lamp_id;
+    } PACKED set_lamp_id;
 
     struct {
       unsigned char block;
       unsigned short val[8];
-    } set_gamma;
+    } PACKED set_gamma;
 
     struct {
       unsigned short jitter;
-    } set_jitter;
+    } PACKED set_jitter;
 
     struct {
       unsigned short emi_pulses;
       unsigned long packet_count;
-    } statistics;
+    } PACKED statistics;
 
-  }; /* union */
+  } PACKED; /* union */
 
   unsigned short crc;
-} __attribute__ ((packed)) BRFPacket;
+} PACKED BRFPacket;
 
 extern void vInitProtocolLayer (void);
 extern void vnRFTransmitPacket(BRFPacket *pkg);
