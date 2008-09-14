@@ -108,17 +108,16 @@ static int b_parse_mcu_multiframe (mcu_multiframe_header_t *header, unsigned int
 		maxlen -= SUBSIZE;
 	}
 
-	memset(&rfpkg.payload, 0, RF_PAYLOAD_SIZE);
+	/* funk it. */
+	memset(&rfpkg, 0, sizeof(rfpkg));
+	rfpkg.cmd = RF_CMD_SET_VALUES;
+	rfpkg.wmcu_id = env.e.mcu_id;
+	rfpkg.mac = 0xffff; /* send to all MACs */
 
 	for (i = 0; i < RF_PAYLOAD_SIZE; i++)
 		rfpkg.payload[i] = (last_lamp_val[i * 2] & 0xf)
 				 | (last_lamp_val[(i * 2) + 1] << 4);
 	
-	/* funk it. */
-	memset(&rfpkg, 0, sizeof(rfpkg) - RF_PAYLOAD_SIZE);
-	rfpkg.cmd = RF_CMD_SET_VALUES;
-	rfpkg.wmcu_id = env.e.mcu_id;
-	rfpkg.mac = 0xffff; /* send to all MACs */
 	vnRFTransmitPacket(&rfpkg);
 	return 0;
 }
