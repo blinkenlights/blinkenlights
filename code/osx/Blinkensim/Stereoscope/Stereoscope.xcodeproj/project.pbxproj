@@ -65,7 +65,7 @@
 		1B26781D0DA2F9B000B24DA5 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623EB0D0F72F000981E51 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		1D6058910D05DD3D006BFB54 /* Blinkenlights.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Blinkenlights.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D6058910D05DD3D006BFB54 /* Stereoscope.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stereoscope.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2D500B920D5A79C200DBA0E3 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		2D500B990D5A79CF00DBA0E3 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -179,7 +179,7 @@
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1D6058910D05DD3D006BFB54 /* Blinkenlights.app */,
+				1D6058910D05DD3D006BFB54 /* Stereoscope.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -445,7 +445,7 @@
 			);
 			name = Blinkenlights;
 			productName = foo;
-			productReference = 1D6058910D05DD3D006BFB54 /* Blinkenlights.app */;
+			productReference = 1D6058910D05DD3D006BFB54 /* Stereoscope.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -566,7 +566,7 @@
 				HEADER_SEARCH_PATHS = Engine/Include;
 				INFOPLIST_FILE = Info.plist;
 				PREBINDING = NO;
-				PRODUCT_NAME = Blinkenlights;
+				PRODUCT_NAME = Stereoscope;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F1C8A8D0-3EDC-433F-A844-61C5AC7EE7CD";
 				WARNING_CFLAGS = "-Wall";
 			};
@@ -589,7 +589,7 @@
 				HEADER_SEARCH_PATHS = Engine/Include;
 				INFOPLIST_FILE = Info.plist;
 				PREBINDING = NO;
-				PRODUCT_NAME = Blinkenlights;
+				PRODUCT_NAME = Stereoscope;
 				WARNING_CFLAGS = "-Wall";
 			};
 			name = Release;
@@ -640,7 +640,7 @@
 				HEADER_SEARCH_PATHS = Engine/Include;
 				INFOPLIST_FILE = Info.plist;
 				PREBINDING = NO;
-				PRODUCT_NAME = Blinkenlights;
+				PRODUCT_NAME = Stereoscope;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "37EA7040-1913-4776-AC63-DC02A5D815E6";
 				WARNING_CFLAGS = "-Wall";
 			};
