@@ -51,38 +51,23 @@
 #define MAX_BPP 4
 
 static struct udp_pcb *b_pcb;
-static unsigned char payload[2048];
 static BRFPacket rfpkg;
 
 unsigned char last_lamp_val[MAX_LAMPS] = { 0 };
-
-#if 0
-static void b_output_line(int width, unsigned char *data)
-{
-	memset(&rfpkg, 0, sizeof(rfpkg) - RF_PAYLOAD_SIZE);
-	rfpkg.cmd = RF_CMD_SET_VALUES;
-	rfpkg.wmcu_id = env.e.mcu_id;
-	rfpkg.mac = 0xffff; /* send to all MACs */
-
-	//hex_dump((unsigned char *) rfpkg.payload, 0, RF_PAYLOAD_SIZE);
-	/* rfpkg.payload pre-filled */
-	vnRFTransmitPacket(&rfpkg);
-}
-#endif
 
 #define SUBSIZE ((sizeof(*sub) + sub->height * ((sub->width + 1) / 2)))
 
 static int b_parse_mcu_multiframe (mcu_multiframe_header_t *header, unsigned int maxlen)
 {
 	unsigned int i;
-	mcu_subframe_header_t *sub = header->subframe;
+	mcu_subframe_header_t *sub = NULL;
 
 	if (maxlen < sizeof(*header))
 		return 0;
 
 	maxlen -= sizeof(*header);
 
-debug_printf(" parsing mcu multiframe\n");
+	debug_printf(" parsing mcu multiframe maxlen = %d\n", maxlen);
 
 	while (maxlen) {
 		if (!sub)
@@ -90,10 +75,16 @@ debug_printf(" parsing mcu multiframe\n");
 		else
 			sub = (mcu_subframe_header_t *) ((char *) sub + SUBSIZE);
 
+		/* ntohs */
+		sub->height = swapshort(sub->height);
+		sub->width = swapshort(sub->width);
+
 		if (sub->bpp != 4) {
 			maxlen -= SUBSIZE;
 			continue;
 		}
+
+		debug_printf("subframe: bpp = 4, pkg rest size = %d, w %d, h %d!\n", maxlen, sub->width, sub->height);
 
 		for (i = 0; i < env.e.n_lamps; i++) {
 			LampMap *m = env.e.lamp_map + i;
@@ -108,14 +99,15 @@ debug_printf(" parsing mcu multiframe\n");
 				continue;
 
 			last_lamp_val[i] = sub->data[index / 2];
-			if (index & 1)
-				last_lamp_val[i] >> 4;
+			if (~index & 1)
+				last_lamp_val[i] >>= 4;
+
+			last_lamp_val[i] &= 0xf;
 		}
 
 		maxlen -= SUBSIZE;
 	}
 
-	/* ... */
 	memset(&rfpkg.payload, 0, RF_PAYLOAD_SIZE);
 
 	for (i = 0; i < RF_PAYLOAD_SIZE; i++)
@@ -123,8 +115,11 @@ debug_printf(" parsing mcu multiframe\n");
 				 | (last_lamp_val[(i * 2) + 1] << 4);
 	
 	/* funk it. */
-//	b_output_line(header->width, payload);
-	
+	memset(&rfpkg, 0, sizeof(rfpkg) - RF_PAYLOAD_SIZE);
+	rfpkg.cmd = RF_CMD_SET_VALUES;
+	rfpkg.wmcu_id = env.e.mcu_id;
+	rfpkg.mac = 0xffff; /* send to all MACs */
+	vnRFTransmitPacket(&rfpkg);
 	return 0;
 }
 
@@ -150,8 +145,6 @@ static int b_parse_mcu_setup (mcu_setup_header_t *header, int maxlen)
 
 static inline void b_set_lamp_id (int lamp_id, int lamp_mac)
 {
-	debug_printf("lamp MAC %08x -> ID %d\n", lamp_mac, lamp_id);
-
 	memset(&rfpkg, 0, sizeof(rfpkg));
 	rfpkg.cmd = RF_CMD_SET_LAMP_ID;
 	
@@ -199,13 +192,16 @@ static inline void b_set_assigned_lamps (unsigned int *map, unsigned int len)
 	int i;
 
 	for (i = 0; i < MAX_LAMPS; i++) {
+		LampMap *m;
 		if (i * 4 * sizeof(int) > len)
 			break;
 
-		env.e.lamp_map[i].mac    = map[(i * 4) + 0];
-		env.e.lamp_map[i].screen = map[(i * 4) + 1];
-		env.e.lamp_map[i].x      = map[(i * 4) + 2];
-		env.e.lamp_map[i].y      = map[(i * 4) + 3];
+		m = env.e.lamp_map + i;
+		m->mac    = map[(i * 4) + 0];
+		m->screen = map[(i * 4) + 1];
+		m->x      = map[(i * 4) + 2];
+		m->y      = map[(i * 4) + 3];
+		b_set_lamp_id (i, m->mac);
 	}
 
 	env.e.n_lamps = i - 1;
@@ -224,12 +220,21 @@ static inline void b_send_wdim_stats(unsigned int lamp_mac)
 
 static int b_parse_mcu_devctrl(mcu_devctrl_header_t *header, int maxlen)
 {
+	unsigned int i;
 //	int len = sizeof(*header);
 
 //	if (len > maxlen)
 //		return 0;
 
 //	debug_printf(" %s() cmd %04x\n", __func__, header->command);
+
+	/* ntohs */
+	header->command	= swaplong(header->command);
+	header->mac	= swaplong(header->command);
+	header->value	= swaplong(header->value);
+
+	for (i = 0; i < (maxlen - sizeof(*header)) / 4; i++)
+		header->param[i] = swaplong(header->param[i]);
 
 	switch (header->command) {
 		case MCU_DEVCTRL_COMMAND_SET_MCU_ID:
@@ -295,30 +300,29 @@ static int b_parse_mcu_devctrl(mcu_devctrl_header_t *header, int maxlen)
 static void b_recv(void *arg, struct udp_pcb *pcb, struct pbuf *p, struct ip_addr *addr, u16_t port)
 {
 	unsigned int off = 0;
+	unsigned char *payload = (unsigned char *) p->payload;
 
-	if (p->len < sizeof(unsigned int) || p->len > sizeof(payload)) {
+	if (p->len < sizeof(unsigned int)) { // || p->len > sizeof(payload)) {
 		pbuf_free(p);
 		return;
 	}
 
-	/* package payload has to be copied to a local buffer for whatever reason */
-	memcpy(payload, p->payload, p->len);
-	shuffle_tx_byteorder((unsigned long *) payload, p->len / sizeof(long));
-	
 	do {
-		unsigned int magic = *(unsigned int *) payload + off;
 		unsigned int consumed = 0;
-
+		unsigned int magic = payload[off + 0] << 24 |
+				     payload[off + 1] << 16  |
+				     payload[off + 2] << 8 |
+				     payload[off + 3];
 
 		switch (magic) {
 			case MAGIC_MCU_MULTIFRAME:
-				consumed = b_parse_mcu_multiframe((mcu_multiframe_header_t *) payload + off, p->len - off);
+				consumed = b_parse_mcu_multiframe((mcu_multiframe_header_t *) (p->payload + off), p->len - off);
 				break;
 			case MAGIC_MCU_SETUP:
-				consumed = b_parse_mcu_setup((mcu_setup_header_t *) payload + off, p->len - off);
+				consumed = b_parse_mcu_setup((mcu_setup_header_t *) (p->payload + off), p->len - off);
 				break;
 			case MAGIC_MCU_DEVCTRL:
-				consumed = b_parse_mcu_devctrl((mcu_devctrl_header_t *) payload + off, p->len - off);			
+				consumed = b_parse_mcu_devctrl((mcu_devctrl_header_t *) (p->payload + off), p->len - off);			
 				break;
 			default:
 				debug_printf(" magic %04x\n", magic);			

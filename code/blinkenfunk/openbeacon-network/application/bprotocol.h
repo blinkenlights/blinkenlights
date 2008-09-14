@@ -58,7 +58,7 @@ struct bl_frame_header
    * followed by
    * unsigned char data[rows][columns];
    */
-};
+} __attribute__((__packed__));
 
 /***********************************************************/
 
@@ -79,7 +79,7 @@ struct mcu_frame_header
    * followed by
    * unsigned char data[rows * columns * channels * (8/bpp)];
    */
-};
+} __attribute__((__packed__));
 
 /*
  * MCU Multi Frame packet
@@ -111,7 +111,7 @@ struct mcu_subframe_header
    *   and height * ((width + 1)/2) in case of nibbles (integer divison) 
    */
   unsigned char data[0];
-};
+} __attribute__((__packed__));
 
 typedef struct mcu_multiframe_header mcu_multiframe_header_t;
 
@@ -124,7 +124,7 @@ struct mcu_multiframe_header
    * followed by multiple subframe headers
    */
   mcu_subframe_header_t subframe[0];
-};
+} __attribute__((__packed__));
 
 
 /*
@@ -137,7 +137,7 @@ struct mcu_setup_pixel
 {
   unsigned char row;
   unsigned char column;
-};
+} __attribute__((__packed__));
 
 
 typedef struct mcu_setup_header mcu_setup_header_t;
@@ -158,7 +158,7 @@ struct mcu_setup_header
    * followed by
    * mcu_setup_pixel_t pixel[pixels];
    */
-};
+} __attribute__((__packed__));
 
 
 /*
@@ -184,7 +184,7 @@ struct mcu_devctrl_header
   unsigned int value;
   /* params consume the rest of the packet, up to MTU */
   unsigned int param[0];
-};
+} __attribute__((__packed__));
 
 /*
  * Heartbeat Packet
@@ -196,7 +196,7 @@ struct heartbeat_header
 {
   unsigned int magic;        /* == MAGIC_HEARTBEAT                      */
   unsigned short version;    /* hearbeat protocol version number (0)    */
-};
+} __attribute__((__packed__));
 
 
 /* function prototypes */

@@ -71,6 +71,21 @@ typedef struct
   unsigned short crc;
 } PACKED BRFPacket;
 
+static inline unsigned short
+swapshort (unsigned short src)
+{
+  return (src >> 8) | (src << 8);
+}
+
+static inline unsigned long
+swaplong (unsigned long src)
+{
+  return (src >> 24) |
+  	 (src << 24) | 
+	 ((src >> 8) & 0x0000FF00) |
+	 ((src << 8) & 0x00FF0000);
+}
+
 extern void vInitProtocolLayer (void);
 extern void vnRFTransmitPacket(BRFPacket *pkg);
 extern int PtSetFifoLifetimeSeconds (int Seconds);
