@@ -80,7 +80,7 @@ if action == -1:
 	usage()
 
 if action == SET_MCUID:
-	packet = struct.pack("!IIII8I", MCUCTRL_MAGIC, action, 0, mcu_id)
+	packet = struct.pack("!IIII", MCUCTRL_MAGIC, action, 0, mcu_id)
 
 elif action == SET_ASSIGNED_LAMPS:
 	lamps = read_lamp_map(lamp_list_file)
