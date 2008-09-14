@@ -63,10 +63,26 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
 
 #import <QuartzCore/QuartzCore.h>
 #import <OpenGLES/EAGLDrawable.h>
+#import "App.h"
 
 #import "EAGLView.h"
 
-//CLASS IMPLEMENTATIONS:
+@interface UITouch (domadditions)
+@property (readonly) CGPoint locationInWindow;
+@property (readonly) CGPoint previousLocationInWindow;
+@end
+
+@implementation UITouch (domadditions)
+- (CGPoint)locationInWindow
+{
+    return _locationInWindow;
+}
+
+- (CGPoint)previousLocationInWindow
+{
+    return _previousLocationInWindow;
+}
+@end
 
 @implementation EAGLView
 
@@ -268,5 +284,91 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
 	
 	return CGRectMake((rect.origin.x - bounds.origin.x) / bounds.size.width * _size.width, (rect.origin.y - bounds.origin.y) / bounds.size.height * _size.height, rect.size.width / bounds.size.width * _size.width, rect.size.height / bounds.size.height * _size.height);
 }
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    for (UITouch *touch in touches) {
+        if (touch.tapCount > 1)
+        {
+            _displacement = CGPointZero;
+            if (touch.tapCount % 2 == 0) {
+				//_displayMode = (_displayMode + 1) % 3;
+            }
+            
+        }
+    }
+}
+
+static CShell *shell = NULL;
+
+- (void)setShell:(CShell *)aShell {
+    shell = aShell;
+}
+
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event 
+{
+    UITouch *touch = [touches anyObject];
+    
+    if ([[event allTouches] count] == 1)
+    {
+        CGPoint location = [touch locationInView:self];
+        CGPoint previousLocation = [touch previousLocationInView:self];
+        _displacement.x += location.x - previousLocation.x;
+        _displacement.y += location.y - previousLocation.y;
+        
+        shell->MoveCamera(location.x - previousLocation.x, location.y - previousLocation.y, 0);
+        
+        
+        //		[self setNeedsDisplay];
+		//[self drawView];
+    }
+    else if ([[event allTouches] count] == 2)
+    {
+        BOOL noStarters = YES;
+        NSInteger currentTouchIndex = 0;
+        CGPoint touchLocations[2];
+        CGPoint previousTouchLocations[2];
+        for (UITouch *touch in [event allTouches])
+        {
+            if (touch.phase == UITouchPhaseBegan) {
+                noStarters = NO;
+            }
+            if (touch.phase == UITouchPhaseMoved) {
+                // touch moved handler
+            }
+            if (touch.phase == UITouchPhaseEnded) {
+            }
+            
+            // would like to use self, but seems to have a bug if the touch does not have a view
+            touchLocations[currentTouchIndex] = touch.locationInWindow;
+            // do something with location
+            previousTouchLocations[currentTouchIndex] = touch.previousLocationInWindow;
+            
+            currentTouchIndex++;
+        }
+        
+        // do some pinching check
+        CGPoint differenceBefore = CGPointMake(previousTouchLocations[0].x-previousTouchLocations[1].x,previousTouchLocations[0].y-previousTouchLocations[1].y);
+        CGFloat fingerDistanceBefore = sqrt(differenceBefore.x*differenceBefore.x + differenceBefore.y*differenceBefore.y);
+        CGPoint differenceAfter = CGPointMake(touchLocations[0].x-touchLocations[1].x,touchLocations[0].y-touchLocations[1].y);
+        CGFloat fingerDistanceAfter  = sqrt(differenceAfter.x*differenceAfter.x + differenceAfter.y*differenceAfter.y);
+        CGFloat distanceChange = fingerDistanceAfter - fingerDistanceBefore;
+        if (ABS(distanceChange) > 1.)
+        {
+            
+            shell->MoveCamera(0, 0, distanceChange);
+
+        }
+    }
+    
+    
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+}
+
+
+
 
 @end

@@ -101,6 +101,21 @@ static GLfloat windowtextureCoords[16][12];
 GLfloat *windowMeshTextureCoords[] = {NULL,NULL,NULL,NULL};
 GLfloat windowMeshTextureValues[16][2][2];
 
+float cameraDisplacementX, cameraDisplacementY, cameraDisplacementZ;
+BOOL autoCamera;
+VERTTYPE fManualViewDistance, fManualViewX, fManualViewY, fManualViewZ;
+
+void CShell::MoveCamera(float x, float y, float z)
+{
+    if (!autoCamera) {
+        cameraDisplacementX = x;
+        cameraDisplacementY = y;
+        cameraDisplacementZ = -z;
+        ComputeViewMatrix();
+    }
+}
+
+
 void CShell::UpdateWindows(unsigned char *inDisplayState)
 {
 
@@ -207,8 +222,14 @@ void CShell::UpdateWindows(unsigned char *inDisplayState)
 
 bool CShell::InitApplication()
 {
+    autoCamera = NO;
 
-
+    fManualViewDistance = 40;
+    fManualViewX = 0;
+    fManualViewY = 0.05;
+    fManualViewZ = 1;
+    
+    
 	/* Init values to defaults */
 	fViewAngle = PIOVERTWO;
 	
@@ -515,22 +536,39 @@ void ComputeViewMatrix()
 {
 	VECTOR3 vFrom;
 	
-	/* Calculate the distance to mesh */
-	VERTTYPE distance = fViewDistance + VERTTYPEMUL(fViewAmplitude, SIN(fViewAmplitudeAngle));
-	distance = VERTTYPEDIV(distance, f2vt(5.0f));
-	fViewAmplitudeAngle += f2vt(.004f);
-	
-	/* Calculate the vertical position of the camera */
-	VERTTYPE updown = VERTTYPEMUL(fViewUpDownAmplitude, ABS(SIN(fViewUpDownAngle))+0.1);
-	updown = VERTTYPEDIV(updown, f2vt(5.0f));
-	fViewUpDownAngle += f2vt(0.005f);
-	
-	/* Calculate the angle of the camera around the balloon */
-	vFrom.x = VERTTYPEMUL(distance, COS(fViewAngle));
-	vFrom.y = updown;
-	vFrom.z = VERTTYPEMUL(distance, SIN(fViewAngle));
-	fViewAngle += f2vt(viewAngleStep);
-    if (ABS(fViewAngle-PIOVERTWO)>1) viewAngleStep = -viewAngleStep;
+    if (autoCamera) {
+        /* Calculate the distance to mesh */
+        VERTTYPE distance = fViewDistance + VERTTYPEMUL(fViewAmplitude, SIN(fViewAmplitudeAngle));
+        distance = VERTTYPEDIV(distance, f2vt(5.0f));
+        fViewAmplitudeAngle += f2vt(.004f);
+
+        /* Calculate the vertical position of the camera */
+        VERTTYPE updown = VERTTYPEMUL(fViewUpDownAmplitude, ABS(SIN(fViewUpDownAngle))+0.1);
+        updown = VERTTYPEDIV(updown, f2vt(5.0f));
+        fViewUpDownAngle += f2vt(0.005f);
+
+        /* Calculate the angle of the camera around the balloon */
+        vFrom.x = VERTTYPEMUL(distance, COS(fViewAngle));
+        vFrom.y = updown;
+        vFrom.z = VERTTYPEMUL(distance, SIN(fViewAngle));
+        fViewAngle += f2vt(viewAngleStep);
+        if (ABS(fViewAngle-PIOVERTWO)>1) viewAngleStep = -viewAngleStep;
+    } else {
+        int d = 40;
+        
+        if (ABS(cameraDisplacementX)>0) fManualViewX = fManualViewX + (cameraDisplacementX * 0.005);
+        if (ABS(cameraDisplacementY)>0) fManualViewY = fManualViewY + (cameraDisplacementY * 0.005);
+        if (ABS(cameraDisplacementZ)>0) fManualViewZ = fManualViewZ + (cameraDisplacementZ * 0.005);
+        
+        vFrom.x = VERTTYPEMUL(d, fManualViewX);
+        vFrom.y = VERTTYPEMUL(d, fManualViewY);
+        vFrom.z = VERTTYPEMUL(d, fManualViewZ);
+        
+        cameraDisplacementX = 0;
+        cameraDisplacementY = 0;
+        cameraDisplacementZ = 0;
+    }
+    
 	
 	/* Compute and set the matrix */
 	MatrixLookAtRH(g_mView, vFrom, vTo, vUp);

@@ -75,7 +75,7 @@
 		31685F400E75C7AC0061B921 /* Window_On.pvr */ = {isa = PBXFileReference; lastKnownFileType = file; name = Window_On.pvr; path = Media/Window_On.pvr; sourceTree = "<group>"; };
 		31685F410E75C7AC0061B921 /* Ramp_1024.pvr */ = {isa = PBXFileReference; lastKnownFileType = file; name = Ramp_1024.pvr; path = Media/Ramp_1024.pvr; sourceTree = "<group>"; };
 		791F465D0E174E2600E927FE /* EAGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EAGLView.h; sourceTree = "<group>"; };
-		791F465E0E174E2600E927FE /* EAGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EAGLView.m; sourceTree = "<group>"; };
+		791F465E0E174E2600E927FE /* EAGLView.m */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = EAGLView.m; sourceTree = "<group>"; };
 		791F465F0E174E2600E927FE /* OpenGL_Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenGL_Internal.h; sourceTree = "<group>"; };
 		791F46600E174E2600E927FE /* Texture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Texture.h; sourceTree = "<group>"; };
 		791F46610E174E2600E927FE /* Texture.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Texture.mm; sourceTree = "<group>"; };

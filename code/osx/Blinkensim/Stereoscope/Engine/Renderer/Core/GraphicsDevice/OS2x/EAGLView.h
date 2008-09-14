@@ -96,6 +96,9 @@ Note that setting the view non-opaque will only work if the EAGL surface has an 
 	CGSize					_size;
 	BOOL					_hasBeenCurrent;
 	id<EAGLViewDelegate>	_delegate;
+
+    CGPoint _displacement;
+    CGFloat _pinchChange;
 }
 - (id) initWithFrame:(CGRect)frame; //These also set the current context
 - (id) initWithFrame:(CGRect)frame pixelFormat:(GLuint)format;

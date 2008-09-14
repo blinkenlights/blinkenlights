@@ -91,6 +91,8 @@ static CShell *shell = NULL;
 	//_glView = [[EAGLView alloc] initWithFrame:rect];
 	_glView = [[EAGLView alloc] initWithFrame:rect pixelFormat:GL_RGB565_OES depthFormat:GL_DEPTH_COMPONENT16_OES preserveBackbuffer:NO];
 	
+    [_glView setShell:shell];
+    
 	[_window addSubview:_glView];
 
 	// add info button, fps and status label

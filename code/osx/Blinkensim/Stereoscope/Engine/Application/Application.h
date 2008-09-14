@@ -40,6 +40,7 @@ public:
 	bool RenderScene();
 	
 	void UpdateWindows(unsigned char *inDisplayState);
+    void CShell::MoveCamera(float x, float y, float z);
 };
 
 
