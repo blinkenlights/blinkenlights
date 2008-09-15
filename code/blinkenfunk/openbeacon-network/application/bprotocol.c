@@ -39,11 +39,11 @@
 #include "lwip/ip.h"
 #include "lwip/udp.h"
 
-/* Blinkenlights includes. */
-#include "bprotocol.h"
-
 /* RF includes */
 #include "proto.h"
+
+/* Blinkenlights includes. */
+#include "bprotocol.h"
 
 #define MAX_WIDTH 100
 #define MAX_HEIGHT 100
@@ -334,6 +334,20 @@ static void b_recv(void *arg, struct udp_pcb *pcb, struct pbuf *p, struct ip_add
 	} while (off < p->len);
 
 	pbuf_free(p);
+}
+
+void b_parse_rfrx_pkg(BRFPacket *pkg)
+{
+	switch (pkg->cmd) {
+		case RF_CMD_SEND_STATISTICS:
+			debug_printf("got dimmer stats: %d emi pulses, %d packets received\n",
+				pkg->statistics.emi_pulses,
+				pkg->statistics.packet_count);
+			break;
+		default:
+			debug_printf("unexpectedly dimmer received, cmd = %d\n", pkg->cmd);
+			break;
+	}
 }
 
 void bprotocol_init(void)

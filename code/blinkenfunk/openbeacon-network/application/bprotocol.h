@@ -201,6 +201,6 @@ struct heartbeat_header
 
 /* function prototypes */
 void bprotocol_init(void);
-
+void b_parse_rfrx_pkg(BRFPacket *pkg);
 
 #endif /* __B_PROTOCOL_H__ */

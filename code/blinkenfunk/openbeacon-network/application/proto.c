@@ -29,6 +29,7 @@
 #include "led.h"
 #include "xxtea.h"
 #include "proto.h"
+#include "bprotocol.h"
 #include "nRF24L01/nRF_HW.h"
 #include "nRF24L01/nRF_CMD.h"
 #include "nRF24L01/nRF_API.h"
@@ -161,6 +162,7 @@ vnRFtaskRx (void *parameter)
 	      
 	      debug_printf("dumping received packet:\n");
 	      hex_dump((unsigned char *) &rxpkg, 0, sizeof(rxpkg));
+	      b_parse_rfrx_pkg(&rxpkg);
 	    }
 	  while ((nRFAPI_GetFifoStatus () & FIFO_RX_EMPTY) == 0);
 
