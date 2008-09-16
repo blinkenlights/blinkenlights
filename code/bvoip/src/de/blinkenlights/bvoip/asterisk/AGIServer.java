@@ -78,10 +78,11 @@ public class AGIServer implements Runnable {
 						} else {
 							logger.warning("Ingoring call because all channels are in use");
 						}
+					} catch (CallEndedException ex) {
+						logger.info("Call ended: " + channel);
 					} catch (Exception ex) {
 						logger.log(Level.WARNING, "Call handling ended abnormally", ex);
 					} finally {
-						logger.info("Call ended");
 						if (channel != null) {
 							channel.close();
 						}
@@ -94,6 +95,5 @@ public class AGIServer implements Runnable {
 		};
 		
 		new Thread(callHandler).start();
-		
 	}
 }

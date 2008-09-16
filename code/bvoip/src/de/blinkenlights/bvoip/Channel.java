@@ -11,7 +11,6 @@ import de.blinkenlights.bvoip.blt.BLTClient;
  * will be removed from the channel list.
  */
 public class Channel {
-
 	private final int channelNum;
 	private AGISession agiSession;
 	private BLTClient client;

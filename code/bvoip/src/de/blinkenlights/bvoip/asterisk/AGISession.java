@@ -117,6 +117,22 @@ public class AGISession {
 	public void answer() {
 		agiCommandQueue.add("ANSWER");
 	}
+
+	/**
+	 * Hangs up the call.
+	 */
+	public void hangup() {
+		agiCommandQueue.add("HANGUP");
+	}
+	
+	/**
+	 * Plays a background music context.
+	 * 
+	 * @param mohContext the context to play
+	 */
+	public void playBackground(String mohContext) {
+		agiCommandQueue.add("SET MUSIC on " + mohContext);
+	}
 	
 	/**
 	 * Returns the next unconsumed digit that was received from Asterisk.

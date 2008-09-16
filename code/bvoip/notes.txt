@@ -1,0 +1,5 @@
+BVoip Todo List
+===============
+
+- 1 call per DNID? blccc seems to only expect one call for each game
+- play is not implemented
