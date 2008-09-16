@@ -1,6 +1,7 @@
 package de.blinkenlights.bmix.main;
 
 import java.awt.AlphaComposite;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Rectangle;
 import java.io.IOException;
@@ -34,6 +35,7 @@ import de.blinkenlights.bmix.monitor.Monitor;
 import de.blinkenlights.bmix.network.BLPacketReceiver;
 import de.blinkenlights.bmix.network.BLPacketReceiverThread;
 import de.blinkenlights.bmix.network.BLPacketSender;
+import de.blinkenlights.bmix.network.BLPacketReceiver.AlphaMode;
 import de.blinkenlights.bmix.util.FileFormatException;
 
 /**
@@ -237,6 +239,8 @@ public class BMix extends Monitor {
 		            String listenAddr = attributes.getValue("listen-addr");
 		            String listenPort = attributes.getValue("listen-port");
 		            String heartBeatDestAddrString = attributes.getValue("heartbeat-dest-addr");
+		            AlphaMode alphaMode = AlphaMode.forCode(attributes.getValue("alpha-mode"));
+		            Color transparentColour = Color.decode(attributes.getValue("chroma-key-colour"));
 		            InetAddress heartBeatDestAddr = null;
 		            if (heartBeatDestAddrString != null) {
 		            	heartBeatDestAddr = InetAddress.getByName(heartBeatDestAddrString);
@@ -246,7 +250,7 @@ public class BMix extends Monitor {
 		                new BLPacketReceiver(
 		                        Integer.parseInt(listenPort),
 		                        InetAddress.getByName(listenAddr),
-		                        heartBeatDestAddr, heartBeatDestPort);
+		                        heartBeatDestAddr, heartBeatDestPort, alphaMode, transparentColour);
 		            inputs.put(id, receiver);
 		            currentInput = receiver;
 

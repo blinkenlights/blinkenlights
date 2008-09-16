@@ -1,9 +1,11 @@
 package de.blinkenlights.bmix.monitor;
 
+import java.awt.Color;
 import java.net.SocketException;
 
 import de.blinkenlights.bmix.mixer.BLImage;
 import de.blinkenlights.bmix.network.BLPacketReceiver;
+import de.blinkenlights.bmix.network.BLPacketReceiver.AlphaMode;
 import de.blinkenlights.bmix.protocol.BLFramePacket;
 import de.blinkenlights.bmix.protocol.BLPacket;
 
@@ -21,7 +23,10 @@ public class NetworkStreamMonitor extends Monitor {
 	 */
 	public NetworkStreamMonitor(NetworkStreamMonitorConfig nc) throws SocketException {
 		super(nc.getName(), nc.getX(), nc.getY(), nc.getW(), nc.getH(), true);		
-		this.bpr = new BLPacketReceiver(nc.getPort(),null,null,0);
+		this.bpr = new BLPacketReceiver(
+				nc.getPort(), null,
+				null, 0,
+				AlphaMode.OPAQUE, null);
 	}
 
 	

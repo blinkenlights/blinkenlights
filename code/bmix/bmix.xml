@@ -2,9 +2,9 @@
 <!DOCTYPE bmix PUBLIC "-//BMix//DTD BMix 1.0//EN" "bmix.dtd">
 <bmix version="1.0" vmatrix-width="96" vmatrix-height="32" max-frame-interval="50">
 
-  <input id="Graffiti"    listen-port="2323"/>
+  <input id="Graffiti"    listen-port="2330"/>
   <input id="Foreground"  listen-port="2324"/>
-  <input id="Top-East"    listen-port="2325"/>
+  <input id="Top-East"    listen-port="2325" alpha-mode="opaque"/>
   <input id="Bottom-East" listen-port="2326">
     <relay-target dest-addr="192.168.4.161" dest-port="2002"/>
     <relay-target dest-addr="192.168.4.161" dest-port="2003"/>
@@ -18,13 +18,13 @@
   
   <layer input="Graffiti"    x="0"  y="0"  width="96" height="32" />
   <layer input="Foreground"  x="0"  y="0"  width="96" height="32" />
-  <layer input="Top-East"    x="51" y="5"  width="30" height="12" />
-  <layer input="Bottom-East" x="51" y="19" width="30" height="9" />
+  <layer input="Top-East"    x="50" y="5"  width="30" height="12" />
+  <layer input="Bottom-East" x="50" y="19" width="30" height="9" />
   <layer input="Top-West"    x="16" y="11" width="22" height="8" />
   <layer input="Bottom-West" x="16" y="21" width="22" height="7" />
   <layer input="Background"  x="0"  y="0"  width="96" height="32" />
 
-  <output dest-addr="localhost" dest-port="2322" x="51" y="5"  width="30" height="12" min-frame-interval="2000" />
+  <output dest-addr="localhost" dest-port="2323" x="0" y="0"  width="96" height="32" min-frame-interval="0" />
   <output dest-addr="192.168.4.125" dest-port="2324" x="51" y="19" width="30" height="9" />
   <output dest-addr="192.168.4.125" dest-port="2325" x="16" y="11" width="22" height="8" />
   <output dest-addr="192.168.4.125" dest-port="2326" x="16" y="21" width="22" height="7" />

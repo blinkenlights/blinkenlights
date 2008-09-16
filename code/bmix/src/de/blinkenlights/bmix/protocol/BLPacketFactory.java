@@ -2,6 +2,8 @@ package de.blinkenlights.bmix.protocol;
 
 import java.awt.Color;
 
+import de.blinkenlights.bmix.network.BLPacketReceiver.AlphaMode;
+
 /**
  * This class is a BLPacketFactory which can take a packet of network
  * bytes and figure out the packet type, and then return a BLPacket of
@@ -9,11 +11,6 @@ import java.awt.Color;
  * a new packet object.
  */
 public class BLPacketFactory {	
-	
-	/**
-	 * The colour that is considered transparent when reading pixel values from the stream.
-	 */
-	private static final Color CHROMA_KEY = Color.BLACK;
 
 	/**
 	 * Creates a new BLPacket from raw bytes.
@@ -22,7 +19,7 @@ public class BLPacketFactory {
 	 * @param len the data length
 	 * @throws BLPacketException if there is an error
 	 */
-	public static BLPacket parse(byte data[], int len) throws BLPacketException {
+	public static BLPacket parse(byte data[], int len, AlphaMode alphaMode, Color transparentColour) throws BLPacketException {
 		// length is invalid
 		if(len > data.length || len < 0 || len < 4) {
 			throw new BLPacketException("len is invalid");
@@ -105,7 +102,7 @@ public class BLPacketFactory {
 				pixels[i] = (byte) ((int) (data[i+12] * scaleFactor) & 0xff);
 			}
 			
-			return new BLFramePacket(width, height, channels, pixels, CHROMA_KEY);
+			return new BLFramePacket(width, height, channels, pixels, alphaMode, transparentColour);
 		}
 		
 		// legacy BL frame packet - 0xdeadbeef 
@@ -126,7 +123,7 @@ public class BLPacketFactory {
 					pixels[i] = 1;
 				}
 			}
-			return new BLFramePacket(width, height, 1, pixels, CHROMA_KEY);
+			return new BLFramePacket(width, height, 1, pixels, alphaMode, transparentColour);
 		}
 		
 		// legacy greyscale BL frame packet - 0xfeedbeef
@@ -142,7 +139,7 @@ public class BLPacketFactory {
 			}
 			byte pixels[] = new byte[len - 12];
 			System.arraycopy(data, 12, pixels, 0, len - 12);
-			return new BLFramePacket(width, height, 1, pixels, CHROMA_KEY);
+			return new BLFramePacket(width, height, 1, pixels, alphaMode, transparentColour);
 		}	
 		return null;
 	}

@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.image.BufferedImage;
 
 import de.blinkenlights.bmix.mixer.BLImage;
+import de.blinkenlights.bmix.network.BLPacketReceiver.AlphaMode;
 
 /**
  * This class is a BLFramePacket. It translates image data into network bytes to
@@ -43,6 +44,8 @@ public class BLFramePacket implements BLPacket, BLImage {
 
 	private final Color transparentColour;
 
+	private final AlphaMode alphaMode;
+
 	/**
 	 * Creates a new BLFramePacket.
 	 * 
@@ -57,19 +60,26 @@ public class BLFramePacket implements BLPacket, BLImage {
 	 * @param pixelData
 	 *            the pixel data. Must not be null, and must have length of
 	 *            {@link #width} {@link #height} {@link #channels}.
+	 * @param alphaMode
+	 *            The method for converting pixels from the network format to
+	 *            our standard 32-bit ARGB format.
 	 * @param transparentColour
 	 *            The colour in the input that should be treated as transparent.
-	 *            If no transparent colour is desired, pass in null for this
-	 *            parameter.
+	 *            If not using {@link AlphaMode#CHROMA_KEY}, pass in null for
+	 *            this parameter, because it is ignored.
 	 */
 	public BLFramePacket(int width, int height, int channels,
-			byte pixelData[], Color transparentColour) {
+			byte pixelData[], AlphaMode alphaMode, Color transparentColour) {
 		this.width = width;
 		this.height = height;
 		this.channels = channels;
+		this.alphaMode = alphaMode;
+		if (alphaMode == AlphaMode.CHROMA_KEY && transparentColour == null) {
+			throw new IllegalArgumentException("Alpha mode is CHROMA_KEY but transparentColour was null");
+		}
+		this.transparentColour = transparentColour;
 		this.maxval = 255; // received data maxval is always 255
 		this.pixelData = pixelData;
-		this.transparentColour = transparentColour;
 		
 		if (channels != 1 && channels != 3) {
 			throw new IllegalArgumentException("Non-allowed channels value: " + channels);
@@ -99,6 +109,7 @@ public class BLFramePacket implements BLPacket, BLImage {
 		this.channels = channels;
 		this.maxval = maxval;
 		transparentColour = null;
+		alphaMode = AlphaMode.OPAQUE;
 		if(channels != 1) {
 			throw new IllegalArgumentException("channels > 1 are not supported, request channels: "+channels);
 		}
@@ -145,7 +156,7 @@ public class BLFramePacket implements BLPacket, BLImage {
 	 *            The y coordinate (0..height-1).
 	 * @return an integer packed as follows: 0xAARRGGBB
 	 */
-	public int getARGB(int x, int y) {
+	public int getARGB(int x, int y, AlphaMode alphaMode) {
 		if (x >= width || x < 0) {
 			throw new IndexOutOfBoundsException("x = " + x + "; width = " + width);
 		}
@@ -169,11 +180,26 @@ public class BLFramePacket implements BLPacket, BLImage {
 		}
 		int argb = (red << 16) | (green << 8) | blue;
 		int alpha;
-		if (transparentColour != null &&
-				(transparentColour.getRGB() & 0xffffff) == argb) {
-			alpha = 0x00;
-		} else {
+		if (alphaMode == AlphaMode.NATIVE) {
+			if (0 == argb) {
+				alpha = 0x00;
+			} else {
+				alpha = 0xff;
+			}
+		} else if (alphaMode == AlphaMode.CHROMA_KEY) {
+			if (transparentColour != null &&
+					(transparentColour.getRGB() & 0xffffff) == argb) {
+				alpha = 0x00;
+			} else {
+				alpha = 0xff;
+			}
+		} else if (alphaMode == AlphaMode.OPAQUE) {
 			alpha = 0xff;
+		} else if (alphaMode == AlphaMode.BRIGHTNESS) {
+			alpha = red;
+			argb = 0xffffff;
+		} else {
+			throw new IllegalArgumentException("Unknown/unsupported alpha mode: " + alphaMode);
 		}
 		argb |= (alpha << 24);
 		return argb;
@@ -183,20 +209,19 @@ public class BLFramePacket implements BLPacket, BLImage {
      * Fills a BufferedImage with the current frame packet. Guaranteed to set
      * every pixel in the given image.
      * 
-     * @param bi
+     * @param target
      *            the BufferedImage to fil
      */
-	public void fillBufferedImage(BufferedImage bi) {		
-		int width = Math.min(this.width, bi.getWidth());
-		int height = Math.min(this.height, bi.getHeight());		
+	public void fillBufferedImage(BufferedImage target) {
+		int width = Math.min(this.width, target.getWidth());
+		int height = Math.min(this.height, target.getHeight());		
 		for (int i = 0; i < width; i++) {
 			for (int j = 0; j < height; j++) {
-				int argb = getARGB(i, j);
-				bi.setRGB(i, j, argb);
+				int argb = getARGB(i, j, alphaMode);
+				target.setRGB(i, j, argb);
 			}
 		}
 	}
-	
 	
 	/**
 	 * Gets contents of this object in network protocol format.

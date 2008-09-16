@@ -1,5 +1,6 @@
 package de.blinkenlights.bmix.network;
 
+import java.awt.Color;
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
@@ -12,7 +13,6 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import de.blinkenlights.bmix.protocol.BLFramePacket;
 import de.blinkenlights.bmix.protocol.BLHeartbeatPacket;
 import de.blinkenlights.bmix.protocol.BLPacket;
 import de.blinkenlights.bmix.protocol.BLPacketFactory;
@@ -23,6 +23,40 @@ import de.blinkenlights.bmix.protocol.BLPacketFactory;
  * null if there was an error.
  */
 public class BLPacketReceiver {
+	
+	public static enum AlphaMode {
+		/** alpha channel ignored even if present */
+		OPAQUE("opaque"),
+		
+		/** one colour is fully transparent; all others are opaque */
+		CHROMA_KEY("chroma-key"),
+		
+		/** all pixels are full white, and opacity is set to brightness */
+		BRIGHTNESS("brightness"),
+		
+		/** magically delicious undocumented mode */
+		NATIVE("native");
+		
+		private String code;
+
+		AlphaMode(String code) {
+			this.code = code;
+		}
+		
+		public static AlphaMode forCode(String code) {
+			for (AlphaMode am : values()) {
+				if (am.code.equals(code)) {
+					return am;
+				}
+			}
+			throw new IllegalArgumentException("Unknown code: " + code);
+		}
+		
+		@Override
+		public String toString() {
+			return code;
+		}
+	}
 	
 	private final static Logger logger = Logger.getLogger(BLPacketReceiver.class.getName());
 	byte buf[] = new byte[65536];
@@ -52,6 +86,17 @@ public class BLPacketReceiver {
 	 */
 	private final int heartBeatDestPort;
 
+	/**
+	 * The current alpha mode. This can be changed at any time on an existing
+	 * instance. Defaults to the extremely documented NATIVE mode.
+	 */
+	private final AlphaMode alphaMode;
+
+    /**
+     * The transparent colour to use if the alpha mode is CHROMA_KEY.
+     */
+	private final Color transparentColour;
+
     /**
      * Each of these BLPacketSenders will be given the received packet when we
      * receive it.
@@ -66,9 +111,13 @@ public class BLPacketReceiver {
 	 * @param address The address to listen on (0.0.0.0 or null for all local addresses).
 	 * @param heartBeatDestination the host to which we should send heartbeats, or null if we shouldn't send them.
 	 * @param heartBeatDestPort the port on the proxy host to which we should send the heartbeats
+	 * @param transparentColour 
+	 * @param alphaMode 
 	 * @throws SocketException if binding to the specified port and address is not possible.
 	 */
-	public BLPacketReceiver(int port, InetAddress address, InetAddress heartBeatDestination, int heartBeatDestPort) throws SocketException  {
+	public BLPacketReceiver(int port, InetAddress address,
+			InetAddress heartBeatDestination, int heartBeatDestPort,
+			AlphaMode alphaMode, Color transparentColour) throws SocketException  {
 		if (address == null) {
 			address = WILDCARD_ADDRESS;
 		}
@@ -78,6 +127,9 @@ public class BLPacketReceiver {
 		if(port < 1) {
 			throw new IllegalArgumentException("port must be > 0");
 		}		
+		this.alphaMode = alphaMode;
+		this.transparentColour = transparentColour;
+
 		socket = new DatagramSocket(port, address);
 		socket.setSoTimeout(1000);
 		logger.info("BLFrameReceiver() - port: " + port);
@@ -90,7 +142,7 @@ public class BLPacketReceiver {
 		DatagramPacket packet = new DatagramPacket(buf, buf.length);
 		try {
 			socket.receive(packet);
-			BLPacket parsedPacket = BLPacketFactory.parse(buf, packet.getLength());
+			BLPacket parsedPacket = BLPacketFactory.parse(buf, packet.getLength(), alphaMode, transparentColour);
 			for (BLPacketSender sender : relaySenders) {
 			    try {
 			        sender.send(parsedPacket.getNetworkBytes());
@@ -107,37 +159,6 @@ public class BLPacketReceiver {
 		return null;
 	}
 	
-	/**
-	 * Main for testing.
-	 * 
-	 * @param args command-line arguments
-	 * 
-	 * Arguments:
-	 * 
-	 *  - port		the port number
-	 */
-	public static void main(String args[]) throws Exception {
-		if(args.length < 1) {
-			logger.severe("listening port number must be supplied");
-			return;
-		}
-		int port = 0;
-		try {
-			port = Integer.parseInt(args[0]);
-		} catch(NumberFormatException e) {
-			logger.log(Level.SEVERE,args[0]+" wasn't something that I could parse as a number!",e);
-			return;
-		}
-		BLPacketReceiver blfr = new BLPacketReceiver(port,null,null,0);
-		while(true) {
-			BLPacket blp = blfr.receive();
-			if(blp instanceof BLFramePacket) {
-				BLFramePacket blfp = (BLFramePacket)blp;
-				logger.fine(blfp.toString());
-			}
-		}
-	}
-	
 	public void sendHeartBeat() throws IOException {
 		if (heartBeatDestination != null) {
 			logger.fine("sending heartbeat to: "+heartBeatDestination+":"+heartBeatDestPort);
@@ -150,4 +171,12 @@ public class BLPacketReceiver {
     public void addRelaySender(BLPacketSender relaySender) {
         relaySenders .add(relaySender);
     }
+    
+    public AlphaMode getAlphaMode() {
+		return alphaMode;
+	}
+    
+    public Color getTransparentColour() {
+		return transparentColour;
+	}
 }

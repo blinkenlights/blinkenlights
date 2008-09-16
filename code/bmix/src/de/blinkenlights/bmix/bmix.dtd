@@ -15,11 +15,12 @@
 		opaque      alpha channel ignored even if present
 		chroma-key  one colour is fully transparent; all others are opaque
 		brightness  all pixels are full white, and opacity is set to brightness
-		native      magically delicious undocumented mode
+		(none specified) chroma key (and the default colour is black, but that's another episode)
  -->
-<!ATTLIST input alpha-mode CDATA "native">
+<!ATTLIST input alpha-mode CDATA "chroma-key">
 
-<!-- HTML-style 24-bit hex string, prefixed by # just to be obnoxious (i.e. for forward compatibility) -->
+<!-- HTML-style 24-bit hex string, prefixed by # just to be obnoxious (i.e. for forward compatibility)
+     Defaults to black. Ignored unless alpha mode is chroma-key. -->
 <!ATTLIST input chroma-key-colour CDATA "#000000">
 
 <!-- Relay targets receive a copy of every frame received on the input they belong to -->

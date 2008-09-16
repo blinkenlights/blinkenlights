@@ -14,9 +14,9 @@ public interface BLImage {
 	 * the anchor point. If the given image is too large, the extra pixels along the
 	 * right and below will remain untouched.
 	 * 
-	 * @param bi the buffered image to write into
+	 * @param target the buffered image to write into
 	 */
-	void fillBufferedImage(BufferedImage bi);
+	void fillBufferedImage(BufferedImage target);
 	
 	/**
 	 * Returns the height in pixels of the content of this BLImage
