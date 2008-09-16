@@ -438,7 +438,7 @@ b_sender_send_frame (BSender      *sender,
            /* update the timestamp */
            g_get_current_time (&tv);
            sender->packet->header.mcu_multiframe_h.timestamp 
-             = (tv.tv_sec * 1000) + (tv.tv_usec / 1000);
+             = ((guint64)tv.tv_sec * 1000) + (tv.tv_usec / 1000);
   
            /* hard-coded for 4bpp */
            sub = sender->packet->header.mcu_multiframe_h.subframe;

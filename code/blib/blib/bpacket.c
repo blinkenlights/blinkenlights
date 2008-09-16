@@ -49,7 +49,7 @@ b_packet_new (gint   width,
               gint   height,
               gint   channels,
               gint   maxval,
-	      guint  magic,
+              guint  magic,
               gsize *data_size)
 {
   BPacket *packet = NULL;
@@ -76,11 +76,13 @@ b_packet_new (gint   width,
       {
         gint bpp = (maxval < 255) ? 4 : 8;
 
-        size = width * height * channels;
-        if (bpp == 4)
-          size /= 2;
+        // take uneven widhts into account
+        gint bytewidth = (bpp == 4) ? (width + 1) / 2 : width;
+        
+        size = bytewidth * height * channels;
 
-        size += sizeof (mcu_subframe_header_t);
+        // frame header and size for termination header
+        size += 2 * sizeof (mcu_subframe_header_t);
 
         /* hard-coded to one subframe */
         packet = (BPacket *) g_new0 (guchar, sizeof (BPacket) + size * 1);
@@ -120,6 +122,7 @@ b_packet_size (BPacket *packet)
       }
     case MAGIC_MCU_MULTIFRAME:
       {
+        // TODO: calculate size of packet via iterating and summing up until the termination subframe header
         return *(magic-1);
       }
     default:
