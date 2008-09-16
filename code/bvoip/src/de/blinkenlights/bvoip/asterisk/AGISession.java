@@ -102,7 +102,7 @@ public class AGISession {
 		out.println(command);
 		String response = in.readLine();
 		if (response == null) throw new CallEndedException();
-		Pattern p = Pattern.compile("200 result=([^ ]*)");
+		Pattern p = Pattern.compile("200 result=([^ ]*)( ([^=]+)=([^ ]+))*");
 		Matcher m = p.matcher(response);
 		if (m.matches()) {
 			return m.group(1);
@@ -125,6 +125,15 @@ public class AGISession {
 		agiCommandQueue.add("HANGUP");
 	}
 	
+	/**
+	 * Play a file that will be interrupted with DTMF.
+	 * 
+	 * @param filename the file to play
+	 */
+	public void play(String filename) {
+		agiCommandQueue.add("STREAM FILE \"" + filename + "\" \"\"");		
+	}
+
 	/**
 	 * Plays a background music context.
 	 * 

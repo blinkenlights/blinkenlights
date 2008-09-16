@@ -55,7 +55,7 @@ public class BLTCommand {
 			throw new IllegalArgumentException("first part of message must be a number in message ("+data+")");			
 		}
 		command = parts[1];
-		BLTCommand retval = null;
+		BLTCommand retval;
 		if ("register".equals(command)) {
 			logger.fine("register command");
 			retval = new BLTCommand(channel, CommandType.REGISTER);
@@ -102,8 +102,8 @@ public class BLTCommand {
 			}
 		}
 		else {
-			logger.warning("unknown command received: " + command);
-		}	
+			throw new IllegalArgumentException("unknown command received: " + command);
+		}
 		logger.finest("returning "+retval.command+" Command with arguments: "+retval.args);
 		return retval;
 	}

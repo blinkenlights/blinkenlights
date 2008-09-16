@@ -9,6 +9,7 @@ import java.net.SocketTimeoutException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import de.blinkenlights.bvoip.Channel;
@@ -28,7 +29,7 @@ public class BLTClientManager implements Runnable  {
 	private final ChannelList channelList;
 	private long lastStatusSendTime = 0;
 	private final int statusSendInterval = 1000; // one second, in the spec...  Milliseconds!
-	private final int clientTimeout = 10 * 1000; // milliseconds
+	private final int clientTimeout = 60 * 1000; // milliseconds
 	private final ChannelEventHandler eventHandler = new ChannelEventHandler();
 	
 	private DatagramSocket socket;
@@ -53,12 +54,13 @@ public class BLTClientManager implements Runnable  {
 		}
 		
 		while (true) {	
+			ClientIdentifier ci = null;
 			try {
 				DatagramPacket p = new DatagramPacket(new byte[1024],1024);
 				try {
 					socket.receive(p);
 					logger.fine("got packet from: "+p.getAddress()+": "+new String(p.getData()));
-					ClientIdentifier ci = new ClientIdentifier(p.getAddress(),p.getPort());
+					ci = new ClientIdentifier(p.getAddress(),p.getPort());
 					BLTCommand bltc = BLTCommand.parsePacket(new String(p.getData()));
 
 					if (bltc.getCommand() == BLTCommand.CommandType.REGISTER) {
@@ -73,7 +75,8 @@ public class BLTClientManager implements Runnable  {
 							handleHangup(client, bltc.getChannelNum());
 						} else if (bltc.getCommand() == BLTCommand.CommandType.PLAYBACKGROUND) {
 							handlePlaybackground(client, bltc.getChannelNum(), bltc.getArgs().get(0));
-//						} else if (bltc.getCommand() == BLTCommand.CommandType.PLAY)
+						} else if (bltc.getCommand() == BLTCommand.CommandType.PLAY) {
+							handlePlay(client, bltc.getChannelNum(), bltc.getArgs().get(0));
 						}
 					} else {
 						logger.fine("got "+bltc.getCommand()+" command from unregistered client: "+ci);
@@ -81,8 +84,14 @@ public class BLTClientManager implements Runnable  {
 				} catch (SocketTimeoutException e) {
 					logger.finest("timeout");
 				}
-			} catch (IOException e) {
-				logger.warning("got ioexception processing main loop: "+e.getMessage());
+			} catch (Exception e) {
+				logger.log(Level.WARNING, "got exception processing main loop", e);
+				if(ci != null) {
+					BLTClient client = activeClients.get(ci);
+					BLTCommand command = new BLTCommand(0, CommandType.ERROR, "bvoip error: " + 
+							e.getClass().getName() + " " + e.getMessage());
+					sendToClient(client, command);					
+				}
 			}
 			// send channel status
 			if (System.currentTimeMillis() > lastStatusSendTime + statusSendInterval) {
@@ -110,13 +119,22 @@ public class BLTClientManager implements Runnable  {
 		}
 	}
 
+	private void handlePlay(BLTClient client, int channelNum, String filename) {
+		Channel channel = channelList.getChannels().get(channelNum);
+
+		// is the channel registered to another client?
+		if(channel.getClient() == null || channel.getClient() != client) {
+			logger.fine("Rejecting PLAYBACKGROUND command because this client doesn't own this call");
+			BLTCommand command = new BLTCommand(channelNum, CommandType.ERROR, "not your call");
+			sendToClient(client, command);
+		} else {
+			channel.getAgiSession().play(filename);
+		}		
+	}
 
 	private void handlePlaybackground(BLTClient client, int channelNum, String mohContext) {
 		Channel channel = channelList.getChannels().get(channelNum);
-		if(channel == null) {
-			logger.warning("Channel is null: " + channelNum);
-			return;
-		}
+
 		// is the channel registered to another client?
 		if(channel.getClient() == null || channel.getClient() != client) {
 			logger.fine("Rejecting PLAYBACKGROUND command because this client doesn't own this call");
@@ -129,10 +147,7 @@ public class BLTClientManager implements Runnable  {
 	
 	private void handleAccept(BLTClient client, int channelNum) {
 		Channel channel = channelList.getChannels().get(channelNum);
-		if(channel == null) {
-			logger.warning("Channel is null: " + channelNum);
-			return;
-		}
+
 		if (channel.getClient() != null) {
 			logger.fine("Rejecting ACCEPT command because channel is already accepted");
 			BLTCommand command = new BLTCommand(channelNum, CommandType.ERROR, "not your call");
@@ -145,10 +160,7 @@ public class BLTClientManager implements Runnable  {
 	
 	private void handleHangup(BLTClient client, int channelNum) {
 		Channel channel = channelList.getChannels().get(channelNum);
-		if(channel == null) {
-			logger.warning("Channel is null: " + channelNum);
-			return;
-		}
+		
 		// is the channel registered to another client?
 		if(channel.getClient() == null || channel.getClient() != client) {
 			logger.fine("Rejecting HANGUP command because this client doesn't own this call");
