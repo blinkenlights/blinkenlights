@@ -303,6 +303,8 @@ b_receiver_stop (BReceiver *receiver)
   receiver->io_channel = NULL;
 }
 
+#define BUFFERSIZE 0xfff
+
 static gboolean
 b_receiver_io_func (GIOChannel   *io,
                     GIOCondition  cond,
@@ -310,12 +312,10 @@ b_receiver_io_func (GIOChannel   *io,
 {
   BReceiver          *receiver;
   mcu_frame_header_t *header;
-  guchar              buf[0xfff];
-  guchar              multibuf[sizeof(buf)+4];
+  guchar              buf[BUFFERSIZE];
   BPacket            *packet = NULL;
   BPacket            *fake   = NULL;
   BPacket            *new    = NULL;
-  gpointer            multiframememory = NULL;
   gssize              buf_read;
   gboolean            success = TRUE;
 
@@ -330,17 +330,17 @@ b_receiver_io_func (GIOChannel   *io,
 
   req_fd = g_io_channel_unix_get_fd (io);
 
-  buf_read = recvfrom (req_fd, buf, sizeof (buf), 0,
+  buf_read = recvfrom (req_fd, buf, BUFFERSIZE - sizeof(mcu_subframe_header_t), 0,
                        (struct sockaddr *) &req_addr, &req_addr_length);
 
   if (buf_read < sizeof (BPacket))
     return TRUE;
 
-  new = (BPacket *) buf;
+  packet = (BPacket *) buf;
 
-  b_packet_ntoh (new);
+  b_packet_ntoh (packet);
 
-  header = &new->header.mcu_frame_h;
+  header = &packet->header.mcu_frame_h;
 
   switch (header->magic)
     {
@@ -348,15 +348,14 @@ b_receiver_io_func (GIOChannel   *io,
       if (buf_read < (sizeof (BPacket) +
                       header->width * header->height * header->channels))
         return TRUE;
-      /*  else fallthru  */
+      break;
 
     case MAGIC_HEARTBEAT:
-      packet = new;
       break;
 
     case MAGIC_BLFRAME:
       {
-	gint size;
+	gsize size;
 
 	fake = b_packet_new (18, 8, 1, 1, MAGIC_MCU_FRAME, &size);
 	memcpy (fake->data, (guchar *) new + sizeof (BPacket), size);
@@ -365,16 +364,33 @@ b_receiver_io_func (GIOChannel   *io,
       break;
 
     case MAGIC_MCU_MULTIFRAME:
-      // beeing evil due to evil circumstances
       {
-      	*((guint32 *)multibuf) = buf_read;
-	memcpy (multibuf+4, buf, buf_read);
-        packet = (BPacket *)(multibuf+4);
+//        printf("multiframe: %p ",packet);
+         mcu_subframe_header_t *subframe_header = &packet->header.mcu_multiframe_h.subframe[0];
+         b_packet_multiframe_hton(subframe_header); // just for a pretty loop after here
+         guchar *end_of_read = buf + buf_read;
+         while ((guchar *)subframe_header < end_of_read) {
+                b_packet_multiframe_ntoh(subframe_header);
+                gsize subframesize = b_packet_multiframe_subframe_size(subframe_header);
+//                printf("  frame with screen_id:%u bpp:%u width:%d height:%d was of size:%d - bytes left:%d\n",subframe_header->screen_id,subframe_header->bpp, subframe_header->width, subframe_header->height, subframesize, (guchar *)end_of_read - (guchar *)subframe_header);
+                subframe_header = (mcu_subframe_header_t *)( ((guchar *)subframe_header) + subframesize + sizeof(mcu_subframe_header_t));
+         }
+         if ((guchar *)subframe_header == (guchar *)end_of_read) {
+                // great stuff, got a valid packet - now zero out the final termination subframe header
+                subframe_header->screen_id = 0;
+                subframe_header->bpp       = 0;
+                subframe_header->height    = 0;
+                subframe_header->width     = 0;
+         } else {
+                g_printerr ("BReceiver: Recieved malformed MAGIC_MCU_MULTIFRAME packet, last frame ended %d bytes off.\n",
+		             (guchar *)subframe_header - (guchar *)end_of_read);
+                return TRUE;
+         }
       }
       break;
 
     default:
-      g_printerr ("BReceiver: Unknown magic: %08x, dropping packet!",
+      g_printerr ("BReceiver: Unknown magic: %08x, dropping packet!\n",
 		  new->header.mcu_frame_h.magic);
       return TRUE;
     }

@@ -46,6 +46,11 @@ BPacket * b_packet_new  (gint     width,
 			 guint    magic,
 			 gsize   *data_size);
 gsize     b_packet_size (BPacket *packet);
+gsize     b_packet_multiframe_subframe_size(mcu_subframe_header_t *subframe_header);
+
+void      b_packet_multiframe_hton (mcu_subframe_header_t *subframe_header);
+void      b_packet_multiframe_ntoh (mcu_subframe_header_t *subframe_header);
+
 void      b_packet_hton (BPacket *packet);
 void      b_packet_ntoh (BPacket *packet);
 

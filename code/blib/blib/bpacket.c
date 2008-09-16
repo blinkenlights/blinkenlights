@@ -76,7 +76,7 @@ b_packet_new (gint   width,
       {
         gint bpp = (maxval < 255) ? 4 : 8;
 
-        // take uneven widhts into account
+        // take uneven widths into account
         gint bytewidth = (bpp == 4) ? (width + 1) / 2 : width;
         
         size = bytewidth * height * channels;
@@ -90,6 +90,10 @@ b_packet_new (gint   width,
         packet->header.mcu_multiframe_h.subframe[0].bpp = bpp;
         packet->header.mcu_multiframe_h.subframe[0].height = height;
         packet->header.mcu_multiframe_h.subframe[0].width = width;
+        
+        // remove one frame header size again from the size we return because the termination subframe header is just in memory representation
+        size -= sizeof (mcu_subframe_header_t);
+        
         break;
       }
     default:
@@ -101,6 +105,13 @@ b_packet_new (gint   width,
 
   return packet;
 }
+
+gsize b_packet_multiframe_subframe_size(mcu_subframe_header_t *subframe_header)
+{
+        gint bytewidth = (subframe_header->bpp == 4) ? (subframe_header->width + 1) / 2 : subframe_header->width;
+        return bytewidth * subframe_header->height;
+}
+
 
 gsize
 b_packet_size (BPacket *packet)
@@ -122,8 +133,18 @@ b_packet_size (BPacket *packet)
       }
     case MAGIC_MCU_MULTIFRAME:
       {
-        // TODO: calculate size of packet via iterating and summing up until the termination subframe header
-        return *(magic-1);
+        int i = 0;
+        mcu_subframe_header_t *subframe_header = &packet->header.mcu_multiframe_h.subframe[0];
+        gsize subframesize = 0;
+        while ((subframesize = b_packet_multiframe_subframe_size(subframe_header)))
+        {
+//                printf(" size of subframe at index %d was %d \n",++i,subframesize);
+                subframe_header = (mcu_subframe_header_t *)(((guchar *)subframe_header)+ subframesize + sizeof(mcu_subframe_header_t));
+        }
+        // now i have pointer pointing to the first byte after everything
+        gsize result = ((guchar *)subframe_header - (guchar *)packet);
+//        printf(" packetsize: %d\n",result);
+        return result;
       }
     default:
       return (sizeof (BPacket));
@@ -169,8 +190,15 @@ b_packet_hton (BPacket *packet)
       {
         mcu_multiframe_header_t *header = &packet->header.mcu_multiframe_h;
         header->timestamp = GINT64_TO_BE(header->timestamp);
-	header->subframe[0].height = g_htons(header->subframe[0].height);
-	header->subframe[0].width  = g_htons(header->subframe[0].width);
+        
+        // note that this is assymetric to b_packet_ntoh on purpose
+        mcu_subframe_header_t *subframe_header = &packet->header.mcu_multiframe_h.subframe[0];
+        gsize subframesize = 0;
+        while ((subframesize = b_packet_multiframe_subframe_size(subframe_header)))
+        {
+                b_packet_multiframe_hton(subframe_header);
+                subframe_header = (mcu_subframe_header_t *)(((guchar *)subframe_header)+ subframesize + sizeof(mcu_subframe_header_t));
+        }
       }
       break;
     }
@@ -216,10 +244,25 @@ b_packet_ntoh (BPacket *packet)
       {
         mcu_multiframe_header_t *header = &packet->header.mcu_multiframe_h;
         header->timestamp = GINT64_FROM_BE(header->timestamp);
-	header->subframe[0].height = g_ntohs(header->subframe[0].height);
-	header->subframe[0].width  = g_ntohs(header->subframe[0].width);
+        b_packet_multiframe_ntoh( &(header->subframe[0]) );
+	// the rest of the ntoh operation takes place in the breceiver
       }
       break;
     }
+}
+
+
+void
+b_packet_multiframe_hton (mcu_subframe_header_t *subframe_header) 
+{
+	subframe_header->height = g_htons(subframe_header->height);
+	subframe_header->width  = g_htons(subframe_header->width);
+}
+
+void
+b_packet_multiframe_ntoh (mcu_subframe_header_t *subframe_header)
+{
+	subframe_header->height = g_ntohs(subframe_header->height);
+	subframe_header->width  = g_ntohs(subframe_header->width);
 }
 
