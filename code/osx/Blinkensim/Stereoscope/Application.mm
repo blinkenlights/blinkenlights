@@ -345,7 +345,7 @@ bool CShell::InitApplication()
 	
 	meshTexture[3] = meshTexture[4] = meshTexture[5] =meshTexture[6] = [(Texture2D *)[[Texture2D alloc] initWithImagePath:@"Windows256.png"] name];
 	glBindTexture(GL_TEXTURE_2D,meshTexture[5]);
-//	myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_NEAREST);
+	myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_NEAREST);
 	myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     
 	delete [] filename;

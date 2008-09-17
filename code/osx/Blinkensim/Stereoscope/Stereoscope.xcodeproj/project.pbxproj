@@ -44,8 +44,8 @@
 		799120D80E1E349D00035EEA /* skybox5.pvr in Resources */ = {isa = PBXBuildFile; fileRef = 799120D10E1E349D00035EEA /* skybox5.pvr */; };
 		799120D90E1E349D00035EEA /* skybox6.pvr in Resources */ = {isa = PBXBuildFile; fileRef = 799120D20E1E349D00035EEA /* skybox6.pvr */; };
 		799121BE0E1F410C00035EEA /* ResourcePath.mm in Sources */ = {isa = PBXBuildFile; fileRef = 799121BD0E1F410C00035EEA /* ResourcePath.mm */; };
-		79EA07100DAFF0550038ED3D /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 79EA070F0DAFF0550038ED3D /* Default.png */; };
 		F22550D60E796BD00007A4C1 /* dist.plist in Resources */ = {isa = PBXBuildFile; fileRef = F22550D50E796BD00007A4C1 /* dist.plist */; };
+		F23F402F0E81B85200F77DC4 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = F23F402E0E81B85200F77DC4 /* Default.png */; };
 		F2607EE00E780F4E00B0A7BB /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2607EDF0E780F4E00B0A7BB /* CFNetwork.framework */; };
 		F2607F3B0E78103B00B0A7BB /* Settings.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2607F380E78103B00B0A7BB /* Settings.xib */; };
 		F2607F3C0E78103B00B0A7BB /* EditingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2607F390E78103B00B0A7BB /* EditingView.xib */; };
@@ -124,9 +124,9 @@
 		799120D20E1E349D00035EEA /* skybox6.pvr */ = {isa = PBXFileReference; lastKnownFileType = file; name = skybox6.pvr; path = Media/skybox6.pvr; sourceTree = "<group>"; };
 		799121BC0E1F410C00035EEA /* ResourcePath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourcePath.h; sourceTree = "<group>"; };
 		799121BD0E1F410C00035EEA /* ResourcePath.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ResourcePath.mm; sourceTree = "<group>"; };
-		79EA070F0DAFF0550038ED3D /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F22550D50E796BD00007A4C1 /* dist.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = dist.plist; sourceTree = "<group>"; };
+		F23F402E0E81B85200F77DC4 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		F2607EDF0E780F4E00B0A7BB /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		F2607F080E780FB000B0A7BB /* EAGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EAGLView.h; path = Classes/EAGLView.h; sourceTree = "<group>"; };
 		F2607F1A0E780FB000B0A7BB /* EAGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EAGLView.m; path = Classes/EAGLView.m; sourceTree = "<group>"; };
@@ -215,10 +215,10 @@
 				31DF06C10E767C2B0092C379 /* Mesh */,
 				1B26781D0DA2F9B000B24DA5 /* icon.png */,
 				8D1107310486CEB800E47090 /* Info.plist */,
-				79EA070F0DAFF0550038ED3D /* Default.png */,
 				F2607F380E78103B00B0A7BB /* Settings.xib */,
 				F2607F390E78103B00B0A7BB /* EditingView.xib */,
 				F22550D50E796BD00007A4C1 /* dist.plist */,
+				F23F402E0E81B85200F77DC4 /* Default.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -471,7 +471,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1B26781E0DA2F9B000B24DA5 /* icon.png in Resources */,
-				79EA07100DAFF0550038ED3D /* Default.png in Resources */,
 				799120D40E1E349D00035EEA /* skybox1.pvr in Resources */,
 				799120D50E1E349D00035EEA /* skybox2.pvr in Resources */,
 				799120D60E1E349D00035EEA /* skybox3.pvr in Resources */,
@@ -487,6 +486,7 @@
 				F2607FC90E7818EE00B0A7BB /* MainWindow.xib in Resources */,
 				F26080BE0E790B9C00B0A7BB /* Windows256.png in Resources */,
 				F22550D60E796BD00007A4C1 /* dist.plist in Resources */,
+				F23F402F0E81B85200F77DC4 /* Default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

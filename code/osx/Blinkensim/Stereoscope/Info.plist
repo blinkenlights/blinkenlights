@@ -11,43 +11,43 @@
 	<key>CFBundleIconFile</key>
 	<string>icon.png</string>
 	<key>CFBundleIdentifier</key>
-	<string>de.codingmonkeys.blinkensim</string>
+	<string>de.codingmonkeys.stereoscope</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
 	<string>${PRODUCT_NAME}</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>0.6</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Viewer</string>
+			<key>CFBundleURLName</key>
+			<string>net.blinkenlights.blinkenproxy</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>blinkenproxy</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>1SVNRevision</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>CFBundleShortVersionString</key>
-	<string>0.6</string>
-	<key>UIStatusBarHidden</key>
-	<false/>
-	<key>UIStatusBarStyle</key>
-	<string>UIStatusBarStyleBlackTranslucent</string>
-	<key>UIRequiresPersistentWiFi</key>
-	<true/>
-	<key>CFBundleURLTypes</key>
-	<array>
-    <dict>
-      <key>CFBundleTypeRole</key>
-      <string>Viewer</string>
-      <key>CFBundleURLName</key>
-      <string>net.blinkenlights.blinkenproxy</string>
-      <key>CFBundleURLSchemes</key>
-      <array>
-        <string>blinkenproxy</string>
-      </array>
-    </dict>
-  </array>
 	<key>NSMainNibFile</key>
 	<string>MainWindow</string>
 	<key>UIPrerenderedIcon</key>
 	<true/>
+	<key>UIRequiresPersistentWiFi</key>
+	<true/>
+	<key>UIStatusBarHidden</key>
+	<false/>
+	<key>UIStatusBarStyle</key>
+	<string>UIStatusBarStyleBlackTranslucent</string>
 </dict>
 </plist>
