@@ -277,7 +277,7 @@ bl_theater_new (BlConfig *config)
 
   if (! b_sender_configure (theater->sender,
                             config->width, config->height,
-                            config->channels, config->maxval))
+                            config->channels, config->maxval, MAGIC_MCU_FRAME))
     {
       g_object_unref (G_OBJECT (theater));
       return NULL;
