@@ -32,6 +32,7 @@
 		F2095AEC0E606E2C00BD59DB /* record.png in Resources */ = {isa = PBXBuildFile; fileRef = F2095AEB0E606E2C00BD59DB /* record.png */; };
 		F2095AF90E60729C00BD59DB /* Blinkenposer.plugin in Copy PlugIns */ = {isa = PBXBuildFile; fileRef = 8D5B49B6048680CD000E48DA /* Blinkenposer.plugin */; };
 		F2095C310E607E6F00BD59DB /* StereoscopeApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = F2095C300E607E6F00BD59DB /* StereoscopeApplication.m */; };
+		F23117450E82DE210087565F /* BlinkenConsumingSenderPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = F23117150E82D8090087565F /* BlinkenConsumingSenderPlugin.m */; };
 		F244CBF60E293084007125EE /* BlinkensenderPlugIn.m in Sources */ = {isa = PBXBuildFile; fileRef = F244CBF50E293084007125EE /* BlinkensenderPlugIn.m */; };
 		F244CC110E2933C6007125EE /* BlinkenImageProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = F244CC100E2933C6007125EE /* BlinkenImageProvider.m */; };
 		F244CC480E29EABC007125EE /* UsefulAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F244CC470E29EABC007125EE /* UsefulAdditions.m */; };
@@ -88,6 +89,8 @@
 		F2095AEB0E606E2C00BD59DB /* record.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = record.png; sourceTree = "<group>"; };
 		F2095C2F0E607E6F00BD59DB /* StereoscopeApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StereoscopeApplication.h; sourceTree = "<group>"; };
 		F2095C300E607E6F00BD59DB /* StereoscopeApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StereoscopeApplication.m; sourceTree = "<group>"; };
+		F23117140E82D8090087565F /* BlinkenConsumingSenderPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlinkenConsumingSenderPlugin.h; sourceTree = "<group>"; };
+		F23117150E82D8090087565F /* BlinkenConsumingSenderPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlinkenConsumingSenderPlugin.m; sourceTree = "<group>"; };
 		F244CBF40E293084007125EE /* BlinkensenderPlugIn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlinkensenderPlugIn.h; sourceTree = "<group>"; };
 		F244CBF50E293084007125EE /* BlinkensenderPlugIn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlinkensenderPlugIn.m; sourceTree = "<group>"; };
 		F244CC0F0E2933C6007125EE /* BlinkenImageProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlinkenImageProvider.h; sourceTree = "<group>"; };
@@ -220,10 +223,12 @@
 		F28BB0B00E39E80F007768E8 /* Patches */ = {
 			isa = PBXGroup;
 			children = (
-				F2BFA1560E4DC88900081601 /* BlinkenBMLWriterPlugin.h */,
-				F2BFA1550E4DC88900081601 /* BlinkenBMLWriterPlugin.m */,
+				F23117140E82D8090087565F /* BlinkenConsumingSenderPlugin.h */,
+				F23117150E82D8090087565F /* BlinkenConsumingSenderPlugin.m */,
 				F244CBF40E293084007125EE /* BlinkensenderPlugIn.h */,
 				F244CBF50E293084007125EE /* BlinkensenderPlugIn.m */,
+				F2BFA1560E4DC88900081601 /* BlinkenBMLWriterPlugin.h */,
+				F2BFA1550E4DC88900081601 /* BlinkenBMLWriterPlugin.m */,
 				F248518D0DF3F78E00E0AA98 /* BlinkenproviderPlugIn.h */,
 				F248518C0DF3F78E00E0AA98 /* BlinkenproviderPlugIn.m */,
 			);
@@ -383,6 +388,7 @@
 				F244CC480E29EABC007125EE /* UsefulAdditions.m in Sources */,
 				F244CC560E29EB6D007125EE /* BlinkenSender.m in Sources */,
 				F2BFA1570E4DC88900081601 /* BlinkenBMLWriterPlugin.m in Sources */,
+				F23117450E82DE210087565F /* BlinkenConsumingSenderPlugin.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
