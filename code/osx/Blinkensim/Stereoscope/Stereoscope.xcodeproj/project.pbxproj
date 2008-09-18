@@ -13,6 +13,7 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		2D500B940D5A79C200DBA0E3 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D500B920D5A79C200DBA0E3 /* OpenGLES.framework */; };
 		2D500B9A0D5A79CF00DBA0E3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D500B990D5A79CF00DBA0E3 /* QuartzCore.framework */; };
+		315B1CA80E8321FE0041DE9C /* Platz_1024.pvr in Resources */ = {isa = PBXBuildFile; fileRef = 315B1CA70E8321FE0041DE9C /* Platz_1024.pvr */; };
 		31685F320E75C5450061B921 /* CityHall_1024.pvr in Resources */ = {isa = PBXBuildFile; fileRef = 31685F310E75C5450061B921 /* CityHall_1024.pvr */; };
 		31685F3A0E75C6900061B921 /* Pavillon_1024.pvr in Resources */ = {isa = PBXBuildFile; fileRef = 31685F390E75C6900061B921 /* Pavillon_1024.pvr */; };
 		31685F420E75C7AC0061B921 /* Window_On.pvr in Resources */ = {isa = PBXBuildFile; fileRef = 31685F400E75C7AC0061B921 /* Window_On.pvr */; };
@@ -69,6 +70,7 @@
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2D500B920D5A79C200DBA0E3 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		2D500B990D5A79CF00DBA0E3 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		315B1CA70E8321FE0041DE9C /* Platz_1024.pvr */ = {isa = PBXFileReference; lastKnownFileType = file; name = Platz_1024.pvr; path = Media/Platz_1024.pvr; sourceTree = "<group>"; };
 		31685EC80E75B9490061B921 /* stereoscope.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = stereoscope.h; path = Media/stereoscope.h; sourceTree = "<group>"; };
 		31685F310E75C5450061B921 /* CityHall_1024.pvr */ = {isa = PBXFileReference; lastKnownFileType = file; name = CityHall_1024.pvr; path = Media/CityHall_1024.pvr; sourceTree = "<group>"; };
 		31685F390E75C6900061B921 /* Pavillon_1024.pvr */ = {isa = PBXFileReference; lastKnownFileType = file; name = Pavillon_1024.pvr; path = Media/Pavillon_1024.pvr; sourceTree = "<group>"; };
@@ -254,6 +256,7 @@
 				F26080BD0E790B9C00B0A7BB /* Windows256.png */,
 				31685F310E75C5450061B921 /* CityHall_1024.pvr */,
 				31685F390E75C6900061B921 /* Pavillon_1024.pvr */,
+				315B1CA70E8321FE0041DE9C /* Platz_1024.pvr */,
 				31685F400E75C7AC0061B921 /* Window_On.pvr */,
 				31685F410E75C7AC0061B921 /* Ramp_1024.pvr */,
 				799120CD0E1E349D00035EEA /* skybox1.pvr */,
@@ -483,6 +486,7 @@
 				F26080BE0E790B9C00B0A7BB /* Windows256.png in Resources */,
 				F22550D60E796BD00007A4C1 /* dist.plist in Resources */,
 				F23F402F0E81B85200F77DC4 /* Default.png in Resources */,
+				315B1CA80E8321FE0041DE9C /* Platz_1024.pvr in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

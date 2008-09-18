@@ -63,8 +63,10 @@ float frameRate;
 #define PI 3.14159f
 #endif
 
+#define NO_OF_MESHES 8
+
 /* Texture IDs */
-GLuint meshTexture[7];
+GLuint meshTexture[NO_OF_MESHES];
 GLuint skyboxTex[6];
 
 /* Print3D, Extension and POD Class Objects */
@@ -315,15 +317,7 @@ bool CShell::InitApplication()
 		myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	}
 	
-	sprintf(filename, "%s/CityHall_1024.pvr", buffer);
-	if(!Textures->LoadTextureFromPVR(filename, &meshTexture[0]))
-	{
-		printf("**ERROR** Failed to load texture for Background.\n");
-	}
-	myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_NEAREST);
-	myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-
-    sprintf(filename, "%s/Pavillon_1024.pvr", buffer);
+	sprintf(filename, "%s/Platz_1024.pvr", buffer);
 	if(!Textures->LoadTextureFromPVR(filename, &meshTexture[1]))
 	{
 		printf("**ERROR** Failed to load texture for Background.\n");
@@ -331,22 +325,44 @@ bool CShell::InitApplication()
 	myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_NEAREST);
 	myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
-    sprintf(filename, "%s/Ramp_1024.pvr", buffer);
-	if(!Textures->LoadTextureFromPVR(filename, &meshTexture[2]))
+    sprintf(filename, "%s/Pavillon_1024.pvr", buffer);
+	if(!Textures->LoadTextureFromPVR(filename, &meshTexture[0]))
 	{
 		printf("**ERROR** Failed to load texture for Background.\n");
 	}
 	myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_NEAREST);
 	myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
-
+    
+    
+    sprintf(filename, "%s/Ramp_1024.pvr", buffer);
+	if(!Textures->LoadTextureFromPVR(filename, &meshTexture[6]))
+	{
+		printf("**ERROR** Failed to load texture for Background.\n");
+	}
+	myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_NEAREST);
+	myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    
+    
+    sprintf(filename, "%s/CityHall_1024.pvr", buffer);
+	if(!Textures->LoadTextureFromPVR(filename, &meshTexture[7]))
+	{
+		printf("**ERROR** Failed to load texture for Background.\n");
+	}
+	myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_NEAREST);
+	myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    
+    
+    
+    // 2-5 sind die Fenster.
 
 	// setting up window textures
 	
-	meshTexture[3] = meshTexture[4] = meshTexture[5] =meshTexture[6] = [(Texture2D *)[[Texture2D alloc] initWithImagePath:@"Windows256.png"] name];
-	glBindTexture(GL_TEXTURE_2D,meshTexture[5]);
-	myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_NEAREST);
-	myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	//meshTexture[2] = meshTexture[3] = meshTexture[4] = meshTexture[5] = [(Texture2D *)[[Texture2D alloc] initWithImagePath:@"Windows256.png"] name];
+	//glBindTexture(GL_TEXTURE_2D,meshTexture[5]);
+	//myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_NEAREST);
+	//myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    
     
 	delete [] filename;
 	delete [] buffer;
@@ -444,7 +460,7 @@ bool CShell::QuitApplication()
 	int i;
 	
 	/* Release all Textures */
-	for (i = 0; i < 7; i++)
+	for (i = 0; i < 8; i++)
 	{
 		Textures->ReleaseTexture(meshTexture[i]);
 	}
@@ -658,7 +674,7 @@ void DrawMesh()
 	// mesh 5 is the upper right
 
     int meshNo;
-    for (meshNo=0;meshNo<7;meshNo++) {
+    for (meshNo=0;meshNo<NO_OF_MESHES;meshNo++) {
         mesh = &g_sScene.pMesh[meshNo];
         
         
@@ -668,8 +684,10 @@ void DrawMesh()
         // Used to display interleaved geometry
         glVertexPointer(3, VERTTYPEENUM, mesh->sVertex.nStride, mesh->pInterleaved + (long)mesh->sVertex.pData);
         glNormalPointer(VERTTYPEENUM, mesh->sNormals.nStride, mesh->pInterleaved + (long)mesh->sNormals.pData);
-        if (meshNo>=3) {
-	        glTexCoordPointer(2, VERTTYPEENUM, mesh->psUVW[0].nStride, windowMeshTextureCoords[meshNo-3]);
+
+
+        if ((meshNo>=2)&&(meshNo<=5)) {
+	        glTexCoordPointer(2, VERTTYPEENUM, mesh->psUVW[0].nStride, windowMeshTextureCoords[meshNo-2]);
         } else {
 	        glTexCoordPointer(2, VERTTYPEENUM, mesh->psUVW[0].nStride, mesh->pInterleaved + (long)mesh->psUVW[0].pData);
 		}
@@ -796,14 +814,14 @@ void CreateSkybox(float scale, bool adjustUV, int textureSize, VERTTYPE** Vertic
 	SetUV(UVs, 7, a1, a0);
 	
 	// Back
-	SetVertex(Vertices, 8 , +unit, 2*unit, +unit);
-	SetVertex(Vertices, 9 , -unit, 2*unit, +unit);
-	SetVertex(Vertices, 10, +unit, 0, +unit);
-	SetVertex(Vertices, 11, -unit, 0, +unit);
-	SetUV(UVs, 8 , a0, a1);
-	SetUV(UVs, 9 , a1, a1);
-	SetUV(UVs, 10, a0, a0);
-	SetUV(UVs, 11, a1, a0);
+//	SetVertex(Vertices, 8 , +unit, 2*unit, +unit);
+//	SetVertex(Vertices, 9 , -unit, 2*unit, +unit);
+//	SetVertex(Vertices, 10, +unit, 0, +unit);
+//	SetVertex(Vertices, 11, -unit, 0, +unit);
+//	SetUV(UVs, 8 , a0, a1);
+//	SetUV(UVs, 9 , a1, a1);
+//	SetUV(UVs, 10, a0, a0);
+//	SetUV(UVs, 11, a1, a0);
 	
 	// Left
 	SetVertex(Vertices, 12, -unit, 2*unit, +unit);
