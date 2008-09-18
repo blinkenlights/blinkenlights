@@ -24,6 +24,7 @@
 	int            _timeSamplesTaken;
 	NSTimeInterval _lastDrawTime;
 	char displayState[23][54];
+	UIImageView *_titleView;
 }
 
 @property (nonatomic, retain) NSURLConnection *proxyListConnection;

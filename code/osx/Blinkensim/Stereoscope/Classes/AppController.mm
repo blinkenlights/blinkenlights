@@ -18,6 +18,7 @@ static CShell *shell = NULL;
 
 @interface AppController ()
 - (void)settingsChanged;
+- (void)fadeoutStartscreen;
 @end
 
 @implementation AppController
@@ -51,7 +52,6 @@ static CShell *shell = NULL;
 
 - (void)resetTimeCompensation
 {
-	NSLog(@"%s",__FUNCTION__);
 	_maxTimeDifference = -999999999999999.0;
 	_timeSamplesTaken = 0;
 }
@@ -59,6 +59,7 @@ static CShell *shell = NULL;
 - (void)startRendering
 {
 	if (!_updateTimer) {
+		[self update]; // for quicker display of the first frame
 		_updateTimer = [NSTimer scheduledTimerWithTimeInterval:(1.0 / kFPS) target:self selector:@selector(update) userInfo:nil repeats:YES];
 	}
 }
@@ -71,7 +72,6 @@ static CShell *shell = NULL;
 
 - (void)applicationDidFinishLaunching:(UIApplication*)inApplication
 {
-	NSLog(@"%s",__FUNCTION__);
 	_frameQueue = [NSMutableArray new];
 
 	int maxcount = 23*54;
@@ -95,6 +95,11 @@ static CShell *shell = NULL;
     
 	[_window addSubview:_glView];
 
+	_titleView = [[UIImageView alloc] initWithFrame:rect];
+	_titleView.image = [UIImage imageNamed:@"Default.png"];
+	[_window addSubview:_titleView];
+	
+	
 	// add info button, fps and status label
 	[_glView addSubview:_framerateLabel];
 	[_glView addSubview:_loadingLabel];
@@ -107,11 +112,28 @@ static CShell *shell = NULL;
 		printf("InitApplication error\n");
 	shell->UpdateWindows((unsigned char *)displayState);
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(settingsChanged) name:@"SettingChange" object:nil];
-
 }
 
+- (void)fadeoutStartscreen 
+{
+	[UIView beginAnimations:@"StartupAnimation" context:NULL];
+	[UIView setAnimationDidStopSelector:@selector(startupAnimationDidEnd:context:)];
+	[UIView setAnimationDelegate:self];
+	[UIView setAnimationDuration:3.0];
+	_titleView.alpha = 0;
+	[UIView commitAnimations];
+}
+
+- (void)startupAnimationDidEnd:(id)animationId context:(void *)inContext
+{
+	[_titleView removeFromSuperview];
+	[_titleView release];
+	_titleView = nil;
+}
+
+
+
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-	NSLog(@"%s",__FUNCTION__);
 	[_blinkenListener listen];
 
 	[self startRendering];
@@ -122,6 +144,7 @@ static CShell *shell = NULL;
 	self.proxyListConnection = [[[NSURLConnection alloc] initWithRequest:request delegate:self] autorelease];
 
 	[self settingsChanged];
+	if (_titleView) [self fadeoutStartscreen];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
