@@ -2,8 +2,9 @@
 #import "SettingsController.h"
 #import "TCMHost.h"
 #import "BlinkenListener.h"
+#import "EAGLView.h"
 
-@interface AppController : NSObject
+@interface AppController : NSObject <EAGLViewDelegate>
 {
 	IBOutlet UIWindow *_window;
 	EAGLView *_glView;

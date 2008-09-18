@@ -128,8 +128,6 @@
 		F22550D50E796BD00007A4C1 /* dist.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = dist.plist; sourceTree = "<group>"; };
 		F23F402E0E81B85200F77DC4 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		F2607EDF0E780F4E00B0A7BB /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
-		F2607F080E780FB000B0A7BB /* EAGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EAGLView.h; path = Classes/EAGLView.h; sourceTree = "<group>"; };
-		F2607F1A0E780FB000B0A7BB /* EAGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EAGLView.m; path = Classes/EAGLView.m; sourceTree = "<group>"; };
 		F2607F380E78103B00B0A7BB /* Settings.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Settings.xib; sourceTree = "<group>"; };
 		F2607F390E78103B00B0A7BB /* EditingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditingView.xib; sourceTree = "<group>"; };
 		F2607F440E7810D100B0A7BB /* BlinkenListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlinkenListener.m; sourceTree = "<group>"; };
@@ -194,7 +192,6 @@
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
-				F2607FC80E7818EE00B0A7BB /* MainWindow.xib */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -217,6 +214,7 @@
 				8D1107310486CEB800E47090 /* Info.plist */,
 				F2607F380E78103B00B0A7BB /* Settings.xib */,
 				F2607F390E78103B00B0A7BB /* EditingView.xib */,
+				F2607FC80E7818EE00B0A7BB /* MainWindow.xib */,
 				F22550D50E796BD00007A4C1 /* dist.plist */,
 				F23F402E0E81B85200F77DC4 /* Default.png */,
 			);
@@ -421,8 +419,6 @@
 				F2607F4A0E7810D100B0A7BB /* RootViewController.m */,
 				F2607F490E7810D100B0A7BB /* BlinkenhallAppDelegate.m */,
 				F2607F4D0E7810D100B0A7BB /* BlinkenhallAppDelegate.h */,
-				F2607F080E780FB000B0A7BB /* EAGLView.h */,
-				F2607F1A0E780FB000B0A7BB /* EAGLView.m */,
 			);
 			name = "Blinkenhall Legacy";
 			sourceTree = "<group>";
@@ -641,7 +637,7 @@
 				INFOPLIST_FILE = Info.plist;
 				PREBINDING = NO;
 				PRODUCT_NAME = Stereoscope;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "37EA7040-1913-4776-AC63-DC02A5D815E6";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9D168F8E-B1E7-4B1C-9214-77D2C557522F";
 				WARNING_CFLAGS = "-Wall";
 			};
 			name = Distrubtion;

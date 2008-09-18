@@ -73,7 +73,11 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
 //PROTOCOLS:
 
 @protocol EAGLViewDelegate <NSObject>
-- (void) didResizeEAGLSurfaceForView:(EAGLView*)view; //Called whenever the EAGL surface has been resized
+@optional
+- (void)didResizeEAGLSurfaceForView:(EAGLView*)view; //Called whenever the EAGL surface has been resized
+- (BOOL)EAGLView:(EAGLView *)inView shouldNotHandleTouch:(UITouch *)inTouch;
+- (void)EAGLView:(EAGLView *)inView  movedUnhandledTouch:(UITouch *)inTouch;
+- (void)EAGLView:(EAGLView *)inView didEndUnhandledTouch:(UITouch *)inTouch;
 @end
 
 //CLASS INTERFACE:
@@ -99,6 +103,7 @@ Note that setting the view non-opaque will only work if the EAGL surface has an 
 
     CGPoint _displacement;
     CGFloat _pinchChange;
+    NSMutableSet *_touchesToIgnoreDragFor;
 }
 - (id) initWithFrame:(CGRect)frame; //These also set the current context
 - (id) initWithFrame:(CGRect)frame pixelFormat:(GLuint)format;
@@ -114,6 +119,7 @@ Note that setting the view non-opaque will only work if the EAGL surface has an 
 
 @property(assign) id<EAGLViewDelegate> delegate;
 
+- (void)setShell:(CShell *)aShell;
 - (void) setCurrentContext;
 - (BOOL) isCurrentContext;
 - (void) clearCurrentContext;

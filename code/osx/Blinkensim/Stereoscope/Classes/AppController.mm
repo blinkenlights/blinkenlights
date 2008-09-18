@@ -90,7 +90,7 @@ static CShell *shell = NULL;
 	// create the OpenGL view and add it to the window
 	//_glView = [[EAGLView alloc] initWithFrame:rect];
 	_glView = [[EAGLView alloc] initWithFrame:rect pixelFormat:GL_RGB565_OES depthFormat:GL_DEPTH_COMPONENT16_OES preserveBackbuffer:NO];
-	
+	[_glView setDelegate:self];
     [_glView setShell:shell];
     
 	[_window addSubview:_glView];
@@ -464,5 +464,38 @@ static CShell *shell = NULL;
 	}
 	return YES;
 }
+
+#pragma mark -
+#pragma mark Handle touchstuff
+
+- (BOOL)EAGLView:(EAGLView *)inView shouldNotHandleTouch:(UITouch *)inTouch
+{
+	CGPoint location = [inTouch locationInView:inView];
+	if (location.y > 440)
+	{
+		_infoButton.highlighted = YES;
+		return YES;
+	}
+	return NO;
+}
+
+- (void)EAGLView:(EAGLView *)inView  movedUnhandledTouch:(UITouch *)inTouch {
+	CGPoint location = [inTouch locationInView:inView];
+	if (location.y > 440) {
+		_infoButton.highlighted = YES;
+	} else {
+		_infoButton.highlighted = NO;
+	}
+}
+
+
+- (void)EAGLView:(EAGLView *)inView didEndUnhandledTouch:(UITouch *)inTouch
+{
+	if (_infoButton.highlighted) {
+		 _infoButton.highlighted = NO;
+		[_infoButton sendActionsForControlEvents:UIControlEventTouchUpInside];
+	}
+}
+
 
 @end

@@ -142,9 +142,9 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
 	glBindRenderbufferOES(GL_RENDERBUFFER_OES, oldRenderbuffer);
 	
 	// Error handling here
-	
-	[_delegate didResizeEAGLSurfaceForView:self];
-	
+	if ([_delegate respondsToSelector:@selector(didResizeEAGLSurfaceForView)]) {
+		[_delegate didResizeEAGLSurfaceForView:self];
+	}
 	return YES;
 }
 
@@ -190,7 +190,7 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
 		
 		_format = format;
 		_depthFormat = depth;
-		
+		_touchesToIgnoreDragFor = [NSMutableSet new];
 		_context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES1];
 		if(_context == nil) {
 			[self release];
@@ -210,6 +210,7 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
 {
 	[self _destroySurface];
 	
+	[_touchesToIgnoreDragFor release];
 	[_context release];
 	_context = nil;
 	
@@ -293,8 +294,15 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
             _displacement = CGPointZero;
             if (touch.tapCount % 2 == 0) {
 				//_displayMode = (_displayMode + 1) % 3;
-            }
-            
+            }            
+        } else {
+        	if ([_delegate respondsToSelector:@selector(EAGLView:shouldNotHandleTouch:)])
+        	{
+        		if ([_delegate EAGLView:self shouldNotHandleTouch:touch])
+        		{
+					[_touchesToIgnoreDragFor addObject:touch];
+        		}
+        	}
         }
     }
 }
@@ -309,26 +317,37 @@ static CShell *shell = NULL;
 {
     UITouch *touch = [touches anyObject];
     
-    if ([[event allTouches] count] == 1)
+    NSMutableSet *validTouches = [[event allTouches] mutableCopy];
+    for (UITouch *thisTouch in [event allTouches]) {
+    	if ([_touchesToIgnoreDragFor containsObject:thisTouch]) {
+			if ([_delegate respondsToSelector:@selector(EAGLView:movedUnhandledTouch:)]) {
+				[_delegate EAGLView:self movedUnhandledTouch:touch];
+			}
+    		
+    		[validTouches removeObject:thisTouch];
+    	}
+    }
+
+    if ([validTouches count] == 1)
     {
         CGPoint location = [touch locationInView:self];
         CGPoint previousLocation = [touch previousLocationInView:self];
         _displacement.x += location.x - previousLocation.x;
         _displacement.y += location.y - previousLocation.y;
         
-        shell->MoveCamera(location.x - previousLocation.x, location.y - previousLocation.y, 0);
+        shell->MoveCamera(- (location.x - previousLocation.x), location.y - previousLocation.y, 0);
         
         
         //		[self setNeedsDisplay];
 		//[self drawView];
     }
-    else if ([[event allTouches] count] == 2)
+    else if ([validTouches count] == 2)
     {
         BOOL noStarters = YES;
         NSInteger currentTouchIndex = 0;
         CGPoint touchLocations[2];
         CGPoint previousTouchLocations[2];
-        for (UITouch *touch in [event allTouches])
+        for (UITouch *touch in validTouches)
         {
             if (touch.phase == UITouchPhaseBegan) {
                 noStarters = NO;
@@ -361,11 +380,19 @@ static CShell *shell = NULL;
         }
     }
     
-    
+    [validTouches release];
 }
 
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event 
 {
+	for (UITouch *touch in touches) {
+		if ([_touchesToIgnoreDragFor containsObject:touch]) {
+			if ([_delegate respondsToSelector:@selector(EAGLView:didEndUnhandledTouch:)]) {
+				[_delegate EAGLView:self didEndUnhandledTouch:touch];
+			}
+			[_touchesToIgnoreDragFor removeObject:touch];
+		}
+	}
 }
 
 
