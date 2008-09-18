@@ -31,6 +31,7 @@ import de.blinkenlights.bmix.Version;
 import de.blinkenlights.bmix.mixer.BLImage;
 import de.blinkenlights.bmix.mixer.Layer;
 import de.blinkenlights.bmix.mixer.Output;
+import de.blinkenlights.bmix.mixer.Output.PacketType;
 import de.blinkenlights.bmix.monitor.Monitor;
 import de.blinkenlights.bmix.network.BLPacketReceiver;
 import de.blinkenlights.bmix.network.BLPacketReceiverThread;
@@ -58,7 +59,7 @@ public class BMix extends Monitor {
 	 * @throws IOException 
 	 */
 	public BMix(String configFilename, boolean guiEnabled) throws ParserConfigurationException, SAXException, IOException {
-	    super("bmix", 0, 0, 100, 100, guiEnabled);
+	    super("bmix", 0, 0, 400, 300, guiEnabled);
 		BMixSAXHandler saxHandler = new BMixSAXHandler();
 		SAXParserFactory spf = SAXParserFactory.newInstance();
 		SAXParser sp = null;
@@ -295,11 +296,13 @@ public class BMix extends Monitor {
                     int width =  Integer.parseInt(attributes.getValue("width"));
                     int height =  Integer.parseInt(attributes.getValue("height"));
                     long minInterval = Long.parseLong(attributes.getValue("min-frame-interval"));
+                    PacketType packetFormat = PacketType.valueOf(attributes.getValue("packet-format"));
+                    int multiframeBpp = Integer.parseInt(attributes.getValue("multiframe-bpp"));
                     
                     Rectangle viewport = new Rectangle(x, y, width, height);
 
                     BLPacketSender sender = new BLPacketSender(destAddr, destPort);
-                    Output output = new Output(sender, rootLayer, viewport, minInterval);
+                    Output output = new Output(sender, rootLayer, viewport, minInterval, packetFormat, multiframeBpp);
                     outputs.add(output);
                     
 		        } else {

@@ -47,5 +47,9 @@
 <!ATTLIST output dest-addr CDATA #REQUIRED>
 <!ATTLIST output dest-port CDATA #REQUIRED>
 <!ATTLIST output min-frame-interval CDATA "0">
+<!-- outputs can be send in one of two formats: MCU_FRAME, or MCU_MULTIFRAME -->
+<!ATTLIST output packet-format CDATA "MCU_FRAME">
+<!-- multiframe outputs can have a bits-per-pixel of either 4 or 8 -->
+<!ATTLIST output multiframe-bpp CDATA "4">
 
 <!-- TODO: relay (inputs and/or outputs) -->

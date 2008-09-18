@@ -9,7 +9,6 @@ import java.util.logging.Logger;
 
 import de.blinkenlights.bmix.mixer.Layer;
 import de.blinkenlights.bmix.protocol.BLFramePacket;
-import de.blinkenlights.bmix.protocol.BLHeartbeatPacket;
 import de.blinkenlights.bmix.protocol.BLPacket;
 
 /**

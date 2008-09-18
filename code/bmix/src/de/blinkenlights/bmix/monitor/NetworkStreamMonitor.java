@@ -1,6 +1,5 @@
 package de.blinkenlights.bmix.monitor;
 
-import java.awt.Color;
 import java.net.SocketException;
 
 import de.blinkenlights.bmix.mixer.BLImage;

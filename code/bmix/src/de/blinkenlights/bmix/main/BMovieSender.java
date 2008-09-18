@@ -2,7 +2,6 @@ package de.blinkenlights.bmix.main;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -73,7 +72,7 @@ public class BMovieSender extends Thread {
 			for(int i = 0; i < movie.getNumFrames(); i ++) {
 				Frame frame = movie.getFrame(i);
 				BLImage image = (BLImage)frame;
-				BLFramePacket packet = new BLFramePacket(image, 1, 0xff);
+				BLFramePacket packet = new BLFramePacket(image);
 				while(System.currentTimeMillis() < nextFrameTime) {
 					try {
 						Thread.sleep(1)	;

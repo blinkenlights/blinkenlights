@@ -85,13 +85,16 @@ public class BLPacketFactory {
 			int height = ((int)(data[4] & 0xff) << 8) | (int)(data[5] & 0xff);
 			int width = ((int)(data[6] & 0xff) << 8) | (int)(data[7] & 0xff);
 			int channels = ((int)(data[8] & 0xff) << 8) | (int)(data[9] & 0xff);
-			int maxval = ((int)(data[10] & 0xff) << 8) | (int)(data[11] & 0xff);
+			int maxval = ((int)(data[10] & 0xff) << 8) | (int)(data[11] & 0xff);  
 			if(height < 1 || width < 1 || channels < 1) {
 				throw new BLPacketException("MCU_FRAME packet has 0 dimensional size or 0 channels");
 			}
 			if(len != ((height * width * channels) + 12)) {
 				throw new BLPacketException("MCU_FRAME packet size wrong - got: " + len +
 						" - expect: " + ((height * width * channels) + 12));
+			}
+			if (channels != 1) {
+				throw new BLPacketException("MCU_FRAME Unsupported channels value: " + channels);
 			}
 			byte pixels[] = new byte[len - 12];
 	
@@ -102,7 +105,7 @@ public class BLPacketFactory {
 				pixels[i] = (byte) ((int) (data[i+12] * scaleFactor) & 0xff);
 			}
 			
-			return new BLFramePacket(width, height, channels, pixels, alphaMode, transparentColour);
+			return new BLFramePacket(width, height, pixels, alphaMode, transparentColour);
 		}
 		
 		// legacy BL frame packet - 0xdeadbeef 
@@ -123,7 +126,7 @@ public class BLPacketFactory {
 					pixels[i] = 1;
 				}
 			}
-			return new BLFramePacket(width, height, 1, pixels, alphaMode, transparentColour);
+			return new BLFramePacket(width, height, pixels, alphaMode, transparentColour);
 		}
 		
 		// legacy greyscale BL frame packet - 0xfeedbeef
@@ -139,7 +142,7 @@ public class BLPacketFactory {
 			}
 			byte pixels[] = new byte[len - 12];
 			System.arraycopy(data, 12, pixels, 0, len - 12);
-			return new BLFramePacket(width, height, 1, pixels, alphaMode, transparentColour);
+			return new BLFramePacket(width, height, pixels, alphaMode, transparentColour);
 		}	
 		return null;
 	}
