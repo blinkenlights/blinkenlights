@@ -38,6 +38,7 @@
 
 #include "network.h"
 #include "SAM7_EMAC.h"
+#include "proto.h"
 #include "bprotocol.h"
 #include "debug_printf.h"
 

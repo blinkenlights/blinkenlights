@@ -345,7 +345,7 @@ void b_parse_rfrx_pkg(BRFPacket *pkg)
 				pkg->statistics.packet_count);
 			break;
 		default:
-			debug_printf("unexpectedly dimmer received, cmd = %d\n", pkg->cmd);
+			debug_printf("unexpected dimmer return received, cmd = %d\n", pkg->cmd);
 			break;
 	}
 }
