@@ -113,10 +113,10 @@ static xTaskHandle networkTaskHandle = NULL;
 void
 vNetworkInit (void)
 {
-#if 0
   env_init ();
   env_load ();
 
+#if 0
   if ((env.e.mac_l == 0xff && env.e.mac_h == 0xff) ||
       (env.e.mac_l == 0x00 && env.e.mac_h == 0x00))
     {
@@ -125,12 +125,9 @@ vNetworkInit (void)
       return;
     }
 
+#endif
   cMACAddress[4] = env.e.mac_h;
   cMACAddress[5] = env.e.mac_l;
-#endif
-
-  cMACAddress[4] = 0x11;
-  cMACAddress[5] = 0x22;
 
   if (networkTaskHandle)
     {

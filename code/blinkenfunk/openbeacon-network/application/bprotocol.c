@@ -81,7 +81,7 @@ static int b_parse_mcu_multiframe (mcu_multiframe_header_t *header, unsigned int
 
 		if (sub->bpp != 4) {
 			maxlen -= SUBSIZE;
-			continue;
+			return 0;
 		}
 
 		debug_printf("subframe: bpp = 4, pkg rest size = %d, w %d, h %d!\n", maxlen, sub->width, sub->height);
@@ -142,7 +142,7 @@ static int b_parse_mcu_setup (mcu_setup_header_t *header, int maxlen)
 	return len;
 }
 
-static inline void b_set_lamp_id (int lamp_id, int lamp_mac)
+void b_set_lamp_id (int lamp_id, int lamp_mac)
 {
 	memset(&rfpkg, 0, sizeof(rfpkg));
 	rfpkg.cmd = RF_CMD_SET_LAMP_ID;

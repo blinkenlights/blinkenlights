@@ -32,6 +32,8 @@
 
 #include "debug_printf.h"
 #include "network.h"
+#include "proto.h"
+#include "bprotocol.h"
 #include "SAM7_EMAC.h"
 #include "env.h"
 #include "USB-CDC.h"
@@ -98,6 +100,9 @@ cmd_help (const portCHAR *cmd)
   shell_printf("	the last two digits only with a unchangable prefix, hence\n");
   shell_printf("	the full MAC would be %02x:%02x:%02x:%02x:xx:yy.\n",
   	nic->hwaddr[0], nic->hwaddr[1], nic->hwaddr[2],	nic->hwaddr[3]);
+  shell_printf("[wmcu-]id <id>\n");
+  shell_printf("	Set the WMCU ID and store it to the flash memory\n");
+  shell_printf("	This also updates all dimmers configured in the lamp map\n");
   shell_printf("\n");
   shell_printf("status\n");
   shell_printf("	Print status information about this unit. Try it, it's fun.\n");
@@ -177,22 +182,54 @@ cmd_mac (const portCHAR * cmd)
 	 }
     }
    
-    shell_printf("setting new MAC: %02x%02x.\n", mac_h, mac_l);
-    shell_printf("Please power-cycle the device to make this change take place.\n");
+  shell_printf("setting new MAC: %02x%02x.\n", mac_h, mac_l);
+  shell_printf("Please power-cycle the device to make this change take place.\n");
 
-    /* set it ... */
-    if (env.e.mac_h != 0xff && env.e.mac_l != 0xff)
+  env.e.mac_h = mac_h;
+  env.e.mac_l = mac_l;
+  env_store();
+}
+
+static void
+cmd_id (const portCHAR * cmd)
+{
+  unsigned int i, id = 0;
+
+  while (*cmd && *cmd != ' ')
+  	cmd++;
+
+  cmd++;
+
+  for (;;) {
+    portCHAR b;
+
+    if (!*cmd) {
+      shell_printf("bogus command.\n");
+      break;
+    }
+
+    b = *cmd++;
+    if (b > '9' || b < '0')
       {
-        /* a MAC was set before. Hence, we need to stop the network thread
-	 * before we start it again later. */
-	/* TODO */
+        shell_printf("invalid ID!\n");
+        return;
       }
 
-    env.e.mac_h = mac_h;
-    env.e.mac_l = mac_l;
-    env_store();
+    id *= 10;
+    id += (b - '0');
+  }
 
-    vNetworkInit();
+  shell_printf("setting new WMCU ID: %d\n", id);
+
+  for (i = 0; i < env.e.n_lamps; i++)
+    {
+      LampMap *m = env.e.lamp_map + i;
+      shell_printf("updating dimmer 0x%04x -> ID %d\n", m->mac, i);
+      b_set_lamp_id (i, m->mac);
+    }
+
+  env.e.mcu_id = id;
+  env_store();
 }
 
 static void
@@ -224,10 +261,12 @@ static struct cmd_t {
 } commands[] = {
 	{ "env",	&cmd_env },
 	{ "help",	&cmd_help },
+	{ "id",		&cmd_id },
 	{ "mac",	&cmd_mac },
 	{ "status",	&cmd_status },
 	{ "update",	&cmd_update },
 	{ "wmcu-mac",	&cmd_mac },
+	{ "wmcu-id",	&cmd_id },
 	/* end marker */
 	{ NULL, NULL }
 };

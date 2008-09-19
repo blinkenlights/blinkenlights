@@ -202,5 +202,6 @@ struct heartbeat_header
 /* function prototypes */
 void bprotocol_init(void);
 void b_parse_rfrx_pkg(BRFPacket *pkg);
+void b_set_lamp_id (int lamp_id, int lamp_mac);
 
 #endif /* __B_PROTOCOL_H__ */
