@@ -84,7 +84,7 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
 		glGetIntegerv(GL_TEXTURE_BINDING_2D, &saveName);
 		glBindTexture(GL_TEXTURE_2D, _name);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-		glTexParameteri(GL_TEXTURE_2D, GL_GENERATE_MIPMAP, GL_TRUE);
+//		glTexParameteri(GL_TEXTURE_2D, GL_GENERATE_MIPMAP, GL_TRUE);
 		
 		switch(pixelFormat) {
 			
@@ -153,7 +153,7 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
 		_format = pixelFormat;
 		_maxS = size.width / (float)width;
 		_maxT = size.height / (float)height;
-		glTexParameteri(GL_TEXTURE_2D, GL_GENERATE_MIPMAP, GL_FALSE);
+//		glTexParameteri(GL_TEXTURE_2D, GL_GENERATE_MIPMAP, GL_FALSE);
 
 	}
 	

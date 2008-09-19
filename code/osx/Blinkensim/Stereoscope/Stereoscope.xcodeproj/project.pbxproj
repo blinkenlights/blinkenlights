@@ -60,6 +60,7 @@
 		F2607F630E7810D100B0A7BB /* AppController.mm in Sources */ = {isa = PBXBuildFile; fileRef = F2607F590E7810D100B0A7BB /* AppController.mm */; };
 		F2607FC90E7818EE00B0A7BB /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2607FC80E7818EE00B0A7BB /* MainWindow.xib */; };
 		F26080BE0E790B9C00B0A7BB /* Windows256.png in Resources */ = {isa = PBXBuildFile; fileRef = F26080BD0E790B9C00B0A7BB /* Windows256.png */; };
+		F2DF6B570E831FA00088ACC1 /* Camera.png in Resources */ = {isa = PBXBuildFile; fileRef = F2DF6B560E831FA00088ACC1 /* Camera.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -156,6 +157,7 @@
 		F2607F590E7810D100B0A7BB /* AppController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AppController.mm; sourceTree = "<group>"; };
 		F2607FC80E7818EE00B0A7BB /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		F26080BD0E790B9C00B0A7BB /* Windows256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Windows256.png; path = Media/Windows256.png; sourceTree = "<group>"; };
+		F2DF6B560E831FA00088ACC1 /* Camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Camera.png; path = Media/Camera.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -253,6 +255,7 @@
 		31DF06C00E767C220092C379 /* Textures */ = {
 			isa = PBXGroup;
 			children = (
+				F2DF6B560E831FA00088ACC1 /* Camera.png */,
 				F26080BD0E790B9C00B0A7BB /* Windows256.png */,
 				31685F310E75C5450061B921 /* CityHall_1024.pvr */,
 				31685F390E75C6900061B921 /* Pavillon_1024.pvr */,
@@ -486,6 +489,7 @@
 				F26080BE0E790B9C00B0A7BB /* Windows256.png in Resources */,
 				F22550D60E796BD00007A4C1 /* dist.plist in Resources */,
 				F23F402F0E81B85200F77DC4 /* Default.png in Resources */,
+				F2DF6B570E831FA00088ACC1 /* Camera.png in Resources */,
 				315B1CA80E8321FE0041DE9C /* Platz_1024.pvr in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -641,7 +645,7 @@
 				INFOPLIST_FILE = Info.plist;
 				PREBINDING = NO;
 				PRODUCT_NAME = Stereoscope;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9D168F8E-B1E7-4B1C-9214-77D2C557522F";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "FB825C7B-186E-40E9-BDD2-03A7A6FC4447";
 				WARNING_CFLAGS = "-Wall";
 			};
 			name = Distrubtion;

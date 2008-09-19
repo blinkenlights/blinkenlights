@@ -64,6 +64,12 @@ float frameRate;
 #endif
 
 #define NO_OF_MESHES 8
+#define LEFT_BOTTOM_MESH_NO  3
+#define LEFT_TOP_MESH_NO     2
+#define RIGHT_BOTTOM_MESH_NO 4
+#define RIGHT_TOP_MESH_NO    5
+#define MIN_WINDOW_MESH_NO   2
+#define MAX_WINDOW_MESH_NO   5
 
 /* Texture IDs */
 GLuint meshTexture[NO_OF_MESHES];
@@ -99,7 +105,6 @@ void DestroySkybox(VERTTYPE* Vertices, VERTTYPE* UVs);
 
 static GLfloat windowtextureCoords[16][12];
 
-// mesh 4 -> leftTop, mesh 5-> leftBottom, mesh6 -> rightTop, mesh7 -> rightBottom
 GLfloat *windowMeshTextureCoords[] = {NULL,NULL,NULL,NULL};
 GLfloat windowMeshTextureValues[16][2][2];
 
@@ -122,9 +127,9 @@ void CShell::UpdateWindows(unsigned char *inDisplayState)
 {
 
 	// bottom left tower
-	GLfloat *originalTextureCoords = (GLfloat *)g_sScene.pMesh[4].psUVW[0].pData;
-	GLfloat *targetTextureCoords = windowMeshTextureCoords[1];
-	unsigned short *faceData =  (unsigned short *)g_sScene.pMesh[4].sFaces.pData;
+	GLfloat *originalTextureCoords = (GLfloat *)g_sScene.pMesh[LEFT_BOTTOM_MESH_NO].psUVW[0].pData;
+	GLfloat *targetTextureCoords = windowMeshTextureCoords[LEFT_BOTTOM_MESH_NO - MIN_WINDOW_MESH_NO];
+	unsigned short *faceData =  (unsigned short *)g_sScene.pMesh[LEFT_BOTTOM_MESH_NO].sFaces.pData;
 	for (int y=22;y>22-7;y--) {
 		unsigned char *rowStart = inDisplayState + y * 54;
 		for (int x=0;x<22;x++) {
@@ -146,9 +151,9 @@ void CShell::UpdateWindows(unsigned char *inDisplayState)
 	}
 
 	// top left part
-	originalTextureCoords = (GLfloat *)g_sScene.pMesh[3].psUVW[0].pData;
-	targetTextureCoords = windowMeshTextureCoords[0];
-	faceData =  (unsigned short *)g_sScene.pMesh[3].sFaces.pData;
+	originalTextureCoords = (GLfloat *)g_sScene.pMesh[LEFT_TOP_MESH_NO].psUVW[0].pData;
+	targetTextureCoords = windowMeshTextureCoords[LEFT_TOP_MESH_NO - MIN_WINDOW_MESH_NO];
+	faceData =  (unsigned short *)g_sScene.pMesh[LEFT_TOP_MESH_NO].sFaces.pData;
 	for (int y=22-9;y>5;y--) {
 		unsigned char *rowStart = inDisplayState + y * 54;
 		for (int x=0;x<22;x++) {
@@ -171,9 +176,9 @@ void CShell::UpdateWindows(unsigned char *inDisplayState)
 
 
 	// upper right tower
-	originalTextureCoords = (GLfloat *)g_sScene.pMesh[5].psUVW[0].pData;
-	targetTextureCoords = windowMeshTextureCoords[2];
-	faceData = (unsigned short *)g_sScene.pMesh[5].sFaces.pData;
+	originalTextureCoords = (GLfloat *)g_sScene.pMesh[RIGHT_TOP_MESH_NO].psUVW[0].pData;
+	targetTextureCoords = windowMeshTextureCoords[RIGHT_TOP_MESH_NO - MIN_WINDOW_MESH_NO];
+	faceData = (unsigned short *)g_sScene.pMesh[RIGHT_TOP_MESH_NO].sFaces.pData;
 	
 	for (int y=11;y>=0;y--) {
 		unsigned char *rowStart = inDisplayState + y * 54 + 54-30;
@@ -196,9 +201,9 @@ void CShell::UpdateWindows(unsigned char *inDisplayState)
 	}
 
 	// lower right tower
-	originalTextureCoords = (GLfloat *)g_sScene.pMesh[6].psUVW[0].pData;
-	targetTextureCoords = windowMeshTextureCoords[3];
-	faceData = (unsigned short *)g_sScene.pMesh[6].sFaces.pData;
+	originalTextureCoords = (GLfloat *)g_sScene.pMesh[RIGHT_BOTTOM_MESH_NO].psUVW[0].pData;
+	targetTextureCoords = windowMeshTextureCoords[RIGHT_BOTTOM_MESH_NO - MIN_WINDOW_MESH_NO];
+	faceData = (unsigned short *)g_sScene.pMesh[RIGHT_BOTTOM_MESH_NO].sFaces.pData;
 	
 	for (int y=22;y>22-9;y--) {
 		unsigned char *rowStart = inDisplayState + y * 54 + 54-30;
@@ -284,10 +289,10 @@ bool CShell::InitApplication()
 
 	// allocate space for our meshtexture coords
 //	NSLog(@"%s allocating space",__FUNCTION__);
-	windowMeshTextureCoords[0] = (GLfloat *)calloc(2 * g_sScene.pMesh[3].nNumFaces * 3,sizeof(GLfloat));
-	windowMeshTextureCoords[1] = (GLfloat *)calloc(2 * g_sScene.pMesh[4].nNumFaces * 3,sizeof(GLfloat));
-	windowMeshTextureCoords[2] = (GLfloat *)calloc(2 * g_sScene.pMesh[5].nNumFaces * 3,sizeof(GLfloat));
-	windowMeshTextureCoords[3] = (GLfloat *)calloc(2 * g_sScene.pMesh[6].nNumFaces * 3,sizeof(GLfloat));
+	windowMeshTextureCoords[0] = (GLfloat *)calloc(2 * g_sScene.pMesh[2].nNumVertex,sizeof(GLfloat));
+	windowMeshTextureCoords[1] = (GLfloat *)calloc(2 * g_sScene.pMesh[3].nNumVertex,sizeof(GLfloat));
+	windowMeshTextureCoords[2] = (GLfloat *)calloc(2 * g_sScene.pMesh[4].nNumVertex,sizeof(GLfloat));
+	windowMeshTextureCoords[3] = (GLfloat *)calloc(2 * g_sScene.pMesh[5].nNumVertex,sizeof(GLfloat));
 
 
 
@@ -317,14 +322,6 @@ bool CShell::InitApplication()
 		myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	}
 	
-	sprintf(filename, "%s/Platz_1024.pvr", buffer);
-	if(!Textures->LoadTextureFromPVR(filename, &meshTexture[1]))
-	{
-		printf("**ERROR** Failed to load texture for Background.\n");
-	}
-	myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_NEAREST);
-	myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-
     sprintf(filename, "%s/Pavillon_1024.pvr", buffer);
 	if(!Textures->LoadTextureFromPVR(filename, &meshTexture[0]))
 	{
@@ -333,8 +330,15 @@ bool CShell::InitApplication()
 	myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_NEAREST);
 	myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
-    
-    
+	sprintf(filename, "%s/Platz_1024.pvr", buffer);
+	if(!Textures->LoadTextureFromPVR(filename, &meshTexture[1]))
+	{
+		printf("**ERROR** Failed to load texture for Background.\n");
+	}
+	myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_NEAREST);
+	myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+        
     sprintf(filename, "%s/Ramp_1024.pvr", buffer);
 	if(!Textures->LoadTextureFromPVR(filename, &meshTexture[6]))
 	{
@@ -351,17 +355,16 @@ bool CShell::InitApplication()
 	}
 	myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_NEAREST);
 	myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    
-    
+        
     
     // 2-5 sind die Fenster.
 
 	// setting up window textures
 	
-	//meshTexture[2] = meshTexture[3] = meshTexture[4] = meshTexture[5] = [(Texture2D *)[[Texture2D alloc] initWithImagePath:@"Windows256.png"] name];
-	//glBindTexture(GL_TEXTURE_2D,meshTexture[5]);
-	//myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_NEAREST);
-	//myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	meshTexture[LEFT_BOTTOM_MESH_NO] = meshTexture[LEFT_TOP_MESH_NO] = meshTexture[RIGHT_BOTTOM_MESH_NO] = meshTexture[RIGHT_TOP_MESH_NO] = [(Texture2D *)[[Texture2D alloc] initWithImagePath:@"Windows256.png"] name];
+	glBindTexture(GL_TEXTURE_2D,meshTexture[LEFT_BOTTOM_MESH_NO]);
+	myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     
     
 	delete [] filename;
@@ -640,7 +643,6 @@ void DrawSkybox()
 
 /*******************************************************************************
  * Function Name  : DrawMesh
- * Description    : Draws the balloon
  *******************************************************************************/
 void DrawMesh()
 {
@@ -675,7 +677,7 @@ void DrawMesh()
 
     glMatrixMode(GL_MODELVIEW);
     glRotatef(-90.0,1.,0.,0.);
-    
+
     int meshNo;
     for (meshNo=0;meshNo<NO_OF_MESHES;meshNo++) {
         mesh = &g_sScene.pMesh[meshNo];
@@ -689,8 +691,8 @@ void DrawMesh()
         glNormalPointer(VERTTYPEENUM, mesh->sNormals.nStride, mesh->pInterleaved + (long)mesh->sNormals.pData);
 
 
-        if ((meshNo>=2)&&(meshNo<=5)) {
-	        glTexCoordPointer(2, VERTTYPEENUM, mesh->psUVW[0].nStride, windowMeshTextureCoords[meshNo-2]);
+        if ((meshNo>=MIN_WINDOW_MESH_NO)&&(meshNo<=MAX_WINDOW_MESH_NO)) {
+	        glTexCoordPointer(2, VERTTYPEENUM, mesh->psUVW[0].nStride, windowMeshTextureCoords[ meshNo - MIN_WINDOW_MESH_NO]);
         } else {
 	        glTexCoordPointer(2, VERTTYPEENUM, mesh->psUVW[0].nStride, mesh->pInterleaved + (long)mesh->psUVW[0].pData);
 		}

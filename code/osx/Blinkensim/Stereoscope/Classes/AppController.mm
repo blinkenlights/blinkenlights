@@ -104,6 +104,8 @@ static CShell *shell = NULL;
 	[_glView addSubview:_framerateLabel];
 	[_glView addSubview:_loadingLabel];
 	[_glView addSubview:_infoButton];
+	[_glView addSubview:_cameraButton];
+	[_glView addSubview:_liveLabel];
 
 	// show the window
 	[_window makeKeyAndVisible];

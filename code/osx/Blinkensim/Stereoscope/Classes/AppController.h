@@ -9,8 +9,10 @@
 	IBOutlet UIWindow *_window;
 	EAGLView *_glView;
 	IBOutlet UILabel *_framerateLabel;
+	IBOutlet UILabel *_liveLabel;
 	IBOutlet UILabel *_loadingLabel;
 	IBOutlet UIButton *_infoButton;
+	IBOutlet UIButton *_cameraButton;
 	IBOutlet SettingsController *_settingsController;
 	IBOutlet UINavigationController *_mainNavigationController;
 	NSTimer *_updateTimer;
