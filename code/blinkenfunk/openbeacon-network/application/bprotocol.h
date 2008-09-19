@@ -28,6 +28,7 @@
 #define MAGIC_MCU_FRAME     	0x23542666  /* MCU Frame packet			*/
 #define MAGIC_MCU_DEVCTRL   	0x23542667  /* MCU Device Control packet	*/
 #define MAGIC_MCU_MULTIFRAME	0x23542668  /* MCU MultiFrame packet		*/
+#define MAGIC_MCU_RESPONSE	0xFEEDBACC  /* MCU response packet              */
 
 #define MAGIC_BLFRAME		0xDEADBEEF  /* Original BL Frame Packet              */
 #define MAGIC_BLFRAME_256	0xFEEDBEEF  /* Extendend BL Frame Packet (Greyscale) */
@@ -35,6 +36,7 @@
 #define MAGIC_HEARTBEAT		0x42424242  /* Heartbeat packet                      */
 
 #define MCU_LISTENER_PORT	2323
+#define MCU_RESPONSE_PORT	2324
 #define MCU_ID_ANY		-1
 
 #define B_HEARTBEAT_PORT	4242

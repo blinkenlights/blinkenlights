@@ -25,8 +25,10 @@
 
 #include "openbeacon.h"
 
-#define FIFO_DEPTH	256
-#define RF_PAYLOAD_SIZE	26
+#define FIFO_DEPTH		256
+#define RF_PAYLOAD_SIZE		26
+#define RF_PKG_SENT_BY_DIMMER	0x40
+#define RF_PKG_REPLY_WANTED	0x80
 
 enum {
   RF_CMD_SET_VALUES,

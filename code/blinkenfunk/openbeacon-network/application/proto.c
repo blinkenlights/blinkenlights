@@ -119,7 +119,6 @@ void vnRFTransmitPacket(BRFPacket *pkg)
 
   /* turn off red TX indication LED */
   vLedSetRed (0);
-
 }
 
 void
@@ -144,6 +143,8 @@ vnRFtaskRx (void *parameter)
 	      nRFCMD_RegReadBuf (RD_RX_PLOAD, (unsigned char *) &rxpkg, sizeof(rxpkg));
 	      vLedSetRed (0);
 
+debug_printf(" XXXXX %s()\n", __func__);
+
 	      /* adjust byte order and decode */
 	      shuffle_tx_byteorder ((unsigned long *) & rxpkg, sizeof(rxpkg) / sizeof(long));
 	      xxtea_decode ((long *) &rxpkg, sizeof(rxpkg) / sizeof(long));
@@ -157,7 +158,7 @@ vnRFtaskRx (void *parameter)
 	        continue;
 
 	      /* require packet to be sent from an dimmer */
-	      if (~rxpkg.cmd & 0x40)
+	      if (~rxpkg.cmd & RF_PKG_SENT_BY_DIMMER)
 	        continue;
 	      
 	      debug_printf("dumping received packet:\n");
@@ -180,3 +181,4 @@ vInitProtocolLayer (void)
   xTaskCreate (vnRFtaskRx, (signed portCHAR *) "nRF_Rx", TASK_NRF_STACK,
 	       NULL, TASK_NRF_PRIORITY, NULL);
 }
+
