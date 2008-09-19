@@ -1,0 +1,54 @@
+#!/bin/bash
+
+APP_NAME=bmix
+APP_HOME=/usr/local/stereoscope/bmix
+APP_JAR=bmix.jar
+APP_MAIN=de.blinkenlights.bmix.main.Daemon
+
+export JAVA_HOME=/usr/local/stereoscope/java
+
+MAC=`ifconfig eth0 | grep HWaddr | awk '{ print $5 }' | sed 's/://g'`
+PATH=$PATH:$JAVA_HOME/bin
+
+export TZ=:`cat /etc/timezone`
+
+start() {
+    echo -n $"Starting ${APP_NAME}: "
+	for i in `ls ${APP_HOME}/lib/*.jar`; do
+        		APP_CLASSPATH=${APP_CLASSPATH}:${i}
+	done
+	APP_CLASSPATH=${APP_CLASSPATH}:${APP_JAR}
+	cd ${APP_HOME}
+	${APP_HOME}/bin/jsvc -pidfile /var/run/${APP_NAME}.pid -wait 20 -classpath "${APP_CLASSPATH}" -Dmac=${MAC} ${APP_MAIN}
+	rc=$?
+	if [ "$rc" -ne "0" ] ; then
+		echo "FAILED"
+	else
+		echo "OK"
+	fi
+}
+
+stop() {
+	echo -n $"Stopping ${APP_NAME}: "
+	${APP_HOME}/bin/jsvc -pidfile /var/run/${APP_NAME}.pid -stop ${APP_MAIN}
+	echo "OK"
+}
+
+ 
+case "$1" in
+  start)
+        start
+        ;;
+  stop)
+        stop
+        ;;
+  restart)
+        stop
+        start
+        ;;
+  *)
+        echo $"Usage: $0 {start|stop|restart}"
+        exit 1
+esac
+  
+exit 0

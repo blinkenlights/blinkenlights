@@ -26,6 +26,20 @@
 		<copy file="bmix.xml" todir="dist/bmix-${bmix.version}/"/>
 		<copy file="etc/start.sh" todir="dist/bmix-${bmix.version}/"/>
 		<copy file="HISTORY" todir="dist/bmix-${bmix.version}/"/>
+		
+		<mkdir dir="dist/bmix-${bmix.version}/lib" />
+		<copy todir="dist/bmix-${bmix.version}/lib">
+		    <fileset dir="lib"/>
+		</copy>
+		
+		<mkdir dir="dist/bmix-${bmix.version}/bin" />
+		<copy file="linux-bin-i586/jsvc" todir="dist/bmix-${bmix.version}/bin"/>
+		<chmod perm="755" file="dist/bmix-${bmix.version}/bin/jsvc"/>
+
+		<mkdir dir="dist/bmix-${bmix.version}/init.d" />
+		<copy file="init.d/bmix" todir="dist/bmix-${bmix.version}/init.d"/>
+		<chmod perm="755" file="dist/bmix-${bmix.version}/init.d/bmix"/>
+				
 		<chmod perm="755" file="dist/bmix-${bmix.version}/start.sh"/>
 		<tar destfile="dist/bmix-${bmix.version}.tar.gz"
 			 compression="gzip"
