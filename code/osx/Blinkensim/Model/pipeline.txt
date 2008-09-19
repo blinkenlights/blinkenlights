@@ -1,0 +1,4 @@
+Current pipeline:
+1. load model in 3DS Max
+2. export in world coords
+3. sed 's/EPVRTDataType/EDataType/g' | sed 's/PVRTMODELPOD/MODELPOD/g'
