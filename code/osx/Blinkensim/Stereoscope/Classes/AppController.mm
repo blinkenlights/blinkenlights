@@ -12,11 +12,12 @@
 #import "TableSection.h"
 
 //CONSTANTS:
-#define kFPS			24.0
+#define kFPS			36.0
 #define kSpeed			10.0
 
 // five seconds without a frame means timeout
 #define CONNECTIION_NO_FRAME_TIMEOUT 5.0
+#define HOST_RESOLVING_TIMEOUT      10.0
 
 static CShell *shell = NULL;
 
@@ -24,6 +25,7 @@ static CShell *shell = NULL;
 - (void)fadeoutStartscreen;
 - (void)connectToAutoconnectProxy;
 - (void)handleConnectionFailure;
+- (void)failHostResolving;
 @end
 
 @implementation AppController
@@ -64,12 +66,19 @@ static AppController *s_sharedAppController;
 - (void)update
 {
 	// check connection
-	if ([NSDate timeIntervalSinceReferenceDate] > _connectionLostTime) {
+	NSTimeInterval now = [NSDate timeIntervalSinceReferenceDate];
+
+	if (now > _connectionLostTime) {
 		// connection is lost
 		_connectionLostTime = DBL_MAX;
 		[self setStatusText:@"No Frames"];
 		[_blinkenListener stopListening];
 		[self handleConnectionFailure];
+	}
+
+	if (now > _hostResolveFailureTime) {
+		// connection is lost
+		[self failHostResolving];
 	}
 
 	// renderer entry
@@ -111,7 +120,8 @@ static AppController *s_sharedAppController;
 - (void)applicationDidFinishLaunching:(UIApplication*)inApplication
 {
 	_connectionLostTime = DBL_MAX;
-
+	_hostResolveFailureTime = DBL_MAX;
+	
 	_frameQueue = [NSMutableArray new];
 
 	int maxcount = 23*54;
@@ -317,6 +327,7 @@ static AppController *s_sharedAppController;
 		self.hostToResolve = [TCMHost hostWithName:address port:1234 userInfo:nil];
 		
 		[_hostToResolve setDelegate:self];
+		_hostResolveFailureTime = [NSDate timeIntervalSinceReferenceDate] + HOST_RESOLVING_TIMEOUT;
 		[_hostToResolve resolve];
 		
 		NSString *kindString = [inProxy objectForKey:@"kind"];
@@ -338,6 +349,7 @@ static AppController *s_sharedAppController;
 }
 
 - (void)fadeoutStatusText {
+	NSLog(@"%s",__FUNCTION__);
 	if (_loadingLabel.alpha > 0.0) {
 		[UIView beginAnimations:@"LoadingLabelFadeAnimation" context:NULL];
 		[UIView setAnimationDuration:3.0];
@@ -354,6 +366,13 @@ static AppController *s_sharedAppController;
 	if (portValue) addressString = [addressString stringByAppendingFormat:@":%@",portValue];
 	_fadeOutOnBlinkenframe = YES;
 	[self setStatusText:[NSString stringWithFormat:@"Connecting to %@",addressString]];
+
+	[[_hostToResolve retain] autorelease];
+	[_hostToResolve cancel];
+	[_hostToResolve setDelegate:nil];
+	self.hostToResolve = nil;
+	_hostResolveFailureTime = DBL_MAX;
+
 	_connectionLostTime = [NSDate timeIntervalSinceReferenceDate] + CONNECTIION_NO_FRAME_TIMEOUT;
 
 	// create this one lazyly
@@ -370,8 +389,19 @@ static AppController *s_sharedAppController;
 {
 	[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 	[self setStatusText:[NSString stringWithFormat:@"Could not resolve %@",[(id)inHost name]]];
+	[[_hostToResolve retain] autorelease];
+	[_hostToResolve cancel];
+	[_hostToResolve setDelegate:nil];
+	self.hostToResolve = nil;
+	_hostResolveFailureTime = DBL_MAX;
  	NSLog(@"%s %@ %@",__FUNCTION__,inHost, inError);
  	[self handleConnectionFailure];
+}
+
+- (void)failHostResolving {
+	if (self.hostToResolve) {
+		[self host:self.hostToResolve didNotResolve:nil];
+	}
 }
 
 - (void)consumeFrame
@@ -498,7 +528,8 @@ static AppController *s_sharedAppController;
 		[self fadeoutStatusText];
 		_fadeOutOnBlinkenframe = NO;
 	}
-	_connectionLostTime = [NSDate timeIntervalSinceReferenceDate] + CONNECTIION_NO_FRAME_TIMEOUT;
+	NSTimeInterval now = [NSDate timeIntervalSinceReferenceDate];
+	_connectionLostTime = now + CONNECTIION_NO_FRAME_TIMEOUT;
 	// handle the frame
 
 	[_frameQueue insertObject:inFrames atIndex:0];
