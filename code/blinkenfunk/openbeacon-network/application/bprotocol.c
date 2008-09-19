@@ -52,6 +52,7 @@
 
 static struct udp_pcb *b_pcb, *b_ret_pcb;
 static struct ip_addr b_last_ipaddr;
+static struct pbuf *b_ret_pbuf;
 static BRFPacket rfpkg;
 
 unsigned char last_lamp_val[MAX_LAMPS] = { 0 };
@@ -162,6 +163,7 @@ static inline void b_set_gamma_curve (int lamp_mac, unsigned int block, unsigned
 	memset(&rfpkg, 0, sizeof(rfpkg));
 	rfpkg.cmd = RF_CMD_SET_GAMMA;
 	rfpkg.mac = lamp_mac;
+	rfpkg.wmcu_id = env.e.mcu_id;
 	rfpkg.set_gamma.block = block;
 
 	for (i = 0; i < 8; i++)
@@ -175,6 +177,7 @@ static inline void b_write_gamma_curve (int lamp_mac)
 	memset(&rfpkg, 0, sizeof(rfpkg));
 	rfpkg.cmd = RF_CMD_WRITE_CONFIG;
 	rfpkg.mac = lamp_mac;
+	rfpkg.wmcu_id = env.e.mcu_id;
 	vnRFTransmitPacket(&rfpkg);
 }
 
@@ -183,6 +186,7 @@ static inline void b_set_lamp_jitter (int lamp_mac, int jitter)
 	memset(&rfpkg, 0, sizeof(rfpkg));
 	rfpkg.cmd = RF_CMD_SET_JITTER;
 	rfpkg.mac = lamp_mac;
+	rfpkg.wmcu_id = env.e.mcu_id;
 	rfpkg.set_jitter.jitter = jitter;
 	vnRFTransmitPacket(&rfpkg);
 }
@@ -212,10 +216,10 @@ static inline void b_set_assigned_lamps (unsigned int *map, unsigned int len)
 
 static inline void b_send_wdim_stats(unsigned int lamp_mac)
 {
-	debug_printf("%s()\n", __func__);
 	memset(&rfpkg, 0, sizeof(rfpkg));
 	rfpkg.cmd = RF_CMD_SEND_STATISTICS | RF_PKG_REPLY_WANTED;
 	rfpkg.mac = lamp_mac;
+	rfpkg.wmcu_id = env.e.mcu_id;
 	vnRFTransmitPacket(&rfpkg);
 }
 
@@ -229,7 +233,7 @@ static int b_parse_mcu_devctrl(mcu_devctrl_header_t *header, int maxlen)
 
 	/* ntohs */
 	header->command	= swaplong(header->command);
-	header->mac	= swaplong(header->command);
+	header->mac	= swaplong(header->mac);
 	header->value	= swaplong(header->value);
 	debug_printf(" %s() cmd %04x\n", __func__, header->command);
 
@@ -302,7 +306,7 @@ static void b_recv(void *arg, struct udp_pcb *pcb, struct pbuf *p, struct ip_add
 	unsigned int off = 0;
 	unsigned char *payload = (unsigned char *) p->payload;
 
-	memcpy(&b_last_ipaddr, &pcb->remote_ip, sizeof(b_last_ipaddr));
+	memcpy(&b_last_ipaddr, addr, sizeof(b_last_ipaddr));
 
 	if (p->len < sizeof(unsigned int)) { // || p->len > sizeof(payload)) {
 		pbuf_free(p);
@@ -341,12 +345,13 @@ static void b_recv(void *arg, struct udp_pcb *pcb, struct pbuf *p, struct ip_add
 
 void b_parse_rfrx_pkg(BRFPacket *pkg)
 {
-	static char buffer[128];
+	static char buffer[128] = { 0 };
 	struct mcu_devctrl_header *hdr = (struct mcu_devctrl_header *) buffer;
-			
-	hdr->magic = MAGIC_MCU_RESPONSE;
-	hdr->command = pkg->cmd;
-	hdr->mac = pkg->mac;
+
+	pkg->cmd &= ~0x40;
+	hdr->magic = swaplong (MAGIC_MCU_RESPONSE);
+	hdr->command = swaplong (pkg->cmd);
+	hdr->mac = swaplong (pkg->mac);
 
 	switch (pkg->cmd) {
 		case RF_CMD_SEND_STATISTICS:
@@ -354,11 +359,13 @@ void b_parse_rfrx_pkg(BRFPacket *pkg)
 				pkg->statistics.emi_pulses,
 				pkg->statistics.packet_count);
 			
-			hdr->param[0] = pkg->statistics.packet_count;
-			hdr->param[1] = pkg->statistics.emi_pulses;
+			hdr->param[0] = swaplong (pkg->statistics.packet_count);
+			hdr->param[1] = swaplong (pkg->statistics.emi_pulses);
 
 			udp_disconnect(b_ret_pcb);
 			udp_connect(b_ret_pcb, &b_last_ipaddr, MCU_RESPONSE_PORT);
+			b_ret_pbuf->payload = buffer;
+			udp_send(b_ret_pcb, b_ret_pbuf);
 			break;
 		default:
 			debug_printf("unexpected dimmer return received, cmd = %d\n", pkg->cmd);
@@ -370,6 +377,7 @@ void bprotocol_init(void)
 {
 	b_pcb = udp_new();
 	b_ret_pcb = udp_new();
+	b_ret_pbuf = pbuf_alloc(PBUF_TRANSPORT, 128, PBUF_RAM);
 
 	udp_recv(b_pcb, b_recv, NULL);
 	udp_bind(b_pcb, IP_ADDR_ANY, MCU_LISTENER_PORT);

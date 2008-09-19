@@ -143,8 +143,6 @@ vnRFtaskRx (void *parameter)
 	      nRFCMD_RegReadBuf (RD_RX_PLOAD, (unsigned char *) &rxpkg, sizeof(rxpkg));
 	      vLedSetRed (0);
 
-debug_printf(" XXXXX %s()\n", __func__);
-
 	      /* adjust byte order and decode */
 	      shuffle_tx_byteorder ((unsigned long *) & rxpkg, sizeof(rxpkg) / sizeof(long));
 	      xxtea_decode ((long *) &rxpkg, sizeof(rxpkg) / sizeof(long));
@@ -161,8 +159,8 @@ debug_printf(" XXXXX %s()\n", __func__);
 	      if (~rxpkg.cmd & RF_PKG_SENT_BY_DIMMER)
 	        continue;
 	      
-	      debug_printf("dumping received packet:\n");
-	      hex_dump((unsigned char *) &rxpkg, 0, sizeof(rxpkg));
+	      //debug_printf("dumping received packet:\n");
+	      //hex_dump((unsigned char *) &rxpkg, 0, sizeof(rxpkg));
 	      b_parse_rfrx_pkg(&rxpkg);
 	    }
 	  while ((nRFAPI_GetFifoStatus () & FIFO_RX_EMPTY) == 0);

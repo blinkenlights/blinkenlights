@@ -85,6 +85,8 @@ vNetworkThread (void *pvParameters)
 
   /* dhcp kick-off */
   dhcp_start (&EMAC_if);
+  dhcp_fine_tmr ();
+  dhcp_coarse_tmr ();
 
   /* bring it up */
   netif_set_up (&EMAC_if);
@@ -99,8 +101,8 @@ vNetworkThread (void *pvParameters)
     {
       int cnt = 0;
 
-      dhcp_fine_tmr ();
       vTaskDelay ( DHCP_FINE_TIMER_MSECS / portTICK_RATE_MS );
+      dhcp_fine_tmr ();
       cnt += DHCP_FINE_TIMER_MSECS;
       if (cnt >= DHCP_COARSE_TIMER_SECS * 1000) {
         dhcp_coarse_tmr ();
