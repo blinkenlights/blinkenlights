@@ -560,8 +560,8 @@ static AppController *s_sharedAppController;
 }
 
 - (IBAction)changeCamera:(id)inSender
-{
-    
+{    
+    shell->AnimateCameraTo(0,30,40, 0,0,20);
 }
 
 

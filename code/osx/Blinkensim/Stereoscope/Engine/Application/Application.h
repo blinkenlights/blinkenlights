@@ -41,6 +41,7 @@ public:
 	
 	void UpdateWindows(unsigned char *inDisplayState);
     void CShell::MoveCamera(float x, float y, float z);
+    void CShell::AnimateCameraTo(float fromX, float fromY, float fromZ, float toX, float toY, float toZ);
 };
 
 

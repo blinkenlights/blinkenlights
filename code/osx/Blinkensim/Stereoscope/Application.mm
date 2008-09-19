@@ -124,15 +124,28 @@ void CShell::MoveCamera(float x, float y, float z)
         newCameraPosition.x = VERTTYPEMUL(d, fManualViewX);
         newCameraPosition.y = VERTTYPEMUL(d, fManualViewY);
         newCameraPosition.z = VERTTYPEMUL(d, fManualViewZ);
-                
+ 
+        vTo.x = f2vt(0);
+        vTo.y = f2vt(10);
+        vTo.z = f2vt(0);
+        
         ComputeViewMatrix();
     }
 }
 
-//void CShell::AnimateCameraTo(VECTOR3 inTo, VECTOR3 inFrom)
-//{
-//
-//}
+void CShell::AnimateCameraTo(float fromX, float fromY, float fromZ, float toX, float toY, float toZ)
+{
+    NSLog(@"Camera: %f %f %f", vt2f(vCameraPosition.x), vt2f(vCameraPosition.y), vt2f(vCameraPosition.z));
+
+    vTo.x = f2vt(toX);
+    vTo.y = f2vt(toY);
+    vTo.z = f2vt(toZ);
+
+    newCameraPosition.x = f2vt(fromX);
+    newCameraPosition.y = f2vt(fromY);
+    newCameraPosition.z = f2vt(fromZ);
+    
+}
 
 
 void CShell::UpdateWindows(unsigned char *inDisplayState)
@@ -601,7 +614,7 @@ void ComputeViewMatrix()
 	glMatrixMode(GL_MODELVIEW);
 	myglLoadMatrix(g_mView.f);
 	    
-    
+        
 	/* Remember the camera position to draw the skybox around it */
 	vCameraPosition = vFrom;
 }
