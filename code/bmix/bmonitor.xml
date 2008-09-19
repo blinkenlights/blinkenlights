@@ -1,7 +1,7 @@
 <bmonitor>
   <monitor port="2000" name="Test 1" x="0" y="0" width="400" height="300"/>
-  <monitor port="2001" name="Test 2" x="400" y="0" width="400" height="300"/>
+<!--  <monitor port="2001" name="Test 2" x="400" y="0" width="400" height="300"/>
   <monitor port="2002" name="Test 3" x="0" y="300" width="400" height="300"/>
-  <monitor port="2003" name="Test 4" x="400" y="300" width="400" height="300"/>
+  <monitor port="2003" name="Test 4" x="400" y="300" width="400" height="300"/> -->
 <!--  <monitor port="2323" name="Test 1" x="400" y="0" width="400" height="300"/>   <monitor port="2325" name="Test 3" x="800" y="0" width="400" height="300"/>   <monitor port="2326" name="Test 4" x="0" y="350" width="400" height="300"/>   <monitor port="2327" name="Test 5" x="400" y="350" width="400" height="300"/>   <monitor port="2328" name="Test 6" x="800" y="350" width="400" height="300"/> -->
 </bmonitor>
