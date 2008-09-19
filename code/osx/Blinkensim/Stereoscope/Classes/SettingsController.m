@@ -38,9 +38,19 @@
 	{
 		NSDictionary *project = [inBlinkenDict objectForKey:projectKey];
 		if ([[project objectForKey:@"building"] isEqualToString:@"stereoscope"]) {
-			TableSection *section = [TableSection sectionWithItems:[project objectForKey:@"proxies"] heading:projectKey indexLabel:@""];
-			section.representedObject = project;
-			[projectTableSections addObject:section];
+			NSMutableArray *proxyArray = [NSMutableArray new];
+			for (NSDictionary *proxy in [project objectForKey:@"proxies"])
+			{
+				if ([[proxy valueForKey:@"size"] isEqualToString:@"displayed"]) {
+					[proxyArray addObject:proxy];
+				}
+			}
+			if ([proxyArray count]) {
+				TableSection *section = [TableSection sectionWithItems:proxyArray heading:projectKey indexLabel:@""];
+				section.representedObject = project;
+				[projectTableSections addObject:section];
+			}
+			[proxyArray release];
 		}
 	}
 	

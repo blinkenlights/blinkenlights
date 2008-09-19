@@ -11,7 +11,7 @@
 #include "Camera.h"
 
 //CONSTANTS:
-#define kFPS			60.0
+#define kFPS			24.0
 #define kSpeed			10.0
 
 static CShell *shell = NULL;
@@ -150,7 +150,7 @@ static CShell *shell = NULL;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
-	NSLog(@"%s",__FUNCTION__);	
+//	NSLog(@"%s",__FUNCTION__);	
 	[_blinkenListener stopListening];
 	[self stopRendering];
 }
@@ -429,12 +429,12 @@ static CShell *shell = NULL;
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 {
-	NSLog(@"%s",__FUNCTION__);
+//	NSLog(@"%s",__FUNCTION__);
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)inData
 {
-	NSLog(@"%s %@",__FUNCTION__,inData);
+//	NSLog(@"%s %@",__FUNCTION__,inData);
 	[_responseData appendData:inData];
 }
 
@@ -447,7 +447,7 @@ static CShell *shell = NULL;
 	[parser setDelegate:self];
 	[parser parse];
 	[parser release];
-	NSLog(@"%s \n%@",__FUNCTION__, responseString);
+//	NSLog(@"%s \n%@",__FUNCTION__, responseString);
 	[responseString release];
 	[_responseData release];
 	_responseData = nil;
@@ -496,7 +496,7 @@ static CShell *shell = NULL;
 - (BOOL)EAGLView:(EAGLView *)inView shouldNotHandleTouch:(UITouch *)inTouch
 {
 	CGPoint location = [inTouch locationInView:inView];
-	if (location.y > 440)
+	if (location.y > 440 && location.x > 260)
 	{
 		_infoButton.highlighted = YES;
 		return YES;
@@ -506,7 +506,7 @@ static CShell *shell = NULL;
 
 - (void)EAGLView:(EAGLView *)inView  movedUnhandledTouch:(UITouch *)inTouch {
 	CGPoint location = [inTouch locationInView:inView];
-	if (location.y > 440) {
+	if (location.y > 440 && location.x > 260) {
 		_infoButton.highlighted = YES;
 	} else {
 		_infoButton.highlighted = NO;

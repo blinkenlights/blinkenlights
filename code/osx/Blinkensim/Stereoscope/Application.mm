@@ -265,7 +265,7 @@ bool CShell::InitApplication()
 		CGPoint topRight   = CGPointMake(0.0 + (column+1) * 0.25, 0.0 +  row    * 0.25);
 		CGPoint bottomLeft = CGPointMake(0.0 +  column    * 0.25, 0.0 + (row+1) * 0.25);
 	
-		NSLog(@"%s %d:%@ %@",__FUNCTION__,i,NSStringFromCGPoint(bottomLeft), NSStringFromCGPoint(topRight));
+//		NSLog(@"%s %d:%@ %@",__FUNCTION__,i,NSStringFromCGPoint(bottomLeft), NSStringFromCGPoint(topRight));
 		windowMeshTextureValues[i][0][0] = (GLfloat)bottomLeft.x;
 		windowMeshTextureValues[i][1][0] = (GLfloat)bottomLeft.y;
 		windowMeshTextureValues[i][0][1] = (GLfloat)topRight.x;
@@ -318,7 +318,7 @@ bool CShell::InitApplication()
 		{
 			printf("**ERROR** Failed to load texture for skybox.\n");
 		}
-		myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_NEAREST);
+		myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);//_MIPMAP_NEAREST);
 		myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	}
 	
@@ -327,7 +327,8 @@ bool CShell::InitApplication()
 	{
 		printf("**ERROR** Failed to load texture for Background.\n");
 	}
-	myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_NEAREST);
+//	myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_NEAREST);
+	myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
 	sprintf(filename, "%s/Platz_1024.pvr", buffer);
@@ -344,7 +345,8 @@ bool CShell::InitApplication()
 	{
 		printf("**ERROR** Failed to load texture for Background.\n");
 	}
-	myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_NEAREST);
+//	myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_NEAREST);
+	myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     
     
@@ -353,7 +355,7 @@ bool CShell::InitApplication()
 	{
 		printf("**ERROR** Failed to load texture for Background.\n");
 	}
-	myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_NEAREST);
+	myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);//_MIPMAP_NEAREST);
 	myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
         
     
@@ -363,7 +365,7 @@ bool CShell::InitApplication()
 	
 	meshTexture[LEFT_BOTTOM_MESH_NO] = meshTexture[LEFT_TOP_MESH_NO] = meshTexture[RIGHT_BOTTOM_MESH_NO] = meshTexture[RIGHT_TOP_MESH_NO] = [(Texture2D *)[[Texture2D alloc] initWithImagePath:@"Windows256.png"] name];
 	glBindTexture(GL_TEXTURE_2D,meshTexture[LEFT_BOTTOM_MESH_NO]);
-	myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
 	myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     
     
@@ -419,7 +421,7 @@ bool CShell::InitApplication()
 	myglTexParameter( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE );
 	
 	/* Sets the clear color */
-	myglClearColor(f2vt(0.5f), f2vt(0.5f), f2vt(0.5f), 0);
+	myglClearColor(f2vt(0.0f), f2vt(0.0f), f2vt(0.0f), 1.0);
 	
 	/* Reset the model view matrix to position the light */
 	glMatrixMode(GL_MODELVIEW);
@@ -485,7 +487,7 @@ bool CShell::QuitApplication()
 bool CShell::InitView()
 {
     glEnable(GL_DEPTH_TEST);
-	glClearColor(0.3f, 0.3f, 0.4f, 1.0f);
+	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	return true;
 }
@@ -576,8 +578,8 @@ void ComputeViewMatrix()
         int d = 40;
         
         if (ABS(cameraDisplacementX)>0) fManualViewX = fManualViewX + (cameraDisplacementX * 0.005);
-        if (ABS(cameraDisplacementY)>0) fManualViewY = fManualViewY + (cameraDisplacementY * 0.005);
-        if (ABS(cameraDisplacementZ)>0) fManualViewZ = fManualViewZ + (cameraDisplacementZ * 0.005);
+        if (ABS(cameraDisplacementY)>0) fManualViewY = MAX(fManualViewY + (cameraDisplacementY * 0.005), 0.015);
+        if (ABS(cameraDisplacementZ)>0) fManualViewZ = MAX(fManualViewZ + (cameraDisplacementZ * 0.005), 0.2);
         
         vFrom.x = VERTTYPEMUL(d, fManualViewX);
         vFrom.y = VERTTYPEMUL(d, fManualViewY);
@@ -661,7 +663,7 @@ void DrawMesh()
 	
 	
 	/* Enable back face culling */
-	glEnable(GL_CULL_FACE);
+	glDisable(GL_CULL_FACE);
 	glCullFace(GL_FRONT);
 	
 	/* Enable States */
