@@ -28,4 +28,6 @@
 #define RFBPROTO_BLINKENLIGHTS 42
 #define ENABLED_NRF_FEATURES 0x0
 
+#define PACKED __attribute__ ((packed))
+
 #endif/*__OPENBEACON_H__*/
