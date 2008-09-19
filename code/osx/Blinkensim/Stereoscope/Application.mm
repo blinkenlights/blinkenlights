@@ -673,6 +673,9 @@ void DrawMesh()
 	// mesh 4 is in the lower left
 	// mesh 5 is the upper right
 
+    glMatrixMode(GL_MODELVIEW);
+    glRotatef(-90.0,1.,0.,0.);
+    
     int meshNo;
     for (meshNo=0;meshNo<NO_OF_MESHES;meshNo++) {
         mesh = &g_sScene.pMesh[meshNo];
