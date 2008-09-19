@@ -29,6 +29,7 @@
 	UIImageView *_titleView;
 	NSDictionary *_currentProxy;
 	NSTimeInterval _connectionLostTime;
+	BOOL _fadeOutOnBlinkenframe;
 }
 
 + (AppController *)sharedAppController;

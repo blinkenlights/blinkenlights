@@ -352,6 +352,7 @@ static AppController *s_sharedAppController;
 	NSString *addressString = [_currentProxy valueForKey:@"address"];
 	id portValue = [_currentProxy valueForKey:@"port"];
 	if (portValue) addressString = [addressString stringByAppendingFormat:@":%@",portValue];
+	_fadeOutOnBlinkenframe = YES;
 	[self setStatusText:[NSString stringWithFormat:@"Connecting to %@",addressString]];
 	_connectionLostTime = [NSDate timeIntervalSinceReferenceDate] + CONNECTIION_NO_FRAME_TIMEOUT;
 
@@ -493,7 +494,10 @@ static AppController *s_sharedAppController;
 
 - (void)blinkenListener:(BlinkenListener *)inListener receivedFrames:(NSArray *)inFrames atTimestamp:(uint64_t)inTimestamp
 {
-	[self fadeoutStatusText];
+	if (_fadeOutOnBlinkenframe) {
+		[self fadeoutStatusText];
+		_fadeOutOnBlinkenframe = NO;
+	}
 	_connectionLostTime = [NSDate timeIntervalSinceReferenceDate] + CONNECTIION_NO_FRAME_TIMEOUT;
 	// handle the frame
 
