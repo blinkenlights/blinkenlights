@@ -67,11 +67,9 @@ vNetworkThread (void *pvParameters)
 
   /* Create and configure the EMAC interface. */
   
-#if 1
   IP4_ADDR (&xIpAddr , 0, 0, 0 ,0);
   IP4_ADDR (&xNetMask, 0, 0, 0 ,0);
   IP4_ADDR (&xGateway, 0, 0, 0 ,0);
-#endif
 
 #if 0
   IP4_ADDR (&xIpAddr , 169, 254, 0x11, 0x22);
@@ -86,11 +84,7 @@ vNetworkThread (void *pvParameters)
   netif_set_default (&EMAC_if);
 
   /* dhcp kick-off */
-#if 1
-  dhcp_coarse_tmr ();
-  dhcp_fine_tmr ();
   dhcp_start (&EMAC_if);
-#endif
 
   /* bring it up */
   netif_set_up (&EMAC_if);
@@ -103,7 +97,15 @@ vNetworkThread (void *pvParameters)
 
   while (pdTRUE)
     {
-      vTaskDelay ( 100 / portTICK_RATE_MS );
+      int cnt = 0;
+
+      vTaskDelay ( DHCP_FINE_TIMER_MSECS / portTICK_RATE_MS );
+      dhcp_fine_tmr ();
+      cnt += DHCP_FINE_TIMER_MSECS;
+      if (cnt >= DHCP_COARSE_TIMER_SECS * 1000) {
+        dhcp_coarse_tmr ();
+	cnt = 0;
+      }
     }
 }
 
@@ -113,10 +115,10 @@ static xTaskHandle networkTaskHandle = NULL;
 void
 vNetworkInit (void)
 {
+#if 0
   env_init ();
   env_load ();
 
-#if 0
   if ((env.e.mac_l == 0xff && env.e.mac_h == 0xff) ||
       (env.e.mac_l == 0x00 && env.e.mac_h == 0x00))
     {
