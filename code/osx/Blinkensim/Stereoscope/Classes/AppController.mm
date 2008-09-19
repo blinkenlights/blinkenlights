@@ -63,6 +63,11 @@ static AppController *s_sharedAppController;
 	NSLog(@"%s random numbers: 0x%x 0x%x 0x%x 0x%x",__FUNCTION__,random(),random(),random(),random());
 }
 
+- (BOOL)hasConnection {
+	return [NSDate timeIntervalSinceReferenceDate] + CONNECTIION_NO_FRAME_TIMEOUT > _connectionLostTime;
+}
+
+
 - (void)update
 {
 	// check connection
@@ -203,8 +208,7 @@ static AppController *s_sharedAppController;
 
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-	[_blinkenListener listen];
-	if (!_blinkenListener) {
+	if (![self hasConnection]) {
 		if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"autoselectProxy"] boolValue])
 		{
 			[self connectToAutoconnectProxy];
@@ -343,6 +347,8 @@ static AppController *s_sharedAppController;
 		
 		// this is just done for asychronous resolving so we know we have an ip address for this one
 		self.hostToResolve = [TCMHost hostWithName:address port:1234 userInfo:nil];
+
+		[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 		
 		[_hostToResolve setDelegate:self];
 		_hostResolveFailureTime = [NSDate timeIntervalSinceReferenceDate] + HOST_RESOLVING_TIMEOUT;
@@ -358,9 +364,9 @@ static AppController *s_sharedAppController;
 
 - (void)setStatusText:(NSString *)inString {
 	_loadingLabel.text = inString;
-	if (_loadingLabel.alpha > 0.0) {
+	if (_loadingLabel.alpha <= 0.001) {
 		[UIView beginAnimations:@"LoadingLabelFadeAnimation" context:NULL];
-		[UIView setAnimationDuration:3.0];
+		[UIView setAnimationDuration:1.0];
 		_loadingLabel.alpha = 1.0;
 		[UIView commitAnimations];
 	}
@@ -609,6 +615,13 @@ static AppController *s_sharedAppController;
 		[_settingsController updateWithBlinkenstreams:_blinkenStreamsArray];
 		[_blinkenStreamsArray release];
 		_blinkenStreamsArray = nil;
+		if (![self hasConnection]) {
+			if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"autoselectProxy"] boolValue])
+			{
+				[self connectToAutoconnectProxy];
+			}
+		}
+
 	}
 }
 

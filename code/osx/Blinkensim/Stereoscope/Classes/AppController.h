@@ -58,6 +58,8 @@
 - (IBAction)showSettings:(id)inSender;
 - (IBAction)doneWithSettings:(id)inSender;
 
+- (BOOL)hasConnection;
+
 - (void)setStatusText:(NSString *)inString;
 - (void)fadeoutStatusText;
 
