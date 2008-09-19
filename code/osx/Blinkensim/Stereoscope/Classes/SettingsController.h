@@ -15,7 +15,8 @@
 }
 
 @property (nonatomic, retain) EditingViewController *editingViewController;
+@property (nonatomic, retain) NSMutableArray *projectTableSections;
 
-- (void)updateWithBlinkenstreams:(NSDictionary *)inBlinkenDict;
+- (void)updateWithBlinkenstreams:(NSArray *)inBlinkenArray;
 
 @end

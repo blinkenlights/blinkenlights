@@ -9,16 +9,21 @@
 #import "App.h"
 #import "AppController.h"
 #include "Camera.h"
+#import "TableSection.h"
 
 //CONSTANTS:
 #define kFPS			24.0
 #define kSpeed			10.0
 
+// five seconds without a frame means timeout
+#define CONNECTIION_NO_FRAME_TIMEOUT 5.0
+
 static CShell *shell = NULL;
 
 @interface AppController ()
-- (void)settingsChanged;
 - (void)fadeoutStartscreen;
+- (void)connectToAutoconnectProxy;
+- (void)handleConnectionFailure;
 @end
 
 @implementation AppController
@@ -31,9 +36,42 @@ static CShell *shell = NULL;
 @synthesize window         = _window;
 @synthesize mainNavigationController = _mainNavigationController;
 @synthesize settingsController = _settingsController;
+@synthesize currentProxy = _currentProxy;
+
+static AppController *s_sharedAppController;
+
++ (AppController *)sharedAppController 
+{
+	return s_sharedAppController;
+}
+
+- (void)awakeFromNib
+{
+	s_sharedAppController = self;
+}
+
++ (void)initialize
+{
+	[[NSUserDefaults standardUserDefaults] registerDefaults:[NSDictionary dictionaryWithObjectsAndKeys:
+		[NSNumber numberWithBool:YES],@"autoselectProxy",
+		nil]
+	];
+	srandomdev(); // have a good seed.
+	// just to be sure a quick test
+	NSLog(@"%s random numbers: 0x%x 0x%x 0x%x 0x%x",__FUNCTION__,random(),random(),random(),random());
+}
 
 - (void)update
 {
+	// check connection
+	if ([NSDate timeIntervalSinceReferenceDate] > _connectionLostTime) {
+		// connection is lost
+		_connectionLostTime = DBL_MAX;
+		[self setStatusText:@"No Frames"];
+		[_blinkenListener stopListening];
+		[self handleConnectionFailure];
+	}
+
 	// renderer entry
 	if(!shell->InitView())
 		printf("InitView error\n");
@@ -72,6 +110,8 @@ static CShell *shell = NULL;
 
 - (void)applicationDidFinishLaunching:(UIApplication*)inApplication
 {
+	_connectionLostTime = DBL_MAX;
+
 	_frameQueue = [NSMutableArray new];
 
 	int maxcount = 23*54;
@@ -113,7 +153,6 @@ static CShell *shell = NULL;
 	if(!shell->InitApplication())
 		printf("InitApplication error\n");
 	shell->UpdateWindows((unsigned char *)displayState);
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(settingsChanged) name:@"SettingChange" object:nil];
 }
 
 - (void)fadeoutStartscreen 
@@ -137,17 +176,23 @@ static CShell *shell = NULL;
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
 	[_blinkenListener listen];
+	if (!_blinkenListener) {
+		if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"autoselectProxy"] boolValue])
+		{
+			[self connectToAutoconnectProxy];
+		}
+	}
 
 	[self startRendering];
 
 
-	NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.blinkenlights.net/config/blinkenstreams.xml"]];
+	NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.blinkenlights.net/config/blinkenstreams.xml"] cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:30.0];
 	_responseData = [NSMutableData new];
 	self.proxyListConnection = [[[NSURLConnection alloc] initWithRequest:request delegate:self] autorelease];
 
-	[self settingsChanged];
 	if (_titleView) [self fadeoutStartscreen];
 }
+
 
 - (void)applicationWillResignActive:(UIApplication *)application {
 //	NSLog(@"%s",__FUNCTION__);	
@@ -222,48 +267,110 @@ static CShell *shell = NULL;
 	[super dealloc];
 }
 
+- (void)connectToProxyFromArray:(NSArray *)inArray {
+	NSUInteger count = [inArray count];
+	if (count) {
+		[self connectToProxy:[inArray objectAtIndex:random() % count]];
+	}
+}
 
-- (void)settingsChanged {
-	[_blinkenListener stopListening];
-	if (_hostToResolve) [_hostToResolve setDelegate:nil];
-	NSString *hostName = [[[[NSUserDefaults standardUserDefaults] stringForKey:@"blinkenproxyAddress"] componentsSeparatedByString:@":"] objectAtIndex:0];
-	if (hostName && hostName.length) {
-		[UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-		_loadingLabel.text = [NSString stringWithFormat:@"Resolving %@",hostName];
-		[UIView beginAnimations:@"ProxyConnectionAnimation" context:NULL];
+- (void)connectToAutoconnectProxy {
+	// collect all live proxies
+	NSMutableArray *liveProxiesToChooseFrom = [NSMutableArray array];
+	NSMutableArray *proxiesToChooseFrom = [NSMutableArray array];
+	for (TableSection *section in [_settingsController projectTableSections]) {
+		for (NSDictionary *proxy in [section items]) {
+			if ([proxy valueForKey:@"kind"] &&
+				[[proxy valueForKey:@"kind"] caseInsensitiveCompare:@"live"] == NSOrderedSame) {
+				[liveProxiesToChooseFrom addObject:proxy];
+			}
+			[proxiesToChooseFrom addObject:proxy];
+		}
+	}
+	if ([liveProxiesToChooseFrom count]) {
+		NSLog(@"%s choosing from live proxies %@",__FUNCTION__,liveProxiesToChooseFrom);
+		[self connectToProxyFromArray:liveProxiesToChooseFrom];
+	} else if ([proxiesToChooseFrom count]) {
+		NSLog(@"%s choosing from all %@",__FUNCTION__,proxiesToChooseFrom);
+		[self connectToProxyFromArray:proxiesToChooseFrom];
+	}
+}
+
+- (void)handleConnectionFailure {
+	NSLog(@"%s",__FUNCTION__);
+	[self connectToAutoconnectProxy];
+}
+
+
+- (void)connectToProxy:(NSDictionary *)inProxy {
+	NSLog(@"%s %@",__FUNCTION__,inProxy);
+	NSString *address = [inProxy valueForKey:@"address"];
+	if (address) {
+		[_blinkenListener stopListening];
+		[_hostToResolve cancel];
+		[_hostToResolve setDelegate:nil];
+		self.hostToResolve = nil;
+		self.currentProxy = inProxy;
+		[self setStatusText:[NSString stringWithFormat:@"Resolving %@",address]];
+		
+		// this is just done for asychronous resolving so we know we have an ip address for this one
+		self.hostToResolve = [TCMHost hostWithName:address port:1234 userInfo:nil];
+		
+		[_hostToResolve setDelegate:self];
+		[_hostToResolve resolve];
+		
+		NSString *kindString = [inProxy objectForKey:@"kind"];
+		if (!kindString) kindString = @"";
+		_liveLabel.text = kindString;
+	}
+}
+
+
+
+- (void)setStatusText:(NSString *)inString {
+	_loadingLabel.text = inString;
+	if (_loadingLabel.alpha > 0.0) {
+		[UIView beginAnimations:@"LoadingLabelFadeAnimation" context:NULL];
 		[UIView setAnimationDuration:3.0];
 		_loadingLabel.alpha = 1.0;
 		[UIView commitAnimations];
-		self.hostToResolve = [TCMHost hostWithName:hostName port:1234 userInfo:nil];
-		[_hostToResolve setDelegate:self];
-		[_hostToResolve resolve];
+	}
+}
+
+- (void)fadeoutStatusText {
+	if (_loadingLabel.alpha > 0.0) {
+		[UIView beginAnimations:@"LoadingLabelFadeAnimation" context:NULL];
+		[UIView setAnimationDuration:3.0];
+		_loadingLabel.alpha = 0.0;
+		[UIView commitAnimations];
+		[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 	}
 }
 
 - (void)hostDidResolveAddress:(TCMHost *)inHost;
 {
-	NSString *address = [[NSUserDefaults standardUserDefaults] stringForKey:@"blinkenproxyAddress"];
-	_loadingLabel.text = [NSString stringWithFormat:@"Connecting to %@",address];
-	[UIView beginAnimations:@"ProxyConnectionAnimation" context:NULL];
-	[UIView setAnimationDuration:3.0];
-	_loadingLabel.alpha = 1.0;
-	[UIView commitAnimations];
-	
+	NSString *addressString = [_currentProxy valueForKey:@"address"];
+	id portValue = [_currentProxy valueForKey:@"port"];
+	if (portValue) addressString = [addressString stringByAppendingFormat:@":%@",portValue];
+	[self setStatusText:[NSString stringWithFormat:@"Connecting to %@",addressString]];
+	_connectionLostTime = [NSDate timeIntervalSinceReferenceDate] + CONNECTIION_NO_FRAME_TIMEOUT;
+
 	// create this one lazyly
 	if (!_blinkenListener) {
 		_blinkenListener = [BlinkenListener new];
 		[_blinkenListener setDelegate:self];
 	}
 	
-	[_blinkenListener setProxyAddress:address];
+	[_blinkenListener setProxyAddress:addressString];
 	[_blinkenListener listen];
 }
 
 - (void)host:(TCMHost *)inHost didNotResolve:(NSError *)inError;
 {
 	[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-	_loadingLabel.text = [NSString stringWithFormat:@"Could not resolve %@",[(id)inHost name]];
+	[self setStatusText:[NSString stringWithFormat:@"Could not resolve %@",[(id)inHost name]]];
  	NSLog(@"%s %@ %@",__FUNCTION__,inHost, inError);
+ 	[self handleConnectionFailure];
 }
 
 - (void)consumeFrame
@@ -386,15 +493,8 @@ static CShell *shell = NULL;
 
 - (void)blinkenListener:(BlinkenListener *)inListener receivedFrames:(NSArray *)inFrames atTimestamp:(uint64_t)inTimestamp
 {
-	if (_loadingLabel.alpha > 0) {
-		[UIView beginAnimations:@"ProxyConnectionAnimation" context:NULL];
-		[UIView setAnimationDuration:3.0];
-		_loadingLabel.alpha = 0.0;
-		[UIView commitAnimations];
-		[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-	}
-
-
+	[self fadeoutStatusText];
+	_connectionLostTime = [NSDate timeIntervalSinceReferenceDate] + CONNECTIION_NO_FRAME_TIMEOUT;
 	// handle the frame
 
 	[_frameQueue insertObject:inFrames atIndex:0];
@@ -447,15 +547,15 @@ static CShell *shell = NULL;
 	[parser setDelegate:self];
 	[parser parse];
 	[parser release];
-//	NSLog(@"%s \n%@",__FUNCTION__, responseString);
+	NSLog(@"%s new xml proxy list:\n%@",__FUNCTION__, responseString);
 	[responseString release];
 	[_responseData release];
 	_responseData = nil;
-	if ([_blinkenStreamsDict count])
+	if ([_blinkenStreamsArray count])
 	{
-		[_settingsController updateWithBlinkenstreams:_blinkenStreamsDict];
-		[_blinkenStreamsDict release];
-		_blinkenStreamsDict = nil;
+		[_settingsController updateWithBlinkenstreams:_blinkenStreamsArray];
+		[_blinkenStreamsArray release];
+		_blinkenStreamsArray = nil;
 	}
 }
 
@@ -472,13 +572,14 @@ static CShell *shell = NULL;
 {
 	static NSMutableArray *proxyArray = nil;
 	       if ([elementName isEqualToString:@"blinkenstreams"]) {
-		_blinkenStreamsDict = [NSMutableDictionary new];
+		_blinkenStreamsArray = [NSMutableArray new];
 	} else if ([elementName isEqualToString:@"project"]) {
 		if ([attributeDict objectForKey:@"name"]) {
 			proxyArray = [NSMutableArray array];
-			NSMutableDictionary *projectDict = [[attributeDict mutableCopy] autorelease];
+			NSMutableDictionary *projectDict = [attributeDict mutableCopy];
 			[projectDict setObject:proxyArray forKey:@"proxies"];
-			[_blinkenStreamsDict setObject:projectDict forKey:[attributeDict objectForKey:@"name"]];
+			[_blinkenStreamsArray addObject:projectDict];
+			[projectDict release];
 		}
 	} else if ([elementName isEqualToString:@"proxy"]) {
 		[proxyArray addObject:attributeDict];
@@ -488,10 +589,12 @@ static CShell *shell = NULL;
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)inURL
 {
 	NSString *addressString = [NSString stringWithFormat:@"%@:%d",[inURL host],[inURL port] ? [[inURL port] intValue] : 4242];
-	NSLog(@"%s %@",__FUNCTION__,[inURL absoluteString],addressString);
-	if (addressString) {
+	if (inURL) {
 		[[NSUserDefaults standardUserDefaults] setObject:addressString forKey:@"blinkenproxyAddress"];
-		[self settingsChanged];
+		[self connectToProxy:[NSDictionary dictionaryWithObjectsAndKeys:
+				[inURL host],@"address",
+				[inURL port], @"port", // warning if no port port dictionary stops here
+				nil]];
 	}
 	return YES;
 }

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blinkenstreams>
+	<project name="Stereoscope (live)" building="stereoscope">
+		<proxy address="brainy.kicks-ass.net"    port="4243" format="MCU_MULTIFRAME" size="displayed" kind="LIVE" />
+		<proxy address="proxy.blinkenlights.net" port="4242" format="MCU_MULTIFRAME" size="displayed" kind="LIVE" />
+		<proxy address="proxy.blinkenlights.de"  port="4242" format="MCU_MULTIFRAME" size="displayed" kind="LIVE" />
+	</project>
+	<project name="Stereoscope (domtest)" building="stereoscope">
+		<proxy address="brainy.kicks-ass.net" port="4242" format="MCU_FRAME"      size="full"      />
+		<proxy address="brainy.kicks-ass.net" port="4243" format="MCU_MULTIFRAME" size="displayed" />
+		<proxy address="brainy.kicks-ass.net" port="4244" format="MCU_MULTIFRAME" size="full"      />
+	</project>
+</blinkenstreams>

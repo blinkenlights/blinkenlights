@@ -1,12 +1,21 @@
 #import "SettingsController.h"
 #import "TableSection.h"
 
+#define SECTIONS_BEFORE_PROXY_LIST 1
+
+static NSString * const proxyCellIdentifier = @"ProxyCell";
+static NSString * const switchCellIdentifier = @"SwitchCell";
+static NSString * const labelCellIdentifier = @"LabelCell";
+
+@class AppController;
+
 @implementation SettingsController
+@synthesize projectTableSections;
 
 - (void)innerInit
 {
 		projectTableSections = [NSMutableArray new];
-		NSDictionary *savedStreams = [[NSUserDefaults standardUserDefaults] objectForKey:@"blinkenDict"];
+		NSArray *savedStreams = [[NSUserDefaults standardUserDefaults] objectForKey:@"blinkenArray"];
 		if (savedStreams) {
 			[self updateWithBlinkenstreams:savedStreams];
 		}
@@ -30,23 +39,26 @@
 	return result;
 }
 
-- (void)updateWithBlinkenstreams:(NSDictionary *)inBlinkenDict 
+- (void)updateWithBlinkenstreams:(NSArray *)inBlinkenArray
 {
-	[[NSUserDefaults standardUserDefaults] setObject:inBlinkenDict forKey:@"blinkenDict"];
+	[[NSUserDefaults standardUserDefaults] setObject:inBlinkenArray forKey:@"blinkenArray"];
 	[projectTableSections removeAllObjects];
-	for (NSString *projectKey in [[inBlinkenDict allKeys] sortedArrayUsingSelector: @selector(caseInsensitiveCompare:)])
+	for (NSDictionary *project in inBlinkenArray)
 	{
-		NSDictionary *project = [inBlinkenDict objectForKey:projectKey];
+		NSString *name = [project objectForKey:@"name"];
 		if ([[project objectForKey:@"building"] isEqualToString:@"stereoscope"]) {
 			NSMutableArray *proxyArray = [NSMutableArray new];
 			for (NSDictionary *proxy in [project objectForKey:@"proxies"])
 			{
 				if ([[proxy valueForKey:@"size"] isEqualToString:@"displayed"]) {
+					NSMutableDictionary *proxyDict = [proxy mutableCopy];
+					[proxyDict setValue:name forKey:@"projectName"];
+					[proxyDict setValue:[project valueForKey:@"building"] forKey:@"projectBuilding"];
 					[proxyArray addObject:proxy];
 				}
 			}
 			if ([proxyArray count]) {
-				TableSection *section = [TableSection sectionWithItems:proxyArray heading:projectKey indexLabel:@""];
+				TableSection *section = [TableSection sectionWithItems:proxyArray heading:name indexLabel:@""];
 				section.representedObject = project;
 				[projectTableSections addObject:section];
 			}
@@ -59,21 +71,25 @@
 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-	return [projectTableSections count] + 1;
+	return [projectTableSections count] + 1 + SECTIONS_BEFORE_PROXY_LIST;
 }
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	if (section < [projectTableSections count]) {
-		return [[[projectTableSections objectAtIndex:section] items] count];
+	if (section == 0) {
+		return 1;
+	} else if (section < [projectTableSections count] + SECTIONS_BEFORE_PROXY_LIST) {
+		return [[[projectTableSections objectAtIndex:section - SECTIONS_BEFORE_PROXY_LIST] items] count];
 	} else {
 		return 1;
 	}
 }
 
 - (NSString *)tableView:(UITableView *)tv titleForHeaderInSection:(NSInteger)section {
-	if (section < [projectTableSections count]) {
-		return [[projectTableSections objectAtIndex:section] heading];
+	if (section == 0) {
+		return @"";
+	} else if (section < [projectTableSections count] + SECTIONS_BEFORE_PROXY_LIST) {
+		return [[projectTableSections objectAtIndex:section - SECTIONS_BEFORE_PROXY_LIST] heading];
 	} else {
 		return @"Current Blinkenproxy Address";
 	}
@@ -81,15 +97,28 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	
-	static NSString *MyIdentifier = @"MyIdentifier";
-	
-	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MyIdentifier];
-	if (cell == nil) {
-		cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:MyIdentifier] autorelease];
+	NSString *identifier = proxyCellIdentifier;
+	if (indexPath.section < SECTIONS_BEFORE_PROXY_LIST) {
+		if (indexPath.row == 0) {
+			identifier = switchCellIdentifier;
+		} else {
+			identifier = labelCellIdentifier;
+		}
 	}
 	
-	if (indexPath.section < [projectTableSections count]) {
-		NSDictionary *proxy = [[[projectTableSections objectAtIndex:indexPath.section] items] objectAtIndex:indexPath.row];
+	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+	if (cell == nil) {
+		cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:identifier] autorelease];
+		if (identifier == switchCellIdentifier) {
+			UISwitch *mySwitch = [[UISwitch alloc] initWithFrame:CGRectMake(0.0,0.0,10.0,10.0)];
+			[cell setAccessoryView:mySwitch];
+		}
+	}
+	if (indexPath.section == 0) {
+		cell.text = @"Autoselect Stream";
+		((UISwitch *)cell.accessoryView).isOn = [[[NSUserDefaults standardUserDefaults] objectForKey:@"autoselectProxy"] boolValue];
+	} else if (indexPath.section < [projectTableSections count] + SECTIONS_BEFORE_PROXY_LIST) {
+		NSDictionary *proxy = [[[projectTableSections objectAtIndex:indexPath.section - SECTIONS_BEFORE_PROXY_LIST] items] objectAtIndex:indexPath.row];
 		cell.text = [NSString stringWithFormat:@"%@:%@",[proxy objectForKey:@"address"], [proxy objectForKey:@"port"]];
 	} else {
 		cell.text = [[NSUserDefaults standardUserDefaults] stringForKey:@"blinkenproxyAddress"];
@@ -102,15 +131,16 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
 
-	if (indexPath.section < [projectTableSections count]) {
-		NSDictionary *proxy = [[[projectTableSections objectAtIndex:indexPath.section] items] objectAtIndex:indexPath.row];
+	if (indexPath.section < [projectTableSections count] + SECTIONS_BEFORE_PROXY_LIST &&
+		indexPath.section >= SECTIONS_BEFORE_PROXY_LIST) {
+		NSDictionary *proxy = [[[projectTableSections objectAtIndex:indexPath.section - SECTIONS_BEFORE_PROXY_LIST] items] objectAtIndex:indexPath.row];
 		NSString *address = [NSString stringWithFormat:@"%@:%@",[proxy objectForKey:@"address"], [proxy objectForKey:@"port"]];
 		[[NSUserDefaults standardUserDefaults] setObject:address forKey:@"blinkenproxyAddress"];
-		[[NSNotificationCenter defaultCenter] postNotificationName:@"SettingChange" object:self];
+		[[AppController sharedAppController] connectToProxy:proxy];
 //	    [self.navigationController popViewControllerAnimated:YES];
 		UIBarButtonItem *item = self.navigationController.navigationBar.topItem.leftBarButtonItem;
 		[item.target performSelector:item.action withObject:item];
-	} else {
+	} else if (indexPath.section == [projectTableSections count] + SECTIONS_BEFORE_PROXY_LIST) {
 		// Create the editing view controller if necessary.
 		if (editingViewController == nil) {
 			EditingViewController *viewController = [[EditingViewController alloc] initWithNibName:@"EditingView" bundle:nil];

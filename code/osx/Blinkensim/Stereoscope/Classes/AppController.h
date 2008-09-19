@@ -1,8 +1,8 @@
+#include "Application.h"
 #import "GraphicsDevice.h"
 #import "SettingsController.h"
 #import "TCMHost.h"
 #import "BlinkenListener.h"
-#import "EAGLView.h"
 
 @interface AppController : NSObject <EAGLViewDelegate>
 {
@@ -19,7 +19,7 @@
 	TCMHost *_hostToResolve;
 	NSURLConnection *_proxyListConnection;
 	NSMutableData *_responseData;
-	NSMutableDictionary *_blinkenStreamsDict;
+	NSMutableArray *_blinkenStreamsArray;
 	BlinkenListener    *_blinkenListener;
 	NSMutableArray *_frameQueue;
 	NSTimeInterval _maxTimeDifference;
@@ -27,7 +27,11 @@
 	NSTimeInterval _lastDrawTime;
 	char displayState[23][54];
 	UIImageView *_titleView;
+	NSDictionary *_currentProxy;
+	NSTimeInterval _connectionLostTime;
 }
+
++ (AppController *)sharedAppController;
 
 @property (nonatomic, retain) NSURLConnection *proxyListConnection;
 @property (nonatomic, retain) TCMHost *hostToResolve;
@@ -37,11 +41,18 @@
 @property (nonatomic, retain) UIButton *infoButton;
 @property (nonatomic, retain) UINavigationController *mainNavigationController;
 @property (nonatomic, retain) SettingsController *settingsController;
+@property (nonatomic, retain) NSDictionary *currentProxy;
 
+- (void)connectToProxy:(NSDictionary *)inProxy;
 - (void)shellReportsFrameRate:(float)inCurrentFrameRate;
 - (IBAction)showSettings:(id)inSender;
 - (IBAction)doneWithSettings:(id)inSender;
+
+- (void)setStatusText:(NSString *)inString;
+- (void)fadeoutStatusText;
+
 - (IBAction)changeCamera:(id)inSender;
+
 @end
 
 
