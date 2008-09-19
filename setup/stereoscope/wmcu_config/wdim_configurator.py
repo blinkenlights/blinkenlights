@@ -105,7 +105,7 @@ elif action == SET_LAMPID:
 
 elif action == SET_GAMMA:
 	gamma = read_list_file(gamma_filename, 10)
-	packet = struct.pack("!IIII8I", MCUCTRL_MAGIC, action, lampmac, 0)
+	packet = struct.pack("!IIII8I", MCUCTRL_MAGIC, action, lampmac, 0,
 			gamma[0], gamma[1], gamma[2], gamma[3],
 			gamma[4], gamma[5], gamma[6], gamma[7])
 
