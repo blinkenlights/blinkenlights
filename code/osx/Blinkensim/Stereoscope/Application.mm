@@ -91,7 +91,7 @@ VERTTYPE fViewDistance, fViewAmplitude, fViewAmplitudeAngle;
 VERTTYPE fViewUpDownAmplitude, fViewUpDownAngle;
 
 /* Vectors for calculating the view matrix and saving the camera position*/
-VECTOR3 vTo, vUp, vCameraPosition;
+VECTOR3 vTo, vUp, vCameraPosition, newCameraPosition;
 
 /****************************************************************************
  ** Function Definitions
@@ -108,19 +108,31 @@ static GLfloat windowtextureCoords[16][12];
 GLfloat *windowMeshTextureCoords[] = {NULL,NULL,NULL,NULL};
 GLfloat windowMeshTextureValues[16][2][2];
 
-float cameraDisplacementX, cameraDisplacementY, cameraDisplacementZ;
 BOOL autoCamera;
 VERTTYPE fManualViewDistance, fManualViewX, fManualViewY, fManualViewZ;
 
 void CShell::MoveCamera(float x, float y, float z)
 {
     if (!autoCamera) {
-        cameraDisplacementX = x;
-        cameraDisplacementY = y;
-        cameraDisplacementZ = -z;
+        z = -z;
+        int d = 40;
+        
+        if (ABS(x)>0) fManualViewX = fManualViewX + (x * 0.005);
+        if (ABS(y)>0) fManualViewY = MAX(fManualViewY + (y * 0.005), 0.015);
+        if (ABS(z)>0) fManualViewZ = MAX(fManualViewZ + (z * 0.005), 0.2);
+        
+        newCameraPosition.x = VERTTYPEMUL(d, fManualViewX);
+        newCameraPosition.y = VERTTYPEMUL(d, fManualViewY);
+        newCameraPosition.z = VERTTYPEMUL(d, fManualViewZ);
+                
         ComputeViewMatrix();
     }
 }
+
+//void CShell::AnimateCameraTo(VECTOR3 inTo, VECTOR3 inFrom)
+//{
+//
+//}
 
 
 void CShell::UpdateWindows(unsigned char *inDisplayState)
@@ -254,7 +266,12 @@ bool CShell::InitApplication()
 	vUp.x = f2vt(0);
 	vUp.y = f2vt(1);
 	vUp.z = f2vt(0);
-	
+
+    int d = 40;
+    newCameraPosition.x = VERTTYPEMUL(d, fManualViewX);
+    newCameraPosition.y = VERTTYPEMUL(d, fManualViewY);
+    newCameraPosition.z = VERTTYPEMUL(d, fManualViewZ);
+    
 	g_sScene.ReadFromMemory(c_STEREOSCOPE_H);
 	
 
@@ -575,19 +592,7 @@ void ComputeViewMatrix()
         fViewAngle += f2vt(viewAngleStep);
         if (ABS(fViewAngle-PIOVERTWO)>1) viewAngleStep = -viewAngleStep;
     } else {
-        int d = 40;
-        
-        if (ABS(cameraDisplacementX)>0) fManualViewX = fManualViewX + (cameraDisplacementX * 0.005);
-        if (ABS(cameraDisplacementY)>0) fManualViewY = MAX(fManualViewY + (cameraDisplacementY * 0.005), 0.015);
-        if (ABS(cameraDisplacementZ)>0) fManualViewZ = MAX(fManualViewZ + (cameraDisplacementZ * 0.005), 0.2);
-        
-        vFrom.x = VERTTYPEMUL(d, fManualViewX);
-        vFrom.y = VERTTYPEMUL(d, fManualViewY);
-        vFrom.z = VERTTYPEMUL(d, fManualViewZ);
-        
-        cameraDisplacementX = 0;
-        cameraDisplacementY = 0;
-        cameraDisplacementZ = 0;
+        vFrom = newCameraPosition;
     }
     
 	

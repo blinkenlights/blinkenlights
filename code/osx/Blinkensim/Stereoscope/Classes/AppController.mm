@@ -459,6 +459,12 @@ static CShell *shell = NULL;
 	}
 }
 
+- (IBAction)changeCamera:(id)inSender
+{
+    
+}
+
+
 #pragma mark -
 #pragma mark XML Parsing
 

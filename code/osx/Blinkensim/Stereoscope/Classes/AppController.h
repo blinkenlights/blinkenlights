@@ -41,6 +41,7 @@
 - (void)shellReportsFrameRate:(float)inCurrentFrameRate;
 - (IBAction)showSettings:(id)inSender;
 - (IBAction)doneWithSettings:(id)inSender;
+- (IBAction)changeCamera:(id)inSender;
 @end
 
 
