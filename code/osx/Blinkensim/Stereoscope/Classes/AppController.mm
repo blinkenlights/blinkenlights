@@ -117,6 +117,16 @@ static AppController *s_sharedAppController;
 	_updateTimer=nil;
 }
 
+- (void)hidePositionButtons:(BOOL)hidden
+{
+    _position1Button.hidden = hidden;
+    _position2Button.hidden = hidden;
+    _position3Button.hidden = hidden;
+    _position4Button.hidden = hidden;
+    _position5Button.hidden = hidden;
+    _position6Button.hidden = hidden;
+}
+
 - (void)applicationDidFinishLaunching:(UIApplication*)inApplication
 {
 	_connectionLostTime = DBL_MAX;
@@ -156,6 +166,14 @@ static AppController *s_sharedAppController;
 	[_glView addSubview:_infoButton];
 	[_glView addSubview:_cameraButton];
 	[_glView addSubview:_liveLabel];
+
+    [self hidePositionButtons:YES];
+    [_glView addSubview:_position1Button];
+    [_glView addSubview:_position2Button];
+    [_glView addSubview:_position3Button];
+    [_glView addSubview:_position4Button];
+    [_glView addSubview:_position5Button];
+    [_glView addSubview:_position6Button];
 
 	// show the window
 	[_window makeKeyAndVisible];
@@ -596,7 +614,40 @@ static AppController *s_sharedAppController;
 
 - (IBAction)changeCamera:(id)inSender
 {    
+    [self hidePositionButtons:NO];
+    [self setStatusText:@"Select camera position"];
     shell->AnimateCameraTo(0,30,40, 0,0,20);
+}
+
+#define LEFT_NEAR 1
+#define MIDDLE_NEAR 2
+#define RIGHT_NEAR 3
+#define LEFT_FAR 4
+#define MIDDLE_FAR 5
+#define RIGHT_FAR 6
+
+
+- (IBAction)selectPosition:(id)inSender 
+{
+    [self hidePositionButtons:YES];
+    int position = [inSender tag];
+    if (position==LEFT_NEAR)
+        shell->AnimateCameraTo(-14.6,1.6,19.5, 0,10,0);
+
+    if (position==MIDDLE_NEAR)
+        shell->AnimateCameraTo(-1.8,1.8,25, 0,10,0);
+
+    if (position==RIGHT_NEAR)
+        shell->AnimateCameraTo(13.4,2.0,19.65, 0,10,0);
+
+    if (position==LEFT_FAR)
+        shell->AnimateCameraTo(-11,2.2,40, 0,10,0);
+
+    if (position==MIDDLE_FAR)
+        shell->AnimateCameraTo(0,2.2,40, 0,10,0);
+
+    if (position==RIGHT_FAR)
+        shell->AnimateCameraTo(12.5,2.2,40, 0,10,0);
 }
 
 

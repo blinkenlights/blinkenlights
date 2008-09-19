@@ -13,7 +13,15 @@
 	IBOutlet UILabel *_loadingLabel;
 	IBOutlet UIButton *_infoButton;
 	IBOutlet UIButton *_cameraButton;
-	IBOutlet SettingsController *_settingsController;
+
+    IBOutlet UIButton *_position1Button;
+    IBOutlet UIButton *_position2Button;
+    IBOutlet UIButton *_position3Button;
+    IBOutlet UIButton *_position4Button;
+    IBOutlet UIButton *_position5Button;
+    IBOutlet UIButton *_position6Button;
+    
+    IBOutlet SettingsController *_settingsController;
 	IBOutlet UINavigationController *_mainNavigationController;
 	NSTimer *_updateTimer;
 	TCMHost *_hostToResolve;
@@ -54,6 +62,7 @@
 - (void)fadeoutStatusText;
 
 - (IBAction)changeCamera:(id)inSender;
+- (IBAction)selectPosition:(id)inSender;
 
 @end
 
