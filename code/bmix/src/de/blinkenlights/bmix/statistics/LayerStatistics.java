@@ -8,6 +8,11 @@ public class LayerStatistics implements StatisticsItem {
 
 	private static final long serialVersionUID = 4810378087586013021L;
 	
+	/**
+	 * The unique ID of the object these stats are about.
+	 */
+	private final long id;
+	
 	private final InputStatistics inputStat;
 	private final Rectangle viewport;
 	private final float opacity;
@@ -23,7 +28,8 @@ public class LayerStatistics implements StatisticsItem {
 	 * @param opacity
 	 *            the opacity during mixdown
 	 */
-	public LayerStatistics(InputStatistics inputStat, Rectangle viewport, float opacity) {
+	public LayerStatistics(long id, InputStatistics inputStat, Rectangle viewport, float opacity) {
+		this.id = id;
 		if (viewport == null) {
 			throw new NullPointerException("viewport was null");
 		}
@@ -32,6 +38,10 @@ public class LayerStatistics implements StatisticsItem {
 		this.opacity = opacity;
 	}
 
+	public long getId() {
+		return id;
+	}
+	
 	/**
 	 * Returns the input statistics for this layer's input. If this layer
 	 * has no input, the return value will be null.

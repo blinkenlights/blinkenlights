@@ -1,7 +1,7 @@
 package de.blinkenlights.bmix.statistics;
 
 import java.awt.Color;
-import java.util.ArrayList;
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -14,7 +14,7 @@ import de.blinkenlights.bmix.network.BLPacketReceiver;
 import de.blinkenlights.bmix.network.BLPacketSender;
 import de.blinkenlights.bmix.network.BLPacketReceiver.AlphaMode;
 
-public class FrameStatistics implements StatisticsItem {
+public class FrameStatistics implements Serializable {
 	private static final long serialVersionUID = 1234567890L;
 	
 	transient Map<BLPacketReceiver, InputStatistics> inputReceiverMap;
@@ -48,7 +48,9 @@ public class FrameStatistics implements StatisticsItem {
 			AlphaMode alphaMode = input.getAlphaMode();
 			Color chromaKeyColor = input.getTransparentColour();
 			long lastPacketReceiveTime = input.getLastPacketReceiveTime();
-			InputStatistics inputStat = new InputStatistics(input.getName(), inputPort, 
+			InputStatistics inputStat = new InputStatistics(
+					System.identityHashCode(input),
+					input.getName(), inputPort, 
 					heartBeatDestAddr, hearBeatDestPort,
 					relaySenders, alphaMode, chromaKeyColor, lastPacketReceiveTime);
 			inputStats.add(inputStat);
@@ -60,7 +62,9 @@ public class FrameStatistics implements StatisticsItem {
 	private void addLayers(Layer layer, Map<Layer, BLPacketReceiver> layerSources) {
 		BLPacketReceiver receiver = layerSources.get(layer);
 		InputStatistics inputStat = inputReceiverMap.get(receiver); // note: can be null (eg, root layer)
-		LayerStatistics layerStat = new LayerStatistics(inputStat, layer.getViewport(), layer.getOpacity());
+		LayerStatistics layerStat = new LayerStatistics(
+				System.identityHashCode(layer),
+				inputStat, layer.getViewport(), layer.getOpacity());
 		layerStats.add(0, layerStat);
 		
 		for (Layer l : layer.getLayers()) {
@@ -71,7 +75,9 @@ public class FrameStatistics implements StatisticsItem {
 	
 	private void addOutputs(List<Output> outputs) {
 		for(Output output : outputs) {
-			OutputStatistics outputStat = new OutputStatistics(output.getViewport().getViewport(), 
+			OutputStatistics outputStat = new OutputStatistics(
+					System.identityHashCode(output),
+					output.getViewport().getViewport(), 
 					output.getDestAddr(), output.getDestPort(), output.getMinSendInterval(), 
 					output.getPacketType().name(), output.getMultiframeBpp());
 			outputStats.add(outputStat);
@@ -99,16 +105,16 @@ public class FrameStatistics implements StatisticsItem {
 	public String toHtml() {
 		return "<html><p>Overall frame stats";
 	}
-
-	public List<StatisticsItem> getChildren() {
-		List<StatisticsItem> children = new ArrayList<StatisticsItem>();
-		children.addAll(inputStats);
-		children.addAll(layerStats);
-		children.addAll(outputStats);
-		return children;
+	
+	public List<InputStatistics> getInputStats() {
+		return inputStats;
 	}
-
-	public String getName() {
-		return "Overall frame statistics";
+	
+	public LinkedList<LayerStatistics> getLayerStats() {
+		return layerStats;
+	}
+	
+	public List<OutputStatistics> getOutputStats() {
+		return outputStats;
 	}
 }

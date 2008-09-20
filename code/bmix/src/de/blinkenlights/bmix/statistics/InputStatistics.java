@@ -11,7 +11,12 @@ import de.blinkenlights.bmix.network.BLPacketReceiver.AlphaMode;
 public class InputStatistics implements StatisticsItem {
 	
 	private static final long serialVersionUID = -1641167816689740295L;
-	
+
+	/**
+	 * The unique ID of the object these stats are about.
+	 */
+	private final long id;
+
 	private final int inputPort;
 	private final String heartBeatDestAddr;
 	private final int heartBeatDestPort;
@@ -21,9 +26,10 @@ public class InputStatistics implements StatisticsItem {
 	private final long lastPacketReceiveTime;
 	private final String name;
 
-	public InputStatistics(String name, int inputPort, String heartBeatDestAddr, int heartBeatDestPort,
+	public InputStatistics(long id, String name, int inputPort, String heartBeatDestAddr, int heartBeatDestPort,
 			List<BLPacketSender> relaySenders, AlphaMode alphaMode, Color chromaKeyColor,
 		long lastPacketReceiveTime) {
+		this.id = id;
 		this.name = name;
 		this.inputPort = inputPort;
 		this.heartBeatDestAddr = heartBeatDestAddr;
@@ -36,7 +42,11 @@ public class InputStatistics implements StatisticsItem {
 			relaySenderMap.put(relaySender.getAddress(), relaySender.getPort());
 		}
 	}
-	
+
+	public long getId() {
+		return id;
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -85,13 +95,8 @@ public class InputStatistics implements StatisticsItem {
 		return str.toString();
 	}
 
-	public List<StatisticsItem> getChildren() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	public String toHtml() {
 		// TODO Auto-generated method stub
-		return null;
+		return "<html><p>TODO"; // TODO
 	}
 }

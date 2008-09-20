@@ -8,6 +8,11 @@ public class OutputStatistics implements StatisticsItem {
 
 	private static final long serialVersionUID = -982303235686899928L;
 	
+	/**
+	 * The unique ID of the object these stats are about.
+	 */
+	private final long id;
+
 	private final Rectangle viewport;
 	private final String destAddr;
 	private final int destPort;
@@ -15,8 +20,10 @@ public class OutputStatistics implements StatisticsItem {
 	private final String packetType;
 	private final int multiframeBpp;
 
-	public OutputStatistics(Rectangle viewport, String destAddr, int destPort,
+
+	public OutputStatistics(long id, Rectangle viewport, String destAddr, int destPort,
 			long minSendInterval, String packetType, int multiframeBpp) {
+				this.id = id;
 				this.viewport = viewport;
 				this.destAddr = destAddr;
 				this.destPort = destPort;
@@ -24,7 +31,11 @@ public class OutputStatistics implements StatisticsItem {
 				this.packetType = packetType;
 				this.multiframeBpp = multiframeBpp;
 	}
-
+	
+	public long getId() {
+		return id;
+	}
+	
 	public Rectangle getViewport() {
 		return viewport;
 	}
@@ -61,16 +72,11 @@ public class OutputStatistics implements StatisticsItem {
 		return str.toString();
 	}
 
-	public List<StatisticsItem> getChildren() {
-		return Collections.emptyList();
-	}
-
 	public String getName() {
 		return "Output to " + destAddr + ":" + destPort;
 	}
 
 	public String toHtml() {
-		// TODO Auto-generated method stub
-		return null;
+		return "<html><p>TODO";
 	}
 }
