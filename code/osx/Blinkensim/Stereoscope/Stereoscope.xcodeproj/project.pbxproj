@@ -56,6 +56,8 @@
 		F24282B30E84D86900180039 /* TCMButtonP.png in Resources */ = {isa = PBXBuildFile; fileRef = F24282B10E84D86900180039 /* TCMButtonP.png */; };
 		F24282B40E84D86900180039 /* BlinkenlightsButtonP.png in Resources */ = {isa = PBXBuildFile; fileRef = F24282B20E84D86900180039 /* BlinkenlightsButtonP.png */; };
 		F24282B70E84D96800180039 /* CloseButtonP.png in Resources */ = {isa = PBXBuildFile; fileRef = F24282B60E84D96800180039 /* CloseButtonP.png */; };
+		F24283280E858A6D00180039 /* ApplicatoinCreditsP.png in Resources */ = {isa = PBXBuildFile; fileRef = F24283260E858A6D00180039 /* ApplicatoinCreditsP.png */; };
+		F24283290E858A6D00180039 /* ApplicatoinCredits.png in Resources */ = {isa = PBXBuildFile; fileRef = F24283270E858A6D00180039 /* ApplicatoinCredits.png */; };
 		F2607EE00E780F4E00B0A7BB /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2607EDF0E780F4E00B0A7BB /* CFNetwork.framework */; };
 		F2607F3B0E78103B00B0A7BB /* Settings.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2607F380E78103B00B0A7BB /* Settings.xib */; };
 		F2607F3C0E78103B00B0A7BB /* EditingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2607F390E78103B00B0A7BB /* EditingView.xib */; };
@@ -148,6 +150,8 @@
 		F24282B10E84D86900180039 /* TCMButtonP.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = TCMButtonP.png; path = Media/TCMButtonP.png; sourceTree = "<group>"; };
 		F24282B20E84D86900180039 /* BlinkenlightsButtonP.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BlinkenlightsButtonP.png; path = Media/BlinkenlightsButtonP.png; sourceTree = "<group>"; };
 		F24282B60E84D96800180039 /* CloseButtonP.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CloseButtonP.png; path = Media/CloseButtonP.png; sourceTree = "<group>"; };
+		F24283260E858A6D00180039 /* ApplicatoinCreditsP.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ApplicatoinCreditsP.png; path = Media/ApplicatoinCreditsP.png; sourceTree = "<group>"; };
+		F24283270E858A6D00180039 /* ApplicatoinCredits.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ApplicatoinCredits.png; path = Media/ApplicatoinCredits.png; sourceTree = "<group>"; };
 		F2607EDF0E780F4E00B0A7BB /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		F2607F380E78103B00B0A7BB /* Settings.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Settings.xib; sourceTree = "<group>"; };
 		F2607F390E78103B00B0A7BB /* EditingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditingView.xib; sourceTree = "<group>"; };
@@ -230,6 +234,8 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F24283260E858A6D00180039 /* ApplicatoinCreditsP.png */,
+				F24283270E858A6D00180039 /* ApplicatoinCredits.png */,
 				F24282B60E84D96800180039 /* CloseButtonP.png */,
 				F24282B10E84D86900180039 /* TCMButtonP.png */,
 				F24282B20E84D86900180039 /* BlinkenlightsButtonP.png */,
@@ -527,6 +533,8 @@
 				F24282B30E84D86900180039 /* TCMButtonP.png in Resources */,
 				F24282B40E84D86900180039 /* BlinkenlightsButtonP.png in Resources */,
 				F24282B70E84D96800180039 /* CloseButtonP.png in Resources */,
+				F24283280E858A6D00180039 /* ApplicatoinCreditsP.png in Resources */,
+				F24283290E858A6D00180039 /* ApplicatoinCredits.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

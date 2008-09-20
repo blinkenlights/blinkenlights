@@ -8,6 +8,7 @@
 		<string key="IBDocument.HIToolboxVersion">352.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
+			<integer value="17"/>
 			<integer value="7"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
@@ -384,10 +385,11 @@
 					<object class="IBUIViewController" id="639663911">
 						<string key="IBUITitle">Settings</string>
 						<object class="IBUINavigationItem" key="IBUINavigationItem" id="652871044">
+							<reference key="IBUINavigationBar"/>
 							<string key="IBUITitle">Settings</string>
-							<object class="IBUIBarButtonItem" key="IBUILeftBarButtonItem" id="104790896">
+							<object class="IBUIBarButtonItem" key="IBUIRightBarButtonItem" id="104790896">
 								<string key="IBUITitle">Done</string>
-								<int key="IBUIStyle">1</int>
+								<int key="IBUIStyle">2</int>
 							</object>
 						</object>
 						<reference key="IBUIParentViewController" ref="577729833"/>
@@ -836,7 +838,7 @@
 					<string>UIApplication</string>
 					<string>UIResponder</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<string>{{21, 331}, {320, 480}}</string>
+					<string>{{70, 260}, {320, 480}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>SettingsController</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -867,7 +869,7 @@
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<string>{{558, 140}, {320, 480}}</string>
+					<string>{{476, 140}, {320, 480}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -996,6 +998,42 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">SettingsController</string>
 					<string key="superclassName">UITableViewController</string>
+					<object class="NSMutableDictionary" key="actions">
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSMutableArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>dismissAbout:</string>
+							<string>gotoBlinkenlightsWebsite:</string>
+							<string>gotoCodingMonkeysWebsite:</string>
+							<string>showAbout:</string>
+						</object>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+						</object>
+					</object>
+					<object class="NSMutableDictionary" key="outlets">
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSMutableArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>_ibAboutViewController</string>
+							<string>_ibCodingMonkeysButton</string>
+							<string>_ibLinkLabel</string>
+							<string>_ibLogoImageView</string>
+							<string>_ibTopView</string>
+						</object>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>UIViewController</string>
+							<string>UIButton</string>
+							<string>UILabel</string>
+							<string>UIImageView</string>
+							<string>UIView</string>
+						</object>
+					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">Classes/SettingsController.h</string>
