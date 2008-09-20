@@ -32,10 +32,14 @@ public class BLFramePacket extends AbstractFramePacket {
 	 *            The colour in the input that should be treated as transparent.
 	 *            If not using {@link AlphaMode#CHROMA_KEY}, pass in null for
 	 *            this parameter, because it is ignored.
+	 * @param shadowColour
+	 *            Fully-transparent pixels in the image will appear as this
+	 *            colour instead. If no translation is desired, this value
+	 *            should be set to null.
 	 */
 	public BLFramePacket(int width, int height,
-			byte pixelData[], AlphaMode alphaMode, Color transparentColour) {
-		super(width, height, pixelData, alphaMode, transparentColour);
+			byte pixelData[], AlphaMode alphaMode, Color transparentColour, Color shadowColour) {
+		super(width, height, pixelData, alphaMode, transparentColour, shadowColour);
 	}
 	
 	/**

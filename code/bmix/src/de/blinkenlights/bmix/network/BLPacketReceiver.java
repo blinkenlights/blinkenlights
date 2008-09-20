@@ -97,6 +97,12 @@ public class BLPacketReceiver {
      */
 	private final Color transparentColour;
 
+	/**
+	 * Fully-transparent pixels in the image will appear as this colour instead.
+	 * If no translation is desired, this value should be set to null.
+	 */
+	private final Color shadowColour;
+
     /**
      * Each of these BLPacketSenders will be given the received packet when we
      * receive it.
@@ -117,7 +123,9 @@ public class BLPacketReceiver {
 	 */
 	public BLPacketReceiver(int port, InetAddress address,
 			InetAddress heartBeatDestination, int heartBeatDestPort,
-			AlphaMode alphaMode, Color transparentColour) throws SocketException  {
+			AlphaMode alphaMode, Color transparentColour,
+			Color shadowColor) throws SocketException  {
+		shadowColour = shadowColor;
 		if (address == null) {
 			address = WILDCARD_ADDRESS;
 		}
@@ -142,7 +150,8 @@ public class BLPacketReceiver {
 		DatagramPacket packet = new DatagramPacket(buf, buf.length);
 		try {
 			socket.receive(packet);
-			BLPacket parsedPacket = BLPacketFactory.parse(buf, packet.getLength(), alphaMode, transparentColour);
+			BLPacket parsedPacket = BLPacketFactory.parse(
+					buf, packet.getLength(), alphaMode, transparentColour, shadowColour);
 			for (BLPacketSender sender : relaySenders) {
 			    try {
 			        sender.send(parsedPacket.getNetworkBytes());

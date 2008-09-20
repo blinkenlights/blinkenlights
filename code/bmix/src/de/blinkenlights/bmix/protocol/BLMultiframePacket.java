@@ -32,10 +32,14 @@ public class BLMultiframePacket extends BLFramePacket {
 	 *            The colour in the input that should be treated as transparent.
 	 *            If not using {@link AlphaMode#CHROMA_KEY}, pass in null for
 	 *            this parameter, because it is ignored.
+	 * @param shadowColour
+	 *            Fully-transparent pixels in the image will appear as this
+	 *            colour instead. If no translation is desired, this value
+	 *            should be set to null.
 	 */
 	public BLMultiframePacket(int width, int height, int bpp, byte pixelData[],
-			AlphaMode alphaMode, Color transparentColour) {
-		super(width, height, pixelData, alphaMode, transparentColour);
+			AlphaMode alphaMode, Color transparentColour, Color shadowColour) {
+		super(width, height, pixelData, alphaMode, transparentColour, shadowColour);
 		this.bpp = bpp;
 		checkBPP(bpp);
 	}

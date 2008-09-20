@@ -25,7 +25,7 @@ public class NetworkStreamMonitor extends Monitor {
 		this.bpr = new BLPacketReceiver(
 				nc.getPort(), null,
 				null, 0,
-				AlphaMode.OPAQUE, null);
+				AlphaMode.OPAQUE, null, null);
 	}
 
 	

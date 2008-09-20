@@ -33,6 +33,12 @@ public abstract class AbstractFramePacket implements BLPacket, BLImage {
 	private final AlphaMode alphaMode;
 
 	/**
+	 * Fully-transparent pixels in the image will appear as this colour instead.
+	 * If no translation is desired, this value should be set to null.
+	 */
+	private final Color shadowColour;
+
+	/**
 	 * Creates a new BLFramePacket.
 	 * 
 	 * @param width
@@ -41,8 +47,8 @@ public abstract class AbstractFramePacket implements BLPacket, BLImage {
 	 *            the height in pixels
 	 * @param pixelData
 	 *            the pixel data. Must not be null, and must have length of
-	 *            {@link #width} * {@link #height}. Pixel values must be normalized
-	 *            to the range 0..255.
+	 *            {@link #width} {@link #height}. Pixel values must be
+	 *            normalized to the range 0..255.
 	 * @param alphaMode
 	 *            The method for converting pixels from the network format to
 	 *            our standard 32-bit ARGB format.
@@ -50,12 +56,18 @@ public abstract class AbstractFramePacket implements BLPacket, BLImage {
 	 *            The colour in the input that should be treated as transparent.
 	 *            If not using {@link AlphaMode#CHROMA_KEY}, pass in null for
 	 *            this parameter, because it is ignored.
+	 * @param shadowColour
+	 *            Fully-transparent pixels in the image will appear as this
+	 *            colour instead. If no translation is desired, this value
+	 *            should be set to null.
 	 */
 	public AbstractFramePacket(int width, int height,
-			byte pixelData[], AlphaMode alphaMode, Color transparentColour) {
+			byte pixelData[], AlphaMode alphaMode, Color transparentColour,
+			Color shadowColour) {
 		this.width = width;
 		this.height = height;
 		this.alphaMode = alphaMode;
+		this.shadowColour = shadowColour;
 		if (alphaMode == AlphaMode.CHROMA_KEY && transparentColour == null) {
 			throw new IllegalArgumentException("Alpha mode is CHROMA_KEY but transparentColour was null");
 		}
@@ -84,6 +96,7 @@ public abstract class AbstractFramePacket implements BLPacket, BLImage {
 		width = image.getImageWidth();
 		height = image.getImageHeight();
 		transparentColour = null;
+		shadowColour = null;
 		alphaMode = AlphaMode.OPAQUE;
 		pixelData = new byte[width * height];
 		BufferedImage img = new BufferedImage(
@@ -142,7 +155,13 @@ public abstract class AbstractFramePacket implements BLPacket, BLImage {
 		} else if (alphaMode == AlphaMode.CHROMA_KEY) {
 			if (transparentColour != null &&
 					(transparentColour.getRGB() & 0xffffff) == argb) {
-				alpha = 0x00;
+				
+				if (shadowColour != null) {
+					alpha = 0;
+					argb = shadowColour.getRGB();
+				} else {
+					alpha = 0x00;
+				}
 			} else {
 				alpha = 0xff;
 			}
@@ -154,6 +173,7 @@ public abstract class AbstractFramePacket implements BLPacket, BLImage {
 		} else {
 			throw new IllegalArgumentException("Unknown/unsupported alpha mode: " + alphaMode);
 		}
+
 		argb |= (alpha << 24);
 		return argb;
 	}

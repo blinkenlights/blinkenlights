@@ -23,6 +23,14 @@
      Defaults to black. Ignored unless alpha mode is chroma-key. -->
 <!ATTLIST input chroma-key-colour CDATA "#000000">
 
+<!--
+    Fully-transparent pixels in the image will appear as this
+    colour instead. If no translation is desired, this value
+    should be set to null.
+-->
+<!ATTLIST input shadow-colour CDATA #IMPLIED>
+
+
 <!-- Relay targets receive a copy of every frame received on the input they belong to -->
 <!ELEMENT relay-target EMPTY>
 <!ATTLIST relay-target dest-addr CDATA #REQUIRED>

@@ -19,7 +19,7 @@ public class BLPacketFactory {
 	 * @param len the data length
 	 * @throws BLPacketException if there is an error
 	 */
-	public static BLPacket parse(byte data[], int len, AlphaMode alphaMode, Color transparentColour) throws BLPacketException {
+	public static BLPacket parse(byte data[], int len, AlphaMode alphaMode, Color transparentColour, Color shadowColor) throws BLPacketException {
 		// length is invalid
 		if(len > data.length || len < 0 || len < 4) {
 			throw new BLPacketException("len is invalid");
@@ -105,7 +105,7 @@ public class BLPacketFactory {
 				pixels[i] = (byte) ((int) (data[i+12] * scaleFactor) & 0xff);
 			}
 			
-			return new BLFramePacket(width, height, pixels, alphaMode, transparentColour);
+			return new BLFramePacket(width, height, pixels, alphaMode, transparentColour, shadowColor);
 		}
 		
 		// legacy BL frame packet - 0xdeadbeef 
@@ -126,7 +126,7 @@ public class BLPacketFactory {
 					pixels[i] = 1;
 				}
 			}
-			return new BLFramePacket(width, height, pixels, alphaMode, transparentColour);
+			return new BLFramePacket(width, height, pixels, alphaMode, transparentColour, shadowColor);
 		}
 		
 		// legacy greyscale BL frame packet - 0xfeedbeef
@@ -142,7 +142,7 @@ public class BLPacketFactory {
 			}
 			byte pixels[] = new byte[len - 12];
 			System.arraycopy(data, 12, pixels, 0, len - 12);
-			return new BLFramePacket(width, height, pixels, alphaMode, transparentColour);
+			return new BLFramePacket(width, height, pixels, alphaMode, transparentColour, shadowColor);
 		}	
 		return null;
 	}

@@ -242,6 +242,13 @@ public class BMix extends Monitor {
 		            String heartBeatDestAddrString = attributes.getValue("heartbeat-dest-addr");
 		            AlphaMode alphaMode = AlphaMode.forCode(attributes.getValue("alpha-mode"));
 		            Color transparentColour = Color.decode(attributes.getValue("chroma-key-colour"));
+		            String shadowColourCode = attributes.getValue("shadow-colour");
+		            Color shadowColour = null;
+		            if (shadowColourCode != null) {
+		            	// have to use Long so the result is clean for 32-bit signed
+		            	int argb = (int) (Long.decode(shadowColourCode) & 0xffffffffL);
+						shadowColour = new Color(argb, true);
+		            }
 		            InetAddress heartBeatDestAddr = null;
 		            if (heartBeatDestAddrString != null) {
 		            	heartBeatDestAddr = InetAddress.getByName(heartBeatDestAddrString);
@@ -251,7 +258,8 @@ public class BMix extends Monitor {
 		                new BLPacketReceiver(
 		                        Integer.parseInt(listenPort),
 		                        InetAddress.getByName(listenAddr),
-		                        heartBeatDestAddr, heartBeatDestPort, alphaMode, transparentColour);
+		                        heartBeatDestAddr, heartBeatDestPort, alphaMode,
+		                        transparentColour, shadowColour);
 		            inputs.put(id, receiver);
 		            currentInput = receiver;
 
