@@ -197,6 +197,11 @@ static NSString * const labelCellIdentifier = @"LabelCell";
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	self.tableView.tableHeaderView = _ibTopView;
+	CGPoint oldCenter = _ibCodingMonkeysButton.center;
+//	_ibCodingMonkeysButton.center = CGPointMake(CGRectGetMaxX(_ibCodingMonkeysButton.frame),_ibCodingMonkeysButton.center.y);
+	[_ibCodingMonkeysButton.layer setAnchorPoint:CGPointMake(0.896,0.6)];
+	oldCenter.x += 55.;
+	_ibCodingMonkeysButton.center = oldCenter;
 }
 
 
@@ -236,9 +241,38 @@ static NSString * const labelCellIdentifier = @"LabelCell";
 	[self dismissModalViewControllerAnimated:YES];
 }
 
+#define MONKEY_ROTATION (M_PI / 16.0)
+
 - (IBAction)showAbout:(id)inSender 
 {
 	[self presentModalViewController:_ibAboutViewController animated:YES];
+	
+	_animationState = 0;
+	
+	[UIView beginAnimations:@"MonkeyAnimation" context:NULL];
+	[UIView setAnimationDelay:2.0];
+	[UIView setAnimationDuration:0.3];
+	[UIView setAnimationDelegate:self];
+	[UIView setAnimationDidStopSelector:@selector(monkeyAnimationDidEnd:context:)];
+	[_ibCodingMonkeysButton setTransform:CGAffineTransformMakeRotation(-MONKEY_ROTATION)];
+	[UIView commitAnimations];
+}
+
+- (void)monkeyAnimationDidEnd:(id)animationId context:(void *)inContext
+{
+	CGFloat _targetRotation = _animationState++ % 2 ? MONKEY_ROTATION : MONKEY_ROTATION;
+	[UIView beginAnimations:@"MonkeyAnimation" context:NULL];
+	
+	if (_animationState < 3) {
+		[UIView setAnimationDuration:0.6];
+		[UIView setAnimationDelegate:self];
+		[UIView setAnimationDidStopSelector:@selector(monkeyAnimationDidEnd:context:)];
+		[_ibCodingMonkeysButton setTransform:CGAffineTransformMakeRotation(_targetRotation)];
+	} else {
+		[UIView setAnimationDuration:0.3];
+		[_ibCodingMonkeysButton setTransform:CGAffineTransformMakeRotation(0)];
+	}
+	[UIView commitAnimations];
 }
 
 

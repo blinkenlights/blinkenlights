@@ -53,6 +53,9 @@
 		F242829D0E84D2F000180039 /* BlinkenlightsButton.png in Resources */ = {isa = PBXBuildFile; fileRef = F24282990E84D2F000180039 /* BlinkenlightsButton.png */; };
 		F242829E0E84D2F000180039 /* About.png in Resources */ = {isa = PBXBuildFile; fileRef = F242829A0E84D2F000180039 /* About.png */; };
 		F242829F0E84D2F000180039 /* CloseButton.png in Resources */ = {isa = PBXBuildFile; fileRef = F242829B0E84D2F000180039 /* CloseButton.png */; };
+		F24282B30E84D86900180039 /* TCMButtonP.png in Resources */ = {isa = PBXBuildFile; fileRef = F24282B10E84D86900180039 /* TCMButtonP.png */; };
+		F24282B40E84D86900180039 /* BlinkenlightsButtonP.png in Resources */ = {isa = PBXBuildFile; fileRef = F24282B20E84D86900180039 /* BlinkenlightsButtonP.png */; };
+		F24282B70E84D96800180039 /* CloseButtonP.png in Resources */ = {isa = PBXBuildFile; fileRef = F24282B60E84D96800180039 /* CloseButtonP.png */; };
 		F2607EE00E780F4E00B0A7BB /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2607EDF0E780F4E00B0A7BB /* CFNetwork.framework */; };
 		F2607F3B0E78103B00B0A7BB /* Settings.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2607F380E78103B00B0A7BB /* Settings.xib */; };
 		F2607F3C0E78103B00B0A7BB /* EditingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2607F390E78103B00B0A7BB /* EditingView.xib */; };
@@ -142,6 +145,9 @@
 		F24282990E84D2F000180039 /* BlinkenlightsButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BlinkenlightsButton.png; path = Media/BlinkenlightsButton.png; sourceTree = "<group>"; };
 		F242829A0E84D2F000180039 /* About.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = About.png; path = Media/About.png; sourceTree = "<group>"; };
 		F242829B0E84D2F000180039 /* CloseButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CloseButton.png; path = Media/CloseButton.png; sourceTree = "<group>"; };
+		F24282B10E84D86900180039 /* TCMButtonP.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = TCMButtonP.png; path = Media/TCMButtonP.png; sourceTree = "<group>"; };
+		F24282B20E84D86900180039 /* BlinkenlightsButtonP.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BlinkenlightsButtonP.png; path = Media/BlinkenlightsButtonP.png; sourceTree = "<group>"; };
+		F24282B60E84D96800180039 /* CloseButtonP.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CloseButtonP.png; path = Media/CloseButtonP.png; sourceTree = "<group>"; };
 		F2607EDF0E780F4E00B0A7BB /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		F2607F380E78103B00B0A7BB /* Settings.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Settings.xib; sourceTree = "<group>"; };
 		F2607F390E78103B00B0A7BB /* EditingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditingView.xib; sourceTree = "<group>"; };
@@ -224,6 +230,9 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F24282B60E84D96800180039 /* CloseButtonP.png */,
+				F24282B10E84D86900180039 /* TCMButtonP.png */,
+				F24282B20E84D86900180039 /* BlinkenlightsButtonP.png */,
 				F24282980E84D2F000180039 /* TCMButton.png */,
 				F24282990E84D2F000180039 /* BlinkenlightsButton.png */,
 				F242829A0E84D2F000180039 /* About.png */,
@@ -515,6 +524,9 @@
 				F242829D0E84D2F000180039 /* BlinkenlightsButton.png in Resources */,
 				F242829E0E84D2F000180039 /* About.png in Resources */,
 				F242829F0E84D2F000180039 /* CloseButton.png in Resources */,
+				F24282B30E84D86900180039 /* TCMButtonP.png in Resources */,
+				F24282B40E84D86900180039 /* BlinkenlightsButtonP.png in Resources */,
+				F24282B70E84D96800180039 /* CloseButtonP.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

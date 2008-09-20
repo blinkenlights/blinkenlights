@@ -16,6 +16,8 @@
 	IBOutlet UIImageView *_ibLogoImageView;
 	IBOutlet UIView *_ibTopView;
 	IBOutlet UIViewController *_ibAboutViewController;
+	IBOutlet UIButton *_ibCodingMonkeysButton;
+	int _animationState;
 }
 
 @property (nonatomic, retain) EditingViewController *editingViewController;
