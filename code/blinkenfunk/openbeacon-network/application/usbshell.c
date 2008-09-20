@@ -54,7 +54,9 @@ cmd_status (const portCHAR * cmd)
   struct netif *nic = &EMAC_if;
 
   shell_printf ("WMCU status:\n");
+  shell_printf ("	Firmware version: %s\n", VERSION);
   shell_printf ("	WMCU ID: %d\n", env.e.mcu_id);
+  shell_printf ("	RF delay time: %d ms\n", env.e.rf_delay);
   shell_printf ("	MAC address:	%02x:%02x:%02x:%02x:%02x:%02x\n",
   	nic->hwaddr[0], nic->hwaddr[1], nic->hwaddr[2],
   	nic->hwaddr[3], nic->hwaddr[4], nic->hwaddr[5]);
@@ -64,7 +66,9 @@ cmd_status (const portCHAR * cmd)
   	ip4_addr1(&nic->netmask), ip4_addr2(&nic->netmask), ip4_addr3(&nic->netmask), ip4_addr4(&nic->netmask));
   shell_printf ("	Gateway addr:	%d.%d.%d.%d\n",
   	ip4_addr1(&nic->gw), ip4_addr2(&nic->gw), ip4_addr3(&nic->gw), ip4_addr4(&nic->gw));
-	
+  shell_printf ("	Receive statistics: %d packets total, %d frames, %d setup\n",
+  	b_rec_total, b_rec_frames, b_rec_setup);
+
   shell_printf("	assigned lamps (%d):\n", env.e.n_lamps);
   shell_printf("		#lamp MAC	#screen		#x	#y	#last value\n");
 

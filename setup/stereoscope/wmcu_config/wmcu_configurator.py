@@ -38,6 +38,7 @@ def usage():
 	print("\t--host <ip>				the IP address to connect to")
 	print("\t--port <port>				the port to use, defaults to 2323")
 	print("\t--set-mcu-id <id>			configure the WMCU's ID")
+	print("\t--set-rf-delay <delay>			configure the WMCU's RF delay time in ms")
 	print("\t--set-assigned-lamps <filename>		set the lamps assigned to an WMCU");
 	sys.exit(1)
 
@@ -49,13 +50,14 @@ port		= 2323
 
 SET_MCUID		= 0
 SET_ASSIGNED_LAMPS	= 5
+SET_RF_DELAY		= 7
 
 MCUCTRL_MAGIC 	= 0x23542667
 
 try:
 	opts, args = getopt.getopt(sys.argv[1:],
-		"hh:p:s:s",
-		["help", "host=", "port=", "set-mcu-id=", "set-assigned-lamps="])
+		"hh:p:s:s:s:",
+		["help", "host=", "port=", "set-mcu-id=", "set-rf-delay=", "set-assigned-lamps="])
 
 except getopt.GetoptError, err:
 	print str(err)
@@ -71,6 +73,9 @@ for o, a in opts:
 	if o == "--set-mcu-id":
 		action = SET_MCUID
 		mcu_id = int(a)
+	if o == "--set-rf-delay":
+		action = SET_RF_DELAY
+		delay = int(a)
 	if o == "--set-assigned-lamps":
 		action = SET_ASSIGNED_LAMPS
 		lamp_list_file = a
@@ -81,6 +86,9 @@ if action == -1:
 
 if action == SET_MCUID:
 	packet = struct.pack("!IIII", MCUCTRL_MAGIC, action, 0, mcu_id)
+
+if action == SET_RF_DELAY:
+	packet = struct.pack("!IIII", MCUCTRL_MAGIC, action, 0, delay)
 
 elif action == SET_ASSIGNED_LAMPS:
 	lamps = read_lamp_map(lamp_list_file)

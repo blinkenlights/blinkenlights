@@ -86,6 +86,8 @@ void vnRFTransmitPacket(BRFPacket *pkg)
 {
   unsigned short crc;
 
+  vTaskDelay (env.e.rf_delay / portTICK_RATE_MS);
+
   /* turn on redLED for TX indication */
   vLedSetRed (1);
 

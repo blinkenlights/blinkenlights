@@ -55,6 +55,9 @@ static struct ip_addr b_last_ipaddr;
 static struct pbuf *b_ret_pbuf;
 static BRFPacket rfpkg;
 
+int b_rec_total = 0;
+int b_rec_frames = 0;
+int b_rec_setup = 0;
 unsigned char last_lamp_val[MAX_LAMPS] = { 0 };
 
 #define SUBSIZE ((sizeof(*sub) + sub->height * ((sub->width + 1) / 2)))
@@ -86,6 +89,7 @@ static int b_parse_mcu_multiframe (mcu_multiframe_header_t *header, unsigned int
 			return 0;
 		}
 
+		b_rec_frames++;
 		debug_printf("subframe: bpp = 4, pkg rest size = %d, w %d, h %d!\n", maxlen, sub->width, sub->height);
 
 		for (i = 0; i < env.e.n_lamps; i++) {
@@ -197,7 +201,7 @@ static inline void b_set_assigned_lamps (unsigned int *map, unsigned int len)
 
 	for (i = 0; i < MAX_LAMPS; i++) {
 		LampMap *m;
-		if (i * 4 * sizeof(int) > len)
+		if (i * 4 * sizeof(int) >= len)
 			break;
 
 		m = env.e.lamp_map + i;
@@ -206,9 +210,10 @@ static inline void b_set_assigned_lamps (unsigned int *map, unsigned int len)
 		m->x      = map[(i * 4) + 2];
 		m->y      = map[(i * 4) + 3];
 		b_set_lamp_id (i, m->mac);
+		debug_printf("Lamp map %d -> MAC 0x%04x\n", i, m->mac);
 	}
 
-	env.e.n_lamps = i - 1;
+	env.e.n_lamps = i;
 	env_store();
 	debug_printf("%d new assigned lamps set.\n", env.e.n_lamps);
 	memset(last_lamp_val, 0, sizeof(last_lamp_val));
@@ -231,11 +236,12 @@ static int b_parse_mcu_devctrl(mcu_devctrl_header_t *header, int maxlen)
 //	if (len > maxlen)
 //		return 0;
 
+	b_rec_setup++;
+
 	/* ntohs */
 	header->command	= swaplong(header->command);
 	header->mac	= swaplong(header->mac);
 	header->value	= swaplong(header->value);
-	debug_printf(" %s() cmd %04x\n", __func__, header->command);
 
 	for (i = 0; i < (maxlen - sizeof(*header)) / 4; i++)
 		header->param[i] = swaplong(header->param[i]);
@@ -283,6 +289,11 @@ static int b_parse_mcu_devctrl(mcu_devctrl_header_t *header, int maxlen)
 			b_send_wdim_stats(lamp_mac);
 			break;
 		}
+		case MCU_DEVCTRL_COMMAND_SET_RF_DELAY: {
+			env.e.rf_delay = header->value;
+			debug_printf("new RF delay: %d ms\n", env.e.rf_delay);
+			break;
+		}
 		case MCU_DEVCTRL_COMMAND_OUTPUT_RAW: {
 			int i;
 
@@ -307,6 +318,7 @@ static void b_recv(void *arg, struct udp_pcb *pcb, struct pbuf *p, struct ip_add
 	unsigned char *payload = (unsigned char *) p->payload;
 
 	memcpy(&b_last_ipaddr, addr, sizeof(b_last_ipaddr));
+	b_rec_total++;
 
 	if (p->len < sizeof(unsigned int)) { // || p->len > sizeof(payload)) {
 		pbuf_free(p);

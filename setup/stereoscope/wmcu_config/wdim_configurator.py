@@ -29,7 +29,7 @@ def usage():
 	print("\t--set-dimmer-jitter <jitter>		sets the dimmer jitter for a lamp (in us)");
 	print("\t--write-config				makes the lamp write its config (gamma and jitter)");
 	print("\t--lamp-mac <id>				specify the lamp MAC address to use for other commands (0xffff for broadcast)")
-	print("\t--check-lamp				queries the lamp function");
+	print("\t--get-statistics				queries dimmer statistics");
 	print("\t--enter-update-mode			makes a dimmer enter its update mode. USE WITH CARE!");
 	sys.exit(1)
 
@@ -51,7 +51,7 @@ GET_STATISTICS		= 6
 ENTER_UPDATE_MODE	= 0x3f
 DEBUG_SEND_RAW		= 0xff
 
-MCUCTRL_MAGIC 	= 0x23542667
+MCUCTRL_MAGIC 		= 0x23542667
 
 try:
 	opts, args = getopt.getopt(sys.argv[1:],
@@ -114,13 +114,13 @@ elif action == SET_GAMMA:
 			gamma[12], gamma[13], gamma[14], gamma[15])
 
 elif action == WRITE_CONFIG:
-	packet = struct.pack("!IIII8I", MCUCTRL_MAGIC, action, lampmac, 0)
+	packet = struct.pack("!IIII", MCUCTRL_MAGIC, action, lampmac, 0)
 
 elif action == SET_JITTER:
-	packet = struct.pack("!IIII8I", MCUCTRL_MAGIC, action, lampmac, jitter)
+	packet = struct.pack("!IIII", MCUCTRL_MAGIC, action, lampmac, jitter)
 
 elif action == GET_STATISTICS:
-	packet = struct.pack("!IIII8I", MCUCTRL_MAGIC, action, lampmac, 0)
+	packet = struct.pack("!IIII", MCUCTRL_MAGIC, action, lampmac, 0)
 
 elif action == ENTER_UPDATE_MODE:
 	print("sending dimmer to update mode. cross your fingers.")
@@ -135,9 +135,10 @@ while len(packet) < 64:
 	pad = struct.pack("b", 0)
 	packet += pad
 
-while len(packet2) < 64:
-	pad = struct.pack("b", 0)
-	packet2 += pad
+if (packet2):
+	while len(packet2) < 64:
+		pad = struct.pack("b", 0)
+		packet2 += pad
 
 s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 s.connect((host, port))

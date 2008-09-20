@@ -78,6 +78,9 @@ main (void)
   if (env.e.n_lamps > MAX_LAMPS)
     env.e.n_lamps = 0;
 
+  if (env.e.rf_delay > 1000)
+    env.e.rf_delay = 0;
+
   vNetworkInit ();
 
   xTaskCreate (vUSBCDCTask, (signed portCHAR *) "USB", TASK_USB_STACK,

@@ -37,6 +37,7 @@ enum {
   RF_CMD_WRITE_CONFIG,
   RF_CMD_SET_JITTER,
   RF_CMD_SEND_STATISTICS,
+  RF_CMD_SET_RF_DELAY,
   RF_CMD_ENTER_UPDATE_MODE = 0x3f
 };
 
@@ -62,6 +63,10 @@ typedef struct
     struct {
       unsigned short jitter;
     } PACKED set_jitter;
+    
+    struct {
+      unsigned short delay;
+    } PACKED rf_delay;
 
     struct {
       unsigned short emi_pulses;
