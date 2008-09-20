@@ -47,6 +47,12 @@
 		799121BE0E1F410C00035EEA /* ResourcePath.mm in Sources */ = {isa = PBXBuildFile; fileRef = 799121BD0E1F410C00035EEA /* ResourcePath.mm */; };
 		F22550D60E796BD00007A4C1 /* dist.plist in Resources */ = {isa = PBXBuildFile; fileRef = F22550D50E796BD00007A4C1 /* dist.plist */; };
 		F23F402F0E81B85200F77DC4 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = F23F402E0E81B85200F77DC4 /* Default.png */; };
+		F24282710E84776800180039 /* Blinkenlights.png in Resources */ = {isa = PBXBuildFile; fileRef = F24282700E84776800180039 /* Blinkenlights.png */; };
+		F24282910E847C0100180039 /* Stereoscope.png in Resources */ = {isa = PBXBuildFile; fileRef = F24282900E847C0100180039 /* Stereoscope.png */; };
+		F242829C0E84D2F000180039 /* TCMButton.png in Resources */ = {isa = PBXBuildFile; fileRef = F24282980E84D2F000180039 /* TCMButton.png */; };
+		F242829D0E84D2F000180039 /* BlinkenlightsButton.png in Resources */ = {isa = PBXBuildFile; fileRef = F24282990E84D2F000180039 /* BlinkenlightsButton.png */; };
+		F242829E0E84D2F000180039 /* About.png in Resources */ = {isa = PBXBuildFile; fileRef = F242829A0E84D2F000180039 /* About.png */; };
+		F242829F0E84D2F000180039 /* CloseButton.png in Resources */ = {isa = PBXBuildFile; fileRef = F242829B0E84D2F000180039 /* CloseButton.png */; };
 		F2607EE00E780F4E00B0A7BB /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2607EDF0E780F4E00B0A7BB /* CFNetwork.framework */; };
 		F2607F3B0E78103B00B0A7BB /* Settings.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2607F380E78103B00B0A7BB /* Settings.xib */; };
 		F2607F3C0E78103B00B0A7BB /* EditingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2607F390E78103B00B0A7BB /* EditingView.xib */; };
@@ -130,6 +136,12 @@
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F22550D50E796BD00007A4C1 /* dist.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = dist.plist; sourceTree = "<group>"; };
 		F23F402E0E81B85200F77DC4 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		F24282700E84776800180039 /* Blinkenlights.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Blinkenlights.png; path = Media/Blinkenlights.png; sourceTree = "<group>"; };
+		F24282900E847C0100180039 /* Stereoscope.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Stereoscope.png; path = Media/Stereoscope.png; sourceTree = "<group>"; };
+		F24282980E84D2F000180039 /* TCMButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = TCMButton.png; path = Media/TCMButton.png; sourceTree = "<group>"; };
+		F24282990E84D2F000180039 /* BlinkenlightsButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BlinkenlightsButton.png; path = Media/BlinkenlightsButton.png; sourceTree = "<group>"; };
+		F242829A0E84D2F000180039 /* About.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = About.png; path = Media/About.png; sourceTree = "<group>"; };
+		F242829B0E84D2F000180039 /* CloseButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CloseButton.png; path = Media/CloseButton.png; sourceTree = "<group>"; };
 		F2607EDF0E780F4E00B0A7BB /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		F2607F380E78103B00B0A7BB /* Settings.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Settings.xib; sourceTree = "<group>"; };
 		F2607F390E78103B00B0A7BB /* EditingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditingView.xib; sourceTree = "<group>"; };
@@ -212,6 +224,12 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F24282980E84D2F000180039 /* TCMButton.png */,
+				F24282990E84D2F000180039 /* BlinkenlightsButton.png */,
+				F242829A0E84D2F000180039 /* About.png */,
+				F242829B0E84D2F000180039 /* CloseButton.png */,
+				F24282900E847C0100180039 /* Stereoscope.png */,
+				F24282700E84776800180039 /* Blinkenlights.png */,
 				31DF06C00E767C220092C379 /* Textures */,
 				31DF06C10E767C2B0092C379 /* Mesh */,
 				1B26781D0DA2F9B000B24DA5 /* icon.png */,
@@ -491,6 +509,12 @@
 				F23F402F0E81B85200F77DC4 /* Default.png in Resources */,
 				F2DF6B570E831FA00088ACC1 /* Camera.png in Resources */,
 				315B1CA80E8321FE0041DE9C /* Platz_1024.pvr in Resources */,
+				F24282710E84776800180039 /* Blinkenlights.png in Resources */,
+				F24282910E847C0100180039 /* Stereoscope.png in Resources */,
+				F242829C0E84D2F000180039 /* TCMButton.png in Resources */,
+				F242829D0E84D2F000180039 /* BlinkenlightsButton.png in Resources */,
+				F242829E0E84D2F000180039 /* About.png in Resources */,
+				F242829F0E84D2F000180039 /* CloseButton.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

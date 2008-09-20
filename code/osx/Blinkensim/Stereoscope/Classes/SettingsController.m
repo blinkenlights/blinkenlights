@@ -196,6 +196,7 @@ static NSString * const labelCellIdentifier = @"LabelCell";
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
+	self.tableView.tableHeaderView = _ibTopView;
 }
 
 
@@ -216,6 +217,28 @@ static NSString * const labelCellIdentifier = @"LabelCell";
 
 - (void)didReceiveMemoryWarning {
 	[super didReceiveMemoryWarning];
+}
+
+- (IBAction)gotoWebsite:(id)inSender {
+	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.blinkenlights.net/"]];
+}
+
+- (IBAction)gotoBlinkenlightsWebsite:(id)inSender {
+	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.blinkenlights.net/"]];
+}
+
+- (IBAction)gotoCodingMonkeysWebsite:(id)inSender {
+	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.codingmonkeys.de/"]];
+}
+
+- (IBAction)dismissAbout:(id)inSender
+{
+	[self dismissModalViewControllerAnimated:YES];
+}
+
+- (IBAction)showAbout:(id)inSender 
+{
+	[self presentModalViewController:_ibAboutViewController animated:YES];
 }
 
 
