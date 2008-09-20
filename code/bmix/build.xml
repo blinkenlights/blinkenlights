@@ -9,7 +9,14 @@
         <mkdir dir="build"/>
     	<javac srcdir="src"
              destdir="build"
-             debug="on" />
+             debug="on">
+    		<classpath>
+    		      <pathelement path="${classpath}"/>
+    		      <fileset dir="lib">
+    		        <include name="**/*.jar"/>
+    		      </fileset>
+    			</classpath>
+    		</javac>
     	<copy file="src/de/blinkenlights/bmix/version.properties" todir="build/de/blinkenlights/bmix/"/>
     	<copy file="src/de/blinkenlights/bmix/bmix.dtd" todir="build/de/blinkenlights/bmix/"/>
     </target>
