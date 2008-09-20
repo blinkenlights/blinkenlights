@@ -37,6 +37,8 @@ import de.blinkenlights.bmix.network.BLPacketReceiver;
 import de.blinkenlights.bmix.network.BLPacketReceiverThread;
 import de.blinkenlights.bmix.network.BLPacketSender;
 import de.blinkenlights.bmix.network.BLPacketReceiver.AlphaMode;
+import de.blinkenlights.bmix.statistics.FrameStatistics;
+import de.blinkenlights.bmix.statistics.LayerStatistics;
 import de.blinkenlights.bmix.util.FileFormatException;
 
 /**
@@ -168,10 +170,15 @@ public class BMix extends Monitor {
         private final Map<String, BLPacketReceiver> inputs = new HashMap<String, BLPacketReceiver>();
         
         /**
-         * Mapping of inputs to the layers they feed.
+         * Mapping of inputs to the layers they feed. Inverse of {@link #layerSources}
          */
         private final Map<BLPacketReceiver, List<Layer>> layerInputs = new HashMap<BLPacketReceiver, List<Layer>>();
 
+        /**
+         * Mapping of layers to inputs that feed them. Inverse of {@link #layerInputs}
+         */
+        private final Map<Layer, BLPacketReceiver> layerSources = new HashMap<Layer, BLPacketReceiver>();
+         
         /**
          * The virtual default layer that the mixdown will mix down to.
          * The top-level layers defined in the file are direct children of this layer.
@@ -202,7 +209,7 @@ public class BMix extends Monitor {
 		
 		public BMixSession getConfiguration() {
 		    if (session == null) {
-		        session = new BMixSession(rootLayer, layerInputs, outputs, maxFrameInterval);
+		        session = new BMixSession(rootLayer, layerInputs, layerSources, outputs, maxFrameInterval);
 		    }
             return session;
         }
@@ -255,7 +262,7 @@ public class BMix extends Monitor {
 		            } 
 		            int heartBeatDestPort = Integer.parseInt(attributes.getValue("heartbeat-dest-port"));
 		            BLPacketReceiver receiver = 
-		                new BLPacketReceiver(
+		                new BLPacketReceiver(id,
 		                        Integer.parseInt(listenPort),
 		                        InetAddress.getByName(listenAddr),
 		                        heartBeatDestAddr, heartBeatDestPort, alphaMode,
@@ -284,6 +291,7 @@ public class BMix extends Monitor {
                     currentLayer.addLayer(l);
                    
                     BLPacketReceiver receiver = inputs.get(inputId);
+                    layerSources.put(l, receiver);
                     List<Layer> layersForThisInput = layerInputs.get(receiver);
                     if (layersForThisInput == null) {
                         layersForThisInput = new ArrayList<Layer>();
@@ -353,6 +361,12 @@ public class BMix extends Monitor {
                 logger.log(Level.WARNING, "Failed to send on output " + output,e);
             }
         }
+        
+        // send the statistics to the StatServer
+        FrameStatistics frameStats = new FrameStatistics(session.getLayerInputs(), 
+        		session.getRootLayer(), session.getLayerSources(), session.getOutputs());
+        
+        
         
         logger.exiting("BMix", "getNextImage", session.getRootLayer());
         return session.getRootLayer();

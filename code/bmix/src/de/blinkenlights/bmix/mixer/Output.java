@@ -89,4 +89,32 @@ public class Output {
     public String toString() {
         return "" + sender + " " + viewport;
     }
+
+	public BLImageViewport getViewport() {
+		return viewport;
+	}
+
+	public PacketType getPacketType() {
+		return packetType;
+	}
+
+	public int getMultiframeBpp() {
+		return multiframeBpp;
+	}
+
+	public long getMinSendInterval() {
+		return minSendInterval;
+	}
+
+	public long getLastSendTime() {
+		return lastSendTime;
+	}
+    
+    public String getDestAddr() {
+    	return sender.getAddress();
+    }
+    
+    public int getDestPort() {
+    	return sender.getPort();
+    }
 }

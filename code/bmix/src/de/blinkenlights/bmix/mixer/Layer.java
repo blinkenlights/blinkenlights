@@ -1,5 +1,6 @@
 package de.blinkenlights.bmix.mixer;
 
+import java.awt.AlphaComposite;
 import java.awt.Color;
 import java.awt.Composite;
 import java.awt.Graphics;
@@ -10,6 +11,8 @@ import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
 import java.util.ArrayList;
 import java.util.List;
+
+import de.blinkenlights.bmix.network.BLPacketReceiver.AlphaMode;
 
 /**
  * This class is a Layer in the mixing process.
@@ -118,6 +121,12 @@ public class Layer implements BLImage {
 		layer.parentLayer = this;
 	}
 
+	
+	public List<Layer> getLayers() {
+		return layers;
+	}
+	
+	
     /**
      * Performs a mixdown of all the layers descended from this one. After
      * calling this method, pick up your mixed down pixels via
@@ -148,5 +157,17 @@ public class Layer implements BLImage {
 		g.setComposite(composite);
 		g.drawImage(bi, 0, 0, null);
 		g.setComposite(backupComposite);
+	}
+
+	public Rectangle getViewport() {
+		return new Rectangle(viewport);
+	}
+	
+	public float getOpacity() {
+		if(composite instanceof AlphaComposite) {
+			AlphaComposite ac = (AlphaComposite) composite;
+			return ac.getAlpha();
+		}
+		return 1.0f;
 	}
 }

@@ -79,4 +79,15 @@ public class BLPacketSender {
 	public String toString() {
 	    return address.getHostAddress() + ":" + port;
 	}
+
+
+	public String getAddress() {
+		return address.getHostAddress();
+	}
+
+
+	public int getPort() {
+		return port;
+	}
+
 }

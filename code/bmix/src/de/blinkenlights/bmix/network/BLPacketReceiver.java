@@ -61,6 +61,7 @@ public class BLPacketReceiver {
 	private final static Logger logger = Logger.getLogger(BLPacketReceiver.class.getName());
 	byte buf[] = new byte[65536];
     private final byte[] heartBeatBytes = new BLHeartbeatPacket(BLHeartbeatPacket.VERSION_NUMBER).getNetworkBytes();
+    private long lastPacketReceiveTime = 0;
     
     /**
      * The default address to listen on (binds to all local addresses).
@@ -74,6 +75,7 @@ public class BLPacketReceiver {
             throw new RuntimeException("Couldn't resolve wildcard address. This is bad. No bmix for you.", e);
         }
     }
+	private final InetAddress address;
 	int port;
 	DatagramSocket socket;
 	/**
@@ -113,6 +115,7 @@ public class BLPacketReceiver {
 	/**
 	 * Creates a new BLFrameReceiver for receiving pixel data from a blinkenlights source.
 	 * 
+	 * @param name the textual name of this input
 	 * @param port The UDP port number to listen on.
 	 * @param address The address to listen on (0.0.0.0 or null for all local addresses).
 	 * @param heartBeatDestination the host to which we should send heartbeats, or null if we shouldn't send them.
@@ -121,11 +124,12 @@ public class BLPacketReceiver {
 	 * @param alphaMode 
 	 * @throws SocketException if binding to the specified port and address is not possible.
 	 */
-	public BLPacketReceiver(int port, InetAddress address,
+	public BLPacketReceiver(String name, int port, InetAddress address,
 			InetAddress heartBeatDestination, int heartBeatDestPort,
 			AlphaMode alphaMode, Color transparentColour,
 			Color shadowColor) throws SocketException  {
 		shadowColour = shadowColor;
+		this.address = address;
 		if (address == null) {
 			address = WILDCARD_ADDRESS;
 		}
@@ -152,6 +156,7 @@ public class BLPacketReceiver {
 			socket.receive(packet);
 			BLPacket parsedPacket = BLPacketFactory.parse(
 					buf, packet.getLength(), alphaMode, transparentColour, shadowColour);
+			lastPacketReceiveTime = System.currentTimeMillis();
 			for (BLPacketSender sender : relaySenders) {
 			    try {
 			        sender.send(parsedPacket.getNetworkBytes());
@@ -188,4 +193,25 @@ public class BLPacketReceiver {
     public Color getTransparentColour() {
 		return transparentColour;
 	}
+
+	public int getPort() {
+		return port;
+	}
+
+	public List<BLPacketSender> getRelaySenders() {
+		return relaySenders;
+	}
+    
+	public String getHeartBeatDestAddr() {
+		return heartBeatDestination.getHostAddress();
+	}
+	
+	public int getHeartBeatDestPort() {
+		return heartBeatDestPort;
+	}
+
+	public long getLastPacketReceiveTime() {
+		return lastPacketReceiveTime;
+	}
+
 }

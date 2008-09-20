@@ -31,7 +31,9 @@ public class BMixSession {
      * An unmodifiable copy of the list given in the constructor.
      */
     private final List<Output> outputs;
-
+	private final Map<Layer, BLPacketReceiver> layerSources;
+    
+    
     /**
      * Sets up this configuration, creating the necessary receiver threads and
      * starting them.
@@ -45,12 +47,15 @@ public class BMixSession {
      * @param layerInputs
      *            A map of each packet receiver to all the layers they feed data
      *            to.
+     * @param layerSources 
      * @param outputs
      *            The outputs for this session
      */
-    public BMixSession(Layer rootLayer, Map<BLPacketReceiver, List<Layer>> layerInputs, List<Output> outputs, long maxFrameInterval) {
+    public BMixSession(Layer rootLayer, Map<BLPacketReceiver, List<Layer>> layerInputs, Map<Layer, BLPacketReceiver> layerSources, 
+    		List<Output> outputs, long maxFrameInterval) {
         this.rootLayer = rootLayer;
         this.layerInputs = layerInputs;
+		this.layerSources = layerSources;
         this.outputs = Collections.unmodifiableList(new ArrayList<Output>(outputs));
         this.maxFrameInterval = maxFrameInterval;
         
@@ -77,7 +82,28 @@ public class BMixSession {
         }
     }
     
+    
     /**
+     * Gets the inputs mapped to layers.
+     * 
+     * @return the inputs mapped to layers
+     */
+    public Map<BLPacketReceiver, List<Layer>> getLayerInputs() {
+		return layerInputs;
+	}
+    
+    
+    /**
+     * Gets the layers mapped to source inputs.
+     * 
+     * @return the layers mapped to source inputs.
+     */
+    public Map<Layer, BLPacketReceiver> getLayerSources() {
+    	return layerSources;
+    }
+    
+
+	/**
      * Returns the list of receiver threads for this configuration. There will
      * be one thread per receiver.
      * 
@@ -87,6 +113,7 @@ public class BMixSession {
         return receiverThreads;
     }
     
+     
     /**
      * Returns the list of outputs for this configuration.
      * 

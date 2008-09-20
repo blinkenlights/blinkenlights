@@ -23,7 +23,7 @@ public class NetworkStreamMonitor extends Monitor {
 	public NetworkStreamMonitor(NetworkStreamMonitorConfig nc) throws SocketException {
 		super(nc.getName(), nc.getX(), nc.getY(), nc.getW(), nc.getH(), true);		
 		this.bpr = new BLPacketReceiver(
-				nc.getPort(), null,
+				"receiver", nc.getPort(), null,
 				null, 0,
 				AlphaMode.OPAQUE, null, null);
 	}

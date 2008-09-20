@@ -52,8 +52,12 @@ public class BLImageViewport implements BLImage {
     public int getImageWidth() {
         return viewport.width;
     }
- 
-    @Override
+    
+    public Rectangle getViewport() {
+		return viewport;
+	}
+
+	@Override
     public String toString() {
         return "viewport " + viewport;
     }
