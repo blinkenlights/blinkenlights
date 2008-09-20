@@ -58,6 +58,8 @@
 		F24282B70E84D96800180039 /* CloseButtonP.png in Resources */ = {isa = PBXBuildFile; fileRef = F24282B60E84D96800180039 /* CloseButtonP.png */; };
 		F24283280E858A6D00180039 /* ApplicatoinCreditsP.png in Resources */ = {isa = PBXBuildFile; fileRef = F24283260E858A6D00180039 /* ApplicatoinCreditsP.png */; };
 		F24283290E858A6D00180039 /* ApplicatoinCredits.png in Resources */ = {isa = PBXBuildFile; fileRef = F24283270E858A6D00180039 /* ApplicatoinCredits.png */; };
+		F24283620E85907800180039 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = F24283610E85907800180039 /* Reachability.m */; };
+		F242837A0E859C5700180039 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F24283790E859C5700180039 /* SystemConfiguration.framework */; };
 		F2607EE00E780F4E00B0A7BB /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2607EDF0E780F4E00B0A7BB /* CFNetwork.framework */; };
 		F2607F3B0E78103B00B0A7BB /* Settings.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2607F380E78103B00B0A7BB /* Settings.xib */; };
 		F2607F3C0E78103B00B0A7BB /* EditingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2607F390E78103B00B0A7BB /* EditingView.xib */; };
@@ -152,6 +154,9 @@
 		F24282B60E84D96800180039 /* CloseButtonP.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CloseButtonP.png; path = Media/CloseButtonP.png; sourceTree = "<group>"; };
 		F24283260E858A6D00180039 /* ApplicatoinCreditsP.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ApplicatoinCreditsP.png; path = Media/ApplicatoinCreditsP.png; sourceTree = "<group>"; };
 		F24283270E858A6D00180039 /* ApplicatoinCredits.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ApplicatoinCredits.png; path = Media/ApplicatoinCredits.png; sourceTree = "<group>"; };
+		F24283600E85907800180039 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		F24283610E85907800180039 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		F24283790E859C5700180039 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		F2607EDF0E780F4E00B0A7BB /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		F2607F380E78103B00B0A7BB /* Settings.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Settings.xib; sourceTree = "<group>"; };
 		F2607F390E78103B00B0A7BB /* EditingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditingView.xib; sourceTree = "<group>"; };
@@ -194,6 +199,7 @@
 				2D500B9A0D5A79CF00DBA0E3 /* QuartzCore.framework in Frameworks */,
 				79235D950DAD3D5100F918F8 /* GraphicsServices.framework in Frameworks */,
 				F2607EE00E780F4E00B0A7BB /* CFNetwork.framework in Frameworks */,
+				F242837A0E859C5700180039 /* SystemConfiguration.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,6 +267,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F24283790E859C5700180039 /* SystemConfiguration.framework */,
 				F2607EDF0E780F4E00B0A7BB /* CFNetwork.framework */,
 				79235D940DAD3D5100F918F8 /* GraphicsServices.framework */,
 				1D3623EB0D0F72F000981E51 /* CoreGraphics.framework */,
@@ -316,6 +323,8 @@
 		31DF06C40E767C4C0092C379 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				F24283600E85907800180039 /* Reachability.h */,
+				F24283610E85907800180039 /* Reachability.m */,
 				F2607F4C0E7810D100B0A7BB /* AppController.h */,
 				F2607F590E7810D100B0A7BB /* AppController.mm */,
 				791F46820E174E4200E927FE /* Application.h */,
@@ -589,6 +598,7 @@
 				F2607F610E7810D100B0A7BB /* TableSection.m in Sources */,
 				F2607F620E7810D100B0A7BB /* SettingsController.m in Sources */,
 				F2607F630E7810D100B0A7BB /* AppController.mm in Sources */,
+				F24283620E85907800180039 /* Reachability.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

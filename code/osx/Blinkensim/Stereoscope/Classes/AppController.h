@@ -3,6 +3,7 @@
 #import "SettingsController.h"
 #import "TCMHost.h"
 #import "BlinkenListener.h"
+#import "Reachability.h"
 
 @interface AppController : NSObject <EAGLViewDelegate>
 {
@@ -22,6 +23,8 @@
     IBOutlet UIButton *_position6Button;
     IBOutlet UIButton *_position7Button;
     IBOutlet UIButton *_position8Button;
+
+	NetworkStatus _internetConnectionStatus;
     
     IBOutlet SettingsController *_settingsController;
 	IBOutlet UINavigationController *_mainNavigationController;
@@ -54,6 +57,7 @@
 @property (nonatomic, retain) UINavigationController *mainNavigationController;
 @property (nonatomic, retain) SettingsController *settingsController;
 @property (nonatomic, retain) NSDictionary *currentProxy;
+@property NetworkStatus internetConnectionStatus;
 
 - (void)connectToProxy:(NSDictionary *)inProxy;
 - (void)shellReportsFrameRate:(float)inCurrentFrameRate;

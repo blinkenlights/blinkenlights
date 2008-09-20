@@ -10,6 +10,7 @@
 #import "AppController.h"
 #include "Camera.h"
 #import "TableSection.h"
+#import "Reachability.h"
 
 //CONSTANTS:
 #define kFPS			36.0
@@ -26,10 +27,13 @@ static CShell *shell = NULL;
 - (void)connectToAutoconnectProxy;
 - (void)handleConnectionFailure;
 - (void)failHostResolving;
+- (void)fetchStreamsXML;
+- (void)connectionDidBecomeAvailable;
 @end
 
 @implementation AppController
 
+@synthesize internetConnectionStatus = _internetConnectionStatus;
 @synthesize hostToResolve = _hostToResolve;
 @synthesize proxyListConnection = _proxyListConnection;
 @synthesize framerateLabel = _framerateLabel;
@@ -59,8 +63,6 @@ static AppController *s_sharedAppController;
 		nil]
 	];
 	srandomdev(); // have a good seed.
-	// just to be sure a quick test
-	NSLog(@"%s random numbers: 0x%x 0x%x 0x%x 0x%x",__FUNCTION__,random(),random(),random(),random());
 }
 
 - (BOOL)hasConnection {
@@ -190,6 +192,7 @@ static AppController *s_sharedAppController;
 	if(!shell->InitApplication())
 		printf("InitApplication error\n");
 	shell->UpdateWindows((unsigned char *)displayState);
+	
 }
 
 - (void)fadeoutStartscreen 
@@ -209,9 +212,10 @@ static AppController *s_sharedAppController;
 	_titleView = nil;
 }
 
+- (void)connectionDidBecomeAvailable {
 
+	[self fetchStreamsXML];
 
-- (void)applicationDidBecomeActive:(UIApplication *)application {
 	if (![self hasConnection]) {
 		if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"autoselectProxy"] boolValue])
 		{
@@ -219,12 +223,40 @@ static AppController *s_sharedAppController;
 		}
 	}
 
-	[self startRendering];
+}
+
+- (void)networkReachabilityDidChange:(NSNotification *)inNotification
+{
+	NetworkStatus status = [[Reachability sharedReachability] internetConnectionStatus];
+	if (_internetConnectionStatus == NotReachable && status != NotReachable) {
+		_internetConnectionStatus = status;
+		[self connectionDidBecomeAvailable];
+	} else {
+		_internetConnectionStatus = status;
+	}
+}
 
 
+
+- (void)fetchStreamsXML
+{
 	NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.blinkenlights.net/config/blinkenstreams.xml"] cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:30.0];
 	_responseData = [NSMutableData new];
 	self.proxyListConnection = [[[NSURLConnection alloc] initWithRequest:request delegate:self] autorelease];
+}
+
+- (void)applicationDidBecomeActive:(UIApplication *)application {
+	Reachability *reachability = [Reachability sharedReachability];
+	[reachability setHostName:@"www.apple.com"];
+	reachability.networkStatusNotificationsEnabled = YES;
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(networkReachabilityDidChange:) name:@"kNetworkReachabilityChangedNotification" object:nil];
+	_internetConnectionStatus = reachability.internetConnectionStatus;
+	
+	[self startRendering];
+
+	if (_internetConnectionStatus != NotReachable) {
+		[self connectionDidBecomeAvailable];
+	}
 
 	if (_titleView) [self fadeoutStartscreen];
 }
@@ -290,6 +322,7 @@ static AppController *s_sharedAppController;
 
 - (void)dealloc
 {
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
 	[self stopRendering];
 	
 	if(!shell->QuitApplication())
@@ -335,8 +368,12 @@ static AppController *s_sharedAppController;
 }
 
 - (void)handleConnectionFailure {
-	NSLog(@"%s",__FUNCTION__);
-	[self connectToAutoconnectProxy];
+	BOOL autoconnect = [[[NSUserDefaults standardUserDefaults] objectForKey:@"autoselectProxy"] boolValue];
+	BOOL reachable = (_internetConnectionStatus != NotReachable);
+	NSLog(@"%s, ac:%d reachable:%d",__FUNCTION__,autoconnect,reachable);
+	if (autoconnect && reachable) {
+		[self connectToAutoconnectProxy];
+	}
 }
 
 

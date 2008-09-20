@@ -91,7 +91,7 @@ static NSString * const labelCellIdentifier = @"LabelCell";
 	} else if (section < [projectTableSections count] + SECTIONS_BEFORE_PROXY_LIST) {
 		return [[projectTableSections objectAtIndex:section - SECTIONS_BEFORE_PROXY_LIST] heading];
 	} else {
-		return @"Current Blinkenproxy Address";
+		return @"Manual Blinkenproxy Address";
 	}
 }
 
@@ -116,7 +116,9 @@ static NSString * const labelCellIdentifier = @"LabelCell";
 	}
 	if (indexPath.section == 0) {
 		cell.text = @"Autoselect Stream";
-		((UISwitch *)cell.accessoryView).isOn = [[[NSUserDefaults standardUserDefaults] objectForKey:@"autoselectProxy"] boolValue];
+		UISwitch *mySwitch = ((UISwitch *)cell.accessoryView);
+		mySwitch.isOn = [[[NSUserDefaults standardUserDefaults] objectForKey:@"autoselectProxy"] boolValue];
+		[mySwitch addTarget:self action:@selector(takeValueForAutoselect:) forControlEvents:UIControlEventValueChanged];
 	} else if (indexPath.section < [projectTableSections count] + SECTIONS_BEFORE_PROXY_LIST) {
 		NSDictionary *proxy = [[[projectTableSections objectAtIndex:indexPath.section - SECTIONS_BEFORE_PROXY_LIST] items] objectAtIndex:indexPath.row];
 		cell.text = [NSString stringWithFormat:@"%@:%@",[proxy objectForKey:@"address"], [proxy objectForKey:@"port"]];
@@ -124,6 +126,14 @@ static NSString * const labelCellIdentifier = @"LabelCell";
 		cell.text = [[NSUserDefaults standardUserDefaults] stringForKey:@"blinkenproxyAddress"];
 	}
 	return cell;
+}
+
+- (void)takeValueForAutoselect:(id)inSender
+{
+	[[NSUserDefaults standardUserDefaults] setBool:[inSender isOn] forKey:@"autoselectProxy"];
+	if ([inSender isOn]) {
+		[[AppController sharedAppController] connectionDidBecomeAvailable];
+	}
 }
 
 @synthesize editingViewController;
@@ -138,7 +148,7 @@ static NSString * const labelCellIdentifier = @"LabelCell";
 		[[NSUserDefaults standardUserDefaults] setObject:address forKey:@"blinkenproxyAddress"];
 		[[AppController sharedAppController] connectToProxy:proxy];
 //	    [self.navigationController popViewControllerAnimated:YES];
-		UIBarButtonItem *item = self.navigationController.navigationBar.topItem.leftBarButtonItem;
+		UIBarButtonItem *item = self.navigationController.navigationBar.topItem.rightBarButtonItem;
 		[item.target performSelector:item.action withObject:item];
 	} else if (indexPath.section == [projectTableSections count] + SECTIONS_BEFORE_PROXY_LIST) {
 		// Create the editing view controller if necessary.
