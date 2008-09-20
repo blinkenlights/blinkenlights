@@ -9,12 +9,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.logging.Logger;
 
 
-public class StatServer {
+public class StatServer implements Runnable {
 	private static final Logger logger = Logger.getLogger(StatServer.class.getName());
 
 	public static final int STAT_PORT = 4892;
@@ -39,6 +37,7 @@ public class StatServer {
 				Socket clientSocket = serverSocket.accept();
 				logger.info("Stats client accepted from: " + clientSocket.getInetAddress().getHostAddress());
 				clientSockets.add(clientSocket);
+				logger.info("Stats server has: " + clientSockets.size() + " clients");
 			} catch (IOException e) {
 				logger.warning(e.getMessage());
 			}
@@ -51,6 +50,7 @@ public class StatServer {
 		if(clientSockets.size() == 0) {
 			return;
 		}
+		
 		ByteArrayOutputStream byteStream = new ByteArrayOutputStream();
 		ObjectOutputStream outputStream = new ObjectOutputStream(byteStream);
 		outputStream.writeObject(frameStats);
@@ -62,6 +62,7 @@ public class StatServer {
 			} catch(IOException e) {
 				logger.warning("error sending to client: " + e.getMessage() + " - removing it!");
 				iter.remove();
+				logger.info("Stats server has: " + clientSockets.size() + " clients");
 			}
 		}
 	}

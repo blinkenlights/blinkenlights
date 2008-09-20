@@ -64,8 +64,9 @@ public class BMix extends Monitor {
 	 */
 	public BMix(String configFilename, boolean guiEnabled) throws ParserConfigurationException, SAXException, IOException {
 	    super("bmix", 0, 0, 400, 300, guiEnabled);
-	    
+	   
 	    statServer = new StatServer();
+	    new Thread(statServer).start();
 	    
 		BMixSAXHandler saxHandler = new BMixSAXHandler();
 		SAXParserFactory spf = SAXParserFactory.newInstance();
