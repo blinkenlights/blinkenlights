@@ -130,6 +130,8 @@ static AppController *s_sharedAppController;
     _position4Button.hidden = hidden;
     _position5Button.hidden = hidden;
     _position6Button.hidden = hidden;
+    _position7Button.hidden = hidden;
+    _position8Button.hidden = hidden;
 }
 
 - (void)applicationDidFinishLaunching:(UIApplication*)inApplication
@@ -179,6 +181,8 @@ static AppController *s_sharedAppController;
     [_glView addSubview:_position4Button];
     [_glView addSubview:_position5Button];
     [_glView addSubview:_position6Button];
+    [_glView addSubview:_position7Button];
+    [_glView addSubview:_position8Button];
 
 	// show the window
 	[_window makeKeyAndVisible];
@@ -638,6 +642,8 @@ static AppController *s_sharedAppController;
 #define LEFT_FAR 4
 #define MIDDLE_FAR 5
 #define RIGHT_FAR 6
+#define LEFT_ULTRANEAR 7
+#define RIGHT_ULTRANEAR 8
 
 
 - (IBAction)selectPosition:(id)inSender 
@@ -661,6 +667,14 @@ static AppController *s_sharedAppController;
 
     if (position==RIGHT_FAR)
         shell->AnimateCameraTo(12.5,2.2,40, 0,10,0);
+
+    if (position==LEFT_ULTRANEAR)
+        shell->AnimateCameraTo(-8.2,1,10.55, 0,10,0);
+
+    if (position==RIGHT_ULTRANEAR)
+        shell->AnimateCameraTo(8.4,2.4,13.95, 0,10,0);
+
+
 }
 
 

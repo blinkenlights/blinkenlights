@@ -20,6 +20,8 @@
     IBOutlet UIButton *_position4Button;
     IBOutlet UIButton *_position5Button;
     IBOutlet UIButton *_position6Button;
+    IBOutlet UIButton *_position7Button;
+    IBOutlet UIButton *_position8Button;
     
     IBOutlet SettingsController *_settingsController;
 	IBOutlet UINavigationController *_mainNavigationController;
