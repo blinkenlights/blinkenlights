@@ -75,7 +75,6 @@ public class BLPacketReceiver {
             throw new RuntimeException("Couldn't resolve wildcard address. This is bad. No bmix for you.", e);
         }
     }
-	private final InetAddress address;
 	int port;
 	DatagramSocket socket;
 	/**
@@ -131,7 +130,6 @@ public class BLPacketReceiver {
 			Color shadowColor) throws SocketException  {
 		this.name = name;
 		shadowColour = shadowColor;
-		this.address = address;
 		if (address == null) {
 			address = WILDCARD_ADDRESS;
 		}

@@ -38,6 +38,7 @@ import de.blinkenlights.bmix.network.BLPacketReceiverThread;
 import de.blinkenlights.bmix.network.BLPacketSender;
 import de.blinkenlights.bmix.network.BLPacketReceiver.AlphaMode;
 import de.blinkenlights.bmix.statistics.FrameStatistics;
+import de.blinkenlights.bmix.statistics.StatServer;
 import de.blinkenlights.bmix.util.FileFormatException;
 
 /**
@@ -50,6 +51,8 @@ public class BMix extends Monitor {
 	private static final Logger logger = Logger.getLogger(BMix.class.getName());
 	
 	private BMixSession session;
+	private StatServer statServer;
+	
 
     /**
 	 * Creates a new BlinkenMix system.
@@ -61,6 +64,9 @@ public class BMix extends Monitor {
 	 */
 	public BMix(String configFilename, boolean guiEnabled) throws ParserConfigurationException, SAXException, IOException {
 	    super("bmix", 0, 0, 400, 300, guiEnabled);
+	    
+	    statServer = new StatServer();
+	    
 		BMixSAXHandler saxHandler = new BMixSAXHandler();
 		SAXParserFactory spf = SAXParserFactory.newInstance();
 		SAXParser sp = null;
@@ -364,6 +370,12 @@ public class BMix extends Monitor {
         // send the statistics to the StatServer
         FrameStatistics frameStats = new FrameStatistics(session.getLayerInputs(), 
         		session.getRootLayer(), session.getLayerSources(), session.getOutputs());
+        
+        try {
+			statServer.sendToClients(frameStats);
+		} catch (IOException e) {
+			logger.warning("error sending stats to clients: " + e.getMessage());
+		}
         
         // don't build the string if we're not interested to see it
         if(logger.isLoggable(Level.FINE)) {

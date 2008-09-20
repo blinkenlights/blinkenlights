@@ -12,8 +12,6 @@ import java.awt.image.DataBufferInt;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.blinkenlights.bmix.network.BLPacketReceiver.AlphaMode;
-
 /**
  * This class is a Layer in the mixing process.
  */

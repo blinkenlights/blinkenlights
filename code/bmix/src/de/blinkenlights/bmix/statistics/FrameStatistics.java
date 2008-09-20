@@ -1,7 +1,6 @@
 package de.blinkenlights.bmix.statistics;
 
 import java.awt.Color;
-import java.awt.Rectangle;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Iterator;

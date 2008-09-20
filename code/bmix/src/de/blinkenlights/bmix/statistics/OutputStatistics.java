@@ -36,6 +36,10 @@ public class OutputStatistics {
 		return minSendInterval;
 	}
 
+	public String getPacketType() {
+		return packetType;
+	}
+	
 	public int getMultiframeBpp() {
 		return multiframeBpp;
 	}
@@ -46,6 +50,7 @@ public class OutputStatistics {
 		str.append("  Viewport - x: " + viewport.x + " - y: " + viewport.y + 
 				" - w: " + viewport.width + " - h: " + viewport.height + "\n"); 
 		str.append("  Minimum Send Interval: " + minSendInterval + "\n");
+		str.append("  Packet Type: " + packetType + "\n");
 		str.append("  Multiframe bpp: " + multiframeBpp + "\n");
 		str.append("\n");
 		return str.toString();

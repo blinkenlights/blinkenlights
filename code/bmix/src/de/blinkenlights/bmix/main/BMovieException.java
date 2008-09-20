@@ -7,11 +7,9 @@ package de.blinkenlights.bmix.main;
  * @author dfraser
  *
  */
+@SuppressWarnings("serial")
 public class BMovieException extends Exception {
-
 	public BMovieException(Throwable cause) {
 		super(cause);
 	}
-
-	
 }
