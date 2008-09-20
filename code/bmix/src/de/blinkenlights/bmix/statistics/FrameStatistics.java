@@ -49,7 +49,8 @@ public class FrameStatistics implements Serializable {
 			AlphaMode alphaMode = input.getAlphaMode();
 			Color chromaKeyColor = input.getTransparentColour();
 			long lastPacketReceiveTime = input.getLastPacketReceiveTime();
-			InputStatistics inputStat = new InputStatistics(inputPort, heartBeatDestAddr, hearBeatDestPort,
+			InputStatistics inputStat = new InputStatistics(input.getName(), inputPort, 
+					heartBeatDestAddr, hearBeatDestPort,
 					relaySenders, alphaMode, chromaKeyColor, lastPacketReceiveTime);
 			inputStats.add(inputStat);
 			inputReceiverMap.put(input, inputStat);
@@ -59,8 +60,7 @@ public class FrameStatistics implements Serializable {
 	
 	private void addLayers(Layer layer, Map<Layer, BLPacketReceiver> layerSources) {
 		BLPacketReceiver receiver = layerSources.get(layer);
-		InputStatistics inputStat = inputReceiverMap.get(receiver);
-		
+		InputStatistics inputStat = inputReceiverMap.get(receiver); // note: can be null (eg, root layer)
 		LayerStatistics layerStat = new LayerStatistics(inputStat, layer.getViewport(), layer.getOpacity());
 		layerStats.add(0, layerStat);
 		
@@ -84,15 +84,15 @@ public class FrameStatistics implements Serializable {
 		StringBuilder str = new StringBuilder();
 		str.append("Input Statistics:\n");
 		for(InputStatistics inputStat : inputStats) {
-			str.append(inputStat.toString());
+			str.append("  " + inputStat.toString());
 		}
 		str.append("\nLayer Statistics:\n");
 		for(LayerStatistics layerStat : layerStats) {
-			str.append(layerStat.toString());
+			str.append("  " + layerStat.toString());
 		}
 		str.append("\nOutput Statistics:\n");
 		for(OutputStatistics outputStat : outputStats) {
-			str.append(outputStat.toString());
+			str.append("  " + outputStat.toString());
 		}
 		return str.toString();
 	}

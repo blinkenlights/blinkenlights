@@ -16,10 +16,12 @@ public class InputStatistics {
 	private final Color chromaKeyColor;
 	private final Map<String, Integer> relaySenderMap;
 	private final long lastPacketReceiveTime;
+	private final String name;
 
-	public InputStatistics(int inputPort, String heartBeatDestAddr, int heartBeatDestPort,
+	public InputStatistics(String name, int inputPort, String heartBeatDestAddr, int heartBeatDestPort,
 			List<BLPacketSender> relaySenders, AlphaMode alphaMode, Color chromaKeyColor,
 		long lastPacketReceiveTime) {
+		this.name = name;
 		this.inputPort = inputPort;
 		this.heartBeatDestAddr = heartBeatDestAddr;
 		this.heartBeatDestPort = heartBeatDestPort;
@@ -30,6 +32,10 @@ public class InputStatistics {
 		for(BLPacketSender relaySender: relaySenders) {
 			relaySenderMap.put(relaySender.getAddress(), relaySender.getPort());
 		}
+	}
+	
+	public String getName() {
+		return name;
 	}
 
 	public int getInputPort() {
@@ -62,7 +68,8 @@ public class InputStatistics {
 		
 	public String toString() {
 		StringBuilder str = new StringBuilder();
-		str.append("Input - listen port: " + inputPort + "\n");
+		str.append("Input - Name: " + name + "\n");
+		str.append("  Listen port: " + inputPort + "\n");
 		str.append("  Hearbest Dest - Addr: " + heartBeatDestAddr + " - Port: " + heartBeatDestPort + "\n");
 		str.append("  Alpha Mode: " + alphaMode.name() + "\n");
 		str.append("  Chroma-key Colour: " + chromaKeyColor.toString() + "\n");
@@ -71,6 +78,7 @@ public class InputStatistics {
 		for(Map.Entry<String, Integer> ent : relaySenderMap.entrySet()) {
 			str.append("    Sender - Addr: " + ent.getKey() + " - Port: " + ent.getValue());
 		}
+		str.append("\n");
 		return str.toString();
 	}
 }

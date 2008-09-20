@@ -110,6 +110,7 @@ public class BLPacketReceiver {
      * receive it.
      */
     private final List<BLPacketSender> relaySenders = new ArrayList<BLPacketSender>();
+	private final String name;
 	
 	
 	/**
@@ -128,6 +129,7 @@ public class BLPacketReceiver {
 			InetAddress heartBeatDestination, int heartBeatDestPort,
 			AlphaMode alphaMode, Color transparentColour,
 			Color shadowColor) throws SocketException  {
+		this.name = name;
 		shadowColour = shadowColor;
 		this.address = address;
 		if (address == null) {
@@ -202,7 +204,13 @@ public class BLPacketReceiver {
 		return relaySenders;
 	}
     
+	/**
+	 * Returns the heartbeat destination address as a String, or null if it isn't set up.
+	 * 
+	 * @return the destination heartbeat addr or null
+	 */
 	public String getHeartBeatDestAddr() {
+		if(heartBeatDestination == null) return null;
 		return heartBeatDestination.getHostAddress();
 	}
 	
@@ -212,6 +220,10 @@ public class BLPacketReceiver {
 
 	public long getLastPacketReceiveTime() {
 		return lastPacketReceiveTime;
+	}
+
+	public String getName() {
+		return name;
 	}
 
 }

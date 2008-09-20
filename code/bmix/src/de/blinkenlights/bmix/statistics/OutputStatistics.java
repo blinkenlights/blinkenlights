@@ -7,16 +7,16 @@ public class OutputStatistics {
 	private final String destAddr;
 	private final int destPort;
 	private final long minSendInterval;
-	private final String name;
+	private final String packetType;
 	private final int multiframeBpp;
 
 	public OutputStatistics(Rectangle viewport, String destAddr, int destPort,
-			long minSendInterval, String name, int multiframeBpp) {
+			long minSendInterval, String packetType, int multiframeBpp) {
 				this.viewport = viewport;
 				this.destAddr = destAddr;
 				this.destPort = destPort;
 				this.minSendInterval = minSendInterval;
-				this.name = name;
+				this.packetType = packetType;
 				this.multiframeBpp = multiframeBpp;
 	}
 
@@ -36,11 +36,18 @@ public class OutputStatistics {
 		return minSendInterval;
 	}
 
-	public String getName() {
-		return name;
-	}
-
 	public int getMultiframeBpp() {
 		return multiframeBpp;
+	}
+	
+	public String toString() {
+		StringBuilder str = new StringBuilder();
+		str.append("Output - Dest Addr: " + destAddr + " - Dest Port: " + destPort + "\n");
+		str.append("  Viewport - x: " + viewport.x + " - y: " + viewport.y + 
+				" - w: " + viewport.width + " - h: " + viewport.height + "\n"); 
+		str.append("  Minimum Send Interval: " + minSendInterval + "\n");
+		str.append("  Multiframe bpp: " + multiframeBpp + "\n");
+		str.append("\n");
+		return str.toString();
 	}
 }

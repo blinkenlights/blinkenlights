@@ -38,7 +38,6 @@ import de.blinkenlights.bmix.network.BLPacketReceiverThread;
 import de.blinkenlights.bmix.network.BLPacketSender;
 import de.blinkenlights.bmix.network.BLPacketReceiver.AlphaMode;
 import de.blinkenlights.bmix.statistics.FrameStatistics;
-import de.blinkenlights.bmix.statistics.LayerStatistics;
 import de.blinkenlights.bmix.util.FileFormatException;
 
 /**
@@ -366,7 +365,10 @@ public class BMix extends Monitor {
         FrameStatistics frameStats = new FrameStatistics(session.getLayerInputs(), 
         		session.getRootLayer(), session.getLayerSources(), session.getOutputs());
         
-        
+        // don't build the string if we're not interested to see it
+        if(logger.isLoggable(Level.FINE)) {
+        	logger.fine(frameStats.toString());
+        }
         
         logger.exiting("BMix", "getNextImage", session.getRootLayer());
         return session.getRootLayer();
