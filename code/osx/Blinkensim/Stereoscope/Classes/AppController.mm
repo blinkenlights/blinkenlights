@@ -33,7 +33,7 @@ static CShell *shell = NULL;
 
 @implementation AppController
 
-@synthesize internetConnectionStatus = _internetConnectionStatus;
+@synthesize previousInternetConnectionStatus = _internetConnectionStatus;
 @synthesize hostToResolve = _hostToResolve;
 @synthesize proxyListConnection = _proxyListConnection;
 @synthesize framerateLabel = _framerateLabel;
@@ -228,12 +228,10 @@ static AppController *s_sharedAppController;
 - (void)networkReachabilityDidChange:(NSNotification *)inNotification
 {
 	NetworkStatus status = [[Reachability sharedReachability] internetConnectionStatus];
-	if (_internetConnectionStatus == NotReachable && status != NotReachable) {
-		_internetConnectionStatus = status;
+	if (self.previousInternetConnectionStatus == NotReachable && status != NotReachable) {
 		[self connectionDidBecomeAvailable];
-	} else {
-		_internetConnectionStatus = status;
 	}
+	self.previousInternetConnectionStatus = status;
 }
 
 
@@ -250,11 +248,11 @@ static AppController *s_sharedAppController;
 	[reachability setHostName:@"www.apple.com"];
 	reachability.networkStatusNotificationsEnabled = YES;
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(networkReachabilityDidChange:) name:@"kNetworkReachabilityChangedNotification" object:nil];
-	_internetConnectionStatus = reachability.internetConnectionStatus;
+	self.previousInternetConnectionStatus = reachability.internetConnectionStatus;
 	
 	[self startRendering];
 
-	if (_internetConnectionStatus != NotReachable) {
+	if (self.previousInternetConnectionStatus != NotReachable) {
 		[self connectionDidBecomeAvailable];
 	}
 
@@ -369,7 +367,7 @@ static AppController *s_sharedAppController;
 
 - (void)handleConnectionFailure {
 	BOOL autoconnect = [[[NSUserDefaults standardUserDefaults] objectForKey:@"autoselectProxy"] boolValue];
-	BOOL reachable = (_internetConnectionStatus != NotReachable);
+	BOOL reachable = ([[Reachability sharedReachability] internetConnectionStatus] != NotReachable);
 	NSLog(@"%s, ac:%d reachable:%d",__FUNCTION__,autoconnect,reachable);
 	if (autoconnect && reachable) {
 		[self connectToAutoconnectProxy];

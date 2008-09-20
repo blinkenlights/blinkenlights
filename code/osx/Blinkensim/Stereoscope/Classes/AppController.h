@@ -57,7 +57,7 @@
 @property (nonatomic, retain) UINavigationController *mainNavigationController;
 @property (nonatomic, retain) SettingsController *settingsController;
 @property (nonatomic, retain) NSDictionary *currentProxy;
-@property NetworkStatus internetConnectionStatus;
+@property NetworkStatus previousInternetConnectionStatus;
 
 - (void)connectToProxy:(NSDictionary *)inProxy;
 - (void)shellReportsFrameRate:(float)inCurrentFrameRate;

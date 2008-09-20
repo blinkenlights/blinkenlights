@@ -625,7 +625,7 @@
 				INFOPLIST_FILE = Info.plist;
 				PREBINDING = NO;
 				PRODUCT_NAME = Stereoscope;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F1C8A8D0-3EDC-433F-A844-61C5AC7EE7CD";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = DefaultProfileUuid;
 				WARNING_CFLAGS = "-Wall";
 			};
 			name = Debug;
