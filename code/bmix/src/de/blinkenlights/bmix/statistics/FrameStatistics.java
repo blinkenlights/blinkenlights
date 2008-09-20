@@ -1,7 +1,7 @@
 package de.blinkenlights.bmix.statistics;
 
 import java.awt.Color;
-import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -14,7 +14,7 @@ import de.blinkenlights.bmix.network.BLPacketReceiver;
 import de.blinkenlights.bmix.network.BLPacketSender;
 import de.blinkenlights.bmix.network.BLPacketReceiver.AlphaMode;
 
-public class FrameStatistics implements Serializable {
+public class FrameStatistics implements StatisticsItem {
 	private static final long serialVersionUID = 1234567890L;
 	
 	transient Map<BLPacketReceiver, InputStatistics> inputReceiverMap;
@@ -94,5 +94,21 @@ public class FrameStatistics implements Serializable {
 			str.append("  " + outputStat.toString());
 		}
 		return str.toString();
+	}
+	
+	public String toHtml() {
+		return "<html><p>Overall frame stats";
+	}
+
+	public List<StatisticsItem> getChildren() {
+		List<StatisticsItem> children = new ArrayList<StatisticsItem>();
+		children.addAll(inputStats);
+		children.addAll(layerStats);
+		children.addAll(outputStats);
+		return children;
+	}
+
+	public String getName() {
+		return "Overall frame statistics";
 	}
 }

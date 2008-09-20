@@ -8,7 +8,10 @@ import java.util.Map;
 import de.blinkenlights.bmix.network.BLPacketSender;
 import de.blinkenlights.bmix.network.BLPacketReceiver.AlphaMode;
 
-public class InputStatistics {
+public class InputStatistics implements StatisticsItem {
+	
+	private static final long serialVersionUID = -1641167816689740295L;
+	
 	private final int inputPort;
 	private final String heartBeatDestAddr;
 	private final int heartBeatDestPort;
@@ -80,5 +83,15 @@ public class InputStatistics {
 		}
 		str.append("\n");
 		return str.toString();
+	}
+
+	public List<StatisticsItem> getChildren() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public String toHtml() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

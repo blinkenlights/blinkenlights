@@ -1,8 +1,13 @@
 package de.blinkenlights.bmix.statistics;
 
 import java.awt.Rectangle;
+import java.util.Collections;
+import java.util.List;
 
-public class OutputStatistics {
+public class OutputStatistics implements StatisticsItem {
+
+	private static final long serialVersionUID = -982303235686899928L;
+	
 	private final Rectangle viewport;
 	private final String destAddr;
 	private final int destPort;
@@ -54,5 +59,18 @@ public class OutputStatistics {
 		str.append("  Multiframe bpp: " + multiframeBpp + "\n");
 		str.append("\n");
 		return str.toString();
+	}
+
+	public List<StatisticsItem> getChildren() {
+		return Collections.emptyList();
+	}
+
+	public String getName() {
+		return "Output to " + destAddr + ":" + destPort;
+	}
+
+	public String toHtml() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

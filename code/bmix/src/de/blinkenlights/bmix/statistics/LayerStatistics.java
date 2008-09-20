@@ -1,8 +1,13 @@
 package de.blinkenlights.bmix.statistics;
 
 import java.awt.Rectangle;
+import java.util.Collections;
+import java.util.List;
 
-public class LayerStatistics {
+public class LayerStatistics implements StatisticsItem {
+
+	private static final long serialVersionUID = 4810378087586013021L;
+	
 	private final InputStatistics inputStat;
 	private final Rectangle viewport;
 	private final float opacity;
@@ -51,5 +56,24 @@ public class LayerStatistics {
 		str.append("  Opacity: " + opacity + "\n");
 		str.append("\n");
 		return str.toString();
+	}
+
+	public List<StatisticsItem> getChildren() {
+		return Collections.emptyList();
+	}
+
+	public String getName() {
+		return "Layer";
+	}
+
+	public String toHtml() {
+		return String.format(
+			"<html><table>" +
+			"<tr><td>Source Input<td>%s" +
+			"<tr><td>Target viewport<td>%dx%d+%d+%d" +
+		    "<tr><td>Opacity<td>%.3f",
+		    (inputStat == null ? "none" : inputStat.getName()),
+		    viewport.width, viewport.height, viewport.x, viewport.y,
+			opacity);
 	}
 }
