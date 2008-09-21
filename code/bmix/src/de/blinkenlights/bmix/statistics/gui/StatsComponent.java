@@ -58,9 +58,7 @@ public class StatsComponent extends JPanel {
         public float getDashPhase() {
             if (pointsTo != null && pointsTo.stats instanceof InputStatistics) {
                 long frameCount = ((InputStatistics) pointsTo.stats).getFrameCount();
-                long phase = frameCount % 10;
-                System.err.println("Phase: " + phase);
-                return phase;
+                return frameCount;// % DASH_PATTERN.length;
                 // TODO make additive and also figure out why this doesn't get called
             } else {
                 return 0f;
@@ -205,7 +203,7 @@ public class StatsComponent extends JPanel {
                 
                 g.setStroke(new BasicStroke(
                         1.00001f, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND, 0f,
-                        DASH_PATTERN, sourceInputBox.getDashPhase()));
+                        DASH_PATTERN, layerBox.getDashPhase()));
                 g.drawLine(p1.x, p1.y, p2.x, p2.y);
             }
         }
