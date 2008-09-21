@@ -3,6 +3,7 @@ package de.blinkenlights.bmix.statistics;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -54,11 +55,16 @@ public class StatServer implements Runnable {
 		ByteArrayOutputStream byteStream = new ByteArrayOutputStream();
 		ObjectOutputStream outputStream = new ObjectOutputStream(byteStream);
 		outputStream.writeObject(frameStats);
-	
+		outputStream.flush();
+		outputStream.close();
+		final byte[] byteArray = byteStream.toByteArray();
+		
 		for (Iterator<Socket> iter = clientSockets.iterator(); iter.hasNext();) {
 			Socket clientSocket = iter.next();
 			try {
-				clientSocket.getOutputStream().write(byteStream.toByteArray());
+				OutputStream clientOut = clientSocket.getOutputStream();
+				clientOut.write(byteArray);
+				clientOut.flush();
 			} catch(IOException e) {
 				logger.warning("error sending to client: " + e.getMessage() + " - removing it!");
 				iter.remove();
