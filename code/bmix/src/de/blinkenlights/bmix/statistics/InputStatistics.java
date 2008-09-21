@@ -25,10 +25,11 @@ public class InputStatistics implements StatisticsItem {
 	private final Map<String, Integer> relaySenderMap;
 	private final long lastPacketReceiveTime;
 	private final String name;
+	private final long frameCount;
 
 	public InputStatistics(long id, String name, int inputPort, String heartBeatDestAddr, int heartBeatDestPort,
 			List<BLPacketSender> relaySenders, AlphaMode alphaMode, Color chromaKeyColor,
-		long lastPacketReceiveTime) {
+			long lastPacketReceiveTime, long frameCount) {
 		this.id = id;
 		this.name = name;
 		this.inputPort = inputPort;
@@ -37,6 +38,7 @@ public class InputStatistics implements StatisticsItem {
 		this.alphaMode = alphaMode;
 		this.chromaKeyColor = chromaKeyColor;
 		this.lastPacketReceiveTime = lastPacketReceiveTime;
+		this.frameCount = frameCount;
 		relaySenderMap = new LinkedHashMap<String, Integer>();
 		for(BLPacketSender relaySender: relaySenders) {
 			relaySenderMap.put(relaySender.getAddress(), relaySender.getPort());
@@ -78,7 +80,11 @@ public class InputStatistics implements StatisticsItem {
 	public long getLastPacketReceiveTime() {
 		return lastPacketReceiveTime;
 	}
-		
+	
+	public long getFrameCount() {
+		return frameCount;
+	}
+	
 	public String toString() {
 		StringBuilder str = new StringBuilder();
 		str.append("Input - Name: " + name + "\n");
@@ -87,6 +93,7 @@ public class InputStatistics implements StatisticsItem {
 		str.append("  Alpha Mode: " + alphaMode.name() + "\n");
 		str.append("  Chroma-key Colour: " + chromaKeyColor.toString() + "\n");
 		str.append("  Last packet receive time: " + lastPacketReceiveTime + "\n");
+		str.append("  Frame count: " + frameCount + "\n");
 		str.append("  Relay Senders: \n");
 		for(Map.Entry<String, Integer> ent : relaySenderMap.entrySet()) {
 			str.append("    Sender - Addr: " + ent.getKey() + " - Port: " + ent.getValue());
@@ -113,6 +120,7 @@ public class InputStatistics implements StatisticsItem {
 	            "<tr><td>Alpha Mode<td>%s" +
 	            "<tr><td>Key Colour<td>#%8x" +
 	            "<tr><td>Last Packet<td>%d" +
+	            "<tr><td>Frame Count<td>%d" +
 	            "<tr><td>Relay Senders<td>%s",
 	            name,
 	            inputPort,
@@ -120,6 +128,7 @@ public class InputStatistics implements StatisticsItem {
 	            alphaMode.name(),
 	            chromaKeyColor.getRGB(),
 	            lastPacketReceiveTime,
+	            frameCount,
 	            relaySenders);
 	}
 }

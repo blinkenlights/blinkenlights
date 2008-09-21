@@ -1,11 +1,19 @@
 BMix Notes
 
-==To do==
-*use dashed line and change phase when packets received
-*generate OIDs for each real object that is the subject of bmix statistics
+==StatsClient To do==
+* make a game loop
+* outputs should have names
+* use dashed line and change phase when packets received
+* generate OIDs for each real object that is the subject of bmix statistics
+* stats should send number of frame since last update
+* better startup - bullet-proofingness
+* pack the frame after getting data
+* represet relay senders as separate boxes
 
 ===v1.2===
 * more status messages on debug
+* multi-screen multiframe packet sending
+* config reload
 
 ==Future Features==
 

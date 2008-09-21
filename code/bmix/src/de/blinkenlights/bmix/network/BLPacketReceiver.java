@@ -111,6 +111,8 @@ public class BLPacketReceiver {
     private final List<BLPacketSender> relaySenders = new ArrayList<BLPacketSender>();
 	private final String name;
 	
+	private long frameCount = 0;
+	
 	
 	/**
 	 * Creates a new BLFrameReceiver for receiving pixel data from a blinkenlights source.
@@ -164,6 +166,7 @@ public class BLPacketReceiver {
 		            logger.log(Level.WARNING, "error relaying packet to " + sender, e);
 			    }
 			}
+			frameCount ++;
             return parsedPacket;
 		} catch (SocketTimeoutException e) {
 			// this is ok, it's just time to send a heartbeat packet (or do some other interval-based work)
@@ -224,4 +227,7 @@ public class BLPacketReceiver {
 		return name;
 	}
 
+	public long getFrameCount() {
+		return frameCount;
+	}
 }

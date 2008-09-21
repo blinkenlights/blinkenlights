@@ -48,11 +48,13 @@ public class FrameStatistics implements Serializable {
 			AlphaMode alphaMode = input.getAlphaMode();
 			Color chromaKeyColor = input.getTransparentColour();
 			long lastPacketReceiveTime = input.getLastPacketReceiveTime();
+			long frameCount = input.getFrameCount();
 			InputStatistics inputStat = new InputStatistics(
 					System.identityHashCode(input),
 					input.getName(), inputPort, 
 					heartBeatDestAddr, hearBeatDestPort,
-					relaySenders, alphaMode, chromaKeyColor, lastPacketReceiveTime);
+					relaySenders, alphaMode, chromaKeyColor, 
+					lastPacketReceiveTime, frameCount);
 			inputStats.add(inputStat);
 			inputReceiverMap.put(input, inputStat);
 		}
