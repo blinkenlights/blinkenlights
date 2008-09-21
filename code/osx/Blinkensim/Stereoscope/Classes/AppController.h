@@ -54,7 +54,7 @@
 	BOOL _fadeOutOnBlinkenframe;
 	int _xmlReadFailureCount;
     BOOL isModalForCamera;
-    
+    BOOL _showTime;
     
     int _position;
 }

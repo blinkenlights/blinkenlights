@@ -428,6 +428,7 @@ static AppController *s_sharedAppController;
 		NSString *kindString = [inProxy objectForKey:@"kind"];
 		if (!kindString) kindString = @"";
 		_liveLabel.text = kindString;
+		_showTime = [[inProxy objectForKey:@"showtime"] isEqualToString:@"showtime"];
 	}
 }
 
@@ -634,6 +635,26 @@ static AppController *s_sharedAppController;
 
 	if (inTimestamp != 0) 
 	{
+		if (_showTime) {
+			static NSDateFormatter *dateFormatter = nil;
+			static NSDateFormatter *timeFormatter = nil;
+			if (dateFormatter == nil) {
+				dateFormatter = [NSDateFormatter new];
+				[dateFormatter setTimeStyle:NSDateFormatterNoStyle];
+				[dateFormatter setDateStyle:NSDateFormatterShortStyle];
+
+				timeFormatter = [NSDateFormatter new];
+				[timeFormatter setDateStyle:NSDateFormatterNoStyle];
+				[timeFormatter setTimeStyle:NSDateFormatterShortStyle];
+			}
+			NSTimeInterval interval = ((NSTimeInterval)inTimestamp / 1000.0);
+			NSDate *dateToDisplay = [NSDate dateWithTimeIntervalSince1970:interval];
+			NSString *dateAndTimeString = [NSString stringWithFormat:@"%@\n%@",
+				[dateFormatter stringForObjectValue:dateToDisplay],
+				[timeFormatter stringForObjectValue:dateToDisplay]];
+			_liveLabel.text = dateAndTimeString;
+		}
+	
 		NSTimeInterval now = [[NSDate date] timeIntervalSince1970] ;
 		NSTimeInterval timeDifference = now - ((NSTimeInterval)inTimestamp / 1000.0);
 		NSTimeInterval compensationTime = (_maxTimeDifference - timeDifference);

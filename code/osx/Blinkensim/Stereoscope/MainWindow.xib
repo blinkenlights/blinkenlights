@@ -122,7 +122,7 @@
 					<object class="IBUILabel" id="1006459513">
 						<reference key="NSNextResponder" ref="930778623"/>
 						<int key="NSvFlags">266</int>
-						<string key="NSFrame">{{84, 32}, {214, 30}}</string>
+						<string key="NSFrame">{{135, 27}, {165, 53}}</string>
 						<reference key="NSSuperview" ref="930778623"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -130,7 +130,7 @@
 						<string key="IBUIText"/>
 						<object class="NSFont" key="IBUIFont">
 							<string key="NSName">Helvetica-Bold</string>
-							<double key="NSSize">2.300000e+01</double>
+							<double key="NSSize">2.100000e+01</double>
 							<int key="NSfFlags">16</int>
 						</object>
 						<object class="NSColor" key="IBUITextColor">
@@ -141,6 +141,7 @@
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">1</int>
 						<float key="IBUIMinimumFontSize">1.100000e+01</float>
+						<int key="IBUINumberOfLines">2</int>
 						<int key="IBUITextAlignment">2</int>
 						<int key="IBUILineBreakMode">5</int>
 					</object>
@@ -678,7 +679,6 @@
 							<reference ref="812409426"/>
 							<reference ref="1027144259"/>
 							<reference ref="289595314"/>
-							<reference ref="1006459513"/>
 							<reference ref="677347232"/>
 							<reference ref="688040440"/>
 							<reference ref="320028579"/>
@@ -688,6 +688,7 @@
 							<reference ref="318600811"/>
 							<reference ref="644591590"/>
 							<reference ref="104002699"/>
+							<reference ref="1006459513"/>
 						</object>
 						<reference key="parent" ref="957960031"/>
 					</object>

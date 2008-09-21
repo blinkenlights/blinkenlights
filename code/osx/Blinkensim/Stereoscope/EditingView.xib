@@ -31,7 +31,7 @@
 					<object class="IBUITextField" id="296866551">
 						<reference key="NSNextResponder" ref="204306122"/>
 						<int key="NSvFlags">266</int>
-						<string key="NSFrame">{{20, 64}, {280, 31}}</string>
+						<string key="NSFrame">{{20, 66}, {280, 31}}</string>
 						<reference key="NSSuperview" ref="204306122"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
@@ -51,7 +51,7 @@
 						<object class="IBUITextInputTraits" key="IBUITextInputTraits"/>
 					</object>
 				</object>
-				<string key="NSFrameSize">{320, 370}</string>
+				<string key="NSFrameSize">{320, 460}</string>
 				<reference key="NSSuperview"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">3</int>
@@ -214,7 +214,7 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>EditingViewController</string>
 					<string>UIResponder</string>
-					<string>{{377, 294}, {320, 370}}</string>
+					<string>{{377, 204}, {320, 460}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>{{487, 812}, {320, 44}}</string>
