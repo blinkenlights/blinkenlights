@@ -44,6 +44,7 @@
 	NSTimeInterval _connectionLostTime;
 	NSTimeInterval _hostResolveFailureTime;
 	BOOL _fadeOutOnBlinkenframe;
+	int _xmlReadFailureCount;
 }
 
 + (AppController *)sharedAppController;

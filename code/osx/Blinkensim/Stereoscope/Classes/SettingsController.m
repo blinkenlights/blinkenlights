@@ -121,7 +121,12 @@ static NSString * const labelCellIdentifier = @"LabelCell";
 		[mySwitch addTarget:self action:@selector(takeValueForAutoselect:) forControlEvents:UIControlEventValueChanged];
 	} else if (indexPath.section < [projectTableSections count] + SECTIONS_BEFORE_PROXY_LIST) {
 		NSDictionary *proxy = [[[projectTableSections objectAtIndex:indexPath.section - SECTIONS_BEFORE_PROXY_LIST] items] objectAtIndex:indexPath.row];
-		cell.text = [NSString stringWithFormat:@"%@:%@",[proxy objectForKey:@"address"], [proxy objectForKey:@"port"]];
+		NSString *baseString = [proxy objectForKey:@"name"] ? [proxy objectForKey:@"name"] : [NSString stringWithFormat:@"%@:%@",[proxy objectForKey:@"address"], [proxy objectForKey:@"port"]];
+		if ([proxy objectForKey:@"kind"]) {
+			baseString = [baseString stringByAppendingFormat:@" (%@)",[proxy objectForKey:@"kind"]];
+		}
+		cell.text = baseString;
+		cell.accessoryType = [proxy isEqual:[[AppController sharedAppController] currentProxy]] ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
 	} else {
 		cell.text = [[NSUserDefaults standardUserDefaults] stringForKey:@"blinkenproxyAddress"];
 	}

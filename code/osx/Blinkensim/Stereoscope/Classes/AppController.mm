@@ -138,6 +138,7 @@ static AppController *s_sharedAppController;
 
 - (void)applicationDidFinishLaunching:(UIApplication*)inApplication
 {
+	_xmlReadFailureCount = 0;
 	_connectionLostTime = DBL_MAX;
 	_hostResolveFailureTime = DBL_MAX;
 	
@@ -238,7 +239,12 @@ static AppController *s_sharedAppController;
 
 - (void)fetchStreamsXML
 {
-	NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.blinkenlights.net/config/blinkenstreams.xml"] cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:30.0];
+	NSURL *urlToFetch = [NSURL URLWithString:(_xmlReadFailureCount % 2) == 0 ? 
+		@"http://www.blinkenlights.net/config/blinkenstreams.xml" : 
+		@"http://www.blinkenlights.de/config/blinkenstreams.xml"];
+	NSURLRequest *request = [NSURLRequest requestWithURL:urlToFetch cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:30.0];
+	[_responseData release];
+	_responseData = NULL;
 	_responseData = [NSMutableData new];
 	self.proxyListConnection = [[[NSURLConnection alloc] initWithRequest:request delegate:self] autorelease];
 }
@@ -629,7 +635,10 @@ static AppController *s_sharedAppController;
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 {
-//	NSLog(@"%s",__FUNCTION__);
+	_xmlReadFailureCount++;
+	if (_xmlReadFailureCount % 2) {
+		[self fetchStreamsXML];
+	}
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)inData
@@ -663,6 +672,11 @@ static AppController *s_sharedAppController;
 			}
 		}
 
+	} else {
+		_xmlReadFailureCount++;
+		if (_xmlReadFailureCount % 2) {
+			[self fetchStreamsXML];
+		}
 	}
 }
 
