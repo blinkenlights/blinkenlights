@@ -244,11 +244,11 @@ static NSString * const labelCellIdentifier = @"LabelCell";
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	self.tableView.tableHeaderView = _ibTopView;
-	CGPoint oldCenter = _ibCodingMonkeysButton.center;
+//	CGPoint oldCenter = _ibCodingMonkeysButton.center;
 //	_ibCodingMonkeysButton.center = CGPointMake(CGRectGetMaxX(_ibCodingMonkeysButton.frame),_ibCodingMonkeysButton.center.y);
-	[_ibCodingMonkeysButton.layer setAnchorPoint:CGPointMake(0.896,0.6)];
-	oldCenter.x += 55.;
-	_ibCodingMonkeysButton.center = oldCenter;
+//	[_ibCodingMonkeysButton.layer setAnchorPoint:CGPointMake(0.896,0.6)];
+//	oldCenter.x += 55.;
+//	_ibCodingMonkeysButton.center = oldCenter;
 }
 
 
