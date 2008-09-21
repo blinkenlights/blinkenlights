@@ -29,5 +29,6 @@
 - (IBAction)gotoCodingMonkeysWebsite:(id)inSender;
 - (IBAction)dismissAbout:(id)inSender;
 - (IBAction)showAbout:(id)inSender;
+- (NSDictionary *)manualProxy;
 
 @end

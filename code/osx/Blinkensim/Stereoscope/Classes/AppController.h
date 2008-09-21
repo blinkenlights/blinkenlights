@@ -1,9 +1,17 @@
-#include "Application.h"
-#import "GraphicsDevice.h"
 #import "SettingsController.h"
 #import "TCMHost.h"
 #import "BlinkenListener.h"
 #import "Reachability.h"
+
+@class EAGLView;
+
+@protocol EAGLViewDelegate <NSObject>
+@optional
+- (void)didResizeEAGLSurfaceForView:(EAGLView*)view; //Called whenever the EAGL surface has been resized
+- (BOOL)EAGLView:(EAGLView *)inView shouldNotHandleTouch:(UITouch *)inTouch;
+- (void)EAGLView:(EAGLView *)inView  movedUnhandledTouch:(UITouch *)inTouch;
+- (void)EAGLView:(EAGLView *)inView didEndUnhandledTouch:(UITouch *)inTouch;
+@end
 
 @interface AppController : NSObject <EAGLViewDelegate>
 {
@@ -64,8 +72,8 @@
 @property (nonatomic, retain) NSDictionary *currentProxy;
 @property NetworkStatus previousInternetConnectionStatus;
 
-
-
+- (void)connectionDidBecomeAvailable;
+- (void)connectToManualProxy;
 - (void)connectToProxy:(NSDictionary *)inProxy;
 - (void)shellReportsFrameRate:(float)inCurrentFrameRate;
 - (IBAction)showSettings:(id)inSender;

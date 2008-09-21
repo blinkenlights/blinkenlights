@@ -122,12 +122,12 @@
 					<object class="IBUILabel" id="1006459513">
 						<reference key="NSNextResponder" ref="930778623"/>
 						<int key="NSvFlags">266</int>
-						<string key="NSFrame">{{164, 32}, {134, 30}}</string>
+						<string key="NSFrame">{{84, 32}, {214, 30}}</string>
 						<reference key="NSSuperview" ref="930778623"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
-						<string key="IBUIText">LIVE</string>
+						<string key="IBUIText"/>
 						<object class="NSFont" key="IBUIFont">
 							<string key="NSName">Helvetica-Bold</string>
 							<double key="NSSize">2.300000e+01</double>

@@ -12,9 +12,11 @@
 #import "TableSection.h"
 #import <QuartzCore/QuartzCore.h>
 #import "Reachability.h"
+#import "GraphicsDevice.h"
+#include "Application.h"
 
 //CONSTANTS:
-#define kFPS			36.0
+#define kFPS			24.0
 #define kSpeed			10.0
 
 // five seconds without a frame means timeout
@@ -370,31 +372,33 @@ static AppController *s_sharedAppController;
 }
 
 - (void)connectToAutoconnectProxy {
-	// collect all live proxies
-	NSMutableArray *liveProxiesToChooseFrom = [NSMutableArray array];
-	NSMutableArray *proxiesToChooseFrom = [NSMutableArray array];
-	for (TableSection *section in [_settingsController projectTableSections]) {
-		for (NSDictionary *proxy in [section items]) {
-			if ([proxy valueForKey:@"kind"] &&
-				[[proxy valueForKey:@"kind"] caseInsensitiveCompare:@"live"] == NSOrderedSame) {
-				[liveProxiesToChooseFrom addObject:proxy];
+	if (![self hasConnection]) {
+		// collect all live proxies
+		NSMutableArray *liveProxiesToChooseFrom = [NSMutableArray array];
+		NSMutableArray *proxiesToChooseFrom = [NSMutableArray array];
+		for (TableSection *section in [_settingsController projectTableSections]) {
+			for (NSDictionary *proxy in [section items]) {
+				if ([proxy valueForKey:@"kind"] &&
+					[[proxy valueForKey:@"kind"] caseInsensitiveCompare:@"live"] == NSOrderedSame) {
+					[liveProxiesToChooseFrom addObject:proxy];
+				}
+				[proxiesToChooseFrom addObject:proxy];
 			}
-			[proxiesToChooseFrom addObject:proxy];
 		}
-	}
-	if ([liveProxiesToChooseFrom count]) {
-		NSLog(@"%s choosing from live proxies %@",__FUNCTION__,liveProxiesToChooseFrom);
-		[self connectToProxyFromArray:liveProxiesToChooseFrom];
-	} else if ([proxiesToChooseFrom count]) {
-		NSLog(@"%s choosing from all %@",__FUNCTION__,proxiesToChooseFrom);
-		[self connectToProxyFromArray:proxiesToChooseFrom];
+		if ([liveProxiesToChooseFrom count]) {
+//			NSLog(@"%s choosing from live proxies %@",__FUNCTION__,liveProxiesToChooseFrom);
+			[self connectToProxyFromArray:liveProxiesToChooseFrom];
+		} else if ([proxiesToChooseFrom count]) {
+//			NSLog(@"%s choosing from all %@",__FUNCTION__,proxiesToChooseFrom);
+			[self connectToProxyFromArray:proxiesToChooseFrom];
+		}
 	}
 }
 
 - (void)handleConnectionFailure {
 	BOOL autoconnect = [[[NSUserDefaults standardUserDefaults] objectForKey:@"autoselectProxy"] boolValue];
 	BOOL reachable = ([[Reachability sharedReachability] internetConnectionStatus] != NotReachable);
-	NSLog(@"%s, ac:%d reachable:%d",__FUNCTION__,autoconnect,reachable);
+//	NSLog(@"%s, ac:%d reachable:%d",__FUNCTION__,autoconnect,reachable);
 	if (autoconnect && reachable) {
 		[self connectToAutoconnectProxy];
 	}
@@ -402,7 +406,7 @@ static AppController *s_sharedAppController;
 
 
 - (void)connectToProxy:(NSDictionary *)inProxy {
-	NSLog(@"%s %@",__FUNCTION__,inProxy);
+//	NSLog(@"%s %@",__FUNCTION__,inProxy);
 	NSString *address = [inProxy valueForKey:@"address"];
 	if (address) {
 		[_blinkenListener stopListening];
@@ -427,7 +431,10 @@ static AppController *s_sharedAppController;
 	}
 }
 
-
+- (void)connectToManualProxy
+{
+	[self connectToProxy:[_settingsController manualProxy]];
+}
 
 - (void)setStatusText:(NSString *)inString {
 	_loadingLabel.text = inString;
@@ -440,7 +447,7 @@ static AppController *s_sharedAppController;
 }
 
 - (void)fadeoutStatusText {
-	NSLog(@"%s",__FUNCTION__);
+//	NSLog(@"%s",__FUNCTION__);
 	if (_loadingLabel.alpha > 0.0) {
 		[UIView beginAnimations:@"LoadingLabelFadeAnimation" context:NULL];
 		[UIView setAnimationDuration:3.0];
@@ -485,7 +492,7 @@ static AppController *s_sharedAppController;
 	[_hostToResolve setDelegate:nil];
 	self.hostToResolve = nil;
 	_hostResolveFailureTime = DBL_MAX;
- 	NSLog(@"%s %@ %@",__FUNCTION__,inHost, inError);
+// 	NSLog(@"%s %@ %@",__FUNCTION__,inHost, inError);
  	[self handleConnectionFailure];
 }
 
@@ -676,7 +683,7 @@ static AppController *s_sharedAppController;
 	[parser setDelegate:self];
 	[parser parse];
 	[parser release];
-	NSLog(@"%s new xml proxy list:\n%@",__FUNCTION__, responseString);
+//	NSLog(@"%s new xml proxy list:\n%@",__FUNCTION__, responseString);
 	[responseString release];
 	[_responseData release];
 	_responseData = nil;
@@ -793,13 +800,11 @@ static AppController *s_sharedAppController;
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)inURL
 {
+//	NSLog(@"%s",__FUNCTION__);
 	NSString *addressString = [NSString stringWithFormat:@"%@:%d",[inURL host],[inURL port] ? [[inURL port] intValue] : 4242];
 	if (inURL) {
 		[[NSUserDefaults standardUserDefaults] setObject:addressString forKey:@"blinkenproxyAddress"];
-		[self connectToProxy:[NSDictionary dictionaryWithObjectsAndKeys:
-				[inURL host],@"address",
-				[inURL port], @"port", // warning if no port port dictionary stops here
-				nil]];
+		[self connectToManualProxy];
 	}
 	return YES;
 }

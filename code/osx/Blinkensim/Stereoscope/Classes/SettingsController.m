@@ -1,5 +1,7 @@
 #import "SettingsController.h"
 #import "TableSection.h"
+#import "AppController.h"
+#import <QuartzCore/QuartzCore.h>
 
 #define SECTIONS_BEFORE_PROXY_LIST 1
 
@@ -22,7 +24,7 @@ static NSString * const labelCellIdentifier = @"LabelCell";
 }
 
 - (id)initWithStyle:(UITableViewStyle)style {
-	NSLog(@"%s",__FUNCTION__);
+//	NSLog(@"%s",__FUNCTION__);
 	if ((self = [super initWithStyle:style])) {
 		[self innerInit];
 	}
@@ -81,7 +83,7 @@ static NSString * const labelCellIdentifier = @"LabelCell";
 	} else if (section < [projectTableSections count] + SECTIONS_BEFORE_PROXY_LIST) {
 		return [[[projectTableSections objectAtIndex:section - SECTIONS_BEFORE_PROXY_LIST] items] count];
 	} else {
-		return 1;
+		return 2;
 	}
 }
 
@@ -91,7 +93,7 @@ static NSString * const labelCellIdentifier = @"LabelCell";
 	} else if (section < [projectTableSections count] + SECTIONS_BEFORE_PROXY_LIST) {
 		return [[projectTableSections objectAtIndex:section - SECTIONS_BEFORE_PROXY_LIST] heading];
 	} else {
-		return @"Manual Blinkenproxy Address";
+		return @"Manual Feed Address";
 	}
 }
 
@@ -115,7 +117,7 @@ static NSString * const labelCellIdentifier = @"LabelCell";
 		}
 	}
 	if (indexPath.section == 0) {
-		cell.text = @"Autoselect Stream";
+		cell.text = @"Autoselect Feed";
 		UISwitch *mySwitch = ((UISwitch *)cell.accessoryView);
 		mySwitch.isOn = [[[NSUserDefaults standardUserDefaults] objectForKey:@"autoselectProxy"] boolValue];
 		[mySwitch addTarget:self action:@selector(takeValueForAutoselect:) forControlEvents:UIControlEventValueChanged];
@@ -128,7 +130,14 @@ static NSString * const labelCellIdentifier = @"LabelCell";
 		cell.text = baseString;
 		cell.accessoryType = [proxy isEqual:[[AppController sharedAppController] currentProxy]] ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
 	} else {
-		cell.text = [[NSUserDefaults standardUserDefaults] stringForKey:@"blinkenproxyAddress"];
+		if (indexPath.row == 0) {
+			NSString *address = [[NSUserDefaults standardUserDefaults] stringForKey:@"blinkenproxyAddress"];
+			cell.text = address;
+			cell.accessoryType = [[self manualProxy] isEqual:[[AppController sharedAppController] currentProxy]] ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
+		} else {
+			cell.text = @"Other...";
+			cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+		}
 	}
 	return cell;
 }
@@ -143,34 +152,45 @@ static NSString * const labelCellIdentifier = @"LabelCell";
 
 @synthesize editingViewController;
 
+- (NSDictionary *)manualProxy {
+	NSArray *components = [[[NSUserDefaults standardUserDefaults] stringForKey:@"blinkenproxyAddress"] componentsSeparatedByString:@":"];
+	NSString *address = [components count]>0 ? [components objectAtIndex:0] : @"";
+	NSString *port    = [components count]>1 ? [components objectAtIndex:1] : nil;
+	return [NSDictionary dictionaryWithObjectsAndKeys:
+					address,@"address",
+					port, @"port", // warning if no port port dictionary stops here
+					nil];
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
 
 	if (indexPath.section < [projectTableSections count] + SECTIONS_BEFORE_PROXY_LIST &&
 		indexPath.section >= SECTIONS_BEFORE_PROXY_LIST) {
 		NSDictionary *proxy = [[[projectTableSections objectAtIndex:indexPath.section - SECTIONS_BEFORE_PROXY_LIST] items] objectAtIndex:indexPath.row];
-		NSString *address = [NSString stringWithFormat:@"%@:%@",[proxy objectForKey:@"address"], [proxy objectForKey:@"port"]];
-		[[NSUserDefaults standardUserDefaults] setObject:address forKey:@"blinkenproxyAddress"];
 		[[AppController sharedAppController] connectToProxy:proxy];
-//	    [self.navigationController popViewControllerAnimated:YES];
-		UIBarButtonItem *item = self.navigationController.navigationBar.topItem.rightBarButtonItem;
-		[item.target performSelector:item.action withObject:item];
+		[[AppController sharedAppController] doneWithSettings:nil];
 	} else if (indexPath.section == [projectTableSections count] + SECTIONS_BEFORE_PROXY_LIST) {
-		// Create the editing view controller if necessary.
-		if (editingViewController == nil) {
-			EditingViewController *viewController = [[EditingViewController alloc] initWithNibName:@"EditingView" bundle:nil];
-			self.editingViewController = viewController;
-			[viewController release];
-		}
+		if (indexPath.row == 0) {
+			[[AppController sharedAppController] connectToManualProxy];
+			[[AppController sharedAppController] doneWithSettings:nil];
+		} else {
+			// Create the editing view controller if necessary.
+			if (editingViewController == nil) {
+				EditingViewController *viewController = [[EditingViewController alloc] initWithNibName:@"EditingView" bundle:nil];
+				self.editingViewController = viewController;
+				[viewController release];
+			}
+			
+			editingViewController.editedObject = [NSUserDefaults standardUserDefaults];
+			NSString *key = @"blinkenproxyAddress";
+			editingViewController.editedFieldKey = key;
+			editingViewController.textValue = [[NSUserDefaults standardUserDefaults] stringForKey:key];
+			editingViewController.titleString = @"Feed Address";
+			editingViewController.dateEditing = NO;
 		
-		editingViewController.editedObject = [NSUserDefaults standardUserDefaults];
-		NSString *key = @"blinkenproxyAddress";
-		editingViewController.editedFieldKey = key;
-		editingViewController.textValue = [[NSUserDefaults standardUserDefaults] stringForKey:key];
-		editingViewController.titleString = @"Blinkenproxy Address";
-		editingViewController.dateEditing = NO;
-	
-		[self.navigationController pushViewController:editingViewController animated:YES];
+			[self.navigationController pushViewController:editingViewController animated:YES];
+		}
 	}
 }
 
