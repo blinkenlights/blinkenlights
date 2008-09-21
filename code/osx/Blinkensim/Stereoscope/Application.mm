@@ -148,7 +148,7 @@ float oldFromX, oldFromY, oldFromZ, newFromX, newFromY, newFromZ;
 
 void CShell::AnimateCameraTo(float fromX, float fromY, float fromZ, float toX, float toY, float toZ)
 {
-    NSLog(@"Camera: %f %f %f", vt2f(vCameraPosition.x), vt2f(vCameraPosition.y), vt2f(vCameraPosition.z));
+//    NSLog(@"Camera: %f %f %f", vt2f(vCameraPosition.x), vt2f(vCameraPosition.y), vt2f(vCameraPosition.z));
     animatingCamera = YES;
     animationStart = [[NSDate date] retain];
     

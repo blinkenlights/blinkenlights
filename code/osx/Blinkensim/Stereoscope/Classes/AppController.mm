@@ -730,7 +730,7 @@ static AppController *s_sharedAppController;
 
 - (void)setCameraToX:(double)inX 
 {
-    NSLog(@"new x: %f", inX);
+//    NSLog(@"new x: %f", inX);
 }
 
 - (IBAction)changeCamera:(id)inSender
