@@ -637,11 +637,16 @@ void ComputeViewMatrix()
             NSDate *now = [NSDate date];
             double t = [now timeIntervalSinceDate:animationStart];
             double progress =  t / ANIMATIONDURATION;
-            //NSLog(@"foo: %f", progress);
 
-            progress = pow(progress,0.25);
         
-            if (progress<=1.0) {
+        if (progress < 0.5) {
+            progress = progress*progress*2;
+        } else {
+            progress =  - 2 * (progress-1)*(progress-1) + 1;
+            
+        }
+        
+            if (t / ANIMATIONDURATION<=1.0) {
                 vTo.x = f2vt(oldToX + (newToX-oldToX) * progress);
                 vTo.y = f2vt(oldToY + (newToY-oldToY) * progress);
                 vTo.z = f2vt(oldToZ + (newToZ-oldToZ) * progress);
