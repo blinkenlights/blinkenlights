@@ -8,7 +8,6 @@
 		<string key="IBDocument.HIToolboxVersion">352.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="19"/>
 			<integer value="7"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
@@ -73,7 +72,7 @@
 					</object>
 					<object class="IBUILabel" id="1027144259">
 						<reference key="NSNextResponder" ref="930778623"/>
-						<int key="NSvFlags">266</int>
+						<int key="NSvFlags">-2147483382</int>
 						<string key="NSFrame">{{10, 32}, {66, 15}}</string>
 						<reference key="NSSuperview" ref="930778623"/>
 						<bool key="IBUIOpaque">NO</bool>
@@ -385,7 +384,6 @@
 					<object class="IBUIViewController" id="639663911">
 						<string key="IBUITitle">Settings</string>
 						<object class="IBUINavigationItem" key="IBUINavigationItem" id="652871044">
-							<reference key="IBUINavigationBar"/>
 							<string key="IBUITitle">Settings</string>
 							<object class="IBUIBarButtonItem" key="IBUIRightBarButtonItem" id="104790896">
 								<string key="IBUITitle">Done</string>
@@ -869,7 +867,7 @@
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<string>{{476, 140}, {320, 480}}</string>
+					<string>{{452, 143}, {320, 480}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>

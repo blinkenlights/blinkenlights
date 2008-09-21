@@ -289,20 +289,12 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     for (UITouch *touch in touches) {
-        if (touch.tapCount > 1)
+        if ([_delegate respondsToSelector:@selector(EAGLView:shouldNotHandleTouch:)])
         {
-            _displacement = CGPointZero;
-            if (touch.tapCount % 2 == 0) {
-				//_displayMode = (_displayMode + 1) % 3;
-            }            
-        } else {
-        	if ([_delegate respondsToSelector:@selector(EAGLView:shouldNotHandleTouch:)])
-        	{
-        		if ([_delegate EAGLView:self shouldNotHandleTouch:touch])
-        		{
-					[_touchesToIgnoreDragFor addObject:touch];
-        		}
-        	}
+            if ([_delegate EAGLView:self shouldNotHandleTouch:touch])
+            {
+                [_touchesToIgnoreDragFor addObject:touch];
+            }
         }
     }
 }

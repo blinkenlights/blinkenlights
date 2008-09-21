@@ -118,19 +118,20 @@ void CShell::ChoosingCamera()
     choosingCamera = YES;
 }
 
+#define DISTANCE 40
+
 void CShell::MoveCamera(float x, float y, float z)
 {
     if (!autoCamera&&!animatingCamera&&!choosingCamera) {
         z = -z;
-        int d = 40;
         
         if (ABS(x)>0) fManualViewX = fManualViewX + (x * 0.005);
         if (ABS(y)>0) fManualViewY = MAX(fManualViewY + (y * 0.005), 0.015);
         if (ABS(z)>0) fManualViewZ = MAX(fManualViewZ + (z * 0.005), 0.2);
         
-        newCameraPosition.x = VERTTYPEMUL(d, fManualViewX);
-        newCameraPosition.y = VERTTYPEMUL(d, fManualViewY);
-        newCameraPosition.z = VERTTYPEMUL(d, fManualViewZ);
+        newCameraPosition.x = VERTTYPEMUL(DISTANCE, fManualViewX);
+        newCameraPosition.y = VERTTYPEMUL(DISTANCE, fManualViewY);
+        newCameraPosition.z = VERTTYPEMUL(DISTANCE, fManualViewZ);
  
         vTo.x = f2vt(0);
         vTo.y = f2vt(10);
@@ -309,10 +310,9 @@ bool CShell::InitApplication()
 	vUp.y = f2vt(1);
 	vUp.z = f2vt(0);
 
-    int d = 40;
-    newCameraPosition.x = VERTTYPEMUL(d, fManualViewX);
-    newCameraPosition.y = VERTTYPEMUL(d, fManualViewY);
-    newCameraPosition.z = VERTTYPEMUL(d, fManualViewZ);
+    newCameraPosition.x = VERTTYPEMUL(DISTANCE, fManualViewX);
+    newCameraPosition.y = VERTTYPEMUL(DISTANCE, fManualViewY);
+    newCameraPosition.z = VERTTYPEMUL(DISTANCE, fManualViewZ);
     
 	g_sScene.ReadFromMemory(c_STEREOSCOPE_H);
 	
@@ -567,7 +567,7 @@ bool CShell::UpdateScene()
 	if (currTime.tv_usec - time.tv_usec) 
 	{
 		frameRate = ((float)frames/((currTime.tv_usec - time.tv_usec) / 1000000.0f));
-		[(AppController *)[[UIApplication sharedApplication] delegate] shellReportsFrameRate:frameRate];
+		//[(AppController *)[[UIApplication sharedApplication] delegate] shellReportsFrameRate:frameRate];
 		// AppDisplayText->DisplayText(0, 0, 0.9f, RGBA(255,255,255,255), "fps: %3.2f", frameRate);
 		time = currTime;
 		frames = 0;
@@ -657,7 +657,11 @@ void ComputeViewMatrix()
                 vFrom.z = f2vt(newFromZ);
                 animatingCamera = NO;
                 [animationStart release];
-                newCameraPosition = vFrom;                
+                newCameraPosition = vFrom;
+                
+                fManualViewX = newCameraPosition.x / DISTANCE;
+                fManualViewY = newCameraPosition.y / DISTANCE;
+                fManualViewZ = newCameraPosition.z / DISTANCE;
             }
     } else {
             vFrom = newCameraPosition;

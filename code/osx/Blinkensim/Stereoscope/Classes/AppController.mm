@@ -709,15 +709,9 @@ static AppController *s_sharedAppController;
 {    
     shell->AnimateCameraTo(0,30,40, 0,0,20);
     shell->ChoosingCamera();
-    
-    
-    
     [self hidePositionButtons:NO];
-    
-    
-    
     [self setStatusText:@"Select camera position"];
-    
+    isModalForCamera = YES;
 }
 
 #define LEFT_NEAR 1
@@ -729,36 +723,50 @@ static AppController *s_sharedAppController;
 #define LEFT_ULTRANEAR 7
 #define RIGHT_ULTRANEAR 8
 
+- (void)showPosition:(int)position
+{
+    if (position==LEFT_NEAR)
+        shell->AnimateCameraTo(-14.6,1.6,19.5, 0,10,0);
+    
+    if (position==MIDDLE_NEAR)
+        shell->AnimateCameraTo(-1.8,1.8,25, 0,10,0);
+    
+    if (position==RIGHT_NEAR)
+        shell->AnimateCameraTo(13.4,2.0,19.65, 0,10,0);
+    
+    if (position==LEFT_FAR)
+        shell->AnimateCameraTo(-11,2.2,40, 0,10,0);
+    
+    if (position==MIDDLE_FAR)
+        shell->AnimateCameraTo(0,2.2,40, 0,10,0);
+    
+    if (position==RIGHT_FAR)
+        shell->AnimateCameraTo(12.5,2.2,40, 0,10,0);
+    
+    if (position==LEFT_ULTRANEAR)
+        shell->AnimateCameraTo(-8.2,1,10.55, 0,10,0);
+    
+    if (position==RIGHT_ULTRANEAR)
+        shell->AnimateCameraTo(8.4,2.4,13.95, 0,10,0);    
+    
+    isModalForCamera = NO;
+}
+
+
+- (void)selectNextPosition 
+{
+    if (!isModalForCamera) {
+        _position = _position % 8 + 1;
+        [self showPosition:_position];
+    }    
+}
 
 - (IBAction)selectPosition:(id)inSender 
 {
     [self hidePositionButtons:YES];
     int position = [inSender tag];
-    if (position==LEFT_NEAR)
-        shell->AnimateCameraTo(-14.6,1.6,19.5, 0,10,0);
-
-    if (position==MIDDLE_NEAR)
-        shell->AnimateCameraTo(-1.8,1.8,25, 0,10,0);
-
-    if (position==RIGHT_NEAR)
-        shell->AnimateCameraTo(13.4,2.0,19.65, 0,10,0);
-
-    if (position==LEFT_FAR)
-        shell->AnimateCameraTo(-11,2.2,40, 0,10,0);
-
-    if (position==MIDDLE_FAR)
-        shell->AnimateCameraTo(0,2.2,40, 0,10,0);
-
-    if (position==RIGHT_FAR)
-        shell->AnimateCameraTo(12.5,2.2,40, 0,10,0);
-
-    if (position==LEFT_ULTRANEAR)
-        shell->AnimateCameraTo(-8.2,1,10.55, 0,10,0);
-
-    if (position==RIGHT_ULTRANEAR)
-        shell->AnimateCameraTo(8.4,2.4,13.95, 0,10,0);
-
-
+    [self showPosition:position];
+    [self fadeoutStatusText];    
 }
 
 
@@ -801,16 +809,21 @@ static AppController *s_sharedAppController;
 
 - (BOOL)EAGLView:(EAGLView *)inView shouldNotHandleTouch:(UITouch *)inTouch
 {
-	CGPoint location = [inTouch locationInView:inView];
+    if (inTouch.tapCount % 2 == 0) {
+        [self selectNextPosition];
+    }            
+	
+    CGPoint location = [inTouch locationInView:inView];
 	if (location.y > 440 && location.x > 260)
 	{
 		_infoButton.highlighted = YES;
 		return YES;
 	}
+        
 	return NO;
 }
 
-- (void)EAGLView:(EAGLView *)inView  movedUnhandledTouch:(UITouch *)inTouch {
+- (void)EAGLView:(EAGLView *)inView movedUnhandledTouch:(UITouch *)inTouch {
 	CGPoint location = [inTouch locationInView:inView];
 	if (location.y > 440 && location.x > 260) {
 		_infoButton.highlighted = YES;
@@ -827,6 +840,5 @@ static AppController *s_sharedAppController;
 		[_infoButton sendActionsForControlEvents:UIControlEventTouchUpInside];
 	}
 }
-
 
 @end

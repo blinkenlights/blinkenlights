@@ -45,6 +45,10 @@
 	NSTimeInterval _hostResolveFailureTime;
 	BOOL _fadeOutOnBlinkenframe;
 	int _xmlReadFailureCount;
+    BOOL isModalForCamera;
+    
+    
+    int _position;
 }
 
 + (AppController *)sharedAppController;
