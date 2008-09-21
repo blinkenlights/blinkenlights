@@ -126,8 +126,8 @@ void CShell::MoveCamera(float x, float y, float z)
         z = -z;
         
         if (ABS(x)>0) fManualViewX = fManualViewX + (x * 0.005);
-        if (ABS(y)>0) fManualViewY = MAX(fManualViewY + (y * 0.005), 0.015);
-        if (ABS(z)>0) fManualViewZ = MAX(fManualViewZ + (z * 0.005), 0.2);
+        if (ABS(y)>0) fManualViewY = MIN(MAX(fManualViewY + (y * 0.005), 0.015), 2);
+        if (ABS(z)>0) fManualViewZ = MIN(MAX(fManualViewZ + (z * 0.005), 0.2), 5);
         
         newCameraPosition.x = VERTTYPEMUL(DISTANCE, fManualViewX);
         newCameraPosition.y = VERTTYPEMUL(DISTANCE, fManualViewY);
