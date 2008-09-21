@@ -33,13 +33,13 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-	NSLog(@"%s",__FUNCTION__);
+//	NSLog(@"%s",__FUNCTION__);
 	[self.view startAnimation];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-	NSLog(@"%s",__FUNCTION__);
+//	NSLog(@"%s",__FUNCTION__);
 	[self.view stopAnimation];
 }
 
