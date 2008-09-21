@@ -1,7 +1,6 @@
 package de.blinkenlights.bmix.statistics;
 
 import java.io.Serializable;
-import java.util.List;
 
 public interface StatisticsItem extends Serializable {
 

@@ -1,8 +1,6 @@
 package de.blinkenlights.bmix.statistics;
 
 import java.awt.Rectangle;
-import java.util.Collections;
-import java.util.List;
 
 public class OutputStatistics implements StatisticsItem {
 
