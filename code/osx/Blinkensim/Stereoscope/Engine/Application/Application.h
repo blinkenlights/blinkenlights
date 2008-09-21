@@ -38,7 +38,9 @@ public:
 	// It is main application function in which you have to do your own rendering.  Will be
 	// called repeatedly until the application exits.
 	bool RenderScene();
-	
+
+    void ChoosingCamera();
+
 	void UpdateWindows(unsigned char *inDisplayState);
     void CShell::MoveCamera(float x, float y, float z);
     void CShell::AnimateCameraTo(float fromX, float fromY, float fromZ, float toX, float toY, float toZ);

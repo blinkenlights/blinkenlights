@@ -60,6 +60,8 @@
 @property (nonatomic, retain) NSDictionary *currentProxy;
 @property NetworkStatus previousInternetConnectionStatus;
 
+
+
 - (void)connectToProxy:(NSDictionary *)inProxy;
 - (void)shellReportsFrameRate:(float)inCurrentFrameRate;
 - (IBAction)showSettings:(id)inSender;

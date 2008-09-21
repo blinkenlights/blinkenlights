@@ -10,6 +10,7 @@
 #import "AppController.h"
 #include "Camera.h"
 #import "TableSection.h"
+#import <QuartzCore/QuartzCore.h>
 #import "Reachability.h"
 
 //CONSTANTS:
@@ -134,6 +135,25 @@ static AppController *s_sharedAppController;
     _position6Button.hidden = hidden;
     _position7Button.hidden = hidden;
     _position8Button.hidden = hidden;
+
+    double o = hidden?0.0:0.35;
+
+    [UIView beginAnimations:@"ButtonFadeIn" context:NULL];
+	[UIView setAnimationDidStopSelector:@selector(startupAnimationDidEnd:context:)];
+	[UIView setAnimationDelegate:self];
+	[UIView setAnimationDelay:1.8];
+	[UIView setAnimationDuration:hidden?0.0:1.5];
+    _position1Button.alpha = o;
+    _position2Button.alpha = o;
+    _position3Button.alpha = o;
+    _position4Button.alpha = o;
+    _position5Button.alpha = o;
+    _position6Button.alpha = o;
+    _position7Button.alpha = o;
+    _position8Button.alpha = o;
+	[UIView commitAnimations];
+    
+    
 }
 
 - (void)applicationDidFinishLaunching:(UIApplication*)inApplication
@@ -680,11 +700,24 @@ static AppController *s_sharedAppController;
 	}
 }
 
+- (void)setCameraToX:(double)inX 
+{
+    NSLog(@"new x: %f", inX);
+}
+
 - (IBAction)changeCamera:(id)inSender
 {    
-    [self hidePositionButtons:NO];
-    [self setStatusText:@"Select camera position"];
     shell->AnimateCameraTo(0,30,40, 0,0,20);
+    shell->ChoosingCamera();
+    
+    
+    
+    [self hidePositionButtons:NO];
+    
+    
+    
+    [self setStatusText:@"Select camera position"];
+    
 }
 
 #define LEFT_NEAR 1

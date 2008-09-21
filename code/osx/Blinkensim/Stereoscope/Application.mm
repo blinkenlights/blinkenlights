@@ -71,6 +71,8 @@ float frameRate;
 #define MIN_WINDOW_MESH_NO   2
 #define MAX_WINDOW_MESH_NO   5
 
+#define ANIMATIONDURATION 1.7
+
 /* Texture IDs */
 GLuint meshTexture[NO_OF_MESHES];
 GLuint skyboxTex[6];
@@ -108,12 +110,17 @@ static GLfloat windowtextureCoords[16][12];
 GLfloat *windowMeshTextureCoords[] = {NULL,NULL,NULL,NULL};
 GLfloat windowMeshTextureValues[16][2][2];
 
-BOOL autoCamera;
+BOOL autoCamera, animatingCamera, choosingCamera;
 VERTTYPE fManualViewDistance, fManualViewX, fManualViewY, fManualViewZ;
+
+void CShell::ChoosingCamera()
+{
+    choosingCamera = YES;
+}
 
 void CShell::MoveCamera(float x, float y, float z)
 {
-    if (!autoCamera) {
+    if (!autoCamera&&!animatingCamera&&!choosingCamera) {
         z = -z;
         int d = 40;
         
@@ -133,18 +140,39 @@ void CShell::MoveCamera(float x, float y, float z)
     }
 }
 
+NSDate *animationStart;
+
+float oldToX, oldToY, oldToZ, newToX, newToY, newToZ;
+float oldFromX, oldFromY, oldFromZ, newFromX, newFromY, newFromZ;
+
 void CShell::AnimateCameraTo(float fromX, float fromY, float fromZ, float toX, float toY, float toZ)
 {
     NSLog(@"Camera: %f %f %f", vt2f(vCameraPosition.x), vt2f(vCameraPosition.y), vt2f(vCameraPosition.z));
-
-    vTo.x = f2vt(toX);
-    vTo.y = f2vt(toY);
-    vTo.z = f2vt(toZ);
-
-    newCameraPosition.x = f2vt(fromX);
-    newCameraPosition.y = f2vt(fromY);
-    newCameraPosition.z = f2vt(fromZ);
+    animatingCamera = YES;
+    animationStart = [[NSDate date] retain];
     
+    newToX = toX; newToY = toY; newToZ = toZ;
+    newFromX = fromX; newFromY = fromY; newFromZ = fromZ;
+    
+    oldToX = vt2f(vTo.x);
+    oldToY = vt2f(vTo.y);
+    oldToZ = vt2f(vTo.z);
+    
+    oldFromX = vt2f(vCameraPosition.x);
+    oldFromY = vt2f(vCameraPosition.y);
+    oldFromZ = vt2f(vCameraPosition.z);
+        
+//
+//    vTo.x = f2vt(toX);
+//    vTo.y = f2vt(toY);
+//    vTo.z = f2vt(toZ);
+//
+//    newCameraPosition.x = f2vt(fromX);
+//    newCameraPosition.y = f2vt(fromY);
+//    newCameraPosition.z = f2vt(fromZ);
+
+    choosingCamera = NO;
+
 }
 
 
@@ -255,6 +283,7 @@ void CShell::UpdateWindows(unsigned char *inDisplayState)
 bool CShell::InitApplication()
 {
     autoCamera = NO;
+    animatingCamera = NO;
 
     fManualViewDistance = 40;
     fManualViewX = 0;
@@ -570,7 +599,7 @@ bool CShell::RenderScene()
 	
 	// show text on the display
 	//AppDisplayText->DisplayDefaultTitle("Stereoscope", "Debug Info", eDisplayTextLogoNone);
-	
+
 	// AppDisplayText->Flush();	
 	
 	return true;
@@ -604,8 +633,34 @@ void ComputeViewMatrix()
         vFrom.z = VERTTYPEMUL(distance, SIN(fViewAngle));
         fViewAngle += f2vt(viewAngleStep);
         if (ABS(fViewAngle-PIOVERTWO)>1) viewAngleStep = -viewAngleStep;
+    } else if (animatingCamera) {
+            NSDate *now = [NSDate date];
+            double t = [now timeIntervalSinceDate:animationStart];
+            double progress =  t / ANIMATIONDURATION;
+            //NSLog(@"foo: %f", progress);
+
+            progress = pow(progress,0.25);
+        
+            if (progress<=1.0) {
+                vTo.x = f2vt(oldToX + (newToX-oldToX) * progress);
+                vTo.y = f2vt(oldToY + (newToY-oldToY) * progress);
+                vTo.z = f2vt(oldToZ + (newToZ-oldToZ) * progress);
+                vFrom.x = f2vt(oldFromX + (newFromX-oldFromX) * progress);
+                vFrom.y = f2vt(oldFromY + (newFromY-oldFromY) * progress);
+                vFrom.z = f2vt(oldFromZ + (newFromZ-oldFromZ) * progress);
+            } else {
+                vTo.x = f2vt(newToX);
+                vTo.y = f2vt(newToY);
+                vTo.z = f2vt(newToZ);
+                vFrom.x = f2vt(newFromX);
+                vFrom.y = f2vt(newFromY);
+                vFrom.z = f2vt(newFromZ);
+                animatingCamera = NO;
+                [animationStart release];
+                newCameraPosition = vFrom;                
+            }
     } else {
-        vFrom = newCameraPosition;
+            vFrom = newCameraPosition;
     }
     
 	
