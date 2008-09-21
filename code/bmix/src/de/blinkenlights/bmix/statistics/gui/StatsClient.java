@@ -2,7 +2,7 @@ package de.blinkenlights.bmix.statistics.gui;
 
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
+import java.awt.image.BufferStrategy;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectInputStream;
@@ -17,6 +17,8 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
+import sun.tools.jconsole.CreateMBeanDialog;
+
 import de.blinkenlights.bmix.statistics.FrameStatistics;
 import de.blinkenlights.bmix.statistics.StatServer;
 
@@ -28,6 +30,8 @@ public class StatsClient implements Runnable {
 	private final StatsComponent statsComponent;
 	private final InetAddress serverAddr;
 
+    private final JFrame f;
+
 	public StatsClient(InetAddress serverAddr) throws IOException {
 		this.serverAddr = serverAddr;
 		Socket s = new Socket(serverAddr, StatServer.STAT_PORT);
@@ -36,10 +40,10 @@ public class StatsClient implements Runnable {
 		if (!s.isConnected()) throw new IOException("Not connected to server");
 		System.out.println("Connected");
 		statsComponent = new StatsComponent();
+		f = new JFrame("BMix statistics: " + serverAddr.getHostAddress());
 	}
 
 	private void buildGUI() {
-	    final JFrame f = new JFrame("BMix statistics: " + serverAddr.getHostAddress());
 	    f.add(statsComponent);
 	    f.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 	    final Preferences prefs = Preferences.userNodeForPackage(StatsClient.class);
@@ -63,6 +67,7 @@ public class StatsClient implements Runnable {
         int height = prefs.getInt("frameHeight", 600);
         f.setBounds(x, y, width, height);
 	    f.setVisible(true);
+	    f.createBufferStrategy(2);
     }
 	
 	public void run() {
@@ -73,6 +78,8 @@ public class StatsClient implements Runnable {
 			for (;;) {
 				FrameStatistics stats = (FrameStatistics) new ObjectInputStream(in).readObject();
 				statsComponent.update(stats);
+				statsComponent.paint(f.getBufferStrategy(), f.getInsets());
+
 			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -89,11 +96,7 @@ public class StatsClient implements Runnable {
 			prefs.put("bmixHost", bmixHost);
 			prefs.flush();
 			final StatsClient statsClient = new StatsClient(InetAddress.getByName(bmixHost));
-			SwingUtilities.invokeLater(new Runnable() {
-                public void run() {
-                    statsClient.buildGUI();
-                }
-            });
+			statsClient.buildGUI();
 			statsClient.run();
 		} catch (Exception ex) {
 			ex.printStackTrace();
