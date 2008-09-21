@@ -96,7 +96,30 @@ public class InputStatistics implements StatisticsItem {
 	}
 
 	public String toHtml() {
-		// TODO Auto-generated method stub
-		return "<html><p>TODO"; // TODO
+	    StringBuilder relaySenders = new StringBuilder();
+        for(Map.Entry<String, Integer> ent : relaySenderMap.entrySet()) {
+            relaySenders.append(ent.getKey()).append(":").append(ent.getValue()).append("<br>");
+        }
+        String blinkenproxy;
+        if (heartBeatDestAddr == null) {
+            blinkenproxy = "none";
+        } else {
+            blinkenproxy = heartBeatDestAddr + ":" + heartBeatDestPort;
+        }
+	    return String.format(
+	            "<html><table cellpadding=1 cellspacing=0>" +
+	            "<tr><th colspan=2>Input %s (%d)" +
+	            "<tr><td>Blinkenproxy<td>%s" +
+	            "<tr><td>Alpha Mode<td>%s" +
+	            "<tr><td>Key Colour<td>#%8x" +
+	            "<tr><td>Last Packet<td>%d" +
+	            "<tr><td>Relay Senders<td>%s",
+	            name,
+	            inputPort,
+	            blinkenproxy,
+	            alphaMode.name(),
+	            chromaKeyColor.getRGB(),
+	            lastPacketReceiveTime,
+	            relaySenders);
 	}
 }

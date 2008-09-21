@@ -79,7 +79,7 @@ public class FrameStatistics implements Serializable {
 					System.identityHashCode(output),
 					output.getViewport().getViewport(), 
 					output.getDestAddr(), output.getDestPort(), output.getMinSendInterval(), 
-					output.getPacketType().name(), output.getMultiframeBpp());
+					output.getPacketType(), output.getMultiframeBpp());
 			outputStats.add(outputStat);
 		}
 	}

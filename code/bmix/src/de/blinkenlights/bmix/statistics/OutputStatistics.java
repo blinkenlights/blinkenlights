@@ -2,6 +2,8 @@ package de.blinkenlights.bmix.statistics;
 
 import java.awt.Rectangle;
 
+import de.blinkenlights.bmix.mixer.Output.PacketType;
+
 public class OutputStatistics implements StatisticsItem {
 
 	private static final long serialVersionUID = -982303235686899928L;
@@ -15,12 +17,12 @@ public class OutputStatistics implements StatisticsItem {
 	private final String destAddr;
 	private final int destPort;
 	private final long minSendInterval;
-	private final String packetType;
+	private final PacketType packetType;
 	private final int multiframeBpp;
 
 
 	public OutputStatistics(long id, Rectangle viewport, String destAddr, int destPort,
-			long minSendInterval, String packetType, int multiframeBpp) {
+			long minSendInterval, PacketType packetType, int multiframeBpp) {
 				this.id = id;
 				this.viewport = viewport;
 				this.destAddr = destAddr;
@@ -50,7 +52,7 @@ public class OutputStatistics implements StatisticsItem {
 		return minSendInterval;
 	}
 
-	public String getPacketType() {
+	public PacketType getPacketType() {
 		return packetType;
 	}
 	
@@ -75,6 +77,21 @@ public class OutputStatistics implements StatisticsItem {
 	}
 
 	public String toHtml() {
-		return "<html><p>TODO";
+	    String packetTypeDesc = packetType.name();
+	    if (packetType == PacketType.MCU_FRAME) {
+	        packetTypeDesc += " (maxval 255)";
+	    } else if (packetType == PacketType.MCU_MULTIFRAME) {
+	        packetTypeDesc += " (" + multiframeBpp + " bpp)";
+	    }
+        return String.format(
+                "<html><table cellpadding=1 cellspacing=0>" +
+                "<tr><th colspan=2>Output %s:%d" +
+                "<tr><td>Viewport<td>%dx%d+%d+%d" +
+                "<tr><td>Min frame interval<td>%dms" +
+                "<tr><td>Packet Type<td>%s",
+                destAddr, destPort,
+                viewport.width, viewport.height, viewport.x, viewport.y,
+                minSendInterval,
+                packetTypeDesc);
 	}
 }
