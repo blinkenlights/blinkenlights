@@ -14,6 +14,21 @@ static NSString * const labelCellIdentifier = @"LabelCell";
 @implementation SettingsController
 @synthesize projectTableSections;
 
+- (NSDictionary *)manualProxy {
+	NSArray *components = [[[NSUserDefaults standardUserDefaults] stringForKey:@"blinkenproxyAddress"] componentsSeparatedByString:@":"];
+	NSString *address = [components count]>0 ? [components objectAtIndex:0] : @"";
+	NSString *port    = [components count]>1 ? [components objectAtIndex:1] : nil;
+	return [NSDictionary dictionaryWithObjectsAndKeys:
+					address,@"address",
+					port, @"port", // warning if no port port dictionary stops here
+					nil];
+}
+
+- (BOOL)manualProxyIsSet {
+	NSString *proxy = [[NSUserDefaults standardUserDefaults] stringForKey:@"blinkenproxyAddress"];
+	return (proxy && [proxy length]);
+}
+
 - (void)innerInit
 {
 		projectTableSections = [NSMutableArray new];
@@ -83,7 +98,7 @@ static NSString * const labelCellIdentifier = @"LabelCell";
 	} else if (section < [projectTableSections count] + SECTIONS_BEFORE_PROXY_LIST) {
 		return [[[projectTableSections objectAtIndex:section - SECTIONS_BEFORE_PROXY_LIST] items] count];
 	} else {
-		return 2;
+		return ([self manualProxyIsSet] ? 2 : 1);
 	}
 }
 
@@ -130,7 +145,7 @@ static NSString * const labelCellIdentifier = @"LabelCell";
 		cell.text = baseString;
 		cell.accessoryType = [proxy isEqual:[[AppController sharedAppController] currentProxy]] ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
 	} else {
-		if (indexPath.row == 0) {
+		if (indexPath.row == 0 && [self manualProxyIsSet]) {
 			NSString *address = [[NSUserDefaults standardUserDefaults] stringForKey:@"blinkenproxyAddress"];
 			cell.text = address;
 			cell.accessoryType = [[self manualProxy] isEqual:[[AppController sharedAppController] currentProxy]] ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
@@ -152,16 +167,6 @@ static NSString * const labelCellIdentifier = @"LabelCell";
 
 @synthesize editingViewController;
 
-- (NSDictionary *)manualProxy {
-	NSArray *components = [[[NSUserDefaults standardUserDefaults] stringForKey:@"blinkenproxyAddress"] componentsSeparatedByString:@":"];
-	NSString *address = [components count]>0 ? [components objectAtIndex:0] : @"";
-	NSString *port    = [components count]>1 ? [components objectAtIndex:1] : nil;
-	return [NSDictionary dictionaryWithObjectsAndKeys:
-					address,@"address",
-					port, @"port", // warning if no port port dictionary stops here
-					nil];
-}
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
 
@@ -171,7 +176,7 @@ static NSString * const labelCellIdentifier = @"LabelCell";
 		[[AppController sharedAppController] connectToProxy:proxy];
 		[[AppController sharedAppController] doneWithSettings:nil];
 	} else if (indexPath.section == [projectTableSections count] + SECTIONS_BEFORE_PROXY_LIST) {
-		if (indexPath.row == 0) {
+		if (indexPath.row == 0 && [self manualProxyIsSet]) {
 			[[AppController sharedAppController] connectToManualProxy];
 			[[AppController sharedAppController] doneWithSettings:nil];
 		} else {
@@ -194,6 +199,13 @@ static NSString * const labelCellIdentifier = @"LabelCell";
 	}
 }
 
+- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	if (indexPath.section < SECTIONS_BEFORE_PROXY_LIST) {
+		return nil;
+	} else {
+		return indexPath;
+	}
+}
 
 /*
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

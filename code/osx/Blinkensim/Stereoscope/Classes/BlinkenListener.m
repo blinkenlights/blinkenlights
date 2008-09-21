@@ -59,7 +59,7 @@ static void readData (
 
 - (void)setProxyAddress:(NSString *)inProxyAddress
 {
-    NSLog(@"%s %@",__FUNCTION__,inProxyAddress);
+//    NSLog(@"%s %@",__FUNCTION__,inProxyAddress);
     if (_proxyAddressData) {
         CFRelease(_proxyAddressData);
         _proxyAddressData = nil;
@@ -92,7 +92,7 @@ static void readData (
             }
         }
         
-        NSLog(@"%s proxyHost:%@ address:%@",__FUNCTION__,proxyHost,addressString);
+//        NSLog(@"%s proxyHost:%@ address:%@",__FUNCTION__,proxyHost,addressString);
         
         bzero(&socketAddress, sizeof(struct sockaddr_in));
         socketAddress.sin_len = sizeof(struct sockaddr_in);
@@ -103,7 +103,7 @@ static void readData (
         addressData = CFDataCreate(kCFAllocatorDefault, (UInt8 *)&socketAddress, sizeof(struct sockaddr_in));
         
         _proxyAddressData = addressData;
-        NSLog(@"%s did set proxy address data to: %@",__FUNCTION__,[NSString stringWithAddressData:(NSData *)_proxyAddressData]);
+//        NSLog(@"%s did set proxy address data to: %@",__FUNCTION__,[NSString stringWithAddressData:(NSData *)_proxyAddressData]);
 
     }
     else
@@ -161,7 +161,7 @@ static void readData (
         I_listeningSocket = CFSocketCreate(kCFAllocatorDefault, PF_INET, SOCK_DGRAM, IPPROTO_UDP, 
                                            kCFSocketDataCallBack, readData, &socketContext);
         if (I_listeningSocket) {
-            NSLog(@"%s having my socket",__FUNCTION__);
+//            NSLog(@"%s having my socket",__FUNCTION__);
             int result = setsockopt(CFSocketGetNative(I_listeningSocket), SOL_SOCKET, 
                                     SO_REUSEADDR, &yes, sizeof(int));
             if (result == -1) {
@@ -237,7 +237,7 @@ static void readData (
         I_proxySocket = CFSocketCreate(kCFAllocatorDefault, PF_INET, SOCK_DGRAM, IPPROTO_UDP, 
                                        kCFSocketDataCallBack, readData, &socketContext);
         if (I_proxySocket) {
-            NSLog(@"%s having my socket",__FUNCTION__);
+//            NSLog(@"%s having my socket",__FUNCTION__);
             int result = setsockopt(CFSocketGetNative(I_proxySocket), SOL_SOCKET, 
                                     SO_REUSEADDR, &yes, sizeof(int));
             if (result == -1) {
