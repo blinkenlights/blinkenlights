@@ -64,8 +64,8 @@ public class Frame implements BLImage {
 		rowCount ++;
 	}
 
-	public void fillBufferedImage(BufferedImage bi) {
-		Graphics2D g2 = (Graphics2D)bi.getGraphics();
+	public void fillBufferedImage(BufferedImage target) {
+		Graphics2D g2 = (Graphics2D)target.getGraphics();
 		g2.drawImage(img, 0, 0, null);
 	}
 	
