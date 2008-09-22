@@ -1,14 +1,23 @@
 BMix Notes
 
 ==StatsClient To do==
-* make a game loop
+* (bmix) maintain order of inputs and outputs when parsing bmix.xml, then ensure order is carried through to stats
+* centre columns vertically
+* render input graphics on each input infobox
+* render vmatrix
+* show output and input viewports over vmatrix
 * outputs should have names
-* use dashed line and change phase when packets received
+* draw arrows down the layer stack?
 * generate OIDs for each real object that is the subject of bmix statistics
-* stats should send number of frame since last update
 * better startup - bullet-proofingness
 * pack the frame after getting data
 * represet relay senders as separate boxes
+
+===v1.3===
+* new config and runtime statistics network protocol with GUI client. features include:
+** 
+* configurable chroma key color (default is still black)
+* shadow mode on each input to allow background layer to partially show through the transparent parts
 
 ===v1.2===
 * more status messages on debug
@@ -18,7 +27,6 @@ BMix Notes
 ==Future Features==
 
 * "live" reconfigure without restart
-* configuration for chroma key color
 
 ==Other/Infrastructure== 
 

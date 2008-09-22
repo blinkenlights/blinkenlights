@@ -8,6 +8,7 @@ import java.awt.Graphics2D;
 import java.awt.Insets;
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.awt.RenderingHints;
 import java.awt.image.BufferStrategy;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -69,7 +70,7 @@ public class StatsComponent extends JPanel {
 	/**
 	 * Manages the positioning of infoboxes within a column.
 	 */
-	private static class Column {
+	private class Column {
 	    
 	    Rectangle bounds = new Rectangle();
 	    List<InfoBox> items = new ArrayList<InfoBox>();
@@ -110,6 +111,7 @@ public class StatsComponent extends JPanel {
             }
             
             bounds.height = y;
+            bounds.y = StatsComponent.this.getHeight() / 2 - bounds.height / 2;
         }
 	}
 	private final Map<Long, InfoBox> infoBoxes = new HashMap<Long, InfoBox>();
@@ -176,33 +178,34 @@ public class StatsComponent extends JPanel {
 	    }
 	    Graphics2D g = (Graphics2D) bufferStrategy.getDrawGraphics().create(
 	            insets.left, insets.top, getWidth(), getHeight());
+	    g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 	    g.setColor(getBackground());
 	    g.fillRect(0, 0, getWidth(), getHeight());
 	    g.setColor(getForeground());
 	    inputsColumn.bounds.x = 0;
         inputsColumn.paint(
                 (Graphics2D) g.create(
-                        inputsColumn.bounds.x, 0,
+                        inputsColumn.bounds.x, inputsColumn.bounds.y,
                         inputsColumn.bounds.width, inputsColumn.bounds.height));
         
         layersColumn.bounds.x = getWidth() / 2 - layersColumn.bounds.width / 2;
         layersColumn.paint(
                 (Graphics2D) g.create(
-                        layersColumn.bounds.x, 0,
+                        layersColumn.bounds.x, layersColumn.bounds.y,
                         layersColumn.bounds.width, layersColumn.bounds.height));
         
         for (InfoBox layerBox : layersColumn.items) {
             if (layerBox.pointsTo != null) {
-                InfoBox sourceInputBox = layerBox.pointsTo;
                 Point p1 = layerBox.display.getLocation();
-                p1.y += layerBox.display.getHeight() / 2;
+                p1.y += layersColumn.bounds.y + layerBox.display.getHeight() / 2;
                 
+                InfoBox sourceInputBox = layerBox.pointsTo;
                 Point p2 = sourceInputBox.display.getLocation();
-                p2.y += sourceInputBox.display.getHeight() / 2;
+                p2.y += inputsColumn.bounds.y + sourceInputBox.display.getHeight() / 2;
                 p2.x += sourceInputBox.display.getWidth();
                 
                 g.setStroke(new BasicStroke(
-                        1.00001f, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND, 0f,
+                        1.5f, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND, 0f,
                         DASH_PATTERN, layerBox.getDashPhase()));
                 g.drawLine(p1.x, p1.y, p2.x, p2.y);
             }
@@ -211,7 +214,7 @@ public class StatsComponent extends JPanel {
         outputsColumn.bounds.x = getWidth() - outputsColumn.bounds.width;
         outputsColumn.paint(
                 (Graphics2D) g.create(
-                        outputsColumn.bounds.x, 0,
+                        outputsColumn.bounds.x, outputsColumn.bounds.y,
                         outputsColumn.bounds.width, outputsColumn.bounds.height));
         
         bufferStrategy.show();
