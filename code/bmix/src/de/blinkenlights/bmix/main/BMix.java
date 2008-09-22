@@ -9,6 +9,7 @@ import java.io.InputStream;
 import java.net.InetAddress;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Handler;
@@ -173,12 +174,12 @@ public class BMix extends Monitor {
         /**
          * Maps input IDs to the packet receivers responsible for those inputs.
          */
-        private final Map<String, BLPacketReceiver> inputs = new HashMap<String, BLPacketReceiver>();
+        private final Map<String, BLPacketReceiver> inputs = new LinkedHashMap<String, BLPacketReceiver>();
         
         /**
          * Mapping of inputs to the layers they feed. Inverse of {@link #layerSources}
          */
-        private final Map<BLPacketReceiver, List<Layer>> layerInputs = new HashMap<BLPacketReceiver, List<Layer>>();
+        private final Map<BLPacketReceiver, List<Layer>> layerInputs = new LinkedHashMap<BLPacketReceiver, List<Layer>>();
 
         /**
          * Mapping of layers to inputs that feed them. Inverse of {@link #layerInputs}
