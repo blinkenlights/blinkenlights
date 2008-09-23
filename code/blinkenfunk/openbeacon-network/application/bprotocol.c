@@ -96,7 +96,7 @@ static int b_parse_mcu_multiframe (mcu_multiframe_header_t *header, unsigned int
 			LampMap *m = env.e.lamp_map + i;
 			unsigned int index = (m->y * sub->width) + m->x;
 
-			if (index >= maxlen)
+			if (sizeof(*sub) + (index / 2) >= maxlen)
 				continue;
 
 			if (m->screen != sub->screen_id ||
@@ -173,6 +173,7 @@ static inline void b_set_gamma_curve (int lamp_mac, unsigned int block, unsigned
 	for (i = 0; i < 8; i++)
 		rfpkg.set_gamma.val[i] = gamma[i];
 
+	hex_dump((unsigned char *) &rfpkg, 0, sizeof(rfpkg));
 	vnRFTransmitPacket(&rfpkg);
 }
 

@@ -73,6 +73,10 @@ typedef struct
       unsigned long packet_count;
     } PACKED statistics;
 
+    struct {
+      unsigned short delay;
+    } PACKED set_delay;
+
   } PACKED; /* union */
 
   unsigned short crc;
