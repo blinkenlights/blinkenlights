@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.swing.Icon;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
@@ -30,7 +31,6 @@ public class StatsComponent extends JPanel {
 
     private static class InfoBox {
 		
-		private final long id;
 		private InfoBox pointsTo;
 		
 		/**
@@ -39,10 +39,10 @@ public class StatsComponent extends JPanel {
 		 * left corner of the overall stats component (not the column).
 		 */
 		private RoundedLabel display;
+		
         private StatisticsItem stats;
 		
-		public InfoBox(long id) {
-			this.id = id;
+		public InfoBox() {
 			display = new RoundedLabel(4);
 			display.setForeground(Color.WHITE);
 		}
@@ -50,6 +50,12 @@ public class StatsComponent extends JPanel {
 		public void updateStats(StatisticsItem stats) {
 			this.stats = stats;
             display.setText(stats.toHtml());
+            if (stats instanceof Icon) {
+                System.err.println("Setting icon for stats " + stats.getName());
+                display.setIcon((Icon) stats);
+            } else {
+                display.setIcon(null);
+            }
 			display.setSize(display.getPreferredSize());
 		}
 
@@ -76,12 +82,10 @@ public class StatsComponent extends JPanel {
 	    List<InfoBox> items = new ArrayList<InfoBox>();
 	    
 	    void addItem(InfoBox item) {
-	        System.err.println("Item added on " + Thread.currentThread().getName());
 	        items.add(item);
 	    }
 	    
 	    void removeItem(InfoBox item) {
-            System.err.println("Item removed on " + Thread.currentThread().getName());
 	        items.remove(item);
 	    }
 	    
@@ -131,7 +135,7 @@ public class StatsComponent extends JPanel {
 	    for (InputStatistics is : stats.getInputStats()) {
 	        InfoBox infoBox = infoBoxes.get(is.getId());
 	        if (infoBox == null) {
-	            infoBox = new InfoBox(is.getId());
+	            infoBox = new InfoBox();
 	            infoBoxes.put(is.getId(), infoBox);
 	            inputsColumn.addItem(infoBox);
 	        }
@@ -141,7 +145,7 @@ public class StatsComponent extends JPanel {
 	    for (LayerStatistics ls : stats.getLayerStats()) {
 	        InfoBox infoBox = infoBoxes.get(ls.getId());
 	        if (infoBox == null) {
-	            infoBox = new InfoBox(ls.getId());
+	            infoBox = new InfoBox();
 	            
 	            if (ls.getInputStat() != null) {
 	                InfoBox feeder = infoBoxes.get(ls.getInputStat().getId());
@@ -157,7 +161,7 @@ public class StatsComponent extends JPanel {
 	    for (OutputStatistics os : stats.getOutputStats()) {
 	        InfoBox infoBox = infoBoxes.get(os.getId());
 	        if (infoBox == null) {
-	            infoBox = new InfoBox(os.getId());
+	            infoBox = new InfoBox();
 	            infoBoxes.put(os.getId(), infoBox);
 	            outputsColumn.addItem(infoBox);
 	        }

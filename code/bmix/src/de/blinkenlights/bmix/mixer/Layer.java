@@ -168,4 +168,13 @@ public class Layer implements BLImage {
 		}
 		return 1.0f;
 	}
+
+    public void fillArray(int[] imageData) {
+        if (imageData.length != biPixels.length) {
+            throw new IllegalArgumentException(
+                    "Incorrect array size. I need: " +
+                    biPixels.length + "; You gave: " + imageData.length);
+        }
+        System.arraycopy(biPixels, 0, imageData, 0, biPixels.length);
+    }
 }

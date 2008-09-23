@@ -1,17 +1,20 @@
 BMix Notes
 
 ==StatsClient To do==
-* (bmix) maintain order of inputs and outputs when parsing bmix.xml, then ensure order is carried through to stats
-* centre columns vertically
-* render input graphics on each input infobox
+* fix background layer framerate lie (it appears to get a new frame constantly, even if there is no input activity)
 * render vmatrix
 * show output and input viewports over vmatrix
+* visualize inputs that are timed out
 * outputs should have names
 * draw arrows down the layer stack?
 * generate OIDs for each real object that is the subject of bmix statistics
 * better startup - bullet-proofingness
-* pack the frame after getting data
-* represet relay senders as separate boxes
+* represent relay senders as separate boxes
+
+===Done===
+* centre columns vertically
+* render input graphics on each layer infobox
+
 
 ===v1.3===
 * new config and runtime statistics network protocol with GUI client. features include:

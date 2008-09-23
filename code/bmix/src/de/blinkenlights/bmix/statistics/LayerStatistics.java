@@ -1,10 +1,17 @@
 package de.blinkenlights.bmix.statistics;
 
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.Rectangle;
-import java.util.Collections;
-import java.util.List;
+import java.awt.image.BufferedImage;
+import java.awt.image.DataBufferInt;
 
-public class LayerStatistics implements StatisticsItem {
+import javax.swing.Icon;
+
+import de.blinkenlights.bmix.mixer.Layer;
+
+public class LayerStatistics implements StatisticsItem, Icon {
 
 	private static final long serialVersionUID = 4810378087586013021L;
 	
@@ -16,7 +23,11 @@ public class LayerStatistics implements StatisticsItem {
 	private final InputStatistics inputStat;
 	private final Rectangle viewport;
 	private final float opacity;
+    private final Dimension imageSize;
+    private final int[] imageData;
 
+    private transient BufferedImage frame;
+    
 	/**
 	 * Creates a new LayerStatistics.
 	 * 
@@ -28,14 +39,17 @@ public class LayerStatistics implements StatisticsItem {
 	 * @param opacity
 	 *            the opacity during mixdown
 	 */
-	public LayerStatistics(long id, InputStatistics inputStat, Rectangle viewport, float opacity) {
-		this.id = id;
-		if (viewport == null) {
+	public LayerStatistics(InputStatistics inputStat, Layer layer) {
+		id = System.identityHashCode(layer);
+		if (layer.getViewport() == null) {
 			throw new NullPointerException("viewport was null");
 		}
 		this.inputStat = inputStat;
-		this.viewport = viewport;
-		this.opacity = opacity;
+		viewport = layer.getViewport();
+		opacity = layer.getOpacity();
+		imageSize = new Dimension(layer.getImageWidth(), layer.getImageHeight());
+		imageData = new int[imageSize.width * imageSize.height];
+		layer.fillArray(imageData);
 	}
 
 	public long getId() {
@@ -68,14 +82,18 @@ public class LayerStatistics implements StatisticsItem {
 		return str.toString();
 	}
 
-	public List<StatisticsItem> getChildren() {
-		return Collections.emptyList();
-	}
-
 	public String getName() {
 		return "Layer";
 	}
 
+	public Dimension getImageSize() {
+        return imageSize;
+    }
+	
+	public int[] getImageData() {
+        return imageData;
+    }
+	
 	public String toHtml() {
 		return String.format(
 			"<html><table>" +
@@ -86,4 +104,34 @@ public class LayerStatistics implements StatisticsItem {
 		    viewport.width, viewport.height, viewport.x, viewport.y,
 			opacity);
 	}
+
+    public int getIconHeight() {
+        return getImageSize().height;
+    }
+
+    public int getIconWidth() {
+        return getImageSize().width;
+    }
+
+    public void paintIcon(Component c, Graphics g, int x, int y) {
+        if (frame == null) {
+            frame = new BufferedImage(getIconWidth(), getIconHeight(), BufferedImage.TYPE_INT_ARGB);
+            int[] pixels = ((DataBufferInt) frame.getRaster().getDataBuffer()).getData();
+            if (pixels.length != imageData.length) {
+                throw new AssertionError(
+                        "Pixel sizes don't line up. Expected " +
+                        pixels.length + ", got " + imageData.length);
+            }
+            System.arraycopy(imageData, 0, pixels, 0, pixels.length);
+//            int nonzero = 0;
+//            for (int i = 0; i < pixels.length; i++) {
+//                pixels[i] = imageData[i];
+//                if (pixels[i] != 0) {
+//                    nonzero++;
+//                }
+//            }
+//            System.err.println("Copied " + pixels.length + " pixels. nonzero=" + nonzero);
+        }
+        g.drawImage(frame, x, y, null);
+    }
 }

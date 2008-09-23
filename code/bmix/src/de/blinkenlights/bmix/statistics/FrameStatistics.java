@@ -1,9 +1,7 @@
 package de.blinkenlights.bmix.statistics;
 
-import java.awt.Color;
 import java.io.Serializable;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -11,8 +9,6 @@ import java.util.Map;
 import de.blinkenlights.bmix.mixer.Layer;
 import de.blinkenlights.bmix.mixer.Output;
 import de.blinkenlights.bmix.network.BLPacketReceiver;
-import de.blinkenlights.bmix.network.BLPacketSender;
-import de.blinkenlights.bmix.network.BLPacketReceiver.AlphaMode;
 
 public class FrameStatistics implements Serializable {
 	private static final long serialVersionUID = 1234567890L;
@@ -36,25 +32,10 @@ public class FrameStatistics implements Serializable {
 
 	private void addInputs(Map<BLPacketReceiver, List<Layer>> layerInputs) {
 		inputReceiverMap = new HashMap<BLPacketReceiver, InputStatistics>();
-		Iterator<BLPacketReceiver> inputs = layerInputs.keySet().iterator();
 	
 		// go through all the inputs
-		while(inputs.hasNext()) {
-			BLPacketReceiver input = inputs.next();
-			int inputPort = input.getPort();
-			String heartBeatDestAddr = input.getHeartBeatDestAddr();
-			int hearBeatDestPort = input.getHeartBeatDestPort();
-			List<BLPacketSender> relaySenders = input.getRelaySenders();
-			AlphaMode alphaMode = input.getAlphaMode();
-			Color chromaKeyColor = input.getTransparentColour();
-			long lastPacketReceiveTime = input.getLastPacketReceiveTime();
-			long frameCount = input.getFrameCount();
-			InputStatistics inputStat = new InputStatistics(
-					System.identityHashCode(input),
-					input.getName(), inputPort, 
-					heartBeatDestAddr, hearBeatDestPort,
-					relaySenders, alphaMode, chromaKeyColor, 
-					lastPacketReceiveTime, frameCount);
+		for (BLPacketReceiver input : layerInputs.keySet()) {
+			InputStatistics inputStat = new InputStatistics(input);
 			inputStats.add(inputStat);
 			inputReceiverMap.put(input, inputStat);
 		}
@@ -64,9 +45,7 @@ public class FrameStatistics implements Serializable {
 	private void addLayers(Layer layer, Map<Layer, BLPacketReceiver> layerSources) {
 		BLPacketReceiver receiver = layerSources.get(layer);
 		InputStatistics inputStat = inputReceiverMap.get(receiver); // note: can be null (eg, root layer)
-		LayerStatistics layerStat = new LayerStatistics(
-				System.identityHashCode(layer),
-				inputStat, layer.getViewport(), layer.getOpacity());
+		LayerStatistics layerStat = new LayerStatistics(inputStat, layer);
 		layerStats.add(0, layerStat);
 		
 		for (Layer l : layer.getLayers()) {

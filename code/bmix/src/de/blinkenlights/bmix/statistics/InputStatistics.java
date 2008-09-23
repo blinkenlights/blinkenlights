@@ -2,9 +2,9 @@ package de.blinkenlights.bmix.statistics;
 
 import java.awt.Color;
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 
+import de.blinkenlights.bmix.network.BLPacketReceiver;
 import de.blinkenlights.bmix.network.BLPacketSender;
 import de.blinkenlights.bmix.network.BLPacketReceiver.AlphaMode;
 
@@ -27,20 +27,19 @@ public class InputStatistics implements StatisticsItem {
 	private final String name;
 	private final long frameCount;
 
-	public InputStatistics(long id, String name, int inputPort, String heartBeatDestAddr, int heartBeatDestPort,
-			List<BLPacketSender> relaySenders, AlphaMode alphaMode, Color chromaKeyColor,
-			long lastPacketReceiveTime, long frameCount) {
-		this.id = id;
-		this.name = name;
-		this.inputPort = inputPort;
-		this.heartBeatDestAddr = heartBeatDestAddr;
-		this.heartBeatDestPort = heartBeatDestPort;
-		this.alphaMode = alphaMode;
-		this.chromaKeyColor = chromaKeyColor;
-		this.lastPacketReceiveTime = lastPacketReceiveTime;
-		this.frameCount = frameCount;
+	public InputStatistics(BLPacketReceiver input) {
+	    this.id = System.identityHashCode(input);
+	    this.name = input.getName();
+        this.inputPort = input.getPort();
+        this.heartBeatDestAddr = input.getHeartBeatDestAddr();
+        this.heartBeatDestPort = input.getHeartBeatDestPort();
+        this.alphaMode = input.getAlphaMode();
+        this.chromaKeyColor = input.getTransparentColour();
+        this.lastPacketReceiveTime = input.getLastPacketReceiveTime();
+        this.frameCount = input.getFrameCount();
+        
 		relaySenderMap = new LinkedHashMap<String, Integer>();
-		for(BLPacketSender relaySender: relaySenders) {
+		for(BLPacketSender relaySender: input.getRelaySenders()) {
 			relaySenderMap.put(relaySender.getAddress(), relaySender.getPort());
 		}
 	}
