@@ -216,6 +216,14 @@ bParsePacket (void)
       DumpUIntToUSB (env.e.dimmer_delay);
       DumpStringToUSB ("\n");
       break;
+    case RF_CMD_SET_DIMMER_CONTROL:
+      if (pkg.dimmer_control.off)
+        DumpStringToUSB ("forcing dimmer off.\n");
+      else
+        DumpStringToUSB ("dimmer operating.\n");
+
+      vSetDimmerOff (pkg.dimmer_control.off);
+      break;
     case RF_CMD_ENTER_UPDATE_MODE:
       if (pkg.payload[0] != 0xDE ||
 	  pkg.payload[1] != 0xAD ||

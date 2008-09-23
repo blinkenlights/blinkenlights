@@ -176,6 +176,7 @@ struct mcu_setup_header
 #define MCU_DEVCTRL_COMMAND_SEND_WDIM_STATS	6	/* check WDIM statistics			*/
 #define MCU_DEVCTRL_COMMAND_SET_RF_DELAY	7	/* set RF delay 				*/
 #define MCU_DEVCTRL_COMMAND_SET_DIMMER_DELAY	8	/* set dimmer delay 				*/
+#define MCU_DEVCTRL_COMMAND_SET_DIMMER_CONTROL	9	/* set dimmer control (force off) 		*/
 #define MCU_DEVCTRL_COMMAND_OUTPUT_RAW		0xff	/* DEBUG: output raw RF packet			*/
 
 typedef struct mcu_devctrl_header  mcu_devctrl_header_t;

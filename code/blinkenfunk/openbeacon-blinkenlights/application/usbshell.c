@@ -63,6 +63,11 @@ cmd_status (const portCHAR * cmd)
   shell_print ("   current dim value = ");
   DumpUIntToUSB (vGetDimmerStep ());
   shell_print ("\n");
+  
+  if (vGetDimmerOff())
+    shell_print ("   DIMMER IS CURRENTLY FORCED OFF!\n");
+  else
+    shell_print ("   dimmer not forced off.\n");
 
   shell_print ("   dimmer jitter = ");
   DumpUIntToUSB ( vGetDimmerJitterUS() );

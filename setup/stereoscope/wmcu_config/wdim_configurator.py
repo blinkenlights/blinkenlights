@@ -50,6 +50,7 @@ WRITE_CONFIG 		= 3
 SET_JITTER		= 4
 GET_STATISTICS		= 6
 SET_DELAY		= 8
+SET_DIMMER_CONTROL	= 9
 ENTER_UPDATE_MODE	= 0x3f
 DEBUG_SEND_RAW		= 0xff
 
@@ -57,10 +58,10 @@ MCUCTRL_MAGIC 		= 0x23542667
 
 try:
 	opts, args = getopt.getopt(sys.argv[1:],
-		"hh:p:s:s:ws:s:l:eg",
+		"hh:p:s:s:ws:s:l:d:eg",
 		["help", "host=", "port=", "set-lamp-id=", "set-gamma=",
 		 "write-config", "set-dimmer-jitter=", "set-dimmer-delay=", "lamp-mac=",
-		 "enter-update-mode", "get-statistics"])
+		 "dimmer-off=", "enter-update-mode", "get-statistics"])
 
 except getopt.GetoptError, err:
 	print str(err)
@@ -92,6 +93,9 @@ for o, a in opts:
 	if o == "--set-dimmer-delay":
 		action = SET_DELAY
 		delay = int(a)
+	if o == "--dimmer-off":
+		action = SET_DIMMER_CONTROL
+		off = int(a)
 	if o == "--enter-update-mode":
 		action = ENTER_UPDATE_MODE
 	if o == "--get-statistics":
@@ -126,6 +130,9 @@ elif action == SET_JITTER:
 
 elif action == SET_DELAY:
 	packet = struct.pack("!IIII", MCUCTRL_MAGIC, action, lampmac, delay)
+
+elif action == SET_DIMMER_CONTROL:
+	packet = struct.pack("!IIII", MCUCTRL_MAGIC, action, lampmac, off)
 
 elif action == GET_STATISTICS:
 	packet = struct.pack("!IIII", MCUCTRL_MAGIC, action, lampmac, 0)

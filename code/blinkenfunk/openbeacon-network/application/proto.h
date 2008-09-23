@@ -38,6 +38,7 @@ enum {
   RF_CMD_SET_JITTER,
   RF_CMD_SEND_STATISTICS,
   RF_CMD_SET_DIMMER_DELAY,
+  RF_CMD_SET_DIMMER_CONTROL,
   RF_CMD_ENTER_UPDATE_MODE = 0x3f
 };
 
@@ -76,6 +77,10 @@ typedef struct
     struct {
       unsigned short delay;
     } PACKED set_delay;
+
+    struct {
+      unsigned char off;
+    } PACKED dimmer_control;
 
   } PACKED; /* union */
 

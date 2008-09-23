@@ -46,6 +46,7 @@ static int dimmer_step;
 static int dimmer_emi_pulses;
 static unsigned int random_seed_v1 = 0x52f7d319;
 static unsigned int random_seed_v2 = 0x6e28014a;
+static int dimmer_off = 0;
 
 int
 dimmer_line_hz_enabled (void)
@@ -94,7 +95,7 @@ void __attribute__ ((section (".ramfunc"))) vnRF_PulseIRQ_Handler (void)
       if (pulse_length >
 	  ((MINIMAL_PULSE_LENGH_US * PWM_CMR_CLOCK_FREQUENCY) / 1000000))
 	{
-	  if (line_hz_enabled)
+	  if (line_hz_enabled && !dimmer_off)
 	    {
 	      pulse_length = (line_hz * dimmer_percent) / DIMMER_TICKS;
 	      pulse_length +=
@@ -161,6 +162,18 @@ int
 vGetEmiPulses (void)
 {
   return dimmer_emi_pulses;
+}
+
+void
+vSetDimmerOff (int off)
+{
+  dimmer_off = off;
+}
+
+int
+vGetDimmerOff (void)
+{
+  return dimmer_off;
 }
 
 void
