@@ -84,6 +84,12 @@ cmd_status (const portCHAR * cmd)
   shell_print ("   last sequence number = ");
   DumpUIntToUSB ( last_sequence );
   shell_print ("\n");
+  
+  shell_print ("   pings: last seq ");
+  DumpUIntToUSB ( last_ping_seq );
+  shell_print (", lost ");
+  DumpUIntToUSB ( pings_lost );
+  shell_print ("\n");
 
   shell_print ("   dimmer delay = ");
   DumpUIntToUSB ( env.e.dimmer_delay );

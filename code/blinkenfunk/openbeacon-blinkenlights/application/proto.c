@@ -41,7 +41,9 @@
 #include "debug_print.h"
 
 unsigned int packet_count;
+unsigned int pings_lost = 0;
 unsigned int last_sequence = 0;
+unsigned int last_ping_seq = 0;
 
 static BRFPacket pkg;
 static const unsigned char broadcast_mac[NRF_MAX_MAC_SIZE] =
@@ -152,7 +154,7 @@ bParsePacket (void)
   /* check the sequence */
   if (last_sequence == 0)
     last_sequence = pkg.sequence;
-  else if (!(seq_delta > 0 && seq_delta < (signed int) (1UL << 30)))
+  else if (!(seq_delta > 0 && seq_delta < (signed int) (1UL << 28)))
     return;
 
   last_sequence = pkg.sequence;
@@ -219,6 +221,7 @@ bParsePacket (void)
     case RF_CMD_SEND_STATISTICS:
       pkg.statistics.emi_pulses = vGetEmiPulses ();
       pkg.statistics.packet_count = packet_count;
+      pkg.statistics.pings_lost = pings_lost;
       break;
     case RF_CMD_SET_DIMMER_DELAY:
       env.e.dimmer_delay = pkg.set_delay.delay;
@@ -233,6 +236,15 @@ bParsePacket (void)
         DumpStringToUSB ("dimmer operating.\n");
 
       vSetDimmerOff (pkg.dimmer_control.off);
+      break;
+    case RF_CMD_PING:
+      if (last_ping_seq == 0 ||
+          last_ping_seq > pkg.ping.sequence) {
+        last_ping_seq = pkg.ping.sequence;
+	break;
+      }
+
+      pings_lost += pkg.ping.sequence - last_ping_seq - 1;
       break;
     case RF_CMD_ENTER_UPDATE_MODE:
       if (pkg.payload[0] != 0xDE ||

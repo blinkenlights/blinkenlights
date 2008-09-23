@@ -38,6 +38,7 @@ enum {
   RF_CMD_SEND_STATISTICS,
   RF_CMD_SET_DIMMER_DELAY,
   RF_CMD_SET_DIMMER_CONTROL,
+  RF_CMD_PING,
   RF_CMD_ENTER_UPDATE_MODE = 0x3f
 };
 
@@ -67,6 +68,7 @@ typedef struct
     struct {
       unsigned short emi_pulses;
       unsigned long packet_count;
+      unsigned long pings_lost;
     } PACKED statistics;
 
     struct {
@@ -76,6 +78,10 @@ typedef struct
     struct {
       unsigned char off;
     } PACKED dimmer_control;
+    
+    struct {
+      unsigned int sequence;
+    } PACKED ping;
 
   } PACKED; /* union */
 
@@ -88,5 +94,7 @@ extern int PtSetFifoLifetimeSeconds (int Seconds);
 extern int PtGetFifoLifetimeSeconds (void);
 extern unsigned int packet_count;
 extern unsigned int last_sequence;
+extern unsigned int last_ping_seq;
+extern unsigned int pings_lost;
 
 #endif/*__PROTO_H__*/
