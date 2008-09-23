@@ -196,6 +196,16 @@ static inline void b_set_lamp_jitter (int lamp_mac, int jitter)
 	vnRFTransmitPacket(&rfpkg);
 }
 
+static inline void b_set_dimmer_delay (int lamp_mac, int delay)
+{
+	memset(&rfpkg, 0, sizeof(rfpkg));
+	rfpkg.cmd = RF_CMD_SET_DIMMER_DELAY;
+	rfpkg.mac = lamp_mac;
+	rfpkg.wmcu_id = env.e.mcu_id;
+	rfpkg.set_delay.delay = delay;
+	vnRFTransmitPacket(&rfpkg);
+}
+
 static inline void b_set_assigned_lamps (unsigned int *map, unsigned int len)
 {
 	int i;
@@ -293,6 +303,11 @@ static int b_parse_mcu_devctrl(mcu_devctrl_header_t *header, int maxlen)
 		case MCU_DEVCTRL_COMMAND_SET_RF_DELAY: {
 			env.e.rf_delay = header->value;
 			debug_printf("new RF delay: %d ms\n", env.e.rf_delay);
+			break;
+		}
+		case MCU_DEVCTRL_COMMAND_SET_DIMMER_DELAY: {
+			debug_printf("new dimmer delay for mac 0x%04x: %d ms\n", header->mac, header->value);
+			b_set_dimmer_delay(header->mac, header->value);
 			break;
 		}
 		case MCU_DEVCTRL_COMMAND_OUTPUT_RAW: {
