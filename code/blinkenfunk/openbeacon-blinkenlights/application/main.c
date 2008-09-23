@@ -73,6 +73,9 @@ prvSetupHardware (void)
 	  DIMMER_OFFSET +
 	  (((DIMMER_TICKS - DIMMER_OFFSET) * i) / (GAMMA_SIZE - 1));
     }
+
+  if (env.e.dimmer_delay > 1000)
+     env.e.dimmer_delay = 0;
 }
 
 /**********************************************************************/

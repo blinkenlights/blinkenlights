@@ -36,6 +36,7 @@
 #include "update.h"
 #include "led.h"
 #include "usbshell.h"
+#include "proto.h"
 
 #define PROMPT "\nWDIM> "
 
@@ -70,6 +71,14 @@ cmd_status (const portCHAR * cmd)
   shell_print ("   EMI pulses = ");
   DumpUIntToUSB ( vGetEmiPulses() );
   shell_print ("\n");
+  
+  shell_print ("   packet count = ");
+  DumpUIntToUSB ( packet_count );
+  shell_print ("\n");
+
+  shell_print ("   dimmer delay = ");
+  DumpUIntToUSB ( env.e.dimmer_delay );
+  shell_print (" ms\n");
 
   shell_print ("   GAMMA table:\t");
   for (i = 0; i < GAMMA_SIZE; i++)

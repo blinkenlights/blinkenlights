@@ -40,9 +40,9 @@
 #include "update.h"
 #include "debug_print.h"
 
+unsigned int packet_count;
 static BRFPacket pkg;
-static unsigned long packet_count;
-const unsigned char broadcast_mac[NRF_MAX_MAC_SIZE] =
+static const unsigned char broadcast_mac[NRF_MAX_MAC_SIZE] =
   { 'D', 'E', 'C', 'A', 'D' };
 
 #define BLINK_INTERVAL_MS (50 / portTICK_RATE_MS)
@@ -155,7 +155,7 @@ bParsePacket (void)
       {
 	char v;
 
-	if (env.e.lamp_id * 2 >= RF_PAYLOAD_SIZE)
+	if (env.e.lamp_id / 2 >= RF_PAYLOAD_SIZE)
 	  break;
 
 	v = pkg.payload[env.e.lamp_id / 2];
@@ -168,6 +168,7 @@ bParsePacket (void)
 	//DumpUIntToUSB (v);
 	//DumpStringToUSB ("\n\r");
 
+	vTaskDelay (env.e.dimmer_delay / portTICK_RATE_MS);
 	vUpdateDimmer (v);
 	packet_count++;
 	break;
@@ -209,6 +210,12 @@ bParsePacket (void)
       pkg.statistics.emi_pulses = vGetEmiPulses ();
       pkg.statistics.packet_count = packet_count;
       break;
+    case RF_CMD_SET_DIMMER_DELAY:
+      env.e.dimmer_delay = pkg.set_delay.delay;
+      DumpStringToUSB ("new delay: ");
+      DumpUIntToUSB (env.e.dimmer_delay);
+      DumpStringToUSB ("\n");
+      break;
     case RF_CMD_ENTER_UPDATE_MODE:
       if (pkg.payload[0] != 0xDE ||
 	  pkg.payload[1] != 0xAD ||
@@ -244,7 +251,7 @@ vnRFtaskRx (void *parameter)
 	  continue;
 	}
 
-      DumpStringToUSB ("received packet\n");
+      //DumpStringToUSB ("received packet\n");
 
       do
 	{

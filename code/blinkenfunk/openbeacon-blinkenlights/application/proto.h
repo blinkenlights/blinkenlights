@@ -36,6 +36,7 @@ enum {
   RF_CMD_WRITE_CONFIG,
   RF_CMD_SET_JITTER,
   RF_CMD_SEND_STATISTICS,
+  RF_CMD_SET_DIMMER_DELAY,
   RF_CMD_ENTER_UPDATE_MODE = 0x3f
 };
 
@@ -66,6 +67,11 @@ typedef struct
       unsigned short emi_pulses;
       unsigned long packet_count;
     } PACKED statistics;
+
+    struct {
+      unsigned short delay;
+    } PACKED set_delay;
+
   } PACKED; /* union */
 
   unsigned short crc;
@@ -74,5 +80,6 @@ typedef struct
 extern void vInitProtocolLayer (void);
 extern int PtSetFifoLifetimeSeconds (int Seconds);
 extern int PtGetFifoLifetimeSeconds (void);
+extern unsigned int packet_count;
 
 #endif/*__PROTO_H__*/
