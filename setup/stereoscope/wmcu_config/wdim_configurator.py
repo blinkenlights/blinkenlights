@@ -27,6 +27,7 @@ def usage():
 	print("\t--set-lamp-id <id>			sets the id of an lamp, requires --lamp-mac")
 	print("\t--set-gamma <filename>			sets the gamma curve for a lamp");
 	print("\t--set-dimmer-jitter <jitter>		sets the dimmer jitter for a lamp (in us)");
+	print("\t--set-dimmer-delay <delay>		sets the dimmer dimmer delay for a lamp (in ms)");
 	print("\t--write-config				makes the lamp write its config (gamma and jitter)");
 	print("\t--lamp-mac <id>				specify the lamp MAC address to use for other commands (0xffff for broadcast)")
 	print("\t--get-statistics				queries dimmer statistics");
@@ -48,6 +49,7 @@ SET_GAMMA 		= 2
 WRITE_CONFIG 		= 3
 SET_JITTER		= 4
 GET_STATISTICS		= 6
+SET_DELAY		= 8
 ENTER_UPDATE_MODE	= 0x3f
 DEBUG_SEND_RAW		= 0xff
 
@@ -55,9 +57,9 @@ MCUCTRL_MAGIC 		= 0x23542667
 
 try:
 	opts, args = getopt.getopt(sys.argv[1:],
-		"hh:p:s:s:ws:l:eg",
+		"hh:p:s:s:ws:s:l:eg",
 		["help", "host=", "port=", "set-lamp-id=", "set-gamma=",
-		 "write-config", "set-dimmer-jitter=", "lamp-mac=",
+		 "write-config", "set-dimmer-jitter=", "set-dimmer-delay=", "lamp-mac=",
 		 "enter-update-mode", "get-statistics"])
 
 except getopt.GetoptError, err:
@@ -87,6 +89,9 @@ for o, a in opts:
 	if o == "--set-dimmer-jitter":
 		action = SET_JITTER
 		jitter = int(a)
+	if o == "--set-dimmer-delay":
+		action = SET_DELAY
+		delay = int(a)
 	if o == "--enter-update-mode":
 		action = ENTER_UPDATE_MODE
 	if o == "--get-statistics":
@@ -118,6 +123,9 @@ elif action == WRITE_CONFIG:
 
 elif action == SET_JITTER:
 	packet = struct.pack("!IIII", MCUCTRL_MAGIC, action, lampmac, jitter)
+
+elif action == SET_DELAY:
+	packet = struct.pack("!IIII", MCUCTRL_MAGIC, action, lampmac, delay)
 
 elif action == GET_STATISTICS:
 	packet = struct.pack("!IIII", MCUCTRL_MAGIC, action, lampmac, 0)
