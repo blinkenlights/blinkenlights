@@ -28,7 +28,7 @@
 
 #define GAMMA_DEFAULT	200
 #define FIFO_DEPTH	256
-#define RF_PAYLOAD_SIZE	26
+#define RF_PAYLOAD_SIZE	22
 enum {
   RF_CMD_SET_VALUES,
   RF_CMD_SET_LAMP_ID,
@@ -79,6 +79,7 @@ typedef struct
 
   } PACKED; /* union */
 
+  unsigned int sequence;
   unsigned short crc;
 } PACKED BRFPacket;
 
@@ -86,5 +87,6 @@ extern void vInitProtocolLayer (void);
 extern int PtSetFifoLifetimeSeconds (int Seconds);
 extern int PtGetFifoLifetimeSeconds (void);
 extern unsigned int packet_count;
+extern unsigned int last_sequence;
 
 #endif/*__PROTO_H__*/

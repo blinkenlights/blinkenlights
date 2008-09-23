@@ -41,6 +41,8 @@
 #include "debug_print.h"
 
 unsigned int packet_count;
+unsigned int last_sequence = 0;
+
 static BRFPacket pkg;
 static const unsigned char broadcast_mac[NRF_MAX_MAC_SIZE] =
   { 'D', 'E', 'C', 'A', 'D' };
@@ -129,6 +131,7 @@ static inline void
 bParsePacket (void)
 {
   int i, reply;
+  signed int seq_delta = pkg.sequence - last_sequence;
 
   /* no MAC set yet? do nothing */
   //if (!env.e.mac)
@@ -146,6 +149,13 @@ bParsePacket (void)
   if (pkg.cmd & 0x40)
     return;
 
+  /* check the sequence */
+  if (last_sequence == 0)
+    last_sequence = pkg.sequence;
+  else if (!(seq_delta > 0 && seq_delta < (signed int) (1UL << 30)))
+    return;
+
+  last_sequence = pkg.sequence;
   reply = pkg.cmd & 0x80;
   pkg.cmd &= ~0x80;
 
