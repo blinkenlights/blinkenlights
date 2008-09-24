@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle"  xmlns:dc="http://purl.org/dc/elements/1.1/">
+   <channel>
+      <title>Stereoscope Simulator Changelog</title>
+      <link>http://www.blinkenlights.net/config/stereoscope_simulator_appcast.xml</link>
+      <description>Most recent changes with links to updates.</description>
+      <language>en</language>
+         <item>
+            <title>Version 2.0 (2 bugs fixed; 3 new features)</title>
+						<sparkle:releaseNotesLink>
+							http://www.blinkenlights.net/downloads/stereoscope_simulator/2.0.html
+						</sparkle:releaseNotesLink>
+            <pubDate>Wed, 09 Jan 2008 19:20:11 +0000</pubDate>
+            <enclosure url="http://www.blinkenlights.net/downloads/stereoscope_simulator/test.zip" sparkle:version="479M" sparkle:shortVersionString="2.0" length="1129598" type="application/octet-stream" sparkle:dsaSignature="MC4CFQCVlURo1AnHDqe6zU8yTPZOdEQDLgIVAIPVoubdCVAHl1JxDs9JOcqvyeK/" />
+         </item>
+   </channel>
+</rss>

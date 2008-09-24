@@ -23,6 +23,9 @@
 
 /* Begin PBXBuildFile section */
 		16BA96310A7EB9AC001E4983 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16BA96300A7EB9AC001E4983 /* Quartz.framework */; };
+		3108C6F80E89ECCD0016A9B2 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3108C6F70E89ECCD0016A9B2 /* Sparkle.framework */; };
+		3108C6FF0E89ECDE0016A9B2 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 3108C6FE0E89ECDE0016A9B2 /* dsa_pub.pem */; };
+		3108C7040E89ED500016A9B2 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3108C6F70E89ECCD0016A9B2 /* Sparkle.framework */; };
 		8D5B49B4048680CD000E48DA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */; };
 		F2095A630E6057AF00BD59DB /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */; };
 		F2095A660E6057B200BD59DB /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16BA96300A7EB9AC001E4983 /* Quartz.framework */; };
@@ -40,7 +43,6 @@
 		F24851900DF3F78E00E0AA98 /* BlinkenproviderPlugIn.m in Sources */ = {isa = PBXBuildFile; fileRef = F248518C0DF3F78E00E0AA98 /* BlinkenproviderPlugIn.m */; };
 		F24851910DF3F78E00E0AA98 /* BlinkenListener.m in Sources */ = {isa = PBXBuildFile; fileRef = F248518E0DF3F78E00E0AA98 /* BlinkenListener.m */; };
 		F25EC2100E89E6BD004AB23A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F2D8197B0E6055C800D2B1D0 /* InfoPlist.strings */; };
-		F25EC2110E89E6BD004AB23A /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2D8197D0E6055C800D2B1D0 /* MainMenu.xib */; };
 		F25EC2120E89E6BD004AB23A /* Stereoscope.icns in Resources */ = {isa = PBXBuildFile; fileRef = F2095ADA0E60675300BD59DB /* Stereoscope.icns */; };
 		F25EC2130E89E6BD004AB23A /* stop.png in Resources */ = {isa = PBXBuildFile; fileRef = F2095AE90E606E2600BD59DB /* stop.png */; };
 		F25EC2140E89E6BD004AB23A /* record.png in Resources */ = {isa = PBXBuildFile; fileRef = F2095AEB0E606E2C00BD59DB /* record.png */; };
@@ -83,6 +85,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		3108C7070E89ED560016A9B2 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				3108C7040E89ED500016A9B2 /* Sparkle.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F2095B020E6072A600BD59DB /* Copy PlugIns */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -111,6 +123,8 @@
 		1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		16AA5C440A7EEE7300888E31 /* Blinkenposer_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = Blinkenposer_Prefix.pch; sourceTree = "<group>"; };
 		16BA96300A7EB9AC001E4983 /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = /System/Library/Frameworks/Quartz.framework; sourceTree = "<absolute>"; };
+		3108C6F70E89ECCD0016A9B2 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = StereoscopeSimulator/Sparkle.framework; sourceTree = "<group>"; };
+		3108C6FE0E89ECDE0016A9B2 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = dsa_pub.pem; path = StereoscopeSimulator/dsa_pub.pem; sourceTree = "<group>"; };
 		8D5B49B6048680CD000E48DA /* Blinkenposer.plugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Blinkenposer.plugin; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D5B49B7048680CD000E48DA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F2095AB90E60591300BD59DB /* StereoscopeAppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StereoscopeAppController.m; sourceTree = "<group>"; };
@@ -166,6 +180,7 @@
 			files = (
 				F25EC21C0E89E6BD004AB23A /* Quartz.framework in Frameworks */,
 				F25EC21D0E89E6BD004AB23A /* Cocoa.framework in Frameworks */,
+				3108C6F80E89ECCD0016A9B2 /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -196,6 +211,7 @@
 		089C1671FE841209C02AAC07 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3108C6F70E89ECCD0016A9B2 /* Sparkle.framework */,
 				16BA96300A7EB9AC001E4983 /* Quartz.framework */,
 				1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */,
 			);
@@ -279,6 +295,7 @@
 		F25EC1DF0E89E4C0004AB23A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				3108C6FE0E89ECDE0016A9B2 /* dsa_pub.pem */,
 				F25EC2340E89E767004AB23A /* StereoscopeSimulator.icns */,
 				F25EC22F0E89E75F004AB23A /* MainMenu.xib */,
 				F25EC2000E89E6A2004AB23A /* Info.plist */,
@@ -361,6 +378,7 @@
 				F25EC2150E89E6BD004AB23A /* Copy PlugIns */,
 				F25EC2170E89E6BD004AB23A /* Sources */,
 				F25EC21B0E89E6BD004AB23A /* Frameworks */,
+				3108C7070E89ED560016A9B2 /* CopyFiles */,
 				F25EC21E0E89E6BD004AB23A /* Versioning Script */,
 			);
 			buildRules = (
@@ -419,12 +437,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				F25EC2100E89E6BD004AB23A /* InfoPlist.strings in Resources */,
-				F25EC2110E89E6BD004AB23A /* MainMenu.xib in Resources */,
 				F25EC2120E89E6BD004AB23A /* Stereoscope.icns in Resources */,
 				F25EC2130E89E6BD004AB23A /* stop.png in Resources */,
 				F25EC2140E89E6BD004AB23A /* record.png in Resources */,
 				F25EC2310E89E75F004AB23A /* MainMenu.xib in Resources */,
 				F25EC2350E89E767004AB23A /* StereoscopeSimulator.icns in Resources */,
+				3108C6FF0E89ECDE0016A9B2 /* dsa_pub.pem in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -661,6 +679,10 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/StereoscopeSimulator\"",
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_MODEL_TUNING = G5;
@@ -686,6 +708,10 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/StereoscopeSimulator\"",
+				);
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;

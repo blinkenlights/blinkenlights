@@ -26,5 +26,9 @@
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>StereoscopeApplication</string>
+	<key>SUPublicDSAKeyFile</key>
+	<string>dsa_pub.pem</string>
+	<key>SUFeedURL</key>
+	<string>http://www.blinkenlights.net/config/stereoscope_simulator_appcast.xml</string>
 </dict>
 </plist>
