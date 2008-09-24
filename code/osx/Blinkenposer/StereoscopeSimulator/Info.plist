@@ -23,7 +23,7 @@
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>NSMainNibFile</key>
-	<string>MainMenu</string>
+	<string>StereoscopeSimulator</string>
 	<key>NSPrincipalClass</key>
 	<string>StereoscopeApplication</string>
 	<key>SUPublicDSAKeyFile</key>

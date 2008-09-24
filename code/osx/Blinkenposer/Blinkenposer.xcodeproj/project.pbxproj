@@ -52,8 +52,8 @@
 		F25EC21A0E89E6BD004AB23A /* StereoscopeApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = F2095C300E607E6F00BD59DB /* StereoscopeApplication.m */; };
 		F25EC21C0E89E6BD004AB23A /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16BA96300A7EB9AC001E4983 /* Quartz.framework */; };
 		F25EC21D0E89E6BD004AB23A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */; };
-		F25EC2310E89E75F004AB23A /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = F25EC22F0E89E75F004AB23A /* MainMenu.xib */; };
 		F25EC2350E89E767004AB23A /* StereoscopeSimulator.icns in Resources */ = {isa = PBXBuildFile; fileRef = F25EC2340E89E767004AB23A /* StereoscopeSimulator.icns */; };
+		F25EC2BC0E8A242F004AB23A /* StereoscopeSimulator.xib in Resources */ = {isa = PBXBuildFile; fileRef = F25EC2BA0E8A242F004AB23A /* StereoscopeSimulator.xib */; };
 		F2BFA1570E4DC88900081601 /* BlinkenBMLWriterPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = F2BFA1550E4DC88900081601 /* BlinkenBMLWriterPlugin.m */; };
 		F2D819860E6055ED00D2B1D0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F2D8197B0E6055C800D2B1D0 /* InfoPlist.strings */; };
 		F2D819870E6055ED00D2B1D0 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2D8197D0E6055C800D2B1D0 /* MainMenu.xib */; };
@@ -152,8 +152,8 @@
 		F25EC1FA0E89E696004AB23A /* StereoscopeSimulator.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = StereoscopeSimulator.icns; path = StereoscopeSimulator/StereoscopeSimulator.icns; sourceTree = "<group>"; };
 		F25EC2000E89E6A2004AB23A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = StereoscopeSimulator/Info.plist; sourceTree = "<group>"; };
 		F25EC2220E89E6BD004AB23A /* Stereoscope Simulator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Stereoscope Simulator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		F25EC2300E89E75F004AB23A /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = StereoscopeSimulator/English.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		F25EC2340E89E767004AB23A /* StereoscopeSimulator.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = StereoscopeSimulator.icns; path = StereoscopeSimulator/StereoscopeSimulator.icns; sourceTree = "<group>"; };
+		F25EC2BB0E8A242F004AB23A /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = StereoscopeSimulator/English.lproj/StereoscopeSimulator.xib; sourceTree = "<group>"; };
 		F2BFA1550E4DC88900081601 /* BlinkenBMLWriterPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlinkenBMLWriterPlugin.m; sourceTree = "<group>"; };
 		F2BFA1560E4DC88900081601 /* BlinkenBMLWriterPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlinkenBMLWriterPlugin.h; sourceTree = "<group>"; };
 		F2D8196D0E60551700D2B1D0 /* Stereoscope.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stereoscope.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -295,9 +295,9 @@
 		F25EC1DF0E89E4C0004AB23A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F25EC2BA0E8A242F004AB23A /* StereoscopeSimulator.xib */,
 				3108C6FE0E89ECDE0016A9B2 /* dsa_pub.pem */,
 				F25EC2340E89E767004AB23A /* StereoscopeSimulator.icns */,
-				F25EC22F0E89E75F004AB23A /* MainMenu.xib */,
 				F25EC2000E89E6A2004AB23A /* Info.plist */,
 				F25EC1FA0E89E696004AB23A /* StereoscopeSimulator.icns */,
 			);
@@ -440,9 +440,9 @@
 				F25EC2120E89E6BD004AB23A /* Stereoscope.icns in Resources */,
 				F25EC2130E89E6BD004AB23A /* stop.png in Resources */,
 				F25EC2140E89E6BD004AB23A /* record.png in Resources */,
-				F25EC2310E89E75F004AB23A /* MainMenu.xib in Resources */,
 				F25EC2350E89E767004AB23A /* StereoscopeSimulator.icns in Resources */,
 				3108C6FF0E89ECDE0016A9B2 /* dsa_pub.pem in Resources */,
+				F25EC2BC0E8A242F004AB23A /* StereoscopeSimulator.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -574,12 +574,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		F25EC22F0E89E75F004AB23A /* MainMenu.xib */ = {
+		F25EC2BA0E8A242F004AB23A /* StereoscopeSimulator.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				F25EC2300E89E75F004AB23A /* English */,
+				F25EC2BB0E8A242F004AB23A /* English */,
 			);
-			name = MainMenu.xib;
+			name = StereoscopeSimulator.xib;
 			sourceTree = "<group>";
 		};
 		F2D8197B0E6055C800D2B1D0 /* InfoPlist.strings */ = {
