@@ -171,24 +171,25 @@
 	if (_writingFileHandle && _blinkenStructure)
 	{
 		NSInteger frameDuration = ceil((_currentFrameTime - _lastFrameTime) * 1000);
-
-		NSMutableArray *rows = [NSMutableArray array];
-		for (NSArray *dataRow in _blinkenStructure) {
-			NSMutableString *rowString = [NSMutableString string];
-			for (NSNumber *dataPoint in dataRow) {
-				int index = MIN(16,MAX(0,[dataPoint intValue]));
-				[rowString appendString:entryRepresentations[index]];
+		if (frameDuration > 0) {
+			NSMutableArray *rows = [NSMutableArray array];
+			for (NSArray *dataRow in _blinkenStructure) {
+				NSMutableString *rowString = [NSMutableString string];
+				for (NSNumber *dataPoint in dataRow) {
+					int index = MIN(16,MAX(0,[dataPoint intValue]));
+					[rowString appendString:entryRepresentations[index]];
+				}
+				[rows addObject:[NSString stringWithFormat:@"      <row>%@</row>",rowString]];
 			}
-			[rows addObject:[NSString stringWithFormat:@"      <row>%@</row>",rowString]];
+			NSString *frameString = [NSString stringWithFormat:@"    <frame duration=\"%d\">\n%@\n    </frame>\n",frameDuration,
+					[rows componentsJoinedByString:@"\n"]];
+			[_writingFileHandle writeData:[frameString dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES]];
 		}
-		NSString *frameString = [NSString stringWithFormat:@"    <frame duration=\"%d\">\n%@\n    </frame>\n",frameDuration,
-				[rows componentsJoinedByString:@"\n"]];
-		[_writingFileHandle writeData:[frameString dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES]];
 	}
 }
 
 - (void)finishBMLFile {
-	NSLog(@"%s",__FUNCTION__);
+//	NSLog(@"%s",__FUNCTION__);
 	if (_writingFileHandle) {
 		// writeout last frame
 		[self writeBlinkenFrame]; 
