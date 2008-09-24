@@ -27,8 +27,9 @@
 
 #include <lib_AT91SAM7X.h>
 #include <beacontypes.h>
+#include "proto.h"
 
-#define VERSION "0.7"
+#define VERSION "0.7.2"
 
 /*---------------------------------*/
 /* SAM7Board Memories Definition   */
@@ -97,7 +98,7 @@
 /*-------------------------------*/
 
 #define TENVIRONMENT_MAGIC 0x0DECADE
-#define MAX_LAMPS (26 * 2)
+#define MAX_LAMPS (RF_PAYLOAD_SIZE * 2)
 
 extern unsigned char last_lamp_val[MAX_LAMPS];
 
@@ -114,7 +115,7 @@ typedef struct
   unsigned int rf_delay;
   unsigned char mac_h, mac_l;
   unsigned int n_lamps;
-  LampMap lamp_map[26 * 2];
+  LampMap lamp_map[MAX_LAMPS];
 } __attribute__((aligned (8))) TEnvironment;
 
 /*----------------------------------*/

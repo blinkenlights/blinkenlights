@@ -77,7 +77,7 @@ vNetworkThread (void *pvParameters)
 #else
   IP4_ADDR (&xIpAddr , 192, 168, env.e.mac_h, env.e.mac_l);
   IP4_ADDR (&xNetMask, 255, 255, 255 ,0);
-  IP4_ADDR (&xGateway, 192, 168, 42, 1);
+  IP4_ADDR (&xGateway, 192, 168, env.e.mac_h, 1);
 #endif
 
   netif_add (&EMAC_if, &xIpAddr, &xNetMask, &xGateway, NULL, ethernetif_init,

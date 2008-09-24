@@ -321,7 +321,7 @@ static int b_parse_mcu_devctrl(mcu_devctrl_header_t *header, int maxlen)
 			break;
 		}
 		case MCU_DEVCTRL_COMMAND_SET_DIMMER_CONTROL: {
-			debug_printf("dimmer off-force 0x%04x %s\n", header->mac, header->value ? "off" : "on");
+			debug_printf("dimmer off-force 0x%04x %s\n", header->mac, header->value ? "on" : "off");
 			b_set_dimmer_control(header->mac, header->value);
 			break;
 		}
