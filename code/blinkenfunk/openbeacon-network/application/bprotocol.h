@@ -119,9 +119,9 @@ typedef struct mcu_multiframe_header mcu_multiframe_header_t;
 
 struct mcu_multiframe_header
 {
-  unsigned int magic;		/* == MAGIC_MCU_MULTIFRAME                   */
-  unsigned long long timestamp;	/* milliseconds since epoch - e.g. gettimeofday(&tv); 
-				   timeStamp = tv->tv_sec * 1000 + tv->tv_usec / 1000.; */
+  unsigned int magic;				/* == MAGIC_MCU_MULTIFRAME                   */
+  unsigned int timestamp_h, timestamp_l;	/* milliseconds since epoch - e.g. gettimeofday(&tv); 
+						   timeStamp = tv->tv_sec * 1000 + tv->tv_usec / 1000.; */
   /*
    * followed by multiple subframe headers
    */
@@ -213,5 +213,6 @@ void b_set_lamp_id (int lamp_id, int lamp_mac);
 extern int b_rec_total;
 extern int b_rec_frames;
 extern int b_rec_setup;
+extern unsigned int sequence_seed;
 
 #endif /* __B_PROTOCOL_H__ */

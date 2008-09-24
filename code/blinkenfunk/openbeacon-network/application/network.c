@@ -50,6 +50,9 @@
 #include "lwip/dhcp.h"
 #include "netif/loopif.h"
 #include "env.h"
+
+#define USE_DHCP 0
+
 /*------------------------------------------------------------*/
 extern err_t ethernetif_init (struct netif *netif);
 /*------------------------------------------------------------*/
@@ -66,15 +69,15 @@ vNetworkThread (void *pvParameters)
   lwip_init ();
 
   /* Create and configure the EMAC interface. */
-  
+
+#if USE_DHCP
   IP4_ADDR (&xIpAddr , 0, 0, 0 ,0);
   IP4_ADDR (&xNetMask, 0, 0, 0 ,0);
   IP4_ADDR (&xGateway, 0, 0, 0 ,0);
-
-#if 0
-  IP4_ADDR (&xIpAddr , 169, 254, 0x11, 0x22);
-  IP4_ADDR (&xNetMask, 255, 255, 0 ,0);
-  IP4_ADDR (&xGateway, 192, 168, 5 ,1);
+#else
+  IP4_ADDR (&xIpAddr , 192, 168, env.e.mac_h, env.e.mac_l);
+  IP4_ADDR (&xNetMask, 255, 255, 255 ,0);
+  IP4_ADDR (&xGateway, 192, 168, 42, 1);
 #endif
 
   netif_add (&EMAC_if, &xIpAddr, &xNetMask, &xGateway, NULL, ethernetif_init,
@@ -83,10 +86,12 @@ vNetworkThread (void *pvParameters)
   /* make it the default interface */
   netif_set_default (&EMAC_if);
 
+#if USE_DHCP
   /* dhcp kick-off */
   dhcp_start (&EMAC_if);
   dhcp_fine_tmr ();
   dhcp_coarse_tmr ();
+#endif
 
   /* bring it up */
   netif_set_up (&EMAC_if);

@@ -59,6 +59,7 @@ int b_rec_total = 0;
 int b_rec_frames = 0;
 int b_rec_setup = 0;
 unsigned char last_lamp_val[MAX_LAMPS] = { 0 };
+unsigned int sequence_seed = 0;
 
 #define SUBSIZE ((sizeof(*sub) + sub->height * ((sub->width + 1) / 2)))
 
@@ -70,9 +71,13 @@ static int b_parse_mcu_multiframe (mcu_multiframe_header_t *header, unsigned int
 	if (maxlen < sizeof(*header))
 		return 0;
 
+	if (sequence_seed == 0)
+		sequence_seed = (swaplong (header->timestamp_l)) 
+			- (unsigned int) (xTaskGetTickCount() / portTICK_RATE_MS);
+
 	maxlen -= sizeof(*header);
 
-	debug_printf(" parsing mcu multiframe maxlen = %d\n", maxlen);
+//	debug_printf(" parsing mcu multiframe maxlen = %d\n", maxlen);
 
 	while (maxlen) {
 		if (!sub)
@@ -90,7 +95,7 @@ static int b_parse_mcu_multiframe (mcu_multiframe_header_t *header, unsigned int
 		}
 
 		b_rec_frames++;
-		debug_printf("subframe: bpp = 4, pkg rest size = %d, w %d, h %d!\n", maxlen, sub->width, sub->height);
+//		debug_printf("subframe: bpp = 4, pkg rest size = %d, w %d, h %d!\n", maxlen, sub->width, sub->height);
 
 		for (i = 0; i < env.e.n_lamps; i++) {
 			LampMap *m = env.e.lamp_map + i;
@@ -348,7 +353,6 @@ static void b_recv(void *arg, struct udp_pcb *pcb, struct pbuf *p, struct ip_add
 	unsigned int off = 0;
 	unsigned char *payload = (unsigned char *) p->payload;
 
-	memcpy(&b_last_ipaddr, addr, sizeof(b_last_ipaddr));
 	b_rec_total++;
 
 	if (p->len < sizeof(unsigned int)) { // || p->len > sizeof(payload)) {
@@ -371,6 +375,7 @@ static void b_recv(void *arg, struct udp_pcb *pcb, struct pbuf *p, struct ip_add
 				consumed = b_parse_mcu_setup((mcu_setup_header_t *) (p->payload + off), p->len - off);
 				break;
 			case MAGIC_MCU_DEVCTRL:
+				memcpy(&b_last_ipaddr, addr, sizeof(b_last_ipaddr));
 				consumed = b_parse_mcu_devctrl((mcu_devctrl_header_t *) (p->payload + off), p->len - off);			
 				break;
 			default:
@@ -404,6 +409,7 @@ void b_parse_rfrx_pkg(BRFPacket *pkg)
 			
 			hdr->param[0] = swaplong (pkg->statistics.packet_count);
 			hdr->param[1] = swaplong (pkg->statistics.emi_pulses);
+			hdr->param[2] = swaplong (pkg->statistics.pings_lost);
 
 			udp_disconnect(b_ret_pcb);
 			udp_connect(b_ret_pcb, &b_last_ipaddr, MCU_RESPONSE_PORT);
@@ -420,10 +426,9 @@ void bprotocol_init(void)
 {
 	b_pcb = udp_new();
 	b_ret_pcb = udp_new();
-	b_ret_pbuf = pbuf_alloc(PBUF_TRANSPORT, 128, PBUF_RAM);
+	b_ret_pbuf = pbuf_alloc(PBUF_TRANSPORT, 128, PBUF_REF);
 
 	udp_recv(b_pcb, b_recv, NULL);
 	udp_bind(b_pcb, IP_ADDR_ANY, MCU_LISTENER_PORT);
-	debug_printf("%s()\n", __func__);
 }
 

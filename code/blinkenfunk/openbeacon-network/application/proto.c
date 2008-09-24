@@ -97,6 +97,12 @@ void vnRFTransmitPacket(BRFPacket *pkg)
   /* set TX mode */
   nRFAPI_SetRxMode (0);
 
+  /* update the sequence */
+  if (sequence_seed == 0)
+    return;
+
+  pkg->sequence = sequence_seed + (xTaskGetTickCount() / portTICK_RATE_MS);
+
   /* update crc */
   crc = crc16 ((unsigned char *) pkg, sizeof(*pkg) - sizeof(pkg->crc));
   pkg->crc = swapshort (crc);
