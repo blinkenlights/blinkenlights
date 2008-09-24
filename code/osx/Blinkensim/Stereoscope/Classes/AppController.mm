@@ -46,6 +46,7 @@ static CShell *shell = NULL;
 @synthesize mainNavigationController = _mainNavigationController;
 @synthesize settingsController = _settingsController;
 @synthesize currentProxy = _currentProxy;
+@synthesize messageDictionary = _messageDictionary;
 
 static AppController *s_sharedAppController;
 
@@ -816,8 +817,61 @@ static AppController *s_sharedAppController;
 		}
 	} else if ([elementName isEqualToString:@"proxy"]) {
 		[proxyArray addObject:attributeDict];
+	} else if ([elementName isEqualToString:@"message"]) {
+		NSMutableDictionary *messageDict = [attributeDict mutableCopy];
+		
+		self.messageDictionary = messageDict;
+		[messageDict release];
 	}
 }
+
+- (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string 
+{
+	if (_messageDictionary && ![[_messageDictionary objectForKey:@"messageWasShown"] boolValue]) {
+		NSMutableString *messageText = [_messageDictionary objectForKey:@"_messageText"];
+		if (!messageText) {
+			messageText = [NSMutableString new];
+			[_messageDictionary setObject:messageText forKey:@"_messageText"];
+		}
+		[messageText appendString:string];
+	}
+}
+
+- (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName
+{
+	if ([elementName isEqualToString:@"message"]) {
+		NSString *messageTitle = [_messageDictionary objectForKey:@"title"];
+		if (!messageTitle) messageTitle = @"Message";
+		NSString *messageText = [_messageDictionary objectForKey:@"_messageText"];
+		BOOL hasURL = [_messageDictionary objectForKey:@"url"] != 0;
+		NSString *urlTitle = [_messageDictionary objectForKey:@"url-title"];
+		if (!urlTitle) urlTitle = @"Goto Site";
+		UIAlertView *alert = nil;
+		if (hasURL) {
+			alert = [[UIAlertView alloc] initWithTitle:messageTitle message:messageText
+						delegate:self cancelButtonTitle:urlTitle otherButtonTitles:@"OK", nil];
+		} else {
+			alert = [[UIAlertView alloc] initWithTitle:messageTitle message:messageText
+						delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+		}
+		[alert show];
+		[alert release];
+	}
+}
+
+- (void)alertView:(UIAlertView *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+	if (buttonIndex == 0) {
+		NSString *urlString = [_messageDictionary objectForKey:@"url"];
+		if (urlString) {
+			NSURL *url = [NSURL URLWithString:urlString];
+			if (url) {
+				[[UIApplication sharedApplication] openURL:url];
+			}
+		}
+	}
+}
+
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)inURL
 {

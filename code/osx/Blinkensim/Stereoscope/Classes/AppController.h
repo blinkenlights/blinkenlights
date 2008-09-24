@@ -56,6 +56,7 @@
     BOOL isModalForCamera;
     BOOL _showTime;
     
+    NSMutableDictionary *_messageDictionary;
     int _position;
 }
 
@@ -70,6 +71,7 @@
 @property (nonatomic, retain) UINavigationController *mainNavigationController;
 @property (nonatomic, retain) SettingsController *settingsController;
 @property (nonatomic, retain) NSDictionary *currentProxy;
+@property (nonatomic, retain) NSMutableDictionary *messageDictionary;
 @property NetworkStatus previousInternetConnectionStatus;
 
 - (void)connectionDidBecomeAvailable;
