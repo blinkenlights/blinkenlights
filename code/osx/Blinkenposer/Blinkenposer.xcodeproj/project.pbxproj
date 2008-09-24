@@ -39,6 +39,19 @@
 		F244CC560E29EB6D007125EE /* BlinkenSender.m in Sources */ = {isa = PBXBuildFile; fileRef = F244CC550E29EB6D007125EE /* BlinkenSender.m */; };
 		F24851900DF3F78E00E0AA98 /* BlinkenproviderPlugIn.m in Sources */ = {isa = PBXBuildFile; fileRef = F248518C0DF3F78E00E0AA98 /* BlinkenproviderPlugIn.m */; };
 		F24851910DF3F78E00E0AA98 /* BlinkenListener.m in Sources */ = {isa = PBXBuildFile; fileRef = F248518E0DF3F78E00E0AA98 /* BlinkenListener.m */; };
+		F25EC2100E89E6BD004AB23A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F2D8197B0E6055C800D2B1D0 /* InfoPlist.strings */; };
+		F25EC2110E89E6BD004AB23A /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2D8197D0E6055C800D2B1D0 /* MainMenu.xib */; };
+		F25EC2120E89E6BD004AB23A /* Stereoscope.icns in Resources */ = {isa = PBXBuildFile; fileRef = F2095ADA0E60675300BD59DB /* Stereoscope.icns */; };
+		F25EC2130E89E6BD004AB23A /* stop.png in Resources */ = {isa = PBXBuildFile; fileRef = F2095AE90E606E2600BD59DB /* stop.png */; };
+		F25EC2140E89E6BD004AB23A /* record.png in Resources */ = {isa = PBXBuildFile; fileRef = F2095AEB0E606E2C00BD59DB /* record.png */; };
+		F25EC2160E89E6BD004AB23A /* Blinkenposer.plugin in Copy PlugIns */ = {isa = PBXBuildFile; fileRef = 8D5B49B6048680CD000E48DA /* Blinkenposer.plugin */; };
+		F25EC2180E89E6BD004AB23A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F2D8197F0E6055CF00D2B1D0 /* main.m */; };
+		F25EC2190E89E6BD004AB23A /* StereoscopeAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2095AB90E60591300BD59DB /* StereoscopeAppController.m */; };
+		F25EC21A0E89E6BD004AB23A /* StereoscopeApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = F2095C300E607E6F00BD59DB /* StereoscopeApplication.m */; };
+		F25EC21C0E89E6BD004AB23A /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16BA96300A7EB9AC001E4983 /* Quartz.framework */; };
+		F25EC21D0E89E6BD004AB23A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */; };
+		F25EC2310E89E75F004AB23A /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = F25EC22F0E89E75F004AB23A /* MainMenu.xib */; };
+		F25EC2350E89E767004AB23A /* StereoscopeSimulator.icns in Resources */ = {isa = PBXBuildFile; fileRef = F25EC2340E89E767004AB23A /* StereoscopeSimulator.icns */; };
 		F2BFA1570E4DC88900081601 /* BlinkenBMLWriterPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = F2BFA1550E4DC88900081601 /* BlinkenBMLWriterPlugin.m */; };
 		F2D819860E6055ED00D2B1D0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F2D8197B0E6055C800D2B1D0 /* InfoPlist.strings */; };
 		F2D819870E6055ED00D2B1D0 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2D8197D0E6055C800D2B1D0 /* MainMenu.xib */; };
@@ -60,6 +73,13 @@
 			remoteGlobalIDString = 8D5B49AC048680CD000E48DA;
 			remoteInfo = Blinkenposer;
 		};
+		F25EC20E0E89E6BD004AB23A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8D5B49AC048680CD000E48DA;
+			remoteInfo = Blinkenposer;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -70,6 +90,17 @@
 			dstSubfolderSpec = 13;
 			files = (
 				F2095AF90E60729C00BD59DB /* Blinkenposer.plugin in Copy PlugIns */,
+			);
+			name = "Copy PlugIns";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F25EC2150E89E6BD004AB23A /* Copy PlugIns */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				F25EC2160E89E6BD004AB23A /* Blinkenposer.plugin in Copy PlugIns */,
 			);
 			name = "Copy PlugIns";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -104,6 +135,11 @@
 		F248518D0DF3F78E00E0AA98 /* BlinkenproviderPlugIn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlinkenproviderPlugIn.h; sourceTree = "<group>"; };
 		F248518E0DF3F78E00E0AA98 /* BlinkenListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlinkenListener.m; sourceTree = "<group>"; };
 		F248518F0DF3F78E00E0AA98 /* BlinkenListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlinkenListener.h; sourceTree = "<group>"; };
+		F25EC1FA0E89E696004AB23A /* StereoscopeSimulator.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = StereoscopeSimulator.icns; path = StereoscopeSimulator/StereoscopeSimulator.icns; sourceTree = "<group>"; };
+		F25EC2000E89E6A2004AB23A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = StereoscopeSimulator/Info.plist; sourceTree = "<group>"; };
+		F25EC2220E89E6BD004AB23A /* Stereoscope Simulator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Stereoscope Simulator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F25EC2300E89E75F004AB23A /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = StereoscopeSimulator/English.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		F25EC2340E89E767004AB23A /* StereoscopeSimulator.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = StereoscopeSimulator.icns; path = StereoscopeSimulator/StereoscopeSimulator.icns; sourceTree = "<group>"; };
 		F2BFA1550E4DC88900081601 /* BlinkenBMLWriterPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlinkenBMLWriterPlugin.m; sourceTree = "<group>"; };
 		F2BFA1560E4DC88900081601 /* BlinkenBMLWriterPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlinkenBMLWriterPlugin.h; sourceTree = "<group>"; };
 		F2D8196D0E60551700D2B1D0 /* Stereoscope.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stereoscope.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -124,6 +160,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F25EC21B0E89E6BD004AB23A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F25EC21C0E89E6BD004AB23A /* Quartz.framework in Frameworks */,
+				F25EC21D0E89E6BD004AB23A /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F2D8196B0E60551700D2B1D0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -141,6 +186,7 @@
 			children = (
 				F2D819660E6054E700D2B1D0 /* Blinkenposer.plugin */,
 				F2D819630E6054C300D2B1D0 /* Stereoscope */,
+				F25EC1DC0E89E49C004AB23A /* Stereoscope Simulator */,
 				089C1671FE841209C02AAC07 /* Frameworks */,
 				19C28FB8FE9D52D311CA2CBB /* Products */,
 			);
@@ -185,6 +231,7 @@
 			children = (
 				8D5B49B6048680CD000E48DA /* Blinkenposer.plugin */,
 				F2D8196D0E60551700D2B1D0 /* Stereoscope.app */,
+				F25EC2220E89E6BD004AB23A /* Stereoscope Simulator.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -216,6 +263,33 @@
 			children = (
 				F2D8197F0E6055CF00D2B1D0 /* main.m */,
 				F2D819810E6055CF00D2B1D0 /* Stereoscope_Prefix.pch */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		F25EC1DC0E89E49C004AB23A /* Stereoscope Simulator */ = {
+			isa = PBXGroup;
+			children = (
+				F25EC1E40E89E4E9004AB23A /* Other Sources */,
+				F25EC1DF0E89E4C0004AB23A /* Resources */,
+			);
+			name = "Stereoscope Simulator";
+			sourceTree = "<group>";
+		};
+		F25EC1DF0E89E4C0004AB23A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F25EC2340E89E767004AB23A /* StereoscopeSimulator.icns */,
+				F25EC22F0E89E75F004AB23A /* MainMenu.xib */,
+				F25EC2000E89E6A2004AB23A /* Info.plist */,
+				F25EC1FA0E89E696004AB23A /* StereoscopeSimulator.icns */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		F25EC1E40E89E4E9004AB23A /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
 			);
 			name = "Other Sources";
 			sourceTree = "<group>";
@@ -279,6 +353,26 @@
 			productReference = 8D5B49B6048680CD000E48DA /* Blinkenposer.plugin */;
 			productType = "com.apple.product-type.bundle";
 		};
+		F25EC20C0E89E6BD004AB23A /* Stereoscope Simulator */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F25EC21F0E89E6BD004AB23A /* Build configuration list for PBXNativeTarget "Stereoscope Simulator" */;
+			buildPhases = (
+				F25EC20F0E89E6BD004AB23A /* Resources */,
+				F25EC2150E89E6BD004AB23A /* Copy PlugIns */,
+				F25EC2170E89E6BD004AB23A /* Sources */,
+				F25EC21B0E89E6BD004AB23A /* Frameworks */,
+				F25EC21E0E89E6BD004AB23A /* Versioning Script */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F25EC20D0E89E6BD004AB23A /* PBXTargetDependency */,
+			);
+			name = "Stereoscope Simulator";
+			productName = Stereoscope;
+			productReference = F25EC2220E89E6BD004AB23A /* Stereoscope Simulator.app */;
+			productType = "com.apple.product-type.application";
+		};
 		F2D8196C0E60551700D2B1D0 /* Stereoscope */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F2D819720E60551800D2B1D0 /* Build configuration list for PBXNativeTarget "Stereoscope" */;
@@ -314,11 +408,26 @@
 				8D5B49AC048680CD000E48DA /* Blinkenposer */,
 				233E2C640A83C768005A62DF /* Build & Copy */,
 				F2D8196C0E60551700D2B1D0 /* Stereoscope */,
+				F25EC20C0E89E6BD004AB23A /* Stereoscope Simulator */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		F25EC20F0E89E6BD004AB23A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F25EC2100E89E6BD004AB23A /* InfoPlist.strings in Resources */,
+				F25EC2110E89E6BD004AB23A /* MainMenu.xib in Resources */,
+				F25EC2120E89E6BD004AB23A /* Stereoscope.icns in Resources */,
+				F25EC2130E89E6BD004AB23A /* stop.png in Resources */,
+				F25EC2140E89E6BD004AB23A /* record.png in Resources */,
+				F25EC2310E89E75F004AB23A /* MainMenu.xib in Resources */,
+				F25EC2350E89E767004AB23A /* StereoscopeSimulator.icns in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F2D819690E60551700D2B1D0 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -374,6 +483,20 @@
 			shellPath = "/usr/bin/perl -w";
 			shellScript = "# Xcode auto-versioning script for Subversion\n# by Axel Andersson, modified by Daniel Jalkut to add\n# \"--revision HEAD\" to the svn info line, which allows\n# the latest revision to always be used.\n        \nuse strict;\n        \ndie \"$0: Must be run from Xcode\" unless $ENV{\"BUILT_PRODUCTS_DIR\"};\n        \n# Get the current subversion revision number and use it to set the CFBundleVersion value\nmy $REV = `export PATH=\\$PATH:/usr/local/bin;/usr/bin/env svnversion -n ./`;\nmy $INFO = \"$ENV{BUILT_PRODUCTS_DIR}/$ENV{WRAPPER_NAME}/Contents/Info.plist\";\n        \nmy $version = $REV;\n$version =~ s/([\\d]*:)(\\d+[M|S]*).*/$2/;\ndie \"$0: No Subversion revision found\" unless $version;\n        \nopen(FH, \"$INFO\") or die \"$0: $INFO: $!\";\nmy $info = join(\"\", <FH>);\nclose(FH);\n        \n$info =~ s/([\\t ]+<key>CFBundleVersion<\\/key>\\n[\\t ]+<string>).*?(<\\/string>)/$1$version$2/;\n        \nopen(FH, \">$INFO\") or die \"$0: $INFO: $!\";\nprint FH $info;\nclose(FH);\n";
 		};
+		F25EC21E0E89E6BD004AB23A /* Versioning Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Versioning Script";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = "/usr/bin/perl -w";
+			shellScript = "# Xcode auto-versioning script for Subversion\n# by Axel Andersson, modified by Daniel Jalkut to add\n# \"--revision HEAD\" to the svn info line, which allows\n# the latest revision to always be used.\n        \nuse strict;\n        \ndie \"$0: Must be run from Xcode\" unless $ENV{\"BUILT_PRODUCTS_DIR\"};\n        \n# Get the current subversion revision number and use it to set the CFBundleVersion value\nmy $REV = `export PATH=\\$PATH:/usr/local/bin;/usr/bin/env svnversion -n ./`;\nmy $INFO = \"$ENV{BUILT_PRODUCTS_DIR}/$ENV{WRAPPER_NAME}/Contents/Info.plist\";\n        \nmy $version = $REV;\n$version =~ s/([\\d]*:)(\\d+[M|S]*).*/$2/;\ndie \"$0: No Subversion revision found\" unless $version;\n        \nopen(FH, \"$INFO\") or die \"$0: $INFO: $!\";\nmy $info = join(\"\", <FH>);\nclose(FH);\n        \n$info =~ s/([\\t ]+<key>CFBundleVersion<\\/key>\\n[\\t ]+<string>).*?(<\\/string>)/$1$version$2/;\n        \nopen(FH, \">$INFO\") or die \"$0: $INFO: $!\";\nprint FH $info;\nclose(FH);\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -389,6 +512,16 @@
 				F244CC560E29EB6D007125EE /* BlinkenSender.m in Sources */,
 				F2BFA1570E4DC88900081601 /* BlinkenBMLWriterPlugin.m in Sources */,
 				F23117450E82DE210087565F /* BlinkenConsumingSenderPlugin.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F25EC2170E89E6BD004AB23A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F25EC2180E89E6BD004AB23A /* main.m in Sources */,
+				F25EC2190E89E6BD004AB23A /* StereoscopeAppController.m in Sources */,
+				F25EC21A0E89E6BD004AB23A /* StereoscopeApplication.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,9 +548,22 @@
 			target = 8D5B49AC048680CD000E48DA /* Blinkenposer */;
 			targetProxy = F2095AF40E60725900BD59DB /* PBXContainerItemProxy */;
 		};
+		F25EC20D0E89E6BD004AB23A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8D5B49AC048680CD000E48DA /* Blinkenposer */;
+			targetProxy = F25EC20E0E89E6BD004AB23A /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		F25EC22F0E89E75F004AB23A /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F25EC2300E89E75F004AB23A /* English */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
 		F2D8197B0E6055C800D2B1D0 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -510,6 +656,54 @@
 			};
 			name = Release;
 		};
+		F25EC2200E89E6BD004AB23A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Stereoscope/Stereoscope_Prefix.pch;
+				INFOPLIST_FILE = StereoscopeSimulator/Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = "Stereoscope Simulator";
+			};
+			name = Debug;
+		};
+		F25EC2210E89E6BD004AB23A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Stereoscope/Stereoscope_Prefix.pch;
+				INFOPLIST_FILE = StereoscopeSimulator/Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = "Stereoscope Simulator";
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
 		F2D819700E60551700D2B1D0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -584,6 +778,15 @@
 			buildConfigurations = (
 				233E2D8A0A83C7AC005A62DF /* Debug */,
 				233E2D8B0A83C7AC005A62DF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F25EC21F0E89E6BD004AB23A /* Build configuration list for PBXNativeTarget "Stereoscope Simulator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F25EC2200E89E6BD004AB23A /* Debug */,
+				F25EC2210E89E6BD004AB23A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
