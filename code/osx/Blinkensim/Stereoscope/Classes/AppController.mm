@@ -64,6 +64,7 @@ static AppController *s_sharedAppController;
 {
 	[[NSUserDefaults standardUserDefaults] registerDefaults:[NSDictionary dictionaryWithObjectsAndKeys:
 		[NSNumber numberWithBool:YES],@"autoselectProxy",
+		[NSNumber numberWithInt:0],@"message-number",
 		nil]
 	];
 	srandomdev(); // have a good seed.
@@ -832,6 +833,7 @@ static AppController *s_sharedAppController;
 		if (!messageText) {
 			messageText = [NSMutableString new];
 			[_messageDictionary setObject:messageText forKey:@"_messageText"];
+			[messageText release];
 		}
 		[messageText appendString:string];
 	}
@@ -840,6 +842,12 @@ static AppController *s_sharedAppController;
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName
 {
 	if ([elementName isEqualToString:@"message"]) {
+		NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+		if ([defaults integerForKey:@"lastShownMessageNumber"] >= [[_messageDictionary objectForKey:@"message-number"] intValue])
+		{
+			// now show - already seen
+			return;
+		}
 		NSString *messageTitle = [_messageDictionary objectForKey:@"title"];
 		if (!messageTitle) messageTitle = @"Message";
 		NSString *messageText = [_messageDictionary objectForKey:@"_messageText"];
@@ -856,6 +864,7 @@ static AppController *s_sharedAppController;
 		}
 		[alert show];
 		[alert release];
+		[defaults setObject:[_messageDictionary objectForKey:@"message-number"] forKey:@"lastShownMessageNumber"];
 	}
 }
 
