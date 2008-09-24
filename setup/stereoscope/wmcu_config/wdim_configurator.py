@@ -29,6 +29,7 @@ def usage():
 	print("\t--set-dimmer-jitter <jitter>		sets the dimmer jitter for a lamp (in us)");
 	print("\t--set-dimmer-delay <delay>		sets the dimmer dimmer delay for a lamp (in ms)");
 	print("\t--write-config				makes the lamp write its config (gamma and jitter)");
+	print("\t--dimmer-off <val>				forces a dimmer completely off")
 	print("\t--lamp-mac <id>				specify the lamp MAC address to use for other commands (0xffff for broadcast)")
 	print("\t--get-statistics				queries dimmer statistics");
 	print("\t--enter-update-mode			makes a dimmer enter its update mode. USE WITH CARE!");
