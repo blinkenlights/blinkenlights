@@ -29,7 +29,7 @@
 #include <beacontypes.h>
 #include "proto.h"
 
-#define VERSION "0.7.2"
+#define VERSION "0.7.3"
 
 /*---------------------------------*/
 /* SAM7Board Memories Definition   */

@@ -269,6 +269,12 @@ static int b_parse_mcu_devctrl(mcu_devctrl_header_t *header, int maxlen)
 	header->mac	= swaplong(header->mac);
 	header->value	= swaplong(header->value);
 
+	if (header->mac != 0xffff && header->mac & 0x8000) {
+		unsigned int id = header->mac & ~0x8000;
+		if (id < env.e.n_lamps)
+			header->mac = env.e.lamp_map[id].mac;
+	}
+
 	for (i = 0; i < (maxlen - sizeof(*header)) / 4; i++)
 		header->param[i] = swaplong(header->param[i]);
 
