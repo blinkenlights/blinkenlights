@@ -30,6 +30,13 @@ public class AGISession {
 	public static final String AGI_DNID = "agi_dnid";
 	
 	private final long startTime = System.currentTimeMillis();
+
+	/**
+	 * Performs a delay and audio playback immediately upon answering a call.
+	 * This is not part of the BLT protocol, but might be required to make the
+	 * network connection work from behind NAT.
+	 */
+	private boolean playSoundInitiallyHackEnabled = false;
 	
 	private final PrintWriter out;
 	private final BufferedReader in; 
@@ -116,6 +123,15 @@ public class AGISession {
 	 */
 	public void answer() {
 		agiCommandQueue.add("ANSWER");
+		
+		if (playSoundInitiallyHackEnabled) {
+			try {
+				Thread.sleep(3000);
+			} catch (InterruptedException e) {
+				logger.info("interrupted in sleep");
+			}
+			play("tt-monkeysintro");
+		}
 	}
 
 	/**
