@@ -156,7 +156,7 @@ public class AGISession {
 	 * @param mohContext the context to play
 	 */
 	public void playBackground(String mohContext) {
-//		agiCommandQueue.add("SET MUSIC on " + mohContext);
+		agiCommandQueue.add("SET MUSIC on " + mohContext);
 	}
 	
 	/**
