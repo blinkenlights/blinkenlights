@@ -178,7 +178,7 @@ static inline void b_set_gamma_curve (int lamp_mac, unsigned int block, unsigned
 	for (i = 0; i < 8; i++)
 		rfpkg.set_gamma.val[i] = gamma[i];
 
-	hex_dump((unsigned char *) &rfpkg, 0, sizeof(rfpkg));
+	debug_printf("sending gamma table to %04x, block %d\n", lamp_mac, block);
 	vnRFTransmitPacket(&rfpkg);
 }
 
@@ -416,6 +416,8 @@ void b_parse_rfrx_pkg(BRFPacket *pkg)
 			hdr->param[0] = swaplong (pkg->statistics.packet_count);
 			hdr->param[1] = swaplong (pkg->statistics.emi_pulses);
 			hdr->param[2] = swaplong (pkg->statistics.pings_lost);
+			hdr->param[3] = swaplong (pkg->statistics.fw_version);
+			hdr->param[4] = swaplong (VERSION_INT);
 
 			udp_disconnect(b_ret_pcb);
 			udp_connect(b_ret_pcb, &b_last_ipaddr, MCU_RESPONSE_PORT);
