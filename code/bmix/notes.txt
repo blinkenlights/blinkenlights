@@ -1,6 +1,11 @@
 BMix Notes
 
 ==StatsClient To do==
+* turn layout so inputs are at top instead of left
+** put preview frame above text in layer label
+** show tree structure in multiple layer columns
+* make it restartable when bmix closes (UDP? catch and retry?)
+* get rid of HTML (use statbox subclasses with individual layouts)
 * fix background layer framerate lie (it appears to get a new frame constantly, even if there is no input activity)
 * render vmatrix
 * show output and input viewports over vmatrix

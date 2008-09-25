@@ -25,8 +25,10 @@ public class LayerStatistics implements StatisticsItem, Icon {
 	private final float opacity;
     private final Dimension imageSize;
     private final int[] imageData;
+    private final boolean rootLayer;
 
     private transient BufferedImage frame;
+
     
 	/**
 	 * Creates a new LayerStatistics.
@@ -50,6 +52,7 @@ public class LayerStatistics implements StatisticsItem, Icon {
 		imageSize = new Dimension(layer.getImageWidth(), layer.getImageHeight());
 		imageData = new int[imageSize.width * imageSize.height];
 		layer.fillArray(imageData);
+		rootLayer = (layer.getParentLayer() == null);
 	}
 
 	public long getId() {
@@ -133,5 +136,9 @@ public class LayerStatistics implements StatisticsItem, Icon {
 //            System.err.println("Copied " + pixels.length + " pixels. nonzero=" + nonzero);
         }
         g.drawImage(frame, x, y, null);
+    }
+
+    public boolean isRootLayer() {
+        return rootLayer;
     }
 }

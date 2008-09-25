@@ -51,7 +51,6 @@ public class StatsComponent extends JPanel {
 			this.stats = stats;
             display.setText(stats.toHtml());
             if (stats instanceof Icon) {
-                System.err.println("Setting icon for stats " + stats.getName());
                 display.setIcon((Icon) stats);
             } else {
                 display.setIcon(null);
@@ -94,34 +93,36 @@ public class StatsComponent extends JPanel {
 	        fixLayout();
 	        
 	        for (InfoBox box : items) {
+	            g.translate(box.display.getX(), box.display.getY());
 	            box.display.paint(g);
-	            g.translate(0, box.display.getHeight());
+                g.translate(-box.display.getX(), -box.display.getY());
 	        }
 	    }
 
         private void fixLayout() {
-            int newWidth = 0;
+            int newHeight = 0;
             for (InfoBox box : items) {
-                newWidth = Math.max(newWidth, box.display.getPreferredSize().width);
+                newHeight = Math.max(newHeight, box.display.getPreferredSize().height);
             }
             
-            bounds.width = newWidth;
+            bounds.height = newHeight;
             
-            int y = 0;
+            int x = 0;
             for (InfoBox box : items) {
                 Dimension infoBoxSize = box.display.getPreferredSize();
-                box.display.setBounds(bounds.x, y, bounds.width, infoBoxSize.height);
-                y += box.display.getHeight();
+                box.display.setBounds(x, 0, infoBoxSize.width, bounds.height);
+                x += box.display.getWidth();
             }
             
-            bounds.height = y;
-            bounds.y = StatsComponent.this.getHeight() / 2 - bounds.height / 2;
+            bounds.width = x;
+            bounds.x = StatsComponent.this.getWidth() / 2 - bounds.width / 2;
         }
 	}
 	private final Map<Long, InfoBox> infoBoxes = new HashMap<Long, InfoBox>();
 	
     private final Column inputsColumn = new Column();
     private final Column layersColumn = new Column();
+    private final Column rootLayerColumn = new Column();
     private final Column outputsColumn = new Column();
 	
 	public StatsComponent() {
@@ -153,7 +154,13 @@ public class StatsComponent extends JPanel {
 	            }
 	            
 	            infoBoxes.put(ls.getId(), infoBox);
-	            layersColumn.addItem(infoBox);
+	            
+	            // XXX assumes flat hierarchy under root layer
+	            if (ls.isRootLayer()) {
+	                rootLayerColumn.addItem(infoBox);
+	            } else {
+	                layersColumn.addItem(infoBox);
+	            }
 	        }
 	        infoBox.updateStats(ls);
 	    }
@@ -186,13 +193,13 @@ public class StatsComponent extends JPanel {
 	    g.setColor(getBackground());
 	    g.fillRect(0, 0, getWidth(), getHeight());
 	    g.setColor(getForeground());
-	    inputsColumn.bounds.x = 0;
+	    inputsColumn.bounds.y = 0;
         inputsColumn.paint(
                 (Graphics2D) g.create(
                         inputsColumn.bounds.x, inputsColumn.bounds.y,
                         inputsColumn.bounds.width, inputsColumn.bounds.height));
         
-        layersColumn.bounds.x = getWidth() / 2 - layersColumn.bounds.width / 2;
+        layersColumn.bounds.y = getHeight() / 2 - layersColumn.bounds.height;
         layersColumn.paint(
                 (Graphics2D) g.create(
                         layersColumn.bounds.x, layersColumn.bounds.y,
@@ -201,12 +208,13 @@ public class StatsComponent extends JPanel {
         for (InfoBox layerBox : layersColumn.items) {
             if (layerBox.pointsTo != null) {
                 Point p1 = layerBox.display.getLocation();
-                p1.y += layersColumn.bounds.y + layerBox.display.getHeight() / 2;
+                p1.y += layersColumn.bounds.y;
+                p1.x += layersColumn.bounds.x + layerBox.display.getWidth() / 2;
                 
                 InfoBox sourceInputBox = layerBox.pointsTo;
                 Point p2 = sourceInputBox.display.getLocation();
-                p2.y += inputsColumn.bounds.y + sourceInputBox.display.getHeight() / 2;
-                p2.x += sourceInputBox.display.getWidth();
+                p2.y += inputsColumn.bounds.y + sourceInputBox.display.getHeight();
+                p2.x += inputsColumn.bounds.x + sourceInputBox.display.getWidth() / 2;
                 
                 g.setStroke(new BasicStroke(
                         1.5f, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND, 0f,
@@ -214,8 +222,14 @@ public class StatsComponent extends JPanel {
                 g.drawLine(p1.x, p1.y, p2.x, p2.y);
             }
         }
-        
-        outputsColumn.bounds.x = getWidth() - outputsColumn.bounds.width;
+
+        rootLayerColumn.bounds.y = getHeight() / 2;
+        rootLayerColumn.paint(
+                (Graphics2D) g.create(
+                        rootLayerColumn.bounds.x, rootLayerColumn.bounds.y,
+                        rootLayerColumn.bounds.width, rootLayerColumn.bounds.height));
+
+        outputsColumn.bounds.y = getHeight() - outputsColumn.bounds.height;
         outputsColumn.paint(
                 (Graphics2D) g.create(
                         outputsColumn.bounds.x, outputsColumn.bounds.y,

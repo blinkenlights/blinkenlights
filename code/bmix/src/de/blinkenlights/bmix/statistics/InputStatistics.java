@@ -118,7 +118,6 @@ public class InputStatistics implements StatisticsItem {
 	            "<tr><td>Blinkenproxy<td>%s" +
 	            "<tr><td>Alpha Mode<td>%s" +
 	            "<tr><td>Key Colour<td>#%8x" +
-	            "<tr><td>Last Packet<td>%d" +
 	            "<tr><td>Frame Count<td>%d" +
 	            "<tr><td>Relay Senders<td>%s",
 	            name,
@@ -126,7 +125,6 @@ public class InputStatistics implements StatisticsItem {
 	            blinkenproxy,
 	            alphaMode.name(),
 	            chromaKeyColor.getRGB(),
-	            lastPacketReceiveTime,
 	            frameCount,
 	            relaySenders);
 	}
