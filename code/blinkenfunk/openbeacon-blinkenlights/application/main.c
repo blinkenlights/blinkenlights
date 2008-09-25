@@ -46,11 +46,20 @@
 /**********************************************************************/
 #define DIMMER_OFFSET (DIMMER_TICKS/5)
 /**********************************************************************/
+void
+vResetEnv (void)
+{
+  int i;
+  bzero (&env, sizeof (env));
+
+  for (i = 0; i < GAMMA_SIZE; i++)
+    env.e.gamma_table[i] = DIMMER_OFFSET +
+      (((DIMMER_TICKS - DIMMER_OFFSET) * i) / (GAMMA_SIZE - 1));
+}
+
 static inline void
 prvSetupHardware (void)
 {
-  int i;
-
   /*  When using the JTAG debugger the hardware is not always initialised to
      the correct default state.  This line just ensures that this does not
      cause all interrupts to be masked at the start. */
@@ -65,14 +74,7 @@ prvSetupHardware (void)
   /* If no previous environment exists - create a new, but don't store it */
   env_init ();
   if (!env_load ())
-    {
-      bzero (&env, sizeof (env));
-
-      for (i = 0; i < GAMMA_SIZE; i++)
-	env.e.gamma_table[i] =
-	  DIMMER_OFFSET +
-	  (((DIMMER_TICKS - DIMMER_OFFSET) * i) / (GAMMA_SIZE - 1));
-    }
+    vResetEnv();
 
   if (env.e.dimmer_delay > 1000)
      env.e.dimmer_delay = 0;

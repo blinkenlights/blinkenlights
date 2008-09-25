@@ -69,6 +69,7 @@ typedef struct
       unsigned short emi_pulses;
       unsigned long packet_count;
       unsigned long pings_lost;
+      unsigned long fw_version;
     } PACKED statistics;
 
     struct {

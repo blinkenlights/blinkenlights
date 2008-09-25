@@ -42,6 +42,8 @@
 
 #define shell_print(x) DumpStringToUSB(x)
 
+extern void vResetEnv(void);
+
 static void
 cmd_status (const portCHAR * cmd)
 {
@@ -105,7 +107,13 @@ cmd_status (const portCHAR * cmd)
 	shell_print ("\n\t\t");
     }
   shell_print ("\n");
+}
 
+static void
+cmd_reset (const portCHAR * cmd)
+{
+  vResetEnv();
+  env_store();
 }
 
 static void
@@ -118,6 +126,7 @@ cmd_help (const portCHAR * cmd)
   shell_print ("[wdim-]mac <xxyy> [<crc>]	Set the MAC address of this unit.\n");
   shell_print ("status				Print status information about this unit.\n");
   shell_print ("dim <value>			Set the dimmer to a value (between 0 and 15)\n");
+  shell_print ("reset				Reset the non-volatile flash to defaults\n");
   shell_print ("update				Enter update mode - DO NOT USE FOR FUN\n");
 }
 
@@ -250,6 +259,7 @@ static struct cmd_t
   { "MAC", 	&cmd_mac 	},
   { "wdim-mac",	&cmd_mac	},
   { "dim",	&cmd_dim	},
+  { "reset",	&cmd_reset	},
   { "update",	&cmd_update	},
     /* end marker */
   { NULL, NULL }
