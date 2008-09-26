@@ -28,8 +28,19 @@
 			 basedir="build"
 			 includes="**" manifest="etc/manifest"/>
 	</target>
+	
+	<target name="pngToBmlJar" depends="compile" description="Creates an executable JAR of PNG to BML App">
+		<unjar src="lib/forms-1.2.0.jar" dest="build" />
+		<unjar src="lib/l2fprod-common-directorychooser.jar" dest="build" />
+		<unjar src="lib/swing-worker-1.1.jar" dest="build" />
+		<mkdir dir="dist"/>
+		<mkdir dir="dist/bmix-${bmix.version}"/>
+		<jar destfile="dist/bmix-${bmix.version}/PNGtoBML.jar"
+			 basedir="build"
+			 includes="**" manifest="etc/PNGtoBML_manifest"/>
+	</target>
 
-	<target name="tarball" depends="clean,jar" description="Creates the distribution tarball">
+	<target name="tarball" depends="clean,jar,pngToBmlJar" description="Creates the distribution tarball">
 		<copy file="bmix.xml" todir="dist/bmix-${bmix.version}/"/>
 		<copy file="etc/start.sh" todir="dist/bmix-${bmix.version}/"/>
 		<copy file="HISTORY" todir="dist/bmix-${bmix.version}/"/>

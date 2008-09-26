@@ -5,8 +5,6 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.OutputStream;
 
-import de.blinkenlights.bmix.mixer.BLImage;
-
 /**
  * Outputs a BML (Blinkenlights Markup Language) from a sequence
  * of BLImage frames.
@@ -42,7 +40,7 @@ public class BMLOutputStream extends OutputStream {
 	private void writeHeader() throws IOException {
 		StringBuilder outStr = new StringBuilder();
 		outStr.append("<?xml version=\"1.0\" encoding=\"utf-8\"?>\n");
-		outStr.append("<blm width=\""+size.getWidth()+"\" height=\""+size.getHeight()+"\" bits=\""+bpp+"\" channels=\"1\">\n");
+		outStr.append("<blm width=\""+size.width+"\" height=\""+size.height+"\" bits=\""+bpp+"\" channels=\"1\">\n");
 		byte[] bytes = outStr.toString().getBytes();
 		out.write(bytes, 0, bytes.length);
 	}
@@ -60,20 +58,20 @@ public class BMLOutputStream extends OutputStream {
 	 * 
 	 * @throws IllegalArgumentException if the frame is the incorrect dimensions for the movie.
 	 */
-	public void writeFrame(BufferedImage image) {
+	public void writeFrame(BufferedImage image) throws IOException {
 		if (closed) {
 			throw new IllegalStateException("attempt to write to closed stream");
 		}
 		if (image.getHeight() != size.height || image.getWidth() != size.width) {
-			throw new IllegalArgumentException("image was incorrect size for movie; expected ("+size.getHeight()+"x"+size.getWidth()+") but got ("+image.getHeight()+"x"+image.getWidth()+")");			
+			throw new IllegalArgumentException("Image was incorrect size for movie; expected ("+size.width+"x"+size.height+") but got ("+image.getWidth()+"x"+image.getHeight()+")");			
 		}
 		StringBuilder outStr = new StringBuilder();
-		outStr.append("<frame duration="+millisPerFrame+">\n");
+		outStr.append("<frame duration=\""+millisPerFrame+"\">\n");
 		for (int i = 0; i < image.getHeight(); i++) {
 			outStr.append("<row>");
 			for (int j = 0; j < image.getWidth(); j++) {
 				// keep the red channel only
-				int r = (image.getRGB(i, j) & 0x00ff0000) >> 16;
+				int r = (image.getRGB(j, i) & 0x00ff0000) >> 16;
 				// clamp the bpp
 				r = r >> (8 - bpp);
 				outStr.append(String.format("%x", r));
@@ -81,6 +79,8 @@ public class BMLOutputStream extends OutputStream {
 			outStr.append("</row>\n");
 		}
 		outStr.append("</frame>\n");
+		byte[] bytes = outStr.toString().getBytes();
+		out.write(bytes, 0, bytes.length);
 	}
 	
 	@Override

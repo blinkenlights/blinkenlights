@@ -6,11 +6,15 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Arrays;
+import java.util.concurrent.ExecutionException;
 import java.util.prefs.BackingStoreException;
 import java.util.prefs.Preferences;
 
@@ -19,6 +23,8 @@ import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JProgressBar;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
@@ -40,6 +46,7 @@ public class PNGtoBML {
 
 	JFrame mainFrame = new JFrame();
 	private ConvertTask task;
+	public static final String version = "Version $Id$";
 
 	JTextField xSizeField = new JTextField();
 	JTextField ySizeField = new JTextField();
@@ -50,7 +57,8 @@ public class PNGtoBML {
 	JButton startButton = new JButton("Start");
 	JButton cancelButton = new JButton("Cancel");
 	JSpinner frameRateField = new JSpinner(new SpinnerNumberModel(1,1,100,1));
-	JLabel statusLine = new JLabel("Version $Id$");
+	JLabel statusLine = new JLabel(version);
+	JProgressBar progress = new JProgressBar();
 
 	private Preferences prefs;
 
@@ -112,6 +120,15 @@ public class PNGtoBML {
 
 			public void actionPerformed(ActionEvent e) {
         		task = new ConvertTask(new File(pngDir.getText()), new File(outFile.getText()),new Dimension(Integer.parseInt(xSizeField.getText()),Integer.parseInt(ySizeField.getText())),4);
+        		task.addPropertyChangeListener(new PropertyChangeListener() {
+
+					public void propertyChange(PropertyChangeEvent event) {
+						if (event.getPropertyName().equals("progress")) {
+							progress.setValue((Integer)event.getNewValue());
+						}
+					}
+        			
+        		});
         		task.execute();
         	}
         });
@@ -146,6 +163,8 @@ public class PNGtoBML {
         frameRateField.getModel().addChangeListener(inputVerifier);
         
         cancelButton.setEnabled(false);
+        progress.setStringPainted(true);
+      //  progress.setVisible(false);
         
         DefaultFormBuilder mainBuilder = new DefaultFormBuilder(mainLayout); 
         mainBuilder.setDefaultDialogBorder();
@@ -159,17 +178,24 @@ public class PNGtoBML {
         mainBuilder.nextLine();
         mainBuilder.append("Output File",outFile, outFileChoose);
         mainBuilder.nextLine();
+        
         mainBuilder.appendUnrelatedComponentsGapRow();
         mainBuilder.nextLine();
+
         mainBuilder.append(ButtonBarFactory.buildOKCancelBar(startButton, cancelButton),5);
         mainBuilder.nextLine();
+        
         mainBuilder.appendUnrelatedComponentsGapRow();
         mainBuilder.nextLine();
+        
+        mainBuilder.append(progress,5);
+        mainBuilder.nextLine();
+        
         mainBuilder.append(statusLine,5);
         mainBuilder.nextLine();
         
 	    mainFrame.getContentPane().add(mainBuilder.getPanel());
-//        mainFrame.pack();
+        mainFrame.pack();
 	    
 		int x = prefs.getInt("frameX", 20);
 		int y = prefs.getInt("frameY", 20);
@@ -242,18 +268,30 @@ public class PNGtoBML {
 				statusLine.setText("Height must be an integer.");
 				return;
 			}		
-			statusLine.setText("");
+			
+			statusLine.setText(version);
 			startButton.setEnabled(true);
 		}
 
     }
 		
+    private class ImageFileNameFilter implements FilenameFilter {
+
+		public boolean accept(File dir, String name) {
+			if (name.startsWith(".") || dir.isHidden()) {
+				return false;
+			}
+			return true;
+		}
+    	
+    }
     private class ConvertTask extends SwingWorker<Object, Object>{
 
     	private final File pngDir2;
 		private final File output;
 		private final Dimension size;
 		private final int bpp;
+		private String currentFileName;
 		
 		protected ConvertTask(File pngDir, File output, Dimension size, int bpp) {
 			pngDir2 = pngDir;
@@ -262,32 +300,36 @@ public class PNGtoBML {
 			this.bpp = bpp;
 			startButton.setEnabled(false);
 			cancelButton.setEnabled(true);
+			progress.setValue(0);
+			//progress.setVisible(true);
     	}
 		
 		@Override
 		protected Object doInBackground() throws Exception {
-  
-			if (!pngDir2.isDirectory()) {
-    			System.out.println("png directory wasn't a directory: "+pngDir2.getAbsolutePath());
-    			return null;
-    		}
-    		output.createNewFile();
+      		output.createNewFile();
     		OutputStream out = new FileOutputStream(output);
     		File[] files = pngDir2.listFiles();
     		Arrays.sort(files);
-    		BMLOutputStream bmlOut = new BMLOutputStream(out,10,size,bpp);
+    		BMLOutputStream bmlOut = new BMLOutputStream(out,((Number)frameRateField.getValue()).intValue(),size,bpp);
     		
-    		for (File file : pngDir2.listFiles()) {
+    		File[] fileList = pngDir2.listFiles(new ImageFileNameFilter());
+    		int filesProcessed = 0;
+    		for (File file : fileList) {
+    			currentFileName = file.getName();
+    			statusLine.setText("Processing: "+currentFileName);
     			if (isCancelled()) {
     				return null;
     			}
-    			System.out.println("Processing image: "+file.getName());
     			BufferedImage image=(BufferedImage)ImageIO.read(file);
     			if (image != null) {
     				bmlOut.writeFrame(image);
     			} else {
-    				System.out.println("file could not be imported: "+file.getName());
+    				throw new Exception("<html>ImageIO is unable to convert this file.<br>Processing aborted (BML will be invalid).");
     			}
+    			filesProcessed++;
+    			int progress = (int)(filesProcessed / (float)fileList.length * 100);
+    			setProgress(progress);
+    			
     		}
     		bmlOut.close();
 			return null;
@@ -298,10 +340,31 @@ public class PNGtoBML {
 			super.done();
 			startButton.setEnabled(true);
 			cancelButton.setEnabled(false);
+			statusLine.setText(version);
+			progress.setValue(0);
+			try {
+				get();
+				JOptionPane.showMessageDialog(mainFrame, "<html>Done!");
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (ExecutionException e) {
+				Throwable cause = e;
+				while (cause.getCause() != null) {
+					cause = cause.getCause();
+				}
+				if (currentFileName != null) {
+					JOptionPane.showMessageDialog(mainFrame, "<html>Error processing <b>"+currentFileName+"</b>:<br>"+cause.getMessage());
+				} else {
+					JOptionPane.showMessageDialog(mainFrame, "<html>Error: "+e.getMessage());
+
+				}
+
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
 		}
-		
-		
-  
     }
         
 	/**
