@@ -1,0 +1,25 @@
+body {
+	margin: 20px;
+	background-color: #cccccc;
+}
+
+table {
+	border-style: solid;
+	border-width: 1px;
+}
+
+td {
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+td.red {
+	background-color: red;
+	padding-right: 10px;
+}
+
+td.green {
+	background-color: green;
+	margin-right: 10px;
+}
+
