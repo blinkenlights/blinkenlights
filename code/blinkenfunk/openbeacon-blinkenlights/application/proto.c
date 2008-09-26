@@ -73,6 +73,37 @@ PtInitNrfFrontend (int ResetType)
   pt_reset_type = ResetType;
 }
 
+void
+PtDumpNrfRegisters (void)
+{
+  unsigned int size;
+  unsigned char reg, buf[32], *p;
+
+  DumpStringToUSB ("\nnRF24L01 register dump:\n");
+  reg = 0;
+  while (((size = nRFCMD_GetRegSize (reg)) > 0) && (reg < 0xFF))
+    {
+      if (size > sizeof (buf))
+	size = sizeof (buf);
+
+      nRFCMD_RegReadBuf (reg, buf, size);
+      p = buf;
+
+      // dump single register
+      DumpStringToUSB ("  R 0x");
+      DumpHexToUSB (reg, 1);
+      DumpStringToUSB (":");
+      while (size--)
+	{
+	  DumpStringToUSB (" 0x");
+	  DumpHexToUSB (*p++, 1);
+	}
+      DumpStringToUSB ("\n");
+
+      reg++;
+    }
+}
+
 static inline unsigned short
 swapshort (unsigned short src)
 {
@@ -302,9 +333,9 @@ vnRFtaskRx (void *parameter)
 	      break;
 
 	    }
-	    vTaskDelay (10 / portTICK_RATE_MS);
-	    nRFCMD_CE (1);
-	    vLedSetGreen (0);
+	  vTaskDelay (10 / portTICK_RATE_MS);
+	  nRFCMD_CE (1);
+	  vLedSetGreen (0);
 	  pt_reset_type = 0;
 	}
 

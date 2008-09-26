@@ -251,6 +251,12 @@ cmd_update (const portCHAR * cmd)
 }
 
 void
+cmd_nrf_dump(const portCHAR * cmd)
+{
+  PtDumpNrfRegisters();
+}
+
+void
 cmd_nrf_init(const portCHAR * cmd)
 {
   PtInitNrfFrontend(PTINITNRFFRONTEND_INIT);
@@ -270,6 +276,7 @@ static struct cmd_t
 {
   { "dim",		&cmd_dim	},
   { "help", 		&cmd_help	},
+  { "nrf_dump",		&cmd_nrf_dump	},
   { "nrf_init",		&cmd_nrf_init	},
   { "nrf_reset",	&cmd_nrf_reset	},
   { "reset",		&cmd_reset	},
