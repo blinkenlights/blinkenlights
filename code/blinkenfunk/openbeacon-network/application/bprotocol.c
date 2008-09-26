@@ -75,8 +75,6 @@ static int b_parse_mcu_multiframe (mcu_multiframe_header_t *header, unsigned int
 		sequence_seed = (swaplong (header->timestamp_l)) 
 			- (unsigned int) (xTaskGetTickCount() / portTICK_RATE_MS);
 
-	maxlen -= sizeof(*header);
-
 //	debug_printf(" parsing mcu multiframe maxlen = %d\n", maxlen);
 
 	while (maxlen) {
@@ -91,17 +89,17 @@ static int b_parse_mcu_multiframe (mcu_multiframe_header_t *header, unsigned int
 
 		if (sub->bpp != 4) {
 			maxlen -= SUBSIZE;
-			return 0;
+			break;
 		}
 
 		b_rec_frames++;
-//		debug_printf("subframe: bpp = 4, pkg rest size = %d, w %d, h %d!\n", maxlen, sub->width, sub->height);
+		//debug_printf("subframe: bpp = 4, pkg rest size = %d, w %d, h %d!\n", maxlen, sub->width, sub->height);
 
 		for (i = 0; i < env.e.n_lamps; i++) {
 			LampMap *m = env.e.lamp_map + i;
 			unsigned int index = (m->y * sub->width) + m->x;
 
-			if (sizeof(*sub) + (index / 2) >= maxlen)
+			if ((index / 2) >= maxlen - sizeof(*sub))
 				continue;
 
 			if (m->screen != sub->screen_id ||
