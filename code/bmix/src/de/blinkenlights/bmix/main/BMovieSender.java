@@ -35,6 +35,7 @@ public class BMovieSender extends Thread {
 	BLPacketSender netSend;
 	BLMovie movie;
 	boolean loop;
+    private boolean stopped;
 
 	/**
 	 * Creates a new BMovieSender 
@@ -70,6 +71,9 @@ public class BMovieSender extends Thread {
 				}
 			}
 			for(int i = 0; i < movie.getNumFrames(); i ++) {
+			    if (isStopped()) {
+			        return;
+			    }
 				Frame frame = movie.getFrame(i);
 				BLImage image = (BLImage)frame;
 				BLFramePacket packet = new BLFramePacket(image);
@@ -91,6 +95,14 @@ public class BMovieSender extends Thread {
 				if(!loop) break;
 			}			
 		}
+	}
+	
+	public synchronized void stopSending() {
+	    stopped = true;
+	}
+	
+	public synchronized boolean isStopped() {
+	    return stopped;
 	}
 	
 	/**
