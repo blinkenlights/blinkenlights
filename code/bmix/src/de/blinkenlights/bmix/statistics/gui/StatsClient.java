@@ -2,7 +2,6 @@ package de.blinkenlights.bmix.statistics.gui;
 
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.awt.image.BufferStrategy;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectInputStream;
@@ -16,8 +15,6 @@ import java.util.prefs.Preferences;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
-
-import sun.tools.jconsole.CreateMBeanDialog;
 
 import de.blinkenlights.bmix.statistics.FrameStatistics;
 import de.blinkenlights.bmix.statistics.StatServer;
