@@ -7,7 +7,7 @@
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIdentifier</key>
-	<string>de.ccc.${PRODUCT_NAME:identifier}</string>
+	<string>net.blinkenlights.${PRODUCT_NAME:identifier}</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -15,11 +15,11 @@
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleGetInfoString</key>
-	<string>Blinkenposer version 1.0, Copyright TheCodingMonkeys.</string>
+	<string>Blinkenposer version 1.1, Copyright TheCodingMonkeys.</string>
 	<key>CFBundleVersion</key>
 	<string>0</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>1.1</string>
 	<key>QCPlugInClasses</key>
 	<array>
 		<string>BlinkenproviderPlugIn</string>

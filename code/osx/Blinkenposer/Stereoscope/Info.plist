@@ -9,19 +9,19 @@
 	<key>CFBundleIconFile</key>
 	<string>Stereoscope.icns</string>
 	<key>CFBundleIdentifier</key>
-	<string>de.ccc.${PRODUCT_NAME:identifier}</string>
+	<string>net.blinkenlights.blinkenposer.stereoscope.simulator</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
 	<string>${PRODUCT_NAME}</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.1</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
-	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>

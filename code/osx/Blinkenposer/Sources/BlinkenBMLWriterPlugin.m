@@ -130,7 +130,7 @@
 //	NSLog(@"%s, %@",__FUNCTION__, self.blinkenStructure);
 	NSMutableString *xmlStart = [NSMutableString stringWithString:@"<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n"];
 	NSArray *structure = self.inputBlinkenStructure;
-	[xmlStart appendFormat:@"<blm width=\"%d\" height=\"32\" bits=\"4\">\n",[[structure lastObject] count],[structure count]];
+	[xmlStart appendFormat:@"<blm width=\"%d\" height=\"%d\" bits=\"4\">\n",[[structure lastObject] count],[structure count]];
 	[xmlStart appendFormat:@"<header>\n"];
 	[xmlStart appendFormat:@"  <title></title>\n"];
 	[xmlStart appendFormat:@"  <description></description>\n"];

@@ -156,7 +156,7 @@
 		F25EC2BB0E8A242F004AB23A /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = StereoscopeSimulator/English.lproj/StereoscopeSimulator.xib; sourceTree = "<group>"; };
 		F2BFA1550E4DC88900081601 /* BlinkenBMLWriterPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlinkenBMLWriterPlugin.m; sourceTree = "<group>"; };
 		F2BFA1560E4DC88900081601 /* BlinkenBMLWriterPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlinkenBMLWriterPlugin.h; sourceTree = "<group>"; };
-		F2D8196D0E60551700D2B1D0 /* Stereoscope.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stereoscope.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F2D8196D0E60551700D2B1D0 /* Stereoscope Simulator QC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Stereoscope Simulator QC.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2D8197C0E6055C800D2B1D0 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = InfoPlist.strings; sourceTree = "<group>"; };
 		F2D8197E0E6055C800D2B1D0 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = MainMenu.xib; sourceTree = "<group>"; };
 		F2D8197F0E6055CF00D2B1D0 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -246,7 +246,7 @@
 			isa = PBXGroup;
 			children = (
 				8D5B49B6048680CD000E48DA /* Blinkenposer.plugin */,
-				F2D8196D0E60551700D2B1D0 /* Stereoscope.app */,
+				F2D8196D0E60551700D2B1D0 /* Stereoscope Simulator QC.app */,
 				F25EC2220E89E6BD004AB23A /* Stereoscope Simulator.app */,
 			);
 			name = Products;
@@ -391,9 +391,9 @@
 			productReference = F25EC2220E89E6BD004AB23A /* Stereoscope Simulator.app */;
 			productType = "com.apple.product-type.application";
 		};
-		F2D8196C0E60551700D2B1D0 /* Stereoscope */ = {
+		F2D8196C0E60551700D2B1D0 /* Stereoscope Simulator QC */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F2D819720E60551800D2B1D0 /* Build configuration list for PBXNativeTarget "Stereoscope" */;
+			buildConfigurationList = F2D819720E60551800D2B1D0 /* Build configuration list for PBXNativeTarget "Stereoscope Simulator QC" */;
 			buildPhases = (
 				F2D819690E60551700D2B1D0 /* Resources */,
 				F2095B020E6072A600BD59DB /* Copy PlugIns */,
@@ -406,9 +406,9 @@
 			dependencies = (
 				F2095AF50E60725900BD59DB /* PBXTargetDependency */,
 			);
-			name = Stereoscope;
+			name = "Stereoscope Simulator QC";
 			productName = Stereoscope;
-			productReference = F2D8196D0E60551700D2B1D0 /* Stereoscope.app */;
+			productReference = F2D8196D0E60551700D2B1D0 /* Stereoscope Simulator QC.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -425,7 +425,7 @@
 			targets = (
 				8D5B49AC048680CD000E48DA /* Blinkenposer */,
 				233E2C640A83C768005A62DF /* Build & Copy */,
-				F2D8196C0E60551700D2B1D0 /* Stereoscope */,
+				F2D8196C0E60551700D2B1D0 /* Stereoscope Simulator QC */,
 				F25EC20C0E89E6BD004AB23A /* Stereoscope Simulator */,
 			);
 		};
@@ -750,7 +750,7 @@
 					AppKit,
 				);
 				PREBINDING = NO;
-				PRODUCT_NAME = Stereoscope;
+				PRODUCT_NAME = "Stereoscope Simulator QC";
 			};
 			name = Debug;
 		};
@@ -773,7 +773,7 @@
 					AppKit,
 				);
 				PREBINDING = NO;
-				PRODUCT_NAME = Stereoscope;
+				PRODUCT_NAME = "Stereoscope Simulator QC";
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -817,7 +817,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F2D819720E60551800D2B1D0 /* Build configuration list for PBXNativeTarget "Stereoscope" */ = {
+		F2D819720E60551800D2B1D0 /* Build configuration list for PBXNativeTarget "Stereoscope Simulator QC" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F2D819700E60551700D2B1D0 /* Debug */,
