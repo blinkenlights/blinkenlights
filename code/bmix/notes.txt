@@ -1,5 +1,13 @@
 BMix Notes
 
+
+
+!!! implement multi-screen multi frame! !!!
+
+
+
+
+
 ==StatsClient To do==
 * turn layout so inputs are at top instead of left
 ** put preview frame above text in layer label
