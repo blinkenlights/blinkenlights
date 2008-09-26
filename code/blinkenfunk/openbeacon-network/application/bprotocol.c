@@ -128,6 +128,8 @@ static int b_parse_mcu_multiframe (mcu_multiframe_header_t *header, unsigned int
 				 | (last_lamp_val[(i * 2) + 1] << 4);
 	
 	vnRFTransmitPacket(&rfpkg);
+	vTaskDelay(10 / portTICK_RATE_MS);
+	vnRFTransmitPacket(&rfpkg);
 	return 0;
 }
 
@@ -234,6 +236,8 @@ static inline void b_set_assigned_lamps (unsigned int *map, unsigned int len)
 		m->x      = map[(i * 4) + 2];
 		m->y      = map[(i * 4) + 3];
 
+		b_set_lamp_id (i, m->mac);
+		vTaskDelay(100 / portTICK_RATE_MS);
 		b_set_lamp_id (i, m->mac);
 		vTaskDelay(100 / portTICK_RATE_MS);
 		debug_printf("Lamp map %d -> MAC 0x%04x\n", i, m->mac);

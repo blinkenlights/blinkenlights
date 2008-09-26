@@ -29,8 +29,8 @@
 #include <beacontypes.h>
 #include "proto.h"
 
-#define VERSION		"0.8.2"
-#define VERSION_INT	0x00000802
+#define VERSION		"0.8.3"
+#define VERSION_INT	0x00000803
 
 /*---------------------------------*/
 /* SAM7Board Memories Definition   */
