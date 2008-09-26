@@ -285,25 +285,26 @@ vnRFtaskRx (void *parameter)
     {
       if (pt_reset_type)
 	{
+	  nRFCMD_CE (0);
 	  vLedSetGreen (1);
 	  vTaskDelay (10 / portTICK_RATE_MS);
 	  switch (pt_reset_type)
 	    {
 	    case PTINITNRFFRONTEND_RESETFIFO:
-	      // flush FIFOs
-	      nRFCMD_CE (0);
-
 	      nRFAPI_FlushRX ();
 	      nRFAPI_FlushTX ();
+	      nRFAPI_ClearIRQ (MASK_IRQ_FLAGS);
 	      nRFAPI_SetRxMode (1);
-
-	      nRFCMD_CE (1);
 	      break;
 
 	    case PTINITNRFFRONTEND_INIT:
 	      PtInitNRF ();
 	      break;
+
 	    }
+	    vTaskDelay (10 / portTICK_RATE_MS);
+	    nRFCMD_CE (1);
+	    vLedSetGreen (0);
 	  pt_reset_type = 0;
 	}
 
