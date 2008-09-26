@@ -8,7 +8,7 @@
   <recordingDate>2008-09-26</recordingDate>
   <recordingTime>00:38:47</recordingTime>
 </header>
-    <frame duration="333">
+    <frame duration="1000">
       <row>000000000000000000000000000000</row>
       <row>000000000000000000000000000000</row>
       <row>000000000000000000000000000000</row>
@@ -22,7 +22,7 @@
       <row>000000000000000000000000000000</row>
       <row>000000000000000000000000000000</row>
     </frame>
-    <frame duration="334">
+    <frame duration="1000">
       <row>111111111111111111111111111111</row>
       <row>111111111111111111111111111111</row>
       <row>111111111111111111111111111111</row>
@@ -36,7 +36,7 @@
       <row>111111111111111111111111111111</row>
       <row>111111111111111111111111111111</row>
     </frame>
-    <frame duration="334">
+    <frame duration="1000">
       <row>222222222222222222222222222222</row>
       <row>222222222222222222222222222222</row>
       <row>222222222222222222222222222222</row>
@@ -50,7 +50,7 @@
       <row>222222222222222222222222222222</row>
       <row>222222222222222222222222222222</row>
     </frame>
-    <frame duration="317">
+    <frame duration="1000">
       <row>333333333333333333333333333333</row>
       <row>333333333333333333333333333333</row>
       <row>333333333333333333333333333333</row>
@@ -64,7 +64,7 @@
       <row>333333333333333333333333333333</row>
       <row>333333333333333333333333333333</row>
     </frame>
-    <frame duration="350">
+    <frame duration="1000">
       <row>444444444444444444444444444444</row>
       <row>444444444444444444444444444444</row>
       <row>444444444444444444444444444444</row>
@@ -78,7 +78,7 @@
       <row>444444444444444444444444444444</row>
       <row>444444444444444444444444444444</row>
     </frame>
-    <frame duration="334">
+    <frame duration="1000">
       <row>555555555555555555555555555555</row>
       <row>555555555555555555555555555555</row>
       <row>555555555555555555555555555555</row>
@@ -92,7 +92,7 @@
       <row>555555555555555555555555555555</row>
       <row>555555555555555555555555555555</row>
     </frame>
-    <frame duration="334">
+    <frame duration="1000">
       <row>666666666666666666666666666666</row>
       <row>666666666666666666666666666666</row>
       <row>666666666666666666666666666666</row>
@@ -106,7 +106,7 @@
       <row>666666666666666666666666666666</row>
       <row>666666666666666666666666666666</row>
     </frame>
-    <frame duration="334">
+    <frame duration="1000">
       <row>777777777777777777777777777777</row>
       <row>777777777777777777777777777777</row>
       <row>777777777777777777777777777777</row>
@@ -120,7 +120,7 @@
       <row>777777777777777777777777777777</row>
       <row>777777777777777777777777777777</row>
     </frame>
-    <frame duration="334">
+    <frame duration="1000">
       <row>888888888888888888888888888888</row>
       <row>888888888888888888888888888888</row>
       <row>888888888888888888888888888888</row>
@@ -134,7 +134,7 @@
       <row>888888888888888888888888888888</row>
       <row>888888888888888888888888888888</row>
     </frame>
-    <frame duration="334">
+    <frame duration="1000">
       <row>999999999999999999999999999999</row>
       <row>999999999999999999999999999999</row>
       <row>999999999999999999999999999999</row>
@@ -148,7 +148,7 @@
       <row>999999999999999999999999999999</row>
       <row>999999999999999999999999999999</row>
     </frame>
-    <frame duration="334">
+    <frame duration="1000">
       <row>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</row>
       <row>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</row>
       <row>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</row>
@@ -162,7 +162,7 @@
       <row>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</row>
       <row>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</row>
     </frame>
-    <frame duration="334">
+    <frame duration="1000">
       <row>bbbbbbbbbbbbbbbbbbbbbbbbbbbbbb</row>
       <row>bbbbbbbbbbbbbbbbbbbbbbbbbbbbbb</row>
       <row>bbbbbbbbbbbbbbbbbbbbbbbbbbbbbb</row>
@@ -176,7 +176,7 @@
       <row>bbbbbbbbbbbbbbbbbbbbbbbbbbbbbb</row>
       <row>bbbbbbbbbbbbbbbbbbbbbbbbbbbbbb</row>
     </frame>
-    <frame duration="334">
+    <frame duration="1000">
       <row>cccccccccccccccccccccccccccccc</row>
       <row>cccccccccccccccccccccccccccccc</row>
       <row>cccccccccccccccccccccccccccccc</row>
@@ -190,7 +190,7 @@
       <row>cccccccccccccccccccccccccccccc</row>
       <row>cccccccccccccccccccccccccccccc</row>
     </frame>
-    <frame duration="334">
+    <frame duration="1000">
       <row>dddddddddddddddddddddddddddddd</row>
       <row>dddddddddddddddddddddddddddddd</row>
       <row>dddddddddddddddddddddddddddddd</row>
@@ -204,7 +204,7 @@
       <row>dddddddddddddddddddddddddddddd</row>
       <row>dddddddddddddddddddddddddddddd</row>
     </frame>
-    <frame duration="334">
+    <frame duration="1000">
       <row>eeeeeeeeeeeeeeeeeeeeeeeeeeeeee</row>
       <row>eeeeeeeeeeeeeeeeeeeeeeeeeeeeee</row>
       <row>eeeeeeeeeeeeeeeeeeeeeeeeeeeeee</row>
@@ -218,7 +218,7 @@
       <row>eeeeeeeeeeeeeeeeeeeeeeeeeeeeee</row>
       <row>eeeeeeeeeeeeeeeeeeeeeeeeeeeeee</row>
     </frame>
-    <frame duration="334">
+    <frame duration="1000">
       <row>ffffffffffffffffffffffffffffff</row>
       <row>ffffffffffffffffffffffffffffff</row>
       <row>ffffffffffffffffffffffffffffff</row>
@@ -232,7 +232,35 @@
       <row>ffffffffffffffffffffffffffffff</row>
       <row>ffffffffffffffffffffffffffffff</row>
     </frame>
-    <frame duration="334">
+    <frame duration="1000">
+      <row>000000000000000000000000000000</row>
+      <row>000000000000000000000000000000</row>
+      <row>000000000000000000000000000000</row>
+      <row>000000000000000000000000000000</row>
+      <row>000000000000000000000000000000</row>
+      <row>000000000000000000000000000000</row>
+      <row>000000000000000000000000000000</row>
+      <row>000000000000000000000000000000</row>
+      <row>000000000000000000000000000000</row>
+      <row>000000000000000000000000000000</row>
+      <row>000000000000000000000000000000</row>
+      <row>000000000000000000000000000000</row>
+    </frame>
+    <frame duration="1000">
+      <row>ffffffffffffffffffffffffffffff</row>
+      <row>ffffffffffffffffffffffffffffff</row>
+      <row>ffffffffffffffffffffffffffffff</row>
+      <row>ffffffffffffffffffffffffffffff</row>
+      <row>ffffffffffffffffffffffffffffff</row>
+      <row>ffffffffffffffffffffffffffffff</row>
+      <row>ffffffffffffffffffffffffffffff</row>
+      <row>ffffffffffffffffffffffffffffff</row>
+      <row>ffffffffffffffffffffffffffffff</row>
+      <row>ffffffffffffffffffffffffffffff</row>
+      <row>ffffffffffffffffffffffffffffff</row>
+      <row>ffffffffffffffffffffffffffffff</row>
+    </frame>
+    <frame duration="1000">
       <row>eeeeeeeeeeeeeeeeeeeeeeeeeeeeee</row>
       <row>eeeeeeeeeeeeeeeeeeeeeeeeeeeeee</row>
       <row>eeeeeeeeeeeeeeeeeeeeeeeeeeeeee</row>
@@ -246,7 +274,7 @@
       <row>eeeeeeeeeeeeeeeeeeeeeeeeeeeeee</row>
       <row>eeeeeeeeeeeeeeeeeeeeeeeeeeeeee</row>
     </frame>
-    <frame duration="334">
+    <frame duration="1000">
       <row>dddddddddddddddddddddddddddddd</row>
       <row>dddddddddddddddddddddddddddddd</row>
       <row>dddddddddddddddddddddddddddddd</row>
@@ -260,7 +288,7 @@
       <row>dddddddddddddddddddddddddddddd</row>
       <row>dddddddddddddddddddddddddddddd</row>
     </frame>
-    <frame duration="334">
+    <frame duration="1000">
       <row>cccccccccccccccccccccccccccccc</row>
       <row>cccccccccccccccccccccccccccccc</row>
       <row>cccccccccccccccccccccccccccccc</row>
@@ -274,7 +302,7 @@
       <row>cccccccccccccccccccccccccccccc</row>
       <row>cccccccccccccccccccccccccccccc</row>
     </frame>
-    <frame duration="334">
+    <frame duration="1000">
       <row>bbbbbbbbbbbbbbbbbbbbbbbbbbbbbb</row>
       <row>bbbbbbbbbbbbbbbbbbbbbbbbbbbbbb</row>
       <row>bbbbbbbbbbbbbbbbbbbbbbbbbbbbbb</row>
@@ -288,7 +316,7 @@
       <row>bbbbbbbbbbbbbbbbbbbbbbbbbbbbbb</row>
       <row>bbbbbbbbbbbbbbbbbbbbbbbbbbbbbb</row>
     </frame>
-    <frame duration="334">
+    <frame duration="1000">
       <row>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</row>
       <row>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</row>
       <row>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</row>
@@ -302,7 +330,7 @@
       <row>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</row>
       <row>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</row>
     </frame>
-    <frame duration="334">
+    <frame duration="1000">
       <row>999999999999999999999999999999</row>
       <row>999999999999999999999999999999</row>
       <row>999999999999999999999999999999</row>
@@ -316,7 +344,7 @@
       <row>999999999999999999999999999999</row>
       <row>999999999999999999999999999999</row>
     </frame>
-    <frame duration="334">
+    <frame duration="1000">
       <row>888888888888888888888888888888</row>
       <row>888888888888888888888888888888</row>
       <row>888888888888888888888888888888</row>
@@ -330,7 +358,7 @@
       <row>888888888888888888888888888888</row>
       <row>888888888888888888888888888888</row>
     </frame>
-    <frame duration="334">
+    <frame duration="1000">
       <row>777777777777777777777777777777</row>
       <row>777777777777777777777777777777</row>
       <row>777777777777777777777777777777</row>
@@ -344,7 +372,7 @@
       <row>777777777777777777777777777777</row>
       <row>777777777777777777777777777777</row>
     </frame>
-    <frame duration="334">
+    <frame duration="1000">
       <row>666666666666666666666666666666</row>
       <row>666666666666666666666666666666</row>
       <row>666666666666666666666666666666</row>
@@ -358,7 +386,7 @@
       <row>666666666666666666666666666666</row>
       <row>666666666666666666666666666666</row>
     </frame>
-    <frame duration="334">
+    <frame duration="1000">
       <row>555555555555555555555555555555</row>
       <row>555555555555555555555555555555</row>
       <row>555555555555555555555555555555</row>
@@ -372,7 +400,7 @@
       <row>555555555555555555555555555555</row>
       <row>555555555555555555555555555555</row>
     </frame>
-    <frame duration="334">
+    <frame duration="1000">
       <row>444444444444444444444444444444</row>
       <row>444444444444444444444444444444</row>
       <row>444444444444444444444444444444</row>
@@ -386,7 +414,7 @@
       <row>444444444444444444444444444444</row>
       <row>444444444444444444444444444444</row>
     </frame>
-    <frame duration="334">
+    <frame duration="1000">
       <row>333333333333333333333333333333</row>
       <row>333333333333333333333333333333</row>
       <row>333333333333333333333333333333</row>
@@ -400,7 +428,7 @@
       <row>333333333333333333333333333333</row>
       <row>333333333333333333333333333333</row>
     </frame>
-    <frame duration="334">
+    <frame duration="1000">
       <row>222222222222222222222222222222</row>
       <row>222222222222222222222222222222</row>
       <row>222222222222222222222222222222</row>
@@ -414,7 +442,7 @@
       <row>222222222222222222222222222222</row>
       <row>222222222222222222222222222222</row>
     </frame>
-    <frame duration="334">
+    <frame duration="1000">
       <row>111111111111111111111111111111</row>
       <row>111111111111111111111111111111</row>
       <row>111111111111111111111111111111</row>
@@ -428,7 +456,7 @@
       <row>111111111111111111111111111111</row>
       <row>111111111111111111111111111111</row>
     </frame>
-    <frame duration="167">
+    <frame duration="1000">
       <row>000000000000000000000000000000</row>
       <row>000000000000000000000000000000</row>
       <row>000000000000000000000000000000</row>
@@ -441,5 +469,19 @@
       <row>000000000000000000000000000000</row>
       <row>000000000000000000000000000000</row>
       <row>000000000000000000000000000000</row>
+    </frame>
+    <frame duration="1000">
+      <row>ffffffffffffffffffffffffffffff</row>
+      <row>ffffffffffffffffffffffffffffff</row>
+      <row>ffffffffffffffffffffffffffffff</row>
+      <row>ffffffffffffffffffffffffffffff</row>
+      <row>ffffffffffffffffffffffffffffff</row>
+      <row>ffffffffffffffffffffffffffffff</row>
+      <row>ffffffffffffffffffffffffffffff</row>
+      <row>ffffffffffffffffffffffffffffff</row>
+      <row>ffffffffffffffffffffffffffffff</row>
+      <row>ffffffffffffffffffffffffffffff</row>
+      <row>ffffffffffffffffffffffffffffff</row>
+      <row>ffffffffffffffffffffffffffffff</row>
     </frame>
 </blm>
