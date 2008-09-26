@@ -122,12 +122,14 @@ cmd_help (const portCHAR * cmd)
   shell_print ("Blinkenlights command shell help.\n");
   shell_print ("---------------------------------\n");
   shell_print ("\n");
-  shell_print ("help				This screen\n");
-  shell_print ("[wdim-]mac <xxyy> [<crc>]	Set the MAC address of this unit.\n");
-  shell_print ("status				Print status information about this unit.\n");
   shell_print ("dim <value>			Set the dimmer to a value (between 0 and 15)\n");
+  shell_print ("help				This screen\n");
   shell_print ("reset				Reset the non-volatile flash to defaults\n");
+  shell_print ("nrf_init			initialize 2.4GHz frontend from scratch\n");  
+  shell_print ("nrf_reset			reset 2.4GHz frontend FIFOs\n");  
+  shell_print ("status				Print status information about this unit.\n");
   shell_print ("update				Enter update mode - DO NOT USE FOR FUN\n");
+  shell_print ("[wdim-]mac <xxyy> [<crc>]	Set the MAC address of this unit.\n");
 }
 
 static int
@@ -247,20 +249,34 @@ cmd_update (const portCHAR * cmd)
   DeviceRevertToUpdateMode ();
 }
 
+void
+cmd_nrf_init(const portCHAR * cmd)
+{
+  PtInitNrfFrontend(PTINITNRFFRONTEND_INIT);
+}
+
+void
+cmd_nrf_reset(const portCHAR * cmd)
+{
+  PtInitNrfFrontend(PTINITNRFFRONTEND_RESETFIFO);
+}
+
 static struct cmd_t
 {
   const portCHAR *command;
   void (*callback) (const portCHAR * cmd);
 } commands[] =
 {
-  { "help", 	&cmd_help 	},
-  { "status", 	&cmd_status	},
-  { "mac", 	&cmd_mac 	},
-  { "MAC", 	&cmd_mac 	},
-  { "wdim-mac",	&cmd_mac	},
-  { "dim",	&cmd_dim	},
-  { "reset",	&cmd_reset	},
-  { "update",	&cmd_update	},
+  { "dim",		&cmd_dim	},
+  { "help", 		&cmd_help	},
+  { "nrf_init",		&cmd_nrf_init	},
+  { "nrf_reset",	&cmd_nrf_reset	},
+  { "reset",		&cmd_reset	},
+  { "status", 		&cmd_status	},
+  { "update",		&cmd_update	},
+  { "mac", 		&cmd_mac 	},
+  { "MAC", 		&cmd_mac 	},
+  { "wdim-mac",		&cmd_mac	},
     /* end marker */
   { NULL, NULL }
 };

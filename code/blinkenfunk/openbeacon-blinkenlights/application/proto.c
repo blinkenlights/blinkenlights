@@ -44,6 +44,7 @@ unsigned int packet_count;
 unsigned int pings_lost = 0;
 unsigned int last_sequence = 0;
 unsigned int last_ping_seq = 0;
+unsigned int pt_reset_type = 0;
 
 static BRFPacket pkg;
 static const unsigned char broadcast_mac[NRF_MAX_MAC_SIZE] =
@@ -64,6 +65,12 @@ PtInitNRF (void)
   nRFCMD_CE (1);
 
   return 1;
+}
+
+void
+PtInitNrfFrontend (int ResetType)
+{
+  pt_reset_type = ResetType;
 }
 
 static inline unsigned short
@@ -232,18 +239,18 @@ bParsePacket (void)
       break;
     case RF_CMD_SET_DIMMER_CONTROL:
       if (pkg.dimmer_control.off)
-        DumpStringToUSB ("forcing dimmer off.\n");
+	DumpStringToUSB ("forcing dimmer off.\n");
       else
-        DumpStringToUSB ("dimmer operating.\n");
+	DumpStringToUSB ("dimmer operating.\n");
 
       vSetDimmerOff (pkg.dimmer_control.off);
       break;
     case RF_CMD_PING:
-      if (last_ping_seq == 0 ||
-          last_ping_seq > pkg.ping.sequence) {
-        last_ping_seq = pkg.ping.sequence;
-	break;
-      }
+      if (last_ping_seq == 0 || last_ping_seq > pkg.ping.sequence)
+	{
+	  last_ping_seq = pkg.ping.sequence;
+	  break;
+	}
 
       pings_lost += pkg.ping.sequence - last_ping_seq - 1;
       break;
@@ -276,6 +283,30 @@ vnRFtaskRx (void *parameter)
 
   for (;;)
     {
+      if (pt_reset_type)
+	{
+	  vLedSetGreen (1);
+	  vTaskDelay (10 / portTICK_RATE_MS);
+	  switch (pt_reset_type)
+	    {
+	    case PTINITNRFFRONTEND_RESETFIFO:
+	      // flush FIFOs
+	      nRFCMD_CE (0);
+
+	      nRFAPI_FlushRX ();
+	      nRFAPI_FlushTX ();
+	      nRFAPI_SetRxMode (1);
+
+	      nRFCMD_CE (1);
+	      break;
+
+	    case PTINITNRFFRONTEND_INIT:
+	      PtInitNRF ();
+	      break;
+	    }
+	  pt_reset_type = 0;
+	}
+
       if (!nRFCMD_WaitRx (10))
 	{
 	  nRFAPI_ClearIRQ (MASK_IRQ_FLAGS);
@@ -324,7 +355,7 @@ vnRFtaskRx (void *parameter)
 	  DidBlink = 0;
 	  vLedSetGreen (0);
 	}
-    } /* for (;;) */
+    }				/* for (;;) */
 }
 
 void

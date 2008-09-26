@@ -26,10 +26,14 @@
 #include "openbeacon.h"
 #include "usbshell.h"
 
+#define PTINITNRFFRONTEND_RESETFIFO 0x01
+#define PTINITNRFFRONTEND_INIT 0x02
+
 #define GAMMA_DEFAULT	200
 #define FIFO_DEPTH	256
 #define RF_PAYLOAD_SIZE	22
-enum {
+enum
+{
   RF_CMD_SET_VALUES,
   RF_CMD_SET_LAMP_ID,
   RF_CMD_SET_GAMMA,
@@ -48,43 +52,51 @@ typedef struct
   unsigned short mac;
   unsigned char wmcu_id;
 
-  union {
+  union
+  {
     unsigned char payload[RF_PAYLOAD_SIZE];
-    
-    struct {
+
+    struct
+    {
       unsigned char id;
       unsigned char wmcu_id;
     } PACKED set_lamp_id;
 
-    struct {
+    struct
+    {
       unsigned char block;
       unsigned short val[8];
     } PACKED set_gamma;
 
-    struct {
+    struct
+    {
       unsigned short jitter;
     } PACKED set_jitter;
 
-    struct {
+    struct
+    {
       unsigned short emi_pulses;
       unsigned long packet_count;
       unsigned long pings_lost;
       unsigned long fw_version;
     } PACKED statistics;
 
-    struct {
+    struct
+    {
       unsigned short delay;
     } PACKED set_delay;
-    
-    struct {
+
+    struct
+    {
       unsigned char off;
     } PACKED dimmer_control;
-    
-    struct {
+
+    struct
+    {
       unsigned int sequence;
     } PACKED ping;
 
-  } PACKED; /* union */
+  } PACKED;			/* union */
 
   unsigned int sequence;
   unsigned short crc;
@@ -93,6 +105,7 @@ typedef struct
 extern void vInitProtocolLayer (void);
 extern int PtSetFifoLifetimeSeconds (int Seconds);
 extern int PtGetFifoLifetimeSeconds (void);
+extern void PtInitNrfFrontend (int ResetType);
 extern unsigned int packet_count;
 extern unsigned int last_sequence;
 extern unsigned int last_ping_seq;
