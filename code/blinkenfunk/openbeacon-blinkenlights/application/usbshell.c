@@ -125,6 +125,7 @@ cmd_help (const portCHAR * cmd)
   shell_print ("dim <value>			Set the dimmer to a value (between 0 and 15)\n");
   shell_print ("help				This screen\n");
   shell_print ("reset				Reset the non-volatile flash to defaults\n");
+  shell_print ("nrf_dump			dumps 2.4GHz frontend (nRF24L01) register set\n");  
   shell_print ("nrf_init			initialize 2.4GHz frontend from scratch\n");  
   shell_print ("nrf_reset			reset 2.4GHz frontend FIFOs\n");  
   shell_print ("status				Print status information about this unit.\n");

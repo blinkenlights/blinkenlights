@@ -44,7 +44,7 @@ unsigned int packet_count;
 unsigned int pings_lost = 0;
 unsigned int last_sequence = 0;
 unsigned int last_ping_seq = 0;
-unsigned int pt_reset_type = 0;
+static unsigned int pt_reset_type = 0;
 
 static BRFPacket pkg;
 static const unsigned char broadcast_mac[NRF_MAX_MAC_SIZE] =
