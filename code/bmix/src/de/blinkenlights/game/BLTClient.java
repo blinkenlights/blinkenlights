@@ -39,4 +39,16 @@ class BLTClient implements UserInputSource {
         // TODO Auto-generated method stub
         
     }
+
+	public InetAddress getHost() {
+		return host;
+	}
+
+	public int getPort() {
+		return port;
+	}
+
+	public String getDid() {
+		return did;
+	}
 }

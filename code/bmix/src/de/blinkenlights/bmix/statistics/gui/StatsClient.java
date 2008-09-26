@@ -25,12 +25,12 @@ public class StatsClient implements Runnable {
     
 	private final InputStream in;
 	private final StatsComponent statsComponent;
-	private final InetAddress serverAddr;
+//	private final InetAddress serverAddr;
 
     private final JFrame f;
 
 	public StatsClient(InetAddress serverAddr) throws IOException {
-		this.serverAddr = serverAddr;
+//		this.serverAddr = serverAddr;
 		Socket s = new Socket(serverAddr, StatServer.STAT_PORT);
 		in = s.getInputStream();
 		s.getOutputStream();

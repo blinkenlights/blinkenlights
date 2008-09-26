@@ -34,4 +34,12 @@ class BMixClient implements FrameTarget {
         // TODO Auto-generated method stub
         
     }
+
+	public InetAddress getHost() {
+		return host;
+	}
+
+	public int getPort() {
+		return port;
+	}
 }
