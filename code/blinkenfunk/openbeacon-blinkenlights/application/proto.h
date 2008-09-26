@@ -111,5 +111,6 @@ extern unsigned int packet_count;
 extern unsigned int last_sequence;
 extern unsigned int last_ping_seq;
 extern unsigned int pings_lost;
+extern unsigned int debug;
 
 #endif/*__PROTO_H__*/

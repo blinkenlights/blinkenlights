@@ -45,6 +45,7 @@ unsigned int pings_lost = 0;
 unsigned int last_sequence = 0;
 unsigned int last_ping_seq = 0;
 static unsigned int pt_reset_type = 0;
+unsigned int debug = 0;
 
 static BRFPacket pkg;
 static const unsigned char broadcast_mac[NRF_MAX_MAC_SIZE] =
@@ -178,22 +179,44 @@ bParsePacket (void)
   //  return;
 
   /* broadcasts have to have the correct wmcu_id set */
-  if (pkg.mac == 0xffff && pkg.wmcu_id != env.e.wmcu_id)
+  if (pkg.mac == 0xffff && pkg.wmcu_id != env.e.wmcu_id) {
+    if (debug) {
+      DumpStringToUSB("dropping broadcast packet with wmcu id ");
+      DumpUIntToUSB(pkg.wmcu_id);
+      DumpStringToUSB("\n");
+    }
     return;
+  }
 
   /* for all other packets, we want our mac */
-  if (pkg.mac != 0xffff && pkg.mac != env.e.mac)
+  if (pkg.mac != 0xffff && pkg.mac != env.e.mac) {
+    if (debug > 2) {
+      DumpStringToUSB("dropping unicast packet for mac ");
+      DumpHexToUSB(pkg.wmcu_id, 1);
+      DumpStringToUSB("\n");
+    }
     return;
+  }
 
   /* ignore pakets sent from another dimmer */
   if (pkg.cmd & 0x40)
     return;
 
   /* check the sequence */
-  if (last_sequence == 0)
+  if (last_sequence == 0) {
     last_sequence = pkg.sequence;
-  else if (!(seq_delta > 0 && seq_delta < (signed int) (1UL << 28)))
+    DumpStringToUSB("Seeding sequence: ");
+    DumpUIntToUSB(last_sequence);
+    DumpStringToUSB("\n");
+  }
+  else if (!(seq_delta > 0 && seq_delta < (signed int) (1UL << 28))) {
+    if (debug) {
+      DumpStringToUSB("dropping packet with bogus sequence ");
+      DumpUIntToUSB(pkg.sequence);
+      DumpStringToUSB("\n");
+    }
     return;
+  }
 
   last_sequence = pkg.sequence;
   reply = pkg.cmd & 0x80;
@@ -214,9 +237,20 @@ bParsePacket (void)
 
 	v &= 0xf;
 
-	//DumpStringToUSB ("new lamp val: ");
-	//DumpUIntToUSB (v);
-	//DumpStringToUSB ("\n\r");
+	if (debug > 1) {
+          int i;
+
+          DumpStringToUSB("got values: ");
+	  
+	  for (i = 0; i < RF_PAYLOAD_SIZE; i++) {
+            DumpHexToUSB(pkg.payload[i], 1);
+	    DumpStringToUSB(" ");
+	  }
+
+          DumpStringToUSB(" - mine: ");
+          DumpHexToUSB(v, 1);
+	  DumpStringToUSB("\n");
+	}
 
 	vTaskDelay (env.e.dimmer_delay / portTICK_RATE_MS);
 	vUpdateDimmer (v);
@@ -246,6 +280,7 @@ bParsePacket (void)
       DumpStringToUSB ("new gamme table received\n");
       break;
     case RF_CMD_WRITE_CONFIG:
+      DumpStringToUSB("writing config.\n");
       env_store ();
       break;
     case RF_CMD_SET_JITTER:
@@ -345,8 +380,6 @@ vnRFtaskRx (void *parameter)
 	  continue;
 	}
 
-      //DumpStringToUSB ("received packet\n");
-
       do
 	{
 	  /* read packet from nRF chip */
@@ -365,8 +398,16 @@ vnRFtaskRx (void *parameter)
 	    env_crc16 ((unsigned char *) &pkg,
 		       sizeof (pkg) - sizeof (pkg.crc));
 
-	  if (crc != swapshort (pkg.crc))
+	  if (crc != swapshort (pkg.crc)) {
+	    if (debug) {
+              DumpStringToUSB("invalid CRC! ");
+	      DumpHexToUSB(crc, 2);
+              DumpStringToUSB(" != ");
+	      DumpHexToUSB(pkg.crc, 2);
+	      DumpStringToUSB("\n");
+	    }
 	    continue;
+	  }
 
 	  /* valid paket */
 	  if (!DidBlink)

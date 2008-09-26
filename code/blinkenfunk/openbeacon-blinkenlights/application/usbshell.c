@@ -122,6 +122,7 @@ cmd_help (const portCHAR * cmd)
   shell_print ("Blinkenlights command shell help.\n");
   shell_print ("---------------------------------\n");
   shell_print ("\n");
+  shell_print ("d[ebug] <level>			Define the debug level\n");
   shell_print ("dim <value>			Set the dimmer to a value (between 0 and 15)\n");
   shell_print ("help				This screen\n");
   shell_print ("reset				Reset the non-volatile flash to defaults\n");
@@ -244,6 +245,27 @@ cmd_dim (const portCHAR * cmd)
   shell_print ("\n");
 }
 
+static void
+cmd_debug (const portCHAR * cmd)
+{
+  int val = 0;
+
+  while (*cmd && *cmd != ' ')
+    cmd++;
+
+  cmd++;
+
+  if (*cmd < '0' || *cmd > '9')
+    return;
+  
+  val = *cmd - '0';
+
+  shell_print ("setting debug level to ");
+  DumpUIntToUSB(val);
+  shell_print ("\n");
+  debug = val;
+}
+
 void
 cmd_update (const portCHAR * cmd)
 {
@@ -274,6 +296,8 @@ static struct cmd_t
   void (*callback) (const portCHAR * cmd);
 } commands[] =
 {
+  { "d",		&cmd_debug	},
+  { "debug",		&cmd_debug	},
   { "dim",		&cmd_dim	},
   { "help", 		&cmd_help	},
   { "nrf_dump",		&cmd_nrf_dump	},
