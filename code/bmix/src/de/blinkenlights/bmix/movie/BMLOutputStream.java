@@ -96,6 +96,7 @@ public class BMLOutputStream extends OutputStream {
 	public void close() throws IOException {
 		super.close();
 		writeFooter();
+		out.flush();
 		out.close();
 		closed = true;
 	}
