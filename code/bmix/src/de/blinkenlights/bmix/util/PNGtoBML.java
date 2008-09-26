@@ -119,7 +119,14 @@ public class PNGtoBML {
         startButton.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
-        		task = new ConvertTask(new File(pngDir.getText()), new File(outFile.getText()),new Dimension(Integer.parseInt(xSizeField.getText()),Integer.parseInt(ySizeField.getText())),4);
+				File out = new File(outFile.getText());
+				if (out.exists()) {
+					int ans = JOptionPane.showConfirmDialog(null, "" + out.getName() + " exists. Overwrite?", "Save Over Existing File", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+					if (ans == JOptionPane.CANCEL_OPTION) {
+						return;
+					}
+				}
+        		task = new ConvertTask(new File(pngDir.getText()), out,new Dimension(Integer.parseInt(xSizeField.getText()),Integer.parseInt(ySizeField.getText())),4);
         		task.addPropertyChangeListener(new PropertyChangeListener() {
 
 					public void propertyChange(PropertyChangeEvent event) {
@@ -147,10 +154,10 @@ public class PNGtoBML {
         		"pref, 4dlu, 120dlu:grow, 4dlu, min",
         		"");
   
-        pngDir.setText(prefs.get("pngDir", System.getProperty("user.dir")));
+        pngDir.setText(prefs.get("pngDir", System.getProperty("user.home")));
         pngDir.getDocument().addDocumentListener(inputVerifier);
         
-        outFile.setText(prefs.get("outFile", System.getProperty("user.dir")));
+        outFile.setText(prefs.get("outFile", System.getProperty("user.home")+System.getProperty("file.separator")+"movie.bml"));
         outFile.getDocument().addDocumentListener(inputVerifier);
         
         xSizeField.setText(prefs.get("xSize", "18"));
@@ -240,8 +247,9 @@ public class PNGtoBML {
 			}
 			
 			File outFileParent = new File(outFile.getText()).getAbsoluteFile().getParentFile();
+			File out = new File(outFile.getText());
 			
-			if (outFileParent == null || !outFileParent.exists()) {
+			if (outFileParent == null || out.isDirectory() || !outFileParent.exists()) {
 				statusLine.setText("Output directory is invalid");
 				return;
 			}
@@ -278,7 +286,8 @@ public class PNGtoBML {
     private class ImageFileNameFilter implements FilenameFilter {
 
 		public boolean accept(File dir, String name) {
-			if (name.startsWith(".") || dir.isHidden()) {
+			File file = new File(dir,name);
+			if (name.startsWith(".") || file.isHidden() || file.isDirectory()) {
 				return false;
 			}
 			return true;
@@ -292,6 +301,8 @@ public class PNGtoBML {
 		private final Dimension size;
 		private final int bpp;
 		private String currentFileName;
+		private OutputStream outputStream;
+		private int filesProcessed;
 		
 		protected ConvertTask(File pngDir, File output, Dimension size, int bpp) {
 			pngDir2 = pngDir;
@@ -307,14 +318,14 @@ public class PNGtoBML {
 		@Override
 		protected Object doInBackground() throws Exception {
       		output.createNewFile();
-    		OutputStream out = new FileOutputStream(output);
-    		File[] files = pngDir2.listFiles();
+    		outputStream = new FileOutputStream(output);
+			File[] files = pngDir2.listFiles();
     		Arrays.sort(files);
-    		BMLOutputStream bmlOut = new BMLOutputStream(out,((Number)frameRateField.getValue()).intValue(),size,bpp);
+    		BMLOutputStream bmlOut = new BMLOutputStream(outputStream,((Number)frameRateField.getValue()).intValue(),size,bpp);
     		
     		File[] fileList = pngDir2.listFiles(new ImageFileNameFilter());
-    		int filesProcessed = 0;
-    		for (File file : fileList) {
+    		filesProcessed = 0;
+			for (File file : fileList) {
     			currentFileName = file.getName();
     			statusLine.setText("Processing: "+currentFileName);
     			if (isCancelled()) {
@@ -324,7 +335,8 @@ public class PNGtoBML {
     			if (image != null) {
     				bmlOut.writeFrame(image);
     			} else {
-    				throw new Exception("<html>ImageIO is unable to convert this file.<br>Processing aborted (BML will be invalid).");
+    				System.err.println("error processing "+file);
+    				throw new Exception("<html>ImageIO is unable to convert this file.<br>Processing aborted.");
     			}
     			filesProcessed++;
     			int progress = (int)(filesProcessed / (float)fileList.length * 100);
@@ -344,11 +356,8 @@ public class PNGtoBML {
 			progress.setValue(0);
 			try {
 				get();
-				JOptionPane.showMessageDialog(mainFrame, "<html>Done!");
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (ExecutionException e) {
+				JOptionPane.showMessageDialog(mainFrame, "<html>Done!<br>"+filesProcessed+" frames processed.");
+			} catch (Exception e) {
 				Throwable cause = e;
 				while (cause.getCause() != null) {
 					cause = cause.getCause();
@@ -357,10 +366,16 @@ public class PNGtoBML {
 					JOptionPane.showMessageDialog(mainFrame, "<html>Error processing <b>"+currentFileName+"</b>:<br>"+cause.getMessage());
 				} else {
 					JOptionPane.showMessageDialog(mainFrame, "<html>Error: "+e.getMessage());
-
 				}
-
-				// TODO Auto-generated catch block
+				if (outputStream != null) {
+					try {
+						outputStream.close();
+					} catch (IOException e1) {
+						//no big deal...
+					}
+				}
+				// remove broken output file
+				output.delete();
 				e.printStackTrace();
 			}
 
