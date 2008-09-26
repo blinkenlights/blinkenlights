@@ -40,6 +40,16 @@ class BLTClient implements UserInputSource {
         
     }
 
+    public void gameEnding() {
+        // TODO Auto-generated method stub
+        
+    }
+
+    public boolean isUserPresent() {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
 	public InetAddress getHost() {
 		return host;
 	}

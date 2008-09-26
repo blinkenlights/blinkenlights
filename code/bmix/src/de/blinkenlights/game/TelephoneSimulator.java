@@ -12,13 +12,14 @@ import java.util.concurrent.Semaphore;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
+import javax.swing.JTextField;
 
 public class TelephoneSimulator implements UserInputSource {
 
     private JFrame frame;
-    private Character lastKey = null;
+    private volatile Character lastKey = null;
     private Semaphore gameStartSemaphore = new Semaphore(0);
+    private volatile boolean offhook;
     
     public Character getKeystroke() {
         Character retval = lastKey;
@@ -35,29 +36,35 @@ public class TelephoneSimulator implements UserInputSource {
         JButton startCallButton = new JButton("Start Call");
         startCallButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                lastKey = null;
+                offhook = true;
                 gameStartSemaphore.release();
             }
         });
         
         JButton endCallButton = new JButton("End Call");
-        // TODO end call
+        endCallButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                offhook = false;
+            }
+        });
         
-        JLabel instructions = new JLabel("Click here then type keys to send input to the game!");
-        
-        frame.addKeyListener(new KeyListener() {
+        JTextField instructions = new JTextField("Click here then type keys to send input to the game!");
+        instructions.setEditable(false);
+        instructions.addKeyListener(new KeyListener() {
 
             public void keyPressed(KeyEvent e) {
                 // don't care
             }
 
             public void keyReleased(KeyEvent e) {
-                // don't care
-            }
-
-            public void keyTyped(KeyEvent e) {
                 System.out.println("Got key");
                 lastKey = e.getKeyChar();
                 e.consume();
+            }
+
+            public void keyTyped(KeyEvent e) {
+                // don't care
             }
             
         });
@@ -75,6 +82,14 @@ public class TelephoneSimulator implements UserInputSource {
 
     public void waitForGameStart() throws InterruptedException {
         gameStartSemaphore.acquire();
+    }
+
+    public void gameEnding() {
+        offhook = false;
+    }
+
+    public boolean isUserPresent() {
+        return offhook;
     }
 
     

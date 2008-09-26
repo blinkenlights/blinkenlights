@@ -23,4 +23,9 @@ public interface FrameTarget {
      */
     public void stop();
 
+    /**
+     * Notifies this frame target that the game is over. This frame target
+     * will release any resources it had been using during the game.
+     */
+    public void gameEnding();
 }

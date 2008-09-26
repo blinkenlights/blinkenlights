@@ -23,7 +23,10 @@ public class ExampleGame implements BlinkenGame {
         
         // TODO user input from frame info
         System.out.println("Frame@" + frameInfo.getWhen() + "ms. User Input="+frameInfo.getUserInput());
-        xOffset++;
+        Character input = frameInfo.getUserInput();
+        if (input != null) {
+            xOffset++;
+        }
         if (xOffset * 2 >= context.getPlayfieldWidth()) {
             xOffset = 0;
         }
@@ -33,12 +36,13 @@ public class ExampleGame implements BlinkenGame {
         g.drawLine(centre - xOffset, 0, centre - xOffset, height);
         g.drawLine(centre + xOffset, 0, centre + xOffset, height);
         
-        // just quit after 4 seconds
-        return frameInfo.getWhen() < 4000;
+        // quit after 60 seconds so people can't hog it
+        return frameInfo.getWhen() < 60000;
     }
 
-    public void gameEnding() {
+    public void gameEnding(Graphics2D g) {
         System.out.println("Game ending");
+        g.drawLine(0, 0, context.getPlayfieldWidth(), context.getPlayfieldHeight());
         context = null;
         xOffset = 0;
         centre = 0;

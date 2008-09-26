@@ -19,11 +19,6 @@ public class GameContext {
     
     private final BlinkenGame game;
     
-    /**
-     * True when the game is already running.
-     */
-    private boolean gameRunning = false;
-
     private int playfieldWidth;
 
     private int playfieldHeight;
@@ -103,11 +98,10 @@ public class GameContext {
     }
     
     private void doGame() {
+        BufferedImage bi = new BufferedImage(playfieldWidth, playfieldHeight, BufferedImage.TYPE_INT_ARGB);
         try {
-            setGameRunning(true);
             game.gameStarting(this);
             long startTime = System.currentTimeMillis();
-            BufferedImage bi = new BufferedImage(playfieldWidth, playfieldHeight, BufferedImage.TYPE_INT_ARGB);
             for (;;) {
                 long when = System.currentTimeMillis() - startTime;
                 FrameInfo frameInfo = new FrameInfo(inputClient.getKeystroke(), when);
@@ -115,9 +109,17 @@ public class GameContext {
                 try {
                     g.setColor(Color.BLACK); // TODO configurable background colour
                     g.fillRect(0, 0, playfieldWidth, playfieldHeight);
+                    g.setColor(Color.WHITE);
                     boolean keepGoing = game.nextFrame(g, frameInfo);
                     bmixClient.putFrame(bi);
-                    if (!keepGoing) break;
+                    if (!keepGoing) {
+                        logger.info("Stopping at game's request (nextFrame returned false)");
+                        break;
+                    }
+                    if (!inputClient.isUserPresent()) {
+                        logger.info("Stopping because user input source went dead");
+                        break;
+                    }
                     Thread.sleep((long) ((1.0 / framesPerSecond) * 1000));
                 } catch (InterruptedException e) {
                     // not a biggie
@@ -125,19 +127,25 @@ public class GameContext {
                     g.dispose();
                 }
             }
+            
+            // let the game draw a final frame
+            Graphics2D g = (Graphics2D) bi.getGraphics();
+            g.setColor(Color.BLACK); // TODO configurable background colour
+            g.fillRect(0, 0, playfieldWidth, playfieldHeight);
+            g.setColor(Color.WHITE);
+            try {
+                game.gameEnding(g);
+                bmixClient.putFrame(bi);
+            } finally {
+                g.dispose();
+            }
+
+            // TODO last frame delay? (config file)
+            
         } finally {
-            game.gameEnding();
-            // TODO last frame delay (config file)
-            setGameRunning(false);
+            inputClient.gameEnding();
+            bmixClient.gameEnding();
         }
-    }
-
-    public boolean isGameRunning() {
-        return gameRunning;
-    }
-
-    public void setGameRunning(boolean gameRunning) {
-        this.gameRunning = gameRunning;
     }
 
     public int getPlayfieldWidth() {

@@ -7,10 +7,14 @@ package de.blinkenlights.game;
 
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.RenderingHints;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
+import sun.awt.RepaintArea;
 
 public class OutputSimulator implements FrameTarget {
 
@@ -26,11 +30,12 @@ public class OutputSimulator implements FrameTarget {
         frame = new JFrame("Output!");
         frame.setLocationByPlatform(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setMinimumSize(new Dimension(180,100));
         
         JPanel imagePane = new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
+                Graphics2D g2 = (Graphics2D) g;
+                g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_NEAREST_NEIGHBOR);
                 super.paintComponent(g);
                 synchronized (OutputSimulator.this) {
                     if (image != null) {
@@ -41,13 +46,18 @@ public class OutputSimulator implements FrameTarget {
         };
         
         frame.setContentPane(imagePane);
-        frame.pack();
+        frame.setSize(new Dimension(320,200));
         frame.setVisible(true);
     }
 
     public void stop() {
         image = null;
         frame.dispose();
+    }
+
+    public void gameEnding() {
+//        image = null;
+//        frame.repaint();
     }
 
 }

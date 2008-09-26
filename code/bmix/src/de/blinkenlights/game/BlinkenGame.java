@@ -9,6 +9,6 @@ public interface BlinkenGame {
 
     void gameStarting(GameContext context);
     boolean nextFrame(Graphics2D g, FrameInfo frameInfo);
-    void gameEnding();
+    void gameEnding(Graphics2D g);
     
 }

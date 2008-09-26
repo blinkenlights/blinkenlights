@@ -35,6 +35,11 @@ class BMixClient implements FrameTarget {
         
     }
 
+    public void gameEnding() {
+        // TODO Auto-generated method stub
+        
+    }
+
 	public InetAddress getHost() {
 		return host;
 	}
