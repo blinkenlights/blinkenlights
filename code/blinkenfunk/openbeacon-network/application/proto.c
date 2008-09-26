@@ -36,6 +36,7 @@
 #include "debug_printf.h"
 #include "env.h"
 
+unsigned int rf_sent_broadcast, rf_sent_unicast, rf_rec;
 const unsigned char broadcast_mac[NRF_MAX_MAC_SIZE] = { 'D', 'E', 'C', 'A', 'D' };
 static BRFPacket rxpkg;
 
@@ -62,7 +63,6 @@ shuffle_tx_byteorder (unsigned long *v, int len)
     v++;
   }
 }
-
 
 static inline short
 crc16 (const unsigned char *buffer, int size)
@@ -100,6 +100,11 @@ void vnRFTransmitPacket(BRFPacket *pkg)
   /* update the sequence */
   if (sequence_seed == 0)
     return;
+
+  if (pkg->mac == 0xffff)
+    rf_sent_broadcast++;
+  else
+    rf_sent_unicast++;
 
   pkg->sequence = sequence_seed + (xTaskGetTickCount() / portTICK_RATE_MS);
 
@@ -170,6 +175,7 @@ vnRFtaskRx (void *parameter)
 	      //debug_printf("dumping received packet:\n");
 	      //hex_dump((unsigned char *) &rxpkg, 0, sizeof(rxpkg));
 	      b_parse_rfrx_pkg(&rxpkg);
+	      rf_rec++;
 	    }
 	  while ((nRFAPI_GetFifoStatus () & FIFO_RX_EMPTY) == 0);
 
@@ -184,6 +190,7 @@ vnRFtaskRx (void *parameter)
 void
 vInitProtocolLayer (void)
 {
+  rf_rec = rf_sent_unicast = rf_sent_broadcast = 0;
   xTaskCreate (vnRFtaskRx, (signed portCHAR *) "nRF_Rx", TASK_NRF_STACK,
 	       NULL, TASK_NRF_PRIORITY, NULL);
 }

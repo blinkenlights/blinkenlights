@@ -50,7 +50,6 @@
 static void
 cmd_status (const portCHAR * cmd)
 {
-  unsigned int i;
   struct netif *nic = &EMAC_if;
 
   shell_printf ("WMCU status:\n");
@@ -68,12 +67,23 @@ cmd_status (const portCHAR * cmd)
   	ip4_addr1(&nic->gw), ip4_addr2(&nic->gw), ip4_addr3(&nic->gw), ip4_addr4(&nic->gw));
   shell_printf ("	Receive statistics: %d packets total, %d frames, %d setup\n",
   	b_rec_total, b_rec_frames, b_rec_setup);
+  shell_printf ("	RF statistics: sent %d broadcasts, %d unicasts, received %d\n",
+  	rf_sent_broadcast, rf_sent_unicast, rf_rec);
+  shell_printf("	assigned lamps: %d\n", env.e.n_lamps);
 
-  shell_printf("	assigned lamps (%d):\n", env.e.n_lamps);
-  shell_printf("		#lamp MAC	#screen		#x	#y	#last value\n");
+  debug_printf("\n");
+}
+
+static void
+cmd_lampmap (const portCHAR * cmd)
+{
+  unsigned int i;
+
+  shell_printf("assigned lamps (%d):\n", env.e.n_lamps);
+  shell_printf("	#lamp MAC	#screen		#x	#y	#last value\n");
 
   for (i = 0; i < env.e.n_lamps; i++) {
-    debug_printf("\t\t0x%04x\t\t%d\t\t%d\t%d\t%d\n",
+    debug_printf("\t0x%04x\t\t%d\t\t%d\t%d\t%d\n",
     	env.e.lamp_map[i].mac,
     	env.e.lamp_map[i].screen,
     	env.e.lamp_map[i].x,
@@ -85,7 +95,7 @@ cmd_status (const portCHAR * cmd)
 }
 
 static void
-cmd_help (const portCHAR *cmd)
+cmd_help (const portCHAR * cmd)
 {
   struct netif *nic = &EMAC_if;
  
@@ -110,7 +120,8 @@ cmd_help (const portCHAR *cmd)
   shell_printf("\n");
   shell_printf("status\n");
   shell_printf("	Print status information about this unit. Try it, it's fun.\n");
-  shell_printf("\n");
+  shell_printf("lampmap\n");
+  shell_printf("	Dump the lampmap\n");
   shell_printf("env\n");
   shell_printf("	Show variables currently stored in the non-volatile flash memory\n");
   shell_printf("update\n");
@@ -229,19 +240,13 @@ cmd_id (const portCHAR * cmd)
     {
       LampMap *m = env.e.lamp_map + i;
       shell_printf("updating dimmer 0x%04x -> ID %d\n", m->mac, i);
+
       b_set_lamp_id (i, m->mac);
+      vTaskDelay(100 / portTICK_RATE_MS);
     }
 
   env.e.mcu_id = id;
   env_store();
-}
-
-static void
-cmd_env (const portCHAR * cmd)
-{
-  shell_printf ("Current values in non-volatile flash storage:\n");
-  shell_printf ("   mcu_id = %d\n", env.e.mcu_id);
-  shell_printf ("   mac = %02x%02x\n", env.e.mac_h, env.e.mac_l);
 }
 
 static void
@@ -263,9 +268,9 @@ static struct cmd_t {
 	const portCHAR *command;
 	void (*callback) (const portCHAR *cmd);
 } commands[] = {
-	{ "env",	&cmd_env },
 	{ "help",	&cmd_help },
 	{ "id",		&cmd_id },
+	{ "lampmap",	&cmd_lampmap },
 	{ "mac",	&cmd_mac },
 	{ "status",	&cmd_status },
 	{ "update",	&cmd_update },

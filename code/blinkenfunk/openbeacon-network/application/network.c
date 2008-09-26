@@ -104,6 +104,7 @@ vNetworkThread (void *pvParameters)
 
   while (pdTRUE)
     {
+#if USE_DHCP
       int cnt = 0;
 
       vTaskDelay ( DHCP_FINE_TIMER_MSECS / portTICK_RATE_MS );
@@ -113,6 +114,9 @@ vNetworkThread (void *pvParameters)
         dhcp_coarse_tmr ();
 	cnt = 0;
       }
+#else
+      vTaskDelay ( 100 / portTICK_RATE_MS );
+#endif
     }
 }
 
@@ -138,14 +142,8 @@ vNetworkInit (void)
   cMACAddress[4] = env.e.mac_h;
   cMACAddress[5] = env.e.mac_l;
 
-  if (networkTaskHandle)
-    {
-      debug_printf("killing running network task ...\n");
-      vTaskDelete (networkTaskHandle);
-      networkTaskHandle = NULL;
-    }
-
   /* Create the lwIP task.  This uses the lwIP RTOS abstraction layer. */
   xTaskCreate (vNetworkThread, (signed portCHAR *) "NET",
 	       TASK_NET_STACK, NULL, TASK_NET_PRIORITY, &networkTaskHandle);
 }
+

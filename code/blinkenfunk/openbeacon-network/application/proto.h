@@ -118,4 +118,6 @@ extern void PtDumpUIntToUSB (unsigned int data);
 extern void PtDumpStringToUSB (const char *text);
 void shuffle_tx_byteorder (unsigned long *v, int len);
 
+extern unsigned int rf_rec, rf_sent_broadcast, rf_sent_unicast;
+
 #endif/*__PROTO_H__*/

@@ -235,7 +235,9 @@ static inline void b_set_assigned_lamps (unsigned int *map, unsigned int len)
 		m->screen = map[(i * 4) + 1];
 		m->x      = map[(i * 4) + 2];
 		m->y      = map[(i * 4) + 3];
+
 		b_set_lamp_id (i, m->mac);
+		vTaskDelay(100 / portTICK_RATE_MS);
 		debug_printf("Lamp map %d -> MAC 0x%04x\n", i, m->mac);
 	}
 
