@@ -232,7 +232,7 @@
       <row>ffffffffffffffffffffffffffffff</row>
       <row>ffffffffffffffffffffffffffffff</row>
     </frame>
-    <frame duration="1000">
+    <frame duration="50">
       <row>000000000000000000000000000000</row>
       <row>000000000000000000000000000000</row>
       <row>000000000000000000000000000000</row>
@@ -470,7 +470,7 @@
       <row>000000000000000000000000000000</row>
       <row>000000000000000000000000000000</row>
     </frame>
-    <frame duration="1000">
+    <frame duration="50">
       <row>ffffffffffffffffffffffffffffff</row>
       <row>ffffffffffffffffffffffffffffff</row>
       <row>ffffffffffffffffffffffffffffff</row>
