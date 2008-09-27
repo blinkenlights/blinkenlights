@@ -7,7 +7,7 @@
 //
 
 #import "StereoscopeApplication.h"
-
+#import "StereoscopeAppController.h"
 
 @implementation StereoscopeApplication
 
@@ -15,9 +15,15 @@
 {
 	// load quartz composer plugin
 	NSString *poserPath = [[[NSBundle mainBundle] builtInPlugInsPath] stringByAppendingPathComponent:@"Blinkenposer.plugin"];
-	
-	BOOL success = [QCPlugIn loadPlugInAtPath:poserPath];
-	NSLog(@"%s loading %@ was a %d",__FUNCTION__,poserPath,success);
+
+	int installedVersion = [StereoscopeAppController installedBlinkenposerPluginVersion];
+	NSLog(@"%s installedVersion %d %@",__FUNCTION__,installedVersion,[QCPlugIn attributes]);
+	if (installedVersion == -1) {
+		BOOL success = [QCPlugIn loadPlugInAtPath:poserPath];
+//		NSLog(@"%s loading %@ was a %d",__FUNCTION__,poserPath,success);
+	} else {
+//		NSLog(@"%s installed version was %d",__FUNCTION__,installedVersion);
+	}
 }
 
 

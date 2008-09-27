@@ -19,7 +19,9 @@
 - (IBAction)openStereoscopeHomepage:(id)inSender;
 - (IBAction)openBlinkenlightsBlog:(id)inSender;
 
-
+- (IBAction)installBlinkenposer:(id)inSender;
 - (IBAction)selectProxy:(id)inSender;
+
++ (int)installedBlinkenposerPluginVersion;
 
 @end

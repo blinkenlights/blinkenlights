@@ -8,8 +8,8 @@
 		<string key="IBDocument.HIToolboxVersion">352.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="296"/>
 			<integer value="372"/>
+			<integer value="522"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -74,6 +74,14 @@
 									<string key="NSTitle"/>
 									<string key="NSKeyEquiv"/>
 									<int key="NSKeyEquivModMask">1048576</int>
+									<int key="NSMnemonicLoc">2147483647</int>
+									<reference key="NSOnImage" ref="35465992"/>
+									<reference key="NSMixedImage" ref="502551668"/>
+								</object>
+								<object class="NSMenuItem" id="767760994">
+									<reference key="NSMenu" ref="110575045"/>
+									<string key="NSTitle">Install Blinkenposer.plugin</string>
+									<string key="NSKeyEquiv"/>
 									<int key="NSMnemonicLoc">2147483647</int>
 									<reference key="NSOnImage" ref="35465992"/>
 									<reference key="NSMixedImage" ref="502551668"/>
@@ -830,6 +838,7 @@
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {1440, 878}}</string>
 				<string key="NSMaxSize">{3.40282e+38, 3.40282e+38}</string>
+				<string key="NSFrameAutosaveName">StereoscopeMainWindow</string>
 			</object>
 			<object class="NSCustomObject" id="1055460262">
 				<string key="NSClassName">StereoscopeAppController</string>
@@ -12363,15 +12372,15 @@ Cn0KA</string>
 																		<string key="NS.key.0">value</string>
 																		<real value="0.000000e+00" key="NS.object.0"/>
 																	</object>
-																	<object class="NSMutableDictionary" id="722381358">
+																	<object class="NSMutableDictionary" id="207579757">
 																		<string key="NS.key.0">value</string>
 																		<real value="0.000000e+00" key="NS.object.0"/>
 																	</object>
-																	<object class="NSMutableDictionary" id="375157130">
+																	<object class="NSMutableDictionary" id="812563606">
 																		<string key="NS.key.0">value</string>
 																		<real value="0.000000e+00" key="NS.object.0"/>
 																	</object>
-																	<object class="NSMutableDictionary" id="557487103">
+																	<object class="NSMutableDictionary" id="32592756">
 																		<string key="NS.key.0">value</string>
 																		<real value="0.000000e+00" key="NS.object.0"/>
 																	</object>
@@ -12399,9 +12408,9 @@ Cn0KA</string>
 																	</object>
 																	<reference ref="556816048"/>
 																	<reference ref="627426823"/>
-																	<reference ref="722381358"/>
-																	<reference ref="375157130"/>
-																	<reference ref="557487103"/>
+																	<reference ref="207579757"/>
+																	<reference ref="812563606"/>
+																	<reference ref="32592756"/>
 																</object>
 															</object>
 															<reference ref="6"/>
@@ -13294,6 +13303,14 @@ AWadAYaGA</bytes>
 					</object>
 					<int key="connectionID">521</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">installBlinkenposer:</string>
+						<reference key="source" ref="1055460262"/>
+						<reference key="destination" ref="767760994"/>
+					</object>
+					<int key="connectionID">523</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -13559,6 +13576,7 @@ AWadAYaGA</bytes>
 							<reference ref="1056857174"/>
 							<reference ref="342932134"/>
 							<reference ref="663394619"/>
+							<reference ref="767760994"/>
 						</object>
 						<reference key="parent" ref="694149608"/>
 					</object>
@@ -13931,6 +13949,11 @@ AWadAYaGA</bytes>
 						<reference key="object" ref="27223745"/>
 						<reference key="parent" ref="374024848"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">522</int>
+						<reference key="object" ref="767760994"/>
+						<reference key="parent" ref="110575045"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -14099,6 +14122,7 @@ AWadAYaGA</bytes>
 					<string>516.ImportedFromIB2</string>
 					<string>518.IBPluginDependency</string>
 					<string>519.IBPluginDependency</string>
+					<string>522.IBPluginDependency</string>
 					<string>56.IBPluginDependency</string>
 					<string>56.ImportedFromIB2</string>
 					<string>57.IBEditorWindowLastContentRect</string>
@@ -14275,8 +14299,9 @@ AWadAYaGA</bytes>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<reference ref="9"/>
-					<string>{{362, 612}, {290, 203}}</string>
+					<string>{{362, 592}, {290, 223}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<reference ref="9"/>
 					<string>{{23, 794}, {245, 183}}</string>
@@ -14306,7 +14331,7 @@ AWadAYaGA</bytes>
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">521</int>
+			<int key="maxID">523</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -14326,6 +14351,7 @@ AWadAYaGA</bytes>
 						<object class="NSMutableArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>changeViewPosition:</string>
+							<string>installBlinkenposer:</string>
 							<string>openBlinkenlightsBlog:</string>
 							<string>openBlinkenlightsHomepage:</string>
 							<string>openStereoscopeHomepage:</string>
@@ -14333,6 +14359,7 @@ AWadAYaGA</bytes>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
