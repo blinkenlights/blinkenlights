@@ -26,11 +26,16 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.JToolBar;
 import javax.swing.SwingUtilities;
 
 import de.blinkenlights.bmix.main.BMovieException;
 import de.blinkenlights.bmix.main.BMovieSender;
 
+/**
+ * This is the main class for the "Stereoscope Player" app. It is a GUI wrapper
+ * for the BMovieSender.
+ */
 public class Sender {
 
     private static final boolean MAC_OS_X = (System.getProperty("os.name").toLowerCase().startsWith("mac os x")); //$NON-NLS-1$ //$NON-NLS-2$
@@ -52,11 +57,12 @@ public class Sender {
         
         m.add(new JMenuItem(new OpenFileAction(frame, this)));
         
-        statusLabel = new JLabel("Drag BML file here!", JLabel.CENTER);
+        statusLabel = new JLabel("Drag BML file here", JLabel.CENTER);
         frame.add(statusLabel);
 
-        JPanel configPanel = new JPanel();
-        configPanel.add(new JLabel("Send to"));
+        JToolBar configPanel = new JToolBar();
+        configPanel.setFloatable(false);
+        configPanel.add(new JLabel("Send to: "));
         configPanel.add(sendToHost = new JTextField("localhost"));
         sendToHost.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -77,7 +83,7 @@ public class Sender {
         if (currentFile == null) {
             return;
         }
-        statusLabel.setText("Sending " + file.getAbsolutePath() + " to "+sendToHost.getText()+":2323");
+        statusLabel.setText("Sending " + file.getName() + " to "+sendToHost.getText()+":2323");
         try {
             if (movieSender != null) {
                 movieSender.stopSending();
