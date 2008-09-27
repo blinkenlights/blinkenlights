@@ -342,6 +342,7 @@ bParsePacket (void)
 	break;
       DumpStringToUSB (" ENTERING UPDATE MODE!\n");
       DeviceRevertToUpdateMode ();
+      break;
     }
 
   if (reply)

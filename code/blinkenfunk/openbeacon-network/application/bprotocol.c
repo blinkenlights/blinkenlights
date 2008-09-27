@@ -359,6 +359,7 @@ static int b_parse_mcu_devctrl(mcu_devctrl_header_t *header, int maxlen)
 				debug_printf("returning from jam mode to normal operation\n");
 
 			jam_mode = header->value;
+			break;
 		}
 		case MCU_DEVCTRL_COMMAND_SET_DIMMER_DELAY: {
 			debug_printf("new dimmer delay for mac 0x%04x: %d ms\n", header->mac, header->value);
