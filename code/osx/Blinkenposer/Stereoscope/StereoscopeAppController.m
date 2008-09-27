@@ -5,6 +5,13 @@
 @synthesize proxyListConnection = _proxyListConnection;
 @synthesize messageDictionary = _messageDictionary;
 
+- (void)relaunch {
+	NSString *relaunchPath = [[NSBundle mainBundle] pathForResource:@"relaunch" ofType:@""];
+	[NSTask launchedTaskWithLaunchPath:relaunchPath arguments:[NSArray arrayWithObjects:[[NSBundle mainBundle] bundlePath], [NSString stringWithFormat:@"%d", [[NSProcessInfo processInfo] processIdentifier]], nil]];
+
+	[NSApp terminate:self];
+}
+
 - (NSArray *)keysToSaveAndRestore
 {
 	return [NSArray arrayWithObjects:@"Proxy_Address",@"Proxy_Port",@"Use_Proxy", @"Arrangement",nil];
@@ -22,6 +29,36 @@
 	}
 }
 
+- (BOOL)installPluginToPath:(NSString *)targetPath
+{
+	NSError *error = nil;
+	BOOL copyingFailed = NO;
+	NSFileManager *fm = [NSFileManager defaultManager];
+	if (![fm fileExistsAtPath:targetPath]) {
+		if (![fm createDirectoryAtPath:targetPath withIntermediateDirectories:YES attributes:nil error:&error]) {
+			return NO;
+		}
+	}
+	
+	NSString *poserPath = [[[NSBundle mainBundle] builtInPlugInsPath] stringByAppendingPathComponent:@"Blinkenposer.plugin"];
+	NSString *temporaryTargetPath = [targetPath stringByAppendingString:@"~"];
+	if ([fm copyItemAtPath:poserPath toPath:temporaryTargetPath error:&error]) {
+		NSLog(@"%s did Copy to %@",__FUNCTION__,temporaryTargetPath);
+		int tag;
+		if (![[NSWorkspace sharedWorkspace] performFileOperation:NSWorkspaceRecycleOperation source:[targetPath stringByDeletingLastPathComponent] destination:@"" files:[NSArray arrayWithObject:[targetPath lastPathComponent]] tag:&tag]) {
+			copyingFailed = YES;
+		} else {
+			NSLog(@"%s did remove to %@",__FUNCTION__,temporaryTargetPath);
+			if (![fm moveItemAtPath:temporaryTargetPath toPath:targetPath error:&error]) {
+				copyingFailed = YES;
+			}
+		}
+	} else {
+		copyingFailed = YES;
+	}
+	return !copyingFailed;
+}
+
 - (void)checkBlinkenposerPlugin
 {
 	NSString *poserPath = [[[NSBundle mainBundle] builtInPlugInsPath] stringByAppendingPathComponent:@"Blinkenposer.plugin"];
@@ -35,6 +72,7 @@
     NSArray *allDomainsPaths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSAllDomainsMask, YES);
     NSEnumerator *enumerator = [allDomainsPaths objectEnumerator];
     NSString *path = nil;
+    BOOL hadPlugin = NO;
     while ((path = [enumerator nextObject])) {
     	NSString *potentialPoserPath = [path stringByAppendingPathComponent:pluginSubPath];
     	BOOL wasDirectory = NO;
@@ -44,21 +82,67 @@
     		NSLog(@"%s found poser and installed version was:%d",__FUNCTION__,installedVersion);
     		if (installedVersion < poserVersion)
     		{
-    			NSDictionary *contextDict = [[NSDictionary dictionaryWithObjectsAndKeys:poserPath,@"OldPath",nil] retain];
-				NSAlert *alert = [NSAlert alertWithMessageText:@"Do you want to update your Blinkenposer.plugin?" defaultButton:@"Update" alternateButton:@"Don't Update" otherButton:nil informativeTextWithFormat:@"Stereoscope Simulator found an old installed version of the Blinkenposer Quartz Composer Plugin (v%d). This version of the Simulator includes a newer one (v%d). You may need to update for Stereoscope Simulator to work at all.",installedVersion, poserVersion];
+    			NSDictionary *contextDict = [[NSDictionary dictionaryWithObjectsAndKeys:potentialPoserPath,@"targetPath",nil] retain];
+				NSAlert *alert = [NSAlert alertWithMessageText:@"Do you want to update your Blinkenposer.plugin?" defaultButton:@"Update and Relaunch" alternateButton:@"Don't Update" otherButton:nil informativeTextWithFormat:@"Stereoscope Simulator found an old installed version of the Blinkenposer Quartz Composer Plugin (v%d). This version of the Simulator includes a newer one (v%d). You may need to update for Stereoscope Simulator to work at all.",installedVersion, poserVersion];
 				[alert beginSheetModalForWindow:_ibWindow modalDelegate:self didEndSelector:@selector(updateAlertDidEnd:returnCode:contextInfo:) contextInfo:contextDict];
     		}
+    		hadPlugin = YES;
     	}
     }
-
+#ifdef IS_STEREOSCOPE_SIMULATOR_QC
+	// no plugin found, alert to install it
+	NSAlert *alert = [NSAlert alertWithMessageText:@"Do you want to install Blinkenposer.plugin?" defaultButton:@"Install" alternateButton:@"Don't Install" otherButton:nil informativeTextWithFormat:@"Stereoscope Simulator QC did not find an installed Blinkenposer.plugin. To run the Supplied Quartz Composer Templates successfully for content creation in Quartz Composer and elsewhere the plugin needs to be installed. Install location is ~/Library/Graphics/Quartz Composer Plug-Ins"];
+	[alert beginSheetModalForWindow:_ibWindow modalDelegate:self didEndSelector:@selector(installAlertDidEnd:returnCode:contextInfo:) contextInfo:nil];
+#endif
 }
 
-- (void)updateAlertDidEnd:(NSAlert *)alert returnCode:(int)returnCode contextInfo:(void *)contextInfo
+- (void)copyingFailedAlert
+{
+	NSAlert *alert = [NSAlert alertWithMessageText:@"Copying failed." defaultButton:@"OK" alternateButton:nil otherButton:nil informativeTextWithFormat:@"Please copy the Blinkenposer.plugin manually to '(~)/Library/Graphics/Quartz Composer Plug-Ins' - The Blinkenposer.plugin can be found using the action buttin in finder on 'Stereoscope Simulator QC' selecting 'Show Package Contents' and then navigating to 'Contents' and then 'PlugIns'."];
+	[alert beginSheetModalForWindow:_ibWindow modalDelegate:self didEndSelector:@selector(copyingFailedAlertDidEnd:returnCode:contextInfo:) contextInfo:nil];
+}
+
+- (void)updateAlertDidEnd:(NSAlert *)inAlert returnCode:(int)returnCode contextInfo:(void *)contextInfo
 {
 	NSDictionary *contextDict = [(NSDictionary *)contextInfo autorelease];
-	NSLog(@"%s %@",__FUNCTION__,contextDict);
+	if (returnCode == NSAlertDefaultReturn) {
+		BOOL copyingFailed = NO;
+		NSString *targetPath = [contextDict objectForKey:@"targetPath"];
+		NSError *error = nil;
+		if (![self installPluginToPath:targetPath]) {
+			copyingFailed = YES;
+		}
+
+		[[inAlert window] orderOut:self];
+		if (copyingFailed) {
+			[self copyingFailedAlert];
+		} else {
+			[self relaunch];
+		}
+	}
 }
 
+- (void)installAlertDidEnd:(NSAlert *)inAlert returnCode:(int)returnCode contextInfo:(void *)contextInfo
+{
+	[[inAlert window] orderOut:self];
+	if (![self installPluginToPath:[@"~/Library/Graphics/Quartz Composer Plug-Ins/Blinkenposer.plugin" stringByStandardizingPath]]) 
+	{
+		[self copyingFailedAlert];
+	} else {
+		NSAlert *alert = [NSAlert alertWithMessageText:@"Successfully Installed Blinkenposer.plugin" defaultButton:@"OK" alternateButton:nil otherButton:nil informativeTextWithFormat:@"With the next start of Quartz Composer the Blinkenlights Quartz Composer Patches and Templates can be used!"];
+		[alert beginSheetModalForWindow:_ibWindow modalDelegate:self didEndSelector:@selector(informationAlertDidEnd:returnCode:contextInfo:) contextInfo:nil];
+	}
+}
+
+- (void)informationAlertDidEnd:(NSAlert *)inAlert returnCode:(int)returnCode contextInfo:(void *)contextInfo
+{
+
+}
+
+- (void)copyingFailedAlertDidEnd:(NSAlert *)inAlert returnCode:(int)returnCode contextInfo:(void *)contextInfo
+{
+
+}
 
 - (void)applicationWillFinishLaunching:(NSNotification *)inNotification
 {

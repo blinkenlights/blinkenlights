@@ -58,6 +58,8 @@
 		F2D819860E6055ED00D2B1D0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F2D8197B0E6055C800D2B1D0 /* InfoPlist.strings */; };
 		F2D819870E6055ED00D2B1D0 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2D8197D0E6055C800D2B1D0 /* MainMenu.xib */; };
 		F2D819880E6055F000D2B1D0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F2D8197F0E6055CF00D2B1D0 /* main.m */; };
+		F2E75EFF0E8DDDFC003E473B /* relaunch in Resources */ = {isa = PBXBuildFile; fileRef = F2E75EFE0E8DDDFC003E473B /* relaunch */; };
+		F2E75F020E8DDE1F003E473B /* relaunch in Resources */ = {isa = PBXBuildFile; fileRef = F2E75EFE0E8DDDFC003E473B /* relaunch */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -162,6 +164,7 @@
 		F2D8197F0E6055CF00D2B1D0 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F2D819800E6055CF00D2B1D0 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F2D819810E6055CF00D2B1D0 /* Stereoscope_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stereoscope_Prefix.pch; sourceTree = "<group>"; };
+		F2E75EFE0E8DDDFC003E473B /* relaunch */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = relaunch; path = StereoscopeSimulator/Sparkle.framework/Versions/A/Resources/relaunch; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -264,6 +267,7 @@
 		F2095ABF0E60593500BD59DB /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F2E75EFE0E8DDDFC003E473B /* relaunch */,
 				F2095AEB0E606E2C00BD59DB /* record.png */,
 				F2095AE90E606E2600BD59DB /* stop.png */,
 				F2095ADA0E60675300BD59DB /* Stereoscope.icns */,
@@ -437,6 +441,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F2E75EFF0E8DDDFC003E473B /* relaunch in Resources */,
 				F25EC2100E89E6BD004AB23A /* InfoPlist.strings in Resources */,
 				F25EC2120E89E6BD004AB23A /* Stereoscope.icns in Resources */,
 				F25EC2130E89E6BD004AB23A /* stop.png in Resources */,
@@ -451,6 +456,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F2E75F020E8DDE1F003E473B /* relaunch in Resources */,
 				F2D819860E6055ED00D2B1D0 /* InfoPlist.strings in Resources */,
 				F2D819870E6055ED00D2B1D0 /* MainMenu.xib in Resources */,
 				F2095ADB0E60675300BD59DB /* Stereoscope.icns in Resources */,
