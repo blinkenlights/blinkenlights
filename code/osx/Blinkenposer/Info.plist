@@ -7,15 +7,13 @@
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIdentifier</key>
-	<string>net.blinkenlights.${PRODUCT_NAME:identifier}</string>
+	<string>net.blinkenlights.blinkenposer</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
 	<string>${PRODUCT_NAME}</string>
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
-	<key>CFBundleGetInfoString</key>
-	<string>Blinkenposer version 1.1, Copyright TheCodingMonkeys.</string>
 	<key>CFBundleVersion</key>
 	<string>0</string>
 	<key>CFBundleShortVersionString</key>

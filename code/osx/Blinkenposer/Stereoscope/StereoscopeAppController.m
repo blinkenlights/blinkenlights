@@ -22,6 +22,49 @@
 	}
 }
 
+- (void)checkBlinkenposerPlugin
+{
+	NSString *poserPath = [[[NSBundle mainBundle] builtInPlugInsPath] stringByAppendingPathComponent:@"Blinkenposer.plugin"];
+	NSString *infoPlistSubPath = @"Contents/Info.plist";
+	NSDictionary *inBundleInfoDict = [NSDictionary dictionaryWithContentsOfFile:[poserPath stringByAppendingPathComponent:infoPlistSubPath]];
+	int poserVersion = [[inBundleInfoDict objectForKey:@"CFBundleVersion"] integerValue];
+	NSLog(@"%s Our BlinkenposerVersion was:%d",__FUNCTION__,poserVersion);
+	
+	NSFileManager *fm = [NSFileManager defaultManager];
+	NSString *pluginSubPath = @"Graphics/Quartz Composer Plug-Ins/Blinkenposer.plugin";
+    NSArray *allDomainsPaths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSAllDomainsMask, YES);
+    NSEnumerator *enumerator = [allDomainsPaths objectEnumerator];
+    NSString *path = nil;
+    while ((path = [enumerator nextObject])) {
+    	NSString *potentialPoserPath = [path stringByAppendingPathComponent:pluginSubPath];
+    	BOOL wasDirectory = NO;
+    	if ([fm fileExistsAtPath:potentialPoserPath isDirectory:&wasDirectory]) {
+    		NSDictionary *bundleInfoDict = [NSDictionary dictionaryWithContentsOfFile:[potentialPoserPath stringByAppendingPathComponent:infoPlistSubPath]];
+			int installedVersion = [[bundleInfoDict objectForKey:@"CFBundleVersion"] integerValue];
+    		NSLog(@"%s found poser and installed version was:%d",__FUNCTION__,installedVersion);
+    		if (installedVersion < poserVersion)
+    		{
+    			NSDictionary *contextDict = [[NSDictionary dictionaryWithObjectsAndKeys:poserPath,@"OldPath",nil] retain];
+				NSAlert *alert = [NSAlert alertWithMessageText:@"Do you want to update your Blinkenposer.plugin?" defaultButton:@"Update" alternateButton:@"Don't Update" otherButton:nil informativeTextWithFormat:@"Stereoscope Simulator found an old installed version of the Blinkenposer Quartz Composer Plugin (v%d). This version of the Simulator includes a newer one (v%d). You may need to update for Stereoscope Simulator to work at all.",installedVersion, poserVersion];
+				[alert beginSheetModalForWindow:_ibWindow modalDelegate:self didEndSelector:@selector(updateAlertDidEnd:returnCode:contextInfo:) contextInfo:contextDict];
+    		}
+    	}
+    }
+
+}
+
+- (void)updateAlertDidEnd:(NSAlert *)alert returnCode:(int)returnCode contextInfo:(void *)contextInfo
+{
+	NSDictionary *contextDict = [(NSDictionary *)contextInfo autorelease];
+	NSLog(@"%s %@",__FUNCTION__,contextDict);
+}
+
+
+- (void)applicationWillFinishLaunching:(NSNotification *)inNotification
+{
+	[self checkBlinkenposerPlugin];
+}
+
 - (void)applicationDidFinishLaunching:(NSNotification *)inNotification 
 {
 //	NSString *compositionPath = [[NSBundle mainBundle] pathForResource:@"Stereoscope" ofType:@"qtz"];
@@ -134,7 +177,9 @@
 			[item setRepresentedObject:proxy];
 			[_ibStreamsMenu addItem:item];
 			if (firstProxy) {
+#ifndef IS_STEREOSCOPE_SIMULATOR_QC
 				[self selectProxy:item];
+#endif
 				[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"didRun"];
 				firstProxy = NO;
 			}
