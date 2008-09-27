@@ -30,7 +30,7 @@ public class GameContext {
     private UserInputSource inputClient;
     
     
-    GameContext(BlinkenGame game) throws GameConfigurationException {
+    public GameContext(BlinkenGame game) throws GameConfigurationException {
         this.game = game;
         readConfiguration();
     }
