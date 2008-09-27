@@ -70,6 +70,7 @@ cmd_status (const portCHAR * cmd)
   shell_printf ("	RF statistics: sent %d broadcasts, %d unicasts, received %d\n",
   	rf_sent_broadcast, rf_sent_unicast, rf_rec);
   shell_printf("	assigned lamps: %d\n", env.e.n_lamps);
+  shell_printf("	operation mode: %s\n", jam_mode ? "jam" : "normal");
 
   debug_printf("\n");
 }
@@ -117,6 +118,9 @@ cmd_help (const portCHAR * cmd)
   shell_printf("[wmcu-]id <id>\n");
   shell_printf("	Set the WMCU ID and store it to the flash memory\n");
   shell_printf("	This also updates all dimmers configured in the lamp map\n");
+  shell_printf("\n");
+  shell_printf("mode <val>\n");
+  shell_printf("	Set operation mode. val can be 'normal' or 'jam'");
   shell_printf("\n");
   shell_printf("status\n");
   shell_printf("	Print status information about this unit. Try it, it's fun.\n");
@@ -250,6 +254,35 @@ cmd_id (const portCHAR * cmd)
 }
 
 static void
+cmd_mode (const portCHAR * cmd)
+{
+  while (*cmd && *cmd != ' ')
+  	cmd++;
+
+  cmd++;
+
+  if (cmd[0] == 'n' &&
+      cmd[1] == 'o' &&
+      cmd[2] == 'r' &&
+      cmd[3] == 'm' &&
+      cmd[4] == 'a' &&
+      cmd[5] == 'l')
+    {
+      shell_printf("mode: normal.\n");
+      jam_mode = 0;
+    }
+  else if (cmd[0] == 'j' &&
+           cmd[1] == 'a' &&
+           cmd[2] == 'm')
+    {
+      shell_printf("mode: jam.\n");
+      jam_mode = 1;
+    }
+  else
+    shell_printf("unknown mode.\n");
+}
+
+static void
 cmd_update (const portCHAR * cmd)
 {
   shell_printf ("resetting to default bootloader in update mode\n");
@@ -272,6 +305,7 @@ static struct cmd_t {
 	{ "id",		&cmd_id },
 	{ "lampmap",	&cmd_lampmap },
 	{ "mac",	&cmd_mac },
+	{ "mode",	&cmd_mode },
 	{ "status",	&cmd_status },
 	{ "update",	&cmd_update },
 	{ "wmcu-mac",	&cmd_mac },

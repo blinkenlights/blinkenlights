@@ -177,6 +177,7 @@ struct mcu_setup_header
 #define MCU_DEVCTRL_COMMAND_SET_RF_DELAY	7	/* set RF delay 				*/
 #define MCU_DEVCTRL_COMMAND_SET_DIMMER_DELAY	8	/* set dimmer delay 				*/
 #define MCU_DEVCTRL_COMMAND_SET_DIMMER_CONTROL	9	/* set dimmer control (force off) 		*/
+#define MCU_DEVCTRL_COMMAND_SET_JAM_MODE	10	/* set jam mode for WMCU	 		*/
 #define MCU_DEVCTRL_COMMAND_OUTPUT_RAW		0xff	/* DEBUG: output raw RF packet			*/
 
 typedef struct mcu_devctrl_header  mcu_devctrl_header_t;
@@ -210,9 +211,10 @@ void b_parse_rfrx_pkg(BRFPacket *pkg);
 void b_set_lamp_id (int lamp_id, int lamp_mac);
 
 /* externals */
-extern int b_rec_total;
-extern int b_rec_frames;
-extern int b_rec_setup;
+extern unsigned int b_rec_total;
+extern unsigned int b_rec_frames;
+extern unsigned int b_rec_setup;
 extern unsigned int sequence_seed;
+extern unsigned int jam_mode;
 
 #endif /* __B_PROTOCOL_H__ */

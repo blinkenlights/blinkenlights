@@ -29,8 +29,8 @@
 #include <beacontypes.h>
 #include "proto.h"
 
-#define VERSION		"0.8.3"
-#define VERSION_INT	0x00000803
+#define VERSION		"0.9.0"
+#define VERSION_INT	0x00000900
 
 /*---------------------------------*/
 /* SAM7Board Memories Definition   */
@@ -93,6 +93,9 @@
 
 #define TASK_NET_PRIORITY	( tskIDLE_PRIORITY + 4 )
 #define TASK_NET_STACK		( 1024 )
+
+#define TASK_BJAM_PRIORITY	( tskIDLE_PRIORITY + 5 )
+#define TASK_BJAM_STACK		( 256 )
 
 /*-------------------------------*/
 /* configuration structure       */

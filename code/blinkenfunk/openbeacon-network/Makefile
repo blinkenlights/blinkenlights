@@ -41,6 +41,7 @@ APP_SRC= \
   application/proto.c \
   application/xxtea.c \
   application/bprotocol.c \
+  application/bjam.c \
   application/usbshell.c \
   $(NETWORK_SRC)
   

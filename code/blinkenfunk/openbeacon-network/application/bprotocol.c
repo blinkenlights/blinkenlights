@@ -44,6 +44,7 @@
 
 /* Blinkenlights includes. */
 #include "bprotocol.h"
+#include "bjam.h"
 
 #define MAX_WIDTH 100
 #define MAX_HEIGHT 100
@@ -55,11 +56,12 @@ static struct ip_addr b_last_ipaddr;
 static struct pbuf *b_ret_pbuf;
 static BRFPacket rfpkg;
 
-int b_rec_total = 0;
-int b_rec_frames = 0;
-int b_rec_setup = 0;
-unsigned char last_lamp_val[MAX_LAMPS] = { 0 };
+unsigned int b_rec_total = 0;
+unsigned int b_rec_frames = 0;
+unsigned int b_rec_setup = 0;
+unsigned int jam_mode = 0;
 unsigned int sequence_seed = 0;
+unsigned char last_lamp_val[MAX_LAMPS] = { 0 };
 
 #define SUBSIZE ((sizeof(*sub) + sub->height * ((sub->width + 1) / 2)))
 
@@ -76,6 +78,9 @@ static int b_parse_mcu_multiframe (mcu_multiframe_header_t *header, unsigned int
 			- (unsigned int) (xTaskGetTickCount() / portTICK_RATE_MS);
 
 //	debug_printf(" parsing mcu multiframe maxlen = %d\n", maxlen);
+
+	if (jam_mode) 
+		xSemaphoreTake(jamSemaphore, 0);
 
 	while (maxlen) {
 		if (!sub)
@@ -117,19 +122,24 @@ static int b_parse_mcu_multiframe (mcu_multiframe_header_t *header, unsigned int
 		maxlen -= SUBSIZE;
 	}
 
-	/* funk it. */
-	memset(&rfpkg, 0, sizeof(rfpkg));
-	rfpkg.cmd = RF_CMD_SET_VALUES;
-	rfpkg.wmcu_id = env.e.mcu_id;
-	rfpkg.mac = 0xffff; /* send to all MACs */
+	if (jam_mode) {
+		xSemaphoreGive(jamSemaphore);
+	} else {
+		/* funk it. */
+		memset(&rfpkg, 0, sizeof(rfpkg));
+		rfpkg.cmd = RF_CMD_SET_VALUES;
+		rfpkg.wmcu_id = env.e.mcu_id;
+		rfpkg.mac = 0xffff; /* send to all MACs */
 
-	for (i = 0; i < RF_PAYLOAD_SIZE; i++)
-		rfpkg.payload[i] = (last_lamp_val[i * 2] & 0xf)
-				 | (last_lamp_val[(i * 2) + 1] << 4);
-	
-	vnRFTransmitPacket(&rfpkg);
-	vTaskDelay(10 / portTICK_RATE_MS);
-	vnRFTransmitPacket(&rfpkg);
+		for (i = 0; i < RF_PAYLOAD_SIZE; i++)
+			rfpkg.payload[i] = (last_lamp_val[i * 2] & 0xf)
+					 | (last_lamp_val[(i * 2) + 1] << 4);
+		
+		vnRFTransmitPacket(&rfpkg);
+		vTaskDelay(10 / portTICK_RATE_MS);
+		vnRFTransmitPacket(&rfpkg);
+	}
+
 	return 0;
 }
 
@@ -167,7 +177,7 @@ void b_set_lamp_id (int lamp_id, int lamp_mac)
 
 static inline void b_set_gamma_curve (int lamp_mac, unsigned int block, unsigned short *gamma)
 {
-	int i;
+	int sm, i;
 
 	memset(&rfpkg, 0, sizeof(rfpkg));
 	rfpkg.cmd = RF_CMD_SET_GAMMA;
@@ -179,7 +189,10 @@ static inline void b_set_gamma_curve (int lamp_mac, unsigned int block, unsigned
 		rfpkg.set_gamma.val[i] = gamma[i];
 
 	debug_printf("sending gamma table to %04x, block %d\n", lamp_mac, block);
+	sm = jam_mode;
+	jam_mode = 0;
 	vnRFTransmitPacket(&rfpkg);
+	jam_mode = sm;
 }
 
 static inline void b_write_gamma_curve (int lamp_mac)
@@ -223,7 +236,10 @@ static inline void b_set_dimmer_control (int lamp_mac, int off)
 
 static inline void b_set_assigned_lamps (unsigned int *map, unsigned int len)
 {
-	int i;
+	int i, sm;
+
+	sm = jam_mode;
+	jam_mode = 0;
 
 	for (i = 0; i < MAX_LAMPS; i++) {
 		LampMap *m;
@@ -247,6 +263,7 @@ static inline void b_set_assigned_lamps (unsigned int *map, unsigned int len)
 	env_store();
 	debug_printf("%d new assigned lamps set.\n", env.e.n_lamps);
 	memset(last_lamp_val, 0, sizeof(last_lamp_val));
+	jam_mode = sm;
 }
 
 static inline void b_send_wdim_stats(unsigned int lamp_mac)
@@ -334,6 +351,14 @@ static int b_parse_mcu_devctrl(mcu_devctrl_header_t *header, int maxlen)
 			debug_printf("dimmer off-force 0x%04x %s\n", header->mac, header->value ? "on" : "off");
 			b_set_dimmer_control(header->mac, header->value);
 			break;
+		}
+		case MCU_DEVCTRL_COMMAND_SET_JAM_MODE: {
+			if (header->value)
+				debug_printf("entering jam mode\"n");
+			else
+				debug_printf("returning from jam mode to normal operation\n");
+
+			jam_mode = header->value;
 		}
 		case MCU_DEVCTRL_COMMAND_SET_DIMMER_DELAY: {
 			debug_printf("new dimmer delay for mac 0x%04x: %d ms\n", header->mac, header->value);
@@ -442,5 +467,8 @@ void bprotocol_init(void)
 
 	udp_recv(b_pcb, b_recv, NULL);
 	udp_bind(b_pcb, IP_ADDR_ANY, MCU_LISTENER_PORT);
+	
+	xTaskCreate (bJamThread, (signed portCHAR *) "BJAM",
+                 TASK_BJAM_STACK, NULL, TASK_BJAM_PRIORITY, NULL);
 }
 
