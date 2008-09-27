@@ -158,6 +158,7 @@ public class StatsComponent extends JPanel {
 	            // XXX assumes flat hierarchy under root layer
 	            if (ls.isRootLayer()) {
 	                rootLayerColumn.addItem(infoBox);
+	                infoBox.display.setIconScale(3f);
 	            } else {
 	                layersColumn.addItem(infoBox);
 	            }

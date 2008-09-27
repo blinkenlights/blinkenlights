@@ -35,7 +35,6 @@ public class BLMultiframePacket {
 		for (int i = 7; i >= 0; i--) {
 			buf.write((byte) ((now >> 8*i) & 0xff));
 		}
-		
 		for (int screen = 0; screen < viewports.size(); screen++) {
 		    
 		    BLImageViewport viewport = viewports.get(screen);
@@ -43,7 +42,7 @@ public class BLMultiframePacket {
 		    
 		    buf.write((byte) screen);
 		    buf.write((byte) (viewport.getBpp() & 0xff));
-
+		    
 		    // height (16-bit)
 		    buf.write((byte) ((viewport.getImageHeight() >> 8) & 0xff));
 		    buf.write((byte) (viewport.getImageHeight() & 0xff));

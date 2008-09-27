@@ -7,6 +7,7 @@ package de.blinkenlights.bmix.statistics.gui;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
@@ -15,11 +16,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class RoundedLabel extends JPanel {
-
     private static final int BORDER_WIDTH = 5;
     private final int padding;
     private final JLabel iconLabel;
     private final JLabel textLabel;
+	private float iconScale = 1f;
 
     public RoundedLabel(String text, int padding) {
         super();
@@ -49,7 +50,8 @@ public class RoundedLabel extends JPanel {
     }
 
     @Override
-    public void paintComponent(Graphics g) {
+    public void paintComponent(Graphics gg) {
+    	Graphics2D g = (Graphics2D) gg;
         g.setColor(getBackground());
         g.fillRoundRect(
                 padding, padding, getWidth() - padding, getHeight() - padding,
@@ -71,6 +73,15 @@ public class RoundedLabel extends JPanel {
     }
 
     public void setIcon(Icon icon) {
-        iconLabel.setIcon(icon);
+    	if(icon == null) {
+    		iconLabel.setIcon(null);
+    	}
+    	else {
+    		iconLabel.setIcon(new ScaledIcon(icon, iconScale));
+    	}
     }
+
+	public void setIconScale(float f) {
+		iconScale  = f;
+	}
 }

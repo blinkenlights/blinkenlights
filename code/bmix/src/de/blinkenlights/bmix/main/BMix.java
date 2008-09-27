@@ -48,9 +48,7 @@ import de.blinkenlights.bmix.util.FileFormatException;
  * be opened instead.
  */
 public class BMix extends Monitor {
-	
 	private static final Logger logger = Logger.getLogger(BMix.class.getName());
-	
 	private BMixSession session;
 	private StatServer statServer;
 	

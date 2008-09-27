@@ -43,6 +43,14 @@
 			 basedir="build"
 			 includes="**" manifest="etc/ImageToBML_manifest"/>
 	</target>
+
+	<target name="StatsClient" depends="compile" description="Creates an executable JAR of StatsClient App">
+		<mkdir dir="dist"/>
+		<mkdir dir="dist/bmix-${bmix.version}"/>
+		<jar destfile="dist/bmix-${bmix.version}/StatsClient.jar"
+			 basedir="build"
+			 includes="**" manifest="etc/StatsClient_manifest"/>
+	</target>
 	
 	<target name="blinkengameDir" depends="jar" description="Creates the dist directory with the blinkengame stuff">
 		<mkdir dir="dist/game"/>
