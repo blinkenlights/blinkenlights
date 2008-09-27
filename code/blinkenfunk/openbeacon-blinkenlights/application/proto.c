@@ -389,7 +389,7 @@ vnRFtaskRx (void *parameter)
 	}
 
       status = nRFAPI_GetFifoStatus ();
-      /* living paranoid world ;-) */
+      /* living in a paranoid world ;-) */
       if (status & FIFO_TX_FULL)
 	nRFAPI_FlushTX ();
 
