@@ -92,8 +92,8 @@ public class BMovieSender extends Thread {
 //				System.out.println("frame time: " + (nextFrameTime - prevFrameTime));
 //				prevFrameTime = nextFrameTime;
 				nextFrameTime = System.currentTimeMillis() + frame.getDuration();
-				if(!loop) break;
 			}			
+			if (!isLooping()) break;
 		}
 	}
 	
@@ -250,4 +250,12 @@ public class BMovieSender extends Thread {
 			// ignore
 		}
 	}
+
+    public synchronized void setLooping(boolean looping) {
+        loop = looping;
+    }
+    
+    public synchronized boolean isLooping() {
+        return loop;
+    }
 }
