@@ -179,44 +179,51 @@ bParsePacket (void)
   //  return;
 
   /* broadcasts have to have the correct wmcu_id set */
-  if (pkg.mac == 0xffff && pkg.wmcu_id != env.e.wmcu_id) {
-    if (debug) {
-      DumpStringToUSB("dropping broadcast packet with wmcu id ");
-      DumpUIntToUSB(pkg.wmcu_id);
-      DumpStringToUSB("\n");
+  if (pkg.mac == 0xffff && pkg.wmcu_id != env.e.wmcu_id)
+    {
+      if (debug)
+	{
+	  DumpStringToUSB ("dropping broadcast packet with wmcu id ");
+	  DumpUIntToUSB (pkg.wmcu_id);
+	  DumpStringToUSB ("\n");
+	}
+      return;
     }
-    return;
-  }
 
   /* for all other packets, we want our mac */
-  if (pkg.mac != 0xffff && pkg.mac != env.e.mac) {
-    if (debug > 2) {
-      DumpStringToUSB("dropping unicast packet for mac ");
-      DumpHexToUSB(pkg.wmcu_id, 1);
-      DumpStringToUSB("\n");
+  if (pkg.mac != 0xffff && pkg.mac != env.e.mac)
+    {
+      if (debug > 2)
+	{
+	  DumpStringToUSB ("dropping unicast packet for mac ");
+	  DumpHexToUSB (pkg.wmcu_id, 1);
+	  DumpStringToUSB ("\n");
+	}
+      return;
     }
-    return;
-  }
 
   /* ignore pakets sent from another dimmer */
   if (pkg.cmd & 0x40)
     return;
 
   /* check the sequence */
-  if (last_sequence == 0) {
-    last_sequence = pkg.sequence;
-    DumpStringToUSB("Seeding sequence: ");
-    DumpUIntToUSB(last_sequence);
-    DumpStringToUSB("\n");
-  }
-  else if (!(seq_delta > 0 && seq_delta < (signed int) (1UL << 28))) {
-    if (debug) {
-      DumpStringToUSB("dropping packet with bogus sequence ");
-      DumpUIntToUSB(pkg.sequence);
-      DumpStringToUSB("\n");
+  if (last_sequence == 0)
+    {
+      last_sequence = pkg.sequence;
+      DumpStringToUSB ("Seeding sequence: ");
+      DumpUIntToUSB (last_sequence);
+      DumpStringToUSB ("\n");
     }
-    return;
-  }
+  else if (!(seq_delta > 0 && seq_delta < (signed int) (1UL << 28)))
+    {
+      if (debug)
+	{
+	  DumpStringToUSB ("dropping packet with bogus sequence ");
+	  DumpUIntToUSB (pkg.sequence);
+	  DumpStringToUSB ("\n");
+	}
+      return;
+    }
 
   last_sequence = pkg.sequence;
   reply = pkg.cmd & 0x80;
@@ -237,20 +244,22 @@ bParsePacket (void)
 
 	v &= 0xf;
 
-	if (debug > 1) {
-          int i;
+	if (debug > 1)
+	  {
+	    int i;
 
-          DumpStringToUSB("got values: ");
-	  
-	  for (i = 0; i < RF_PAYLOAD_SIZE; i++) {
-            DumpHexToUSB(pkg.payload[i], 1);
-	    DumpStringToUSB(" ");
+	    DumpStringToUSB ("got values: ");
+
+	    for (i = 0; i < RF_PAYLOAD_SIZE; i++)
+	      {
+		DumpHexToUSB (pkg.payload[i], 1);
+		DumpStringToUSB (" ");
+	      }
+
+	    DumpStringToUSB (" - mine: ");
+	    DumpHexToUSB (v, 1);
+	    DumpStringToUSB ("\n");
 	  }
-
-          DumpStringToUSB(" - mine: ");
-          DumpHexToUSB(v, 1);
-	  DumpStringToUSB("\n");
-	}
 
 	vTaskDelay (env.e.dimmer_delay / portTICK_RATE_MS);
 	vUpdateDimmer (v);
@@ -265,16 +274,16 @@ bParsePacket (void)
       DumpStringToUSB ("\n\r");
 
       if (pkg.set_lamp_id.id != env.e.lamp_id ||
-          pkg.set_lamp_id.wmcu_id != env.e.wmcu_id)
+	  pkg.set_lamp_id.wmcu_id != env.e.wmcu_id)
 	{
 	  DumpStringToUSB ("storing.\n");
-          env.e.lamp_id = pkg.set_lamp_id.id;
-          env.e.wmcu_id = pkg.set_lamp_id.wmcu_id;
-          vTaskDelay (100);
-          env_store ();
+	  env.e.lamp_id = pkg.set_lamp_id.id;
+	  env.e.wmcu_id = pkg.set_lamp_id.wmcu_id;
+	  vTaskDelay (100);
+	  env_store ();
 	}
       else
-        {
+	{
 	  DumpStringToUSB ("not storing, values are the same.\n");
 	}
 
@@ -289,16 +298,14 @@ bParsePacket (void)
       DumpStringToUSB ("new gamma table received\n");
       break;
     case RF_CMD_WRITE_CONFIG:
-      DumpStringToUSB("writing config.\n");
+      DumpStringToUSB ("writing config.\n");
       env_store ();
       break;
     case RF_CMD_SET_JITTER:
       vSetDimmerJitterUS (pkg.set_jitter.jitter);
-
       DumpStringToUSB ("new jitter: ");
       DumpUIntToUSB (vGetDimmerJitterUS ());
       DumpStringToUSB ("\n");
-
       break;
     case RF_CMD_SEND_STATISTICS:
       pkg.statistics.emi_pulses = vGetEmiPulses ();
@@ -317,7 +324,6 @@ bParsePacket (void)
 	DumpStringToUSB ("forcing dimmer off.\n");
       else
 	DumpStringToUSB ("dimmer operating.\n");
-
       vSetDimmerOff (pkg.dimmer_control.off);
       break;
     case RF_CMD_PING:
@@ -326,7 +332,6 @@ bParsePacket (void)
 	  last_ping_seq = pkg.ping.sequence;
 	  break;
 	}
-
       pings_lost += pkg.ping.sequence - last_ping_seq - 1;
       break;
     case RF_CMD_ENTER_UPDATE_MODE:
@@ -335,7 +340,6 @@ bParsePacket (void)
 	  pkg.payload[2] != 0xBE ||
 	  pkg.payload[3] != 0xEF || pkg.mac == 0xffff)
 	break;
-
       DumpStringToUSB (" ENTERING UPDATE MODE!\n");
       DeviceRevertToUpdateMode ();
     }
@@ -350,6 +354,7 @@ vnRFtaskRx (void *parameter)
   u_int16_t crc;
   (void) parameter;
   int DidBlink = 0;
+  unsigned char status;
   portTickType Ticks = 0;
   packet_count = 0;
 
@@ -383,53 +388,53 @@ vnRFtaskRx (void *parameter)
 	  pt_reset_type = 0;
 	}
 
-      if (!nRFCMD_WaitRx (10))
-	{
-	  nRFAPI_ClearIRQ (MASK_IRQ_FLAGS);
-	  continue;
-	}
+      status = nRFAPI_GetFifoStatus ();
+      /* living paranoid world ;-) */
+      if (status & FIFO_TX_FULL)
+	nRFAPI_FlushTX ();
 
-      do
-	{
-	  /* read packet from nRF chip */
-	  nRFCMD_RegReadBuf (RD_RX_PLOAD, (unsigned char *) &pkg,
-			     sizeof (pkg));
+      if ((status & FIFO_RX_FULL) || nRFCMD_WaitRx (10))
+	do
+	  {
+	    /* read packet from nRF chip */
+	    nRFCMD_RegReadBuf (RD_RX_PLOAD, (unsigned char *) &pkg,
+			       sizeof (pkg));
 
-	  /* adjust byte order and decode */
-	  shuffle_tx_byteorder ((unsigned long *) &pkg,
-				sizeof (pkg) / sizeof (long));
-	  xxtea_decode ((long *) &pkg, sizeof (pkg) / sizeof (long));
-	  shuffle_tx_byteorder ((unsigned long *) &pkg,
-				sizeof (pkg) / sizeof (long));
+	    /* adjust byte order and decode */
+	    shuffle_tx_byteorder ((unsigned long *) &pkg,
+				  sizeof (pkg) / sizeof (long));
+	    xxtea_decode ((long *) &pkg, sizeof (pkg) / sizeof (long));
+	    shuffle_tx_byteorder ((unsigned long *) &pkg,
+				  sizeof (pkg) / sizeof (long));
 
-	  /* verify the crc checksum */
-	  crc =
-	    env_crc16 ((unsigned char *) &pkg,
-		       sizeof (pkg) - sizeof (pkg.crc));
+	    /* verify the crc checksum */
+	    crc =
+	      env_crc16 ((unsigned char *) &pkg,
+			 sizeof (pkg) - sizeof (pkg.crc));
 
-	  if (crc != swapshort (pkg.crc)) {
-	    if (debug) {
-              DumpStringToUSB("invalid CRC! ");
-	      DumpHexToUSB(crc, 2);
-              DumpStringToUSB(" != ");
-	      DumpHexToUSB(pkg.crc, 2);
-	      DumpStringToUSB("\n");
-	    }
-	    continue;
+	    if (crc == swapshort (pkg.crc))
+	      {
+		/* valid paket */
+		if (!DidBlink)
+		  {
+		    vLedSetGreen (1);
+		    Ticks = xTaskGetTickCount ();
+		    DidBlink = 1;
+		  }
+		bParsePacket ();
+	      }
+	    else if (debug)
+	      {
+		DumpStringToUSB ("invalid CRC! ");
+		DumpHexToUSB (crc, 2);
+		DumpStringToUSB (" != ");
+		DumpHexToUSB (pkg.crc, 2);
+		DumpStringToUSB ("\n");
+	      }
 	  }
+	while ((nRFAPI_GetFifoStatus () & FIFO_RX_EMPTY) == 0);
 
-	  /* valid paket */
-	  if (!DidBlink)
-	    {
-	      vLedSetGreen (1);
-	      Ticks = xTaskGetTickCount ();
-	      DidBlink = 1;
-	    }
-
-	  bParsePacket ();
-	}
-      while ((nRFAPI_GetFifoStatus () & FIFO_RX_EMPTY) == 0);
-
+      /* did I already mention the paranoid world thing? */
       nRFAPI_ClearIRQ (MASK_IRQ_FLAGS);
 
       if (DidBlink && ((xTaskGetTickCount () - Ticks) > BLINK_INTERVAL_MS))
@@ -443,6 +448,6 @@ vnRFtaskRx (void *parameter)
 void
 vInitProtocolLayer (void)
 {
-  xTaskCreate (vnRFtaskRx, (signed portCHAR *) "nRF_Rx", TASK_NRF_STACK,
-	       NULL, TASK_NRF_PRIORITY, NULL);
+  xTaskCreate (vnRFtaskRx, (signed portCHAR *) "nRF_Rx",
+	       TASK_NRF_STACK, NULL, TASK_NRF_PRIORITY, NULL);
 }
