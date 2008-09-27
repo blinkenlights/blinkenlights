@@ -5,6 +5,7 @@ import java.beans.PropertyChangeListener;
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
+import java.net.InetAddress;
 import java.net.SocketTimeoutException;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -34,8 +35,11 @@ public class BLTClientManager implements Runnable  {
 	
 	private DatagramSocket socket;
 
-	public BLTClientManager(int port, ChannelList channelList){
+	private final InetAddress blcccListenAddr;
+
+	public BLTClientManager(int port, InetAddress blcccListenAddr, ChannelList channelList){
 		this.port = port;
+		this.blcccListenAddr = blcccListenAddr;
 		this.channelList = channelList;
 	}
 	
@@ -43,7 +47,7 @@ public class BLTClientManager implements Runnable  {
 		logger.entering("BLTClient", "run");
 		socket = null;
 		try {
-			socket = new DatagramSocket(port);
+			socket = new DatagramSocket(port,blcccListenAddr);
 			socket.setSoTimeout(100);
 		} catch (IOException e) {
 			throw new RuntimeException("couldn't set up socket: ",e);

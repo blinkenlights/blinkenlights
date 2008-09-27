@@ -1,5 +1,7 @@
 package de.blinkenlights.bvoip.main;
 
+import java.io.IOException;
+
 import org.apache.commons.daemon.DaemonContext;
 
 public class Daemon implements org.apache.commons.daemon.Daemon {
@@ -17,7 +19,11 @@ public class Daemon implements org.apache.commons.daemon.Daemon {
 	public void start() throws Exception {
 		Thread main = new Thread(new Runnable() {
 			public void run() {
-				BVoip.main(arguments);	
+				try {
+					BVoip.main(arguments);
+				} catch (IOException e) {
+					throw new RuntimeException("error starting",e);
+				}	
 			}
 		});
 		main.start();

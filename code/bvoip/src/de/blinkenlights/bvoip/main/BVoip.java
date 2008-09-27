@@ -1,5 +1,9 @@
 package de.blinkenlights.bvoip.main;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.net.InetAddress;
+import java.util.Properties;
 import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -15,12 +19,12 @@ public class BVoip {
 	/**
 	 * Creates and starts the server to listen for voip events.
 	 */
-	public BVoip() {
+	public BVoip(InetAddress blcccListenAddr) {
 		logger.entering(getClass().getName(), getClass().getSimpleName());
 		
 		ChannelList channelList = new ChannelList(2);
 	
-		new Thread(new BLTClientManager(1234,channelList)).start();
+		new Thread(new BLTClientManager(1234,blcccListenAddr,channelList)).start();
 		
 		// TODO - make configurable port number
 		AGIServer agiServer = new AGIServer(4545, channelList);
@@ -30,7 +34,22 @@ public class BVoip {
 	}
 
 	
-	public static void main(String args[]) {
+	public static void main(String args[]) throws IOException {
+		
+		Properties properties = new Properties();
+		FileInputStream in = new FileInputStream("bvoip.properties");
+		properties.load(in);
+		in.close();
+		
+		InetAddress listenAddr;
+		if (properties.get("blccc.listenAddr") != null) {
+			listenAddr = InetAddress.getByName((String)properties.get("blccc.listenAddr"));
+		} else {
+			listenAddr = InetAddress.getByName("0.0.0.0");
+		}
+		logger.info("listening for blccc packets on "+listenAddr);
+		
+		
 		int verbosity = 2;
 		
 		Level logLevel;
@@ -55,6 +74,6 @@ public class BVoip {
 		    handler.setLevel(logLevel);
 		}
 		
-		new BVoip();
+		new BVoip(listenAddr);
 	}
 }
