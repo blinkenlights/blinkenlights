@@ -40,6 +40,7 @@ def usage():
 	print("\t--set-mcu-id <id>			configure the WMCU's ID")
 	print("\t--set-rf-delay <delay>			configure the WMCU's RF delay time in ms")
 	print("\t--set-assigned-lamps <filename>		set the lamps assigned to an WMCU");
+	print("\t--set-jam-mode <val>			set the WMCU to jam mode");
 	sys.exit(1)
 
 action		= -1
@@ -51,13 +52,15 @@ port		= 2323
 SET_MCUID		= 0
 SET_ASSIGNED_LAMPS	= 5
 SET_RF_DELAY		= 7
+SET_JAM_MODE		= 10
 
 MCUCTRL_MAGIC 	= 0x23542667
 
 try:
 	opts, args = getopt.getopt(sys.argv[1:],
-		"hh:p:s:s:s:",
-		["help", "host=", "port=", "set-mcu-id=", "set-rf-delay=", "set-assigned-lamps="])
+		"hh:p:s:s:s:s:",
+		["help", "host=", "port=", "set-mcu-id=", "set-rf-delay=", "set-assigned-lamps=",
+		 "set-jam-mode="])
 
 except getopt.GetoptError, err:
 	print str(err)
@@ -79,6 +82,9 @@ for o, a in opts:
 	if o == "--set-assigned-lamps":
 		action = SET_ASSIGNED_LAMPS
 		lamp_list_file = a
+	if o == "--set-jam-mode":
+		action = SET_JAM_MODE
+		mode = int(a)
 
 if action == -1:
 	print("need an action to perform.\n")
@@ -89,6 +95,9 @@ if action == SET_MCUID:
 
 if action == SET_RF_DELAY:
 	packet = struct.pack("!IIII", MCUCTRL_MAGIC, action, 0, delay)
+
+if action == SET_JAM_MODE:
+	packet = struct.pack("!IIII", MCUCTRL_MAGIC, action, 0, mode)
 
 elif action == SET_ASSIGNED_LAMPS:
 	lamps = read_lamp_map(lamp_list_file)
