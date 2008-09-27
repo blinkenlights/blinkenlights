@@ -41,7 +41,7 @@ import com.l2fprod.common.swing.JDirectoryChooser;
 
 import de.blinkenlights.bmix.movie.BMLOutputStream;
 
-public class PNGtoBML {
+public class ImageToBML {
 
 	JFrame mainFrame = new JFrame();
 	private ConvertTask task;
@@ -67,7 +67,7 @@ public class PNGtoBML {
 	
     public void createAndShowGUI() {
     	
-    	prefs = Preferences.userNodeForPackage(PNGtoBML.class);
+    	prefs = Preferences.userNodeForPackage(ImageToBML.class);
     	
         //Create and set up the main window.
         mainFrame.setTitle("Image Sequence to BML");
@@ -170,7 +170,6 @@ public class PNGtoBML {
         
         cancelButton.setEnabled(false);
         progress.setStringPainted(true);
-      //  progress.setVisible(false);
         
         DefaultFormBuilder mainBuilder = new DefaultFormBuilder(mainLayout); 
         mainBuilder.setDefaultDialogBorder();
@@ -386,7 +385,7 @@ public class PNGtoBML {
 	 */
 	public static void main(String[] args) throws IOException {
 		
-		final PNGtoBML main = new PNGtoBML();
+		final ImageToBML main = new ImageToBML();
         main.createAndShowGUI();
         // wait for swing to exit...
         

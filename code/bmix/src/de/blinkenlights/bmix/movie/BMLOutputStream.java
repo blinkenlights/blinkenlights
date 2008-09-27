@@ -26,14 +26,18 @@ public class BMLOutputStream extends OutputStream {
 	 * @param out the output stream into which the BML will be written
 	 * @param fps the frames per second of the movie
 	 * @param size the size of each frame
-	 * @param bpp the bits-per-pixel of each frame in the move
+	 * @param bpp the bits-per-pixel of each frame in the movie.  8bpp and 4bpp are supported.
 	 * @throws IOException if the wrapped output stream does.
 	 */
 	public BMLOutputStream(OutputStream out, int fps, Dimension size, int bpp) throws IOException {
 		this.out = out;
 		this.millisPerFrame = 1000 / fps;
 		this.size = size;
+		if (bpp != 4 && bpp != 8) {
+			throw new IllegalArgumentException("BPP "+bpp+" is unsupported.  Only 4 and 8 are supported.");
+		}
 		this.bpp = bpp;
+		
 		writeHeader();
 	}
 
@@ -72,9 +76,13 @@ public class BMLOutputStream extends OutputStream {
 			for (int j = 0; j < image.getWidth(); j++) {
 				// keep the red channel only
 				int r = (image.getRGB(j, i) & 0x00ff0000) >> 16;
-				// clamp the bpp
-				r = r >> (8 - bpp);
-				outStr.append(String.format("%x", r));
+				if (bpp == 4) {
+					r = r >> 4;
+					outStr.append(String.format("%x", r));
+				}
+				else if (bpp == 8) {
+					outStr.append(String.format("%02x", r));
+				}
 			}
 			outStr.append("</row>\n");
 		}
