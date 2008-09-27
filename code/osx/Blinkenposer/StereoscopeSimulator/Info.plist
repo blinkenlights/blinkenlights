@@ -30,5 +30,25 @@
 	<string>dsa_pub.pem</string>
 	<key>SUFeedURL</key>
 	<string>http://www.blinkenlights.net/config/stereoscope_simulator_appcast.xml</string>
+	<key>UTExportedTypeDeclarations</key>
+	<array>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.xml</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>Blinkenlights Movie</string>
+			<key>UTTypeIconFile</key>
+			<string>BML.icns</string>
+			<key>UTTypeIdentifier</key>
+			<string>net.blinkenlights.movie.bml</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<string>bml</string>
+			</dict>
+		</dict>
+	</array>
 </dict>
 </plist>
