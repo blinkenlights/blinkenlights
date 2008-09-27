@@ -11,6 +11,7 @@ import java.awt.Rectangle;
 import java.awt.RenderingHints;
 import java.awt.image.BufferStrategy;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -88,6 +89,13 @@ public class StatsComponent extends JPanel {
 	        items.remove(item);
 	    }
 	    
+	    /**
+	     * Removes all infoboxes from this column that are not in the given collection.
+	     */
+	    void retainAll(Collection<InfoBox> boxes) {
+	        items.retainAll(boxes);
+	    }
+	    
 	    void paint(Graphics2D g) {
 	        
 	        fixLayout();
@@ -124,6 +132,8 @@ public class StatsComponent extends JPanel {
     private final Column layersColumn = new Column();
     private final Column rootLayerColumn = new Column();
     private final Column outputsColumn = new Column();
+
+    private String errorMessage;
 	
 	public StatsComponent() {
 	    setIgnoreRepaint(true);
@@ -133,6 +143,9 @@ public class StatsComponent extends JPanel {
 	}
 
 	public void update(final FrameStatistics stats) {
+	    
+	    List<Long> statsThisUpdate = new ArrayList<Long>();
+	    
 	    for (InputStatistics is : stats.getInputStats()) {
 	        InfoBox infoBox = infoBoxes.get(is.getId());
 	        if (infoBox == null) {
@@ -141,6 +154,7 @@ public class StatsComponent extends JPanel {
 	            inputsColumn.addItem(infoBox);
 	        }
 	        infoBox.updateStats(is);
+	        statsThisUpdate.add(is.getId());
 	    }
 
 	    for (LayerStatistics ls : stats.getLayerStats()) {
@@ -164,6 +178,7 @@ public class StatsComponent extends JPanel {
 	            }
 	        }
 	        infoBox.updateStats(ls);
+	        statsThisUpdate.add(ls.getId());
 	    }
 
 	    for (OutputStatistics os : stats.getOutputStats()) {
@@ -174,9 +189,16 @@ public class StatsComponent extends JPanel {
 	            outputsColumn.addItem(infoBox);
 	        }
 	        infoBox.updateStats(os);
+	        statsThisUpdate.add(os.getId());
 	    }
 
-	    // TODO reap unused infoboxes
+	    // reap unused infoboxes
+        infoBoxes.keySet().retainAll(statsThisUpdate);
+        
+        inputsColumn.retainAll(infoBoxes.values());
+        layersColumn.retainAll(infoBoxes.values());
+        rootLayerColumn.retainAll(infoBoxes.values());
+        outputsColumn.retainAll(infoBoxes.values());
 	}
 	
 	@Override
@@ -236,6 +258,21 @@ public class StatsComponent extends JPanel {
                         outputsColumn.bounds.x, outputsColumn.bounds.y,
                         outputsColumn.bounds.width, outputsColumn.bounds.height));
         
+        if (errorMessage != null) {
+            RoundedLabel errorLabel = new RoundedLabel(30);
+            errorLabel.setText(errorMessage);
+            errorLabel.setSize(errorLabel.getPreferredSize());
+            errorLabel.paint(g.create(
+                    getWidth() / 2 - errorLabel.getWidth() / 2,
+                    getHeight() / 2 - errorLabel.getHeight() / 2,
+                    errorLabel.getWidth(),
+                    errorLabel.getHeight()));
+        }
+        
         bufferStrategy.show();
 	}
+
+    public void setErrorMessage(String errorMessage) {
+        this.errorMessage = errorMessage;
+    }
 }

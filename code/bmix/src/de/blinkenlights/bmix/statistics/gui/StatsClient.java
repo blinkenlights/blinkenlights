@@ -23,20 +23,16 @@ public class StatsClient implements Runnable {
 
     private static final Logger logger = Logger.getLogger(StatsClient.class.getName());
     
-	private final InputStream in;
+	private InputStream in;
 	private final StatsComponent statsComponent;
-//	private final InetAddress serverAddr;
 
     private final JFrame f;
 
+    private final InetAddress serverAddr;
+
 	public StatsClient(InetAddress serverAddr) throws IOException {
-//		this.serverAddr = serverAddr;
-		Socket s = new Socket(serverAddr, StatServer.STAT_PORT);
-		in = s.getInputStream();
-		s.getOutputStream();
-		if (!s.isConnected()) throw new IOException("Not connected to server");
-		System.out.println("Connected");
-		statsComponent = new StatsComponent();
+		this.serverAddr = serverAddr;
+        statsComponent = new StatsComponent();
 		f = new JFrame("BMix statistics: " + serverAddr.getHostAddress());
 	}
 
@@ -71,18 +67,36 @@ public class StatsClient implements Runnable {
 	    if (SwingUtilities.isEventDispatchThread()) {
 	        throw new RuntimeException("Don't call this on the EDT");
 	    }
-		try {
-			for (;;) {
-				FrameStatistics stats = (FrameStatistics) new ObjectInputStream(in).readObject();
-				statsComponent.update(stats);
-				statsComponent.paint(f.getBufferStrategy(), f.getInsets());
+	    
+	    for (;;) {
+	        try {
 
-			}
-		} catch (Exception ex) {
-			ex.printStackTrace();
-			JOptionPane.showMessageDialog(null, "Failure: " + ex);
-			// TODO error dialog utility method
-		}
+	            // Connect
+	            Socket s = new Socket(serverAddr, StatServer.STAT_PORT);
+	            in = s.getInputStream();
+	            s.getOutputStream();
+	            if (!s.isConnected()) throw new IOException("Not connected to server");
+	            statsComponent.setErrorMessage(null);
+
+	            // Update until disconnected
+	            for (;;) {
+	                FrameStatistics stats = (FrameStatistics) new ObjectInputStream(in).readObject();
+	                statsComponent.update(stats);
+	                statsComponent.paint(f.getBufferStrategy(), f.getInsets());
+	            }
+	            
+	        } catch (Exception ex) {
+	            ex.printStackTrace();
+	            statsComponent.setErrorMessage("Update from " + serverAddr.getHostAddress() + " failed: " + ex + ". Retry is imminent.");
+	            statsComponent.paint(f.getBufferStrategy(), f.getInsets());
+	        }
+	        
+	        try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                // just retry earlier
+            }
+	    }
 	}
 	
 	public static void main(String[] args) {
@@ -92,13 +106,14 @@ public class StatsClient implements Runnable {
 			bmixHost = JOptionPane.showInputDialog("Connect to which bmix?", bmixHost);
 			prefs.put("bmixHost", bmixHost);
 			prefs.flush();
+			
 			final StatsClient statsClient = new StatsClient(InetAddress.getByName(bmixHost));
 			statsClient.buildGUI();
 			statsClient.run();
+			
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			JOptionPane.showMessageDialog(null, "Startup failed: " + ex);
-			// TODO error dialog utility method
 		}
 	}
 }
