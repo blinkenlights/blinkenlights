@@ -373,11 +373,7 @@ public class BMix extends Monitor {
         FrameStatistics frameStats = new FrameStatistics(session.getLayerInputs(), 
         		session.getRootLayer(), session.getLayerSources(), session.getOutputs());
         
-		try {
-			statServer.sendToClients(frameStats);
-		} catch (IOException e) {
-			logger.log(Level.WARNING,"Failed to send stats",e);
-		}
+		statServer.addStatistics(frameStats);
         
         // don't build the string if we're not interested to see it
         if(logger.isLoggable(Level.FINE)) {
