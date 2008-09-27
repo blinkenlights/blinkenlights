@@ -264,10 +264,19 @@ bParsePacket (void)
       DumpUIntToUSB (pkg.set_lamp_id.wmcu_id);
       DumpStringToUSB ("\n\r");
 
-      env.e.lamp_id = pkg.set_lamp_id.id;
-      env.e.wmcu_id = pkg.set_lamp_id.wmcu_id;
-      vTaskDelay (100);
-      env_store ();
+      if (pkg.set_lamp_id.id != env.e.lamp_id ||
+          pkg.set_lamp_id.wmcu_id != env.e.wmcu_id)
+	{
+	  DumpStringToUSB ("storing.\n");
+          env.e.lamp_id = pkg.set_lamp_id.id;
+          env.e.wmcu_id = pkg.set_lamp_id.wmcu_id;
+          vTaskDelay (100);
+          env_store ();
+	}
+      else
+        {
+	  DumpStringToUSB ("not storing, values are the same.\n");
+	}
 
       break;
     case RF_CMD_SET_GAMMA:
@@ -277,7 +286,7 @@ bParsePacket (void)
       for (i = 0; i < 8; i++)
 	vSetDimmerGamma (pkg.set_gamma.block * 8 + i, pkg.set_gamma.val[i]);
 
-      DumpStringToUSB ("new gamme table received\n");
+      DumpStringToUSB ("new gamma table received\n");
       break;
     case RF_CMD_WRITE_CONFIG:
       DumpStringToUSB("writing config.\n");

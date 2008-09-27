@@ -125,9 +125,10 @@ cmd_help (const portCHAR * cmd)
   shell_print ("d[ebug] <level>			Define the debug level\n");
   shell_print ("dim <value>			Set the dimmer to a value (between 0 and 15)\n");
   shell_print ("help				This screen\n");
+  shell_print ("id <mcu_id> <lamp_id>		Set mcu and lamp id\n");
   shell_print ("reset				Reset the non-volatile flash to defaults\n");
   shell_print ("nrf_dump			dumps 2.4GHz frontend (nRF24L01) register set\n");  
-  shell_print ("nrf_init			initialize 2.4GHz frontend from scratch\n");  
+  shell_print ("nrf_init			Initialize 2.4GHz frontend from scratch\n");  
   shell_print ("nrf_reset			reset 2.4GHz frontend FIFOs\n");  
   shell_print ("status				Print status information about this unit.\n");
   shell_print ("update				Enter update mode - DO NOT USE FOR FUN\n");
@@ -246,6 +247,58 @@ cmd_dim (const portCHAR * cmd)
 }
 
 static void
+cmd_id (const portCHAR * cmd)
+{
+  int mcu_id = 0, lamp_id = 0;
+
+  while (*cmd && *cmd != ' ')
+    cmd++;
+
+  cmd++;
+
+  while (*cmd >= '0' && *cmd <= '9')
+    {
+      mcu_id *= 10;
+      mcu_id += *cmd - '0';
+      cmd++;
+    }
+
+  if (*cmd != ' ')
+    {
+      shell_print ("parameter missing\n");
+      return;
+    }
+
+  cmd++;
+
+  while (*cmd >= '0' && *cmd <= '9')
+    {
+      lamp_id *= 10;
+      lamp_id += *cmd - '0';
+      cmd++;
+    }
+
+  shell_print ("setting wmcu id ");
+  DumpUIntToUSB (mcu_id);
+  shell_print (", lamp id ");
+  DumpUIntToUSB (lamp_id);
+  shell_print ("\n");
+
+  if (mcu_id != env.e.wmcu_id ||
+      lamp_id != env.e.lamp_id)
+    {
+      env.e.wmcu_id = mcu_id;
+      env.e.lamp_id = lamp_id;
+      shell_print ("storing.\n");
+      env_store();
+    }
+  else
+    {
+      shell_print ("not storing, values are the same.\n");
+    }
+}
+
+static void
 cmd_debug (const portCHAR * cmd)
 {
   int val = 0;
@@ -296,10 +349,10 @@ static struct cmd_t
   void (*callback) (const portCHAR * cmd);
 } commands[] =
 {
-  { "d",		&cmd_debug	},
   { "debug",		&cmd_debug	},
   { "dim",		&cmd_dim	},
   { "help", 		&cmd_help	},
+  { "id",		&cmd_id		},
   { "nrf_dump",		&cmd_nrf_dump	},
   { "nrf_init",		&cmd_nrf_init	},
   { "nrf_reset",	&cmd_nrf_reset	},
