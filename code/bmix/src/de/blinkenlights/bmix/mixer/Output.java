@@ -1,6 +1,8 @@
 package de.blinkenlights.bmix.mixer;
 
 import java.awt.Rectangle;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Logger;
 
 import de.blinkenlights.bmix.network.BLNetworkException;
@@ -18,9 +20,12 @@ public class Output {
 	
     private static final Logger logger = Logger.getLogger(Output.class.getName());
     private final BLPacketSender sender;
-    private final BLImageViewport viewport;
     private final PacketType packetType;
-    private final int multiframeBpp;
+    
+    /**
+     * All screens for this output. Screen IDs are the list indices.
+     */
+    private final List<BLImageViewport> viewports = new ArrayList<BLImageViewport>();
     
     /**
      * The minimum amount of time between packets. All attempts to send a packet
@@ -35,6 +40,13 @@ public class Output {
     private long lastSendTime;
 
     /**
+     * The image to send a portion of. Viewport geometry is in terms of this
+     * image. Normally this will be the virtual buffer, but under novel use of
+     * the API, it could be any BLImage.
+     */
+    private final BLImage source;
+
+    /**
      * Creates a new output definition with the given sender and viewport. You
      * specify the image source every time you want to send something.
      * 
@@ -47,17 +59,13 @@ public class Output {
      * @param viewport
      *            The region of the image that will be cropped out and sent.
      */
-    public Output(BLPacketSender sender, BLImage source, Rectangle viewport, long minSendInterval,
-    		PacketType packetType, int multiframeBpp) {
+    public Output(BLPacketSender sender, BLImage source, long minSendInterval,
+    		PacketType packetType) {
         super();
         this.sender = sender;
+        this.source = source;
         this.minSendInterval = minSendInterval;
-        this.viewport = new BLImageViewport(source, viewport);
         this.packetType = packetType;
-        this.multiframeBpp = multiframeBpp;
-        if(packetType == PacketType.MCU_MULTIFRAME && multiframeBpp != 4 && multiframeBpp != 8) {
-        	throw new IllegalArgumentException("multiframeBpp is invalid: " + multiframeBpp + " (must be 4 or 8)");
-        }
     }
 
     /**
@@ -74,10 +82,10 @@ public class Output {
         } else {
             lastSendTime = now;
             if(packetType == PacketType.MCU_FRAME) {
-            	AbstractFramePacket p = new BLFramePacket(viewport);
+            	AbstractFramePacket p = new BLFramePacket(viewports.get(0));
                 sender.send(p.getNetworkBytes());            	
             } else if(packetType == PacketType.MCU_MULTIFRAME) {
-            	AbstractFramePacket p = new BLMultiframePacket(viewport, multiframeBpp);
+            	BLMultiframePacket p = new BLMultiframePacket(viewports);
                 sender.send(p.getNetworkBytes());
             } else {
             	throw new AssertionError("Unsupported packet type: " + packetType.name());
@@ -87,21 +95,31 @@ public class Output {
     
     @Override
     public String toString() {
-        return "" + sender + " " + viewport;
+        return "" + sender + " " + viewports;
     }
 
-	public BLImageViewport getViewport() {
-		return viewport;
+    /**
+     * Adds a new screen to this output. Only the MCU_MULTIFRAME output
+     * type supports more than one screen.
+     * @param bounds
+     * @param bpp bits per pixel. Ignored unless this is an MCU_MULTIFRAME output.
+     */
+    public void addScreen(Rectangle bounds, int bpp) {
+        if (viewports.size() > 0 && packetType != PacketType.MCU_MULTIFRAME) {
+            throw new UnsupportedOperationException(
+                    "Packet type " + packetType + " does not support multiple screens");
+        }
+        viewports.add(new BLImageViewport(source, bounds, bpp));
+    }
+    
+	public List<BLImageViewport> getViewports() {
+		return viewports;
 	}
 
 	public PacketType getPacketType() {
 		return packetType;
 	}
-
-	public int getMultiframeBpp() {
-		return multiframeBpp;
-	}
-
+ 
 	public long getMinSendInterval() {
 		return minSendInterval;
 	}

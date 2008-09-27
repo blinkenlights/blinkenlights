@@ -45,19 +45,25 @@
 <!ATTLIST layer width CDATA #REQUIRED>
 <!ATTLIST layer height CDATA #REQUIRED>
 
-<!-- outputs are rectangular viewports on the virtual buffer that extract and send frames
-     to a specified destination address using the same blprotocol accepted by inputs. -->
-<!ELEMENT output EMPTY>
-<!ATTLIST output x CDATA #REQUIRED>
-<!ATTLIST output y CDATA #REQUIRED>
-<!ATTLIST output width CDATA #REQUIRED>
-<!ATTLIST output height CDATA #REQUIRED>
+<!-- outputs consist of one or more rectangular viewports on the virtual buffer
+     that are sent to a specified destination address using the same protocol
+     family accepted by inputs. -->
+<!ELEMENT output (screen+)>
 <!ATTLIST output dest-addr CDATA #REQUIRED>
 <!ATTLIST output dest-port CDATA #REQUIRED>
 <!ATTLIST output min-frame-interval CDATA "0">
 <!-- outputs can be send in one of two formats: MCU_FRAME, or MCU_MULTIFRAME -->
 <!ATTLIST output packet-format CDATA "MCU_FRAME">
-<!-- multiframe outputs can have a bits-per-pixel of either 4 or 8 -->
-<!ATTLIST output multiframe-bpp CDATA "4">
 
-<!-- TODO: relay (inputs and/or outputs) -->
+<!-- screens specify the individual viewports geometries of an output.
+     Presently, only the MCU_MULTIFRAME output type supports multiple screens.
+     For all other output packet types, it is an error to include more than one
+     screen element.
+-->
+<!ELEMENT screen EMPTY>
+<!ATTLIST screen x CDATA #REQUIRED>
+<!ATTLIST screen y CDATA #REQUIRED>
+<!ATTLIST screen width CDATA #REQUIRED>
+<!ATTLIST screen height CDATA #REQUIRED>
+<!-- multiframe outputs can have a bits-per-pixel of either 4 or 8 -->
+<!ATTLIST output bpp CDATA "4">

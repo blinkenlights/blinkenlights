@@ -6,6 +6,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+import de.blinkenlights.bmix.mixer.BLImageViewport;
 import de.blinkenlights.bmix.mixer.Layer;
 import de.blinkenlights.bmix.mixer.Output;
 import de.blinkenlights.bmix.network.BLPacketReceiver;
@@ -56,11 +57,13 @@ public class FrameStatistics implements Serializable {
 	
 	private void addOutputs(List<Output> outputs) {
 		for(Output output : outputs) {
+		    // TODO multiple subframes
+		    BLImageViewport subframe0 = output.getViewports().get(0);
 			OutputStatistics outputStat = new OutputStatistics(
 					System.identityHashCode(output),
-					output.getViewport().getViewport(), 
+					subframe0.getViewport(), 
 					output.getDestAddr(), output.getDestPort(), output.getMinSendInterval(), 
-					output.getPacketType(), output.getMultiframeBpp());
+					output.getPacketType(), subframe0.getBpp());
 			outputStats.add(outputStat);
 		}
 	}

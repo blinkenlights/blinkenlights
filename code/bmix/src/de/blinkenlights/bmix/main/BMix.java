@@ -199,6 +199,11 @@ public class BMix extends Monitor {
         private Layer currentLayer;
 
         /**
+         * The current output we're configuring/populating.
+         */
+        private Output currentOutput;
+
+        /**
          * The input layer we're configuring/populating.
          */
         private BLPacketReceiver currentInput;
@@ -314,19 +319,22 @@ public class BMix extends Monitor {
                 } else if (qName.equals("output")) {
                     String destAddr = attributes.getValue("dest-addr");
                     int destPort = Integer.parseInt(attributes.getValue("dest-port"));
+                    long minInterval = Long.parseLong(attributes.getValue("min-frame-interval"));
+                    PacketType packetFormat = PacketType.valueOf(attributes.getValue("packet-format"));
+                    
+                    BLPacketSender sender = new BLPacketSender(destAddr, destPort);
+                    currentOutput = new Output(sender, rootLayer, minInterval, packetFormat);
+                    outputs.add(currentOutput);
+
+                } else if (qName.equals("screen")) {
                     int x =  Integer.parseInt(attributes.getValue("x"));
                     int y =  Integer.parseInt(attributes.getValue("y"));
                     int width =  Integer.parseInt(attributes.getValue("width"));
                     int height =  Integer.parseInt(attributes.getValue("height"));
-                    long minInterval = Long.parseLong(attributes.getValue("min-frame-interval"));
-                    PacketType packetFormat = PacketType.valueOf(attributes.getValue("packet-format"));
-                    int multiframeBpp = Integer.parseInt(attributes.getValue("multiframe-bpp"));
-                    
-                    Rectangle viewport = new Rectangle(x, y, width, height);
+                    int bpp = Integer.parseInt(attributes.getValue("bpp"));
 
-                    BLPacketSender sender = new BLPacketSender(destAddr, destPort);
-                    Output output = new Output(sender, rootLayer, viewport, minInterval, packetFormat, multiframeBpp);
-                    outputs.add(output);
+                    Rectangle viewport = new Rectangle(x, y, width, height);
+                    currentOutput.addScreen(viewport, bpp);
                     
 		        } else {
 		        	logger.warning("unrecognised entity: " + qName);
@@ -345,6 +353,12 @@ public class BMix extends Monitor {
 		        throws SAXException {
 		    if (name.equals("layer")) {
 		        currentLayer = currentLayer.getParentLayer();
+		    } else if (name.equals("output")) {
+		        if (currentOutput.getViewports().size() < 1) {
+		            throw new FileFormatException(
+		                    "Output elements must have at least one screen",
+		                    locator.getLineNumber(), locator.getColumnNumber());
+		        }
 		    }
 		}
 	}

@@ -86,24 +86,26 @@ public abstract class AbstractFramePacket implements BLPacket, BLImage {
 	
 	
 	/**
-	 * Creates a new BLFramePacket. Uses the OPAQUE alpha mode.
+	 * Creates a new BLFramePacket with one subframe. Uses the OPAQUE alpha mode.
 	 * 
 	 * @param image the image to use for the data
-	 * @param channels the number of channels
-	 * @param maxval the max pixel value
 	 */
-	public AbstractFramePacket(BLImage image) {
+	protected AbstractFramePacket(BLImage image) {
 		width = image.getImageWidth();
 		height = image.getImageHeight();
 		transparentColour = null;
 		shadowColour = null;
 		alphaMode = AlphaMode.OPAQUE;
-		pixelData = new byte[width * height];
+		pixelData = extractPixelData(image);
+	}
+	
+	public static byte[] extractPixelData(BLImage image) {
 		BufferedImage img = new BufferedImage(
 				image.getImageWidth(), image.getImageHeight(),
 				BufferedImage.TYPE_INT_ARGB);
 		image.fillBufferedImage(img);
 
+		byte[] pixelData = new byte[img.getWidth() * img.getHeight()];
 		int pixelCount = 0;
 		for (int k = 0; k < img.getHeight(); k++) {
 			for (int j = 0; j < img.getWidth(); j++) {
@@ -111,6 +113,7 @@ public abstract class AbstractFramePacket implements BLPacket, BLImage {
 				pixelCount++;
 			}
 		}
+		return pixelData;
 	}
 
 	public int getImageWidth() {
