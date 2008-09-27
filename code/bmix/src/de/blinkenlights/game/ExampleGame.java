@@ -6,6 +6,19 @@ package de.blinkenlights.game;
 import java.awt.Color;
 import java.awt.Graphics2D;
 
+/**
+ * Simple example "game" that demonstrates how to use the Blinkengame API.
+ * <p>
+ * To launch this game, compile it:
+ * <pre>
+ *  % javac -cp blinkengame.jar ExampleGame.java
+ * </pre>
+ * then run it like this:
+ * <pre>
+ *  % java -cp blinkengame.jar:. ExampleGame
+ * </pre>
+ * (on windows, substitute a semilcolon for the colon).
+ */
 public class ExampleGame implements BlinkenGame {
     
     private GameContext context;
