@@ -308,8 +308,8 @@ static struct cmd_t {
 	{ "mode",	&cmd_mode },
 	{ "status",	&cmd_status },
 	{ "update",	&cmd_update },
-	{ "wmcu-mac",	&cmd_mac },
 	{ "wmcu-id",	&cmd_id },
+	{ "wmcu-mac",	&cmd_mac },
 	/* end marker */
 	{ NULL, NULL }
 };

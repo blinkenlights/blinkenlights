@@ -30,7 +30,8 @@
 #define RF_PKG_SENT_BY_DIMMER	0x40
 #define RF_PKG_REPLY_WANTED	0x80
 
-enum {
+enum
+{
   RF_CMD_SET_VALUES,
   RF_CMD_SET_LAMP_ID,
   RF_CMD_SET_GAMMA,
@@ -49,47 +50,56 @@ typedef struct
   unsigned short mac;
   unsigned char wmcu_id;
 
-  union {
+  union
+  {
     unsigned char payload[RF_PAYLOAD_SIZE];
-    
-    struct {
+
+    struct
+    {
       unsigned char id;
       unsigned char wmcu_id;
     } PACKED set_lamp_id;
 
-    struct {
+    struct
+    {
       unsigned char block;
       unsigned short val[8];
     } PACKED set_gamma;
 
-    struct {
+    struct
+    {
       unsigned short jitter;
     } PACKED set_jitter;
-    
-    struct {
+
+    struct
+    {
       unsigned short delay;
     } PACKED rf_delay;
 
-    struct {
+    struct
+    {
       unsigned short emi_pulses;
       unsigned long packet_count;
       unsigned long pings_lost;
       unsigned long fw_version;
     } PACKED statistics;
 
-    struct {
+    struct
+    {
       unsigned short delay;
     } PACKED set_delay;
 
-    struct {
+    struct
+    {
       unsigned char off;
     } PACKED dimmer_control;
-    
-    struct {
+
+    struct
+    {
       unsigned int sequence;
     } PACKED ping;
 
-  } PACKED; /* union */
+  } PACKED;			/* union */
 
   unsigned int sequence;
   unsigned short crc;
@@ -105,13 +115,11 @@ static inline unsigned long
 swaplong (unsigned long src)
 {
   return (src >> 24) |
-  	 (src << 24) | 
-	 ((src >> 8) & 0x0000FF00) |
-	 ((src << 8) & 0x00FF0000);
+    (src << 24) | ((src >> 8) & 0x0000FF00) | ((src << 8) & 0x00FF0000);
 }
 
 extern void vInitProtocolLayer (void);
-extern void vnRFTransmitPacket(BRFPacket *pkg);
+extern void vnRFTransmitPacket (BRFPacket * pkg);
 extern int PtSetFifoLifetimeSeconds (int Seconds);
 extern int PtGetFifoLifetimeSeconds (void);
 extern void PtDumpUIntToUSB (unsigned int data);
