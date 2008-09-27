@@ -57,22 +57,28 @@ cmd_status (const portCHAR * cmd)
   shell_printf ("	WMCU ID: %d\n", env.e.mcu_id);
   shell_printf ("	RF delay time: %d ms\n", env.e.rf_delay);
   shell_printf ("	MAC address:	%02x:%02x:%02x:%02x:%02x:%02x\n",
-  	nic->hwaddr[0], nic->hwaddr[1], nic->hwaddr[2],
-  	nic->hwaddr[3], nic->hwaddr[4], nic->hwaddr[5]);
+		nic->hwaddr[0], nic->hwaddr[1], nic->hwaddr[2],
+		nic->hwaddr[3], nic->hwaddr[4], nic->hwaddr[5]);
   shell_printf ("	IP address:	%d.%d.%d.%d\n",
-  	ip4_addr1(&nic->ip_addr), ip4_addr2(&nic->ip_addr), ip4_addr3(&nic->ip_addr), ip4_addr4(&nic->ip_addr));
+		ip4_addr1 (&nic->ip_addr),
+		ip4_addr2 (&nic->ip_addr),
+		ip4_addr3 (&nic->ip_addr), ip4_addr4 (&nic->ip_addr));
   shell_printf ("	Network mask:	%d.%d.%d.%d\n",
-  	ip4_addr1(&nic->netmask), ip4_addr2(&nic->netmask), ip4_addr3(&nic->netmask), ip4_addr4(&nic->netmask));
-  shell_printf ("	Gateway addr:	%d.%d.%d.%d\n",
-  	ip4_addr1(&nic->gw), ip4_addr2(&nic->gw), ip4_addr3(&nic->gw), ip4_addr4(&nic->gw));
-  shell_printf ("	Receive statistics: %d packets total, %d frames, %d setup\n",
-  	b_rec_total, b_rec_frames, b_rec_setup);
-  shell_printf ("	RF statistics: sent %d broadcasts, %d unicasts, received %d\n",
-  	rf_sent_broadcast, rf_sent_unicast, rf_rec);
-  shell_printf("	assigned lamps: %d\n", env.e.n_lamps);
-  shell_printf("	operation mode: %s\n", jam_mode ? "jam" : "normal");
+		ip4_addr1 (&nic->netmask), ip4_addr2 (&nic->netmask),
+		ip4_addr3 (&nic->netmask), ip4_addr4 (&nic->netmask));
+  shell_printf ("	Gateway addr:	%d.%d.%d.%d\n", ip4_addr1 (&nic->gw),
+		ip4_addr2 (&nic->gw), ip4_addr3 (&nic->gw),
+		ip4_addr4 (&nic->gw));
+  shell_printf
+    ("	Receive statistics: %d packets total, %d frames, %d setup\n",
+     b_rec_total, b_rec_frames, b_rec_setup);
+  shell_printf
+    ("	RF statistics: sent %d broadcasts, %d unicasts, received %d\n",
+     rf_sent_broadcast, rf_sent_unicast, rf_rec);
+  shell_printf ("	assigned lamps: %d\n", env.e.n_lamps);
+  shell_printf ("	operation mode: %s\n", jam_mode ? "jam" : "normal");
 
-  debug_printf("\n");
+  debug_printf ("\n");
 }
 
 static void
@@ -80,73 +86,87 @@ cmd_lampmap (const portCHAR * cmd)
 {
   unsigned int i;
 
-  shell_printf("assigned lamps (%d):\n", env.e.n_lamps);
-  shell_printf("	#lamp MAC	#screen		#x	#y	#last value\n");
+  shell_printf ("assigned lamps (%d):\n", env.e.n_lamps);
+  shell_printf
+    ("	#lamp MAC	#screen		#x	#y	#last value\n");
 
-  for (i = 0; i < env.e.n_lamps; i++) {
-    debug_printf("\t0x%04x\t\t%d\t\t%d\t%d\t%d\n",
-    	env.e.lamp_map[i].mac,
-    	env.e.lamp_map[i].screen,
-    	env.e.lamp_map[i].x,
-    	env.e.lamp_map[i].y,
-	last_lamp_val[i]);
-  }
+  for (i = 0; i < env.e.n_lamps; i++)
+    {
+      debug_printf ("\t0x%04x\t\t%d\t\t%d\t%d\t%d\n",
+		    env.e.lamp_map[i].mac,
+		    env.e.lamp_map[i].screen,
+		    env.e.lamp_map[i].x,
+		    env.e.lamp_map[i].y, last_lamp_val[i]);
+    }
 
-  debug_printf("\n");
+  debug_printf ("\n");
 }
 
 static void
 cmd_help (const portCHAR * cmd)
 {
   struct netif *nic = &EMAC_if;
- 
-  shell_printf("Blinkenlights command shell help.\n");
-  shell_printf("---------------------------------\n");
-  shell_printf("\n");
-  shell_printf("help\n");
-  shell_printf("	This screen\n");
-  shell_printf("\n");
-  shell_printf("[wmcu-]mac <xxyy> [<crc>]\n");
-  shell_printf("	Set the MAC address of this unit.\n");
-  shell_printf("	Address xxyy is given in two hexadecimal 8bit numbers with\n");
-  shell_printf("	no separator, crc is optional and is ignored when not given.\n");
-  shell_printf("	When given, it needs to be MAC_L ^ MAC_H, otherwise the\n");
-  shell_printf("	command is rejected. The two values which are set here are\n");
-  shell_printf("	the last two digits only with a unchangable prefix, hence\n");
-  shell_printf("	the full MAC would be %02x:%02x:%02x:%02x:xx:yy.\n",
-  	nic->hwaddr[0], nic->hwaddr[1], nic->hwaddr[2],	nic->hwaddr[3]);
-  shell_printf("[wmcu-]id <id>\n");
-  shell_printf("	Set the WMCU ID and store it to the flash memory\n");
-  shell_printf("	This also updates all dimmers configured in the lamp map\n");
-  shell_printf("\n");
-  shell_printf("mode <val>\n");
-  shell_printf("	Set operation mode. val can be 'normal' or 'jam'");
-  shell_printf("\n");
-  shell_printf("status\n");
-  shell_printf("	Print status information about this unit. Try it, it's fun.\n");
-  shell_printf("lampmap\n");
-  shell_printf("	Dump the lampmap\n");
-  shell_printf("env\n");
-  shell_printf("	Show variables currently stored in the non-volatile flash memory\n");
-  shell_printf("update\n");
-  shell_printf("        Enter update mode - DO NOT USE FOR FUN\n\n");
+
+  shell_printf ("Blinkenlights command shell help.\n");
+  shell_printf ("---------------------------------\n");
+  shell_printf ("\n");
+  shell_printf ("help\n");
+  shell_printf ("	This screen\n");
+  shell_printf ("\n");
+  shell_printf ("[wmcu-]mac <xxyy> [<crc>]\n");
+  shell_printf ("	Set the MAC address of this unit.\n");
+  shell_printf
+    ("	Address xxyy is given in two hexadecimal 8bit numbers with\n");
+  shell_printf
+    ("	no separator, crc is optional and is ignored when not given.\n");
+  shell_printf
+    ("	When given, it needs to be MAC_L ^ MAC_H, otherwise the\n");
+  shell_printf
+    ("	command is rejected. The two values which are set here are\n");
+  shell_printf
+    ("	the last two digits only with a unchangable prefix, hence\n");
+  shell_printf ("	the full MAC would be %02x:%02x:%02x:%02x:xx:yy.\n",
+		nic->hwaddr[0], nic->hwaddr[1], nic->hwaddr[2],
+		nic->hwaddr[3]);
+  shell_printf ("[wmcu-]id <id>\n");
+  shell_printf ("	Set the WMCU ID and store it to the flash memory\n");
+  shell_printf
+    ("	This also updates all dimmers configured in the lamp map\n");
+  shell_printf ("\n");
+  shell_printf ("mode <val>\n");
+  shell_printf ("	Set operation mode. val can be 'normal' or 'jam'");
+  shell_printf ("\n");
+  shell_printf ("status\n");
+  shell_printf
+    ("	Print status information about this unit. Try it, it's fun.\n");
+  shell_printf ("lampmap\n");
+  shell_printf ("	Dump the lampmap\n");
+  shell_printf ("env\n");
+  shell_printf
+    ("	Show variables currently stored in the non-volatile flash memory\n");
+  shell_printf ("update\n");
+  shell_printf ("        Enter update mode - DO NOT USE FOR FUN\n\n");
 }
 
 static int
-hex_to_int(char *nibble)
+hex_to_int (char *nibble)
 {
-    if (*nibble >= 'A' && *nibble <= 'F') {
+  if (*nibble >= 'A' && *nibble <= 'F')
+    {
       *nibble -= 'A';
       *nibble += 10;
-    } else if (*nibble >= 'a' && *nibble <= 'f') {
+    }
+  else if (*nibble >= 'a' && *nibble <= 'f')
+    {
       *nibble -= 'a';
       *nibble += 10;
-    } else if (*nibble >= '0' && *nibble <= '9')
-      *nibble -= '0';
-    else
-      return -1;
+    }
+  else if (*nibble >= '0' && *nibble <= '9')
+    *nibble -= '0';
+  else
+    return -1;
 
-    return 0;
+  return 0;
 }
 
 static void
@@ -156,23 +176,25 @@ cmd_mac (const portCHAR * cmd)
   unsigned int i;
 
   while (*cmd && *cmd != ' ')
-  	cmd++;
+    cmd++;
 
   cmd++;
 
-  for (i = 0; i < sizeof(buf); i++) {
-    if (!*cmd) {
-      shell_printf("bogus command.\n");
-      return;
-    }
+  for (i = 0; i < sizeof (buf); i++)
+    {
+      if (!*cmd)
+	{
+	  shell_printf ("bogus command.\n");
+	  return;
+	}
 
-    buf[i] = *cmd++;
-    if (hex_to_int(buf + i) < 0)
-      {
-        shell_printf("invalid MAC!\n");
-        return;
-      }
-  }
+      buf[i] = *cmd++;
+      if (hex_to_int (buf + i) < 0)
+	{
+	  shell_printf ("invalid MAC!\n");
+	  return;
+	}
+    }
 
   mac_h = buf[0] << 4 | buf[1];
   mac_l = buf[2] << 4 | buf[3];
@@ -180,33 +202,34 @@ cmd_mac (const portCHAR * cmd)
   /* checksum given? */
   if (*cmd == ' ')
     {
-       portCHAR crc;
+      portCHAR crc;
 
-       buf[0] = *cmd++;
-       if (!*cmd)
-         {
-	   shell_printf("bogus checksum!\n");
-	   return;
-	 }
-       
-       buf[1] = *cmd++;
-       hex_to_int(buf + 0);
-       hex_to_int(buf + 1);
-       crc = buf[0] << 4 | buf[1];
+      buf[0] = *cmd++;
+      if (!*cmd)
+	{
+	  shell_printf ("bogus checksum!\n");
+	  return;
+	}
 
-       if (crc != (mac_l ^ mac_h))
-         {
-	   shell_printf("invalid checksum - command ignored\n");
-	   return;
-	 }
+      buf[1] = *cmd++;
+      hex_to_int (buf + 0);
+      hex_to_int (buf + 1);
+      crc = buf[0] << 4 | buf[1];
+
+      if (crc != (mac_l ^ mac_h))
+	{
+	  shell_printf ("invalid checksum - command ignored\n");
+	  return;
+	}
     }
-   
-  shell_printf("setting new MAC: %02x%02x.\n", mac_h, mac_l);
-  shell_printf("Please power-cycle the device to make this change take place.\n");
+
+  shell_printf ("setting new MAC: %02x%02x.\n", mac_h, mac_l);
+  shell_printf
+    ("Please power-cycle the device to make this change take place.\n");
 
   env.e.mac_h = mac_h;
   env.e.mac_l = mac_l;
-  env_store();
+  env_store ();
 }
 
 static void
@@ -215,71 +238,68 @@ cmd_id (const portCHAR * cmd)
   unsigned int i, id = 0;
 
   while (*cmd && *cmd != ' ')
-  	cmd++;
+    cmd++;
 
   cmd++;
 
-  for (;;) {
-    portCHAR b;
+  for (;;)
+    {
+      portCHAR b;
 
-    if (!*cmd) {
-      shell_printf("bogus command.\n");
-      break;
+      if (!*cmd)
+	{
+	  shell_printf ("bogus command.\n");
+	  break;
+	}
+
+      b = *cmd++;
+      if (b > '9' || b < '0')
+	{
+	  shell_printf ("invalid ID!\n");
+	  return;
+	}
+
+      id *= 10;
+      id += (b - '0');
     }
 
-    b = *cmd++;
-    if (b > '9' || b < '0')
-      {
-        shell_printf("invalid ID!\n");
-        return;
-      }
-
-    id *= 10;
-    id += (b - '0');
-  }
-
-  shell_printf("setting new WMCU ID: %d\n", id);
+  shell_printf ("setting new WMCU ID: %d\n", id);
 
   for (i = 0; i < env.e.n_lamps; i++)
     {
       LampMap *m = env.e.lamp_map + i;
-      shell_printf("updating dimmer 0x%04x -> ID %d\n", m->mac, i);
+      shell_printf ("updating dimmer 0x%04x -> ID %d\n", m->mac, i);
 
       b_set_lamp_id (i, m->mac);
-      vTaskDelay(100 / portTICK_RATE_MS);
+      vTaskDelay (100 / portTICK_RATE_MS);
     }
 
   env.e.mcu_id = id;
-  env_store();
+  env_store ();
 }
 
 static void
 cmd_mode (const portCHAR * cmd)
 {
   while (*cmd && *cmd != ' ')
-  	cmd++;
+    cmd++;
 
   cmd++;
 
   if (cmd[0] == 'n' &&
       cmd[1] == 'o' &&
-      cmd[2] == 'r' &&
-      cmd[3] == 'm' &&
-      cmd[4] == 'a' &&
-      cmd[5] == 'l')
+      cmd[2] == 'r' && cmd[3] == 'm' && cmd[4] == 'a' && cmd[5] == 'l')
     {
-      shell_printf("mode: normal.\n");
+      shell_printf ("mode: normal.\n");
       jam_mode = 0;
     }
-  else if (cmd[0] == 'j' &&
-           cmd[1] == 'a' &&
-           cmd[2] == 'm')
+  else if (cmd[0] == 'j' && cmd[1] == 'a' && cmd[2] == 'm')
     {
-      shell_printf("mode: jam.\n");
+      shell_printf ("mode: jam.\n");
       jam_mode = 1;
     }
   else
-    shell_printf("unknown mode.\n");
+    shell_printf ("unknown mode.\n");
 }
 
 static void
@@ -287,7 +307,7 @@ cmd_update (const portCHAR * cmd)
 {
   shell_printf ("resetting to default bootloader in update mode\n");
   vTaskDelay (500 / portTICK_RATE_MS);
-  
+
   AT91C_UDP_TRANSCEIVER_ENABLE = AT91C_UDP_TXVDIS;
 
   /* disable USB */
@@ -297,21 +317,33 @@ cmd_update (const portCHAR * cmd)
   env_reboot_to_update ();
 }
 
-static struct cmd_t {
-	const portCHAR *command;
-	void (*callback) (const portCHAR *cmd);
-} commands[] = {
-	{ "help",	&cmd_help },
-	{ "id",		&cmd_id },
-	{ "lampmap",	&cmd_lampmap },
-	{ "mac",	&cmd_mac },
-	{ "mode",	&cmd_mode },
-	{ "status",	&cmd_status },
-	{ "update",	&cmd_update },
-	{ "wmcu-id",	&cmd_id },
-	{ "wmcu-mac",	&cmd_mac },
-	/* end marker */
-	{ NULL, NULL }
+static struct cmd_t
+{
+  const portCHAR *command;
+  void (*callback) (const portCHAR * cmd);
+} commands[] =
+{
+  {
+  "help", &cmd_help},
+  {
+  "id", &cmd_id},
+  {
+  "lampmap", &cmd_lampmap},
+  {
+  "mac", &cmd_mac},
+  {
+  "mode", &cmd_mode},
+  {
+  "status", &cmd_status},
+  {
+  "update", &cmd_update},
+  {
+  "wmcu-id", &cmd_id},
+  {
+  "wmcu-mac", &cmd_mac},
+    /* end marker */
+  {
+  NULL, NULL}
 };
 
 static void
@@ -325,9 +357,9 @@ parse_cmd (const portCHAR * cmd)
   shell_printf ("\n");
   for (c = commands; c && c->command && c->callback; c++)
     {
-      if (strncmp (cmd, c->command, strlen(c->command)) == 0 && c->callback)
-        {
-          c->callback(cmd);
+      if (strncmp (cmd, c->command, strlen (c->command)) == 0 && c->callback)
+	{
+	  c->callback (cmd);
 	  return;
 	}
     }
@@ -343,27 +375,27 @@ usbshell_task (void *pvParameters)
 
   for (;;)
     {
-      if (!vUSBRecvByte (&c, sizeof(c), 100))
-        continue;
+      if (!vUSBRecvByte (&c, sizeof (c), 100))
+	continue;
 
       if (c == '\n' || c == '\r')
-        {
-          *p = '\0';
-          parse_cmd(buf);
+	{
+	  *p = '\0';
+	  parse_cmd (buf);
 
-          p = buf;
-          shell_printf(PROMPT);
-          continue;
-        }
+	  p = buf;
+	  shell_printf (PROMPT);
+	  continue;
+	}
 
-      if (p == buf + sizeof(buf) - 1)
-        {
-          p = buf;
-          *p = '\0';
-        }
+      if (p == buf + sizeof (buf) - 1)
+	{
+	  p = buf;
+	  *p = '\0';
+	}
 
       /* local echo */
-      vUSBSendByte(c);
+      vUSBSendByte (c);
       *p++ = c;
     }
 }
