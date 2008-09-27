@@ -323,24 +323,15 @@ static struct cmd_t
   void (*callback) (const portCHAR * cmd);
 } commands[] =
 {
-  {
-  "help", &cmd_help},
-  {
-  "id", &cmd_id},
-  {
-  "lampmap", &cmd_lampmap},
-  {
-  "mac", &cmd_mac},
-  {
-  "mode", &cmd_mode},
-  {
-  "status", &cmd_status},
-  {
-  "update", &cmd_update},
-  {
-  "wmcu-id", &cmd_id},
-  {
-  "wmcu-mac", &cmd_mac},
+  {"help",	&cmd_help},
+  {"id",	&cmd_id},
+  {"lampmap",	&cmd_lampmap},
+  {"mac",	&cmd_mac},
+  {"mode",	&cmd_mode},
+  {"status",	&cmd_status},
+  {"update",	&cmd_update},
+  {"wmcu-id",	&cmd_id},
+  {"wmcu-mac",	&cmd_mac},
     /* end marker */
   {
   NULL, NULL}
