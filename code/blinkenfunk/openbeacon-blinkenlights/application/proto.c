@@ -51,23 +51,39 @@ unsigned int debug = 0;
 
 static BRFPacket pkg;
 static const unsigned char broadcast_mac[NRF_MAX_MAC_SIZE] =
-  { 'D', 'E', 'C', 'A', 'D' };
+    { 'D', 'E', 'C', 'A', 'D' };
 static unsigned char jam_mac[NRF_MAX_MAC_SIZE] =
-  { 'J', 'A', 'M', 'M',  0 };
+    { 'J', 'A', 'M', 'M', 0 };
+static unsigned char wmcu_mac[NRF_MAX_MAC_SIZE] =
+    { 'W', 'M', 'C', 'U', 0 };
 
 #define BLINK_INTERVAL_MS (50 / portTICK_RATE_MS)
 
+static void
+PtUpdateWmcuId (unsigned char id)
+{
+  /* update WMCU id for response channel */
+  wmcu_mac[sizeof (wmcu_mac) - 1] = id;
+  nRFAPI_SetTxMAC (wmcu_mac, sizeof (wmcu_mac));
+
+  /* update jamming data channel id */
+  jam_mac[sizeof (wmcu_mac) - 1] = id;
+  nRFAPI_SetRxMAC (jam_mac, sizeof (jam_mac), 1);
+}
+
 static inline s_int8_t
-PtInitNRF ( void )
+PtInitNRF (void)
 {
   if (!nRFAPI_Init (DEFAULT_CHANNEL, broadcast_mac,
 		    sizeof (broadcast_mac), ENABLED_NRF_FEATURES))
     return 0;
 
-  nRFAPI_SetRxMAC (jam_mac, sizeof (jam_mac), 1);
+  nRFAPI_SetSizeMac (sizeof (wmcu_mac));
   nRFAPI_SetPipeSizeRX (0, sizeof (pkg));
   nRFAPI_SetPipeSizeRX (1, sizeof (pkg));
   nRFAPI_PipesEnable (ERX_P0 | ERX_P1);
+
+  PtUpdateWmcuId (env.e.wmcu_id);
 
   nRFAPI_SetTxPower (3);
   nRFAPI_SetRxMode (1);
@@ -82,9 +98,10 @@ PtInitNrfFrontend (int ResetType)
   pt_reset_type = ResetType;
 }
 
-void PtDumpNrfRegisters (void)
+void
+PtDumpNrfRegisters (void)
 {
-  pt_dump_registers=pdTRUE;
+  pt_dump_registers = pdTRUE;
 }
 
 static inline void
@@ -141,18 +158,20 @@ shuffle_tx_byteorder (unsigned long *v, int len)
     }
 }
 
-static void
-resetDevice (void)
+inline static void
+PtResetDevice (void)
 {
   vTaskDelay (100);
   vTaskSuspendAll ();
   portENTER_CRITICAL ();
   /* endless loop to trigger watchdog reset */
-  while (1) {};
+  while (1)
+    {
+    };
 }
 
 static inline void
-sendReply (void)
+PtSendReply (void)
 {
   pkg.mac = env.e.mac;
   pkg.wmcu_id = env.e.wmcu_id;
@@ -163,7 +182,8 @@ sendReply (void)
 
   /* update crc */
   pkg.crc =
-    swaplong(crc32 ((unsigned char *) &pkg, sizeof (pkg) - sizeof (pkg.crc)));
+    swaplong (crc32
+	      ((unsigned char *) &pkg, sizeof (pkg) - sizeof (pkg.crc)));
 
   /* encrypt data */
   shuffle_tx_byteorder ((unsigned long *) &pkg, sizeof (pkg) / sizeof (long));
@@ -298,6 +318,7 @@ bParsePacket (unsigned char pipe)
 	  DumpStringToUSB ("storing.\n");
 	  env.e.lamp_id = pkg.set_lamp_id.id;
 	  env.e.wmcu_id = pkg.set_lamp_id.wmcu_id;
+	  PtUpdateWmcuId ( env.e.wmcu_id );
 	  vTaskDelay (100);
 	  env_store ();
 	}
@@ -357,8 +378,8 @@ bParsePacket (unsigned char pipe)
       break;
     case RF_CMD_RESET:
       {
-        resetDevice();
-        break;
+	PtResetDevice ();
+	break;
       }
     case RF_CMD_ENTER_UPDATE_MODE:
       if (pkg.payload[0] != 0xDE ||
@@ -372,7 +393,7 @@ bParsePacket (unsigned char pipe)
     }
 
   if (reply)
-    sendReply ();
+    PtSendReply ();
 }
 
 static void
@@ -391,7 +412,7 @@ vnRFtaskRxTx (void *parameter)
   for (;;)
     {
       /* reset RF interface if needed */
-      if ( pt_reset_type )
+      if (pt_reset_type)
 	{
 	  nRFCMD_CE (0);
 	  vLedSetGreen (1);
@@ -417,7 +438,7 @@ vnRFtaskRxTx (void *parameter)
 	}
 
       /* dump RF interface registers if needed */
-      if( pt_dump_registers )
+      if (pt_dump_registers)
 	{
 	  PtInternalDumpNrfRegisters ();
 	  pt_dump_registers = pdFALSE;
@@ -446,8 +467,7 @@ vnRFtaskRxTx (void *parameter)
 
 	    /* verify the crc checksum */
 	    crc =
-	      crc32 ((unsigned char *) &pkg,
-			 sizeof (pkg) - sizeof (pkg.crc));
+	      crc32 ((unsigned char *) &pkg, sizeof (pkg) - sizeof (pkg.crc));
 
 	    if (crc == swaplong (pkg.crc))
 	      {
@@ -458,7 +478,7 @@ vnRFtaskRxTx (void *parameter)
 		    Ticks = xTaskGetTickCount ();
 		    DidBlink = 1;
 		  }
-		bParsePacket ( pipe );
+		bParsePacket (pipe);
 	      }
 	    else if (debug)
 	      {
@@ -485,8 +505,6 @@ vnRFtaskRxTx (void *parameter)
 void
 vInitProtocolLayer (unsigned char wmcu_id)
 {
-  jam_mac[NRF_MAX_MAC_SIZE-1] = wmcu_id;
-
   xTaskCreate (vnRFtaskRxTx, (signed portCHAR *) "nRF_RxTx",
 	       TASK_NRF_STACK, NULL, TASK_NRF_PRIORITY, NULL);
 }
