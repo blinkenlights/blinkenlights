@@ -52,17 +52,23 @@ unsigned int debug = 0;
 static BRFPacket pkg;
 static const unsigned char broadcast_mac[NRF_MAX_MAC_SIZE] =
   { 'D', 'E', 'C', 'A', 'D' };
+static unsigned char jam_mac[NRF_MAX_MAC_SIZE] =
+  { 'J', 'A', 'M', 'M',  0 };
 
 #define BLINK_INTERVAL_MS (50 / portTICK_RATE_MS)
 
 static inline s_int8_t
-PtInitNRF (void)
+PtInitNRF ( void )
 {
   if (!nRFAPI_Init (DEFAULT_CHANNEL, broadcast_mac,
 		    sizeof (broadcast_mac), ENABLED_NRF_FEATURES))
     return 0;
 
+  nRFAPI_SetRxMAC (jam_mac, sizeof (jam_mac), 1);
   nRFAPI_SetPipeSizeRX (0, sizeof (pkg));
+  nRFAPI_SetPipeSizeRX (1, sizeof (pkg));
+  nRFAPI_PipesEnable (ERX_P0 | ERX_P1);
+
   nRFAPI_SetTxPower (3);
   nRFAPI_SetRxMode (1);
   nRFCMD_CE (1);
@@ -176,14 +182,10 @@ sendReply (void)
 }
 
 static inline void
-bParsePacket (void)
+bParsePacket (unsigned char pipe)
 {
   int i, reply;
   signed int seq_delta = pkg.sequence - last_sequence;
-
-  /* no MAC set yet? do nothing */
-  //if (!env.e.mac)
-  //  return;
 
   /* broadcasts have to have the correct wmcu_id set */
   if (pkg.mac == 0xffff && pkg.wmcu_id != env.e.wmcu_id)
@@ -319,7 +321,6 @@ bParsePacket (void)
       pkg.statistics.packet_count = packet_count;
       pkg.statistics.pings_lost = pings_lost;
       pkg.statistics.fw_version = VERSION_INT;
-      pkg.statistics.tick_count = xTaskGetTickCount();
       break;
     case RF_CMD_SET_DIMMER_DELAY:
       env.e.dimmer_delay = pkg.set_delay.delay;
@@ -363,7 +364,7 @@ vnRFtaskRxTx (void *parameter)
   u_int32_t crc;
   (void) parameter;
   int DidBlink = 0;
-  unsigned char status;
+  unsigned char status, pipe;
   portTickType Ticks = 0;
   packet_count = 0;
 
@@ -404,7 +405,6 @@ vnRFtaskRxTx (void *parameter)
 	  PtInternalDumpNrfRegisters ();
 	  pt_dump_registers = pdFALSE;
 	}
-
       status = nRFAPI_GetFifoStatus ();
       /* living in a paranoid world ;-) */
       if (status & FIFO_TX_FULL)
@@ -413,6 +413,9 @@ vnRFtaskRxTx (void *parameter)
       if ((status & FIFO_RX_FULL) || nRFCMD_WaitRx (10))
 	do
 	  {
+	    /* find out which pipe got the packet */
+	    pipe = (nRFAPI_GetStatus () >> 1) & 0x07;
+
 	    /* read packet from nRF chip */
 	    nRFCMD_RegReadBuf (RD_RX_PLOAD, (unsigned char *) &pkg,
 			       sizeof (pkg));
@@ -438,7 +441,7 @@ vnRFtaskRxTx (void *parameter)
 		    Ticks = xTaskGetTickCount ();
 		    DidBlink = 1;
 		  }
-		bParsePacket ();
+		bParsePacket ( pipe );
 	      }
 	    else if (debug)
 	      {
@@ -463,8 +466,10 @@ vnRFtaskRxTx (void *parameter)
 }
 
 void
-vInitProtocolLayer (void)
+vInitProtocolLayer (unsigned char wmcu_id)
 {
+  jam_mac[NRF_MAX_MAC_SIZE-1] = wmcu_id;
+
   xTaskCreate (vnRFtaskRxTx, (signed portCHAR *) "nRF_RxTx",
 	       TASK_NRF_STACK, NULL, TASK_NRF_PRIORITY, NULL);
 }

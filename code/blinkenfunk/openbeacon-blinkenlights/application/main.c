@@ -101,7 +101,7 @@ main (void)
   xTaskCreate (vUSBCDCTask, (signed portCHAR *) "USB", TASK_USB_STACK,
 	       NULL, TASK_USB_PRIORITY, NULL);
 
-  vInitProtocolLayer ();
+  vInitProtocolLayer ( env.e.wmcu_id );
   vUSBShellInit ();
   vRndInit (env.e.mac);
   vInitDimmer ();

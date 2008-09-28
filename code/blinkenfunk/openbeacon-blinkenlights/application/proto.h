@@ -29,7 +29,7 @@
 #define PTINITNRFFRONTEND_RESETFIFO 0x01
 #define PTINITNRFFRONTEND_INIT 0x02
 
-extern void vInitProtocolLayer (void);
+extern void vInitProtocolLayer (unsigned char wmcu_id);
 extern int PtSetFifoLifetimeSeconds (int Seconds);
 extern int PtGetFifoLifetimeSeconds (void);
 extern void PtInitNrfFrontend (int ResetType);
