@@ -89,7 +89,7 @@ int main(int argc, char **argv) {
 	glEnable(GL_COLOR_MATERIAL);
 	
 	f16 = (GLMmodel*)malloc(sizeof(GLMmodel));
-	f16 = glmReadOBJ("/Users/pittenau/Desktop/Projects/glm-example/objs/f16.obj");
+	f16 = glmReadOBJ("/Users/dom/Data/Work/TCM/svn/blinkenlights/trunk/code/osx/Blinkensim/Snippets/glm-opengles-port/objs/f16.obj");
 	
 	displayList=glGenLists(1);
 	glNewList(displayList,GL_COMPILE);

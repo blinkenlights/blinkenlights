@@ -700,7 +700,7 @@
 				INFOPLIST_FILE = Info.plist;
 				PREBINDING = NO;
 				PRODUCT_NAME = Stereoscope;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "767C04F6-F9EF-482A-A6A1-B9B2D55F6352";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F6D7E195-F08E-488B-9845-5F7A616D3667";
 				WARNING_CFLAGS = "-Wall";
 			};
 			name = Distrubtion;

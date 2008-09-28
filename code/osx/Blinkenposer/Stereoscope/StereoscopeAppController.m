@@ -72,16 +72,13 @@
 
 + (int)installedBlinkenposerPluginVersion
 {
-	NSString *poserPath = [[[NSBundle mainBundle] builtInPlugInsPath] stringByAppendingPathComponent:@"Blinkenposer.plugin"];
 	NSString *infoPlistSubPath = @"Contents/Info.plist";
-	NSDictionary *inBundleInfoDict = [NSDictionary dictionaryWithContentsOfFile:[poserPath stringByAppendingPathComponent:infoPlistSubPath]];
 	
 	NSFileManager *fm = [NSFileManager defaultManager];
 	NSString *pluginSubPath = @"Graphics/Quartz Composer Plug-Ins/Blinkenposer.plugin";
     NSArray *allDomainsPaths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSAllDomainsMask, YES);
     NSEnumerator *enumerator = [allDomainsPaths objectEnumerator];
     NSString *path = nil;
-    BOOL hadPlugin = NO;
     while ((path = [enumerator nextObject])) {
     	NSString *potentialPoserPath = [path stringByAppendingPathComponent:pluginSubPath];
     	BOOL wasDirectory = NO;

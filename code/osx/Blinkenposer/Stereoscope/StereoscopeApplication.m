@@ -19,7 +19,8 @@
 	int installedVersion = [StereoscopeAppController installedBlinkenposerPluginVersion];
 	NSLog(@"%s installedVersion %d %@",__FUNCTION__,installedVersion,[QCPlugIn attributes]);
 	if (installedVersion == -1) {
-		BOOL success = [QCPlugIn loadPlugInAtPath:poserPath];
+//		BOOL success = 
+		[QCPlugIn loadPlugInAtPath:poserPath];
 //		NSLog(@"%s loading %@ was a %d",__FUNCTION__,poserPath,success);
 	} else {
 //		NSLog(@"%s installed version was %d",__FUNCTION__,installedVersion);

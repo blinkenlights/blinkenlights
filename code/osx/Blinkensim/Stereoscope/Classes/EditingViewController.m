@@ -55,8 +55,9 @@
     [appController doneWithSettings:self];
 }
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
-	[self save:textField];
+- (BOOL)textFieldShouldReturn:(UITextField *)inTextField {
+	[self save:inTextField];
+	return YES;
 }
 
 - (void)viewWillAppear:(BOOL)animated {

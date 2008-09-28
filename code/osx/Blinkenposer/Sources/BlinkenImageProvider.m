@@ -37,9 +37,9 @@
 - (BOOL)renderToBuffer:(void*)inBaseAddress withBytesPerRow:(NSUInteger)inRowBytes pixelFormat:(NSString*)inFormat forBounds:(NSRect)inBounds
 {
     @synchronized (self) {
-    //	NSLog(@"%s",__FUNCTION__);
+//    	NSLog(@"%s %@",__FUNCTION__,NSStringFromRect(inBounds));
         BOOL isBGRA = [QCPlugInPixelFormatBGRA8 isEqualToString:inFormat];
-    
+    	int rowOffset = _frameSize.height - NSMaxY(inBounds);
         unsigned char *src, *dest;
         src = (unsigned char *)[self.frameData bytes];
         dest = inBaseAddress;
@@ -49,11 +49,15 @@
     
         unsigned char alpha = 255;
     
-        
+        // currentrow = 0 is the first row to be copied, not row with y coordinate 0
         int currentRow = inBounds.origin.y;
         for (currentRow = inBounds.origin.y;currentRow < numberOfRows;currentRow++) {
-            unsigned char *sourceRow = src + currentRow * myRowBytes;
-            unsigned char *destRow = dest + currentRow * inRowBytes;
+            unsigned char *sourceRow = 
+            	src + 
+            	currentRow * myRowBytes + 
+            	rowOffset * myRowBytes +
+            	(_bitsPerPixel == 4 ? ((int)inBounds.origin.x / 2) : ((int)inBounds.origin.x));
+            unsigned char *destRow = dest + (currentRow)* inRowBytes;
             int x = 0;
             for (x=0;x<MIN(_frameSize.width, inBounds.size.width);x++) {
 				
