@@ -42,7 +42,7 @@ import de.blinkenlights.bmix.main.BMovieSender;
  * This is the main class for the "Stereoscope Player" app. It is a GUI wrapper
  * for the BMovieSender.
  */
-public class Sender implements MRJOpenDocumentHandler {
+public class Sender implements MRJOpenDocumentHandler, MRJQuitHandler {
 
     private static final String DEFAULT_STATUS_MESSAGE = "<html><center>Drag BML file here</center>";
     private final JLabel statusLabel;
@@ -56,6 +56,7 @@ public class Sender implements MRJOpenDocumentHandler {
 
     public Sender() {
     		MRJApplicationUtils.registerOpenDocumentHandler(this);
+    		MRJApplicationUtils.registerQuitHandler(this);
     
         frame = new JFrame("Stereoscope Player");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -135,6 +136,10 @@ public class Sender implements MRJOpenDocumentHandler {
 
 		public void handleOpenFile(File fileName) {
 			this.sendMovie(fileName);
+		}
+		
+		public void handleQuit() {
+			System.exit(0);
 		}
 		
     public void sendMovie(File file) {

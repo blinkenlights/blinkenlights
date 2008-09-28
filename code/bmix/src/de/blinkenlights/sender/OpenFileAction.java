@@ -27,11 +27,9 @@ public class OpenFileAction extends AbstractAction {
         fd.setVisible(true);
         String dir = fd.getDirectory();
         String file = fd.getFile();
-        if (dir == null || file == null) {
-            JOptionPane.showMessageDialog(parentFrame, "Ok, maybe next time");
-            System.exit(0);
-        }
-        File chosenFile = new File(dir, file);
-        sender.sendMovie(chosenFile);
+        if (dir != null && file != null) {
+					File chosenFile = new File(dir, file);
+					sender.sendMovie(chosenFile);
+				}
     }
 }
