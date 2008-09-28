@@ -38,10 +38,19 @@
 #include "env.h"
 #include "rnd.h"
 
+#define MAX_TX_STRENGTH 3
+
 static BRFPacket rfpkg;
 unsigned int rf_sent_broadcast, rf_sent_unicast, rf_rec;
+char nrf_strength_last, nrf_strength_current;
 const unsigned char broadcast_mac[NRF_MAX_MAC_SIZE] =
   { 'D', 'E', 'C', 'A', 'D' };
+
+void
+PtSetRfPowerPercent ( unsigned char Percent )
+{
+  nrf_powerlevel_current = (Percent > 100 ) ? MAX_TX_STRENGTH : ((100UL * MAX_TX_STRENGTH) / 100);
+}
 
 static inline s_int8_t
 PtInitNRF (void)
@@ -50,8 +59,10 @@ PtInitNRF (void)
 		    sizeof (broadcast_mac), ENABLED_NRF_FEATURES))
     return 0;
 
+  nrf_powerlevel_last = nrf_powerlevel_current = -1;
+  PtSetRfPowerPercent ( 100 );
+
   nRFAPI_SetPipeSizeRX (0, sizeof (rfpkg));
-  nRFAPI_SetTxPower (3);
   nRFAPI_SetRxMode (0);
   nRFCMD_CE (0);
 
@@ -139,11 +150,19 @@ vnRFtaskRxTx (void *parameter)
 
   for (;;)
     {
+      /* check if TX strength changed */
+      if ( nrf_powerlevel_current != nrf_powerlevel_last )
+      {
+	nRFAPI_SetTxPower( nrf_powerlevel_current );
+	nrf_powerlevel_last = nrf_powerlevel_current;
+      }
+
       status = nRFAPI_GetFifoStatus ();
       /* living in a paranoid world ;-) */
       if (status & FIFO_TX_FULL)
 	nRFAPI_FlushTX ();
 
+      /* check for received packets */
       if ((status & FIFO_RX_FULL) || nRFCMD_WaitRx (10))
 	{
 	  vLedSetGreen (0);
@@ -180,7 +199,7 @@ vnRFtaskRxTx (void *parameter)
 	  vLedSetGreen (1);
 	}
 
-      /* Transmit current lamp value */
+      /* transmit current lamp value */
       if (env.e.mcu_id)
 	{
 	  memset (&rfpkg, 0, sizeof (rfpkg));

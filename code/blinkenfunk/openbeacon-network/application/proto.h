@@ -44,6 +44,7 @@ extern int PtGetFifoLifetimeSeconds (void);
 extern void PtDumpUIntToUSB (unsigned int data);
 extern void PtDumpStringToUSB (const char *text);
 extern void PtTransmit (BRFPacket * pkg);
+extern void PtSetRfPowerPercent ( unsigned char Percent );
 
 extern unsigned int rf_rec, rf_sent_broadcast, rf_sent_unicast;
 
