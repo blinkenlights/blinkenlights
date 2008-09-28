@@ -25,6 +25,6 @@
 #ifndef __CRC32_H__
 #define __CRC32_H__
 
-extern u_int32_t crc32 (const u_int8_t * buf, int len);
+extern u_int32_t crc32 (const u_int8_t * buf, int len) RAMFUNC;
 
 #endif/*__CRC32_H__*/

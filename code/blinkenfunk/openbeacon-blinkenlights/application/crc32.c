@@ -90,7 +90,7 @@ static const u_int32_t crc32_table[256] = {
   0x2d02ef8dL
 };
 
-u_int32_t
+u_int32_t RAMFUNC
 crc32 (const u_int8_t * buf, int len)
 {
   u_int32_t crc = 0xffffffffL, data;
