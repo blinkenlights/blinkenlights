@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Stereoscope Creation Tools - Getting Started</title>
+    <meta name="robots" content="index,follow" />
+    <style type="text/css">
+      body {
+        background: #bbb;
+        font-family: Helvetica, Arial, sans-serif;
+      }
+      
+      .baseDiv {
+        background: #fff;
+        margin: 10px 50px;
+        min-width: 700px;
+        min-height:786px;
+      }
+      
+      .pageHeadingDiv {
+        background: #636b80;
+        color:white;
+        padding: 10px 10px;
+      }
+      .mainContent {
+        padding: 10px 10px;
+        font-size: 10pt;
+      }
+      
+      table {
+        margin: 10px;
+        border-collapse:collapse;
+        border: 1px solid black;
+      }
+      
+      th {
+        background: #636b80;
+        color: white;
+        padding: 2px 5px;
+        text-align:left;
+      }
+      
+      td {
+        padding: 2px 5px;
+        border-top: 1px solid #333;
+        vertical-align: top;
+      }
+      
+    </style>
+  </head>
+  <body>
+    <div class="baseDiv">
+      <div class="pageHeadingDiv">
+        <h1>Stereoscope Creation Tools</h1>
+        Getting started
+      </div>
+      <div class="mainContent">
+        <h3>System Requirements</h3>
+        <p>The <b>Stereoscope Creation Tools</b> require Mac OS X 10.5</p>
+        <p>To actually create content using Quartz Composer you have to download and install the freely available <a href="http://developer.apple.com/mac/">Apple Developer Tools (Xcode 3.1)</a>, after installation Quartz Composer.app can be found in <tt>/Developer/Applications/Quartz Composer.app</tt> and you are ready to go!</p>
+
+        <h3>Installation</h3>
+        <p>The <tt>Blinkenposer.plugin</tt> Project Blinkenlights Quartz Composer plugin needs to be installed to create content. The easiest way to do this is start <b>Stereoscope Simulator QC</b> and either choose install when asked at startup, or use the "Install Blinkenposer.plugin" menu entry in the Application Menu.</p>
+
+        <h3>What is it?</h3>
+        <p>The <b>Stereoscope Creation Tools</b> consist of 3 Applications and some Quartz Composer Templates.</p>
+        <img src="Documentation/images/3Apps.png" />
+        <ul>
+          <li><b>Stereoscope Simulator QC</b> &mdash; a Quartz Composer based Simulator that shows an abstract version of the Toronto City hall and can receive, relay and most of all record a Blinkenlights Network Feed to a <a href="http://blinkenlights.net/project/bml">BML-File</a>. BML is an XML based Movie format that can be played on a Blinkenlights installation.</li>
+          <li><b>Stereoscope Player</b> &mdash; a Java Application that can open and play movies in all flavors of the Blinkenlights format, including BML. It does not display anything on its own and needs a Stereoscope Simulator listening on localhost for display.</li>
+          <li><b>Stereoscope Paint</b> &mdash; a Director Application for creating and viewing pixel based Animations for the left and right top areas of the City hall. (e.g. 22x8 and 30x12 pixels). This App plays its movies directly and does not send out a network Feed.</li>
+        </ul>
+        <h3>How can I create content?</h3>
+        <p>If you want to create Pixel based movies for the top-left or top-right screen then you can just start up <b>Stereoscope Paint</b> and go ahead pixeling. If you want to check your movies on the curved screen of the Stereoscope, you can load the created bml up in <b>Stereoscope Player</b>, and startup <b>Stereoscope Simulator QC</b> (make sure it points to localhost) to check your piece of art.</p>
+        <p>If you want to create content using Quartz Composer, then you need to install Apple's developer tools (or just take the <b>Quartz Composer.app</b> from someone who has the tools installed). You also need to have the <tt>Blinkenposer.plugin</tt> installed, which you are asked to at start of <b>Stereoscope Simulator QC</b>.</p>
+        <p>Now that you are ready to go, you open up one of the Templates found in <b>Composition Templates</b>, for the sake of this explanation let's take <b>Main Template.qtz</b></p>
+        <img src="Documentation/images/MainTemplate.png" />
+        <p>In the viewer part of the Quartz composer you get a flat representation of the so called <a href="http://blinkenlights.net/stereoscope/create">"Virtual Matrix"</a> with the visible parts clearly shown. In the top left part you see two representations of the source image you are outputting on the Stereoscope, one before and one after the Standard Adjustment patch that is applied for Gamma, Exposure and Color correction.</p>
+        <p>Now let us look at the actual patches and spaghettis:</p>
+        <img src="Documentation/images/MainTemplateSpaghetti.png"/>
+        <p>On the left side in the blue box there is the <b>Render in Image</b> patch. It is inside this patch where the actual scene is rendered. That is where you put your stuff in. If you have nice Compositions already, just copy and paste them into that patch and they are playing on the Stereoscope.</p>
+        <p>On top of the <b>yellow</b> sticky are the standard adjustments you can make. Play with the parameters for Gamma Power, Exposure EV, Brightness and contrast until the result is to your liking. If you want to quickly compare the output with and without the Adjustments, just switch the input of the <b>Bypass Adjustments</b> patch.</p>
+        <p>In the bottom right is the big bad macro patch that does the actual work converting your image to the screen, giving you the nice window preview, and sending it out to <tt>localhost:2323</tt> - where you can look at it with a <b>Stereoscope Simulator</b> that is listening to lokalhost. And most important here: <b>you can record the scene</b> to a BML File by toggling the Record input on, and to stop off again. The BML File will be saved to your desktop and named with a current timestamp. e.g. <tt>2008-09-27_23-41-25.bml</tt>.</p>
+
+        <h3>Check your Recordings.</h3>
+          <p>When you have created your BML files by toggling the Recording you can watch and check them again by loading them up in <b>Stereoscope Player</b> and having a <b>Stereoscope Simulator</b> running listening on localhost. If you didn't get the timing right you can rerecord your movie here by using the little red record button in the bottom right. If you do so another file will be written to your desktop, just as before.</p>
+          <p>When your satisfied with your piece of art don't forget to open up the bml in your favorite text editor and your metdata, at least tilte, description and author should be filled out. You can find out more about the supported fields at the <a href=""http://blinkenlights.net/project/bml"">BML webpage.</a>
+          <img src="Documentation/images/BMLFileMetadata.png" />
+          
+        <h3>Let us know!</h3>
+        <p>Go to the <a href="http://blinkenlights.net/stereoscope">project website</a> and send us your creations.</p>
+
+        <h3>What is more to say?</h3>
+        <p>If you want some more detailed information about the Quartz Composer Patches in <tt>Blinkenposer.plugin</tt>, you can read a detailed documentation <a href="Documentation/Blinkenposer.html">here</a></p>
+        <p>For a real easy creation and conversion just have a look at the <b>iSight.qtz</b> example and the <b>Image and Movie Placement Template.qtz</b></p>
+        <p>For the ones with more Quartz Composer experience, or the wish for coding their Animations have a look at the <b>Javascript Template.qtz</b>. The Blinkensender can also consume a structure, consisting of rows of numbers ranging from 0 to 15.
+        </p>
+        
+        <h3>That's all Folks</h3>
+        <p>Looking forward to your creations. We also happily accept Quartz compositions directly as submissions. However the playtime for compositions might be restrained as we don't know yet how manual the quartz composotion playout has to be. The BML file play out will probably fill a bigger portion of the showtime</p>
+          
+    </div>
+  </body>
+</html>
