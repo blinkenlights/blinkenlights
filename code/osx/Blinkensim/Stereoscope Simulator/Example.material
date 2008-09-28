@@ -16,16 +16,55 @@ material Examples/CloudySky
 		}
 	}
 }
-material Examples/RustySteel
+material Ground
 {
 	technique
 	{
 		pass
 		{
+			lighting off
+			depth_write off
 
 			texture_unit
 			{
-				texture RustySteel.jpg
+				texture black.png 
+			}
+		}
+	}
+}
+
+material Toronto
+{
+	technique
+	{
+		pass
+		{
+			lighting off
+			depth_write off
+
+			texture_unit
+			{
+				cubic_texture torontoskyline.jpg black.png torontoskyline.jpg torontoskyline.jpg black.png black.png separateUV
+				tex_address_mode clamp
+			}
+		}
+	}
+}
+
+
+material Examples/SceneSkyBox1
+{
+	technique
+	{
+		pass
+		{
+			lighting off
+			depth_write off
+
+			texture_unit
+			{
+				cubic_texture torontoskyline_middle1024-new.png black.png torontoskyline_left1024-new.png torontoskyline_right1024-new.png black.png ground2_1024.png separateUV
+				tex_address_mode clamp
 			}
 		}
 	}

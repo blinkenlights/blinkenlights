@@ -45,8 +45,8 @@ Camera *mCamera;
     //mSceneMgr->setAmbientLight(ColourValue(0.2, 0.2, 0.2));
     
     // Create a skydome
-    mSceneMgr->setSkyDome(true, "Examples/CloudySky", 5, 8);
-    
+    //mSceneMgr->setSkyDome(true, "SkyDome", 5, 8);
+    mSceneMgr->setSkyBox(true, "Toronto", 10);
     // Create a light
     Light* l = mSceneMgr->createLight("MainLight");
     // Accept default settings: point light, white diffuse, just set position
@@ -62,11 +62,11 @@ Camera *mCamera;
     p.d = 0;
     MeshManager::getSingleton().createPlane(
                                             "FloorPlane", ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME, 
-                                            p, 200000, 200000, 20, 20, true, 1, 50, 50, Vector3::UNIT_Z);
+                                            p, 40000, 40000, 20, 20, true, 1, 50, 50, Vector3::UNIT_Z);
     
     // Create an entity (the floor)
     ent = mSceneMgr->createEntity("floor", "FloorPlane");
-    ent->setMaterialName("Examples/RustySteel");
+    ent->setMaterialName("Ground");
     // Attach to child of root node, better for culling (otherwise bounds are the combination of the 2)
     mSceneMgr->getRootSceneNode()->createChildSceneNode()->attachObject(ent);
     
@@ -121,14 +121,11 @@ Camera *mCamera;
     ent = mSceneMgr->createEntity("windowsB1", "WindowsB1.mesh");
     windowNodeB1->attachObject(ent);
     windowNodeB1->pitch(Degree(90)); 
-    //windowNodeB1->translate(Vector3(0,0,-150));
     
     SceneNode* windowNodeB2 = mSceneMgr->getRootSceneNode()->createChildSceneNode();
     ent = mSceneMgr->createEntity("windowsB2", "WindowsB2.mesh");
     windowNodeB2->attachObject(ent);
     windowNodeB2->pitch(Degree(90));
-    //windowNodeB2->translate(Vector3(0,0,-150));
-
     
     mCamera->setPosition(Vector3(0,5,50));
     mCamera->lookAt(Vector3(0,5,0));
@@ -157,7 +154,7 @@ Camera *mCamera;
     mAnimState->setEnabled(true);
     
     // Put in a bit of fog for the hell of it
-    mSceneMgr->setFog(FOG_EXP, ColourValue::White, 0.0002);
+    //mSceneMgr->setFog(FOG_EXP, ColourValue::White, 0.0002);
     
     
 	// create a timer that causes OGRE to render
