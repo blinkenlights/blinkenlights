@@ -148,7 +148,7 @@
         0.5
         );
     if (err != kCFSocketSuccess) {
-        NSLog(@"%s could not send data (%d, %@, %u bytes)",__FUNCTION__,err,[NSString stringWithAddressData:(NSData *)_targetAddressData],[inData length]);
+        // NSLog(@"%s could not send data (%d, %@, %u bytes)",__FUNCTION__,err,[NSString stringWithAddressData:(NSData *)_targetAddressData],[inData length]);
         
     } else {
 //        NSLog(@"%s did send data: (%@, %u bytes)",__FUNCTION__,[NSString stringWithAddressData:(NSData *)_targetAddressData],[inData length]);
