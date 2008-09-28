@@ -51,9 +51,12 @@ static void
 cmd_status (const portCHAR * cmd)
 {
   struct netif *nic = &EMAC_if;
+  unsigned int uptime = (xTaskGetTickCount () / portTICK_RATE_MS) / 1000;
 
   shell_printf ("WMCU status:\n");
   shell_printf ("	Firmware version: %s\n", VERSION);
+  shell_printf ("	Uptime: %03d:%02d:%02d\n",
+  		uptime / 3600, (uptime / 60) % 60, uptime % 60);
   shell_printf ("	WMCU ID: %d\n", env.e.mcu_id);
   shell_printf ("	RF delay time: %d ms\n", env.e.rf_delay);
   shell_printf ("	MAC address:	%02x:%02x:%02x:%02x:%02x:%02x\n",
@@ -132,9 +135,6 @@ cmd_help (const portCHAR * cmd)
   shell_printf ("	Show variables currently stored in the non-volatile flash memory\n");
   shell_printf ("update\n");
   shell_printf ("        Enter update mode - DO NOT USE FOR FUN\n\n");
-
-shell_printf ("SIZE %d\n", sizeof(TEnvironment));
-
 }
 
 static int

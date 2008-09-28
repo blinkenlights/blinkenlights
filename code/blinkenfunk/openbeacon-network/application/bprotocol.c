@@ -274,11 +274,11 @@ b_send_wmcu_stats (void)
   struct mcu_devctrl_header *hdr = (struct mcu_devctrl_header *) buffer;
 
   hdr->magic = PtSwapLong (MAGIC_MCU_RESPONSE);
-//  hdr->command = PtSwapLong (pkg->cmd);
+  hdr->command = 0;
   hdr->mac = 0;
 
   hdr->param[0] = PtSwapLong (VERSION_INT);
-  hdr->param[1] = xTaskGetTickCount();
+  hdr->param[1] = xTaskGetTickCount() / portTICK_RATE_MS;
   send_udp (buffer);
 }
 
@@ -459,7 +459,7 @@ b_parse_rfrx_pkg (BRFPacket * pkg)
   struct mcu_devctrl_header *hdr = (struct mcu_devctrl_header *) buffer;
 
   pkg->cmd &= ~0x40;
-  hdr->magic = PtSwapLong (MAGIC_MCU_RESPONSE);
+  hdr->magic = PtSwapLong (MAGIC_WDIM_RESPONSE);
   hdr->command = PtSwapLong (pkg->cmd);
   hdr->mac = PtSwapLong (pkg->mac);
 

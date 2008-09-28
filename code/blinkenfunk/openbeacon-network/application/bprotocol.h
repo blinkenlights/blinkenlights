@@ -29,6 +29,7 @@
 #define MAGIC_MCU_DEVCTRL   	0x23542667  /* MCU Device Control packet	*/
 #define MAGIC_MCU_MULTIFRAME	0x23542668  /* MCU MultiFrame packet		*/
 #define MAGIC_MCU_RESPONSE	0xFEEDBACC  /* MCU response packet              */
+#define MAGIC_WDIM_RESPONSE	0xFEEDBACD  /* WDIM response packet             */
 
 #define MAGIC_BLFRAME		0xDEADBEEF  /* Original BL Frame Packet              */
 #define MAGIC_BLFRAME_256	0xFEEDBEEF  /* Extendend BL Frame Packet (Greyscale) */
