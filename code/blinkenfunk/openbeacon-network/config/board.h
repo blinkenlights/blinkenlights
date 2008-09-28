@@ -109,7 +109,7 @@ extern unsigned char last_lamp_val[MAX_LAMPS];
 typedef struct
 {
   unsigned char flags, screen, x, y;
-  unsigned short mac;
+  unsigned short mac, reserved;
 } PACKED LampMap;
 
 typedef struct
