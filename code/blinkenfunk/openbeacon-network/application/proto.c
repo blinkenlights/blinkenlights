@@ -42,7 +42,7 @@
 
 static BRFPacket rfpkg;
 unsigned int rf_sent_broadcast, rf_sent_unicast, rf_rec;
-static char nrf_strength_last, nrf_strength_current;
+static char nrf_powerlevel_current, nrf_powerlevel_last;
 const unsigned char broadcast_mac[NRF_MAX_MAC_SIZE] =
   { 'D', 'E', 'C', 'A', 'D' };
 
