@@ -41,7 +41,7 @@ def usage():
 	print("\t--set-rf-delay <delay>			configure the WMCU's RF delay time in ms")
 	print("\t--set-assigned-lamps <filename>		set the lamps assigned to an WMCU");
 	print("\t--set-rf-power <val>			set the WMCU RF power");
-	print("\t--set-jam-density <val>		set the WMCU jam density (pkt/s)");
+	print("\t--set-jam-density <val>		set the WMCU jam density (time between pkts in ms)");
 	sys.exit(1)
 
 action		= -1
