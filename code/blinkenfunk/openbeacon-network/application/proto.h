@@ -25,6 +25,8 @@
 
 #include "../../openbeacon-blinkenlights/application/openbeacon.h"
 
+#define NRF_POWERLEVEL_MAX 3
+
 static inline unsigned short
 PtSwapShort (unsigned short src)
 {
@@ -44,7 +46,7 @@ extern int PtGetFifoLifetimeSeconds (void);
 extern void PtDumpUIntToUSB (unsigned int data);
 extern void PtDumpStringToUSB (const char *text);
 extern void PtTransmit (BRFPacket * pkg);
-extern void PtSetRfPowerPercent ( unsigned char Percent );
+extern void PtSetRfPowerLevel ( unsigned char Level );
 
 extern unsigned int rf_rec, rf_sent_broadcast, rf_sent_unicast;
 

@@ -38,8 +38,6 @@
 #include "env.h"
 #include "rnd.h"
 
-#define MAX_TX_STRENGTH 3
-
 static BRFPacket rfpkg;
 unsigned int rf_sent_broadcast, rf_sent_unicast, rf_rec;
 static char nrf_powerlevel_current, nrf_powerlevel_last;
@@ -47,9 +45,9 @@ const unsigned char broadcast_mac[NRF_MAX_MAC_SIZE] =
   { 'D', 'E', 'C', 'A', 'D' };
 
 void
-PtSetRfPowerPercent ( unsigned char Percent )
+PtSetRfPowerLevel ( unsigned char Level )
 {
-  nrf_powerlevel_current = (Percent > 100 ) ? MAX_TX_STRENGTH : ((100UL * MAX_TX_STRENGTH) / 100);
+  nrf_powerlevel_current = (Level >= NRF_POWERLEVEL_MAX) ? NRF_POWERLEVEL_MAX : Level;
 }
 
 static inline s_int8_t
@@ -60,7 +58,7 @@ PtInitNRF (void)
     return 0;
 
   nrf_powerlevel_last = nrf_powerlevel_current = -1;
-  PtSetRfPowerPercent ( 100 );
+  PtSetRfPowerLevel ( NRF_POWERLEVEL_MAX );
 
   nRFAPI_SetPipeSizeRX (0, sizeof (rfpkg));
   nRFAPI_SetRxMode (0);
