@@ -239,12 +239,19 @@ b_set_assigned_lamps (unsigned int *map, unsigned int len)
       if (i * 4 * sizeof (int) >= len)
 	break;
 
+	debug_printf (" --- %d\n", map[(i * 4) + 0]);
+	debug_printf (" --- %d\n", map[(i * 4) + 1]);
+	debug_printf (" --- %d\n", map[(i * 4) + 2]);
+	debug_printf (" --- %d\n", map[(i * 4) + 3]);
+
       m = env.e.lamp_map + i;
+
+/*
       m->mac = map[(i * 4) + 0];
       m->screen = map[(i * 4) + 1];
       m->x = map[(i * 4) + 2];
       m->y = map[(i * 4) + 3];
-
+*/
       b_set_lamp_id (i, m->mac);
       vTaskDelay (100 / portTICK_RATE_MS);
       debug_printf ("Lamp map %d -> MAC 0x%04x\n", i, m->mac);
@@ -297,9 +304,6 @@ b_parse_mcu_devctrl (mcu_devctrl_header_t * header, int maxlen)
 
   for (i = 0; i < (maxlen - sizeof (*header)) / 4; i++)
     header->param[i] = PtSwapLong (header->param[i]);
-
-  debug_printf ("%d params.\n", (maxlen - sizeof (*header)) / 4);
-  return 0;
 
   switch (header->command)
     {
