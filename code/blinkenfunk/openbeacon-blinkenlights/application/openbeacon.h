@@ -60,7 +60,7 @@ typedef struct
   union
   {
     unsigned char payload[RF_PAYLOAD_SIZE];
-    unsigned char dummy[4];
+    unsigned char dummy[6];
 
     struct
     {

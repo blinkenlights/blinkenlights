@@ -29,6 +29,7 @@
 #include <task.h>
 #include <semphr.h>
 #include <beacontypes.h>
+#include "openbeacon.h"
 #include "debug_print.h"
 #include "env.h"
 #include "USB-CDC.h"
