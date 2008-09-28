@@ -229,7 +229,7 @@ b_set_dimmer_control (int lamp_mac, int off)
 }
 
 static inline void
-b_set_assigned_lamps (unsigned int *map, unsigned int len)
+b_set_assigned_lamps (mcu_devctrl_header_t * header, unsigned int len)
 {
   int i;
 
@@ -239,19 +239,12 @@ b_set_assigned_lamps (unsigned int *map, unsigned int len)
       if (i * 4 * sizeof (int) >= len)
 	break;
 
-	debug_printf (" --- %d\n", map[(i * 4) + 0]);
-	debug_printf (" --- %d\n", map[(i * 4) + 1]);
-	debug_printf (" --- %d\n", map[(i * 4) + 2]);
-	debug_printf (" --- %d\n", map[(i * 4) + 3]);
-
       m = env.e.lamp_map + i;
+      m->mac 	= header->param[(i * 4) + 0];
+      m->screen = header->param[(i * 4) + 1];
+      m->x 	= header->param[(i * 4) + 2];
+      m->y 	= header->param[(i * 4) + 3];
 
-/*
-      m->mac = map[(i * 4) + 0];
-      m->screen = map[(i * 4) + 1];
-      m->x = map[(i * 4) + 2];
-      m->y = map[(i * 4) + 3];
-*/
       b_set_lamp_id (i, m->mac);
       vTaskDelay (100 / portTICK_RATE_MS);
       debug_printf ("Lamp map %d -> MAC 0x%04x\n", i, m->mac);
@@ -349,7 +342,7 @@ b_parse_mcu_devctrl (mcu_devctrl_header_t * header, int maxlen)
       }
     case MCU_DEVCTRL_COMMAND_SET_ASSIGNED_LAMPS:
       {
-	b_set_assigned_lamps (header->param, maxlen - sizeof (*header));
+	b_set_assigned_lamps (header, maxlen - sizeof (*header));
 	break;
       }
     case MCU_DEVCTRL_COMMAND_SEND_WDIM_STATS:
