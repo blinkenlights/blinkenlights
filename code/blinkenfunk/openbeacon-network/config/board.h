@@ -89,13 +89,10 @@
 #define TASK_USB_STACK		( 512 )
 
 #define TASK_NRF_PRIORITY	( tskIDLE_PRIORITY + 3 )
-#define TASK_NRF_STACK		( 512 )
+#define TASK_NRF_STACK		( 128 )
 
 #define TASK_NET_PRIORITY	( tskIDLE_PRIORITY + 4 )
 #define TASK_NET_STACK		( 1024 )
-
-#define TASK_BJAM_PRIORITY	( tskIDLE_PRIORITY + 5 )
-#define TASK_BJAM_STACK		( 256 )
 
 /*-------------------------------*/
 /* configuration structure       */

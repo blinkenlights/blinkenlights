@@ -247,8 +247,6 @@ b_set_assigned_lamps (unsigned int *map, unsigned int len)
 
       b_set_lamp_id (i, m->mac);
       vTaskDelay (100 / portTICK_RATE_MS);
-      b_set_lamp_id (i, m->mac);
-      vTaskDelay (100 / portTICK_RATE_MS);
       debug_printf ("Lamp map %d -> MAC 0x%04x\n", i, m->mac);
     }
 
@@ -299,6 +297,9 @@ b_parse_mcu_devctrl (mcu_devctrl_header_t * header, int maxlen)
 
   for (i = 0; i < (maxlen - sizeof (*header)) / 4; i++)
     header->param[i] = PtSwapLong (header->param[i]);
+
+  debug_printf ("%d params.\n", (maxlen - sizeof (*header)) / 4);
+  return 0;
 
   switch (header->command)
     {
@@ -419,7 +420,7 @@ b_recv (void *arg, struct udp_pcb *pcb, struct pbuf *p, struct ip_addr *addr,
   b_rec_total++;
 
   if (p->len < sizeof (unsigned int))
-    {				// || p->len > sizeof(payload)) {
+    {
       pbuf_free (p);
       return;
     }
