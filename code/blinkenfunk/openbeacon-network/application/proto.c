@@ -50,6 +50,12 @@ PtSetRfPowerLevel ( unsigned char Level )
   nrf_powerlevel_current = (Level >= NRF_POWERLEVEL_MAX) ? NRF_POWERLEVEL_MAX : Level;
 }
 
+unsigned char
+PtGetRfPowerLevel ( void )
+{
+  return nrf_powerlevel_last;
+}
+
 static inline s_int8_t
 PtInitNRF (void)
 {

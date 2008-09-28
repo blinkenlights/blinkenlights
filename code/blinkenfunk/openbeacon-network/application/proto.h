@@ -47,6 +47,7 @@ extern void PtDumpUIntToUSB (unsigned int data);
 extern void PtDumpStringToUSB (const char *text);
 extern void PtTransmit (BRFPacket * pkg);
 extern void PtSetRfPowerLevel ( unsigned char Level );
+extern unsigned char PtGetRfPowerLevel ( void );
 
 extern unsigned int rf_rec, rf_sent_broadcast, rf_sent_unicast;
 
