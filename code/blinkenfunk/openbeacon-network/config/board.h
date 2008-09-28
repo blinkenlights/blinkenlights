@@ -118,6 +118,7 @@ typedef struct
   signed int mcu_id;
   unsigned int rf_delay;
   unsigned char mac_h, mac_l;
+  unsigned short reserved;
   unsigned int n_lamps;
   LampMap lamp_map[MAX_LAMPS];
 } PACKED __attribute__((aligned (4))) TEnvironment;
