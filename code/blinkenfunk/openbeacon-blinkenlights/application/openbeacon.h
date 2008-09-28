@@ -24,9 +24,12 @@
 #ifndef __OPENBEACON_H__
 #define __OPENBEACON_H__
 
-#define RFB_RFOPTIONS 0x0F
-#define RFBPROTO_BLINKENLIGHTS 42
-#define ENABLED_NRF_FEATURES 0x0
+#define RFBPROTO_BLINKENLIGHTS	42
+#define RFB_RFOPTIONS		0x0F
+#define ENABLED_NRF_FEATURES	0x00
+
+#define RF_PKG_SENT_BY_DIMMER	0x40
+#define RF_PKG_REPLY_WANTED	0x80
 
 #define PACKED __attribute__ ((packed))
 

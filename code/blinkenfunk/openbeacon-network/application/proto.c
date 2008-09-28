@@ -36,10 +36,10 @@
 #include "debug_printf.h"
 #include "env.h"
 
+static BRFPacket rxpkg;
 unsigned int rf_sent_broadcast, rf_sent_unicast, rf_rec;
 const unsigned char broadcast_mac[NRF_MAX_MAC_SIZE] =
   { 'D', 'E', 'C', 'A', 'D' };
-static BRFPacket rxpkg;
 
 static inline s_int8_t
 PtInitNRF (void)
