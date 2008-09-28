@@ -214,6 +214,7 @@ cmd_mac (const portCHAR * cmd)
 
   env.e.mac_h = mac_h;
   env.e.mac_l = mac_l;
+  vTaskDelay (100 / portTICK_RATE_MS);
   env_store ();
 }
 
@@ -232,10 +233,7 @@ cmd_id (const portCHAR * cmd)
       portCHAR b;
 
       if (!*cmd)
-	{
-	  shell_printf ("bogus command.\n");
-	  break;
-	}
+	break;
 
       b = *cmd++;
       if (b > '9' || b < '0')
@@ -260,6 +258,7 @@ cmd_id (const portCHAR * cmd)
     }
 
   env.e.mcu_id = id;
+  vTaskDelay (100 / portTICK_RATE_MS);
   env_store ();
 }
 
