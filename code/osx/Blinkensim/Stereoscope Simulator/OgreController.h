@@ -10,4 +10,6 @@
 	NSColor *diffuseLight;
 	NSColor *specularLight;
 }
+- (IBAction) showWebsite:(id)inSender;
+
 @end

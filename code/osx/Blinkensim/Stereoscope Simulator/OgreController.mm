@@ -7,6 +7,7 @@ Ogre::SceneManager *mSceneMgr;
 AnimationState* mAnimState;
 Camera *mCamera;
 
+#define FRAMERATE 1.0/60.0
 
 @implementation OgreController
 
@@ -159,16 +160,21 @@ Camera *mCamera;
     mSceneMgr->setFog(FOG_EXP, ColourValue::White, 0.0002);
     
     
-	// create a timer that causes OGRE to render at 60fps
-	NSTimer *renderTimer = [NSTimer scheduledTimerWithTimeInterval:1.0/60.0 target:self selector:@selector(renderFrame) userInfo:NULL repeats:YES];
+	// create a timer that causes OGRE to render
+	NSTimer *renderTimer = [NSTimer scheduledTimerWithTimeInterval:FRAMERATE target:self selector:@selector(renderFrame) userInfo:NULL repeats:YES];
 	[[NSRunLoop currentRunLoop] addTimer:renderTimer forMode:NSEventTrackingRunLoopMode];
 }
 
 - (void)renderFrame
 {
-    mAnimState->addTime(1.0/60.0);
+    mAnimState->addTime(FRAMERATE);
 	Ogre::Root::getSingleton().renderOneFrame();
 	//mSceneMgr->getSceneNode("OgreNode")->rotate(Vector3(0 ,1 ,0 ), Radian(0.01));
+}
+
+- (IBAction) showWebsite:(id)inSender
+{
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://blinkenlights.net/stereoscope"]];
 }
 
 @end

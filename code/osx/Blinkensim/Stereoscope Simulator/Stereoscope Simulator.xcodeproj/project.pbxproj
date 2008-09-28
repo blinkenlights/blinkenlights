@@ -10,7 +10,6 @@
 		00ABEB6E0B4D913B0059129A /* OgreController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 00ABEB6C0B4D913B0059129A /* OgreController.mm */; };
 		00ABEB710B4D91C00059129A /* plugins.cfg in Resources */ = {isa = PBXBuildFile; fileRef = 000E263F0B393B0A004EA2DF /* plugins.cfg */; };
 		00ABEB890B4D946B0059129A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 00ABEB880B4D946B0059129A /* main.m */; };
-		00ABEBAE0B4D9CB50059129A /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 00ABEBAD0B4D9CB50059129A /* MainMenu.nib */; };
 		3108D2590E8F238F0016A9B2 /* Cg.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3108D2570E8F238F0016A9B2 /* Cg.framework */; };
 		3108D25A0E8F238F0016A9B2 /* Ogre.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3108D2580E8F238F0016A9B2 /* Ogre.framework */; };
 		3108D25D0E8F23960016A9B2 /* Cg.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 3108D2570E8F238F0016A9B2 /* Cg.framework */; };
@@ -40,6 +39,7 @@
 		3108D2E20E8F312A0016A9B2 /* Example.material in Resources */ = {isa = PBXBuildFile; fileRef = 3108D2E10E8F312A0016A9B2 /* Example.material */; };
 		3108D2F30E8F32010016A9B2 /* RustySteel.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3108D2F20E8F32010016A9B2 /* RustySteel.jpg */; };
 		3108D3A20E8F43800016A9B2 /* StereoscopeOgreView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3108D3A10E8F43800016A9B2 /* StereoscopeOgreView.mm */; };
+		3108D3BE0E8F478B0016A9B2 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3108D3BD0E8F478B0016A9B2 /* MainMenu.xib */; };
 		F2B200050E8F3F8B00A2EFC7 /* StereoscopeSimulator.icns in Resources */ = {isa = PBXBuildFile; fileRef = F2B200040E8F3F8B00A2EFC7 /* StereoscopeSimulator.icns */; };
 /* End PBXBuildFile section */
 
@@ -65,7 +65,6 @@
 		00ABEB6B0B4D913B0059129A /* OgreController.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = OgreController.h; sourceTree = "<group>"; };
 		00ABEB6C0B4D913B0059129A /* OgreController.mm */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.objcpp; path = OgreController.mm; sourceTree = "<group>"; };
 		00ABEB880B4D946B0059129A /* main.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		00ABEBAD0B4D9CB50059129A /* MainMenu.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; path = MainMenu.nib; sourceTree = "<group>"; };
 		3108D2570E8F238F0016A9B2 /* Cg.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Cg.framework; sourceTree = "<group>"; };
 		3108D2580E8F238F0016A9B2 /* Ogre.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Ogre.framework; sourceTree = "<group>"; };
 		3108D2780E8F25D70016A9B2 /* Blinn.cg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Blinn.cg; sourceTree = "<group>"; };
@@ -94,6 +93,7 @@
 		3108D2F20E8F32010016A9B2 /* RustySteel.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = RustySteel.jpg; sourceTree = "<group>"; };
 		3108D3A00E8F43800016A9B2 /* StereoscopeOgreView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StereoscopeOgreView.h; sourceTree = "<group>"; };
 		3108D3A10E8F43800016A9B2 /* StereoscopeOgreView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = StereoscopeOgreView.mm; sourceTree = "<group>"; };
+		3108D3BD0E8F478B0016A9B2 /* MainMenu.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
 		F2B200040E8F3F8B00A2EFC7 /* StereoscopeSimulator.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = StereoscopeSimulator.icns; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -154,7 +154,7 @@
 			children = (
 				3108D2770E8F25D70016A9B2 /* Media */,
 				00ABEF060B4F7CAD0059129A /* Old Media */,
-				00ABEBAD0B4D9CB50059129A /* MainMenu.nib */,
+				3108D3BD0E8F478B0016A9B2 /* MainMenu.xib */,
 				000E263F0B393B0A004EA2DF /* plugins.cfg */,
 				00ABEB540B4D8A990059129A /* Info.plist */,
 				F2B200040E8F3F8B00A2EFC7 /* StereoscopeSimulator.icns */,
@@ -246,7 +246,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				00ABEB710B4D91C00059129A /* plugins.cfg in Resources */,
-				00ABEBAE0B4D9CB50059129A /* MainMenu.nib in Resources */,
 				3108D28D0E8F25D70016A9B2 /* Blinn.cg in Resources */,
 				3108D28E0E8F25D70016A9B2 /* CityHall.mesh in Resources */,
 				3108D28F0E8F25D80016A9B2 /* CityHall_1024_v2.tif in Resources */,
@@ -272,6 +271,7 @@
 				3108D2E20E8F312A0016A9B2 /* Example.material in Resources */,
 				3108D2F30E8F32010016A9B2 /* RustySteel.jpg in Resources */,
 				F2B200050E8F3F8B00A2EFC7 /* StereoscopeSimulator.icns in Resources */,
+				3108D3BE0E8F478B0016A9B2 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
