@@ -138,7 +138,6 @@ shuffle_tx_byteorder (unsigned long *v, int len)
 static inline void
 sendReply (void)
 {
-  vTaskDelay (100 / portTICK_RATE_MS);
   pkg.mac = env.e.mac;
   pkg.wmcu_id = env.e.wmcu_id;
 
@@ -158,6 +157,8 @@ sendReply (void)
   /* disable RX mode */
   nRFCMD_CE (0);
 
+  vTaskDelay (3 / portTICK_RATE_MS);
+
   /* switch to TX mode */
   nRFAPI_SetRxMode (0);
 
@@ -168,7 +169,7 @@ sendReply (void)
   nRFCMD_CE (1);
 
   /* wait until packet is transmitted */
-  vTaskDelay (10 / portTICK_RATE_MS);
+  vTaskDelay (3 / portTICK_RATE_MS);
 
   /* switch to RX mode again */
   nRFAPI_SetRxMode (1);
