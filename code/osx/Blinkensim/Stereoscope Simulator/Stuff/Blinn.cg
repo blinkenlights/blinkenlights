@@ -1,0 +1,587 @@
+float3 expand(float3 v)
+{
+       return v;//(v - 0.5) * 2;
+}
+
+
+void Blinn_vp (
+			float2 uv 		: TEXCOORD0,
+			float4 position : POSITION, 
+			float3 normal   : NORMAL,
+			float4 vertCol	: COLOR,
+			
+			// config
+			uniform float useVertCol,
+			
+			//vert shader input
+			uniform float4 lightPosition,
+			uniform float3 eyePosition,
+			
+			//both in object space
+			uniform float4x4 worldviewproj, 
+			out float4 oClipPos	: POSITION,
+			
+			//pass to clipping
+			out float4 oPos		: TEXCOORD0,
+			out float3 oNorm	: TEXCOORD1,
+			out float4 oLightPos: TEXCOORD2,
+			out float3 oEyePos	: TEXCOORD3,
+                    
+			//support for texture with the per pixel lighting
+			out float2 oUv	   : TEXCOORD4,
+			
+			// Vertex coloring
+			out float4 oVertCol	: COLOR
+			)
+{ 
+	oClipPos = mul(worldviewproj, position); 
+
+	oPos		= position;
+	oNorm		= normal; 
+	oLightPos 	= lightPosition;
+	oEyePos 	= eyePosition;
+	
+	//support for texture with the per pixel lighting
+     oUv = uv;
+	 
+	// Do we use vertex colours
+	if(useVertCol==0.0)
+	{
+		// deafult vertex colour to white
+		vertCol = float4(1,1,1,1);
+	}
+	oVertCol = vertCol;
+	 
+	//Remarks:
+	//since we want exact calculations in every case,
+	//calculate light and eye directions in frag shader,
+	//don't let the rasterizer interpolate them from here
+
+	//more costy than doing directions here, per-vertex, but
+	//produces accurate lighting in VERY low tessellation cases,
+	//light close to surface (for.ex. closer than poly size)
+} 
+
+
+void Blinn_4UV_vp (
+			float2 uv 		: TEXCOORD0,
+			float2 uv1 		: TEXCOORD1,
+			float2 uv2 		: TEXCOORD2,
+			float2 uv3 		: TEXCOORD3,
+			float4 position : POSITION, 
+			float3 normal   : NORMAL,
+			float4 vertCol	: COLOR,
+			
+			// config
+			uniform float useVertCol,
+			
+			//vert shader input
+			uniform float4 lightPosition,
+			uniform float3 eyePosition,
+			
+			//both in object space
+			uniform float4x4 worldviewproj, 
+			out float4 oClipPos	: POSITION,
+			
+			//pass to clipping
+			out float4 oPos		: TEXCOORD0,
+			out float3 oNorm	: TEXCOORD1,
+			out float4 oLightPos: TEXCOORD2,
+			out float3 oEyePos	: TEXCOORD3,
+                    
+			//support for texture with the per pixel lighting
+			out float2 oUv	   : TEXCOORD4,
+			out float2 oUv1	   : TEXCOORD5,
+			out float2 oUv2	   : TEXCOORD6,
+			out float2 oUv3	   : TEXCOORD7,
+			out float4 oVertCol	: COLOR
+			)
+{ 
+	oClipPos = mul(worldviewproj, position); 
+
+	oPos		= position;
+	oNorm		= normal; 
+	oLightPos 	= lightPosition;
+	oEyePos 	= eyePosition;
+	
+	//support for texture with the per pixel lighting
+     oUv = uv;
+     oUv1 = uv1;
+     oUv2 = uv2;
+     oUv3 = uv3;
+	 
+ 	// Do we use vertex colours
+	if(useVertCol==0.0)
+	{
+		// deafult vertex colour to white
+		vertCol = float4(1,1,1,1);
+	}
+	oVertCol = vertCol;
+	 
+	 
+	//Remarks:
+	//since we want exact calculations in every case,
+	//calculate light and eye directions in frag shader,
+	//don't let the rasterizer interpolate them from here
+
+	//more costy than doing directions here, per-vertex, but
+	//produces accurate lighting in VERY low tessellation cases,
+	//light close to surface (for.ex. closer than poly size)
+} 
+
+void Blinn_pure_fp (
+			float4 pos	 	: TEXCOORD0,
+			float3 normal	: TEXCOORD1, 
+	 		float4 lightpos	: TEXCOORD2,
+			float3 eyepos	: TEXCOORD3,
+			float4 vertCol	: COLOR,
+			
+			
+			uniform float4 lightDiffuse,
+			uniform float4 lightSpecular,
+			uniform float4 sceneAmbient, 
+			uniform float4 ambientColor,
+			uniform float4 diffuseColor,
+			uniform float4 specularColor,
+			uniform float specularLevel,
+			uniform float glossLevel,
+			uniform float opacity,
+			
+			out float4 oColor : COLOR 
+) 
+{
+	float4 shadeColor = float4(0,0,0,1);
+	float3 N = normalize(normal);
+
+	//Remarks: 
+
+	//we could do this normalize() in vert shader, or skip it
+	float3 EyeDir = normalize(eyepos - pos.xyz);
+
+	// When doing Blinn-Phong shading we only use the half angle
+	float3 LightDir = normalize(lightpos.xyz -  (pos * lightpos.w).xyz);
+	float3 HalfAngle = normalize(LightDir + EyeDir);
+	float NdotL = dot(LightDir, N);
+	float NdotH = dot(HalfAngle, N);
+
+	// calculate lighting components
+	float4 ambient = clamp(sceneAmbient * ambientColor,0,1);	
+	float4 diffuse = lightDiffuse * diffuseColor * clamp(dot(N,LightDir),0,1);
+	
+	//Do the Blinn per pixel lighting
+	shadeColor = ambient;
+	shadeColor += diffuse*vertCol;
+	
+	// Max Style Specularity
+	float exponent = clamp(NdotH,0,1);	
+	exponent = pow(exponent, glossLevel) * specularLevel *1.5;
+	float4 specular= lightSpecular * specularColor * exponent;	
+	shadeColor += specular;	
+	shadeColor.a = opacity;
+	
+	oColor = vertCol * shadeColor;
+}
+
+
+
+void Blinn_DiffuseMap_fp (
+			float4 pos	 	: TEXCOORD0,
+			float3 normal	: TEXCOORD1, 
+	 		float4 lightpos	: TEXCOORD2,
+			float3 eyepos	: TEXCOORD3,
+			float4 vertCol	: COLOR,
+                       
+			//Support for texture with the per pixel lighting
+            float2 uv		: TEXCOORD4,
+			
+			uniform float4 lightDiffuse,
+			uniform float4 lightSpecular,
+			uniform float4 sceneAmbient, 
+			uniform float4 ambientColor,
+			uniform float4 diffuseColor,
+			uniform float4 specularColor,
+			uniform float specularLevel,
+			uniform float glossLevel,
+			uniform float opacity,
+			uniform float amount,
+			
+			uniform sampler2D diffuseMap,
+
+			out float4 oColor : COLOR 
+) 
+{
+	float4 shadeColor = float4(0,0,0,1);
+	float3 N = normalize(normal);
+
+	//Remarks: 
+
+	//we could do this normalize() in vert shader, or skip it
+	float3 EyeDir = normalize(eyepos - pos.xyz);
+
+	//support for texture with the per pixel lighting
+	float4 textColor=(diffuseColor*(1-amount))+(tex2D(diffuseMap, uv)*amount);
+	
+	// When doing Blinn-Phong shading we only use the half angle
+	float3 LightDir = normalize(lightpos.xyz -  (pos * lightpos.w).xyz);
+	float3 HalfAngle = normalize(LightDir + EyeDir);
+	float NdotL = dot(LightDir, N);
+	float NdotH = dot(HalfAngle, N);
+
+	// calculate lighting components
+	float4 ambient = clamp(sceneAmbient * ambientColor,0,1) * textColor;	
+	float4 diffuse = lightDiffuse * textColor * clamp(dot(N,LightDir),0,1);
+	
+	//Do the Blinn per pixel lighting
+	shadeColor = ambient;
+	shadeColor += diffuse*vertCol;
+	
+	// Max Style Specularity
+	float exponent = clamp(NdotH,0,1);	
+	exponent = pow(exponent, glossLevel) * specularLevel *1.5;
+	float4 specular= lightSpecular * specularColor * exponent;	
+	shadeColor += specular;	
+
+	shadeColor.a = opacity;
+	
+	oColor = shadeColor;
+}
+
+
+void Blinn_SpecularColor_fp (
+			float4 pos	 	: TEXCOORD0,
+			float3 normal	: TEXCOORD1, 
+	 		float4 lightpos	: TEXCOORD2,
+			float3 eyepos	: TEXCOORD3,
+			float4 vertCol	: COLOR,
+                       
+			//Support for texture with the per pixel lighting
+            float2 uv		: TEXCOORD4,
+			
+			uniform float4 lightDiffuse,
+			uniform float4 lightSpecular,
+			uniform float4 sceneAmbient, 
+			uniform float4 ambientColor,
+			uniform float4 diffuseColor,
+			uniform float4 specularColor,
+			uniform float specularLevel,
+			uniform float glossLevel,
+			uniform float opacity,
+			uniform float amount,
+			
+			uniform sampler2D specularMap,
+
+			out float4 oColor : COLOR 
+) 
+{
+	float4 shadeColor = float4(0,0,0,1);
+	float3 N = normalize(normal);
+	amount = clamp(amount,0.0,1.0);
+
+	//Remarks: 
+
+	//we could do this normalize() in vert shader, or skip it
+	float3 EyeDir = normalize(eyepos - pos.xyz);
+
+	// When doing Blinn-Phong shading we only use the half angle
+	float3 LightDir = normalize(lightpos.xyz -  (pos * lightpos.w).xyz);
+	float3 HalfAngle = normalize(LightDir + EyeDir);
+	float NdotL = dot(LightDir, N);
+	float NdotH = dot(HalfAngle, N);
+
+	// calculate lighting components
+	float4 ambient = clamp(sceneAmbient * ambientColor,0,1);	
+	float4 diffuse = lightDiffuse * diffuseColor * clamp(dot(N,LightDir),0,1);
+	
+	//Do the Blinn per pixel lighting
+	shadeColor = ambient;
+	shadeColor += diffuse*vertCol;
+	
+	// Max Style Specularity
+	float exponent = clamp(NdotH,0,1);	
+	exponent = pow(exponent, glossLevel) * specularLevel *1.5;
+	float4 specular= lightSpecular * specularColor * exponent;	
+	float4 specularColour = (specular*(1-amount))+(tex2D(specularMap, uv)*amount);
+	
+	shadeColor += specularColour;	
+	shadeColor.a = opacity;
+	
+	oColor = shadeColor;
+}
+
+
+
+void Blinn_SpecularLevel_fp (
+			float4 pos	 	: TEXCOORD0,
+			float3 normal	: TEXCOORD1, 
+	 		float4 lightpos	: TEXCOORD2,
+			float3 eyepos	: TEXCOORD3,
+			float4 vertCol	: COLOR,
+                       
+			//Support for texture with the per pixel lighting
+            float2 uv		: TEXCOORD4,
+			
+			uniform float4 lightDiffuse,
+			uniform float4 lightSpecular,
+			uniform float4 sceneAmbient, 
+			uniform float4 ambientColor,
+			uniform float4 diffuseColor,
+			uniform float4 specularColor,
+			uniform float specularLevel,
+			uniform float glossLevel,
+			uniform float opacity,
+			uniform float amount,
+			
+			uniform sampler2D specularMap,
+
+			out float4 oColor : COLOR 
+) 
+{
+	float4 shadeColor = float4(0,0,0,1);
+	float3 N = normalize(normal);
+	amount = clamp(amount,0.0,1.0);
+
+	//Remarks: 
+	//we could do this normalize() in vert shader, or skip it
+	float3 EyeDir = normalize(eyepos - pos.xyz);
+
+	// When doing Blinn-Phong shading we only use the half angle
+	float3 LightDir = normalize(lightpos.xyz -  (pos * lightpos.w).xyz);
+	float3 HalfAngle = normalize(LightDir + EyeDir);
+	float NdotL = dot(LightDir, N);
+	float NdotH = dot(HalfAngle, N);
+
+	// calculate lighting components
+	float4 ambient = clamp(sceneAmbient * ambientColor,0,1);	
+	float4 diffuse = lightDiffuse * diffuseColor * clamp(dot(N,LightDir),0,1);
+	
+	//Do the Blinn per pixel lighting
+	shadeColor = ambient;
+	shadeColor += diffuse*vertCol;
+	
+	//support for texture with the per pixel lighting
+	float4 specIntensity = tex2D(specularMap, uv);
+	// convert into grey scale for intensity ---THIS WE MIGHT IGNORE---
+	specIntensity = (specIntensity.x+specIntensity.y+specIntensity.z)/3;
+	
+	// Max Style Specularity
+	float exponent = clamp(NdotH,0,1);	
+	exponent = pow(exponent, glossLevel) * specularLevel *1.5;
+	float4 specular= lightSpecular * specularColor * exponent;	
+	float4 specularColour = (specular*(1-amount))+(specIntensity*amount);
+	
+	shadeColor += specularColour;	
+	shadeColor.a = opacity;
+	
+	oColor = shadeColor;
+}
+
+
+void Blinn_SelfIllumination_fp (
+			float4 pos	 	: TEXCOORD0,
+			float3 normal	: TEXCOORD1, 
+	 		float4 lightpos	: TEXCOORD2,
+			float3 eyepos	: TEXCOORD3,
+			float4 vertCol	: COLOR,
+                       
+			//Support for texture with the per pixel lighting
+            float2 uv		: TEXCOORD4,
+			float2 uv1		: TEXCOORD5,
+			float2 uv2		: TEXCOORD6,
+			float2 uv3		: TEXCOORD7,
+			
+			uniform float4 lightDiffuse,
+			uniform float4 lightSpecular,
+			uniform float4 sceneAmbient, 
+			uniform float4 ambientColor,
+			uniform float4 diffuseColor,
+			uniform float4 specularColor,
+			uniform float specularLevel,
+			uniform float glossLevel,
+			uniform float opacity,
+			uniform float amount,
+			uniform float uvIndex,
+			
+			uniform sampler2D illumMap,
+
+			out float4 oColor : COLOR 
+) 
+{
+	float4 shadeColor = float4(0,0,0,1);
+	float3 N = normalize(normal);
+	//amount = clamp(amount,0.0,1.0);
+
+	//Remarks: 
+
+	//we could do this normalize() in vert shader, or skip it
+	float3 EyeDir = normalize(eyepos - pos.xyz);
+
+	// When doing Blinn-Phong shading we only use the half angle
+	float3 LightDir = normalize(lightpos.xyz -  (pos * lightpos.w).xyz);
+	float3 HalfAngle = normalize(LightDir + EyeDir);
+	float NdotL = dot(LightDir, N);
+	float NdotH = dot(HalfAngle, N);
+
+	// Max Style Specularity
+	float exponent = clamp(NdotH,0,1);
+	exponent = pow(exponent, glossLevel) * specularLevel *1.5;
+
+	//support for texture with the per pixel lighting
+	float3 illumFactor = expand(tex2D(illumMap, uv).xyz);
+	if(uvIndex == 1.0) 
+		illumFactor = expand(tex2D(illumMap, uv1).xyz);
+	if(uvIndex == 2.0) 
+		illumFactor = expand(tex2D(illumMap, uv2).xyz);
+	if(uvIndex == 3.0) 
+		illumFactor = expand(tex2D(illumMap, uv3).xyz);
+	
+	illumFactor *= amount;
+	
+	// calculate lighting components
+	float4 ambient = clamp(sceneAmbient * ambientColor,0,1);	
+	float4 diffuse = diffuseColor * lightDiffuse * float4(illumFactor.xyz,1);
+	diffuse *= clamp(dot(N,LightDir),0,1);
+	float4 specular= lightSpecular * specularColor * exponent;
+	
+	//Do the Blinn per pixel lighting
+	shadeColor = ambient;
+	shadeColor += diffuse*vertCol;
+	shadeColor += specular;
+	shadeColor.a = opacity;
+	
+	oColor = shadeColor;
+}
+
+
+void Blinn_DiffuseAndOpacityMap_fp (
+			float4 pos	 	: TEXCOORD0,
+			float3 normal	: TEXCOORD1, 
+	 		float4 lightpos	: TEXCOORD2,
+			float3 eyepos	: TEXCOORD3,
+			float4 vertCol	: COLOR,
+                       
+			//Support for texture with the per pixel lighting
+            float2 uv		: TEXCOORD4,
+			
+			uniform float4 lightDiffuse,
+			uniform float4 lightSpecular,
+			uniform float4 sceneAmbient, 
+			uniform float4 ambientColor,
+			uniform float4 diffuseColor,
+			uniform float4 specularColor,
+			uniform float specularLevel,
+			uniform float glossLevel,
+			uniform float opacity,
+			uniform float amount,
+			
+			uniform sampler2D diffuseMap,
+			uniform sampler2D opacityMap,
+
+			out float4 oColor : COLOR 
+) 
+{
+	float4 shadeColor = float4(0,0,0,1);
+	float3 N = normalize(normal);
+
+	//Remarks: 
+
+	//we could do this normalize() in vert shader, or skip it
+	float3 EyeDir = normalize(eyepos - pos.xyz);
+
+	//support for texture with the per pixel lighting
+	float4 textColor=(diffuseColor*(1-amount))+(tex2D(diffuseMap, uv)*amount);
+	float4 opacityColour = tex2D(opacityMap, uv);
+
+	// When doing Blinn-Phong shading we only use the half angle
+	float3 LightDir = normalize(lightpos.xyz -  (pos * lightpos.w).xyz);
+	float3 HalfAngle = normalize(LightDir + EyeDir);
+	float NdotL = dot(LightDir, N);
+	float NdotH = dot(HalfAngle, N);
+
+	// calculate lighting components
+	float4 ambient = clamp(sceneAmbient * ambientColor,0,1) * textColor;	
+	float4 diffuse = lightDiffuse * textColor * clamp(dot(N,LightDir),0,1);
+	
+	//Do the Blinn per pixel lighting
+	shadeColor = ambient;
+	shadeColor += diffuse*vertCol;
+	
+	// Max Style Specularity
+	float exponent = clamp(NdotH,0,1);	
+	exponent = pow(exponent, glossLevel) * specularLevel *1.5;
+	float4 specular= lightSpecular * specularColor * exponent;	
+	shadeColor += specular;	
+
+	shadeColor.a = opacityColour.a * opacity;
+	
+	oColor = shadeColor;
+}
+
+
+void Blinn_DiffuseAndSpecularMap_fp (
+		float4 pos       : TEXCOORD0,
+		float3 normal   : TEXCOORD1,
+		float4 lightpos   : TEXCOORD2,
+		float3 eyepos   : TEXCOORD3,
+		float4 vertCol   : COLOR,
+				   
+		//Support for texture with the per pixel lighting
+		float2 uv      : TEXCOORD4,
+
+		uniform float4 lightDiffuse,
+		uniform float4 lightSpecular,
+		uniform float4 sceneAmbient,
+		uniform float4 ambientColor,
+		uniform float4 diffuseColor,
+		uniform float4 specularColor,
+		uniform float specularLevel,
+		uniform float glossLevel,
+		uniform float opacity,
+		uniform float amount,
+
+		uniform sampler2D diffuseMap,
+		uniform sampler2D specularMap,
+
+		out float4 oColor : COLOR
+)
+{
+	float4 shadeColor = float4(0,0,0,1);
+	float3 N = normalize(normal);
+	float clampAmount = clamp(amount,0.0,1.0);
+
+	//we could do this normalize() in vert shader, or skip it
+	float3 EyeDir = normalize(eyepos - pos.xyz);
+
+	//support for texture with the per pixel lighting
+	float4 textColor=(diffuseColor*(1-amount))+(tex2D(diffuseMap, uv)*amount);
+
+	// When doing Blinn-Phong shading we only use the half angle
+	float3 LightDir = normalize(lightpos.xyz -  (pos * lightpos.w).xyz);
+	float3 HalfAngle = normalize(LightDir + EyeDir);
+	float NdotL = dot(LightDir, N);
+	float NdotH = dot(HalfAngle, N);
+
+	// calculate lighting components
+	float4 ambient = clamp(sceneAmbient * ambientColor,0,1) * textColor;	
+	float4 diffuse = lightDiffuse * textColor * clamp(dot(N,LightDir),0,1);
+	
+	//Do the Blinn per pixel lighting
+	shadeColor = ambient;
+	shadeColor += diffuse*vertCol;
+	
+	
+	//support for texture with the per pixel lighting
+	float4 specIntensity = tex2D(specularMap, uv);
+	// convert into grey scale for intensity ---THIS WE MIGHT IGNORE---
+	specIntensity = (specIntensity.x+specIntensity.y+specIntensity.z)/3;
+	
+	// Max Style Specularity
+	float exponent = clamp(NdotH,0,1);	
+	exponent = pow(exponent, glossLevel) * specularLevel *1.5;
+	float4 specular= lightSpecular * specularColor * exponent;	
+	float4 specularColour = (specular*(1-amount))+(specIntensity*amount);	
+	shadeColor += specularColour;	
+	shadeColor.a = opacity;
+	
+	oColor = shadeColor;
+}
+

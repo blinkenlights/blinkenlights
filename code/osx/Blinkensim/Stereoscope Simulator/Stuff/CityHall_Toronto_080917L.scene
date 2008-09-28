@@ -1,0 +1,61 @@
+<scene formatVersion="">
+    <environment>
+        <colourAmbient r="0.000000" g="0.000000" b="0.000000" />
+        <colourBackground r="0.000000" g="0.000000" b="0.000000" />
+    </environment>
+    <nodes>
+        <node name="CityHall_Toronto_080917L">
+            <position x="0.000000" y="0.000000" z="-0.000000" />
+            <rotation qx="-0.000000" qy="-0.000000" qz="-0.000000" qw="1.000000" />
+            <scale x="1.000000" y="1.000000" z="1.000000" />
+            <node name="Platz">
+                <position x="0.000000" y="0.000000" z="-0.000000" />
+                <rotation qx="-0.000000" qy="-0.000000" qz="-0.000000" qw="1.000000" />
+                <scale x="1.000000" y="1.000000" z="1.000000" />
+                <entity name="Platz" meshFile="Platz.mesh" static="true" castShadows="true" />
+            </node>
+            <node name="WindowsA1">
+                <position x="0.000000" y="0.000000" z="-0.000000" />
+                <rotation qx="-0.000000" qy="-0.000000" qz="-0.000000" qw="1.000000" />
+                <scale x="1.000000" y="1.000000" z="1.000000" />
+                <entity name="WindowsA1" meshFile="WindowsA1.mesh" static="true" castShadows="true" />
+            </node>
+            <node name="WindowsB1">
+                <position x="0.000000" y="0.000000" z="-0.000000" />
+                <rotation qx="-0.000000" qy="-0.000000" qz="-0.000000" qw="1.000000" />
+                <scale x="1.000000" y="1.000000" z="1.000000" />
+                <entity name="WindowsB1" meshFile="WindowsB1.mesh" static="true" castShadows="true" />
+            </node>
+            <node name="CityHall">
+                <position x="0.000000" y="0.000000" z="-0.000000" />
+                <rotation qx="-0.000000" qy="-0.000000" qz="-0.000000" qw="1.000000" />
+                <scale x="1.000000" y="1.000000" z="1.000000" />
+                <entity name="CityHall" meshFile="CityHall.mesh" static="true" castShadows="true" />
+            </node>
+            <node name="Pavillon">
+                <position x="0.000000" y="0.000000" z="-0.000000" />
+                <rotation qx="-0.000000" qy="-0.000000" qz="-0.000000" qw="1.000000" />
+                <scale x="1.000000" y="1.000000" z="1.000000" />
+                <entity name="Pavillon" meshFile="Pavillon.mesh" static="true" castShadows="true" />
+            </node>
+            <node name="Ramp">
+                <position x="0.000000" y="0.000000" z="-0.000000" />
+                <rotation qx="-0.000000" qy="-0.000000" qz="-0.000000" qw="1.000000" />
+                <scale x="1.000000" y="1.000000" z="1.000000" />
+                <entity name="Ramp" meshFile="Ramp.mesh" static="true" castShadows="true" />
+            </node>
+            <node name="WindowsA2">
+                <position x="0.000000" y="0.000000" z="-0.000000" />
+                <rotation qx="-0.000000" qy="-0.000000" qz="-0.000000" qw="1.000000" />
+                <scale x="1.000000" y="1.000000" z="1.000000" />
+                <entity name="WindowsA2" meshFile="WindowsA2.mesh" static="true" castShadows="true" />
+            </node>
+            <node name="WindowsB2">
+                <position x="0.000000" y="0.000000" z="-0.000000" />
+                <rotation qx="-0.000000" qy="-0.000000" qz="-0.000000" qw="1.000000" />
+                <scale x="1.000000" y="1.000000" z="1.000000" />
+                <entity name="WindowsB2" meshFile="WindowsB2.mesh" static="true" castShadows="true" />
+            </node>
+        </node>
+    </nodes>
+</scene>

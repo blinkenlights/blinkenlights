@@ -1,0 +1,397 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 42;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		00ABEB6E0B4D913B0059129A /* OgreController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 00ABEB6C0B4D913B0059129A /* OgreController.mm */; };
+		00ABEB710B4D91C00059129A /* plugins.cfg in Resources */ = {isa = PBXBuildFile; fileRef = 000E263F0B393B0A004EA2DF /* plugins.cfg */; };
+		00ABEB890B4D946B0059129A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 00ABEB880B4D946B0059129A /* main.m */; };
+		00ABEBAE0B4D9CB50059129A /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 00ABEBAD0B4D9CB50059129A /* MainMenu.nib */; };
+		3108D2590E8F238F0016A9B2 /* Cg.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3108D2570E8F238F0016A9B2 /* Cg.framework */; };
+		3108D25A0E8F238F0016A9B2 /* Ogre.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3108D2580E8F238F0016A9B2 /* Ogre.framework */; };
+		3108D25D0E8F23960016A9B2 /* Cg.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 3108D2570E8F238F0016A9B2 /* Cg.framework */; };
+		3108D25E0E8F23960016A9B2 /* Ogre.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 3108D2580E8F238F0016A9B2 /* Ogre.framework */; };
+		3108D28D0E8F25D70016A9B2 /* Blinn.cg in Resources */ = {isa = PBXBuildFile; fileRef = 3108D2780E8F25D70016A9B2 /* Blinn.cg */; };
+		3108D28E0E8F25D70016A9B2 /* CityHall.mesh in Resources */ = {isa = PBXBuildFile; fileRef = 3108D2790E8F25D70016A9B2 /* CityHall.mesh */; };
+		3108D28F0E8F25D80016A9B2 /* CityHall_1024_v2.tif in Resources */ = {isa = PBXBuildFile; fileRef = 3108D27A0E8F25D70016A9B2 /* CityHall_1024_v2.tif */; };
+		3108D2900E8F25D80016A9B2 /* CityHall_Toronto_080917L.scene in Resources */ = {isa = PBXBuildFile; fileRef = 3108D27B0E8F25D70016A9B2 /* CityHall_Toronto_080917L.scene */; };
+		3108D2910E8F25D80016A9B2 /* MATLIB-080709_Tower_06b.RM_CityHall.material in Resources */ = {isa = PBXBuildFile; fileRef = 3108D27C0E8F25D70016A9B2 /* MATLIB-080709_Tower_06b.RM_CityHall.material */; };
+		3108D2920E8F25D80016A9B2 /* MATLIB-080709_Tower_06b.RM_Pavillon.material in Resources */ = {isa = PBXBuildFile; fileRef = 3108D27D0E8F25D70016A9B2 /* MATLIB-080709_Tower_06b.RM_Pavillon.material */; };
+		3108D2930E8F25D80016A9B2 /* MATLIB-080709_Tower_06b.RM_Platz.material in Resources */ = {isa = PBXBuildFile; fileRef = 3108D27E0E8F25D70016A9B2 /* MATLIB-080709_Tower_06b.RM_Platz.material */; };
+		3108D2940E8F25D80016A9B2 /* MATLIB-080709_Tower_06b.RM_Ramp.material in Resources */ = {isa = PBXBuildFile; fileRef = 3108D27F0E8F25D70016A9B2 /* MATLIB-080709_Tower_06b.RM_Ramp.material */; };
+		3108D2950E8F25D80016A9B2 /* MATLIB-080709_Tower_06b.RM_Windows_On.material in Resources */ = {isa = PBXBuildFile; fileRef = 3108D2800E8F25D70016A9B2 /* MATLIB-080709_Tower_06b.RM_Windows_On.material */; };
+		3108D2960E8F25D80016A9B2 /* Pavillon.mesh in Resources */ = {isa = PBXBuildFile; fileRef = 3108D2810E8F25D70016A9B2 /* Pavillon.mesh */; };
+		3108D2970E8F25D80016A9B2 /* Pavillon_1024_v2.tif in Resources */ = {isa = PBXBuildFile; fileRef = 3108D2820E8F25D70016A9B2 /* Pavillon_1024_v2.tif */; };
+		3108D2980E8F25D80016A9B2 /* Platz.mesh in Resources */ = {isa = PBXBuildFile; fileRef = 3108D2830E8F25D70016A9B2 /* Platz.mesh */; };
+		3108D2990E8F25D80016A9B2 /* Platz_1024.tif in Resources */ = {isa = PBXBuildFile; fileRef = 3108D2840E8F25D70016A9B2 /* Platz_1024.tif */; };
+		3108D29A0E8F25D80016A9B2 /* Ramp.mesh in Resources */ = {isa = PBXBuildFile; fileRef = 3108D2850E8F25D70016A9B2 /* Ramp.mesh */; };
+		3108D29B0E8F25D80016A9B2 /* Ramp_1024_v2.tif in Resources */ = {isa = PBXBuildFile; fileRef = 3108D2860E8F25D70016A9B2 /* Ramp_1024_v2.tif */; };
+		3108D29C0E8F25D80016A9B2 /* Shaders.program in Resources */ = {isa = PBXBuildFile; fileRef = 3108D2870E8F25D70016A9B2 /* Shaders.program */; };
+		3108D29D0E8F25D80016A9B2 /* Window_On.tif in Resources */ = {isa = PBXBuildFile; fileRef = 3108D2880E8F25D70016A9B2 /* Window_On.tif */; };
+		3108D29E0E8F25D80016A9B2 /* WindowsA1.mesh in Resources */ = {isa = PBXBuildFile; fileRef = 3108D2890E8F25D70016A9B2 /* WindowsA1.mesh */; };
+		3108D29F0E8F25D80016A9B2 /* WindowsA2.mesh in Resources */ = {isa = PBXBuildFile; fileRef = 3108D28A0E8F25D70016A9B2 /* WindowsA2.mesh */; };
+		3108D2A00E8F25D80016A9B2 /* WindowsB1.mesh in Resources */ = {isa = PBXBuildFile; fileRef = 3108D28B0E8F25D70016A9B2 /* WindowsB1.mesh */; };
+		3108D2A10E8F25D80016A9B2 /* WindowsB2.mesh in Resources */ = {isa = PBXBuildFile; fileRef = 3108D28C0E8F25D70016A9B2 /* WindowsB2.mesh */; };
+		3108D2E00E8F30F30016A9B2 /* clouds.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3108D2DF0E8F30F30016A9B2 /* clouds.jpg */; };
+		3108D2E20E8F312A0016A9B2 /* Example.material in Resources */ = {isa = PBXBuildFile; fileRef = 3108D2E10E8F312A0016A9B2 /* Example.material */; };
+		3108D2F30E8F32010016A9B2 /* RustySteel.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3108D2F20E8F32010016A9B2 /* RustySteel.jpg */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		00ABEB5B0B4D8B0E0059129A /* Copy Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				3108D25D0E8F23960016A9B2 /* Cg.framework in Copy Frameworks */,
+				3108D25E0E8F23960016A9B2 /* Ogre.framework in Copy Frameworks */,
+			);
+			name = "Copy Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		000E263F0B393B0A004EA2DF /* plugins.cfg */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = plugins.cfg; sourceTree = "<group>"; };
+		00ABEB520B4D8A980059129A /* Stereoscope Simulator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Stereoscope Simulator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		00ABEB540B4D8A990059129A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		00ABEB6B0B4D913B0059129A /* OgreController.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = OgreController.h; sourceTree = "<group>"; };
+		00ABEB6C0B4D913B0059129A /* OgreController.mm */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.objcpp; path = OgreController.mm; sourceTree = "<group>"; };
+		00ABEB880B4D946B0059129A /* main.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		00ABEBAD0B4D9CB50059129A /* MainMenu.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; path = MainMenu.nib; sourceTree = "<group>"; };
+		3108D2570E8F238F0016A9B2 /* Cg.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Cg.framework; sourceTree = "<group>"; };
+		3108D2580E8F238F0016A9B2 /* Ogre.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Ogre.framework; sourceTree = "<group>"; };
+		3108D2780E8F25D70016A9B2 /* Blinn.cg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Blinn.cg; sourceTree = "<group>"; };
+		3108D2790E8F25D70016A9B2 /* CityHall.mesh */ = {isa = PBXFileReference; lastKnownFileType = file; path = CityHall.mesh; sourceTree = "<group>"; };
+		3108D27A0E8F25D70016A9B2 /* CityHall_1024_v2.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = CityHall_1024_v2.tif; sourceTree = "<group>"; };
+		3108D27B0E8F25D70016A9B2 /* CityHall_Toronto_080917L.scene */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CityHall_Toronto_080917L.scene; sourceTree = "<group>"; };
+		3108D27C0E8F25D70016A9B2 /* MATLIB-080709_Tower_06b.RM_CityHall.material */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "MATLIB-080709_Tower_06b.RM_CityHall.material"; sourceTree = "<group>"; };
+		3108D27D0E8F25D70016A9B2 /* MATLIB-080709_Tower_06b.RM_Pavillon.material */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "MATLIB-080709_Tower_06b.RM_Pavillon.material"; sourceTree = "<group>"; };
+		3108D27E0E8F25D70016A9B2 /* MATLIB-080709_Tower_06b.RM_Platz.material */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "MATLIB-080709_Tower_06b.RM_Platz.material"; sourceTree = "<group>"; };
+		3108D27F0E8F25D70016A9B2 /* MATLIB-080709_Tower_06b.RM_Ramp.material */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "MATLIB-080709_Tower_06b.RM_Ramp.material"; sourceTree = "<group>"; };
+		3108D2800E8F25D70016A9B2 /* MATLIB-080709_Tower_06b.RM_Windows_On.material */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "MATLIB-080709_Tower_06b.RM_Windows_On.material"; sourceTree = "<group>"; };
+		3108D2810E8F25D70016A9B2 /* Pavillon.mesh */ = {isa = PBXFileReference; lastKnownFileType = file; path = Pavillon.mesh; sourceTree = "<group>"; };
+		3108D2820E8F25D70016A9B2 /* Pavillon_1024_v2.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Pavillon_1024_v2.tif; sourceTree = "<group>"; };
+		3108D2830E8F25D70016A9B2 /* Platz.mesh */ = {isa = PBXFileReference; lastKnownFileType = file; path = Platz.mesh; sourceTree = "<group>"; };
+		3108D2840E8F25D70016A9B2 /* Platz_1024.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Platz_1024.tif; sourceTree = "<group>"; };
+		3108D2850E8F25D70016A9B2 /* Ramp.mesh */ = {isa = PBXFileReference; lastKnownFileType = file; path = Ramp.mesh; sourceTree = "<group>"; };
+		3108D2860E8F25D70016A9B2 /* Ramp_1024_v2.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Ramp_1024_v2.tif; sourceTree = "<group>"; };
+		3108D2870E8F25D70016A9B2 /* Shaders.program */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Shaders.program; sourceTree = "<group>"; };
+		3108D2880E8F25D70016A9B2 /* Window_On.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Window_On.tif; sourceTree = "<group>"; };
+		3108D2890E8F25D70016A9B2 /* WindowsA1.mesh */ = {isa = PBXFileReference; lastKnownFileType = file; path = WindowsA1.mesh; sourceTree = "<group>"; };
+		3108D28A0E8F25D70016A9B2 /* WindowsA2.mesh */ = {isa = PBXFileReference; lastKnownFileType = file; path = WindowsA2.mesh; sourceTree = "<group>"; };
+		3108D28B0E8F25D70016A9B2 /* WindowsB1.mesh */ = {isa = PBXFileReference; lastKnownFileType = file; path = WindowsB1.mesh; sourceTree = "<group>"; };
+		3108D28C0E8F25D70016A9B2 /* WindowsB2.mesh */ = {isa = PBXFileReference; lastKnownFileType = file; path = WindowsB2.mesh; sourceTree = "<group>"; };
+		3108D2DF0E8F30F30016A9B2 /* clouds.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = clouds.jpg; sourceTree = "<group>"; };
+		3108D2E10E8F312A0016A9B2 /* Example.material */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Example.material; sourceTree = "<group>"; };
+		3108D2F20E8F32010016A9B2 /* RustySteel.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = RustySteel.jpg; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		00ABEB500B4D8A980059129A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3108D2590E8F238F0016A9B2 /* Cg.framework in Frameworks */,
+				3108D25A0E8F238F0016A9B2 /* Ogre.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		000E24DE0B3924F0004EA2DF = {
+			isa = PBXGroup;
+			children = (
+				00ABEB580B4D8ABD0059129A /* Source */,
+				00ABEB590B4D8AD10059129A /* Resources */,
+				000E25220B392B6F004EA2DF /* External Frameworks and Libraries */,
+				000E252C0B392BE5004EA2DF /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		000E25220B392B6F004EA2DF /* External Frameworks and Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				3108D2570E8F238F0016A9B2 /* Cg.framework */,
+				3108D2580E8F238F0016A9B2 /* Ogre.framework */,
+			);
+			name = "External Frameworks and Libraries";
+			sourceTree = "<group>";
+		};
+		000E252C0B392BE5004EA2DF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				00ABEB520B4D8A980059129A /* Stereoscope Simulator.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		00ABEB580B4D8ABD0059129A /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				00ABEB6B0B4D913B0059129A /* OgreController.h */,
+				00ABEB6C0B4D913B0059129A /* OgreController.mm */,
+				00ABEB880B4D946B0059129A /* main.m */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
+		00ABEB590B4D8AD10059129A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3108D2770E8F25D70016A9B2 /* Media */,
+				00ABEF060B4F7CAD0059129A /* Old Media */,
+				00ABEBAD0B4D9CB50059129A /* MainMenu.nib */,
+				000E263F0B393B0A004EA2DF /* plugins.cfg */,
+				00ABEB540B4D8A990059129A /* Info.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		00ABEF060B4F7CAD0059129A /* Old Media */ = {
+			isa = PBXGroup;
+			children = (
+				3108D2E10E8F312A0016A9B2 /* Example.material */,
+				3108D2F20E8F32010016A9B2 /* RustySteel.jpg */,
+				3108D2DF0E8F30F30016A9B2 /* clouds.jpg */,
+			);
+			name = "Old Media";
+			sourceTree = "<group>";
+		};
+		3108D2770E8F25D70016A9B2 /* Media */ = {
+			isa = PBXGroup;
+			children = (
+				3108D2780E8F25D70016A9B2 /* Blinn.cg */,
+				3108D2790E8F25D70016A9B2 /* CityHall.mesh */,
+				3108D27A0E8F25D70016A9B2 /* CityHall_1024_v2.tif */,
+				3108D27B0E8F25D70016A9B2 /* CityHall_Toronto_080917L.scene */,
+				3108D27C0E8F25D70016A9B2 /* MATLIB-080709_Tower_06b.RM_CityHall.material */,
+				3108D27D0E8F25D70016A9B2 /* MATLIB-080709_Tower_06b.RM_Pavillon.material */,
+				3108D27E0E8F25D70016A9B2 /* MATLIB-080709_Tower_06b.RM_Platz.material */,
+				3108D27F0E8F25D70016A9B2 /* MATLIB-080709_Tower_06b.RM_Ramp.material */,
+				3108D2800E8F25D70016A9B2 /* MATLIB-080709_Tower_06b.RM_Windows_On.material */,
+				3108D2810E8F25D70016A9B2 /* Pavillon.mesh */,
+				3108D2820E8F25D70016A9B2 /* Pavillon_1024_v2.tif */,
+				3108D2830E8F25D70016A9B2 /* Platz.mesh */,
+				3108D2840E8F25D70016A9B2 /* Platz_1024.tif */,
+				3108D2850E8F25D70016A9B2 /* Ramp.mesh */,
+				3108D2860E8F25D70016A9B2 /* Ramp_1024_v2.tif */,
+				3108D2870E8F25D70016A9B2 /* Shaders.program */,
+				3108D2880E8F25D70016A9B2 /* Window_On.tif */,
+				3108D2890E8F25D70016A9B2 /* WindowsA1.mesh */,
+				3108D28A0E8F25D70016A9B2 /* WindowsA2.mesh */,
+				3108D28B0E8F25D70016A9B2 /* WindowsB1.mesh */,
+				3108D28C0E8F25D70016A9B2 /* WindowsB2.mesh */,
+			);
+			name = Media;
+			path = Stuff;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		00ABEB510B4D8A980059129A /* Stereoscope Simulator */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 00ABEB550B4D8A9A0059129A /* Build configuration list for PBXNativeTarget "Stereoscope Simulator" */;
+			buildPhases = (
+				00ABEB5B0B4D8B0E0059129A /* Copy Frameworks */,
+				00ABEB4E0B4D8A980059129A /* Resources */,
+				00ABEB4F0B4D8A980059129A /* Sources */,
+				00ABEB500B4D8A980059129A /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Stereoscope Simulator";
+			productName = OgreCustomNib;
+			productReference = 00ABEB520B4D8A980059129A /* Stereoscope Simulator.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		000E24E00B3924F0004EA2DF /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 000E24E10B3924F0004EA2DF /* Build configuration list for PBXProject "Stereoscope Simulator" */;
+			compatibilityVersion = "Xcode 2.4";
+			hasScannedForEncodings = 0;
+			mainGroup = 000E24DE0B3924F0004EA2DF;
+			productRefGroup = 000E252C0B392BE5004EA2DF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				00ABEB510B4D8A980059129A /* Stereoscope Simulator */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		00ABEB4E0B4D8A980059129A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				00ABEB710B4D91C00059129A /* plugins.cfg in Resources */,
+				00ABEBAE0B4D9CB50059129A /* MainMenu.nib in Resources */,
+				3108D28D0E8F25D70016A9B2 /* Blinn.cg in Resources */,
+				3108D28E0E8F25D70016A9B2 /* CityHall.mesh in Resources */,
+				3108D28F0E8F25D80016A9B2 /* CityHall_1024_v2.tif in Resources */,
+				3108D2900E8F25D80016A9B2 /* CityHall_Toronto_080917L.scene in Resources */,
+				3108D2910E8F25D80016A9B2 /* MATLIB-080709_Tower_06b.RM_CityHall.material in Resources */,
+				3108D2920E8F25D80016A9B2 /* MATLIB-080709_Tower_06b.RM_Pavillon.material in Resources */,
+				3108D2930E8F25D80016A9B2 /* MATLIB-080709_Tower_06b.RM_Platz.material in Resources */,
+				3108D2940E8F25D80016A9B2 /* MATLIB-080709_Tower_06b.RM_Ramp.material in Resources */,
+				3108D2950E8F25D80016A9B2 /* MATLIB-080709_Tower_06b.RM_Windows_On.material in Resources */,
+				3108D2960E8F25D80016A9B2 /* Pavillon.mesh in Resources */,
+				3108D2970E8F25D80016A9B2 /* Pavillon_1024_v2.tif in Resources */,
+				3108D2980E8F25D80016A9B2 /* Platz.mesh in Resources */,
+				3108D2990E8F25D80016A9B2 /* Platz_1024.tif in Resources */,
+				3108D29A0E8F25D80016A9B2 /* Ramp.mesh in Resources */,
+				3108D29B0E8F25D80016A9B2 /* Ramp_1024_v2.tif in Resources */,
+				3108D29C0E8F25D80016A9B2 /* Shaders.program in Resources */,
+				3108D29D0E8F25D80016A9B2 /* Window_On.tif in Resources */,
+				3108D29E0E8F25D80016A9B2 /* WindowsA1.mesh in Resources */,
+				3108D29F0E8F25D80016A9B2 /* WindowsA2.mesh in Resources */,
+				3108D2A00E8F25D80016A9B2 /* WindowsB1.mesh in Resources */,
+				3108D2A10E8F25D80016A9B2 /* WindowsB2.mesh in Resources */,
+				3108D2E00E8F30F30016A9B2 /* clouds.jpg in Resources */,
+				3108D2E20E8F312A0016A9B2 /* Example.material in Resources */,
+				3108D2F30E8F32010016A9B2 /* RustySteel.jpg in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		00ABEB4F0B4D8A980059129A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				00ABEB6E0B4D913B0059129A /* OgreController.mm in Sources */,
+				00ABEB890B4D946B0059129A /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		000E24E20B3924F0004EA2DF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = i386;
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = ../Dependencies;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				HEADER_SEARCH_PATHS = (
+					"../Dependencies/Ogre.framework/Headers/**",
+					../Dependencies/include,
+				);
+				LIBRARY_SEARCH_PATHS = ../Dependencies/lib/Debug;
+				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
+				USER_HEADER_SEARCH_PATHS = include;
+			};
+			name = Debug;
+		};
+		000E24E30B3924F0004EA2DF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1)";
+				ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1 = "ppc i386";
+				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = ../Dependencies;
+				GCC_PREPROCESSOR_DEFINITIONS = "";
+				HEADER_SEARCH_PATHS = (
+					"../Dependencies/Ogre.framework/Headers/**",
+					../Dependencies/include,
+				);
+				LIBRARY_SEARCH_PATHS = ../Dependencies/lib/Release;
+				SDKROOT = /Developer/SDKs/MacOSX10.5.sdk;
+				USER_HEADER_SEARCH_PATHS = include;
+			};
+			name = Release;
+		};
+		00ABEB560B4D8A9A0059129A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)\"";
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				HEADER_SEARCH_PATHS = "";
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = "Stereoscope Simulator";
+				WRAPPER_EXTENSION = app;
+				ZERO_LINK = NO;
+			};
+			name = Debug;
+		};
+		00ABEB570B4D8A9A0059129A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)\"";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				HEADER_SEARCH_PATHS = "";
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = "Stereoscope Simulator";
+				WRAPPER_EXTENSION = app;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		000E24E10B3924F0004EA2DF /* Build configuration list for PBXProject "Stereoscope Simulator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				000E24E20B3924F0004EA2DF /* Debug */,
+				000E24E30B3924F0004EA2DF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		00ABEB550B4D8A9A0059129A /* Build configuration list for PBXNativeTarget "Stereoscope Simulator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				00ABEB560B4D8A9A0059129A /* Debug */,
+				00ABEB570B4D8A9A0059129A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 000E24E00B3924F0004EA2DF /* Project object */;
+}

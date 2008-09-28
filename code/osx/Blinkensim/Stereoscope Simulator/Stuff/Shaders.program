@@ -1,0 +1,172 @@
+vertex_program BlinnVP cg 
+{ 
+      source Blinn.cg 
+
+      default_params 
+      { 
+       	param_named_auto lightPosition light_position_object_space 0
+		param_named_auto eyePosition camera_position_object_space
+       	param_named_auto worldviewproj worldviewproj_matrix
+		param_named useVertCol float 1.0
+      } 
+      entry_point Blinn_vp 
+      profiles vs_1_1 arbvp1 
+} 
+
+vertex_program Blinn_4UV_VP cg 
+{ 
+      source Blinn.cg 
+
+      default_params 
+      { 
+       	param_named_auto lightPosition light_position_object_space 0
+		param_named_auto eyePosition camera_position_object_space
+       	param_named_auto worldviewproj worldviewproj_matrix
+		param_named useVertCol float 1.0
+      } 
+      entry_point Blinn_4UV_vp 
+      profiles vs_1_1 arbvp1 
+} 
+
+fragment_program Blinn_Pure_FP cg 
+{ 
+      source Blinn.cg
+      default_params 
+      {
+		param_named_auto lightDiffuse light_diffuse_colour 0
+		param_named_auto lightSpecular light_specular_colour 0
+		param_named_auto sceneAmbient ambient_light_colour
+		param_named ambientColor float4	1.0 0.0 0.0 1.0
+		param_named diffuseColor float4	1.0 0.0 0.0 1.0
+		param_named specularColor float4 1.0 1.0 1.0 1.0
+		param_named specularLevel float	9.990000
+		param_named	glossLevel float 100.000000
+		param_named opacity	float 1.0
+      } 
+      entry_point Blinn_pure_fp
+      profiles ps_2_0 arbfp1
+}
+
+fragment_program Blinn_DiffuseMap_FP cg 
+{ 
+      source Blinn.cg 
+      default_params 
+      {
+ 		param_named_auto lightDiffuse light_diffuse_colour 0
+		param_named_auto lightSpecular light_specular_colour 0
+		param_named_auto sceneAmbient ambient_light_colour
+		param_named ambientColor float4	1.0 0.0 0.0 1.0
+		param_named diffuseColor float4	1.0 0.0 0.0 1.0
+		param_named specularColor float4 1.0 1.0 1.0 1.0
+		param_named specularLevel float	9.990000
+		param_named	glossLevel float 100.000000
+		param_named opacity	float 1.0
+		param_named amount float 1.0
+      } 
+      entry_point Blinn_DiffuseMap_fp
+      profiles ps_2_0 arbfp1
+}
+
+fragment_program Blinn_SpecularColor_FP cg 
+{ 
+      source Blinn.cg 
+      default_params 
+      {
+ 		param_named_auto lightDiffuse light_diffuse_colour 0
+		param_named_auto lightSpecular light_specular_colour 0
+		param_named_auto sceneAmbient ambient_light_colour
+		param_named ambientColor float4	1.0 0.0 0.0 1.0
+		param_named diffuseColor float4	1.0 0.0 0.0 1.0
+		param_named specularColor float4 1.0 1.0 1.0 1.0
+		param_named specularLevel float	9.990000
+		param_named	glossLevel float 10.000000
+		param_named opacity	float 1.0
+		param_named amount float 1.0
+      } 
+      entry_point Blinn_SpecularColor_fp
+      profiles ps_2_0 arbfp1
+}
+
+
+fragment_program Blinn_SpecularLevel_FP cg 
+{ 
+      source Blinn.cg 
+      default_params 
+      {
+ 		param_named_auto lightDiffuse light_diffuse_colour 0
+		param_named_auto lightSpecular light_specular_colour 0
+		param_named_auto sceneAmbient ambient_light_colour
+		param_named ambientColor float4	1.0 0.0 0.0 1.0
+		param_named diffuseColor float4	1.0 0.0 0.0 1.0
+		param_named specularColor float4 1.0 1.0 1.0 1.0
+		param_named specularLevel float	9.990000
+		param_named	glossLevel float 10.000000
+		param_named opacity	float 1.0
+		param_named amount float 0.7
+      } 
+      entry_point Blinn_SpecularLevel_fp
+      profiles ps_2_0 arbfp1
+}
+
+
+fragment_program Blinn_SelfIllumination_FP cg 
+{ 
+      source Blinn.cg 
+      default_params 
+      {
+ 		//param_named_auto lightDiffuse light_diffuse_colour 0
+		param_named_auto lightSpecular light_specular_colour 0
+		param_named_auto sceneAmbient ambient_light_colour
+		param_named ambientColor float4	1.0 0.0 0.0 1.0
+		param_named diffuseColor float4	1.0 0.0 0.0 1.0
+		param_named specularColor float4 1.0 1.0 1.0 1.0
+		param_named specularLevel float	9.990000
+		param_named	glossLevel float 10.000000
+		param_named opacity	float 1.0
+		param_named amount float 1.0
+		param_named uvIndex float 1.0
+      } 
+      entry_point Blinn_SelfIllumination_fp
+      profiles ps_2_0 arbfp1
+}
+
+fragment_program Blinn_DiffuseAndOpacityMap_FP cg 
+{ 
+      source Blinn.cg
+	  
+      default_params 
+      {
+   		param_named_auto lightDiffuse light_diffuse_colour 0
+		param_named_auto lightSpecular light_specular_colour 0
+		param_named_auto sceneAmbient ambient_light_colour
+		param_named ambientColor float4	0.0 0.0 0.0 1.0
+		param_named diffuseColor float4	0.0 0.0 0.0 1.0
+		param_named specularColor float4 0.0 0.0 0.0 1.0
+		param_named specularLevel float	0.00009
+		param_named	glossLevel float 0.000009
+		param_named opacity	float 1.0
+		param_named amount float 1.0
+      } 
+      entry_point Blinn_DiffuseAndOpacityMap_fp
+      profiles ps_2_0 arbfp1
+}
+
+fragment_program Blinn_DiffuseAndSpecularMap_FP cg
+{
+	source Blinn.cg
+	default_params
+	{
+		param_named_auto lightDiffuse light_diffuse_colour 0
+		param_named_auto lightSpecular light_specular_colour 0
+		param_named_auto sceneAmbient ambient_light_colour
+		param_named ambientColor float4   1.0 0.0 0.0 1.0
+		param_named diffuseColor float4   1.0 0.0 0.0 1.0
+		param_named specularColor float4 1.0 1.0 1.0 1.0
+		param_named specularLevel float   9.990000
+		param_named   glossLevel float 100.000000
+		param_named opacity   float 1.0
+		param_named amount float 1.0
+	}
+	entry_point Blinn_DiffuseAndSpecularMap_fp
+	profiles ps_2_0 arbfp1
+}
