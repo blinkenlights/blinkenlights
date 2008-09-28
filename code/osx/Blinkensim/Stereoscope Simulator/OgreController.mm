@@ -5,6 +5,7 @@ using namespace Ogre;
 // Evil Globals ;)
 Ogre::SceneManager *mSceneMgr;
 AnimationState* mAnimState;
+Camera *mCamera;
 
 
 @implementation OgreController
@@ -68,7 +69,7 @@ AnimationState* mAnimState;
     // Attach to child of root node, better for culling (otherwise bounds are the combination of the 2)
     mSceneMgr->getRootSceneNode()->createChildSceneNode()->attachObject(ent);
     
-    Camera *mCamera = mSceneMgr->createCamera("PlayerCam");
+    mCamera = mSceneMgr->createCamera("PlayerCam");
     mCamera->setNearClipDistance(5);
     SceneNode* camNode = mSceneMgr->getRootSceneNode()->createChildSceneNode();
     camNode->attachObject(mCamera);

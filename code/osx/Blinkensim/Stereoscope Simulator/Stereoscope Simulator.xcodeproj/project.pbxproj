@@ -39,6 +39,7 @@
 		3108D2E00E8F30F30016A9B2 /* clouds.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3108D2DF0E8F30F30016A9B2 /* clouds.jpg */; };
 		3108D2E20E8F312A0016A9B2 /* Example.material in Resources */ = {isa = PBXBuildFile; fileRef = 3108D2E10E8F312A0016A9B2 /* Example.material */; };
 		3108D2F30E8F32010016A9B2 /* RustySteel.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3108D2F20E8F32010016A9B2 /* RustySteel.jpg */; };
+		3108D3A20E8F43800016A9B2 /* StereoscopeOgreView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3108D3A10E8F43800016A9B2 /* StereoscopeOgreView.mm */; };
 		F2B200050E8F3F8B00A2EFC7 /* StereoscopeSimulator.icns in Resources */ = {isa = PBXBuildFile; fileRef = F2B200040E8F3F8B00A2EFC7 /* StereoscopeSimulator.icns */; };
 /* End PBXBuildFile section */
 
@@ -91,6 +92,8 @@
 		3108D2DF0E8F30F30016A9B2 /* clouds.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = clouds.jpg; sourceTree = "<group>"; };
 		3108D2E10E8F312A0016A9B2 /* Example.material */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Example.material; sourceTree = "<group>"; };
 		3108D2F20E8F32010016A9B2 /* RustySteel.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = RustySteel.jpg; sourceTree = "<group>"; };
+		3108D3A00E8F43800016A9B2 /* StereoscopeOgreView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StereoscopeOgreView.h; sourceTree = "<group>"; };
+		3108D3A10E8F43800016A9B2 /* StereoscopeOgreView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = StereoscopeOgreView.mm; sourceTree = "<group>"; };
 		F2B200040E8F3F8B00A2EFC7 /* StereoscopeSimulator.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = StereoscopeSimulator.icns; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -137,6 +140,8 @@
 		00ABEB580B4D8ABD0059129A /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				3108D3A00E8F43800016A9B2 /* StereoscopeOgreView.h */,
+				3108D3A10E8F43800016A9B2 /* StereoscopeOgreView.mm */,
 				00ABEB6B0B4D913B0059129A /* OgreController.h */,
 				00ABEB6C0B4D913B0059129A /* OgreController.mm */,
 				00ABEB880B4D946B0059129A /* main.m */,
@@ -279,6 +284,7 @@
 			files = (
 				00ABEB6E0B4D913B0059129A /* OgreController.mm in Sources */,
 				00ABEB890B4D946B0059129A /* main.m in Sources */,
+				3108D3A20E8F43800016A9B2 /* StereoscopeOgreView.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
