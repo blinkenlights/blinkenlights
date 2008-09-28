@@ -37,12 +37,11 @@
 #include "led.h"
 #include "usbshell.h"
 #include "proto.h"
+#include "main.h"
 
 #define PROMPT "\nWDIM> "
 
 #define shell_print(x) DumpStringToUSB(x)
-
-extern void vResetEnv(void);
 
 static void
 cmd_status (const portCHAR * cmd)

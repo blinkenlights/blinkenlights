@@ -41,9 +41,9 @@ APP_SRC= \
   application/proto.c \
   application/xxtea.c \
   application/bprotocol.c \
-  application/bjam.c \
   application/usbshell.c \
   $(CORE)/openbeacon/crc32.c \
+  $(CORE)/openbeacon/rnd.c \
   $(NETWORK_SRC)
   
 all: $(TARGET).bin

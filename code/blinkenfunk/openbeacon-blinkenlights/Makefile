@@ -9,14 +9,15 @@ APP_LDFLAGS=-lm
 
 APP_SRC=			\
   application/main.c		\
-  $(CORE)/openbeacon/crc32.c	\
   application/led.c		\
   application/proto.c		\
   application/dimmer.c		\
   application/update.c		\
   application/usbshell.c	\
   application/debug_print.c	\
-  application/xxtea.c
+  application/xxtea.c		\
+  $(CORE)/openbeacon/crc32.c	\
+  $(CORE)/openbeacon/rnd.c
   
 BOOTLOADER=application/update.s
 

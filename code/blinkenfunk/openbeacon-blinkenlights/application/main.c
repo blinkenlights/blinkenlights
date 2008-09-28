@@ -34,8 +34,10 @@
 #include <task.h>
 #include <beacontypes.h>
 #include <board.h>
+#include <rnd.h>
 #include <dbgu.h>
 
+#include "main.h"
 #include "led.h"
 #include "proto.h"
 #include "usbshell.h"
@@ -100,6 +102,8 @@ main (void)
   vInitProtocolLayer ();
 
   vUSBShellInit ();
+  
+  vRndInit ( env.e.mac );
 
   vInitDimmer ();
 

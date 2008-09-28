@@ -33,6 +33,9 @@
 #include <USB-CDC.h>
 #include <task.h>
 #include <dbgu.h>
+#include <beacontypes.h>
+#include <proto.h>
+#include <rnd.h>
 #include <network.h>
 
 #include "led.h"
@@ -72,8 +75,11 @@ main (void)
 {
   prvSetupHardware ();
   vLedInit ();
+
+  /* If no previous environment exists - create a new, but don't store it */
   env_init ();
-  env_load ();
+  if(!env_load ())
+    bzero (&env, sizeof (env));
 
   if (env.e.n_lamps > MAX_LAMPS)
     env.e.n_lamps = 0;
@@ -81,12 +87,13 @@ main (void)
   if (env.e.rf_delay > 1000)
     env.e.rf_delay = 0;
 
+  vRndInit ( (((u_int32_t)env.e.mac_h)<<8) | env.e.mac_l );
   vNetworkInit ();
 
   xTaskCreate (vUSBCDCTask, (signed portCHAR *) "USB", TASK_USB_STACK,
 	       NULL, TASK_USB_PRIORITY, NULL);
 
-  vInitProtocolLayer ();
+  PtInitProtocol ();
   vUSBShellInit ();
   vTaskStartScheduler ();
 
