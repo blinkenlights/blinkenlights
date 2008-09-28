@@ -26,27 +26,6 @@
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>StereoscopeApplication</string>
-	<key>CFBundleDocumentTypes</key>
-	<array>
-		<dict>
-			<key>CFBundleTypeExtensions</key>
-			<array>
-				<string>bml</string>
-			</array>
-			<key>CFBundleTypeIconFile</key>
-			<string>BML.icns</string>
-			<key>CFBundleTypeName</key>
-			<string>Blinkenlights Movie</string>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>LSItemContentTypes</key>
-			<array>
-				<string>net.blinkenlights.movie.bml</string>
-			</array>
-			<key>LSTypeIsPackage</key>
-			<false/>
-		</dict>
-	</array>
 	<key>UTExportedTypeDeclarations</key>
 	<array>
 		<dict>
@@ -65,6 +44,8 @@
 				<key>public.filename-extension</key>
 				<string>bml</string>
 			</dict>
+      <key>UTTypeReferenceURL</key>
+      <string>http://blinkenlights.net/project/bml</string>
 		</dict>
 	</array>
 </dict>

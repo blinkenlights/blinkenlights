@@ -48,6 +48,8 @@
 				<key>public.filename-extension</key>
 				<string>bml</string>
 			</dict>
+      <key>UTTypeReferenceURL</key>
+      <string>http://blinkenlights.net/project/bml</string>
 		</dict>
 	</array>
 </dict>
