@@ -102,7 +102,7 @@ main (void)
   vInitProtocolLayer ();
 
   vUSBShellInit ();
-  
+
   vRndInit ( env.e.mac );
 
   vInitDimmer ();
