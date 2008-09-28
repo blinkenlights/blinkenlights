@@ -76,7 +76,6 @@ cmd_status (const portCHAR * cmd)
     ("	RF statistics: sent %d broadcasts, %d unicasts, received %d\n",
      rf_sent_broadcast, rf_sent_unicast, rf_rec);
   shell_printf ("	assigned lamps: %d\n", env.e.n_lamps);
-  shell_printf ("	operation mode: %s\n", jam_mode ? "jam" : "normal");
 
   debug_printf ("\n");
 }
@@ -115,35 +114,24 @@ cmd_help (const portCHAR * cmd)
   shell_printf ("\n");
   shell_printf ("[wmcu-]mac <xxyy> [<crc>]\n");
   shell_printf ("	Set the MAC address of this unit.\n");
-  shell_printf
-    ("	Address xxyy is given in two hexadecimal 8bit numbers with\n");
-  shell_printf
-    ("	no separator, crc is optional and is ignored when not given.\n");
-  shell_printf
-    ("	When given, it needs to be MAC_L ^ MAC_H, otherwise the\n");
-  shell_printf
-    ("	command is rejected. The two values which are set here are\n");
-  shell_printf
-    ("	the last two digits only with a unchangable prefix, hence\n");
+  shell_printf ("	Address xxyy is given in two hexadecimal 8bit numbers with\n");
+  shell_printf ("	no separator, crc is optional and is ignored when not given.\n");
+  shell_printf ("	When given, it needs to be MAC_L ^ MAC_H, otherwise the\n");
+  shell_printf ("	command is rejected. The two values which are set here are\n");
+  shell_printf ("	the last two digits only with a unchangable prefix, hence\n");
   shell_printf ("	the full MAC would be %02x:%02x:%02x:%02x:xx:yy.\n",
 		nic->hwaddr[0], nic->hwaddr[1], nic->hwaddr[2],
 		nic->hwaddr[3]);
   shell_printf ("[wmcu-]id <id>\n");
   shell_printf ("	Set the WMCU ID and store it to the flash memory\n");
-  shell_printf
-    ("	This also updates all dimmers configured in the lamp map\n");
-  shell_printf ("\n");
-  shell_printf ("mode <val>\n");
-  shell_printf ("	Set operation mode. val can be 'normal' or 'jam'");
+  shell_printf ("	This also updates all dimmers configured in the lamp map\n");
   shell_printf ("\n");
   shell_printf ("status\n");
-  shell_printf
-    ("	Print status information about this unit. Try it, it's fun.\n");
+  shell_printf ("	Print status information about this unit. Try it, it's fun.\n");
   shell_printf ("lampmap\n");
   shell_printf ("	Dump the lampmap\n");
   shell_printf ("env\n");
-  shell_printf
-    ("	Show variables currently stored in the non-volatile flash memory\n");
+  shell_printf ("	Show variables currently stored in the non-volatile flash memory\n");
   shell_printf ("update\n");
   shell_printf ("        Enter update mode - DO NOT USE FOR FUN\n\n");
 }
@@ -279,30 +267,6 @@ cmd_id (const portCHAR * cmd)
 }
 
 static void
-cmd_mode (const portCHAR * cmd)
-{
-  while (*cmd && *cmd != ' ')
-    cmd++;
-
-  cmd++;
-
-  if (cmd[0] == 'n' &&
-      cmd[1] == 'o' &&
-      cmd[2] == 'r' && cmd[3] == 'm' && cmd[4] == 'a' && cmd[5] == 'l')
-    {
-      shell_printf ("mode: normal.\n");
-      jam_mode = 0;
-    }
-  else if (cmd[0] == 'j' && cmd[1] == 'a' && cmd[2] == 'm')
-    {
-      shell_printf ("mode: jam.\n");
-      jam_mode = 1;
-    }
-  else
-    shell_printf ("unknown mode.\n");
-}
-
-static void
 cmd_update (const portCHAR * cmd)
 {
   shell_printf ("resetting to default bootloader in update mode\n");
@@ -327,7 +291,6 @@ static struct cmd_t
   {"id",	&cmd_id},
   {"lampmap",	&cmd_lampmap},
   {"mac",	&cmd_mac},
-  {"mode",	&cmd_mode},
   {"status",	&cmd_status},
   {"update",	&cmd_update},
   {"wmcu-id",	&cmd_id},

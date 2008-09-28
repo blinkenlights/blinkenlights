@@ -58,7 +58,6 @@ static BRFPacket rfpkg;
 unsigned int b_rec_total = 0;
 unsigned int b_rec_frames = 0;
 unsigned int b_rec_setup = 0;
-unsigned int jam_mode = 0;
 unsigned int sequence_seed = 0;
 unsigned char last_lamp_val[MAX_LAMPS] = { 0 };
 
@@ -160,7 +159,7 @@ b_set_lamp_id (int lamp_id, int lamp_mac)
 static inline void
 b_set_gamma_curve (int lamp_mac, unsigned int block, unsigned short *gamma)
 {
-  int sm, i;
+  int i;
 
   memset (&rfpkg, 0, sizeof (rfpkg));
   rfpkg.cmd = RF_CMD_SET_GAMMA;
@@ -172,10 +171,7 @@ b_set_gamma_curve (int lamp_mac, unsigned int block, unsigned short *gamma)
     rfpkg.set_gamma.val[i] = gamma[i];
 
   debug_printf ("sending gamma table to %04x, block %d\n", lamp_mac, block);
-  sm = jam_mode;
-  jam_mode = 0;
   PtTransmit (&rfpkg);
-  jam_mode = sm;
 }
 
 static inline void
@@ -224,10 +220,7 @@ b_set_dimmer_control (int lamp_mac, int off)
 static inline void
 b_set_assigned_lamps (unsigned int *map, unsigned int len)
 {
-  int i, sm;
-
-  sm = jam_mode;
-  jam_mode = 0;
+  int i;
 
   for (i = 0; i < MAX_LAMPS; i++)
     {
@@ -251,7 +244,6 @@ b_set_assigned_lamps (unsigned int *map, unsigned int len)
   env.e.n_lamps = i;
   debug_printf ("%d new assigned lamps set.\n", env.e.n_lamps);
   memset (last_lamp_val, 0, sizeof (last_lamp_val));
-  jam_mode = sm;
   vTaskDelay(100 / portTICK_RATE_MS);
   env_store();
 }
@@ -295,10 +287,13 @@ b_parse_mcu_devctrl (mcu_devctrl_header_t * header, int maxlen)
   switch (header->command)
     {
     case MCU_DEVCTRL_COMMAND_SET_MCU_ID:
-      env.e.mcu_id = header->value;
-      debug_printf ("new MCU ID assigned: %d\n", env.e.mcu_id);
-      env_store ();
-      break;
+      {
+        env.e.mcu_id = header->value;
+        debug_printf ("new MCU ID assigned: %d\n", env.e.mcu_id);
+        vTaskDelay (100 / portTICK_RATE_MS);
+	env_store ();
+        break;
+      }
     case MCU_DEVCTRL_COMMAND_SET_LAMP_ID:
       {
 	int lamp_mac = header->mac;
@@ -353,16 +348,6 @@ b_parse_mcu_devctrl (mcu_devctrl_header_t * header, int maxlen)
 	debug_printf ("dimmer off-force 0x%04x %s\n", header->mac,
 		      header->value ? "on" : "off");
 	b_set_dimmer_control (header->mac, header->value);
-	break;
-      }
-    case MCU_DEVCTRL_COMMAND_SET_JAM_MODE:
-      {
-	if (header->value)
-	  debug_printf ("entering jam mode\"n");
-	else
-	  debug_printf ("returning from jam mode to normal operation\n");
-
-	jam_mode = header->value;
 	break;
       }
     case MCU_DEVCTRL_COMMAND_SET_DIMMER_DELAY:
