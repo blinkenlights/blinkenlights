@@ -69,14 +69,13 @@ cmd_status (const portCHAR * cmd)
   shell_printf ("	Gateway addr:	%d.%d.%d.%d\n", ip4_addr1 (&nic->gw),
 		ip4_addr2 (&nic->gw), ip4_addr3 (&nic->gw),
 		ip4_addr4 (&nic->gw));
-  shell_printf
-    ("	Receive statistics: %d packets total, %d frames, %d setup\n",
+  shell_printf ("	Receive statistics: %d packets total, %d frames, %d setup\n",
      b_rec_total, b_rec_frames, b_rec_setup);
-  shell_printf
-    ("	RF statistics: sent %d broadcasts, %d unicasts, received %d\n",
+  shell_printf ("	RF statistics: sent %d broadcasts, %d unicasts, received %d\n",
      rf_sent_broadcast, rf_sent_unicast, rf_rec);
   shell_printf ("	assigned lamps: %d\n", env.e.n_lamps);
-
+  shell_printf ("	rf power level: %d\n", PtGetRfPowerLevel());
+  shell_printf ("	jam density: %d\n", 0);
   debug_printf ("\n");
 }
 

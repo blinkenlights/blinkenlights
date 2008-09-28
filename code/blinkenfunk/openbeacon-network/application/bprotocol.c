@@ -357,6 +357,18 @@ b_parse_mcu_devctrl (mcu_devctrl_header_t * header, int maxlen)
 	b_set_dimmer_delay (header->mac, header->value);
 	break;
       }
+    case MCU_DEVCTRL_COMMAND_SET_RF_POWER:
+      {
+        debug_printf ("new power level: %d\n", header->value);
+	PtSetRfPowerLevel (header->value);
+        break;
+      }
+    case MCU_DEVCTRL_COMMAND_SET_JAM_DENSITY:
+      {
+        debug_printf ("new jam density: %d\n", header->value);
+	//!!!PtSetRfPowerLevel (header->value);
+        break;
+      }
     case MCU_DEVCTRL_COMMAND_OUTPUT_RAW:
       {
 	int i;
