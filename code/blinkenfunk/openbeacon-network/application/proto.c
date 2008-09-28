@@ -237,7 +237,7 @@ vnRFtaskRxTx (void *parameter)
 
 	  // prepare next jam transmission
 	  last_ticks = xTaskGetTickCount ();
-	  jam_ticks = ((RndNumber () % (jam_density*2)) / portTICK_RATE_MS;
+	  jam_ticks = (RndNumber () % (jam_density_ms*2)) / portTICK_RATE_MS;
 	}
 
       vTaskDelay ( 5 / portTICK_RATE_MS );
