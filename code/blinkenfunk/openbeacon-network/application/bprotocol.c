@@ -249,10 +249,11 @@ b_set_assigned_lamps (unsigned int *map, unsigned int len)
     }
 
   env.e.n_lamps = i;
-  env_store ();
   debug_printf ("%d new assigned lamps set.\n", env.e.n_lamps);
   memset (last_lamp_val, 0, sizeof (last_lamp_val));
   jam_mode = sm;
+  vTaskDelay(100 / portTICK_RATE_MS);
+  env_store();
 }
 
 static inline void
