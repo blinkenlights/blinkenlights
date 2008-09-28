@@ -39,6 +39,7 @@
 #include "rnd.h"
 
 #define DEFAULT_JAM_DENSITY 10
+#define TX_COMMAND_RETRIES 3
 
 static BRFPacket rfpkg;
 unsigned int rf_sent_broadcast, rf_sent_unicast, rf_rec;
@@ -144,8 +145,19 @@ PtInternalTransmit (BRFPacket * pkg)
 void
 PtTransmit (BRFPacket * pkg)
 {
-  vTaskDelay (env.e.rf_delay / portTICK_RATE_MS);
-  PtInternalTransmit ( pkg );
+  int i;
+  static BRFPacket backup;
+
+  if( TX_COMMAND_RETRIES>1 )
+    backup=*pkg;
+
+  for ( i=0; i<TX_COMMAND_RETRIES; i++)
+  {
+    if(i)
+	*pkg = backup;
+    PtInternalTransmit ( pkg );
+    vTaskDelay ( ((RndNumber () % 5 ) / portTICK_RATE_MS) );
+  }
 }
 
 void PtSetRfJamDensity ( unsigned char milliseconds )
