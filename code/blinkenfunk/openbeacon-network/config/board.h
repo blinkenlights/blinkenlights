@@ -101,7 +101,7 @@
 /* configuration structure       */
 /*-------------------------------*/
 
-#define TENVIRONMENT_MAGIC 0x0DECADE
+#define TENVIRONMENT_MAGIC 0x1DECADE
 #define MAX_LAMPS (RF_PAYLOAD_SIZE * 2)
 
 extern unsigned char last_lamp_val[MAX_LAMPS];
@@ -109,8 +109,8 @@ extern unsigned char last_lamp_val[MAX_LAMPS];
 typedef struct
 {
   unsigned short mac;
-  unsigned short screen, x, y;
-} LampMap;
+  unsigned char screen, x, y;
+} PACKED LampMap;
 
 typedef struct
 {
@@ -120,8 +120,7 @@ typedef struct
   unsigned char mac_h, mac_l;
   unsigned int n_lamps;
   LampMap lamp_map[MAX_LAMPS];
-  unsigned short dummy[4 * 4]; // padding for old environment
-} __attribute__((aligned (8))) TEnvironment;
+} PACKED __attribute__((aligned (4))) TEnvironment;
 
 /*----------------------------------*/
 /* define debug baud rate if needed */
