@@ -141,6 +141,7 @@ void
 vnRFtaskRx (void *parameter)
 {
   u_int16_t crc;
+  u_int8_t status;
 
   if (!PtInitNRF ())
     return;
@@ -149,7 +150,12 @@ vnRFtaskRx (void *parameter)
 
   for (;;)
     {
-      if (nRFCMD_WaitRx (100))
+      status = nRFAPI_GetFifoStatus ();
+      /* living in a paranoid world ;-) */
+      if (status & FIFO_TX_FULL)
+	nRFAPI_FlushTX ();
+
+      if ((status & FIFO_RX_FULL) || nRFCMD_WaitRx (10))
 	{
 	  vLedSetRed (1);
 
@@ -186,12 +192,10 @@ vnRFtaskRx (void *parameter)
 	      rf_rec++;
 	    }
 	  while ((nRFAPI_GetFifoStatus () & FIFO_RX_EMPTY) == 0);
-
 	}
-      nRFAPI_ClearIRQ (MASK_IRQ_FLAGS);
 
-      /* schedule */
-      vTaskDelay (100 / portTICK_RATE_MS);
+      /* did I already mention the paranoid world thing? */
+      nRFAPI_ClearIRQ (MASK_IRQ_FLAGS);
     }
 }
 
