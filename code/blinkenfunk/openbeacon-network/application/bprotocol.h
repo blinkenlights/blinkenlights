@@ -191,7 +191,7 @@ struct mcu_devctrl_header
   unsigned int mac;           /* LAMP MAC address (if needed)		*/
   unsigned int value;
   /* params consume the rest of the packet, up to MTU */
-  unsigned int param[128];
+  unsigned int param[0];
 } PACKED;
 
 /*
