@@ -102,6 +102,10 @@
            shortname="Stereoscope Player"
            stubfile="lib_build_osx/BlinkensenderStub"
            vmoptions="-Xmx256m">
+      <documenttype name="Blinkenlights Movie"
+                    extensions="bml"
+                    iconFile="lib_build_osx/BML.icns"
+                    role="Editor"/>
 			<jarfileset dir="dist/bmix-${bmix.version}" includes="bmix.jar"/>
 		</jarbundler>
 

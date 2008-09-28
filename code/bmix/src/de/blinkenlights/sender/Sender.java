@@ -3,6 +3,9 @@
  */
 package de.blinkenlights.sender;
 
+
+import com.apple.mrj.*;
+
 import java.awt.BorderLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -39,7 +42,7 @@ import de.blinkenlights.bmix.main.BMovieSender;
  * This is the main class for the "Stereoscope Player" app. It is a GUI wrapper
  * for the BMovieSender.
  */
-public class Sender {
+public class Sender implements MRJOpenDocumentHandler {
 
     private static final String DEFAULT_STATUS_MESSAGE = "<html><center>Drag BML file here</center>";
     private final JLabel statusLabel;
@@ -52,7 +55,9 @@ public class Sender {
     private final JCheckBox loop;
 
     public Sender() {
-        frame = new JFrame("Blinkensender");
+    		MRJApplicationUtils.registerOpenDocumentHandler(this);
+    
+        frame = new JFrame("Stereoscope Player");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         JMenuBar menuBar = new JMenuBar();
@@ -127,7 +132,11 @@ public class Sender {
         frame.setVisible(true);
 
     }
-    
+
+		public void handleOpenFile(File fileName) {
+			this.sendMovie(fileName);
+		}
+		
     public void sendMovie(File file) {
         currentFile = file;
         if (currentFile == null) {
