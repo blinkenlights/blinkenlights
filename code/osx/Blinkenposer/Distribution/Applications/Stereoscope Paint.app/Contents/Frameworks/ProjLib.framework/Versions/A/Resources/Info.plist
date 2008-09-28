@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>English</string>
+	<key>CFBundleExecutable</key>
+	<string>ProjLib</string>
+	<key>CFBundleGetInfoString</key>
+	<string>11.0.0r426 Copyright 1985-2008 Adobe Systems, Inc. All rights reserved.</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.adobe.ProjLib.framework</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleLongVersionString</key>
+	<string>11.0.0r426 Copyright 1985-2008 Adobe Systems, Inc. All rights reserved.</string>
+	<key>CFBundleName</key>
+	<string>Proj</string>
+	<key>CFBundlePackageType</key>
+	<string>FMWK</string>
+	<key>CFBundleShortVersionString</key>
+	<string>11.0.0r426</string>
+	<key>CFBundleSignature</key>
+	<string>????</string>
+	<key>CFBundleVersion</key>
+	<string>11.0.0r426</string>
+	<key>CSResourcesFileMapped</key>
+	<true/>
+	<key>NSHumanReadableCopyright</key>
+	<string>11.0.0r426 Copyright 1985-2008 Adobe Systems, Inc. All rights reserved.</string>
+</dict>
+</plist>
