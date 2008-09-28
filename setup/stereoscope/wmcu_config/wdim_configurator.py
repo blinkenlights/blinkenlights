@@ -32,6 +32,7 @@ def usage():
 	print("\t--dimmer-off <val>				forces a dimmer completely off")
 	print("\t--lamp-mac <id>				specify the lamp MAC address to use for other commands (0xffff for broadcast)")
 	print("\t--get-statistics				queries dimmer statistics");
+	print("\t--reset-wdim				makes a dimmer enter reset");
 	print("\t--enter-update-mode			makes a dimmer enter its update mode. USE WITH CARE!");
 	sys.exit(1)
 
@@ -52,6 +53,7 @@ SET_JITTER		= 4
 GET_STATISTICS		= 6
 SET_DELAY		= 8
 SET_DIMMER_CONTROL	= 9
+RESET_WDIM		= 14
 ENTER_UPDATE_MODE	= 0x3f
 DEBUG_SEND_RAW		= 0xff
 
@@ -59,10 +61,10 @@ MCUCTRL_MAGIC 		= 0x23542667
 
 try:
 	opts, args = getopt.getopt(sys.argv[1:],
-		"hh:p:s:s:ws:s:l:d:eg",
+		"hh:p:s:s:ws:s:l:d:egr",
 		["help", "host=", "port=", "set-lamp-id=", "set-gamma=",
 		 "write-config", "set-dimmer-jitter=", "set-dimmer-delay=", "lamp-mac=",
-		 "dimmer-off=", "enter-update-mode", "get-statistics"])
+		 "dimmer-off=", "enter-update-mode", "get-statistics", "reset-wdim" ])
 
 except getopt.GetoptError, err:
 	print str(err)
@@ -101,6 +103,8 @@ for o, a in opts:
 		action = ENTER_UPDATE_MODE
 	if o == "--get-statistics":
 		action = GET_STATISTICS
+	if o == "--reset-wdim":
+		action = RESET_WDIM
 
 if action == -1:
 	print("need an action to perform.")
@@ -136,6 +140,9 @@ elif action == SET_DIMMER_CONTROL:
 	packet = struct.pack("!IIII", MCUCTRL_MAGIC, action, lampmac, off)
 
 elif action == GET_STATISTICS:
+	packet = struct.pack("!IIII", MCUCTRL_MAGIC, action, lampmac, 0)
+
+elif action == RESET_WDIM:
 	packet = struct.pack("!IIII", MCUCTRL_MAGIC, action, lampmac, 0)
 
 elif action == ENTER_UPDATE_MODE:

@@ -42,6 +42,7 @@ def usage():
 	print("\t--set-assigned-lamps <filename>		set the lamps assigned to an WMCU");
 	print("\t--set-rf-power <val>			set the WMCU RF power");
 	print("\t--set-jam-density <val>		set the WMCU jam density (time between pkts in ms)");
+	print("\t--reset-device				reset the WMCU");
 	sys.exit(1)
 
 action		= -1
@@ -55,14 +56,15 @@ SET_ASSIGNED_LAMPS	= 5
 SET_RF_DELAY		= 7
 SET_RF_POWER		= 10
 SET_JAM_DENSITY		= 11
+RESET_DEVICE		= 13
 
 MCUCTRL_MAGIC 	= 0x23542667
 
 try:
 	opts, args = getopt.getopt(sys.argv[1:],
-		"hh:p:s:s:s:s:s:",
+		"hh:p:s:s:s:s:s:r",
 		["help", "host=", "port=", "set-mcu-id=", "set-rf-delay=", "set-assigned-lamps=",
-		 "set-rf-power=", "set-jam-density="])
+		 "set-rf-power=", "set-jam-density=", "reset-device" ])
 
 except getopt.GetoptError, err:
 	print str(err)
@@ -90,6 +92,8 @@ for o, a in opts:
 	if o == "--set-jam-density":
 		action = SET_JAM_DENSITY
 		density = int(a)
+	if o == "--reset-device":
+		action = RESET_DEVICE
 
 if action == -1:
 	print("need an action to perform.\n")
@@ -106,6 +110,9 @@ if action == SET_RF_POWER:
 
 if action == SET_JAM_DENSITY:
 	packet = struct.pack("!IIII", MCUCTRL_MAGIC, action, 0, density)
+
+if action == RESET_DEVICE:
+	packet = struct.pack("!IIII", MCUCTRL_MAGIC, action, 0, 0)
 
 elif action == SET_ASSIGNED_LAMPS:
 	lamps = read_lamp_map(lamp_list_file)
