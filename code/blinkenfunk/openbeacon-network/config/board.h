@@ -101,15 +101,15 @@
 /* configuration structure       */
 /*-------------------------------*/
 
-#define TENVIRONMENT_MAGIC 0x1DECADE
+#define TENVIRONMENT_MAGIC 0x2DECADE
 #define MAX_LAMPS (RF_PAYLOAD_SIZE * 2)
 
 extern unsigned char last_lamp_val[MAX_LAMPS];
 
 typedef struct
 {
-  unsigned short mac;
   unsigned char flags, screen, x, y;
+  unsigned short mac;
 } PACKED LampMap;
 
 typedef struct
@@ -117,10 +117,9 @@ typedef struct
   unsigned int magic, size, crc16;
   signed int mcu_id;
   unsigned int rf_delay;
-  unsigned char mac_h, mac_l;
-  unsigned short reserved;
   unsigned int n_lamps;
   LampMap lamp_map[MAX_LAMPS];
+  unsigned char mac_h, mac_l;
 } PACKED __attribute__((aligned (4))) TEnvironment;
 
 /*----------------------------------*/
