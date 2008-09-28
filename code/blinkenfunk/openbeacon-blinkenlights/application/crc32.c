@@ -27,6 +27,7 @@
 
  */
 
+#include <beacontypes.h>
 #include "crc32.h"
 
 #define ENDIAN_BYTE0_BITPOS (0*8)
@@ -99,18 +100,18 @@ crc32 (const u_int8_t * buf, int len)
     {
       data = *((u_int32_t *) buf);
 
-      crc = crc_table[(crc ^ (data >> ENDIAN_BYTE0_BITPOS)) & 0xFF] ^ (crc >>8);
-      crc = crc_table[(crc ^ (data >> ENDIAN_BYTE1_BITPOS)) & 0xFF] ^ (crc >>8);
-      crc = crc_table[(crc ^ (data >> ENDIAN_BYTE2_BITPOS)) & 0xFF] ^ (crc >>8);
-      crc = crc_table[(crc ^ (data >> ENDIAN_BYTE3_BITPOS)) & 0xFF] ^ (crc >>8);
+      crc = crc32_table[(crc ^ (data >> ENDIAN_BYTE0_BITPOS)) & 0xFF] ^ (crc >>8);
+      crc = crc32_table[(crc ^ (data >> ENDIAN_BYTE1_BITPOS)) & 0xFF] ^ (crc >>8);
+      crc = crc32_table[(crc ^ (data >> ENDIAN_BYTE2_BITPOS)) & 0xFF] ^ (crc >>8);
+      crc = crc32_table[(crc ^ (data >> ENDIAN_BYTE3_BITPOS)) & 0xFF] ^ (crc >>8);
 
-      buf += 4:
+      buf += 4;
       len -= 4;
     }
 
   /* handle remaining single bytes */
   while (len--)
-    crc = crc_table[(crc ^ *buf++) 0xFF] ^ (crc >> 8);
+    crc = crc32_table[(crc ^ *buf++) & 0xFF] ^ (crc >> 8);
 
   return crc ^ 0xffffffffL;
 }
