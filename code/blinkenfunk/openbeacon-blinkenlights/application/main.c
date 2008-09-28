@@ -75,8 +75,10 @@ prvSetupHardware (void)
 
   /* If no previous environment exists - create a new, but don't store it */
   env_init ();
-  if (!env_load ())
+  if (!env_load ()) {
+    DumpStringToUSB ("unable to load environment, resetting to defaults\n");
     vResetEnv();
+  }
 
   if (env.e.dimmer_delay > 1000)
      env.e.dimmer_delay = 0;
@@ -100,16 +102,12 @@ main (void)
 	       NULL, TASK_USB_PRIORITY, NULL);
 
   vInitProtocolLayer ();
-
   vUSBShellInit ();
-
-  vRndInit ( env.e.mac );
-
+  vRndInit (env.e.mac);
   vInitDimmer ();
-
   vLedSetGreen (1);
-
   vTaskStartScheduler ();
 
   return 0;
 }
+
