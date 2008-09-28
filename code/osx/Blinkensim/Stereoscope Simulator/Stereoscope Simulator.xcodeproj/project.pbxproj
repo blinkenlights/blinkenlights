@@ -39,7 +39,7 @@
 		3108D2E20E8F312A0016A9B2 /* Example.material in Resources */ = {isa = PBXBuildFile; fileRef = 3108D2E10E8F312A0016A9B2 /* Example.material */; };
 		3108D2F30E8F32010016A9B2 /* RustySteel.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3108D2F20E8F32010016A9B2 /* RustySteel.jpg */; };
 		3108D3A20E8F43800016A9B2 /* StereoscopeOgreView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3108D3A10E8F43800016A9B2 /* StereoscopeOgreView.mm */; };
-		3108D3BE0E8F478B0016A9B2 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3108D3BD0E8F478B0016A9B2 /* MainMenu.xib */; };
+		3108D4E90E8F4DF00016A9B2 /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 3108D4E80E8F4DF00016A9B2 /* MainMenu.nib */; };
 		F2B200050E8F3F8B00A2EFC7 /* StereoscopeSimulator.icns in Resources */ = {isa = PBXBuildFile; fileRef = F2B200040E8F3F8B00A2EFC7 /* StereoscopeSimulator.icns */; };
 /* End PBXBuildFile section */
 
@@ -93,7 +93,7 @@
 		3108D2F20E8F32010016A9B2 /* RustySteel.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = RustySteel.jpg; sourceTree = "<group>"; };
 		3108D3A00E8F43800016A9B2 /* StereoscopeOgreView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StereoscopeOgreView.h; sourceTree = "<group>"; };
 		3108D3A10E8F43800016A9B2 /* StereoscopeOgreView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = StereoscopeOgreView.mm; sourceTree = "<group>"; };
-		3108D3BD0E8F478B0016A9B2 /* MainMenu.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
+		3108D4E80E8F4DF00016A9B2 /* MainMenu.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; path = MainMenu.nib; sourceTree = "<group>"; };
 		F2B200040E8F3F8B00A2EFC7 /* StereoscopeSimulator.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = StereoscopeSimulator.icns; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -154,7 +154,7 @@
 			children = (
 				3108D2770E8F25D70016A9B2 /* Media */,
 				00ABEF060B4F7CAD0059129A /* Old Media */,
-				3108D3BD0E8F478B0016A9B2 /* MainMenu.xib */,
+				3108D4E80E8F4DF00016A9B2 /* MainMenu.nib */,
 				000E263F0B393B0A004EA2DF /* plugins.cfg */,
 				00ABEB540B4D8A990059129A /* Info.plist */,
 				F2B200040E8F3F8B00A2EFC7 /* StereoscopeSimulator.icns */,
@@ -271,7 +271,7 @@
 				3108D2E20E8F312A0016A9B2 /* Example.material in Resources */,
 				3108D2F30E8F32010016A9B2 /* RustySteel.jpg in Resources */,
 				F2B200050E8F3F8B00A2EFC7 /* StereoscopeSimulator.icns in Resources */,
-				3108D3BE0E8F478B0016A9B2 /* MainMenu.xib in Resources */,
+				3108D4E90E8F4DF00016A9B2 /* MainMenu.nib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
