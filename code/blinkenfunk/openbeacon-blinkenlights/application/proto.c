@@ -46,6 +46,7 @@ unsigned int pings_lost = 0;
 unsigned int last_sequence = 0;
 unsigned int last_ping_seq = 0;
 static unsigned int pt_reset_type = 0;
+static portBASE_TYPE pt_dump_registers = 0;
 unsigned int debug = 0;
 
 static BRFPacket pkg;
@@ -75,8 +76,13 @@ PtInitNrfFrontend (int ResetType)
   pt_reset_type = ResetType;
 }
 
-void
-PtDumpNrfRegisters (void)
+void PtDumpNrfRegisters (void)
+{
+  pt_dump_registers=pdTRUE;
+}
+
+static inline void
+PtInternalDumpNrfRegisters (void)
 {
   unsigned int size;
   unsigned char reg, buf[32], *p;
@@ -349,8 +355,8 @@ bParsePacket (void)
     sendReply ();
 }
 
-void
-vnRFtaskRx (void *parameter)
+static void
+vnRFtaskRxTx (void *parameter)
 {
   u_int32_t crc;
   (void) parameter;
@@ -364,7 +370,8 @@ vnRFtaskRx (void *parameter)
 
   for (;;)
     {
-      if (pt_reset_type)
+      /* reset RF interface if needed */
+      if ( pt_reset_type )
 	{
 	  nRFCMD_CE (0);
 	  vLedSetGreen (1);
@@ -387,6 +394,13 @@ vnRFtaskRx (void *parameter)
 	  nRFCMD_CE (1);
 	  vLedSetGreen (0);
 	  pt_reset_type = 0;
+	}
+
+      /* dump RF interface registers if needed */
+      if( pt_dump_registers )
+	{
+	  PtInternalDumpNrfRegisters ();
+	  pt_dump_registers = pdFALSE;
 	}
 
       status = nRFAPI_GetFifoStatus ();
@@ -449,6 +463,6 @@ vnRFtaskRx (void *parameter)
 void
 vInitProtocolLayer (void)
 {
-  xTaskCreate (vnRFtaskRx, (signed portCHAR *) "nRF_Rx",
+  xTaskCreate (vnRFtaskRxTx, (signed portCHAR *) "nRF_RxTx",
 	       TASK_NRF_STACK, NULL, TASK_NRF_PRIORITY, NULL);
 }
