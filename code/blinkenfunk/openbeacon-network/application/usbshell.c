@@ -132,6 +132,9 @@ cmd_help (const portCHAR * cmd)
   shell_printf ("	Show variables currently stored in the non-volatile flash memory\n");
   shell_printf ("update\n");
   shell_printf ("        Enter update mode - DO NOT USE FOR FUN\n\n");
+
+shell_printf ("SIZE %d\n", sizeof(TEnvironment));
+
 }
 
 static int

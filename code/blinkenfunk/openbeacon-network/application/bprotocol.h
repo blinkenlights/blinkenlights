@@ -179,6 +179,7 @@ struct mcu_setup_header
 #define MCU_DEVCTRL_COMMAND_SET_DIMMER_CONTROL	9	/* set dimmer control (force off) 		*/
 #define MCU_DEVCTRL_COMMAND_SET_RF_POWER	10	/* set RF power level				*/
 #define MCU_DEVCTRL_COMMAND_SET_JAM_DENSITY	11	/* set JAM density (pkt / ms)			*/
+#define MCU_DEVCTRL_COMMAND_SEND_WMCU_STATS	12	/* check WMCU stats				*/
 #define MCU_DEVCTRL_COMMAND_OUTPUT_RAW		0xff	/* DEBUG: output raw RF packet			*/
 
 typedef struct mcu_devctrl_header  mcu_devctrl_header_t;

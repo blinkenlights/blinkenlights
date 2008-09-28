@@ -72,9 +72,12 @@ b_parse_mcu_multiframe (mcu_multiframe_header_t * header, unsigned int maxlen)
   if (maxlen < sizeof (*header))
     return 0;
 
-  if (sequence_seed == 0)
+  if (sequence_seed == 0) {
     sequence_seed = (PtSwapLong (header->timestamp_l))
       - (unsigned int) (xTaskGetTickCount () / portTICK_RATE_MS);
+  
+    debug_printf ("seeding sequence: %lu\n", sequence_seed);
+  }
 
 //      debug_printf(" parsing mcu multiframe maxlen = %d\n", maxlen);
 
@@ -121,6 +124,14 @@ b_parse_mcu_multiframe (mcu_multiframe_header_t * header, unsigned int maxlen)
     }
 
   return 0;
+}
+  
+static void send_udp (char *buffer)
+{
+  udp_disconnect (b_ret_pcb);
+  udp_connect (b_ret_pcb, &b_last_ipaddr, MCU_RESPONSE_PORT);
+  b_ret_pbuf->payload = buffer;
+  udp_send (b_ret_pcb, b_ret_pbuf);
 }
 
 static int
@@ -258,6 +269,11 @@ b_send_wdim_stats (unsigned int lamp_mac)
   PtTransmit (&rfpkg);
 }
 
+static inline void
+b_send_wmcu_stats (void)
+{
+}
+
 static int
 b_parse_mcu_devctrl (mcu_devctrl_header_t * header, int maxlen)
 {
@@ -369,6 +385,11 @@ b_parse_mcu_devctrl (mcu_devctrl_header_t * header, int maxlen)
 	PtSetRfJamDensity (header->value);
         break;
       }
+    case MCU_DEVCTRL_COMMAND_SEND_WMCU_STATS:
+      {
+	b_send_wmcu_stats ();
+	break;
+      }
     case MCU_DEVCTRL_COMMAND_OUTPUT_RAW:
       {
 	int i;
@@ -464,11 +485,7 @@ b_parse_rfrx_pkg (BRFPacket * pkg)
       hdr->param[2] = PtSwapLong (pkg->statistics.pings_lost);
       hdr->param[3] = PtSwapLong (pkg->statistics.fw_version);
       hdr->param[4] = PtSwapLong (VERSION_INT);
-
-      udp_disconnect (b_ret_pcb);
-      udp_connect (b_ret_pcb, &b_last_ipaddr, MCU_RESPONSE_PORT);
-      b_ret_pbuf->payload = buffer;
-      udp_send (b_ret_pcb, b_ret_pbuf);
+      send_udp (buffer);
       break;
     default:
       debug_printf ("unexpected dimmer return received, cmd = %d\n",

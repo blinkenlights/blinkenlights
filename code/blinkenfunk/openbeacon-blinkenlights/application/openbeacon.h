@@ -35,7 +35,7 @@
 
 #define GAMMA_DEFAULT	200
 #define FIFO_DEPTH	256
-#define RF_PAYLOAD_SIZE	20
+#define RF_PAYLOAD_SIZE	16
 
 enum
 {
@@ -60,6 +60,7 @@ typedef struct
   union
   {
     unsigned char payload[RF_PAYLOAD_SIZE];
+    unsigned char dummy[4];
 
     struct
     {
