@@ -270,16 +270,22 @@ b_send_wdim_stats (unsigned int lamp_mac)
 static inline void
 b_send_wmcu_stats (void)
 {
+  static char buffer[64] = { 0 };
+  struct mcu_devctrl_header *hdr = (struct mcu_devctrl_header *) buffer;
+
+  hdr->magic = PtSwapLong (MAGIC_MCU_RESPONSE);
+//  hdr->command = PtSwapLong (pkg->cmd);
+  hdr->mac = 0;
+
+  hdr->param[0] = PtSwapLong (VERSION_INT);
+  hdr->param[1] = xTaskGetTickCount();
+  send_udp (buffer);
 }
 
 static int
 b_parse_mcu_devctrl (mcu_devctrl_header_t * header, int maxlen)
 {
   unsigned int i;
-//      int len = sizeof(*header);
-
-//      if (len > maxlen)
-//              return 0;
 
   b_rec_setup++;
 
@@ -411,8 +417,12 @@ static void
 b_recv (void *arg, struct udp_pcb *pcb, struct pbuf *p, struct ip_addr *addr,
 	u16_t port)
 {
-  unsigned int off = 0;
   unsigned char *payload = (unsigned char *) p->payload;
+  unsigned int magic = 
+      	payload[0] << 24 |
+	payload[1] << 16 | 
+	payload[2] << 8  |
+	payload[3];
 
   b_rec_total++;
 
@@ -422,41 +432,22 @@ b_recv (void *arg, struct udp_pcb *pcb, struct pbuf *p, struct ip_addr *addr,
       return;
     }
 
-  do
-    {
-      unsigned int consumed = 0;
-      unsigned int magic = payload[off + 0] << 24 |
-	payload[off + 1] << 16 | payload[off + 2] << 8 | payload[off + 3];
 
-      switch (magic)
-	{
-	case MAGIC_MCU_MULTIFRAME:
-	  consumed =
-	    b_parse_mcu_multiframe ((mcu_multiframe_header_t *) (p->payload +
-								 off),
-				    p->len - off);
+  switch (magic)
+   {
+     case MAGIC_MCU_MULTIFRAME:
+       b_parse_mcu_multiframe ((mcu_multiframe_header_t *) (p->payload), p->len);
+       break;
+     case MAGIC_MCU_SETUP:
+       b_parse_mcu_setup ((mcu_setup_header_t *) (p->payload), p->len);
 	  break;
-	case MAGIC_MCU_SETUP:
-	  consumed =
-	    b_parse_mcu_setup ((mcu_setup_header_t *) (p->payload + off),
-			       p->len - off);
-	  break;
-	case MAGIC_MCU_DEVCTRL:
-	  memcpy (&b_last_ipaddr, addr, sizeof (b_last_ipaddr));
-	  consumed =
-	    b_parse_mcu_devctrl ((mcu_devctrl_header_t *) (p->payload + off),
-				 p->len - off);
-	  break;
-	default:
-	  debug_printf (" %s(): unknown magic %08x\n", __func__, magic);
-	}
-
-      if (consumed == 0)
-	break;
-
-      off += consumed;
+     case MAGIC_MCU_DEVCTRL:
+       memcpy (&b_last_ipaddr, addr, sizeof (b_last_ipaddr));
+       b_parse_mcu_devctrl ((mcu_devctrl_header_t *) (p->payload), p->len);
+       break;
+     default:
+       debug_printf (" %s(): unknown magic %08x\n", __func__, magic);
     }
-  while (off < p->len);
 
   pbuf_free (p);
 }
@@ -482,7 +473,6 @@ b_parse_rfrx_pkg (BRFPacket * pkg)
       hdr->param[1] = PtSwapLong (pkg->statistics.emi_pulses);
       hdr->param[2] = PtSwapLong (pkg->statistics.pings_lost);
       hdr->param[3] = PtSwapLong (pkg->statistics.fw_version);
-      hdr->param[4] = PtSwapLong (VERSION_INT);
       send_udp (buffer);
       break;
     default:
