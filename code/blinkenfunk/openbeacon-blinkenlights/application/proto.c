@@ -300,7 +300,6 @@ bParsePacket (unsigned char pipe)
 	  env.e.wmcu_id = pkg.set_lamp_id.wmcu_id;
 	  vTaskDelay (100);
 	  env_store ();
-	  resetDevice ();
 	}
       else
 	{
