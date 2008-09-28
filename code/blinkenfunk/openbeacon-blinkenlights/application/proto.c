@@ -320,6 +320,8 @@ bParsePacket (unsigned char pipe)
     case RF_CMD_WRITE_CONFIG:
       DumpStringToUSB ("writing config.\n");
       env_store ();
+      /* wait 10ms the same packet is to arrive soon */
+      vTaskDelay (10 / portTICK_RATE_MS);
       break;
     case RF_CMD_SET_JITTER:
       vSetDimmerJitterUS (pkg.set_jitter.jitter);
