@@ -38,9 +38,12 @@
 #include "env.h"
 #include "rnd.h"
 
+#define DEFAULT_JAM_DENSITY 10
+
 static BRFPacket rfpkg;
 unsigned int rf_sent_broadcast, rf_sent_unicast, rf_rec;
-static char nrf_powerlevel_current, nrf_powerlevel_last;
+static unsigned char nrf_powerlevel_current, nrf_powerlevel_last;
+static unsigned int jam_density_ms;
 const unsigned char broadcast_mac[NRF_MAX_MAC_SIZE] =
   { 'D', 'E', 'C', 'A', 'D' };
 
@@ -62,6 +65,8 @@ PtInitNRF (void)
   if (!nRFAPI_Init (DEFAULT_CHANNEL, broadcast_mac,
 		    sizeof (broadcast_mac), ENABLED_NRF_FEATURES))
     return 0;
+
+  jam_density_ms = DEFAULT_JAM_DENSITY;
 
   nrf_powerlevel_last = nrf_powerlevel_current = -1;
   PtSetRfPowerLevel ( NRF_POWERLEVEL_MAX );
@@ -143,11 +148,22 @@ PtTransmit (BRFPacket * pkg)
   PtInternalTransmit ( pkg );
 }
 
+void PtSetRfJamDensity ( unsigned char milliseconds )
+{
+  jam_density_ms = milliseconds;
+}
+
+extern unsigned char PtGetRfJamDensity ( void )
+{
+  return jam_density_ms;
+}
+
 static void
 vnRFtaskRxTx (void *parameter)
 {
   u_int32_t crc,t;
   u_int8_t status;
+  portTickType last_ticks = 0, jam_ticks = 0;
 
   if (!PtInitNRF ())
     return;
@@ -167,7 +183,7 @@ vnRFtaskRxTx (void *parameter)
 	nRFAPI_FlushTX ();
 
       /* check for received packets */
-      if ((status & FIFO_RX_FULL) || nRFCMD_WaitRx (10))
+      if ((status & FIFO_RX_FULL) || nRFCMD_WaitRx (0))
 	{
 	  vLedSetGreen (0);
 
@@ -204,7 +220,7 @@ vnRFtaskRxTx (void *parameter)
 	}
 
       /* transmit current lamp value */
-      if (env.e.mcu_id)
+      if (env.e.mcu_id && ((xTaskGetTickCount () - last_ticks) > jam_ticks) )
 	{
 	  memset (&rfpkg, 0, sizeof (rfpkg));
 	  rfpkg.cmd = RF_CMD_SET_VALUES;
@@ -217,9 +233,14 @@ vnRFtaskRxTx (void *parameter)
 	      (last_lamp_val[(t * 2) + 1] << 4);
 
 	  // random delay to avoid collisions
-	  vTaskDelay ( (RndNumber () % 10) / portTICK_RATE_MS );
 	  PtInternalTransmit (&rfpkg);
+
+	  // prepare next jam transmission
+	  last_ticks = xTaskGetTickCount ();
+	  jam_ticks = ((RndNumber () % (jam_density*2)) / portTICK_RATE_MS;
 	}
+
+      vTaskDelay ( 5 / portTICK_RATE_MS );
 
       /* did I already mention the paranoid world thing? */
       nRFAPI_ClearIRQ (MASK_IRQ_FLAGS);
