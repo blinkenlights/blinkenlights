@@ -84,6 +84,7 @@ typedef struct
       unsigned long packet_count;
       unsigned long pings_lost;
       unsigned long fw_version;
+      unsigned long tick_count;
     } PACKED statistics;
 
     struct
