@@ -126,12 +126,12 @@ cmd_help (const portCHAR * cmd)
   shell_print ("help				This screen\n");
   shell_print ("id <mcu_id> <lamp_id>		Set mcu and lamp id\n");
   shell_print ("reset				Reset the non-volatile flash to defaults\n");
+  shell_print ("mac <xxyy> [<crc>]		Set the MAC address of this unit.\n");
   shell_print ("nrf_dump			dumps 2.4GHz frontend (nRF24L01) register set\n");  
   shell_print ("nrf_init			Initialize 2.4GHz frontend from scratch\n");  
   shell_print ("nrf_reset			reset 2.4GHz frontend FIFOs\n");  
   shell_print ("status				Print status information about this unit.\n");
   shell_print ("update				Enter update mode - DO NOT USE FOR FUN\n");
-  shell_print ("[wdim-]mac <xxyy> [<crc>]	Set the MAC address of this unit.\n");
 }
 
 static int
@@ -360,7 +360,6 @@ static struct cmd_t
   { "update",		&cmd_update	},
   { "mac", 		&cmd_mac 	},
   { "MAC", 		&cmd_mac 	},
-  { "wdim-mac",		&cmd_mac	},
     /* end marker */
   { NULL, NULL }
 };
