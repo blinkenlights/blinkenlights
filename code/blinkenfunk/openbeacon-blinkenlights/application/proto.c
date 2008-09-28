@@ -67,7 +67,7 @@ PtUpdateWmcuId (unsigned char id)
   nRFAPI_SetTxMAC (wmcu_mac, sizeof (wmcu_mac));
 
   /* update jamming data channel id */
-  jam_mac[sizeof (wmcu_mac) - 1] = id;
+  jam_mac[sizeof (jam_mac) - 1] = id;
   nRFAPI_SetRxMAC (jam_mac, sizeof (jam_mac), 1);
 }
 
