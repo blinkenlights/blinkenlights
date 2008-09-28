@@ -5,13 +5,13 @@
 	<key>IBFramework Version</key>
 	<string>672</string>
 	<key>IBLastKnownRelativeProjectPath</key>
-	<string>../Samples.xcodeproj</string>
+	<string>Stereoscope Simulator.xcodeproj</string>
 	<key>IBOldestOS</key>
 	<integer>5</integer>
 	<key>IBOpenObjects</key>
 	<array>
-		<integer>21</integer>
 		<integer>29</integer>
+		<integer>2</integer>
 	</array>
 	<key>IBSystem Version</key>
 	<string>9F33</string>

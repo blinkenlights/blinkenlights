@@ -6,6 +6,8 @@
 	<string>English</string>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
+	<key>CFBundleIconFile</key>
+	<string>StereoscopeSimulator.icns</string>
 	<key>CFBundleIdentifier</key>
 	<string>de.codingmonkeys.Stereoscope.Simulator</string>
 	<key>CFBundleInfoDictionaryVersion</key>
