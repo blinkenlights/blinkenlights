@@ -141,6 +141,16 @@ shuffle_tx_byteorder (unsigned long *v, int len)
     }
 }
 
+static void
+resetDevice (void)
+{
+  vTaskDelay (100);
+  vTaskSuspendAll ();
+  portENTER_CRITICAL ();
+  /* endless loop to trigger watchdog reset */
+  while (1) {};
+}
+
 static inline void
 sendReply (void)
 {
@@ -290,6 +300,7 @@ bParsePacket (unsigned char pipe)
 	  env.e.wmcu_id = pkg.set_lamp_id.wmcu_id;
 	  vTaskDelay (100);
 	  env_store ();
+	  resetDevice ();
 	}
       else
 	{
@@ -343,6 +354,11 @@ bParsePacket (unsigned char pipe)
 	}
       pings_lost += pkg.ping.sequence - last_ping_seq - 1;
       break;
+    case RF_CMD_RESET:
+      {
+        resetDevice();
+        break;
+      }
     case RF_CMD_ENTER_UPDATE_MODE:
       if (pkg.payload[0] != 0xDE ||
 	  pkg.payload[1] != 0xAD ||

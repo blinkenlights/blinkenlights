@@ -282,6 +282,16 @@ b_send_wmcu_stats (void)
   send_udp (buffer);
 }
 
+static inline void
+b_send_wdim_reset (unsigned short lamp_mac)
+{
+  memset (&rfpkg, 0, sizeof (rfpkg));
+  rfpkg.cmd = RF_CMD_RESET;
+  rfpkg.mac = lamp_mac;
+  rfpkg.wmcu_id = env.e.mcu_id;
+  PtTransmit (&rfpkg);
+}
+
 static int
 b_parse_mcu_devctrl (mcu_devctrl_header_t * header, int maxlen)
 {
@@ -393,6 +403,20 @@ b_parse_mcu_devctrl (mcu_devctrl_header_t * header, int maxlen)
       {
 	b_send_wmcu_stats ();
 	break;
+      }
+
+    case MCU_DEVCTRL_COMMAND_RESET_MCU:
+      {
+        vTaskSuspendAll ();
+	portENTER_CRITICAL ();
+	/* endless loop to trigger watchdog reset */
+	while (1) {};
+        break;
+      }
+    case MCU_DEVCTRL_COMMAND_RESET_WDIM:
+      {
+        b_send_wdim_reset (header->mac);
+        break;
       }
     case MCU_DEVCTRL_COMMAND_OUTPUT_RAW:
       {
