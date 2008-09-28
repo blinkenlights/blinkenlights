@@ -75,7 +75,7 @@ cmd_status (const portCHAR * cmd)
      rf_sent_broadcast, rf_sent_unicast, rf_rec);
   shell_printf ("	assigned lamps: %d\n", env.e.n_lamps);
   shell_printf ("	rf power level: %d\n", PtGetRfPowerLevel());
-  shell_printf ("	jam density: %d\n", 0);
+  shell_printf ("	jam density: %d (wait time in ms)\n", PtGetRfJamDensity());
   debug_printf ("\n");
 }
 
@@ -85,8 +85,7 @@ cmd_lampmap (const portCHAR * cmd)
   unsigned int i;
 
   shell_printf ("assigned lamps (%d):\n", env.e.n_lamps);
-  shell_printf
-    ("	#lamp MAC	#screen		#x	#y	#last value\n");
+  shell_printf ("	#lamp MAC	#screen		#x	#y	#last value\n");
 
   for (i = 0; i < env.e.n_lamps; i++)
     {

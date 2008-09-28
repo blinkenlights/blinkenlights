@@ -366,7 +366,7 @@ b_parse_mcu_devctrl (mcu_devctrl_header_t * header, int maxlen)
     case MCU_DEVCTRL_COMMAND_SET_JAM_DENSITY:
       {
         debug_printf ("new jam density: %d\n", header->value);
-	//!!!PtSetRfPowerLevel (header->value);
+	PtSetRfJamDensity (header->value);
         break;
       }
     case MCU_DEVCTRL_COMMAND_OUTPUT_RAW:
@@ -379,13 +379,13 @@ b_parse_mcu_devctrl (mcu_devctrl_header_t * header, int maxlen)
 	for (i = 0; i < RF_PAYLOAD_SIZE; i++)
 	  rfpkg.payload[i] = header->param[i + 3];
 
-//                      hex_dump((unsigned char *) &rfpkg, 0, sizeof(rfpkg));
+//        hex_dump((unsigned char *) &rfpkg, 0, sizeof(rfpkg));
 	PtTransmit (&rfpkg);
 	break;
       }
     }
 
-  return 0;			//len;
+  return 0; //len;
 }
 
 static void
