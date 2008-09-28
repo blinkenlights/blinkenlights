@@ -92,6 +92,10 @@ shuffle_tx_byteorder (unsigned long *v, int len)
 static void
 PtInternalTransmit (BRFPacket * pkg)
 {
+  /* update the sequence */
+  if (sequence_seed == 0)
+    return;
+
   /* turn on redLED for TX indication */
   vLedSetRed (1);
 
@@ -103,10 +107,6 @@ PtInternalTransmit (BRFPacket * pkg)
 
   /* set TX mode */
   nRFAPI_SetRxMode (0);
-
-  /* update the sequence */
-  if (sequence_seed == 0)
-    return;
 
   if (pkg->mac == 0xffff)
     rf_sent_broadcast++;
