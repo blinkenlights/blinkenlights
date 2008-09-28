@@ -55,8 +55,9 @@ prvSetupHardware (void)
   /*  Enable the peripheral clock. */
   AT91C_BASE_PMC->PMC_PCER =
     (1 << AT91C_ID_PIOA) |
-    (1 << AT91C_ID_PIOB) | (1 << AT91C_ID_EMAC) | (1 << AT91C_ID_SPI1);
-
+    (1 << AT91C_ID_PIOB) |
+    (1 << AT91C_ID_EMAC) |
+    (1 << AT91C_ID_SPI1);
 }
 
 /**********************************************************************/
@@ -87,7 +88,7 @@ main (void)
   if (env.e.rf_delay > 1000)
     env.e.rf_delay = 0;
 
-  vRndInit ( (((u_int32_t)env.e.mac_h)<<8) | env.e.mac_l );
+  vRndInit ((((u_int32_t) env.e.mac_h) << 8) | env.e.mac_l);
   vNetworkInit ();
 
   xTaskCreate (vUSBCDCTask, (signed portCHAR *) "USB", TASK_USB_STACK,

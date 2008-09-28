@@ -73,9 +73,9 @@ cmd_status (const portCHAR * cmd)
      b_rec_total, b_rec_frames, b_rec_setup);
   shell_printf ("	RF statistics: sent %d broadcasts, %d unicasts, received %d\n",
      rf_sent_broadcast, rf_sent_unicast, rf_rec);
+  shell_printf ("	jam density: %d (wait time in ms)\n", PtGetRfJamDensity());
   shell_printf ("	assigned lamps: %d\n", env.e.n_lamps);
   shell_printf ("	rf power level: %d\n", PtGetRfPowerLevel());
-  shell_printf ("	jam density: %d (wait time in ms)\n", PtGetRfJamDensity());
   debug_printf ("\n");
 }
 
@@ -210,8 +210,7 @@ cmd_mac (const portCHAR * cmd)
     }
 
   shell_printf ("setting new MAC: %02x%02x.\n", mac_h, mac_l);
-  shell_printf
-    ("Please power-cycle the device to make this change take place.\n");
+  shell_printf ("Please power-cycle the device to make this change take place.\n");
 
   env.e.mac_h = mac_h;
   env.e.mac_l = mac_l;
