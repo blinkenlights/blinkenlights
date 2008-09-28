@@ -120,6 +120,7 @@ typedef struct
   unsigned char mac_h, mac_l;
   unsigned int n_lamps;
   LampMap lamp_map[MAX_LAMPS];
+  unsigned short dummy[4 * 4]; // padding for old environment
 } __attribute__((aligned (8))) TEnvironment;
 
 /*----------------------------------*/

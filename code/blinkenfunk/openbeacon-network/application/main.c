@@ -42,6 +42,7 @@
 #include "proto.h"
 #include "usbshell.h"
 #include "env.h"
+#include "debug_printf.h"
 
 /**********************************************************************/
 static inline void
@@ -79,8 +80,10 @@ main (void)
 
   /* If no previous environment exists - create a new, but don't store it */
   env_init ();
-  if(!env_load ())
+  if(!env_load ()) {
+    debug_printf ("unable to load environment, resetting to defaults\n");
     bzero (&env, sizeof (env));
+  }
 
   if (env.e.n_lamps > MAX_LAMPS)
     env.e.n_lamps = 0;
