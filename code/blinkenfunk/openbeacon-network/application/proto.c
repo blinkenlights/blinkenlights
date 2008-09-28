@@ -26,6 +26,7 @@
 #include <string.h>
 #include <board.h>
 #include <beacontypes.h>
+#include <crc32.h>
 #include "led.h"
 #include "xxtea.h"
 #include "proto.h"
@@ -66,29 +67,9 @@ shuffle_tx_byteorder (unsigned long *v, int len)
     }
 }
 
-static inline short
-crc16 (const unsigned char *buffer, int size)
-{
-  unsigned short crc = 0xFFFF;
-
-  if (buffer && size)
-    while (size--)
-      {
-	crc = (crc >> 8) | (crc << 8);
-	crc ^= *buffer++;
-	crc ^= ((unsigned char) crc) >> 4;
-	crc ^= crc << 12;
-	crc ^= (crc & 0xFF) << 5;
-      }
-
-  return crc;
-}
-
 void
 vnRFTransmitPacket (BRFPacket * pkg)
 {
-  unsigned short crc;
-
   vTaskDelay (env.e.rf_delay / portTICK_RATE_MS);
 
   /* turn on redLED for TX indication */
@@ -112,8 +93,9 @@ vnRFTransmitPacket (BRFPacket * pkg)
   pkg->sequence = sequence_seed + (xTaskGetTickCount () / portTICK_RATE_MS);
 
   /* update crc */
-  crc = crc16 ((unsigned char *) pkg, sizeof (*pkg) - sizeof (pkg->crc));
-  pkg->crc = swapshort (crc);
+  pkg->crc =
+    swaplong (crc32
+	      ((unsigned char *) pkg, sizeof (*pkg) - sizeof (pkg->crc)));
 
   /* encrypt the data */
   shuffle_tx_byteorder ((unsigned long *) pkg, sizeof (*pkg) / sizeof (long));
@@ -140,7 +122,7 @@ vnRFTransmitPacket (BRFPacket * pkg)
 void
 vnRFtaskRx (void *parameter)
 {
-  u_int16_t crc;
+  u_int32_t crc;
   u_int8_t status;
 
   if (!PtInitNRF ())
@@ -164,7 +146,6 @@ vnRFtaskRx (void *parameter)
 	      /* read packet from nRF chip */
 	      nRFCMD_RegReadBuf (RD_RX_PLOAD, (unsigned char *) &rxpkg,
 				 sizeof (rxpkg));
-	      vLedSetRed (0);
 
 	      /* adjust byte order and decode */
 	      shuffle_tx_byteorder ((unsigned long *) &rxpkg,
@@ -175,23 +156,21 @@ vnRFtaskRx (void *parameter)
 
 	      /* verify the crc checksum */
 	      crc =
-		crc16 ((unsigned char *) &rxpkg,
+		crc32 ((unsigned char *) &rxpkg,
 		       sizeof (rxpkg) - sizeof (rxpkg.crc));
-
-	      /* sort out packets from other domains */
-	      if (rxpkg.wmcu_id != env.e.mcu_id)
-		continue;
-
-	      /* require packet to be sent from an dimmer */
-	      if (~rxpkg.cmd & RF_PKG_SENT_BY_DIMMER)
-		continue;
-
-	      //debug_printf("dumping received packet:\n");
-	      //hex_dump((unsigned char *) &rxpkg, 0, sizeof(rxpkg));
-	      b_parse_rfrx_pkg (&rxpkg);
-	      rf_rec++;
+	      if ((crc == swaplong (rxpkg.crc)) &&
+		  (rxpkg.wmcu_id == env.e.mcu_id) &&
+		  (rxpkg.cmd & RF_PKG_SENT_BY_DIMMER))
+		{
+		  //debug_printf("dumping received packet:\n");
+		  //hex_dump((unsigned char *) &rxpkg, 0, sizeof(rxpkg));
+		  b_parse_rfrx_pkg (&rxpkg);
+		  rf_rec++;
+		}
 	    }
 	  while ((nRFAPI_GetFifoStatus () & FIFO_RX_EMPTY) == 0);
+
+	  vLedSetRed (0);
 	}
 
       /* did I already mention the paranoid world thing? */

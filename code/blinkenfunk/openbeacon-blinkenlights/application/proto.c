@@ -29,6 +29,7 @@
 #include <board.h>
 #include <beacontypes.h>
 #include <USB-CDC.h>
+#include <crc32.h>
 #include "led.h"
 #include "xxtea.h"
 #include "proto.h"
@@ -141,8 +142,7 @@ sendReply (void)
 
   /* update crc */
   pkg.crc =
-    env_crc16 ((unsigned char *) &pkg, sizeof (pkg) - sizeof (pkg.crc));
-  pkg.crc = swapshort (pkg.crc);
+    swaplong(crc32 ((unsigned char *) &pkg, sizeof (pkg) - sizeof (pkg.crc)));
 
   /* encrypt data */
   shuffle_tx_byteorder ((unsigned long *) &pkg, sizeof (pkg) / sizeof (long));
@@ -352,7 +352,7 @@ bParsePacket (void)
 void
 vnRFtaskRx (void *parameter)
 {
-  u_int16_t crc;
+  u_int32_t crc;
   (void) parameter;
   int DidBlink = 0;
   unsigned char status;
@@ -410,10 +410,10 @@ vnRFtaskRx (void *parameter)
 
 	    /* verify the crc checksum */
 	    crc =
-	      env_crc16 ((unsigned char *) &pkg,
+	      crc32 ((unsigned char *) &pkg,
 			 sizeof (pkg) - sizeof (pkg.crc));
 
-	    if (crc == swapshort (pkg.crc))
+	    if (crc == swaplong (pkg.crc))
 	      {
 		/* valid paket */
 		if (!DidBlink)
@@ -427,9 +427,9 @@ vnRFtaskRx (void *parameter)
 	    else if (debug)
 	      {
 		DumpStringToUSB ("invalid CRC! ");
-		DumpHexToUSB (crc, 2);
+		DumpHexToUSB (crc, 4);
 		DumpStringToUSB (" != ");
-		DumpHexToUSB (pkg.crc, 2);
+		DumpHexToUSB (pkg.crc, 4);
 		DumpStringToUSB ("\n");
 	      }
 	  }
