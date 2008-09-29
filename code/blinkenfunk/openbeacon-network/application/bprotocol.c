@@ -75,7 +75,7 @@ b_parse_mcu_multiframe (mcu_multiframe_header_t * header, unsigned int maxlen)
   if (sequence_seed == 0) {
     sequence_seed = (PtSwapLong (header->timestamp_l))
       - (unsigned int) (xTaskGetTickCount () / portTICK_RATE_MS);
-  
+ 
     debug_printf ("seeding sequence: %lu\n", sequence_seed);
   }
 
