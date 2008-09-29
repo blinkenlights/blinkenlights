@@ -23,7 +23,7 @@ while 1:
 
 	if magic == 0xfeedbacd:
 		(packet_count, emi_pulses, pings_lost, fw_version, ticks) \
-			= struct.unpack_from("!IIII", data, 4*4)
+			= struct.unpack_from("!IIIII", data, 4*4)
 		
 		print "dimmer response: mac=%04x packet_count=%d emi_pulses=%d pings_lost=%d fw_version=%08x uptime=%03d:%02d:%02d" \
 			% (mac, packet_count, emi_pulses, pings_lost, fw_version, ticks / 3600, (ticks / 60) % 60, ticks % 60)
