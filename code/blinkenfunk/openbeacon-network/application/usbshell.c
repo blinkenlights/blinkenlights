@@ -58,7 +58,6 @@ cmd_status (const portCHAR * cmd)
   shell_printf ("	Uptime: %03d:%02d:%02d\n",
   		uptime / 3600, (uptime / 60) % 60, uptime % 60);
   shell_printf ("	WMCU ID: %d\n", env.e.mcu_id);
-  shell_printf ("	RF delay time: %d ms\n", env.e.rf_delay);
   shell_printf ("	MAC address:	%02x:%02x:%02x:%02x:%02x:%02x\n",
 		nic->hwaddr[0], nic->hwaddr[1], nic->hwaddr[2],
 		nic->hwaddr[3], nic->hwaddr[4], nic->hwaddr[5]);

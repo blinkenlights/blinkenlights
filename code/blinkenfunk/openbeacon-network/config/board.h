@@ -113,7 +113,6 @@ typedef struct
 {
   unsigned int magic, size, crc16;
   signed int mcu_id;
-  unsigned int rf_delay;
   unsigned int n_lamps;
   LampMap lamp_map[MAX_LAMPS];
   unsigned char mac_h, mac_l;

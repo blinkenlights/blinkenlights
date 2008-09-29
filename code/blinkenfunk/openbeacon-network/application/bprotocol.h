@@ -37,7 +37,7 @@
 #define MAGIC_HEARTBEAT		0x42424242  /* Heartbeat packet                      */
 
 #define MCU_LISTENER_PORT	2323
-#define MCU_RESPONSE_PORT	2324
+#define MCU_RESPONSE_PORT	23232
 #define MCU_ID_ANY		-1
 
 #define B_HEARTBEAT_PORT	4242
@@ -175,7 +175,6 @@ struct mcu_setup_header
 #define MCU_DEVCTRL_COMMAND_SET_JITTER		4	/* set the jitter for a lamp			*/
 #define MCU_DEVCTRL_COMMAND_SET_ASSIGNED_LAMPS	5	/* set lamps assigned to this MCU		*/
 #define MCU_DEVCTRL_COMMAND_SEND_WDIM_STATS	6	/* check WDIM statistics			*/
-#define MCU_DEVCTRL_COMMAND_SET_RF_DELAY	7	/* set RF delay 				*/
 #define MCU_DEVCTRL_COMMAND_SET_DIMMER_DELAY	8	/* set dimmer delay 				*/
 #define MCU_DEVCTRL_COMMAND_SET_DIMMER_CONTROL	9	/* set dimmer control (force off) 		*/
 #define MCU_DEVCTRL_COMMAND_SET_RF_POWER	10	/* set RF power level				*/

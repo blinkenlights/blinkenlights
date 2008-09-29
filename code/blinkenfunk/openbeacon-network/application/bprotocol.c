@@ -270,15 +270,23 @@ b_send_wdim_stats (unsigned int lamp_mac)
 static inline void
 b_send_wmcu_stats (void)
 {
-  static char buffer[64] = { 0 };
+  static char buffer[128] = { 0 };
   struct mcu_devctrl_header *hdr = (struct mcu_devctrl_header *) buffer;
 
   hdr->magic = PtSwapLong (MAGIC_MCU_RESPONSE);
   hdr->command = 0;
   hdr->mac = 0;
 
-  hdr->param[0] = PtSwapLong (VERSION_INT);
-  hdr->param[1] = xTaskGetTickCount() / portTICK_RATE_MS;
+  hdr->param[0] = PtSwapLong (env.e.mcu_id);
+  hdr->param[1] = PtSwapLong (b_rec_total);
+  hdr->param[2] = PtSwapLong (rf_sent_broadcast);
+  hdr->param[3] = PtSwapLong (rf_sent_unicast);
+  hdr->param[4] = PtSwapLong (rf_rec);
+  hdr->param[5] = PtSwapLong (PtGetRfJamDensity());
+  hdr->param[6] = PtSwapLong (PtGetRfPowerLevel());
+  hdr->param[7] = PtSwapLong (env.e.n_lamps);
+  hdr->param[8] = PtSwapLong (VERSION_INT);
+  hdr->param[9] = PtSwapLong ((xTaskGetTickCount() / portTICK_RATE_MS) / 1000);
   send_udp (buffer);
 }
 
@@ -365,12 +373,6 @@ b_parse_mcu_devctrl (mcu_devctrl_header_t * header, int maxlen)
       {
 	int lamp_mac = header->mac;
 	b_send_wdim_stats (lamp_mac);
-	break;
-      }
-    case MCU_DEVCTRL_COMMAND_SET_RF_DELAY:
-      {
-	env.e.rf_delay = header->value;
-	debug_printf ("new RF delay: %d ms\n", env.e.rf_delay);
 	break;
       }
     case MCU_DEVCTRL_COMMAND_SET_DIMMER_CONTROL:
@@ -497,6 +499,7 @@ b_parse_rfrx_pkg (BRFPacket * pkg)
       hdr->param[1] = PtSwapLong (pkg->statistics.emi_pulses);
       hdr->param[2] = PtSwapLong (pkg->statistics.pings_lost);
       hdr->param[3] = PtSwapLong (pkg->statistics.fw_version);
+      hdr->param[4] = PtSwapLong (pkg->statistics.tick_count);
       send_udp (buffer);
       break;
     default:
