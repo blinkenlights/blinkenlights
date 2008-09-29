@@ -2,7 +2,7 @@
 <!DOCTYPE bmix PUBLIC "-//BMix//DTD BMix 1.0//EN" "bmix.dtd">
 <bmix version="1.0" vmatrix-width="96" vmatrix-height="32" max-frame-interval="50">
 
-  <input id="Graffiti"    listen-port="2330" />
+  <input id="Graffiti"    listen-port="2330" alpha-mode="brightness" />
   <input id="Foreground"  listen-port="2324" />
   <input id="Top-East"    listen-port="2325" shadow-colour="#aa000000" />
   <input id="Bottom-East" listen-port="2326" />
@@ -21,10 +21,17 @@
   <layer input="Bottom-West" x="16" y="21" width="22" height="7" />
   <layer input="Background"  x="0"  y="0"  width="96" height="32" />
 
+<!--
   <output dest-addr="10.0.1.192" dest-port="2323" min-frame-interval="0" packet-format="MCU_MULTIFRAME">
     <screen x="16" y="11" width="22" height="17" bpp="4"/>
     <screen x="50" y="5"  width="30" height="23" bpp="4"/>
   </output>
+ -->
+ 
+  <dynamic-output min-frame-interval="0" packet-format="MCU_MULTIFRAME">
+    <screen x="16" y="11" width="22" height="17" bpp="4"/>
+    <screen x="50" y="5"  width="30" height="23" bpp="4"/>
+  </dynamic-output>
   
 <!-- Example outputs -->
 <!--

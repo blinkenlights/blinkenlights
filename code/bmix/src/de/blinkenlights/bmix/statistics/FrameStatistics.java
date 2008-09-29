@@ -62,7 +62,7 @@ public class FrameStatistics implements Serializable {
 			OutputStatistics outputStat = new OutputStatistics(
 					System.identityHashCode(output),
 					subframe0.getViewport(), 
-					output.getDestAddr(), output.getDestPort(), output.getMinSendInterval(), 
+					output.getDestinations(), output.getMinSendInterval(), 
 					output.getPacketType(), subframe0.getBpp());
 			outputStats.add(outputStat);
 		}

@@ -14,8 +14,6 @@ import java.awt.RenderingHints;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import sun.awt.RepaintArea;
-
 public class OutputSimulator implements FrameTarget {
 
     private JFrame frame;

@@ -8,18 +8,32 @@ public class BLHeartbeatPacket implements BLPacket {
 	private final int version;
 	
 	public static final int VERSION_NUMBER = 0;
+
+    private final String fromHost;
+
+    private final int fromPort;
 	
 	/**
-	 * Creates a new BLHeartbeatPacket.
+	 * Creates a new BLHeartbeatPacket for sending out. Received host and port
+	 * information is defaulted to null and 0 respectively.
 	 * 
 	 * @param version the heartbeat version
 	 */
 	public BLHeartbeatPacket(int version) {
 		this.version = version;
+		fromHost = null;
+		fromPort = 0;
 	}
 	
 	
-	/**
+	public BLHeartbeatPacket(int version, String fromHost, int fromPort) {
+        this.version = version;
+        this.fromHost = fromHost;
+        this.fromPort = fromPort;
+    }
+
+
+    /**
 	 * Gets the version.
 	 * 
 	 * @return the heartbeat version
@@ -28,6 +42,13 @@ public class BLHeartbeatPacket implements BLPacket {
 		return version;
 	}
 
+	public String getFromHost() {
+        return fromHost;
+    }
+	
+	public int getFromPort() {
+        return fromPort;
+    }
 
 	/**
 	 * Gets contents of this object in network protocol format.

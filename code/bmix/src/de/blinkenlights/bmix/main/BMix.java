@@ -30,9 +30,11 @@ import org.xml.sax.helpers.DefaultHandler;
 
 import de.blinkenlights.bmix.Version;
 import de.blinkenlights.bmix.mixer.BLImage;
+import de.blinkenlights.bmix.mixer.DynamicOutput;
+import de.blinkenlights.bmix.mixer.FixedOutput;
 import de.blinkenlights.bmix.mixer.Layer;
 import de.blinkenlights.bmix.mixer.Output;
-import de.blinkenlights.bmix.mixer.Output.PacketType;
+import de.blinkenlights.bmix.mixer.AbstractOutput.PacketType;
 import de.blinkenlights.bmix.monitor.Monitor;
 import de.blinkenlights.bmix.network.BLPacketReceiver;
 import de.blinkenlights.bmix.network.BLPacketReceiverThread;
@@ -321,7 +323,7 @@ public class BMix extends Monitor {
                     PacketType packetFormat = PacketType.valueOf(attributes.getValue("packet-format"));
                     
                     BLPacketSender sender = new BLPacketSender(destAddr, destPort);
-                    currentOutput = new Output(sender, rootLayer, minInterval, packetFormat);
+                    currentOutput = new FixedOutput(sender, rootLayer, minInterval, packetFormat);
                     outputs.add(currentOutput);
 
                 } else if (qName.equals("screen")) {
@@ -334,7 +336,19 @@ public class BMix extends Monitor {
                     Rectangle viewport = new Rectangle(x, y, width, height);
                     currentOutput.addScreen(viewport, bpp);
                     
-		        } else {
+                } else if (qName.equals("dynamic-output")) {
+                    String listenAddr = attributes.getValue("listen-addr");
+                    int listenPort = Integer.parseInt(attributes.getValue("listen-port"));
+                    long minInterval = Long.parseLong(attributes.getValue("min-frame-interval"));
+                    PacketType packetFormat = PacketType.valueOf(attributes.getValue("packet-format"));
+                    long heartbeatTimeout = Long.parseLong(attributes.getValue("heartbeat-timeout"));
+                    currentOutput = new DynamicOutput(
+                            listenAddr, listenPort, rootLayer,
+                            minInterval, packetFormat, heartbeatTimeout);
+                    ((DynamicOutput) currentOutput).start();
+                    outputs.add(currentOutput);
+
+                } else {
 		        	logger.warning("unrecognised entity: " + qName);
 		        }
 
@@ -391,11 +405,6 @@ public class BMix extends Monitor {
 			// no big deal...
 			logger.log(Level.WARNING, "Failed to send frame stats",e);
 		}
-        
-        // don't build the string if we're not interested to see it
-        if(logger.isLoggable(Level.FINE)) {
-        	logger.fine(frameStats.toString());
-        }
         
         logger.exiting("BMix", "getNextImage", session.getRootLayer());
         return session.getRootLayer();

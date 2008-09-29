@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
@@ -20,7 +22,6 @@ import org.xml.sax.helpers.DefaultHandler;
 import de.blinkenlights.bmix.mixer.BLImage;
 import de.blinkenlights.bmix.movie.BLMovie;
 import de.blinkenlights.bmix.movie.Frame;
-import de.blinkenlights.bmix.network.BLNetworkException;
 import de.blinkenlights.bmix.network.BLPacketSender;
 import de.blinkenlights.bmix.protocol.BLFramePacket;
 import de.blinkenlights.bmix.util.FileFormatException;
@@ -32,6 +33,9 @@ import de.blinkenlights.bmix.util.FileFormatException;
  * streams and movie config are contained within a single XML file.
  */
 public class BMovieSender extends Thread {
+    
+    private static final Logger logger = Logger.getLogger(BMovieSender.class.getName());
+    
 	BLPacketSender netSend;
 	BLMovie movie;
 	boolean loop;
@@ -86,11 +90,9 @@ public class BMovieSender extends Thread {
 				}
 				try {
 					netSend.send(packet.getNetworkBytes());
-				} catch (BLNetworkException e) {
-					e.printStackTrace();
+				} catch (Exception e) {
+				    logger.log(Level.WARNING, "Send frame failed", e);
 				}
-//				System.out.println("frame time: " + (nextFrameTime - prevFrameTime));
-//				prevFrameTime = nextFrameTime;
 				nextFrameTime = System.currentTimeMillis() + frame.getDuration();
 			}			
 			if (!isLooping()) break;

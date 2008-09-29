@@ -1,6 +1,7 @@
 package de.blinkenlights.bmix.protocol;
 
 import java.awt.Color;
+import java.net.DatagramPacket;
 
 import de.blinkenlights.bmix.network.BLPacketReceiver.AlphaMode;
 
@@ -19,7 +20,10 @@ public class BLPacketFactory {
 	 * @param len the data length
 	 * @throws BLPacketException if there is an error
 	 */
-	public static BLPacket parse(byte data[], int len, AlphaMode alphaMode, Color transparentColour, Color shadowColor) throws BLPacketException {
+	public static BLPacket parse(DatagramPacket packet, AlphaMode alphaMode,
+	        Color transparentColour, Color shadowColor) throws BLPacketException {
+	    byte data[] = packet.getData();
+	    int len = packet.getLength();
 		// length is invalid
 		if(len > data.length || len < 0 || len < 4) {
 			throw new BLPacketException("len is invalid");
@@ -73,7 +77,7 @@ public class BLPacketFactory {
 				throw new BLPacketException("HEARTBEAT packet must have length = 6");
 			}
 			int version = ((int)(data[4] & 0xff) << 8) | (int)(data[5] & 0xff);
-			return new BLHeartbeatPacket(version);
+			return new BLHeartbeatPacket(version, packet.getAddress().getHostAddress(), packet.getPort());
 		}
 		
 		// MCU frame packet - 0x23542666

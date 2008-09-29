@@ -67,3 +67,15 @@
 <!ATTLIST screen height CDATA #REQUIRED>
 <!-- multiframe outputs can have a bits-per-pixel of either 4 or 8 -->
 <!ATTLIST output bpp CDATA "4">
+
+<!-- An output that listens for heartbeats on a certain port and begins
+     sending the specified screens to all addresses from which a heartbeat
+     has been received recently.
+-->
+<!ELEMENT dynamic-output (screen+)>
+<!ATTLIST dynamic-output listen-addr CDATA "0.0.0.0">  <!-- defaults to all local addresses -->
+<!ATTLIST dynamic-output listen-port CDATA "4242">
+<!ATTLIST dynamic-output heartbeat-timeout CDATA "15000">
+<!ATTLIST dynamic-output min-frame-interval CDATA "0">
+<!-- outputs can be send in one of two formats: MCU_FRAME, or MCU_MULTIFRAME -->
+<!ATTLIST dynamic-output packet-format CDATA "MCU_FRAME">

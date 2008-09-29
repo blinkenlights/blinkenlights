@@ -1,8 +1,10 @@
 package de.blinkenlights.bmix.statistics;
 
 import java.awt.Rectangle;
+import java.util.List;
 
-import de.blinkenlights.bmix.mixer.Output.PacketType;
+import de.blinkenlights.bmix.mixer.AbstractOutput.PacketType;
+import de.blinkenlights.bmix.network.HostAndPort;
 
 public class OutputStatistics implements StatisticsItem {
 
@@ -14,19 +16,18 @@ public class OutputStatistics implements StatisticsItem {
 	private final long id;
 
 	private final Rectangle viewport;
-	private final String destAddr;
-	private final int destPort;
 	private final long minSendInterval;
 	private final PacketType packetType;
 	private final int multiframeBpp;
 
+    private final List<HostAndPort> destinations;
 
-	public OutputStatistics(long id, Rectangle viewport, String destAddr, int destPort,
+
+	public OutputStatistics(long id, Rectangle viewport, List<HostAndPort> destinations,
 			long minSendInterval, PacketType packetType, int multiframeBpp) {
 				this.id = id;
 				this.viewport = viewport;
-				this.destAddr = destAddr;
-				this.destPort = destPort;
+                this.destinations = destinations;
 				this.minSendInterval = minSendInterval;
 				this.packetType = packetType;
 				this.multiframeBpp = multiframeBpp;
@@ -38,14 +39,6 @@ public class OutputStatistics implements StatisticsItem {
 	
 	public Rectangle getViewport() {
 		return viewport;
-	}
-
-	public String getDestAddr() {
-		return destAddr;
-	}
-
-	public int getDestPort() {
-		return destPort;
 	}
 
 	public long getMinSendInterval() {
@@ -62,7 +55,7 @@ public class OutputStatistics implements StatisticsItem {
 	
 	public String toString() {
 		StringBuilder str = new StringBuilder();
-		str.append("Output - Dest Addr: " + destAddr + " - Dest Port: " + destPort + "\n");
+		str.append("Output - Dest Addrs: " + destinations + "\n");
 		str.append("  Viewport - x: " + viewport.x + " - y: " + viewport.y + 
 				" - w: " + viewport.width + " - h: " + viewport.height + "\n"); 
 		str.append("  Minimum Send Interval: " + minSendInterval + "\n");
@@ -73,7 +66,7 @@ public class OutputStatistics implements StatisticsItem {
 	}
 
 	public String getName() {
-		return "Output to " + destAddr + ":" + destPort;
+		return "Output to " + destinations;
 	}
 
 	public String toHtml() {
@@ -85,11 +78,11 @@ public class OutputStatistics implements StatisticsItem {
 	    }
         return String.format(
                 "<html><table cellpadding=1 cellspacing=0>" +
-                "<tr><th colspan=2>Output %s:%d" +
+                "<tr><th colspan=2>Output %s" +
                 "<tr><td>Viewport<td>%dx%d+%d+%d" +
                 "<tr><td>Min frame interval<td>%dms" +
                 "<tr><td>Packet Type<td>%s",
-                destAddr, destPort,
+                destinations,
                 viewport.width, viewport.height, viewport.x, viewport.y,
                 minSendInterval,
                 packetTypeDesc);

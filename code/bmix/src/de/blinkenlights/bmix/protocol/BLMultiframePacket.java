@@ -14,8 +14,13 @@ public class BLMultiframePacket {
 
 	private final List<BLImageViewport> viewports;
 
+	private final long tstamp = System.currentTimeMillis();
+	
     /**
-	 * Creates a new BLFramePacket.
+	 * Creates a new Frame Packet. The timestamp for the packet is the time
+	 * of object creation so that multiple copies bear the same timestamp.
+	 * However, this means that instances of this class go out of date quickly,
+	 * so be sure to create the packet just before sending it.
 	 * 
 	 * @param image
 	 *            the image to use for the data
@@ -31,9 +36,8 @@ public class BLMultiframePacket {
 		buf.write((byte) 0x54);
 		buf.write((byte) 0x26);
 		buf.write((byte) 0x68);
-		long now = System.currentTimeMillis();
 		for (int i = 7; i >= 0; i--) {
-			buf.write((byte) ((now >> 8*i) & 0xff));
+			buf.write((byte) ((tstamp >> 8*i) & 0xff));
 		}
 		for (int screen = 0; screen < viewports.size(); screen++) {
 		    

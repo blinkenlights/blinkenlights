@@ -37,6 +37,7 @@ import javax.swing.SwingUtilities;
 
 import de.blinkenlights.bmix.main.BMovieException;
 import de.blinkenlights.bmix.main.BMovieSender;
+import de.blinkenlights.bmix.network.HostAndPort;
 
 /**
  * This is the main class for the "Stereoscope Player" app. It is a GUI wrapper
@@ -142,13 +143,27 @@ public class Sender implements MRJOpenDocumentHandler, MRJQuitHandler {
 			System.exit(0);
 		}
 		
+    public HostAndPort getSendTo() {
+        String orig = sendToHost.getText();
+        String host;
+        int port;
+        int colonIdx = orig.indexOf(':');
+        if (colonIdx >= 0) {
+            host = orig.substring(0, colonIdx);
+            port = Integer.parseInt(orig.substring(colonIdx + 1));
+        } else {
+            host = orig;
+            port = 2323;
+        }
+        return new HostAndPort(host, port);
+    }
     public void sendMovie(File file) {
         currentFile = file;
         if (currentFile == null) {
             return;
         }
         statusLabel.setText("<html><center>" +
-        		            "Sending " + file.getName() + " to "+sendToHost.getText()+":2323<br>" +
+        		            "Sending " + file.getName() + " to " + getSendTo() + "<br>" +
         		            "<br>" +
                             "Please open Stereoscope Simulator to view the output" +
                             "</center>");
@@ -156,7 +171,8 @@ public class Sender implements MRJOpenDocumentHandler, MRJQuitHandler {
             if (movieSender != null) {
                 movieSender.stopSending();
             }
-            movieSender = new BMovieSender(file.getAbsolutePath(), sendToHost.getText(), 2323, loop.isSelected());
+            HostAndPort sendTo = getSendTo();
+            movieSender = new BMovieSender(file.getAbsolutePath(), sendTo.getAddr(), sendTo.getPort(), loop.isSelected());
             movieSender.start();
         } catch (BMovieException e) {
             JOptionPane.showMessageDialog(frame, "Couldn't send movie:\n" + e);
