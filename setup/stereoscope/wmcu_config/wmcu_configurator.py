@@ -38,11 +38,11 @@ def usage():
 	print("\t--host <ip>				the IP address to connect to")
 	print("\t--port <port>				the port to use, defaults to 2323")
 	print("\t--set-mcu-id <id>			configure the WMCU's ID")
-	print("\t--set-rf-delay <delay>			configure the WMCU's RF delay time in ms")
 	print("\t--set-assigned-lamps <filename>		set the lamps assigned to an WMCU");
 	print("\t--set-rf-power <val>			set the WMCU RF power");
-	print("\t--set-jam-density <val>		set the WMCU jam density (time between pkts in ms)");
+	print("\t--set-jam-density <val>			set the WMCU jam density (time between pkts in ms)");
 	print("\t--reset-device				reset the WMCU");
+	print("\t--get-statistics			get WMCU statistics");
 	sys.exit(1)
 
 action		= -1
@@ -53,18 +53,18 @@ port		= 2323
 
 SET_MCUID		= 0
 SET_ASSIGNED_LAMPS	= 5
-SET_RF_DELAY		= 7
 SET_RF_POWER		= 10
 SET_JAM_DENSITY		= 11
+GET_STATISTICS		= 12
 RESET_DEVICE		= 13
 
 MCUCTRL_MAGIC 	= 0x23542667
 
 try:
 	opts, args = getopt.getopt(sys.argv[1:],
-		"hh:p:s:s:s:s:s:r",
-		["help", "host=", "port=", "set-mcu-id=", "set-rf-delay=", "set-assigned-lamps=",
-		 "set-rf-power=", "set-jam-density=", "reset-device" ])
+		"hh:p:s:s:s:s:s:rg",
+		["help", "host=", "port=", "set-mcu-id=", "set-assigned-lamps=",
+		 "set-rf-power=", "set-jam-density=", "reset-device", "get-statistics" ])
 
 except getopt.GetoptError, err:
 	print str(err)
@@ -80,9 +80,6 @@ for o, a in opts:
 	if o == "--set-mcu-id":
 		action = SET_MCUID
 		mcu_id = int(a)
-	if o == "--set-rf-delay":
-		action = SET_RF_DELAY
-		delay = int(a)
 	if o == "--set-assigned-lamps":
 		action = SET_ASSIGNED_LAMPS
 		lamp_list_file = a
@@ -94,6 +91,8 @@ for o, a in opts:
 		density = int(a)
 	if o == "--reset-device":
 		action = RESET_DEVICE
+	if o == "--get-statistics":
+		action = GET_STATISTICS
 
 if action == -1:
 	print("need an action to perform.\n")
@@ -102,9 +101,6 @@ if action == -1:
 if action == SET_MCUID:
 	packet = struct.pack("!IIII", MCUCTRL_MAGIC, action, 0, mcu_id)
 
-if action == SET_RF_DELAY:
-	packet = struct.pack("!IIII", MCUCTRL_MAGIC, action, 0, delay)
-
 if action == SET_RF_POWER:
 	packet = struct.pack("!IIII", MCUCTRL_MAGIC, action, 0, power)
 
@@ -112,6 +108,9 @@ if action == SET_JAM_DENSITY:
 	packet = struct.pack("!IIII", MCUCTRL_MAGIC, action, 0, density)
 
 if action == RESET_DEVICE:
+	packet = struct.pack("!IIII", MCUCTRL_MAGIC, action, 0, 0)
+
+if action == GET_STATISTICS:
 	packet = struct.pack("!IIII", MCUCTRL_MAGIC, action, 0, 0)
 
 elif action == SET_ASSIGNED_LAMPS:
