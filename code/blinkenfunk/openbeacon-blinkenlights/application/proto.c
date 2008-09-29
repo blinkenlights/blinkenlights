@@ -354,6 +354,7 @@ bParsePacket (unsigned char pipe)
       pkg.statistics.packet_count = packet_count;
       pkg.statistics.pings_lost = pings_lost;
       pkg.statistics.fw_version = VERSION_INT;
+      pkg.statistics.tick_count = (xTaskGetTickCount() / portTICK_RATE_MS) / 1000;
       break;
     case RF_CMD_SET_DIMMER_DELAY:
       env.e.dimmer_delay = pkg.set_delay.delay;
