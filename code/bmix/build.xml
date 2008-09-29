@@ -37,6 +37,7 @@
 		<unjar src="lib/forms-1.2.0.jar" dest="build" />
 		<unjar src="lib/l2fprod-common-directorychooser.jar" dest="build" />
 		<unjar src="lib/swing-worker-1.1.jar" dest="build" />
+		<unjar src="lib/commons-lang-2.4.jar" dest="build" />
 		<mkdir dir="dist"/>
 		<mkdir dir="dist/bmix-${bmix.version}"/>
 		<jar destfile="dist/bmix-${bmix.version}/ImageToBML.jar"

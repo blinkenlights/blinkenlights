@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Map;
 
+import org.apache.commons.lang.StringEscapeUtils;
+
 /**
  * Outputs a BML (Blinkenlights Markup Language) from a sequence
  * of BLImage frames.
@@ -52,7 +54,8 @@ public class BMLOutputStream extends OutputStream {
 		outStr.append("<blm width=\""+size.width+"\" height=\""+size.height+"\" bits=\""+bpp+"\" channels=\"1\">\n");
 		outStr.append("<header>\n");
 		for (String headerKey : headerData.keySet()) {
-			String headerValue = headerData.get(headerKey);
+			
+			String headerValue = StringEscapeUtils.escapeXml(headerData.get(headerKey));
 			
 			if (headerKey.equals("title") && headerValue != null && headerValue.length() > 0) {
 				outStr.append("<title>"+headerValue+"</title>\n");
