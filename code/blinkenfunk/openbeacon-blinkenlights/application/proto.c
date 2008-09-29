@@ -216,6 +216,8 @@ bParsePacket (unsigned char pipe)
 {
   int i, reply;
   signed int seq_delta = pkg.sequence - last_sequence;
+  char v;
+  static char prev_v=-1;
 
   /* broadcasts have to have the correct wmcu_id set */
   if (pkg.mac == 0xffff && pkg.wmcu_id != env.e.wmcu_id)
@@ -272,8 +274,6 @@ bParsePacket (unsigned char pipe)
     {
     case RF_CMD_SET_VALUES:
       {
-	char v;
-
 	if (env.e.lamp_id / 2 >= RF_PAYLOAD_SIZE)
 	  break;
 
@@ -300,7 +300,11 @@ bParsePacket (unsigned char pipe)
 	    DumpStringToUSB ("\n");
 	  }
 
-	vTaskDelay (env.e.dimmer_delay / portTICK_RATE_MS);
+	if( v != prev_v )
+	{
+	    vTaskDelay (env.e.dimmer_delay / portTICK_RATE_MS);
+	    prev_v = v;
+	}
 	vUpdateDimmer (v);
 	packet_count++;
 	break;
