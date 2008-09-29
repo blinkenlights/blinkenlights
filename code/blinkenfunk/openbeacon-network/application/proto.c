@@ -97,7 +97,7 @@ PtInitNRF (void)
   nRFAPI_SetPipeSizeRX (0, sizeof (rfpkg));
   nRFAPI_SetPipeSizeRX (1, sizeof (rfpkg));
   nRFAPI_PipesEnable (ERX_P0 | ERX_P1);
-  PtUpdateWmcuId ( pdTRUE );
+  PtUpdateWmcuId ( env.e.mcu_id == 0 );
 
   nRFAPI_SetRxMode (0);
   nRFCMD_CE (0);
