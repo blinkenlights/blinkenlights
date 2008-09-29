@@ -33,18 +33,7 @@
 			 includes="**" manifest="etc/manifest"/>
 	</target>
 	
-	<target name="ImageToBmlJar" depends="compile" description="Creates an executable JAR of Image to BML App">
-		<unjar src="lib/forms-1.2.0.jar" dest="build" />
-		<unjar src="lib/l2fprod-common-directorychooser.jar" dest="build" />
-		<unjar src="lib/swing-worker-1.1.jar" dest="build" />
-		<unjar src="lib/commons-lang-2.4.jar" dest="build" />
-		<mkdir dir="dist"/>
-		<mkdir dir="dist/bmix-${bmix.version}"/>
-		<jar destfile="dist/bmix-${bmix.version}/ImageToBML.jar"
-			 basedir="build"
-			 includes="**" manifest="etc/ImageToBML_manifest"/>
-	</target>
-
+	
 	<target name="StatsClient" depends="compile" description="Creates an executable JAR of StatsClient App">
 		<mkdir dir="dist"/>
 		<mkdir dir="dist/bmix-${bmix.version}"/>
@@ -68,7 +57,7 @@
 
 	</target>
 		
-	<target name="tarball" depends="clean,jar,ImageToBmlJar" description="Creates the distribution tarball">
+	<target name="tarball" depends="clean,jar" description="Creates the distribution tarball">
 		<copy file="bmix.xml" todir="dist/bmix-${bmix.version}/"/>
 		<copy file="etc/start.sh" todir="dist/bmix-${bmix.version}/"/>
 		<copy file="HISTORY" todir="dist/bmix-${bmix.version}/"/>
