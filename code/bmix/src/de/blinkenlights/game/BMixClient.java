@@ -3,8 +3,13 @@
  */
 package de.blinkenlights.game;
 
-import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.net.InetAddress;
+
+import de.blinkenlights.bmix.network.BLNetworkException;
+import de.blinkenlights.bmix.network.BLPacketSender;
+import de.blinkenlights.bmix.protocol.BLFramePacket;
 
 /**
  * A client to the BMix server.  Sends heartbeats at regular intervals,
@@ -15,24 +20,25 @@ class BMixClient implements FrameTarget {
     private final InetAddress host;
     private final int port;
 
-    public BMixClient(InetAddress host, int port) {
+    private final BLPacketSender sender;
+    
+    public BMixClient(InetAddress host, int port) throws BLNetworkException {
         this.host = host;
         this.port = port;
+        sender = new BLPacketSender(host.getHostAddress(), port);
     }
 
     public void start() {
-        // TODO Auto-generated method stub
 
     }
     
     public void stop() {
-        // TODO Auto-generated method stub
 
     }
 
-    public void putFrame(Image image) {
-        // TODO Auto-generated method stub
-        
+    public void putFrame(BufferedImage image) throws IOException {
+        BLFramePacket packet = new BLFramePacket(image);
+        sender.send(packet.getNetworkBytes());
     }
 
     public void gameEnding() {

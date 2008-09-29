@@ -9,8 +9,10 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.net.InetAddress;
 import java.util.Properties;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class GameContext {
@@ -125,6 +127,8 @@ public class GameContext {
                     Thread.sleep((long) ((1.0 / framesPerSecond) * 1000));
                 } catch (InterruptedException e) {
                     // not a biggie
+                } catch (IOException e) {
+                    logger.log(Level.WARNING, "Terminating game because of IO problem", e);
                 } finally {
                     g.dispose();
                 }
@@ -138,6 +142,8 @@ public class GameContext {
             try {
                 game.gameEnding(g);
                 bmixClient.putFrame(bi);
+            } catch (IOException ex) {
+                logger.log(Level.WARNING, "Last frame could not be sent", ex);
             } finally {
                 g.dispose();
             }

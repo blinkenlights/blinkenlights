@@ -3,14 +3,17 @@
  */
 package de.blinkenlights.game;
 
-import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 
 public interface FrameTarget {
 
     /**
      * Presents the given image to the user.
+     * 
+     * @throws IOException If the frame can't be sent to the target
      */
-    void putFrame(Image image);
+    void putFrame(BufferedImage image) throws IOException;
     
     /**
      * Performs any necessary startup routine for this frame target.
