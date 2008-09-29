@@ -6,12 +6,12 @@
       <description>Most recent changes with links to updates.</description>
       <language>en</language>
          <item>
-            <title>Version 2.0 (2 bugs fixed; 3 new features)</title>
+            <title>Version 0.95 (minor bugfixes)</title>
 						<sparkle:releaseNotesLink>
-							http://www.blinkenlights.net/downloads/stereoscope_simulator/2.0.html
+							http://www.blinkenlights.net/downloads/stereoscope_simulator/0.95.html
 						</sparkle:releaseNotesLink>
-            <pubDate>Wed, 09 Jan 2008 19:20:11 +0000</pubDate>
-            <enclosure url="http://www.blinkenlights.net/downloads/stereoscope_simulator/test.zip" sparkle:version="479M" sparkle:shortVersionString="2.0" length="1129598" type="application/octet-stream" sparkle:dsaSignature="MC4CFQCVlURo1AnHDqe6zU8yTPZOdEQDLgIVAIPVoubdCVAHl1JxDs9JOcqvyeK/" />
+            <pubDate>Wed, 28 Sep 2008 19:20:11 +0000</pubDate>
+            <enclosure url="http://www.blinkenlights.net/downloads/stereoscope_simulator/StereoscopeSimulator.0.96.zip" sparkle:version="665" sparkle:shortVersionString="0.96" length="1114622" type="application/octet-stream" sparkle:dsaSignature="MC0CFCNysCCvv8sVcsey8opLIhdsmnO8AhUAnnLuhOcm8ZA3uuNQnVikpeLaBI0=" />
          </item>
    </channel>
 </rss>
