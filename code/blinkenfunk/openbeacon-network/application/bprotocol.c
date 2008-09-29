@@ -492,8 +492,8 @@ b_parse_rfrx_pkg (BRFPacket * pkg)
   switch (pkg->cmd)
     {
     case RF_CMD_SEND_STATISTICS:
-      debug_printf ("got dimmer stats: %d emi pulses, %d packets received\n",
-		    pkg->statistics.emi_pulses, pkg->statistics.packet_count);
+      debug_printf ("got dimmer stats from %04x: %d emi pulses, %d packets received\n",
+		    pkg->mac, pkg->statistics.emi_pulses, pkg->statistics.packet_count);
 
       hdr->param[0] = PtSwapLong (pkg->statistics.packet_count);
       hdr->param[1] = PtSwapLong (pkg->statistics.emi_pulses);
