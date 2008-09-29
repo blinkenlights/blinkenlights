@@ -47,22 +47,20 @@ static unsigned char nrf_powerlevel_current, nrf_powerlevel_last;
 static unsigned int jam_density_ms;
 static const unsigned char broadcast_mac[NRF_MAX_MAC_SIZE] =
   { 'D', 'E', 'C', 'A', 'D' };
-static unsigned char jam_mac[NRF_MAX_MAC_SIZE] =
-  { 'J', 'A', 'M', 'M', 0 };
-static unsigned char wmcu_mac[NRF_MAX_MAC_SIZE] =
-  { 'W', 'M', 'C', 'U', 0 };
+static unsigned char jam_mac[NRF_MAX_MAC_SIZE] = { 'J', 'A', 'M', 'M', 0 };
+static unsigned char wmcu_mac[NRF_MAX_MAC_SIZE] = { 'W', 'M', 'C', 'U', 0 };
 
 static void
 PtUpdateWmcuId (unsigned char broadcast)
 {
   /* update jamming data channel id */
-  if( broadcast)
+  if (broadcast)
     nRFAPI_SetTxMAC (broadcast_mac, sizeof (broadcast_mac));
   else
-  {
-    jam_mac[sizeof (jam_mac) - 1] = env.e.mcu_id;
-    nRFAPI_SetTxMAC (jam_mac, sizeof (jam_mac));
-  }
+    {
+      jam_mac[sizeof (jam_mac) - 1] = env.e.mcu_id;
+      nRFAPI_SetTxMAC (jam_mac, sizeof (jam_mac));
+    }
 
   /* update WMCU id for response channel */
   wmcu_mac[sizeof (wmcu_mac) - 1] = env.e.mcu_id;
@@ -70,13 +68,14 @@ PtUpdateWmcuId (unsigned char broadcast)
 }
 
 void
-PtSetRfPowerLevel ( unsigned char Level )
+PtSetRfPowerLevel (unsigned char Level)
 {
-  nrf_powerlevel_current = (Level >= NRF_POWERLEVEL_MAX) ? NRF_POWERLEVEL_MAX : Level;
+  nrf_powerlevel_current =
+    (Level >= NRF_POWERLEVEL_MAX) ? NRF_POWERLEVEL_MAX : Level;
 }
 
 unsigned char
-PtGetRfPowerLevel ( void )
+PtGetRfPowerLevel (void)
 {
   return nrf_powerlevel_last;
 }
@@ -91,13 +90,13 @@ PtInitNRF (void)
   jam_density_ms = DEFAULT_JAM_DENSITY;
 
   nrf_powerlevel_last = nrf_powerlevel_current = -1;
-  PtSetRfPowerLevel ( NRF_POWERLEVEL_MAX );
+  PtSetRfPowerLevel (NRF_POWERLEVEL_MAX);
 
   nRFAPI_SetSizeMac (sizeof (wmcu_mac));
   nRFAPI_SetPipeSizeRX (0, sizeof (rfpkg));
   nRFAPI_SetPipeSizeRX (1, sizeof (rfpkg));
   nRFAPI_PipesEnable (ERX_P0 | ERX_P1);
-  PtUpdateWmcuId ( env.e.mcu_id == 0 );
+  PtUpdateWmcuId (env.e.mcu_id == 0);
 
   nRFAPI_SetRxMode (0);
   nRFCMD_CE (0);
@@ -144,7 +143,7 @@ PtInternalTransmit (BRFPacket * pkg)
   /* update crc */
   pkg->crc =
     PtSwapLong (crc32
-	      ((unsigned char *) pkg, sizeof (*pkg) - sizeof (pkg->crc)));
+		((unsigned char *) pkg, sizeof (*pkg) - sizeof (pkg->crc)));
 
   /* encrypt the data */
   shuffle_tx_byteorder ((unsigned long *) pkg, sizeof (*pkg) / sizeof (long));
@@ -174,32 +173,35 @@ PtTransmit (BRFPacket * pkg, unsigned char broadcast)
   int i;
   static BRFPacket backup;
 
-  if( TX_COMMAND_RETRIES>1 )
-    backup=*pkg;
+  if (TX_COMMAND_RETRIES > 1)
+    backup = *pkg;
 
-  if(broadcast)
-    PtUpdateWmcuId ( pdTRUE );
+  if (broadcast)
+    PtUpdateWmcuId (pdTRUE);
 
-  for ( i=0; i<TX_COMMAND_RETRIES; i++)
-  {
-    if(i)
+  for (i = 0; i < TX_COMMAND_RETRIES; i++)
+    {
+      if (i)
 	*pkg = backup;
-    vTaskDelay ( ((RndNumber () % 5 ) / portTICK_RATE_MS) );
-    PtInternalTransmit ( pkg );
-  }
+      vTaskDelay (((RndNumber () % 5) / portTICK_RATE_MS));
+      PtInternalTransmit (pkg);
+    }
 
-  if(broadcast)
-  {
-    vTaskDelay ((3 + (RndNumber () % 5 ) / portTICK_RATE_MS));
-    PtUpdateWmcuId ( pdFALSE );
+  if (broadcast)
+    {
+      vTaskDelay ((3 + (RndNumber () % 5) / portTICK_RATE_MS));
+      PtUpdateWmcuId (pdFALSE);
+    }
 }
 
-void PtSetRfJamDensity ( unsigned char milliseconds )
+void
+PtSetRfJamDensity (unsigned char milliseconds)
 {
   jam_density_ms = milliseconds;
 }
 
-extern unsigned char PtGetRfJamDensity ( void )
+unsigned char
+PtGetRfJamDensity (void)
 {
   return jam_density_ms;
 }
@@ -207,7 +209,7 @@ extern unsigned char PtGetRfJamDensity ( void )
 static void
 vnRFtaskRxTx (void *parameter)
 {
-  u_int32_t crc,t;
+  u_int32_t crc, t;
   u_int8_t status;
   portTickType last_ticks = 0, jam_ticks = 0;
 
@@ -217,11 +219,11 @@ vnRFtaskRxTx (void *parameter)
   for (;;)
     {
       /* check if TX strength changed */
-      if ( nrf_powerlevel_current != nrf_powerlevel_last )
-      {
-	nRFAPI_SetTxPower( nrf_powerlevel_current );
-	nrf_powerlevel_last = nrf_powerlevel_current;
-      }
+      if (nrf_powerlevel_current != nrf_powerlevel_last)
+	{
+	  nRFAPI_SetTxPower (nrf_powerlevel_current);
+	  nrf_powerlevel_last = nrf_powerlevel_current;
+	}
 
       status = nRFAPI_GetFifoStatus ();
       /* living in a paranoid world ;-) */
@@ -266,7 +268,7 @@ vnRFtaskRxTx (void *parameter)
 	}
 
       /* transmit current lamp value */
-      if (env.e.mcu_id && ((xTaskGetTickCount () - last_ticks) > jam_ticks) )
+      if (env.e.mcu_id && ((xTaskGetTickCount () - last_ticks) > jam_ticks))
 	{
 	  memset (&rfpkg, 0, sizeof (rfpkg));
 	  rfpkg.cmd = RF_CMD_SET_VALUES;
@@ -283,10 +285,11 @@ vnRFtaskRxTx (void *parameter)
 
 	  // prepare next jam transmission
 	  last_ticks = xTaskGetTickCount ();
-	  jam_ticks = (RndNumber () % (jam_density_ms*2)) / portTICK_RATE_MS;
+	  jam_ticks =
+	    (RndNumber () % (jam_density_ms * 2)) / portTICK_RATE_MS;
 	}
 
-      vTaskDelay ( 5 / portTICK_RATE_MS );
+      vTaskDelay (5 / portTICK_RATE_MS);
 
       /* did I already mention the paranoid world thing? */
       nRFAPI_ClearIRQ (MASK_IRQ_FLAGS);
