@@ -47,8 +47,10 @@ static unsigned char nrf_powerlevel_current, nrf_powerlevel_last;
 static unsigned int jam_density_ms;
 static const unsigned char broadcast_mac[NRF_MAX_MAC_SIZE] =
   { 'D', 'E', 'C', 'A', 'D' };
-static unsigned char jam_mac[NRF_MAX_MAC_SIZE] = { 'J', 'A', 'M', 'M', 0 };
-static unsigned char wmcu_mac[NRF_MAX_MAC_SIZE] = { 'W', 'M', 'C', 'U', 0 };
+static unsigned char jam_mac[NRF_MAX_MAC_SIZE] =
+  { 'J', 'A', 'M', 'M', 0 };
+static unsigned char wmcu_mac[NRF_MAX_MAC_SIZE] =
+  { 'W', 'M', 'C', 'U', 0 };
 
 static void
 PtUpdateWmcuId (unsigned char broadcast)
