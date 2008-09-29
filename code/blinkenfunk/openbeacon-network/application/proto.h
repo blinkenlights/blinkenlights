@@ -45,7 +45,7 @@ extern int PtSetFifoLifetimeSeconds (int Seconds);
 extern int PtGetFifoLifetimeSeconds (void);
 extern void PtDumpUIntToUSB (unsigned int data);
 extern void PtDumpStringToUSB (const char *text);
-extern void PtTransmit (BRFPacket * pkg);
+extern void PtTransmit (BRFPacket * pkg, unsigned char broadcast);
 extern void PtSetRfPowerLevel ( unsigned char Level );
 extern unsigned char PtGetRfPowerLevel ( void );
 extern void PtSetRfJamDensity ( unsigned char milliseconds );

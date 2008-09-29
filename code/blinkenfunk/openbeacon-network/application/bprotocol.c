@@ -164,7 +164,7 @@ b_set_lamp_id (int lamp_id, int lamp_mac)
   rfpkg.wmcu_id = 0xff;
   rfpkg.set_lamp_id.id = lamp_id;
   rfpkg.set_lamp_id.wmcu_id = env.e.mcu_id;
-  PtTransmit (&rfpkg);
+  PtTransmit (&rfpkg , pdTRUE);
 }
 
 static inline void
@@ -182,7 +182,7 @@ b_set_gamma_curve (int lamp_mac, unsigned int block, unsigned short *gamma)
     rfpkg.set_gamma.val[i] = gamma[i];
 
   debug_printf ("sending gamma table to %04x, block %d\n", lamp_mac, block);
-  PtTransmit (&rfpkg);
+  PtTransmit (&rfpkg, pdFALSE);
 }
 
 static inline void
@@ -192,7 +192,7 @@ b_write_gamma_curve (int lamp_mac)
   rfpkg.cmd = RF_CMD_WRITE_CONFIG;
   rfpkg.mac = lamp_mac;
   rfpkg.wmcu_id = env.e.mcu_id;
-  PtTransmit (&rfpkg);
+  PtTransmit (&rfpkg, pdFALSE);
 }
 
 static inline void
@@ -203,7 +203,7 @@ b_set_lamp_jitter (int lamp_mac, int jitter)
   rfpkg.mac = lamp_mac;
   rfpkg.wmcu_id = env.e.mcu_id;
   rfpkg.set_jitter.jitter = jitter;
-  PtTransmit (&rfpkg);
+  PtTransmit (&rfpkg, pdFALSE);
 }
 
 static inline void
@@ -214,7 +214,7 @@ b_set_dimmer_delay (int lamp_mac, int delay)
   rfpkg.mac = lamp_mac;
   rfpkg.wmcu_id = env.e.mcu_id;
   rfpkg.set_delay.delay = delay;
-  PtTransmit (&rfpkg);
+  PtTransmit (&rfpkg, pdFALSE);
 }
 
 static inline void
@@ -225,7 +225,7 @@ b_set_dimmer_control (int lamp_mac, int off)
   rfpkg.mac = lamp_mac;
   rfpkg.wmcu_id = env.e.mcu_id;
   rfpkg.dimmer_control.off = off;
-  PtTransmit (&rfpkg);
+  PtTransmit (&rfpkg, pdFALSE);
 }
 
 static inline void
@@ -264,7 +264,7 @@ b_send_wdim_stats (unsigned int lamp_mac)
   rfpkg.cmd = RF_CMD_SEND_STATISTICS | RF_PKG_REPLY_WANTED;
   rfpkg.mac = lamp_mac;
   rfpkg.wmcu_id = env.e.mcu_id;
-  PtTransmit (&rfpkg);
+  PtTransmit (&rfpkg, pdFALSE);
 }
 
 static inline void
@@ -297,7 +297,7 @@ b_send_wdim_reset (unsigned short lamp_mac)
   rfpkg.cmd = RF_CMD_RESET;
   rfpkg.mac = lamp_mac;
   rfpkg.wmcu_id = env.e.mcu_id;
-  PtTransmit (&rfpkg);
+  PtTransmit (&rfpkg, pdFALSE);
 }
 
 static int
@@ -431,7 +431,7 @@ b_parse_mcu_devctrl (mcu_devctrl_header_t * header, int maxlen)
 	  rfpkg.payload[i] = header->param[i + 3];
 
 //        hex_dump((unsigned char *) &rfpkg, 0, sizeof(rfpkg));
-	PtTransmit (&rfpkg);
+	PtTransmit (&rfpkg, pdFALSE);
 	break;
       }
     }

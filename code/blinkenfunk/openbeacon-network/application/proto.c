@@ -45,8 +45,29 @@ static BRFPacket rfpkg;
 unsigned int rf_sent_broadcast, rf_sent_unicast, rf_rec;
 static unsigned char nrf_powerlevel_current, nrf_powerlevel_last;
 static unsigned int jam_density_ms;
-const unsigned char broadcast_mac[NRF_MAX_MAC_SIZE] =
+static const unsigned char broadcast_mac[NRF_MAX_MAC_SIZE] =
   { 'D', 'E', 'C', 'A', 'D' };
+static unsigned char jam_mac[NRF_MAX_MAC_SIZE] =
+  { 'J', 'A', 'M', 'M', 0 };
+static unsigned char wmcu_mac[NRF_MAX_MAC_SIZE] =
+  { 'W', 'M', 'C', 'U', 0 };
+
+static void
+PtUpdateWmcuId (unsigned char broadcast)
+{
+  /* update jamming data channel id */
+  if( broadcast)
+    nRFAPI_SetTxMAC (broadcast_mac, sizeof (broadcast_mac));
+  else
+  {
+    jam_mac[sizeof (jam_mac) - 1] = env.e.mcu_id;
+    nRFAPI_SetTxMAC (jam_mac, sizeof (jam_mac));
+  }
+
+  /* update WMCU id for response channel */
+  wmcu_mac[sizeof (wmcu_mac) - 1] = env.e.mcu_id;
+  nRFAPI_SetRxMAC (wmcu_mac, sizeof (wmcu_mac), 1);
+}
 
 void
 PtSetRfPowerLevel ( unsigned char Level )
@@ -72,7 +93,12 @@ PtInitNRF (void)
   nrf_powerlevel_last = nrf_powerlevel_current = -1;
   PtSetRfPowerLevel ( NRF_POWERLEVEL_MAX );
 
+  nRFAPI_SetSizeMac (sizeof (wmcu_mac));
   nRFAPI_SetPipeSizeRX (0, sizeof (rfpkg));
+  nRFAPI_SetPipeSizeRX (1, sizeof (rfpkg));
+  nRFAPI_PipesEnable (ERX_P0 | ERX_P1);
+  PtUpdateWmcuId ( pdTRUE );
+
   nRFAPI_SetRxMode (0);
   nRFCMD_CE (0);
 
@@ -143,7 +169,7 @@ PtInternalTransmit (BRFPacket * pkg)
 }
 
 void
-PtTransmit (BRFPacket * pkg)
+PtTransmit (BRFPacket * pkg, unsigned char broadcast)
 {
   int i;
   static BRFPacket backup;
@@ -151,13 +177,21 @@ PtTransmit (BRFPacket * pkg)
   if( TX_COMMAND_RETRIES>1 )
     backup=*pkg;
 
+  if(broadcast)
+    PtUpdateWmcuId ( pdTRUE );
+
   for ( i=0; i<TX_COMMAND_RETRIES; i++)
   {
     if(i)
 	*pkg = backup;
-    PtInternalTransmit ( pkg );
     vTaskDelay ( ((RndNumber () % 5 ) / portTICK_RATE_MS) );
+    PtInternalTransmit ( pkg );
   }
+
+  if(broadcast)
+  {
+    vTaskDelay ((3 + (RndNumber () % 5 ) / portTICK_RATE_MS));
+    PtUpdateWmcuId ( pdFALSE );
 }
 
 void PtSetRfJamDensity ( unsigned char milliseconds )
