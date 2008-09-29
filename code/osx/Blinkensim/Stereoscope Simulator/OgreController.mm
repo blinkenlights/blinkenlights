@@ -13,6 +13,7 @@ Camera *mCamera;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
 {
+    [[ogreView window] setDelegate:self];
 	std::string mResourcePath = [[[NSBundle mainBundle] resourcePath] UTF8String];
 	
 	// Create a new root object with the correct paths
@@ -173,5 +174,12 @@ Camera *mCamera;
 {
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://blinkenlights.net/stereoscope"]];
 }
+
+- (void)windowDidResize:(NSNotification *)notification
+{
+    NSRect aRect = [[ogreView window] frame];
+    mCamera->setAspectRatio(Real(aRect.size.width) / Real(aRect.size.height));
+}
+
 
 @end
