@@ -18,9 +18,11 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.prefs.BackingStoreException;
 import java.util.prefs.Preferences;
+import java.util.zip.GZIPOutputStream;
 
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -61,6 +63,8 @@ public class ImageToBML {
 	JTextField emailField = new JTextField();
 	JTextField urlField = new JTextField();
 	
+	JCheckBox gzipCheckBox = new JCheckBox();
+	
 	JButton pngDirChoose = new JButton("...");
 	JButton outFileChoose = new JButton("...");
 	JButton startButton = new JButton("Start");
@@ -88,8 +92,8 @@ public class ImageToBML {
             public void windowClosing(WindowEvent e) {
                 prefs.putInt("frameX", mainFrame.getX());
                 prefs.putInt("frameY", mainFrame.getY());
-                prefs.putInt("frameWidth", mainFrame.getWidth());
-                prefs.putInt("frameHeight", mainFrame.getHeight());
+                //prefs.putInt("frameWidth", mainFrame.getWidth());
+                //prefs.putInt("frameHeight", mainFrame.getHeight());
                 try {
                     prefs.flush();
                 } catch (BackingStoreException e1) {
@@ -101,9 +105,11 @@ public class ImageToBML {
 
         pngDirChoose.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		JDirectoryChooser chooser = new JDirectoryChooser();
+        		JFileChooser chooser = new JFileChooser(new File(pngDir.getText()));
+        		chooser.setDialogTitle("Select Image Directory");
+        		chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
         		int choice = chooser.showOpenDialog(mainFrame);
-        		if(choice == JDirectoryChooser.CANCEL_OPTION) {
+        		if(choice == JFileChooser.CANCEL_OPTION) {
         			System.out.println("User Canceled");					
         		}
         		else {
@@ -115,19 +121,39 @@ public class ImageToBML {
         outFileChoose.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		JFileChooser chooser = new JFileChooser();
+        		chooser.setDialogTitle("Select Output Filename");
         		int choice = chooser.showSaveDialog(mainFrame);
         		if(choice == JDirectoryChooser.CANCEL_OPTION) {
         			System.out.println("User Canceled");					
         		}
         		else {
-        			outFile.setText(chooser.getSelectedFile().getAbsolutePath());
+        			String chosenFile = chooser.getSelectedFile().getAbsolutePath();
+        			if (!chosenFile.endsWith(".bml")) {
+        				chosenFile = chosenFile.concat(".bml");
+        			}
+        			outFile.setText(chosenFile);
         		}
         	}	
         });
-        
+           
         startButton.addActionListener(new ActionListener() {
-
 			public void actionPerformed(ActionEvent e) {
+				if (gzipCheckBox.isSelected()) {
+					if (!outFile.getText().endsWith(".bml.gz")) {
+						int ans = JOptionPane.showConfirmDialog(null, "<html>Filename should end with \"<b>.bml.gz</b>\". Continue?", "Compatibility Suggestion", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+						if (ans == JOptionPane.CANCEL_OPTION) {
+							return;
+						}						
+					}
+				} else {
+					if (!outFile.getText().endsWith(".bml")) {
+						int ans = JOptionPane.showConfirmDialog(null, "<html>Filename should end with \"<b>.bml</b>\". Continue?", "Compatibility Suggestion", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+						if (ans == JOptionPane.CANCEL_OPTION) {
+							return;
+						}						
+					}
+				}
+				
 				File out = new File(outFile.getText());
 				if (out.exists()) {
 					int ans = JOptionPane.showConfirmDialog(null, "" + out.getName() + " exists. Overwrite?", "Save Over Existing File", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
@@ -135,9 +161,16 @@ public class ImageToBML {
 						return;
 					}
 				}
-        		task = new ConvertTask(new File(pngDir.getText()), out,new Dimension(Integer.parseInt(xSizeField.getText()),Integer.parseInt(ySizeField.getText())),4);
+				
+				Map<String,String> headerData = new HashMap<String,String>();
+	    		headerData.put("author",authorField.getText());
+	    		headerData.put("description",descriptionField.getText());
+	    		headerData.put("title",titleField.getText());
+	    		headerData.put("email",emailField.getText());
+	    		headerData.put("url", urlField.getText());
+	    		
+        		task = new ConvertTask(new File(pngDir.getText()), out,new Dimension(Integer.parseInt(xSizeField.getText()),Integer.parseInt(ySizeField.getText())),4, headerData, gzipCheckBox.isSelected());
         		task.addPropertyChangeListener(new PropertyChangeListener() {
-
 					public void propertyChange(PropertyChangeEvent event) {
 						if (event.getPropertyName().equals("progress")) {
 							progress.setValue((Integer)event.getNewValue());
@@ -158,6 +191,19 @@ public class ImageToBML {
         	}
         });
 
+        gzipCheckBox.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		if (gzipCheckBox.isSelected()) {
+        			if (!outFile.getText().endsWith(".gz")) {
+        				outFile.setText(outFile.getText().concat(".gz"));
+        			}
+        		} else {
+        			if (outFile.getText().endsWith(".gz")) {
+        				outFile.setText(outFile.getText().substring(0,outFile.getText().length()-3));
+        			}
+        		}
+        	}
+        });
         
         FormLayout mainLayout = new FormLayout( 
         		"pref, 4dlu, 120dlu:grow, 4dlu, min",
@@ -178,11 +224,11 @@ public class ImageToBML {
         frameRateField.setValue(prefs.getInt("fps",15));
         frameRateField.getModel().addChangeListener(inputVerifier);
         
-//        titleField.setText(prefs.get("title",""));
-//        titleField.getDocument().addDocumentListener(inputVerifier);
+        titleField.setText(prefs.get("title",""));
+        titleField.getDocument().addDocumentListener(inputVerifier);
         
-//        descriptionField.setText(prefs.get("description",""));
-//        descriptionField.getDocument().addDocumentListener(inputVerifier);
+        descriptionField.setText(prefs.get("description",""));
+        descriptionField.getDocument().addDocumentListener(inputVerifier);
         
         authorField.setText(prefs.get("author",System.getProperty("user.name")));
         authorField.getDocument().addDocumentListener(inputVerifier);
@@ -192,6 +238,9 @@ public class ImageToBML {
 
         urlField.setText(prefs.get("url",""));
         urlField.getDocument().addDocumentListener(inputVerifier);
+        
+        gzipCheckBox.setSelected(prefs.getBoolean("gzip", false));
+        gzipCheckBox.getModel().addChangeListener(inputVerifier);
         
         cancelButton.setEnabled(false);
         progress.setStringPainted(true);
@@ -212,6 +261,9 @@ public class ImageToBML {
         mainBuilder.nextLine();
         mainBuilder.append("Output File",outFile, outFileChoose);
         mainBuilder.nextLine();
+        
+        mainBuilder.append("GZip Compression", gzipCheckBox);
+        mainBuilder.nextLine();
 
         mainBuilder.appendUnrelatedComponentsGapRow();
         mainBuilder.nextLine();
@@ -229,9 +281,6 @@ public class ImageToBML {
         mainBuilder.nextLine();
         mainBuilder.append("URL", urlField);
         mainBuilder.nextLine();
-
-       
-        
 
         mainBuilder.appendUnrelatedComponentsGapRow();
         mainBuilder.nextLine();
@@ -254,8 +303,8 @@ public class ImageToBML {
 	    
 		int x = prefs.getInt("frameX", 20);
 		int y = prefs.getInt("frameY", 20);
-		int width = prefs.getInt("frameWidth", mainFrame.getPreferredSize().width);
-		int height = prefs.getInt("frameHeight", mainFrame.getPreferredSize().height);
+		int width = mainFrame.getPreferredSize().width;
+		int height = mainFrame.getPreferredSize().height;
 		mainFrame.setBounds(x, y, width, height);
 
         mainFrame.setVisible(true);
@@ -289,9 +338,14 @@ public class ImageToBML {
 			prefs.put("ySize", ySizeField.getText());
 			prefs.putInt("fps", ((Number)frameRateField.getValue()).intValue());
 			
+			
+			prefs.put("title", titleField.getText());
+			prefs.put("description", descriptionField.getText());
 			prefs.put("author", authorField.getText());
 			prefs.put("email", emailField.getText());
 			prefs.put("url", urlField.getText());
+			
+			prefs.putBoolean("gzip", gzipCheckBox.isSelected());
 			
 			if (!new File(pngDir.getText()).isDirectory()) {
 				statusLine.setText("Source Directory isn't a directory.");
@@ -355,12 +409,16 @@ public class ImageToBML {
 		private String currentFileName;
 		private OutputStream outputStream;
 		private int filesProcessed;
+		private final Map<String, String> headerData;
+		private final boolean gzip;
 		
-		protected ConvertTask(File pngDir, File output, Dimension size, int bpp) {
+		protected ConvertTask(File pngDir, File output, Dimension size, int bpp, Map<String, String> headerData, boolean gzip) {
 			pngDir2 = pngDir;
 			this.output = output;
 			this.size = size;
 			this.bpp = bpp;
+			this.headerData = headerData;
+			this.gzip = gzip;
 			startButton.setEnabled(false);
 			cancelButton.setEnabled(true);
 			progress.setValue(0);
@@ -369,16 +427,15 @@ public class ImageToBML {
 		
 		@Override
 		protected Object doInBackground() throws Exception {
-    		outputStream = new FileOutputStream(output);
+			
+			if (gzip) {
+				outputStream = new GZIPOutputStream(new FileOutputStream(output));
+			} else {
+				outputStream = new FileOutputStream(output);
+			}
 			File[] files = pngDir2.listFiles();
     		Arrays.sort(files);
     		
-    		Map<String,String> headerData = new HashMap<String,String>();
-    		headerData.put("author",authorField.getText());
-    		headerData.put("description",descriptionField.getText());
-    		headerData.put("title",titleField.getText());
-    		headerData.put("email",emailField.getText());
-    		headerData.put("url", urlField.getText());
     		
     		BMLOutputStream bmlOut = new BMLOutputStream(outputStream,((Number)frameRateField.getValue()).intValue(),size, bpp, headerData);
     		
@@ -405,6 +462,8 @@ public class ImageToBML {
     		bmlOut.close();
 			return null;
 		}
+		
+		
 
 		@Override
 		protected void done() {
