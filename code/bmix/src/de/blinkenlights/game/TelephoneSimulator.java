@@ -4,14 +4,17 @@
 package de.blinkenlights.game;
 
 import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.concurrent.Semaphore;
 
+import javax.swing.AbstractAction;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class TelephoneSimulator implements UserInputSource {
@@ -20,6 +23,20 @@ public class TelephoneSimulator implements UserInputSource {
     private volatile Character lastKey = null;
     private Semaphore gameStartSemaphore = new Semaphore(0);
     private volatile boolean offhook;
+    
+    private class NumberAction extends AbstractAction {
+        
+        private final char digit;
+        
+        public NumberAction(char digit) {
+            super(String.valueOf(digit));
+            this.digit = digit;
+        }
+        
+        public void actionPerformed(ActionEvent e) {
+            lastKey = digit;
+        }
+    }
     
     public Character getKeystroke() {
         Character retval = lastKey;
@@ -49,33 +66,30 @@ public class TelephoneSimulator implements UserInputSource {
             }
         });
         
-        JTextField instructions = new JTextField("Click here then type keys to send input to the game!");
-        instructions.setEditable(false);
-        instructions.addKeyListener(new KeyListener() {
-
-            public void keyPressed(KeyEvent e) {
-                // don't care
-            }
-
-            public void keyReleased(KeyEvent e) {
-                System.out.println("Got key");
-                lastKey = e.getKeyChar();
-                e.consume();
-            }
-
-            public void keyTyped(KeyEvent e) {
-                // don't care
-            }
-            
-        });
-        
         frame.add(startCallButton);
         frame.add(endCallButton);
-        frame.add(instructions);
+        frame.add(makeKeyPad());
         frame.pack();
         frame.setVisible(true);
     }
 
+    private JPanel makeKeyPad() {
+        JPanel p = new JPanel(new GridLayout(4, 3));
+        p.add(new JButton(new NumberAction('1')));
+        p.add(new JButton(new NumberAction('2')));
+        p.add(new JButton(new NumberAction('3')));
+        p.add(new JButton(new NumberAction('4')));
+        p.add(new JButton(new NumberAction('5')));
+        p.add(new JButton(new NumberAction('6')));
+        p.add(new JButton(new NumberAction('7')));
+        p.add(new JButton(new NumberAction('8')));
+        p.add(new JButton(new NumberAction('9')));
+        p.add(new JButton(new NumberAction('*')));
+        p.add(new JButton(new NumberAction('0')));
+        p.add(new JButton(new NumberAction('#')));
+        return p;
+    }
+    
     public void stop() {
         frame.dispose();
     }
