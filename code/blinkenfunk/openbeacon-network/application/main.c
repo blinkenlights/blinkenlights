@@ -88,9 +88,6 @@ main (void)
   if (env.e.n_lamps > MAX_LAMPS)
     env.e.n_lamps = 0;
 
-  if (env.e.rf_delay > 1000)
-    env.e.rf_delay = 0;
-
   vRndInit ((((u_int32_t) env.e.mac_h) << 8) | env.e.mac_l);
   vNetworkInit ();
 
