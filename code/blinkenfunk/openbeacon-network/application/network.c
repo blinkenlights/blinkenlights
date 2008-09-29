@@ -140,9 +140,6 @@ vNetworkInit (void)
 
 #endif
   
-  env.e.mac_h = 101;
-  env.e.mac_l = 4;
-  
   cMACAddress[4] = env.e.mac_h;
   cMACAddress[5] = env.e.mac_l;
 
