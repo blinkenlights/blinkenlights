@@ -14,6 +14,8 @@ import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.prefs.BackingStoreException;
 import java.util.prefs.Preferences;
 
@@ -51,6 +53,14 @@ public class ImageToBML {
 	JTextField ySizeField = new JTextField();
 	JTextField pngDir = new JTextField();
 	JTextField outFile = new JTextField();
+
+	// metadata
+	JTextField titleField = new JTextField();
+	JTextField descriptionField = new JTextField();
+	JTextField authorField = new JTextField();
+	JTextField emailField = new JTextField();
+	JTextField urlField = new JTextField();
+	
 	JButton pngDirChoose = new JButton("...");
 	JButton outFileChoose = new JButton("...");
 	JButton startButton = new JButton("Start");
@@ -168,11 +178,30 @@ public class ImageToBML {
         frameRateField.setValue(prefs.getInt("fps",15));
         frameRateField.getModel().addChangeListener(inputVerifier);
         
+//        titleField.setText(prefs.get("title",""));
+//        titleField.getDocument().addDocumentListener(inputVerifier);
+        
+//        descriptionField.setText(prefs.get("description",""));
+//        descriptionField.getDocument().addDocumentListener(inputVerifier);
+        
+        authorField.setText(prefs.get("author",System.getProperty("user.name")));
+        authorField.getDocument().addDocumentListener(inputVerifier);
+        
+        emailField.setText(prefs.get("email",""));
+        emailField.getDocument().addDocumentListener(inputVerifier);
+
+        urlField.setText(prefs.get("url",""));
+        urlField.getDocument().addDocumentListener(inputVerifier);
+        
         cancelButton.setEnabled(false);
         progress.setStringPainted(true);
         
         DefaultFormBuilder mainBuilder = new DefaultFormBuilder(mainLayout); 
         mainBuilder.setDefaultDialogBorder();
+        
+        mainBuilder.appendSeparator("Movie Parameters");
+        mainBuilder.nextLine();
+        
         mainBuilder.append("Source Directory",pngDir,pngDirChoose);
         mainBuilder.nextLine();
         mainBuilder.append("Animation Width",xSizeField);
@@ -183,10 +212,31 @@ public class ImageToBML {
         mainBuilder.nextLine();
         mainBuilder.append("Output File",outFile, outFileChoose);
         mainBuilder.nextLine();
-        
+
         mainBuilder.appendUnrelatedComponentsGapRow();
         mainBuilder.nextLine();
 
+        mainBuilder.appendSeparator("Movie Information (optional)");
+        mainBuilder.nextLine();
+        
+        mainBuilder.append("Title", titleField);
+        mainBuilder.nextLine();
+        mainBuilder.append("Description", descriptionField);
+        mainBuilder.nextLine();
+        mainBuilder.append("Author",authorField);
+        mainBuilder.nextLine();
+        mainBuilder.append("Email",emailField);
+        mainBuilder.nextLine();
+        mainBuilder.append("URL", urlField);
+        mainBuilder.nextLine();
+
+       
+        
+
+        mainBuilder.appendUnrelatedComponentsGapRow();
+        mainBuilder.nextLine();
+
+        
         mainBuilder.append(ButtonBarFactory.buildOKCancelBar(startButton, cancelButton),5);
         mainBuilder.nextLine();
         
@@ -238,6 +288,10 @@ public class ImageToBML {
 			prefs.put("xSize", xSizeField.getText());
 			prefs.put("ySize", ySizeField.getText());
 			prefs.putInt("fps", ((Number)frameRateField.getValue()).intValue());
+			
+			prefs.put("author", authorField.getText());
+			prefs.put("email", emailField.getText());
+			prefs.put("url", urlField.getText());
 			
 			if (!new File(pngDir.getText()).isDirectory()) {
 				statusLine.setText("Source Directory isn't a directory.");
@@ -318,7 +372,15 @@ public class ImageToBML {
     		outputStream = new FileOutputStream(output);
 			File[] files = pngDir2.listFiles();
     		Arrays.sort(files);
-    		BMLOutputStream bmlOut = new BMLOutputStream(outputStream,((Number)frameRateField.getValue()).intValue(),size,bpp);
+    		
+    		Map<String,String> headerData = new HashMap<String,String>();
+    		headerData.put("author",authorField.getText());
+    		headerData.put("description",descriptionField.getText());
+    		headerData.put("title",titleField.getText());
+    		headerData.put("email",emailField.getText());
+    		headerData.put("url", urlField.getText());
+    		
+    		BMLOutputStream bmlOut = new BMLOutputStream(outputStream,((Number)frameRateField.getValue()).intValue(),size, bpp, headerData);
     		
     		File[] fileList = pngDir2.listFiles(new ImageFileNameFilter());
     		filesProcessed = 0;
