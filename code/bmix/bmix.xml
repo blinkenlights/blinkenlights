@@ -21,12 +21,9 @@
   <layer input="Bottom-West" x="16" y="21" width="22" height="7" />
   <layer input="Background"  x="0"  y="0"  width="96" height="32" />
 
-<!--
-  <output dest-addr="10.0.1.192" dest-port="2323" min-frame-interval="0" packet-format="MCU_MULTIFRAME">
+  <output dest-addr="127.0.0.1" dest-port="5999" min-frame-interval="41" packet-format="MCU_FRAME">
     <screen x="16" y="11" width="22" height="17" bpp="4"/>
-    <screen x="50" y="5"  width="30" height="23" bpp="4"/>
   </output>
- -->
  
   <dynamic-output min-frame-interval="0" packet-format="MCU_MULTIFRAME">
     <screen x="16" y="11" width="22" height="17" bpp="4"/>

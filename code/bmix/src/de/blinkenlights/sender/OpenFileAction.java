@@ -9,7 +9,6 @@ import java.awt.event.ActionEvent;
 import java.io.File;
 
 import javax.swing.AbstractAction;
-import javax.swing.JOptionPane;
 
 public class OpenFileAction extends AbstractAction {
 

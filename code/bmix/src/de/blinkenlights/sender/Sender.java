@@ -4,8 +4,6 @@
 package de.blinkenlights.sender;
 
 
-import com.apple.mrj.*;
-
 import java.awt.BorderLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -34,6 +32,10 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
+
+import com.apple.mrj.MRJApplicationUtils;
+import com.apple.mrj.MRJOpenDocumentHandler;
+import com.apple.mrj.MRJQuitHandler;
 
 import de.blinkenlights.bmix.main.BMovieException;
 import de.blinkenlights.bmix.main.BMovieSender;
