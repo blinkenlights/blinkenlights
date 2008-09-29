@@ -72,7 +72,7 @@ public class BMLOutputStream extends OutputStream {
 			else if (headerKey.equals("url") && headerValue != null && headerValue.length() > 0) {
 				outStr.append("<url>"+headerValue+"</url>\n");
 			} else {
-				System.err.println("unsupported header found in map: "+headerKey);
+				System.err.println("unsupported or empty header found in map: "+headerKey);
 			}
 		}
 		outStr.append("<creator>$Id$</creator>\n");
