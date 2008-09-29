@@ -249,6 +249,7 @@ cmd_id (const portCHAR * cmd)
     }
 
   shell_printf ("setting new WMCU ID: %d\n", id);
+  env.e.mcu_id = id;
 
   for (i = 0; i < env.e.n_lamps; i++)
     {
@@ -259,7 +260,6 @@ cmd_id (const portCHAR * cmd)
       vTaskDelay (100 / portTICK_RATE_MS);
     }
 
-  env.e.mcu_id = id;
   vTaskDelay (100 / portTICK_RATE_MS);
   env_store ();
 }
