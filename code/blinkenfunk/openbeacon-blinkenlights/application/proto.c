@@ -304,8 +304,8 @@ bParsePacket (unsigned char pipe)
 	{
 	    vTaskDelay (env.e.dimmer_delay / portTICK_RATE_MS);
 	    prev_v = v;
+	    vUpdateDimmer (v);
 	}
-	vUpdateDimmer (v);
 	packet_count++;
 	break;
       }
