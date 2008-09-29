@@ -65,6 +65,14 @@ public class DynamicOutput extends AbstractOutput {
         receiverTask = new HeartbeatReceiverTask(listenPort, listenAddr);
     }
 
+    public synchronized void close() {
+        receiverTask.close();
+        for (Map.Entry<HostAndPort, DestInfo> entry : destinations.entrySet()) {
+            entry.getValue().sender.close();
+        }
+        destinations.clear();
+    }
+    
     public List<HostAndPort> getDestinations() {
         return new ArrayList<HostAndPort>(destinations.keySet());
     }
@@ -72,6 +80,8 @@ public class DynamicOutput extends AbstractOutput {
     private class HeartbeatReceiverTask implements Runnable {
 
         private final BLPacketReceiver heartbeatReceiver;
+        
+        private boolean stopRequested = false;
 
         HeartbeatReceiverTask(int listenPort, String listenAddr) throws SocketException, UnknownHostException {
             logger.fine("creating heartbeat receiver task bound to "+listenAddr);
@@ -81,8 +91,12 @@ public class DynamicOutput extends AbstractOutput {
         }
         
         public void run() {
-            for (;;) { // XXX make stoppable
-                BLPacket bp = heartbeatReceiver.receive();
+            for (;;) {
+                BLPacket bp;
+                synchronized (this) {
+                    if (isStopRequested()) break;                    
+                    bp = heartbeatReceiver.receive();
+                }
                 logger.finest("Got packet: " + bp);
                 if (bp instanceof BLHeartbeatPacket) {
                     BLHeartbeatPacket hbp = (BLHeartbeatPacket) bp;
@@ -105,7 +119,15 @@ public class DynamicOutput extends AbstractOutput {
                 }
             }
         }
+
+        public synchronized boolean isStopRequested() {
+            return stopRequested;
+        }
         
+        public synchronized void close() {
+            stopRequested = true;
+            heartbeatReceiver.close();
+        }
     }
         
     public void send() throws IOException {
@@ -120,6 +142,7 @@ public class DynamicOutput extends AbstractOutput {
             if (delta > heartbeatTimeout) {
                 logger.fine("Removing destination " + hap + " (no heartbeat for " + delta + " ms)");
                 destIt.remove();
+                destInfo.sender.close();
             } else {
                 sendSingleFrame(destInfo.sender, destInfo.lastSend, logger);
                 destInfo.lastSend = now;

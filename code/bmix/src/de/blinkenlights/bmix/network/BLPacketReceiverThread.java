@@ -58,6 +58,14 @@ public class BLPacketReceiverThread extends Thread {
 		}
 	}
 
+	/**
+	 * Closes the associated receiver and terminates this thread.
+	 */
+	public synchronized void close() {
+//	    stopRequested = true; FIXME
+	    receiver.close(); // need to ensure everything knows this receiver is dead
+	}
+	
 	@Override
 	public void run() {
 		// TODO be able to stop this thread

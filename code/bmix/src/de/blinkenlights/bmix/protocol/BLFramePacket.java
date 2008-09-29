@@ -1,6 +1,7 @@
 package de.blinkenlights.bmix.protocol;
 
 import java.awt.Color;
+import java.awt.image.BufferedImage;
 
 import de.blinkenlights.bmix.mixer.BLImage;
 import de.blinkenlights.bmix.network.BLPacketReceiver.AlphaMode;
@@ -49,6 +50,15 @@ public class BLFramePacket extends AbstractFramePacket {
 	 */
 	public BLFramePacket(BLImage image) {
 		super(image);
+	}
+	
+    /**
+     * Creates a new BLFramePacket with the pixel data initialized from the given image.
+     * 
+     * @param image the image to use for the data
+     */
+	public BLFramePacket(BufferedImage image) {
+	    super(image);
 	}
 	
 	/**

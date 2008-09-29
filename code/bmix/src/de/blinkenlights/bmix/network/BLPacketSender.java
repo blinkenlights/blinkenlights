@@ -39,7 +39,14 @@ public class BLPacketSender {
 		logger.info("BLPacketSender() - host: " + host + " - port: " + port);		
 	}
 
-	
+    /**
+     * Releases network resources. Once this method has been called, this
+     * sender can no longer be used.
+     */
+    public void close() {
+        socket.close();
+    }
+    	
 	/**
 	 * Sends a message to the client.
 	 * 

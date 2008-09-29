@@ -39,4 +39,10 @@ public interface Output {
 
     public abstract List<HostAndPort> getDestinations();
 
+    /**
+     * Closes this output, releasing any system resources such as file
+     * and network handles. Once closed, this output instance cannot
+     * be reused.
+     */
+    public void close();
 }

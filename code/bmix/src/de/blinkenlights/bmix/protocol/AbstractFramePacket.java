@@ -85,26 +85,43 @@ public abstract class AbstractFramePacket implements BLPacket, BLImage {
 	}
 	
 	
-	/**
-	 * Creates a new BLFramePacket with one subframe. Uses the OPAQUE alpha mode.
-	 * 
-	 * @param image the image to use for the data
-	 */
-	protected AbstractFramePacket(BLImage image) {
-		width = image.getImageWidth();
-		height = image.getImageHeight();
-		transparentColour = null;
-		shadowColour = null;
-		alphaMode = AlphaMode.OPAQUE;
-		pixelData = extractPixelData(image);
-	}
-	
+    /**
+     * Creates a new BLFramePacket with one subframe. Uses the OPAQUE alpha mode.
+     * 
+     * @param image the image to use for the data
+     */
+    protected AbstractFramePacket(BLImage image) {
+        width = image.getImageWidth();
+        height = image.getImageHeight();
+        transparentColour = null;
+        shadowColour = null;
+        alphaMode = AlphaMode.OPAQUE;
+        pixelData = extractPixelData(image);
+    }
+
+    /**
+     * Creates a new BLFramePacket with one subframe. Uses the OPAQUE alpha mode.
+     * 
+     * @param image the image to use for the data
+     */
+    protected AbstractFramePacket(BufferedImage image) {
+        width = image.getWidth();
+        height = image.getHeight();
+        transparentColour = null;
+        shadowColour = null;
+        alphaMode = AlphaMode.OPAQUE;
+        pixelData = extractPixelData(image);
+    }
+
 	public static byte[] extractPixelData(BLImage image) {
 		BufferedImage img = new BufferedImage(
 				image.getImageWidth(), image.getImageHeight(),
 				BufferedImage.TYPE_INT_ARGB);
 		image.fillBufferedImage(img);
-
+		return extractPixelData(img);
+	}
+	
+	public static byte[] extractPixelData(BufferedImage img) {
 		byte[] pixelData = new byte[img.getWidth() * img.getHeight()];
 		int pixelCount = 0;
 		for (int k = 0; k < img.getHeight(); k++) {

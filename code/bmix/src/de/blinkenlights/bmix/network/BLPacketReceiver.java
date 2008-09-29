@@ -150,6 +150,17 @@ public class BLPacketReceiver {
 	}
 	
 	/**
+	 * Releases network resources. Once this method has been called, this
+	 * receiver can no longer be used.
+	 */
+	public void close() {
+	    socket.close();
+	    for (BLPacketSender relay : relaySenders) {
+	        relay.close();
+	    }
+	}
+	
+	/**
 	 * Blocks on receive. 
 	 */
 	public BLPacket receive() {

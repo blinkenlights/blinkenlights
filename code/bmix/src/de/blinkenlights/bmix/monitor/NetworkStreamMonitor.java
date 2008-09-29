@@ -38,4 +38,8 @@ public class NetworkStreamMonitor extends Monitor {
 			}
 		}
 	}
+	
+	public void close() {
+	    bpr.close();
+	}
 }

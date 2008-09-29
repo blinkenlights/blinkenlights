@@ -61,4 +61,8 @@ public class FixedOutput extends AbstractOutput {
 	public String toString() {
 	    return "" + sender + " " + viewports;
 	}
+	
+	public void close() {
+	    sender.close();
+	}
 }
