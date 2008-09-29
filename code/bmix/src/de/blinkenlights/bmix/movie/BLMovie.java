@@ -3,10 +3,13 @@ package de.blinkenlights.bmix.movie;
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.LinkedList;
+import java.util.zip.GZIPInputStream;
 
 import javax.security.sasl.SaslException;
 import javax.xml.parsers.ParserConfigurationException;
@@ -21,6 +24,7 @@ import org.xml.sax.helpers.DefaultHandler;
 
 import de.blinkenlights.bmix.main.BMovieException;
 import de.blinkenlights.bmix.util.FileFormatException;
+import de.blinkenlights.bmix.util.GZIPDetector;
 
 /**
  * This class implements a quick and dirty movie reader class for parsing a BML or BLM movie file and
@@ -34,6 +38,7 @@ import de.blinkenlights.bmix.util.FileFormatException;
  */
 public class BLMovie {
 	LinkedList<Frame> frames;
+	private boolean isGzip;
 
 	/**
 	 * Creates a BMovie from a BML XML file.
@@ -43,16 +48,31 @@ public class BLMovie {
 	 * @throws IOException 
 	 */
 	public BLMovie(String filename) throws BMovieException, IOException, FileNotFoundException {
+		
+		this.isGzip = GZIPDetector.isGZIPFile(new File(filename));
+		if (this.isGzip) {
+			System.out.println("movie appears to be gzip!");
+		} else {
+			System.out.println("move is not gzip");
+		}
 		frames = new LinkedList<Frame>();
 		
 		if(filename.length() < 5) {
 			System.out.println("BLMovie filename is invalid: " + filename);
 			return;
 		}
-		String suffix = filename.substring(filename.length() - 3, filename.length());
+		
+		String suffix;
+		if (filename.toLowerCase().endsWith(".gz")) {
+			suffix = filename.substring(filename.length() - 6, filename.length()-3);			
+		} else {
+			suffix = filename.substring(filename.length() - 3, filename.length());
+		}
+		
 		if(suffix.toUpperCase().equals("BLM")) {
 			parseLegacyMovie(filename);
 		}
+		
 		else if(suffix.toUpperCase().equals("BML")) {
 			ElementParser ep = new ElementParser(frames);
 			SAXParserFactory spf = SAXParserFactory.newInstance();
@@ -60,7 +80,14 @@ public class BLMovie {
 
 				try {
 					sp = spf.newSAXParser();
-					sp.parse(new File(filename), ep);	
+					InputStream input;
+					if (this.isGzip) {
+						input = new GZIPInputStream(new FileInputStream(filename));
+					} else {
+						input = new FileInputStream(filename);
+					}
+					sp.parse(input, ep);
+					input.close();
 				} catch (ParserConfigurationException e) {
 					throw new BMovieException(e);
 				} catch (SAXException e) {
@@ -100,7 +127,15 @@ public class BLMovie {
 		
 		BufferedReader in = null;
 		try {
-			in = new BufferedReader(new FileReader(filename));
+			
+			InputStream input;
+			if (this.isGzip) {
+				input = new GZIPInputStream(new FileInputStream(filename));
+			} else {
+				input = new FileInputStream(filename);
+			}
+			
+			in = new BufferedReader(new InputStreamReader(input));
 			String line;
 
 			int duration = 0;
