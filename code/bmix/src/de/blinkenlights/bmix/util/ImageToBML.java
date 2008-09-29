@@ -281,7 +281,7 @@ public class ImageToBML {
 
     }
 		
-    private class ImageFileNameFilter implements FilenameFilter {
+    private static class ImageFileNameFilter implements FilenameFilter {
 
 		public boolean accept(File dir, String name) {
 			File file = new File(dir,name);
@@ -315,7 +315,6 @@ public class ImageToBML {
 		
 		@Override
 		protected Object doInBackground() throws Exception {
-      		output.createNewFile();
     		outputStream = new FileOutputStream(output);
 			File[] files = pngDir2.listFiles();
     		Arrays.sort(files);

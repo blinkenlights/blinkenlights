@@ -43,7 +43,10 @@ public class FixedOutput extends AbstractOutput {
      * @see de.blinkenlights.bmix.mixer.OutputXX#send()
      */
     public void send() throws IOException {
-        sendSingleFrame(sender, lastSendTime, logger);
+        boolean sent = sendSingleFrame(sender, lastSendTime, logger);
+        if (sent) {
+            lastSendTime = System.currentTimeMillis();
+        }
     }
         
 	public List<HostAndPort> getDestinations() {

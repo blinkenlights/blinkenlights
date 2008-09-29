@@ -47,7 +47,9 @@ public class GameContext {
     private void readConfiguration() throws GameConfigurationException {
         try {
             Properties config = new Properties();
-            config.load(new FileInputStream("blinkengame.properties"));
+            FileInputStream propertiesIn = new FileInputStream("blinkengame.properties");
+            config.load(propertiesIn);
+            propertiesIn.close();
             playfieldWidth = Integer.parseInt(config.getProperty("playfield.width"));
             playfieldHeight = Integer.parseInt(config.getProperty("playfield.height"));
 

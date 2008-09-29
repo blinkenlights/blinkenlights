@@ -27,7 +27,7 @@ import de.blinkenlights.bmix.util.FileFormatException;
  * in separate windows on the screen. All ports and windows are configured
  * in a single XML file. 
  */
-public class BMonitor {
+public final class BMonitor {
 	
 	private final static Logger logger = Logger.getLogger(BMonitor.class.getName());
 	

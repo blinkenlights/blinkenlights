@@ -48,7 +48,7 @@ public class OutputSimulator implements FrameTarget {
         frame.setVisible(true);
     }
 
-    public void stop() {
+    public synchronized void stop() {
         image = null;
         frame.dispose();
     }

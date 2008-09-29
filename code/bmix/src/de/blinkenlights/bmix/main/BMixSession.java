@@ -15,7 +15,7 @@ import de.blinkenlights.bmix.network.BLPacketReceiverThread;
 /**
  * This class represents a BMixSession.
  */
-public class BMixSession {
+public final class BMixSession {
     private final Layer rootLayer;
     private final Map<BLPacketReceiver, List<Layer>> layerInputs;
     

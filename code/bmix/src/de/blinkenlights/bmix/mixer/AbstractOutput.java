@@ -66,16 +66,16 @@ public abstract class AbstractOutput implements Output {
         viewports.add(new BLImageViewport(source, bounds, bpp));
     }
     
-    protected void sendSingleFrame(BLPacketSender sender, long lastSendTime, Logger logger)
+    protected boolean sendSingleFrame(BLPacketSender sender, long lastSendTime, Logger logger)
     throws IOException {
-        
+        boolean sent;
         long now = System.currentTimeMillis();
         if (lastSendTime + minSendInterval > now) {
             logger.fine("Suppressing output packet because it came " +
                     (lastSendTime + minSendInterval - now) + "ms too soon");
+            sent = false;
         } else {
-            lastSendTime = now;
-            if(packetType == PacketType.MCU_FRAME) {
+            if (packetType == PacketType.MCU_FRAME) {
                 AbstractFramePacket p = new BLFramePacket(viewports.get(0));
                 sender.send(p.getNetworkBytes());               
             } else if(packetType == PacketType.MCU_MULTIFRAME) {
@@ -84,7 +84,9 @@ public abstract class AbstractOutput implements Output {
             } else {
                 throw new AssertionError("Unsupported packet type: " + packetType.name());
             }
+            sent = true;
         }
+        return sent;
     }
 
     /* (non-Javadoc)
