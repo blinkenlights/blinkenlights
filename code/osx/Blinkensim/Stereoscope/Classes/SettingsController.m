@@ -272,11 +272,11 @@ static NSString * const labelCellIdentifier = @"LabelCell";
 }
 
 - (IBAction)gotoWebsite:(id)inSender {
-	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.blinkenlights.net/"]];
+	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.blinkenlights.net/stereoscope"]];
 }
 
 - (IBAction)gotoBlinkenlightsWebsite:(id)inSender {
-	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.blinkenlights.net/"]];
+	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.blinkenlights.net/stereoscope"]];
 }
 
 - (IBAction)gotoCodingMonkeysWebsite:(id)inSender {
