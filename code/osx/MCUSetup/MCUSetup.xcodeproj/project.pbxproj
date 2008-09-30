@@ -198,6 +198,7 @@
 				GCC_PREFIX_HEADER = MCUSetup_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				PRODUCT_NAME = MCUSetup;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "87EC7408-A97E-4EE1-8F53-33A0B76B5B10";
 			};
 			name = Debug;
 		};

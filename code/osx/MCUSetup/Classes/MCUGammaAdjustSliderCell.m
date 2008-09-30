@@ -36,8 +36,8 @@
 		valueSlider = [[UISlider alloc] initWithFrame:CGRectZero];
 		[valueSlider addTarget:self action:@selector(sliderAction:) forControlEvents:UIControlEventValueChanged];
 		[valueSlider addTarget:self action:@selector(sliderActionUp:) forControlEvents:UIControlEventTouchUpInside];
-		valueSlider.minimumValue = 0;
-		valueSlider.maximumValue = 10000;
+		valueSlider.minimumValue = 2000;
+		valueSlider.maximumValue = 8500;
 		valueSlider.continuous = YES;
 		[self.contentView addSubview:valueSlider];
 		
