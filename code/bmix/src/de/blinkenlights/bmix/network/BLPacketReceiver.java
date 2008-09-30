@@ -172,7 +172,7 @@ public class BLPacketReceiver {
 		this.transparentColour = transparentColour;
 
 		socket = new DatagramSocket(port, address);
-		socket.setSoTimeout(1000);
+		socket.setSoTimeout(500);
 		logger.info("BLFrameReceiver() - port: " + port);
 	}
 

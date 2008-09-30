@@ -31,6 +31,7 @@ public final class BMixSession {
      * An unmodifiable copy of the list given in the constructor.
      */
     private final List<Output> outputs;
+    
 	private final Map<Layer, BLPacketReceiver> layerSources;
     
     
@@ -71,10 +72,17 @@ public final class BMixSession {
 
     
     public void close() {
-//        private final Map<BLPacketReceiver, List<Layer>> layerInputs;
-//        for (BLPacketReceiver layerInput : layerInputs.keySet()) {
-//        	layerInput.close();
-//        }
+        for (BLPacketReceiver layerInput : layerInputs.keySet()) {
+        	layerInput.close();
+        }
+        
+        for (BLPacketReceiverThread receiverThread : receiverThreads) {
+        	receiverThread.close();
+        }
+        
+        for (Output output : outputs)  {
+        	output.close();
+        }
     }
     
     

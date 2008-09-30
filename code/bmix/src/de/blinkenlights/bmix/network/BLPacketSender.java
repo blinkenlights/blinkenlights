@@ -43,7 +43,7 @@ public class BLPacketSender {
      * Releases network resources. Once this method has been called, this
      * sender can no longer be used.
      */
-    public void close() {
+    public synchronized void close() {
         socket.close();
     }
     	
@@ -75,7 +75,11 @@ public class BLPacketSender {
 					" - length: " + length + " - buf len: " + buf.length);
 		}
         DatagramPacket packet = new DatagramPacket(buf, offset, buf.length, address, port);
-        socket.send(packet);
+        synchronized (this) {			
+	        if (!socket.isClosed()) {
+	        	socket.send(packet);
+	        }
+        }
 	}
 	
 	@Override

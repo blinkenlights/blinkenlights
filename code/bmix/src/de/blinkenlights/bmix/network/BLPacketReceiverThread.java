@@ -33,6 +33,7 @@ public class BLPacketReceiverThread extends Thread {
 	 * heartbeat packet was sent.  This is not immune to system clock adjustments.
 	 */
 	private long lastHeartBeatSendTime = 0;
+	private boolean stopRequested;
 
 	/**
 	 * Creates a new thread that receives packets continuously. Every time a new
@@ -62,29 +63,35 @@ public class BLPacketReceiverThread extends Thread {
 	 * Closes the associated receiver and terminates this thread.
 	 */
 	public synchronized void close() {
-//	    stopRequested = true; FIXME
-	    receiver.close(); // need to ensure everything knows this receiver is dead
+	    stopRequested = true; 
+	}
+	
+	public synchronized boolean isStopRequested() {
+		return stopRequested;
 	}
 	
 	@Override
 	public void run() {
-		// TODO be able to stop this thread
-		for (;;) {
-			long now = System.currentTimeMillis();
-			if (now > lastHeartBeatSendTime + heartBeatSendInterval) {
-				lastHeartBeatSendTime = now;
-				try {
-					receiver.sendHeartBeat();
-				} catch (IOException e) {
-					logger.log(Level.WARNING,"couldn't send a heartbeat packet",e);
+		try {
+			while (!isStopRequested()) {
+				long now = System.currentTimeMillis();
+				if (now > lastHeartBeatSendTime + heartBeatSendInterval) {
+					lastHeartBeatSendTime = now;
+					try {
+						receiver.sendHeartBeat();
+					} catch (IOException e) {
+						logger.log(Level.WARNING,"couldn't send a heartbeat packet",e);
+					}
+				}
+				BLPacket packet = receiver.receive();
+				if (packet instanceof BLFramePacket) {
+					lastPacketReceiptTime = System.currentTimeMillis();
+					BLFramePacket framePacket = (BLFramePacket) packet;
+					setLatestPacket(framePacket);
 				}
 			}
-			BLPacket packet = receiver.receive();
-			if (packet instanceof BLFramePacket) {
-				lastPacketReceiptTime = System.currentTimeMillis();
-				BLFramePacket framePacket = (BLFramePacket) packet;
-				setLatestPacket(framePacket);
-			}
+		} finally {
+			receiver.close();
 		}
 	}
 

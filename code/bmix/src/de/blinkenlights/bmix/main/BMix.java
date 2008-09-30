@@ -4,6 +4,7 @@ import java.awt.AlphaComposite;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Rectangle;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.InetAddress;
@@ -12,6 +13,8 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -54,7 +57,7 @@ public final class BMix extends Monitor {
 	private BMixSession session;
 	private StatServer statServer;
 	
-
+	private Timer configReloadTimer = new Timer();
     /**
 	 * Creates a new BlinkenMix system.
 	 * 
@@ -65,10 +68,15 @@ public final class BMix extends Monitor {
 	 */
 	public BMix(String configFilename, boolean guiEnabled) throws ParserConfigurationException, SAXException, IOException {
 	    super("bmix", 0, 0, 400, 300, guiEnabled);
-	   
 	    statServer = new StatServer();
 	    new Thread(statServer).start();
-	    
+		File configFile = new File(configFilename);
+		session = createSession(configFile);
+		configReloadTimer.schedule(new ConfigReloader(configFile), 1000, 1000);
+	}
+
+	private static BMixSession createSession(File configFile)
+			throws ParserConfigurationException, SAXException, IOException {
 		BMixSAXHandler saxHandler = new BMixSAXHandler();
 		SAXParserFactory spf = SAXParserFactory.newInstance();
 		SAXParser sp = null;
@@ -86,8 +94,8 @@ public final class BMix extends Monitor {
         XMLReader reader = sp.getXMLReader();
         reader.setEntityResolver(resolver);
         reader.setContentHandler(saxHandler);
-        reader.parse(new InputSource(configFilename));	
-		session = saxHandler.getConfiguration();
+        reader.parse(new InputSource(configFile.getAbsolutePath()));	
+		return saxHandler.getConfiguration();
 	}
 	
 	/**
@@ -154,7 +162,7 @@ public final class BMix extends Monitor {
 		    handler.setLevel(logLevel);
 		}
 
-		new BMix(configFilename, guiEnabled).start();
+		new BMix(configFilename, guiEnabled).start();		
 	}
 	
 	private static void showHelp() {
@@ -407,5 +415,36 @@ public final class BMix extends Monitor {
         logger.exiting("BMix", "getNextImage", session.getRootLayer());
         return session.getRootLayer();
     }
-	
+    
+    private class ConfigReloader extends TimerTask {
+
+    	private final File fileToWatch;
+		private long lastModified;
+
+		public ConfigReloader(File fileToWatch) {
+			this.fileToWatch = fileToWatch;
+			lastModified = fileToWatch.lastModified();
+    		
+    	}
+    	
+		@Override
+		public void run() {
+			if (lastModified < fileToWatch.lastModified()) {
+				// time to reload the session
+				lastModified = fileToWatch.lastModified();
+				
+				session.close();
+				try {
+					session = BMix.createSession(fileToWatch);
+				} catch (Throwable e) {
+					// we should exit the JVM here so that bmix can be restarted immediately
+					// if the session was not reloaded successfully.
+					logger.log(Level.SEVERE,"something really bad happened reloading the configuraiton",e);
+					System.exit(1);
+				}
+				
+			}
+		}
+    	
+    }
 }
