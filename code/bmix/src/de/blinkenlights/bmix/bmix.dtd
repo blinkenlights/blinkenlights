@@ -70,7 +70,7 @@ the input will be set to transparent. -->
 <!ATTLIST screen width CDATA #REQUIRED>
 <!ATTLIST screen height CDATA #REQUIRED>
 <!-- multiframe outputs can have a bits-per-pixel of either 4 or 8 -->
-<!ATTLIST output bpp CDATA "4">
+<!ATTLIST screen bpp CDATA "4">
 
 <!-- An output that listens for heartbeats on a certain port and begins
      sending the specified screens to all addresses from which a heartbeat
