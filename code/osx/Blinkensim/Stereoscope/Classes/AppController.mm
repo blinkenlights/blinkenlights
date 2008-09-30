@@ -853,7 +853,7 @@ static AppController *s_sharedAppController;
 		NSString *messageText = [_messageDictionary objectForKey:@"_messageText"];
 		BOOL hasURL = [_messageDictionary objectForKey:@"url"] != 0;
 		NSString *urlTitle = [_messageDictionary objectForKey:@"url-title"];
-		if (!urlTitle) urlTitle = @"Goto Site";
+		if (!urlTitle) urlTitle = @"Open Website";
 		UIAlertView *alert = nil;
 		if (hasURL) {
 			alert = [[UIAlertView alloc] initWithTitle:messageTitle message:messageText
