@@ -273,12 +273,14 @@ public final class BMix extends Monitor {
 		            	heartBeatDestAddr = InetAddress.getByName(heartBeatDestAddrString);
 		            } 
 		            int heartBeatDestPort = Integer.parseInt(attributes.getValue("heartbeat-dest-port"));
+		            int inputTimeout = Integer.parseInt(attributes.getValue("timeout"));
+
 		            BLPacketReceiver receiver = 
 		                new BLPacketReceiver(id,
 		                        Integer.parseInt(listenPort),
 		                        InetAddress.getByName(listenAddr),
 		                        heartBeatDestAddr, heartBeatDestPort, alphaMode,
-		                        transparentColour, shadowColour);
+		                        transparentColour, shadowColour, inputTimeout);
 		            inputs.put(id, receiver);
 		            currentInput = receiver;
 

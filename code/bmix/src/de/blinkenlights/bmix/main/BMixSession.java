@@ -61,7 +61,7 @@ public final class BMixSession {
         
         List<BLPacketReceiverThread> threads = new ArrayList<BLPacketReceiverThread>();
         for (BLPacketReceiver r : layerInputs.keySet()) {
-            BLPacketReceiverThread t = new BLPacketReceiverThread(r, semaphore, 1000);
+            BLPacketReceiverThread t = new BLPacketReceiverThread(r, semaphore, r.getTimeoutMillis());
             t.start();
             threads.add(t);
         }
@@ -69,6 +69,15 @@ public final class BMixSession {
 
     }
 
+    
+    public void close() {
+//        private final Map<BLPacketReceiver, List<Layer>> layerInputs;
+//        for (BLPacketReceiver layerInput : layerInputs.keySet()) {
+//        	layerInput.close();
+//        }
+    }
+    
+    
     public Layer getRootLayer() {
         return rootLayer;
     }

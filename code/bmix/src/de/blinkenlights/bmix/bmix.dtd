@@ -30,6 +30,10 @@
 -->
 <!ATTLIST input shadow-colour CDATA #IMPLIED>
 
+<!-- input timeout in milliseconds.  If there is no frame for this much time, 
+the input will be set to transparent. -->
+<!ATTLIST input timeout CDATA "1000">
+
 
 <!-- Relay targets receive a copy of every frame received on the input they belong to -->
 <!ELEMENT relay-target EMPTY>
