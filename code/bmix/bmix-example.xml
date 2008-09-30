@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE bmix PUBLIC "-//BMix//DTD BMix 1.0//EN" "bmix.dtd">
+<bmix version="1.0" vmatrix-width="96" vmatrix-height="32" max-frame-interval="50">
+
+<!-- inputs -->
+  <input id="Debug" 	  listen-port="2331" alpha-mode="opaque" timeout="4000" />
+  <input id="Graffiti"    listen-port="2330" alpha-mode="chroma-key" timeout="4000" />
+  <input id="Foreground"  listen-port="2324" alpha-mode="opaque" timeout="4000" />
+  <input id="Top-East"    listen-port="2325" alpha-mode="opaque" />
+  <input id="Bottom-East" listen-port="2326" />
+  <input id="Top-West"    listen-port="2327" />
+  <input id="Bottom-West" listen-port="2328" />
+  <input id="Background"  listen-port="2329" />
+
+<!-- layers, in their stack-up order -->  
+  <layer input="Debug"       x="0"  y="0"  width="96" height="32" />
+  <layer input="Graffiti"    x="0"  y="0"  width="96" height="32" />
+  <layer input="Foreground"  x="0"  y="0"  width="96" height="32" />
+  <layer input="Top-East"    x="50" y="5"  width="30" height="12" />
+  <layer input="Bottom-East" x="50" y="19" width="30" height="9" />
+  <layer input="Top-West"    x="16" y="11" width="22" height="8" />
+  <layer input="Bottom-West" x="16" y="21" width="22" height="7" />
+  <layer input="Background"  x="0"  y="0"  width="96" height="32" />
+
+
+<!-- blinkenproxy output of the whole house -->
+<dynamic-output listen-port="4242">
+	<screen x="0" y="0" width="96" height="32" />
+</dynamic-output>
+
+<!-- screen 4, top east -->
+<output dest-addr="192.168.104.255" dest-port="2323"
+	packet-format="MCU_MULTIFRAME" min-frame-interval="10">
+		<screen x="50" y="5" width="30" height="12" />
+</output>
+
+<!-- screen 3, bottom east -->
+<output dest-addr="192.168.103.255" dest-port="2323" 
+	packet-format="MCU_MULTIFRAME" multiframe-bpp="4"
+	min-frame-interval="10">
+		<screen x="50" y="19" width="30" height="9" />
+</output>
+
+<!-- screen 2, top west -->
+<output dest-addr="192.168.102.255" dest-port="2323" 
+	packet-format="MCU_MULTIFRAME" min-frame-interval="10">
+		<screen x="16" y="11" width="22" height="7" />
+</output> 
+
+<!-- screen 1, bottom west -->
+<output dest-addr="192.168.101.255" dest-port="2323" 
+	packet-format="MCU_MULTIFRAME" min-frame-interval="10">
+		<screen x="16" y="21" width="22" height="12" />
+</output>
+
+</bmix>
