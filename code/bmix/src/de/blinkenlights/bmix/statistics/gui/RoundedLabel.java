@@ -21,6 +21,7 @@ public class RoundedLabel extends JPanel {
     private final JLabel iconLabel;
     private final JLabel textLabel;
 	private float iconScale = 1f;
+	private boolean greyedOut = false;
 
     public RoundedLabel(String text, int padding) {
         super();
@@ -65,6 +66,13 @@ public class RoundedLabel extends JPanel {
         g.translate(textLabel.getX(), textLabel.getY());
         textLabel.paint(g);
         g.translate(-textLabel.getX(), -textLabel.getY());
+        
+        if(greyedOut) {
+            g.setColor(new Color(0, 0, 0, 192));
+            g.fillRoundRect(
+                    padding, padding, getWidth() - padding, getHeight() - padding,
+                    BORDER_WIDTH * 3, BORDER_WIDTH * 3);        	
+        }
     }
     
 
@@ -83,5 +91,9 @@ public class RoundedLabel extends JPanel {
 
 	public void setIconScale(float f) {
 		iconScale  = f;
+	}
+	
+	public void setGreyedOut(boolean disable) {
+		this.greyedOut = disable;
 	}
 }

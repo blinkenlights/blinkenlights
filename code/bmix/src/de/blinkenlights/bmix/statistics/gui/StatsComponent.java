@@ -56,6 +56,17 @@ public class StatsComponent extends JPanel {
             } else {
                 display.setIcon(null);
             }
+            if(stats instanceof LayerStatistics) {
+            	LayerStatistics layerStat = (LayerStatistics) stats;
+            	InputStatistics inputStat = layerStat.getInputStat();
+            	if(inputStat != null) {
+                	display.setGreyedOut(inputStat.isTimedOut());            		
+            	}
+            }
+            if(stats instanceof InputStatistics) {
+            	InputStatistics inputStat = (InputStatistics) stats;
+           		display.setGreyedOut(inputStat.isTimedOut());
+            }
 			display.setSize(display.getPreferredSize());
 		}
 

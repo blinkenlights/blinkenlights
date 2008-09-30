@@ -9,7 +9,7 @@ import de.blinkenlights.bmix.network.BLPacketSender;
 import de.blinkenlights.bmix.network.BLPacketReceiver.AlphaMode;
 
 public class InputStatistics implements StatisticsItem {
-	
+
 	private static final long serialVersionUID = -1641167816689740295L;
 
 	private static final String timeoutMinput = null;
@@ -28,23 +28,22 @@ public class InputStatistics implements StatisticsItem {
 	private final long lastPacketReceiveTime;
 	private final String name;
 	private final long frameCount;
-
 	private int timeoutMillis;
 
 	public InputStatistics(BLPacketReceiver input) {
-	    this.id = System.identityHashCode(input);
-	    this.name = input.getName();
-        this.inputPort = input.getPort();
-        this.heartBeatDestAddr = input.getHeartBeatDestAddr();
-        this.heartBeatDestPort = input.getHeartBeatDestPort();
-        this.alphaMode = input.getAlphaMode();
-        this.chromaKeyColor = input.getTransparentColour();
-        this.lastPacketReceiveTime = input.getLastPacketReceiveTime();
-        this.frameCount = input.getFrameCount();
-        this.timeoutMillis = input.getTimeoutMillis();
-        
+		this.id = System.identityHashCode(input);
+		this.name = input.getName();
+		this.inputPort = input.getPort();
+		this.heartBeatDestAddr = input.getHeartBeatDestAddr();
+		this.heartBeatDestPort = input.getHeartBeatDestPort();
+		this.alphaMode = input.getAlphaMode();
+		this.chromaKeyColor = input.getTransparentColour();
+		this.lastPacketReceiveTime = input.getLastPacketReceiveTime();
+		this.frameCount = input.getFrameCount();
+		this.timeoutMillis = input.getTimeoutMillis();
+
 		relaySenderMap = new LinkedHashMap<String, Integer>();
-		for(BLPacketSender relaySender: input.getRelaySenders()) {
+		for (BLPacketSender relaySender : input.getRelaySenders()) {
 			relaySenderMap.put(relaySender.getAddress(), relaySender.getPort());
 		}
 	}
@@ -84,59 +83,59 @@ public class InputStatistics implements StatisticsItem {
 	public long getLastPacketReceiveTime() {
 		return lastPacketReceiveTime;
 	}
-	
+
 	public long getFrameCount() {
 		return frameCount;
 	}
-	
+
 	public int getTimeoutMillis() {
 		return timeoutMillis;
 	}
-	
+
+	public boolean isTimedOut() {
+		if (System.currentTimeMillis() - lastPacketReceiveTime > timeoutMillis)
+			return true;
+		return false;
+	}
+
 	public String toString() {
 		StringBuilder str = new StringBuilder();
 		str.append("Input - Name: " + name + "\n");
 		str.append("  Listen port: " + inputPort + "\n");
-		str.append("  Hearbest Dest - Addr: " + heartBeatDestAddr + " - Port: " + heartBeatDestPort + "\n");
+		str.append("  Hearbest Dest - Addr: " + heartBeatDestAddr + " - Port: "
+				+ heartBeatDestPort + "\n");
 		str.append("  Alpha Mode: " + alphaMode.name() + "\n");
 		str.append("  Chroma-key Colour: " + chromaKeyColor.toString() + "\n");
-		str.append("  Last packet receive time: " + lastPacketReceiveTime + "\n");
+		str.append("  Last packet receive time: " + lastPacketReceiveTime
+				+ "\n");
 		str.append("  Frame count: " + frameCount + "\n");
 		str.append("  Relay Senders: \n");
-		for(Map.Entry<String, Integer> ent : relaySenderMap.entrySet()) {
-			str.append("    Sender - Addr: " + ent.getKey() + " - Port: " + ent.getValue());
+		for (Map.Entry<String, Integer> ent : relaySenderMap.entrySet()) {
+			str.append("    Sender - Addr: " + ent.getKey() + " - Port: "
+					+ ent.getValue());
 		}
 		str.append("\n");
 		return str.toString();
 	}
 
 	public String toHtml() {
-	    StringBuilder relaySenders = new StringBuilder();
-        for(Map.Entry<String, Integer> ent : relaySenderMap.entrySet()) {
-            relaySenders.append(ent.getKey()).append(":").append(ent.getValue()).append("<br>");
-        }
-        String blinkenproxy;
-        if (heartBeatDestAddr == null) {
-            blinkenproxy = "none";
-        } else {
-            blinkenproxy = heartBeatDestAddr + ":" + heartBeatDestPort;
-        }
-	    return String.format(
-	            "<html><table cellpadding=1 cellspacing=0>" +
-	            "<tr><th colspan=2>Input %s (%d)" +
-	            "<tr><td>Blinkenproxy<td>%s" +
-	            "<tr><td>Alpha Mode<td>%s" +
-	            "<tr><td>Key Colour<td>#%8x" +
-	            "<tr><td>Frame Count<td>%d" +
-	            "<tr><td>Timeout<td>%dms" +
-	            "<tr><td>Relay Senders<td>%s",
-	            name,
-	            inputPort,
-	            blinkenproxy,
-	            alphaMode.name(),
-	            chromaKeyColor.getRGB(),
-	            frameCount,
-	            timeoutMillis,
-	            relaySenders);
+		StringBuilder relaySenders = new StringBuilder();
+		for (Map.Entry<String, Integer> ent : relaySenderMap.entrySet()) {
+			relaySenders.append(ent.getKey()).append(":")
+					.append(ent.getValue()).append("<br>");
+		}
+		String blinkenproxy;
+		if (heartBeatDestAddr == null) {
+			blinkenproxy = "none";
+		} else {
+			blinkenproxy = heartBeatDestAddr + ":" + heartBeatDestPort;
+		}
+		return String.format("<html><table cellpadding=1 cellspacing=0>"
+				+ "<tr><th colspan=2>Input %s (%d)"
+				+ "<tr><td>Blinkenproxy<td>%s" + "<tr><td>Alpha Mode<td>%s"
+				+ "<tr><td>Key Colour<td>#%8x" + "<tr><td>Frame Count<td>%d"
+				+ "<tr><td>Timeout<td>%dms" + "<tr><td>Relay Senders<td>%s",
+				name, inputPort, blinkenproxy, alphaMode.name(), chromaKeyColor
+						.getRGB(), frameCount, timeoutMillis, relaySenders);
 	}
 }
