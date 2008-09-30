@@ -12,6 +12,8 @@ public class InputStatistics implements StatisticsItem {
 	
 	private static final long serialVersionUID = -1641167816689740295L;
 
+	private static final String timeoutMinput = null;
+
 	/**
 	 * The unique ID of the object these stats are about.
 	 */
@@ -27,6 +29,8 @@ public class InputStatistics implements StatisticsItem {
 	private final String name;
 	private final long frameCount;
 
+	private int timeoutMillis;
+
 	public InputStatistics(BLPacketReceiver input) {
 	    this.id = System.identityHashCode(input);
 	    this.name = input.getName();
@@ -37,6 +41,7 @@ public class InputStatistics implements StatisticsItem {
         this.chromaKeyColor = input.getTransparentColour();
         this.lastPacketReceiveTime = input.getLastPacketReceiveTime();
         this.frameCount = input.getFrameCount();
+        this.timeoutMillis = input.getTimeoutMillis();
         
 		relaySenderMap = new LinkedHashMap<String, Integer>();
 		for(BLPacketSender relaySender: input.getRelaySenders()) {
@@ -84,6 +89,10 @@ public class InputStatistics implements StatisticsItem {
 		return frameCount;
 	}
 	
+	public int getTimeoutMillis() {
+		return timeoutMillis;
+	}
+	
 	public String toString() {
 		StringBuilder str = new StringBuilder();
 		str.append("Input - Name: " + name + "\n");
@@ -119,6 +128,7 @@ public class InputStatistics implements StatisticsItem {
 	            "<tr><td>Alpha Mode<td>%s" +
 	            "<tr><td>Key Colour<td>#%8x" +
 	            "<tr><td>Frame Count<td>%d" +
+	            "<tr><td>Timeout<td>%dms" +
 	            "<tr><td>Relay Senders<td>%s",
 	            name,
 	            inputPort,
@@ -126,6 +136,7 @@ public class InputStatistics implements StatisticsItem {
 	            alphaMode.name(),
 	            chromaKeyColor.getRGB(),
 	            frameCount,
+	            timeoutMillis,
 	            relaySenders);
 	}
 }
