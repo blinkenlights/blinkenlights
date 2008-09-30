@@ -34,6 +34,7 @@ extern int PtSetFifoLifetimeSeconds (int Seconds);
 extern int PtGetFifoLifetimeSeconds (void);
 extern void PtInitNrfFrontend (int ResetType);
 extern void PtDumpNrfRegisters (void);
+extern void PtUpdateWmcuId (unsigned char id);
 extern unsigned int packet_count;
 extern unsigned int last_sequence;
 extern unsigned int last_ping_seq;
