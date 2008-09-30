@@ -30,9 +30,9 @@ import de.blinkenlights.bmix.util.GZIPDetector;
  * This class implements a quick and dirty movie reader class for parsing a BML or BLM movie file and
  * loading each frame. Frames can then be requested from the movie. Not all quirks of the various
  * BL movie formats are supported.
- * 
+ * <p>
  * The movie format is determined by the filename extension. .blm = legacy format, .bml = XML format
- * 
+ * <p>
  * Currently only 1 and 4 bit movies are supported. If a movie file is missing the bits attribute
  * in the blm entity, a 1 bit movie is assumed. (this appears to be the case for older 1 bit movies)
  */
@@ -69,10 +69,11 @@ public class BLMovie {
 			suffix = filename.substring(filename.length() - 3, filename.length());
 		}
 		
+		// FIXME: this is not a good way to detect the file type!
 		if(suffix.toUpperCase().equals("BLM")) {
 			parseLegacyMovie(filename);
 		}
-		
+		// FIXME: this is not a good way to detect the file type!		
 		else if(suffix.toUpperCase().equals("BML")) {
 			ElementParser ep = new ElementParser(frames);
 			SAXParserFactory spf = SAXParserFactory.newInstance();
