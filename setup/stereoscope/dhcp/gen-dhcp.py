@@ -14,7 +14,9 @@ for screen in [ 1, 2, 3, 4 ]:
 		print "host wmcu-%d-%d {" % (screen, floor)
         	print "\thardware ethernet 00:bd:33:06:%02x:%02x;" % (screen, floor)
 	        print "\tfixed-address 192.168.%d.%d;" % (screen, floor)
+	        #print "\tfixed-address wmcu-%d-%d;" % (screen, floor)
 	        print "\toption subnet-mask 255.255.255.0;"
 	        print "\toption broadcast-address 192.168.%d.255;" % screen
 		print "}"
 		print
+
