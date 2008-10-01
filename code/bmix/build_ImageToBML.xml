@@ -7,6 +7,7 @@
         <mkdir dir="build"/>
     	<javac srcdir="src"
              destdir="build"
+    		 target="1.5"
     		 includes="de/blinkenlights/bmix/movie/BMLOutputStream.java, de/blinkenlights/bmix/util/ImageToBML.java"
              debug="on">
     		<classpath>
@@ -22,7 +23,6 @@
 	
 	<target name="jar" depends="compile" description="Creates an executable JAR of Image to BML App">
 		<unjar src="lib/forms-1.2.0.jar" dest="build" />
-		<unjar src="lib/l2fprod-common-directorychooser.jar" dest="build" />
 		<unjar src="lib/swing-worker-1.1.jar" dest="build" />
 		<unjar src="lib/commons-lang-2.4.jar" dest="build" />
 		<mkdir dir="dist"/>
