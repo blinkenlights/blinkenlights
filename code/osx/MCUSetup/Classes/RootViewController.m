@@ -20,11 +20,14 @@
 #import <unistd.h>
 #import <sys/socket.h>
 
-#define NUMBER_OF_SECTIONS 2
-#define ADDRESS_SECTION 1
+#define NUMBER_OF_SECTIONS 1
+#define SETTINGS_SECTION 1
+#define ADDRESS_SECTION 2
 #define SLIDER_SECTION 0
 
-
+@interface NSString (NSStringNATPortMapperAdditions)
++ (NSString *)stringWithAddressData:(NSData *)aData;
+@end
 
 @implementation NSString (NSStringNATPortMapperAdditions)
 + (NSString *)stringWithAddressData:(NSData *)aData
@@ -72,34 +75,77 @@
 
 @implementation RootViewController
 
+@synthesize gammaTableSettingsController;
+
+- (IBAction)resetToFalk
+{
+	I_values = [[NSMutableArray alloc] initWithObjects:
+			[NSNumber numberWithInt:0],
+			[NSNumber numberWithInt:2684],
+			[NSNumber numberWithInt:2947],
+			[NSNumber numberWithInt:3203],
+			[NSNumber numberWithInt:3356],
+			[NSNumber numberWithInt:3612],
+			[NSNumber numberWithInt:3766],
+			[NSNumber numberWithInt:3919],
+			[NSNumber numberWithInt:4124],
+			[NSNumber numberWithInt:4175],
+			[NSNumber numberWithInt:4482],
+			[NSNumber numberWithInt:4943],
+			[NSNumber numberWithInt:5352],
+			[NSNumber numberWithInt:5711],
+			[NSNumber numberWithInt:6632],
+			[NSNumber numberWithInt:10000],
+		nil];
+	[self.tableView reloadData];
+}
+
+- (IBAction)resetToDom
+{
+	I_values = [[NSMutableArray alloc] initWithObjects:
+			[NSNumber numberWithInt:0],
+			[NSNumber numberWithInt:2600],
+			[NSNumber numberWithInt:3130],
+			[NSNumber numberWithInt:3348],
+			[NSNumber numberWithInt:3565],
+			[NSNumber numberWithInt:3934],
+			[NSNumber numberWithInt:4446],
+			[NSNumber numberWithInt:4729],
+			[NSNumber numberWithInt:4878],
+			[NSNumber numberWithInt:5045],
+			[NSNumber numberWithInt:5301],
+			[NSNumber numberWithInt:5506],
+			[NSNumber numberWithInt:5876],
+			[NSNumber numberWithInt:6478],
+			[NSNumber numberWithInt:7109],
+			[NSNumber numberWithInt:10000],
+		nil];
+	[self.tableView reloadData];
+}
+
+- (IBAction)resetAlertSheet {
+	[[[[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel",@"Cancel Button") destructiveButtonTitle:nil otherButtonTitles:@"Reset to dom's gamma",@"Reset to falk's gamma", nil] autorelease] showInView:self.view];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+	if (buttonIndex == 0) {
+		[self resetToDom];
+	} else if (buttonIndex == 1){
+		[self resetToFalk];
+	}
+}
+
 - (void)_inithelper {
-		[self createAddressData];
-		[self createSendSocket];
-		I_values = [[[NSUserDefaults standardUserDefaults] objectForKey:@"GammaTable"] mutableCopy];
-		if (!I_values) {
-			I_values = [[NSMutableArray alloc] initWithObjects:
-				[NSNumber numberWithInt:10000/15 * 0],
-				[NSNumber numberWithInt:10000/15 * 1],
-				[NSNumber numberWithInt:10000/15 * 2],
-				[NSNumber numberWithInt:10000/15 * 3],
-				[NSNumber numberWithInt:10000/15 * 4],
-				[NSNumber numberWithInt:10000/15 * 5],
-				[NSNumber numberWithInt:10000/15 * 6],
-				[NSNumber numberWithInt:10000/15 * 7],
-				[NSNumber numberWithInt:10000/15 * 8],
-				[NSNumber numberWithInt:10000/15 * 9],
-				[NSNumber numberWithInt:10000/15 *10],
-				[NSNumber numberWithInt:10000/15 *11],
-				[NSNumber numberWithInt:10000/15 *12],
-				[NSNumber numberWithInt:10000/15 *13],
-				[NSNumber numberWithInt:10000/15 *14],
-				[NSNumber numberWithInt:10000/15 *15],
-				nil];
+	[self createAddressData];
+	[self createSendSocket];
+	I_values = [[[NSUserDefaults standardUserDefaults] objectForKey:@"GammaTable"] mutableCopy];
+	if (!I_values) {
+		[self resetToFalk];
 	}
 }
 
 - (id)initWithStyle:(UITableViewStyle)style {
-	NSLog(@"%s",__FUNCTION__);
+//	NSLog(@"%s",__FUNCTION__);
 	if ((self = [super initWithStyle:style])) 
 	{
 		[self _inithelper];
@@ -110,7 +156,7 @@
 - (id)initWithCoder:(NSCoder *)inCoder
 {
 	[self _inithelper];
-	NSLog(@"%s",__FUNCTION__);
+//	NSLog(@"%s",__FUNCTION__);
 	return [super initWithCoder:inCoder];
 }
 - (void)createAddressData {
@@ -170,7 +216,7 @@
 			*ints++ = OSSwapHostToBigInt32((uint32_t)[[I_values objectAtIndex:i] unsignedIntValue]);
 		}
 	}
-	NSLog(@"%s %@",__FUNCTION__,[resultData debugDescription]);
+//	NSLog(@"%s %@",__FUNCTION__,[resultData debugDescription]);
 	return resultData;
 }
 
@@ -191,10 +237,10 @@
         0.5
         );
     if (err != kCFSocketSuccess) {
-        NSLog(@"%s could not send data (%d, %@, %u bytes)",__FUNCTION__,err,[NSString stringWithAddressData:(NSData *)_targetAddressData],sendData);
+//        NSLog(@"%s could not send data (%d, %@, %u bytes)",__FUNCTION__,err,[NSString stringWithAddressData:(NSData *)_targetAddressData],sendData);
         
     } else {
-        NSLog(@"%s did send data: (%@, %u bytes)",__FUNCTION__,[NSString stringWithAddressData:(NSData *)_targetAddressData],sendData);
+//        NSLog(@"%s did send data: (%@, %u bytes)",__FUNCTION__,[NSString stringWithAddressData:(NSData *)_targetAddressData],sendData);
     };
     sendData = [self configDataHigh:YES];
     err = CFSocketSendData (
@@ -204,10 +250,10 @@
         0.5
         );
     if (err != kCFSocketSuccess) {
-        NSLog(@"%s could not send data (%d, %@, %u bytes)",__FUNCTION__,err,[NSString stringWithAddressData:(NSData *)_targetAddressData],sendData);
+//        NSLog(@"%s could not send data (%d, %@, %u bytes)",__FUNCTION__,err,[NSString stringWithAddressData:(NSData *)_targetAddressData],sendData);
         
     } else {
-        NSLog(@"%s did send data: (%@, %u bytes)",__FUNCTION__,[NSString stringWithAddressData:(NSData *)_targetAddressData],sendData);
+//        NSLog(@"%s did send data: (%@, %u bytes)",__FUNCTION__,[NSString stringWithAddressData:(NSData *)_targetAddressData],sendData);
     };
 
 	[[NSUserDefaults standardUserDefaults] setObject:I_values forKey:@"GammaTable"];
@@ -219,7 +265,9 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-	if (section == ADDRESS_SECTION) {
+	if (section == SETTINGS_SECTION) {
+		return @"Settings";
+	} else 	if (section == ADDRESS_SECTION) {
 		return @"Target Address";
 	} else if (section == SLIDER_SECTION) {
 	    return @"Gamma Table";
@@ -229,7 +277,9 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	if (section == ADDRESS_SECTION) {
+	if (section == SETTINGS_SECTION) {
+		return 2;
+	} else if (section == ADDRESS_SECTION) {
 		return 1;
 	} else if (section == SLIDER_SECTION) {
 	    return 16;
@@ -247,8 +297,8 @@
 		CellIdentifier = @"AddressCell";
 	} else if (section == SLIDER_SECTION) {
 		CellIdentifier = @"SliderCell";
-	} else {
-	    return 0;
+	} else if (section == SETTINGS_SECTION) {
+		CellIdentifier = @"SettingsCell";
 	}
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -264,7 +314,14 @@
 
     // Set up the cell
 
-	if (section == ADDRESS_SECTION) {
+	if (section == SETTINGS_SECTION) {
+		if (indexPath.row == 0) {
+			cell.text = @"Gamma Table: <default>";
+		} else {
+			cell.text = @"Addressing All";
+		}
+		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+	} else if (section == ADDRESS_SECTION) {
 		cell.text = @"10.0.1.201";
 	} else if (section == SLIDER_SECTION) {
 		MCUGammaAdjustSliderCell *adjustCell = (MCUGammaAdjustSliderCell *)cell;
@@ -280,12 +337,8 @@
 - (void)sliderCellDidChangeValue:(MCUGammaAdjustSliderCell *)inCell
 {
 	[I_values replaceObjectAtIndex:inCell.shadeNumber withObject:[NSNumber numberWithInt:inCell.shadeValue]];
-	NSLog(@"%s %d->%d",__FUNCTION__,inCell.shadeNumber,inCell.shadeValue);
+//	NSLog(@"%s %d->%d",__FUNCTION__,inCell.shadeNumber,inCell.shadeValue);
 	[self sendConfig];
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Navigation logic -- create and push a new view controller
 }
 
 
@@ -337,11 +390,28 @@
 }
 */
 
-/*
 - (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
+    [self.tableView reloadData];
+	[super viewWillAppear:animated];
 }
-*/
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	if (indexPath.section == SETTINGS_SECTION) {
+		if (indexPath.row == 0) {
+			[self.navigationController pushViewController:gammaTableSettingsController animated:YES];
+		}
+	}
+}
+
+- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	if (indexPath.section == SETTINGS_SECTION) {
+		return indexPath;
+	} else {
+		return nil;
+	}
+}
+
+
 /*
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];

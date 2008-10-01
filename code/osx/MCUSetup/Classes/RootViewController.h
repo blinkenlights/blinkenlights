@@ -7,13 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GammaTableSettingsController.h"
 
-@interface RootViewController : UITableViewController {
+@interface RootViewController : UITableViewController <UIActionSheetDelegate> {
 	CFDataRef _targetAddressData;
     CFSocketRef I_sendSocket;
     NSMutableArray *I_values;
+    IBOutlet GammaTableSettingsController *gammaTableSettingsController;
 }
 
+@property (nonatomic,retain) GammaTableSettingsController *gammaTableSettingsController;
+
+- (IBAction)resetAlertSheet;
 - (void)createAddressData;
 - (void)createSendSocket;
 - (IBAction)sendConfig;

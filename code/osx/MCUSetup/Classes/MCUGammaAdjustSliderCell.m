@@ -36,8 +36,8 @@
 		valueSlider = [[UISlider alloc] initWithFrame:CGRectZero];
 		[valueSlider addTarget:self action:@selector(sliderAction:) forControlEvents:UIControlEventValueChanged];
 		[valueSlider addTarget:self action:@selector(sliderActionUp:) forControlEvents:UIControlEventTouchUpInside];
-		valueSlider.minimumValue = 2000;
-		valueSlider.maximumValue = 8500;
+		valueSlider.minimumValue = 2300;
+		valueSlider.maximumValue = 6700;
 		valueSlider.continuous = YES;
 		[self.contentView addSubview:valueSlider];
 		
@@ -96,7 +96,7 @@
 	if ([delegate respondsToSelector:@selector(sliderCellDidChangeValue:)]) {
 		[delegate sliderCellDidChangeValue:self];
 	}
-	NSLog(@"%s %d",__FUNCTION__,(int)round([valueSlider value]));
+//	NSLog(@"%s %d",__FUNCTION__,(int)round([valueSlider value]));
 }
 
 

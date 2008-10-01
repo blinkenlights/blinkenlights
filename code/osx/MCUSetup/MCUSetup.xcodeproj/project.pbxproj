@@ -17,6 +17,7 @@
 		28C286E10D94DF7D0034E888 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C286E00D94DF7D0034E888 /* RootViewController.m */; };
 		F2E2A66D0E91CFCC00B2D67E /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F2E2A66C0E91CFCC00B2D67E /* icon.png */; };
 		F2E2A6A80E91E2E600B2D67E /* MCUGammaAdjustSliderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E2A6A70E91E2E600B2D67E /* MCUGammaAdjustSliderCell.m */; };
+		F2F093D10E92DEFB0036E678 /* GammaTableSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2F093D00E92DEFB0036E678 /* GammaTableSettingsController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,8 @@
 		F2E2A66C0E91CFCC00B2D67E /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		F2E2A6A60E91E2E600B2D67E /* MCUGammaAdjustSliderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCUGammaAdjustSliderCell.h; sourceTree = "<group>"; };
 		F2E2A6A70E91E2E600B2D67E /* MCUGammaAdjustSliderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCUGammaAdjustSliderCell.m; sourceTree = "<group>"; };
+		F2F093CF0E92DEFB0036E678 /* GammaTableSettingsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GammaTableSettingsController.h; sourceTree = "<group>"; };
+		F2F093D00E92DEFB0036E678 /* GammaTableSettingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GammaTableSettingsController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +58,8 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				F2F093CF0E92DEFB0036E678 /* GammaTableSettingsController.h */,
+				F2F093D00E92DEFB0036E678 /* GammaTableSettingsController.m */,
 				F2E2A6A60E91E2E600B2D67E /* MCUGammaAdjustSliderCell.h */,
 				F2E2A6A70E91E2E600B2D67E /* MCUGammaAdjustSliderCell.m */,
 				28C286DF0D94DF7D0034E888 /* RootViewController.h */,
@@ -181,6 +186,7 @@
 				1D3623260D0F684500981E51 /* MCUSetupAppDelegate.m in Sources */,
 				28C286E10D94DF7D0034E888 /* RootViewController.m in Sources */,
 				F2E2A6A80E91E2E600B2D67E /* MCUGammaAdjustSliderCell.m in Sources */,
+				F2F093D10E92DEFB0036E678 /* GammaTableSettingsController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
