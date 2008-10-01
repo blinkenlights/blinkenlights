@@ -18,6 +18,7 @@
 		F2E2A66D0E91CFCC00B2D67E /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F2E2A66C0E91CFCC00B2D67E /* icon.png */; };
 		F2E2A6A80E91E2E600B2D67E /* MCUGammaAdjustSliderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E2A6A70E91E2E600B2D67E /* MCUGammaAdjustSliderCell.m */; };
 		F2F093D10E92DEFB0036E678 /* GammaTableSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2F093D00E92DEFB0036E678 /* GammaTableSettingsController.m */; };
+		F2F096000E943DA00036E678 /* dist.plist in Resources */ = {isa = PBXBuildFile; fileRef = F2F095FF0E943DA00036E678 /* dist.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		F2E2A6A70E91E2E600B2D67E /* MCUGammaAdjustSliderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCUGammaAdjustSliderCell.m; sourceTree = "<group>"; };
 		F2F093CF0E92DEFB0036E678 /* GammaTableSettingsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GammaTableSettingsController.h; sourceTree = "<group>"; };
 		F2F093D00E92DEFB0036E678 /* GammaTableSettingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GammaTableSettingsController.m; sourceTree = "<group>"; };
+		F2F095FF0E943DA00036E678 /* dist.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = dist.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
+				F2F095FF0E943DA00036E678 /* dist.plist */,
 				28A0AAE50D9B0CCF005BE974 /* MCUSetup_Prefix.pch */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
 			);
@@ -172,6 +175,7 @@
 				28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */,
 				2899E5600DE3E45000AC0155 /* RootViewController.xib in Resources */,
 				F2E2A66D0E91CFCC00B2D67E /* icon.png in Resources */,
+				F2F096000E943DA00036E678 /* dist.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -247,6 +251,34 @@
 			};
 			name = Release;
 		};
+		F2F095F70E943D6B0036E678 /* Distrubtion */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = iphoneos2.1;
+			};
+			name = Distrubtion;
+		};
+		F2F095F80E943D6B0036E678 /* Distrubtion */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_ENTITLEMENTS = dist.plist;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = MCUSetup_Prefix.pch;
+				INFOPLIST_FILE = Info.plist;
+				PRODUCT_NAME = MCUSetup;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "113C6985-252F-4F93-9252-DE102952B9D9";
+			};
+			name = Distrubtion;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -255,6 +287,7 @@
 			buildConfigurations = (
 				1D6058940D05DD3E006BFB54 /* Debug */,
 				1D6058950D05DD3E006BFB54 /* Release */,
+				F2F095F80E943D6B0036E678 /* Distrubtion */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -264,6 +297,7 @@
 			buildConfigurations = (
 				C01FCF4F08A954540054247B /* Debug */,
 				C01FCF5008A954540054247B /* Release */,
+				F2F095F70E943D6B0036E678 /* Distrubtion */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
