@@ -217,49 +217,50 @@ class App
           timeAt = Time.at(timestamp / 1000.0);
           timestring = timeAt.strftime("%Y-%m-%d %H:%M:%S") + ".%03d" % (timeAt.usec / 1000)
           print "          MAGIC_MCU_MULTIFRAME Timestamp:0x%016x - #{timestring}\n" % [timestamp]
-          
-          subframeBaseByte = 12
-          subframeHeaderLength = 6
-          while (subframeBaseByte + subframeHeaderLength < data.length)
-          
-            screenID,bpp,subHeight,subWidth = data[subframeBaseByte...subframeBaseByte + subframeHeaderLength].unpack('CCnn')
-            print "            subframe screen#:#{screenID} bpp:#{bpp} #{subWidth}x#{subHeight}\n"
-
-            if (bpp == 4)
-              byteWidth = (subWidth + 1)/2
-              formatString = "%x"
-            else
-              byteWidth = subWidth
-              formatString = "%02x "
-            end
+          if @options.showFrames
+            subframeBaseByte = 12
+            subframeHeaderLength = 6
+            while (subframeBaseByte + subframeHeaderLength < data.length)
             
-            baseByte = subframeBaseByte + subframeHeaderLength
-
-            while (subHeight > 0)
-              print "            "
+              screenID,bpp,subHeight,subWidth = data[subframeBaseByte...subframeBaseByte + subframeHeaderLength].unpack('CCnn')
+              print "            subframe screen#:#{screenID} bpp:#{bpp} #{subWidth}x#{subHeight}\n"
+  
               if (bpp == 4)
-                if (@options.ascii)
-                  data[baseByte...(baseByte + byteWidth)].each_byte { |c| 
-                    print asciitable[((c>>4) * (asciitable.length-1) / 15.0).round].chr;
-                    print asciitable[((c & 0xF) * (asciitable.length-1) / 15.0).round].chr  }
-                else
-                  data[baseByte...(baseByte + byteWidth)].each_byte { |c| print formatString % (c>>4) ; print formatString % (c & 0xF)}
-                end
+                byteWidth = (subWidth + 1)/2
+                formatString = "%x"
               else
-                if (@options.ascii)
-                  data[baseByte...(baseByte + byteWidth)].each_byte { |c| 
-                    print asciitable[(c * (asciitable.length-1) / 255.0).round].chr
-                  }
+                byteWidth = subWidth
+                formatString = "%02x "
+              end
+              
+              baseByte = subframeBaseByte + subframeHeaderLength
+  
+              while (subHeight > 0)
+                print "            "
+                if (bpp == 4)
+                  if (@options.ascii)
+                    data[baseByte...(baseByte + byteWidth)].each_byte { |c| 
+                      print asciitable[((c>>4) * (asciitable.length-1) / 15.0).round].chr;
+                      print asciitable[((c & 0xF) * (asciitable.length-1) / 15.0).round].chr  }
+                  else
+                    data[baseByte...(baseByte + byteWidth)].each_byte { |c| print formatString % (c>>4) ; print formatString % (c & 0xF)}
+                  end
                 else
-                  data[baseByte...(baseByte + byteWidth)].each_byte { |c| print formatString % c }
-                end
-              end               
+                  if (@options.ascii)
+                    data[baseByte...(baseByte + byteWidth)].each_byte { |c| 
+                      print asciitable[(c * (asciitable.length-1) / 255.0).round].chr
+                    }
+                  else
+                    data[baseByte...(baseByte + byteWidth)].each_byte { |c| print formatString % c }
+                  end
+                end               
+                print "\n"
+                baseByte = baseByte + byteWidth
+                subHeight = subHeight - 1
+              end
+              subframeBaseByte = baseByte
               print "\n"
-              baseByte = baseByte + byteWidth
-              subHeight = subHeight - 1
             end
-            subframeBaseByte = baseByte
-            print "\n"
           end
           
         end
