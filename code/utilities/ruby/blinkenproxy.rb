@@ -157,6 +157,7 @@ class App
             clienthash = {:updateTime => Time.now, :client => client}
             @clients[clientaddress] = clienthash
             print Time.now.strftime("%Y-%m-%d %H:%M:%S"), ": (+) #{clientaddress} (#{@clients.length})\n"
+            STDOUT.flush
           end
           
           clienthash[:updateTime] = Time.now
@@ -188,6 +189,7 @@ class App
       end
       
       print "Providing proxy service at port #{@options.heartbeatPort}\n"
+      STDOUT.flush
       
       @proxySocket = UDPSocket.new
       @proxySocket.setsockopt(Socket::SOL_SOCKET, Socket::SO_REUSEADDR, true)
@@ -214,6 +216,7 @@ class App
             if (now - lastCheck > 5.0) 
               unless @clients.reject!{ |k,v| now - v[:updateTime] > 5.0 * 12}.nil?
                 print Time.now.strftime("%Y-%m-%d %H:%M:%S"), ": (-) (#{@clients.length})\n"
+                STDOUT.flush
               end
             end
             @clients.each { |k,v|

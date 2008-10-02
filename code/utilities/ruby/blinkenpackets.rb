@@ -133,6 +133,7 @@ class App
       data = [0x42424242,0,0,0].pack("NnnN")
       @socket.send(data,0,@options.proxyAddress,@options.proxyPort)
       print Time.now.strftime("%Y-%m-%d %H:%M:%S") + ": -------> Sent ping to #{@options.proxyAddress} #{@options.proxyPort} \n"
+      STDOUT.flush
       sleep(5)
     end
     
@@ -157,6 +158,7 @@ class App
         @socket.bind("0.0.0.0",@options.port)
         print "Listening for blinkenpackets on #{@options.port}:\n"
       end
+      STDOUT.flush
       
       
       loop do
