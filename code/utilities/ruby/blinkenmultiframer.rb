@@ -3,12 +3,12 @@
 # == Synopsis 
 #   blinkenmultiframer listens on a port for blinkenpackets and sends packets converted to 
 # == Examples
-#   blinkenmultiframer.rb -p 2323 -o 2324 -b 4
+#   blinkenmultiframer.rb -p 2323 -o 2323 -b 4 proxy.blinkenlights.net
 #
 #   Other examples:
 #     blinkenmultiframer -n -p 2324
 # == Usage 
-#   blinkenmultiframer.rb [-v | -h | -p PORT | -o PORT] [-n]
+#   blinkenmultiframer.rb [-v | -h | -p PORT | -o PORT] [-n] [-s] [targetAddress]
 #
 #   For help use: blinkenmultiframer.rb -h
 # == Options
@@ -19,6 +19,7 @@
 #   -n, --noframes           Don't ouptut frames
 #   -b, --bitsperpixel BITS  4 or 8
 #   -f, --alwaysfull         Don't split up big screens into small ones
+#   -s, --silent             Don't output anything
 # == Author
 #   Dominik Wagner
 # == Copyright
@@ -34,7 +35,7 @@ require 'date'
 
 
 class App
-  VERSION = '0.0.2'
+  VERSION = '0.1'
   
   attr_reader :options
 
@@ -50,6 +51,7 @@ class App
     @options.showFrames = true
     @options.alwaysFull = false
     @options.targetAddress = "localhost"
+    @options.silent = false
   end
 
   # Parse options, check arguments, then process the command
@@ -78,6 +80,7 @@ class App
       opts = OptionParser.new 
       opts.on('-v', '--version')    { output_version ; exit 0 }
       opts.on('-h', '--help')       { output_help ; exit 0 }
+      opts.on('-s', '--silent')     { @options.silent = true }
       opts.on('-n', '--noframes')   { @options.showFrames = false }
       opts.on('-f', '--alwaysfull') { @options.alwaysFull = true }
       opts.on('-b', '--bitsperpixel BITS') do |bits|
@@ -180,7 +183,7 @@ class App
     
     def process_command
       
-      print "Listening for blinkenpackets on #{@options.port} - and sending them to #{@options.outport}\n"
+      print "Listening for blinkenpackets on #{@options.port} - and sending them to #{@options.targetAddress}:#{@options.outport}\n"
       
       socket = UDPSocket.new
       socket.setsockopt(Socket::SOL_SOCKET, Socket::SO_REUSEADDR, true)
@@ -196,7 +199,7 @@ class App
         now = Time.now
         timestamp = (now.to_f * 1000).to_i
 
-        print "<#{host}>: Received packet (#{data.length} bytes), magic: 0x#{"%08x" % magic[0]} \n"
+        print "<#{host}>: Received packet (#{data.length} bytes), magic: 0x#{"%08x" % magic[0]} \n" unless @options.silent
         if (magic[0] == 0x23542666) 
       
       # struct mcu_frame_header
@@ -213,8 +216,8 @@ class App
       # };
           magic,height,width,channels,maxval = data.unpack('Nnnnn');
           baseByte = 12
-          print "          MAGIC_MCU_FRAME #{width}x#{height} channel#:#{channels} maxval:#{maxval} - content length:#{data.length-baseByte} bytes\n"
-          if (@options.showFrames)
+          print "          MAGIC_MCU_FRAME #{width}x#{height} channel#:#{channels} maxval:#{maxval} - content length:#{data.length-baseByte} bytes\n" unless @options.silent
+          if (@options.showFrames && !@options.silent)
             heightToReduce = height
             formatString = (maxval > 15) ? "%02x " : "%01x "
             while (heightToReduce > 0) 
