@@ -14,16 +14,16 @@ BMix Notes
 * render input graphics on each layer infobox
 
 
+===v1.4===
+* config reload
+
+
 ===v1.3===
 * new config and runtime statistics network protocol with GUI client. features include:
-** 
 * configurable chroma key color (default is still black)
 * shadow mode on each input to allow background layer to partially show through the transparent parts
-
-===v1.2===
 * more status messages on debug
 * multi-screen multiframe packet sending
-* config reload
 
 ==Future Features==
 

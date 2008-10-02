@@ -1,3 +1,21 @@
+/* 
+ * This file is part of BMix.
+ *
+ *    BMix is free software: you can redistribute it and/or modify
+ *    it under the terms of the GNU General Public License as published by
+ *    the Free Software Foundation, either version 3 of the License, or
+ *    (at your option) any later version.
+ * 
+ *    BMix is distributed in the hope that it will be useful,
+ *    but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *    GNU General Public License for more details.
+ *
+ *    You should have received a copy of the GNU General Public License
+ *    along with BMix.  If not, see <http://www.gnu.org/licenses/>.
+ * 
+ */
+
 package de.blinkenlights.bmix.util;
 
 import java.awt.Dimension;
@@ -41,7 +59,6 @@ import org.jdesktop.swingworker.SwingWorker;
 import com.jgoodies.forms.builder.DefaultFormBuilder;
 import com.jgoodies.forms.factories.ButtonBarFactory;
 import com.jgoodies.forms.layout.FormLayout;
-import com.l2fprod.common.swing.JDirectoryChooser;
 
 import de.blinkenlights.bmix.movie.BMLOutputStream;
 
@@ -123,7 +140,7 @@ public class ImageToBML {
         		JFileChooser chooser = new JFileChooser();
         		chooser.setDialogTitle("Select Output Filename");
         		int choice = chooser.showSaveDialog(mainFrame);
-        		if(choice == JDirectoryChooser.CANCEL_OPTION) {
+        		if(choice == JFileChooser.CANCEL_OPTION) {
         			System.out.println("User Canceled");					
         		}
         		else {

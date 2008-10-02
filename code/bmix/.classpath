@@ -4,7 +4,6 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="lib/commons-daemon.jar"/>
 	<classpathentry kind="lib" path="lib/forms-1.2.0.jar"/>
-	<classpathentry kind="lib" path="lib/l2fprod-common-directorychooser.jar"/>
 	<classpathentry kind="lib" path="lib/swing-worker-1.1.jar"/>
 	<classpathentry kind="lib" path="lib/commons-lang-2.4.jar"/>
 	<classpathentry kind="output" path="bin"/>

@@ -61,6 +61,7 @@
 		<copy file="bmix-example.xml" tofile="dist/bmix-${bmix.version}/bmix.xml"/>
 		<copy file="etc/start.sh" todir="dist/bmix-${bmix.version}/"/>
 		<copy file="HISTORY" todir="dist/bmix-${bmix.version}/"/>
+		<copy file="etc/COPYING" todir="dist/bmix-${bmix.version}/"/>
 		
 		<mkdir dir="dist/bmix-${bmix.version}/lib" />
 		<copy todir="dist/bmix-${bmix.version}/lib">
