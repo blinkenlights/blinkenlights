@@ -1,6 +1,7 @@
 package de.blinkenlights.bmix.network;
 
 import java.awt.Color;
+import java.awt.Point;
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
@@ -128,6 +129,13 @@ public class BLPacketReceiver {
 	 * make the input transparent.
 	 */
 	private final int timeoutMillis;
+	
+	/**
+     * The offset into the source image to start at. If this value is null,
+     * the source image will be scaled and stretched to fit the layer's size;
+     * if this value is non-null, the copy will be pixel-for-pixel.
+     */
+	private Point cropOffset;
 
 	/**
 	 * Creates a new BLFrameReceiver for receiving pixel data from a
@@ -154,11 +162,12 @@ public class BLPacketReceiver {
 	public BLPacketReceiver(String name, int port, InetAddress address,
 			InetAddress heartBeatDestination, int heartBeatDestPort,
 			AlphaMode alphaMode, Color transparentColour, Color shadowColor,
-			int timeoutMillis) throws SocketException {
+			int timeoutMillis, Point cropOffset) throws SocketException {
 		this.name = name;
 		shadowColour = shadowColor;
 
 		this.timeoutMillis = timeoutMillis;
+		this.cropOffset = cropOffset;
 		if (address == null) {
 			address = WILDCARD_ADDRESS;
 		}
@@ -278,5 +287,9 @@ public class BLPacketReceiver {
 	
 	public int getTimeoutMillis() {
 		return timeoutMillis;
+	}
+	
+	public Point getInputCropOffset() {
+		return this.cropOffset;
 	}
 }

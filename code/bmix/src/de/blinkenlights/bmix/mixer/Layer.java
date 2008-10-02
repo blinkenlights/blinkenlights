@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Composite;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
@@ -64,15 +65,29 @@ public class Layer implements BLImage {
         return parentLayer;
     }
 	
-	public void updateImage(BufferedImage newImage) {
+	/**
+	 * Copies the image data from this layer's input into this layer's buffered image {@link #bi}.
+	 * If the input's current frame is not the same size as this layer, this operation will scale
+	 * or crop the input's image according to the input's settings.
+	 * 
+	 * @param newImage The image to copy to this layer.
+	 */
+	public void updateImage(BufferedImage newImage, Point offset) {
 		
 	    clearImageToTransparent();
 
-		// now copy newImage into the blank bi with scaling to fit
-		Graphics2D g = (Graphics2D) bi.getGraphics();
-        g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_OFF);
-        g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_NEAREST_NEIGHBOR);
-		g.drawImage(newImage, 0, 0, bi.getWidth(), bi.getHeight(), 0, 0, newImage.getWidth(), newImage.getHeight(), null);
+	    Graphics2D g = (Graphics2D) bi.getGraphics();
+	    if (offset != null) {
+	    	// no scaling, but an offset into the source image
+	    	g.drawImage(newImage,
+	    			0, 0, bi.getWidth(), bi.getHeight(),
+	    			offset.x, offset.y, offset.x + bi.getWidth(), offset.y + bi.getHeight(), null);
+	    } else {
+	    	// scale source image to fit bi
+	    	g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_OFF);
+	    	g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_NEAREST_NEIGHBOR);
+	    	g.drawImage(newImage, 0, 0, bi.getWidth(), bi.getHeight(), 0, 0, newImage.getWidth(), newImage.getHeight(), null);
+	    }
 		g.dispose();
 	}
 	
@@ -149,7 +164,12 @@ public class Layer implements BLImage {
 			childg2.dispose();
 		}
 	}
-	
+
+	/**
+	 * Draws this layer's current input image into the given graphics.
+	 * 
+	 * @param g The graphics to draw into (often this is the parent layer's graphics)
+	 */
 	public void draw(Graphics2D g) {
 		Composite backupComposite = g.getComposite();
 		g.setComposite(composite);

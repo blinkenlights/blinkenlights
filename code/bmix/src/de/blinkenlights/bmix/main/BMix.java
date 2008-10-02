@@ -3,6 +3,7 @@ package de.blinkenlights.bmix.main;
 import java.awt.AlphaComposite;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Point;
 import java.awt.Rectangle;
 import java.io.File;
 import java.io.IOException;
@@ -282,13 +283,24 @@ public final class BMix extends Monitor {
 		            } 
 		            int heartBeatDestPort = Integer.parseInt(attributes.getValue("heartbeat-dest-port"));
 		            int inputTimeout = Integer.parseInt(attributes.getValue("timeout"));
-
+		            
+		            String cropXString = attributes.getValue("cropx");
+		            String cropYString = attributes.getValue("cropy");
+		            
+		            Point cropOffset = null;
+		            if (cropXString != null && cropYString != null) {
+		            	cropOffset = new Point(
+		            			Integer.parseInt(cropXString),
+		            			Integer.parseInt(cropYString));
+		            }
+		            
 		            BLPacketReceiver receiver = 
 		                new BLPacketReceiver(id,
 		                        Integer.parseInt(listenPort),
 		                        InetAddress.getByName(listenAddr),
 		                        heartBeatDestAddr, heartBeatDestPort, alphaMode,
-		                        transparentColour, shadowColour, inputTimeout);
+		                        transparentColour, shadowColour, inputTimeout, 
+		                        cropOffset);
 		            inputs.put(id, receiver);
 		            currentInput = receiver;
 

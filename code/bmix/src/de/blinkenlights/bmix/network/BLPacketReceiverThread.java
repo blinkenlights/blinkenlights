@@ -128,8 +128,6 @@ public class BLPacketReceiverThread extends Thread {
 	}
 
 	public void updateTargetLayers(List<Layer> layersForReceiver) {
-		// TODO: what do we do if the stream is invalid? clear the layers to
-		// transparency
 		BLFramePacket fp = retrieveLatestPacket();
 		if (fp != null) {
 			for (Layer l : layersForReceiver) {
@@ -140,7 +138,7 @@ public class BLPacketReceiverThread extends Thread {
 							.getImageHeight(), BufferedImage.TYPE_INT_ARGB);
 				}
 				fp.fillBufferedImage(layerImage);
-				l.updateImage(layerImage);
+				l.updateImage(layerImage, receiver.getInputCropOffset());
 			}
 		} else if (System.currentTimeMillis() > lastPacketReceiptTime + timeout) {
 			for (Layer l : layersForReceiver) {

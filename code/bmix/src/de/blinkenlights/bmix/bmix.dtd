@@ -23,6 +23,11 @@
      Defaults to black. Ignored unless alpha mode is chroma-key. -->
 <!ATTLIST input chroma-key-colour CDATA "#000000">
 
+<!-- specifies an offset into the input frame used when creating a layer 
+     image from this input -->
+<!ATTLIST input cropx CDATA #IMPLIED>
+<!ATTLIST input cropy CDATA #IMPLIED>
+
 <!--
     Fully-transparent pixels in the image will appear as this
     colour instead. If no translation is desired, this value
