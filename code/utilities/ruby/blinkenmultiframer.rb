@@ -49,6 +49,7 @@ class App
     @options.bits    = 8
     @options.showFrames = true
     @options.alwaysFull = false
+    @options.targetAddress = "localhost"
   end
 
   # Parse options, check arguments, then process the command
@@ -90,6 +91,9 @@ class App
       opts.on('-o', '--outport PORT') do |port|
         @options.outport = port
       end
+      opts.on('-o', '--outport PORT') do |port|
+        @options.outport = port
+      end
       # TO DO - add additional options
             
       opts.parse!(@arguments) rescue return false
@@ -114,7 +118,14 @@ class App
     # True if required arguments were provided
     def arguments_valid?
       # TO DO - implement your real logic here
-      true if @arguments.length == 0
+      if @arguments.length == 0
+        true
+      elsif @arguments.length == 1
+        @options.targetAddress = @arguments[0]
+        true
+      else
+        false
+      end
     end
     
     # Setup the arguments
@@ -243,7 +254,7 @@ class App
             end
           end
 
-          UDPSocket.open.send(outdata, 0, '127.0.0.1', @options.outport)          
+          UDPSocket.open.send(outdata, 0, @options.targetAddress, @options.outport)          
         end
       end
       
