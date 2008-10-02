@@ -12,7 +12,8 @@ public class BLImageViewport implements BLImage {
     private final BLImage source;
     private final BufferedImage sourceImage;
     private final Rectangle viewport;
-
+    private final int screenId;
+    
     /**
      * Bits per pixel for {@link #getNetworkBytes()}. Must be 4 or 8.
      */
@@ -30,11 +31,15 @@ public class BLImageViewport implements BLImage {
      *            {@link #getNetworkBytes()}. Only makes sense when this is a viewport
      *            of a MCU_MULTIFRAME output. Valid values are 4 and 8.
      */
-    public BLImageViewport(BLImage source, Rectangle viewport, int bpp) {
+    public BLImageViewport(BLImage source, Rectangle viewport, int bpp, int screenId) {
         this.source = source;
         this.sourceImage = new BufferedImage(source.getImageWidth(), source.getImageHeight(), BufferedImage.TYPE_INT_ARGB);
         this.viewport = viewport;
         this.bpp = bpp;
+        if (screenId > 255 || screenId < 0) {
+        	throw new IllegalArgumentException("screenId must be between 0 and 255, got "+screenId);
+        }
+        this.screenId = screenId;
         checkBPP(bpp);
     }
 
@@ -86,6 +91,14 @@ public class BLImageViewport implements BLImage {
     public int getBpp() {
         return bpp;
     }
+    
+    /** 
+     * Returns this viewport's screen id parameter, which should be included in the 
+     * MCU_MULTIFRAME packets.
+     */
+    public int getScreenId() {
+		return screenId;
+	}
 
 	@Override
     public String toString() {

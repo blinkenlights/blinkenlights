@@ -343,7 +343,6 @@ public final class BMix extends Monitor {
                     int destPort = Integer.parseInt(attributes.getValue("dest-port"));
                     long minInterval = Long.parseLong(attributes.getValue("min-frame-interval"));
                     PacketType packetFormat = PacketType.valueOf(attributes.getValue("packet-format"));
-                    
                     BLPacketSender sender = new BLPacketSender(destAddr, destPort);
                     currentOutput = new FixedOutput(sender, rootLayer, minInterval, packetFormat);
                     outputs.add(currentOutput);
@@ -354,9 +353,10 @@ public final class BMix extends Monitor {
                     int width =  Integer.parseInt(attributes.getValue("width"));
                     int height =  Integer.parseInt(attributes.getValue("height"));
                     int bpp = Integer.parseInt(attributes.getValue("bpp"));
+                    int screenId = Integer.parseInt(attributes.getValue("screen-id"));
 
                     Rectangle viewport = new Rectangle(x, y, width, height);
-                    currentOutput.addScreen(viewport, bpp);
+                    currentOutput.addScreen(viewport, bpp, screenId);
                     
                 } else if (qName.equals("dynamic-output")) {
                     String listenAddr = attributes.getValue("listen-addr");

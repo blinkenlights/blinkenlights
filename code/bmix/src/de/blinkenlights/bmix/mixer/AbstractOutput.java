@@ -58,12 +58,12 @@ public abstract class AbstractOutput implements Output {
     /* (non-Javadoc)
      * @see de.blinkenlights.bmix.mixer.Output#addScreen(java.awt.Rectangle, int)
      */
-    public void addScreen(Rectangle bounds, int bpp) {
+    public void addScreen(Rectangle bounds, int bpp, int screenId) {
         if (viewports.size() > 0 && packetType != PacketType.MCU_MULTIFRAME) {
             throw new UnsupportedOperationException(
                     "Packet type " + packetType + " does not support multiple screens");
         }
-        viewports.add(new BLImageViewport(source, bounds, bpp));
+        viewports.add(new BLImageViewport(source, bounds, bpp, screenId));
     }
     
     protected boolean sendSingleFrame(BLPacketSender sender, long lastSendTime, Logger logger)

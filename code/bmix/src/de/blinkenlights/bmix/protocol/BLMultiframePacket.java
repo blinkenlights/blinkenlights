@@ -39,12 +39,11 @@ public class BLMultiframePacket {
 		for (int i = 7; i >= 0; i--) {
 			buf.write((byte) ((tstamp >> 8*i) & 0xff));
 		}
-		for (int screen = 0; screen < viewports.size(); screen++) {
-		    
-		    BLImageViewport viewport = viewports.get(screen);
+		
+		for (BLImageViewport viewport : viewports) {		    
 		    byte[] pixelData = AbstractFramePacket.extractPixelData(viewport);
 		    
-		    buf.write((byte) screen);
+		    buf.write((byte) viewport.getScreenId());
 		    buf.write((byte) (viewport.getBpp() & 0xff));
 		    
 		    // height (16-bit)

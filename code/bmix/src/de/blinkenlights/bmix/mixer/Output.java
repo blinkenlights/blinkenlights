@@ -26,8 +26,9 @@ public interface Output {
      * 
      * @param bounds
      * @param bpp bits per pixel. Ignored unless this is an MCU_MULTIFRAME output.
+     * @param screenId multiframe screen id.  Ignored unless this is an MCU_MULTIFRAME output.
      */
-    public abstract void addScreen(Rectangle bounds, int bpp);
+    public abstract void addScreen(Rectangle bounds, int bpp, int screenId);
 
     public abstract List<BLImageViewport> getViewports();
 
