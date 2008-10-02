@@ -35,7 +35,7 @@
 #include "proto.h"
 
 //
-// Dummy TEA encryption key of the tag - please change for real applications!
+// key of the tag - please change for every application!
 //
 const long tea_key[4] = { 0xbb5b1e88, 0x5269abf5, 0x6676bb17, 0x3230bab1 };
 
