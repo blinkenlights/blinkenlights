@@ -131,7 +131,7 @@ class App
     
     def send_heartbeat
       data = [0x42424242,0,0,0].pack("NnnN")
-      @socket.send(data,0)
+      @socket.send(data,0,@options.proxyAddress,@options.proxyPort)
       print Time.now.strftime("%Y-%m-%d %H:%M:%S") + ": -------> Sent ping to #{@options.proxyAddress} #{@options.proxyPort} \n"
       sleep(5)
     end
@@ -147,7 +147,7 @@ class App
 
       if @options.useProxy
         print "connecting to #{@options.proxyAddress} on port #{@options.proxyPort}...\n" 
-        @socket.connect(@options.proxyAddress,@options.proxyPort)
+#        @socket.connect(@options.proxyAddress,@options.proxyPort)
         Thread.start() do
           while true
             self.send_heartbeat
