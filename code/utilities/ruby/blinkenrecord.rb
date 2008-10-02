@@ -181,8 +181,8 @@ class App
           now = Time.now
           if magic == 0x23542668
             # only record multiframes because this format needs the timestamp. when recording to bml later on we could do that differently
-            outFile.puts [data.length].pack('n')
-            outFile.puts data
+            outFile.print [data.length].pack('n')
+            outFile.print data
           end              
   
   
