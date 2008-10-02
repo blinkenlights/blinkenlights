@@ -63,6 +63,11 @@ public abstract class AbstractOutput implements Output {
             throw new UnsupportedOperationException(
                     "Packet type " + packetType + " does not support multiple screens");
         }
+        for (BLImageViewport viewport : viewports) {
+        	if (viewport.getScreenId() == screenId) {
+        		throw new IllegalArgumentException("screen id can not be repeated per ouput");
+        	}
+        }
         viewports.add(new BLImageViewport(source, bounds, bpp, screenId));
     }
     
