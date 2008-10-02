@@ -76,7 +76,7 @@ the input will be set to transparent. -->
 <!ATTLIST screen height CDATA #REQUIRED>
 <!-- multiframe outputs can have a bits-per-pixel of either 4 or 8 -->
 <!ATTLIST screen bpp CDATA "4">
-<!ATTLIST screen screen-id CDATA 0>
+<!ATTLIST screen screen-id CDATA "0">
 
 
 <!-- An output that listens for heartbeats on a certain port and begins
@@ -90,3 +90,13 @@ the input will be set to transparent. -->
 <!ATTLIST dynamic-output min-frame-interval CDATA "0">
 <!-- outputs can be send in one of two formats: MCU_FRAME, or MCU_MULTIFRAME -->
 <!ATTLIST dynamic-output packet-format CDATA "MCU_FRAME">
+
+<!-- An output that records each frame to a BML file on disk.
+-->
+<!ELEMENT recording-output (screen+)>
+<!ATTLIST recording-output directory CDATA ".">  <!-- defaults to current directory -->
+ <!-- base filename, appropriate timestamp and extension will be appended
+  -->
+<!ATTLIST recording-output base-name CDATA "recording"> 
+<!ATTLIST recording-output gzip CDATA "true">  <!-- true for gzip recording -->
+

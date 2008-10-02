@@ -40,6 +40,7 @@ import de.blinkenlights.bmix.mixer.Layer;
 import de.blinkenlights.bmix.mixer.Output;
 import de.blinkenlights.bmix.mixer.AbstractOutput.PacketType;
 import de.blinkenlights.bmix.monitor.Monitor;
+import de.blinkenlights.bmix.movie.MovieRecorderOutput;
 import de.blinkenlights.bmix.network.BLPacketReceiver;
 import de.blinkenlights.bmix.network.BLPacketReceiverThread;
 import de.blinkenlights.bmix.network.BLPacketSender;
@@ -140,7 +141,6 @@ public final class BMix extends Monitor {
 			}
 			
 		}
-		
 		Level logLevel;
 		if (verbosity == 0) {
 			logLevel = Level.WARNING;
@@ -369,7 +369,12 @@ public final class BMix extends Monitor {
                             minInterval, packetFormat, heartbeatTimeout);
                     ((DynamicOutput) currentOutput).start();
                     outputs.add(currentOutput);
-
+                } else if (qName.equals("recording-output")) {
+                    String directory = attributes.getValue("directory");
+                    String baseName = attributes.getValue("base-name");
+                    boolean gzip = "true".equals(attributes.getValue("gzip"));
+                    currentOutput = new MovieRecorderOutput(rootLayer,new File(directory), baseName, gzip);
+                    outputs.add(currentOutput);
                 } else {
 		        	logger.warning("unrecognised entity: " + qName);
 		        }
@@ -395,6 +400,13 @@ public final class BMix extends Monitor {
 		        }
 		    }
 		}
+	}
+	
+	// shuts down bmix cleanly and exits the jvm.
+	@Override
+	public void shutdown() {
+		session.close();
+		System.exit(0);
 	}
 
     @Override

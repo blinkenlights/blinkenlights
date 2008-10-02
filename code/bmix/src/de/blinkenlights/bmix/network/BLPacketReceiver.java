@@ -189,7 +189,7 @@ public class BLPacketReceiver {
 	 * Releases network resources. Once this method has been called, this
 	 * receiver can no longer be used.
 	 */
-	public void close() {
+	public synchronized void close() {
 		socket.close();
 		for (BLPacketSender relay : relaySenders) {
 			relay.close();
@@ -202,7 +202,11 @@ public class BLPacketReceiver {
 	public BLPacket receive() {
 		DatagramPacket packet = new DatagramPacket(buf, buf.length);
 		try {
-			socket.receive(packet);
+			synchronized(this) {
+				if (!socket.isClosed()) {
+					socket.receive(packet);
+				}
+			}
 			BLPacket parsedPacket = BLPacketFactory.parse(packet, alphaMode,
 					transparentColour, shadowColour);
 			lastPacketReceiveTime = System.currentTimeMillis();

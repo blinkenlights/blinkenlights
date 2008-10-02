@@ -53,4 +53,20 @@
 		<screen x="16" y="21" width="22" height="7" />
 </output>
 
+
+<!-- example recording output
+<recording-output directory="log" base-name="stereoscope">
+	<screen x="0" y="0" width="96" height="32" />
+</recording-output>
+-->
+
+<!-- example proxy send to proxy.blinkenlights.net 
+<output dest-addr="proxy.blinkenlights.net" dest-port="2323"
+	packet-format="MCU_MULTIFRAME" min-frame-interval="100">
+	        <screen x="16" y="11" width="22" height="17" screen-id="5" />
+	        <screen x="50" y="5" width="30" height="23" screen-id="6" />
+</output>
+-->
+
+
 </bmix>

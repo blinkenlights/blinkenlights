@@ -18,17 +18,22 @@ import org.apache.commons.lang.StringEscapeUtils;
 public class BMLOutputStream extends OutputStream {
 
 	private final OutputStream out;
-	private final int millisPerFrame;
+	private final boolean autoFps;
+	private final long millisPerFrame;
 	private final Dimension size;
+	private long lastFrameTime;
 	private final int bpp;
 	private boolean closed = false;
 	private final Map<String, String> headerData;
+	private BufferedImage previousFrame;
 
 	/**
 	 * Opens a BML Output Stream and writes an appropriate header to the stream.
 	 * 
 	 * @param out the output stream into which the BML will be written
-	 * @param fps the frames per second of the movie
+	 * @param fps the frames per second of the movie.  If fps is set to 0, the frame intervals will
+	 * be automatically generated based on how often writeFrame() is called.  This allows
+	 * the use of the output stream for live recording.  One full image will be buffered.
 	 * @param size the size of each frame
 	 * @param bpp the bits-per-pixel of each frame in the movie.  8bpp and 4bpp are supported.
 	 * @param headerData key/value data for the Header element of the BML file.  
@@ -38,7 +43,13 @@ public class BMLOutputStream extends OutputStream {
 	public BMLOutputStream(OutputStream out, int fps, Dimension size, int bpp, Map<String,String> headerData) throws IOException {
 		this.out = out;
 		this.headerData = headerData;
-		this.millisPerFrame = 1000 / fps;
+		if (fps == 0) {
+			autoFps = true;
+			this.millisPerFrame = 0;
+		} else {
+			autoFps = false;
+			this.millisPerFrame = 1000 / fps;
+		}
 		this.size = size;
 		if (bpp != 4 && bpp != 8) {
 			throw new IllegalArgumentException("BPP "+bpp+" is unsupported.  Only 4 and 8 are supported.");
@@ -96,19 +107,38 @@ public class BMLOutputStream extends OutputStream {
 	 * @throws IllegalArgumentException if the frame is the incorrect dimensions for the movie.
 	 */
 	public void writeFrame(BufferedImage image) throws IOException {
+		BufferedImage outputImage;
+		if (autoFps) {
+			if (previousFrame == null) {
+				// first frame, just buffer this one and return
+				previousFrame = image;
+				lastFrameTime = System.currentTimeMillis();
+				return;
+			}
+ 			outputImage = previousFrame;
+		} else {
+			outputImage = image;
+		}
+		
 		if (closed) {
 			throw new IllegalStateException("attempt to write to closed stream");
 		}
-		if (image.getHeight() != size.height || image.getWidth() != size.width) {
-			throw new IllegalArgumentException("Image was incorrect size for movie; expected ("+size.width+"x"+size.height+") but got ("+image.getWidth()+"x"+image.getHeight()+")");			
+		if (outputImage.getHeight() != size.height || outputImage.getWidth() != size.width) {
+			throw new IllegalArgumentException("Image was incorrect size for movie; expected ("+size.width+"x"+size.height+") but got ("+outputImage.getWidth()+"x"+outputImage.getHeight()+")");			
 		}
+		
 		StringBuilder outStr = new StringBuilder();
-		outStr.append("<frame duration=\""+millisPerFrame+"\">\n");
-		for (int i = 0; i < image.getHeight(); i++) {
+		if (autoFps) {
+			long duration = System.currentTimeMillis() - lastFrameTime;
+			outStr.append("<frame duration=\""+duration+"\">\n");
+		} else {
+			outStr.append("<frame duration=\""+millisPerFrame+"\">\n");
+		}
+		for (int i = 0; i < outputImage.getHeight(); i++) {
 			outStr.append("<row>");
-			for (int j = 0; j < image.getWidth(); j++) {
+			for (int j = 0; j < outputImage.getWidth(); j++) {
 				// keep the red channel only
-				int r = (image.getRGB(j, i) & 0x00ff0000) >> 16;
+				int r = (outputImage.getRGB(j, i) & 0x00ff0000) >> 16;
 				if (bpp == 4) {
 					r = r >> 4;
 					outStr.append(String.format("%x", r));
@@ -121,7 +151,12 @@ public class BMLOutputStream extends OutputStream {
 		}
 		outStr.append("</frame>\n");
 		byte[] bytes = outStr.toString().getBytes();
+		
 		out.write(bytes, 0, bytes.length);
+		if (autoFps) {
+			previousFrame = image;
+		}
+		lastFrameTime = System.currentTimeMillis();
 	}
 	
 	@Override
@@ -132,10 +167,15 @@ public class BMLOutputStream extends OutputStream {
 	/**
 	 * Writes the BML footer, closes this stream, and closes the wrapped stream.
 	 * No further data should be written, since the footer has been written to the file.
+	 * If we're in autofps mode, we have to flush the final frame out of the buffer.
 	 */
 	@Override
 	public void close() throws IOException {
 		super.close();
+		if (autoFps) {
+			// flush the last frame
+			writeFrame(null);
+		}
 		writeFooter();
 		out.flush();
 		out.close();

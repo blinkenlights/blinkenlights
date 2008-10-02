@@ -1,7 +1,10 @@
 package de.blinkenlights.bmix.monitor;
 
 import java.awt.Dimension;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
+import java.util.prefs.BackingStoreException;
 
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
@@ -43,7 +46,16 @@ public abstract class Monitor extends Thread {
 	 */
 	private void setupGUI() {
 		frame = new JFrame(name);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+	    
+	    frame.addWindowListener(new WindowAdapter() {
+         public void windowClosing(WindowEvent e) {
+             shutdown();
+             System.exit(0);
+         }
+	    });
+		
 		previewPanel = new PreviewPanel();
 		previewPanel.setPreferredSize(new Dimension(w, h));
 		frame.add(previewPanel);
@@ -54,8 +66,13 @@ public abstract class Monitor extends Thread {
 				frame.setVisible(true);
 			}
 		});
+		
 	}
-
+	
+	 
+	public void shutdown() {
+		
+	}
 	
 	/**
 	 * Run the thread.
