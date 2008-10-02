@@ -35,11 +35,8 @@ public class BLTClientManager implements Runnable  {
 	
 	private DatagramSocket socket;
 
-	private final InetAddress blcccListenAddr;
-
-	public BLTClientManager(int port, InetAddress blcccListenAddr, ChannelList channelList){
+	public BLTClientManager(int port, ChannelList channelList){
 		this.port = port;
-		this.blcccListenAddr = blcccListenAddr;
 		this.channelList = channelList;
 	}
 	
@@ -47,7 +44,7 @@ public class BLTClientManager implements Runnable  {
 		logger.entering("BLTClient", "run");
 		socket = null;
 		try {
-			socket = new DatagramSocket(port,blcccListenAddr);
+			socket = new DatagramSocket(port);
 			socket.setSoTimeout(100);
 		} catch (IOException e) {
 			throw new RuntimeException("couldn't set up socket: ",e);

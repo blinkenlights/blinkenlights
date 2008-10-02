@@ -14,17 +14,18 @@ import de.blinkenlights.bvoip.blt.BLTClientManager;
 
 public class BVoip {
 	private static final Logger logger = Logger.getLogger(BVoip.class.getName());
+	private static int listenPort;
 	
 	
 	/**
 	 * Creates and starts the server to listen for voip events.
 	 */
-	public BVoip(InetAddress blcccListenAddr) {
+	public BVoip() {
 		logger.entering(getClass().getName(), getClass().getSimpleName());
 		
 		ChannelList channelList = new ChannelList(2);
 	
-		new Thread(new BLTClientManager(1234,blcccListenAddr,channelList)).start();
+		new Thread(new BLTClientManager(listenPort,channelList)).start();
 		
 		// TODO - make configurable port number
 		AGIServer agiServer = new AGIServer(4545, channelList);
@@ -40,14 +41,11 @@ public class BVoip {
 		FileInputStream in = new FileInputStream("bvoip.properties");
 		properties.load(in);
 		in.close();
-		
-		InetAddress listenAddr;
-		if (properties.get("blccc.listenAddr") != null) {
-			listenAddr = InetAddress.getByName((String)properties.get("blccc.listenAddr"));
-		} else {
-			listenAddr = InetAddress.getByName("0.0.0.0");
+				
+		if (properties.get("listenPort") == null) {
+			throw new IllegalArgumentException("missing required property 'listenPort'");
 		}
-		logger.info("listening for blccc packets on "+listenAddr);
+		listenPort = Integer.parseInt(properties.getProperty("listenPort"));
 		
 		
 		int verbosity = 2;
@@ -74,6 +72,6 @@ public class BVoip {
 		    handler.setLevel(logLevel);
 		}
 		
-		new BVoip(listenAddr);
+		new BVoip();
 	}
 }
