@@ -58,7 +58,7 @@
 	</target>
 		
 	<target name="tarball" depends="clean,jar" description="Creates the distribution tarball">
-		<copy file="bmix.xml" todir="dist/bmix-${bmix.version}/"/>
+		<copy file="bmix-example.xml" tofile="dist/bmix-${bmix.version}/bmix.xml"/>
 		<copy file="etc/start.sh" todir="dist/bmix-${bmix.version}/"/>
 		<copy file="HISTORY" todir="dist/bmix-${bmix.version}/"/>
 		
