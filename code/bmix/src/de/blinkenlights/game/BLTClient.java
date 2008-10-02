@@ -61,4 +61,33 @@ class BLTClient implements UserInputSource {
 	public String getDid() {
 		return did;
 	}
+	
+	private class Pinger implements Runnable {
+
+		private long pingIntervalMillis = 15000;
+		private boolean stopRequested = false;
+
+		public void run() {
+			
+			while (!isStopRequested()) {
+				
+				
+				
+				try {
+					Thread.sleep(pingIntervalMillis);
+				} catch (InterruptedException e) {
+					// just do the loop again
+				}
+			}
+		}
+
+		private synchronized boolean isStopRequested() {
+			return stopRequested ;
+		}
+		
+		public synchronized void setStopRequested(boolean stopRequested) {
+			this.stopRequested = stopRequested;
+		}
+		
+	}
 }
