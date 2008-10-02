@@ -44,13 +44,13 @@
 <!-- screen 2, top west -->
 <output dest-addr="192.168.102.255" dest-port="2323" 
 	packet-format="MCU_MULTIFRAME" min-frame-interval="10">
-		<screen x="16" y="11" width="22" height="7" />
+		<screen x="16" y="11" width="22" height="8" />
 </output> 
 
 <!-- screen 1, bottom west -->
 <output dest-addr="192.168.101.255" dest-port="2323" 
 	packet-format="MCU_MULTIFRAME" min-frame-interval="10">
-		<screen x="16" y="21" width="22" height="12" />
+		<screen x="16" y="21" width="22" height="7" />
 </output>
 
 </bmix>
