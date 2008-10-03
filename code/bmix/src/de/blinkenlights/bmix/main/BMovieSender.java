@@ -100,19 +100,19 @@ public class BMovieSender extends Thread {
 				Frame frame = movie.getFrame(i);
 				BLImage image = (BLImage)frame;
 				BLFramePacket packet = new BLFramePacket(image);
-				while(System.currentTimeMillis() < nextFrameTime) {
-					try {
-						Thread.sleep(1)	;
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-				}
 				try {
 					netSend.send(packet.getNetworkBytes());
 				} catch (Exception e) {
 				    logger.log(Level.WARNING, "Send frame failed", e);
 				}
 				nextFrameTime = System.currentTimeMillis() + frame.getDuration();
+				while(System.currentTimeMillis() < nextFrameTime) {
+					try {
+						Thread.sleep(nextFrameTime - System.currentTimeMillis());
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+				}
 			}			
 			if (!isLooping()) break;
 		}
