@@ -54,7 +54,7 @@ public class MovieRecorderOutput implements Output {
 	private final File destinationDirectory;
 	private final String baseFilename;
 	private BLImageViewport viewport;
-	private long lastFrameTime;
+	private long lastSendTime;
 	private int fileHour;
 	
 	private final Map<String, String> headerData = new HashMap<String, String>();
@@ -66,12 +66,15 @@ public class MovieRecorderOutput implements Output {
 	private final BLImage source;
 	private final boolean gzip;
 
+	private final long minSendInterval;
+
 	public MovieRecorderOutput(BLImage source, File destinationDirectory,
-			String baseFilename, boolean gzip) throws IOException {
+			String baseFilename, boolean gzip, long minSendInterval) throws IOException {
 		this.source = source;
 		this.destinationDirectory = destinationDirectory;
 		this.baseFilename = baseFilename;
 		this.gzip = gzip;
+		this.minSendInterval = minSendInterval;
  	}
 
 	private synchronized void roll() throws IOException {
@@ -132,7 +135,7 @@ public class MovieRecorderOutput implements Output {
 	}
 
 	public long getLastSendTime() {
-		return lastFrameTime;
+		return lastSendTime;
 	}
 
 	public long getMinSendInterval() {
@@ -148,16 +151,22 @@ public class MovieRecorderOutput implements Output {
 	}
 
 	public void send() throws IOException {
-		
-		int thisHour = new GregorianCalendar().get(Calendar.HOUR_OF_DAY);
-		if (thisHour != fileHour) {
-			roll();
-		}
-		
-		fileHour = thisHour;
-		BufferedImage bi = new BufferedImage(viewport.getImageWidth(), viewport.getImageHeight(), BufferedImage.TYPE_INT_ARGB);
-		viewport.fillBufferedImage(bi);
-		out.writeFrame(bi);
-		lastFrameTime = System.currentTimeMillis();
+       boolean sent;
+        long now = System.currentTimeMillis();
+        if (lastSendTime + minSendInterval > now) {
+            logger.fine("Suppressing output packet because it came " +
+               (lastSendTime + minSendInterval - now) + "ms too soon");
+            sent = false;
+	    } else {
+			int thisHour = new GregorianCalendar().get(Calendar.HOUR_OF_DAY);
+			if (thisHour != fileHour) {
+				roll();
+			}
+			fileHour = thisHour;
+			BufferedImage bi = new BufferedImage(viewport.getImageWidth(), viewport.getImageHeight(), BufferedImage.TYPE_INT_ARGB);
+			viewport.fillBufferedImage(bi);
+			out.writeFrame(bi);
+			lastSendTime = System.currentTimeMillis();
+	    }
 	}
 }
