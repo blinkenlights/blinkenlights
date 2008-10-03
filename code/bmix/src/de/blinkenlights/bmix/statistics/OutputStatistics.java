@@ -87,7 +87,12 @@ public class OutputStatistics implements StatisticsItem {
 	}
 
 	public String toHtml() {
-	    String packetTypeDesc = packetType.name();
+		String packetTypeDesc;
+		if (packetType != null) {
+			packetTypeDesc = packetType.name();
+		} else {
+			packetTypeDesc = "none";
+		}
 	    if (packetType == PacketType.MCU_FRAME) {
 	        packetTypeDesc += " (maxval 255)";
 	    } else if (packetType == PacketType.MCU_MULTIFRAME) {
