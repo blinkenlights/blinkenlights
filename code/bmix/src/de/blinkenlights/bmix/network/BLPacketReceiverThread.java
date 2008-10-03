@@ -111,6 +111,7 @@ public class BLPacketReceiverThread extends Thread {
 		} finally {
 			receiver.close();
 		}
+		logger.info("thread "+getName()+" stopping...");
 	}
 
 	/**
