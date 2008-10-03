@@ -67,7 +67,7 @@ public class Daemon implements org.apache.commons.daemon.Daemon {
 	}
 
 	public void stop() throws Exception {
-		bmix.shutdown();
+		//bmix.shutdown();
 	}
 
 }
