@@ -3,6 +3,7 @@
 
 using namespace Ogre;
 
+extern BOOL shouldAnimate;
 //extern SceneNode* objectNode;
 extern Camera *mCamera;
 
@@ -10,17 +11,34 @@ extern Camera *mCamera;
 
 - (void)mouseDragged:(NSEvent*)theEvent;
 {
-//	NSRect bounds = [self bounds];
-//	float yAngle = 2*M_PI*([theEvent deltaX])/NSWidth(bounds);
-//	float xAngle = 2*M_PI*([theEvent deltaY])/NSWidth(bounds);
-//	objectNode->rotate(Vector3(0,1,0), Radian(yAngle));
-//	objectNode->rotate(Vector3(1,0,0), Radian(xAngle), Node::TS_WORLD);
+    shouldAnimate = NO;
+	NSRect bounds = [self bounds];
+    
+    Vector3 old = mCamera->getPosition();
+
+    float deltaX = -100*([theEvent deltaX])/NSWidth(bounds);
+    float deltaY = 100*([theEvent deltaY])/NSHeight(bounds);
+    
+    if ((old.x+deltaX>-100) && (old.x+deltaX<100)) mCamera->moveRelative(Vector3(deltaX,0,0));
+    if ((old.y+deltaY>0.2) && (old.y+deltaY<100)) mCamera->moveRelative(Vector3(0,deltaY,0));
+
+    Vector3 pos = mCamera->getPosition();
+    if (pos.z<2) mCamera->setPosition(old.x, old.y, old.z);
+
+    pos = mCamera->getPosition();
+    NSLog(@"Camera at %f,%f,%f",pos.x,pos.y,pos.z);
 }
 
 - (void)scrollWheel:(NSEvent *)theEvent;
 {
-	float move = 4*[theEvent deltaY];
-	mCamera->moveRelative(Vector3(0, 0, move));
+    shouldAnimate = NO;
+	float move = [theEvent deltaY];
+    Vector3 old = mCamera->getPosition();
+	mCamera->moveRelative(Vector3(0, 0, move));    
+    Vector3 pos = mCamera->getPosition();
+    if (pos.z>75) mCamera->setPosition(old.x, old.y, 75);
+    if (pos.z<0.2) mCamera->setPosition(old.x, old.y, 0.2);
+    if (pos.y<1) mCamera->setPosition(pos.x, 1, pos.z);
 }
 
 - (void)drawRect:(NSRect)aRect

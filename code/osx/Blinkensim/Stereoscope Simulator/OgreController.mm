@@ -6,6 +6,7 @@ using namespace Ogre;
 Ogre::SceneManager *mSceneMgr;
 AnimationState* mAnimState;
 Camera *mCamera;
+BOOL shouldAnimate;
 
 #define FRAMERATE 1.0/60.0
 
@@ -13,6 +14,7 @@ Camera *mCamera;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
 {
+    shouldAnimate = YES;
     [[ogreView window] setDelegate:self];
 	std::string mResourcePath = [[[NSBundle mainBundle] resourcePath] UTF8String];
 	
@@ -128,11 +130,13 @@ Camera *mCamera;
     windowNodeB2->attachObject(ent);
     windowNodeB2->pitch(Degree(90));
     
+    Vector3 lookTo = Vector3(0,10,0);
+    
     mCamera->setPosition(Vector3(0,5,50));
-    mCamera->lookAt(Vector3(0,5,0));
+    mCamera->lookAt(lookTo);
     
     // Make sure the camera track this node
-    mCamera->setAutoTracking(true, cityhallNode);
+    mCamera->setAutoTracking(true, cityhallNode, lookTo);
         
     // set up spline animation of node
     Animation* anim = mSceneMgr->createAnimation("CameraTrack", 10);
@@ -165,7 +169,7 @@ Camera *mCamera;
 
 - (void)renderFrame
 {
-    mAnimState->addTime(FRAMERATE);
+    //if (shouldAnimate) mAnimState->addTime(FRAMERATE);
 	Ogre::Root::getSingleton().renderOneFrame();
 	//mSceneMgr->getSceneNode("OgreNode")->rotate(Vector3(0 ,1 ,0 ), Radian(0.01));
 }
@@ -175,11 +179,59 @@ Camera *mCamera;
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://blinkenlights.net/stereoscope"]];
 }
 
+#define NEAR_LEFT Vector3(-16.255816,1.924682,20.444798)
+#define NEAR_MIDDLE Vector3(0.003960,0.302409,20.962048)
+#define NEAR_RIGHT Vector3(14.228559,2.149735,23.378349)
+#define FAR_LEFT Vector3(-12.485603,2.159666,39.822617)
+#define FAR_MIDDLE Vector3(-0.632594,1.828550,42.405907)
+#define FAR_RIGHT Vector3(11.238027,1.401788,38.238659)
+
+- (IBAction)setCameraPosition:(id)inSender
+{
+    int camera = [inSender tag];
+    Vector3 pos;
+    
+    if (camera == 0) {
+        // Enable Animation
+        shouldAnimate = YES;
+    } else {
+        // Disable Animation
+        shouldAnimate = NO;
+        switch (camera)
+        {
+            case 1:
+                pos = FAR_RIGHT;
+                break;
+            case 2:
+                pos = FAR_MIDDLE;
+                break;
+            case 3:
+                pos = FAR_LEFT;
+                break;
+            case 4:
+                pos = NEAR_RIGHT;
+                break;
+            case 5:
+                pos = NEAR_LEFT;
+                break;
+            case 6:
+                pos = NEAR_MIDDLE;
+                break;
+            default:
+                break;
+        }
+        
+        // move to pos
+        mCamera->setPosition(pos.x, pos.y, pos.z);
+    }
+    
+}
+
+
 - (void)windowDidResize:(NSNotification *)notification
 {
     NSRect aRect = [[ogreView window] frame];
     mCamera->setAspectRatio(Real(aRect.size.width) / Real(aRect.size.height));
 }
-
 
 @end

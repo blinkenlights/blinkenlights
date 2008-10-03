@@ -11,5 +11,6 @@
 	NSColor *specularLight;
 }
 - (IBAction) showWebsite:(id)inSender;
+- (IBAction) setCameraPosition:(id)inSender;
 
 @end
