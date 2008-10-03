@@ -119,4 +119,5 @@ the input will be set to transparent. -->
   -->
 <!ATTLIST recording-output base-name CDATA "recording"> 
 <!ATTLIST recording-output gzip CDATA "true">  <!-- true for gzip recording -->
+<!ATTLIST recording-output min-frame-interval CDATA "0">
 
