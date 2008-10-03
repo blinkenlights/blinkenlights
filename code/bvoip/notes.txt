@@ -1,5 +1,6 @@
 BVoip Todo List
 ===============
 
+- Ensure busy signal works when two players try to call in at same time
 - 1 call per DNID? blccc seems to only expect one call for each game
 - play is not implemented
