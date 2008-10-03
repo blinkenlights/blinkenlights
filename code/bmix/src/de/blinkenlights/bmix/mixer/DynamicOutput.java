@@ -105,33 +105,37 @@ public class DynamicOutput extends AbstractOutput {
         }
         
         public void run() {
-            for (;;) {
-                BLPacket bp;
-                synchronized (this) {
-                    if (isStopRequested()) break;                    
-                    bp = heartbeatReceiver.receive();
-                }
-                logger.finest("Got packet: " + bp);
-                if (bp instanceof BLHeartbeatPacket) {
-                    BLHeartbeatPacket hbp = (BLHeartbeatPacket) bp;
-                    HostAndPort hap = new HostAndPort(hbp.getFromHost(), hbp.getFromPort());
-                    
-                    try {
-                        DestInfo destInfo = destinations.get(hap);
-                        if (destInfo == null) {
-                            destInfo = new DestInfo(new BLPacketSender(hap.getAddr(), hap.getPort()));
-                            destinations.put(hap, destInfo);
-                            logger.fine("Added new destination host " + hap);
-                        } else {
-                            long delta = System.currentTimeMillis() - destInfo.lastHeartbeat;
-                            logger.fine("Got heartbeat from " + hap + " (" + delta + "ms since last heartbeat)");
-                        }
-                        destInfo.lastHeartbeat = System.currentTimeMillis();
-                    } catch (BLNetworkException ex) {
-                        logger.log(Level.INFO, "Not adding specially malformed host to destinations list: " + hap, ex);
-                    }
-                }
-            }
+        	try {
+	            for (;;) {
+	                BLPacket bp;
+	                synchronized (this) {
+	                    if (isStopRequested()) break;                    
+	                    bp = heartbeatReceiver.receive();
+	                }
+	                logger.finest("Got packet: " + bp);
+	                if (bp instanceof BLHeartbeatPacket) {
+	                    BLHeartbeatPacket hbp = (BLHeartbeatPacket) bp;
+	                    HostAndPort hap = new HostAndPort(hbp.getFromHost(), hbp.getFromPort());
+	                    
+	                    try {
+	                        DestInfo destInfo = destinations.get(hap);
+	                        if (destInfo == null) {
+	                            destInfo = new DestInfo(new BLPacketSender(hap.getAddr(), hap.getPort()));
+	                            destinations.put(hap, destInfo);
+	                            logger.fine("Added new destination host " + hap);
+	                        } else {
+	                            long delta = System.currentTimeMillis() - destInfo.lastHeartbeat;
+	                            logger.fine("Got heartbeat from " + hap + " (" + delta + "ms since last heartbeat)");
+	                        }
+	                        destInfo.lastHeartbeat = System.currentTimeMillis();
+	                    } catch (BLNetworkException ex) {
+	                        logger.log(Level.INFO, "Not adding specially malformed host to destinations list: " + hap, ex);
+	                    }
+	                }
+	            }
+        	} finally {
+                heartbeatReceiver.close();
+        	}
         }
 
         public synchronized boolean isStopRequested() {
@@ -140,7 +144,6 @@ public class DynamicOutput extends AbstractOutput {
         
         public synchronized void close() {
             stopRequested = true;
-            heartbeatReceiver.close();
         }
     }
         
