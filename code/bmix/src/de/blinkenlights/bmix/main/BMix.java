@@ -92,7 +92,7 @@ public final class BMix extends Monitor {
 	    new Thread(statServer).start();
 		File configFile = new File(configFilename);
 		session = createSession(configFile);
-		configReloadTimer.schedule(new ConfigReloader(configFile), 1000, 1000);
+		//configReloadTimer.schedule(new ConfigReloader(configFile), 1000, 1000);
 	}
 
 	private static BMixSession createSession(File configFile)
@@ -390,8 +390,9 @@ public final class BMix extends Monitor {
                 } else if (qName.equals("recording-output")) {
                     String directory = attributes.getValue("directory");
                     String baseName = attributes.getValue("base-name");
+                    long minInterval = Long.parseLong(attributes.getValue("min-frame-interval"));
                     boolean gzip = "true".equals(attributes.getValue("gzip"));
-                    currentOutput = new MovieRecorderOutput(rootLayer,new File(directory), baseName, gzip);
+                    currentOutput = new MovieRecorderOutput(rootLayer,new File(directory), baseName, gzip, minInterval);
                     outputs.add(currentOutput);
                 } else {
 		        	logger.warning("unrecognised entity: " + qName);
@@ -423,8 +424,9 @@ public final class BMix extends Monitor {
 	// shuts down bmix cleanly and exits the jvm.
 	@Override
 	public void shutdown() {
-		session.close();
-		System.exit(0);
+		//logger.info("session shutting down.");
+		//session.close();
+		logger.info("shutdown complete.");
 	}
 
     @Override
@@ -474,7 +476,6 @@ public final class BMix extends Monitor {
 			if (lastModified < fileToWatch.lastModified()) {
 				// time to reload the session
 				lastModified = fileToWatch.lastModified();
-				
 				session.close();
 				try {
 					session = BMix.createSession(fileToWatch);
