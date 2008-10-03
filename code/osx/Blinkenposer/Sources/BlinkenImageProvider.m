@@ -12,6 +12,11 @@
 	[super dealloc];
 }
 
+//- (BOOL) shouldColorMatch
+//{
+//	return NO;
+//}
+//
 - (void)setFrameData:(NSData *)inFrameData size:(CGSize)inSize channels:(int)inChannels maxValue:(unsigned char)inMaxValue bitsPerPixel:(unsigned char)inBitsPerPixel
 {
     @synchronized (self) {
