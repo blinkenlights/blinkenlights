@@ -332,6 +332,10 @@
 					self.outputPixelHeight = 0;
 					self.outputPixelWidth = 0;
 				}
+			} else if ( time - _lastFrameTime >= _maximumFrameTimeDifference) {
+				[_blinkenSender sendBlinkenStructure:blinkenStructure];
+	//			NSLog(@"%s sent an unchanged frame (yay!)",__FUNCTION__);
+				_lastFrameTime = time;
 			}
 			_renderedOnce = YES;
 			_blinkenInputChanged = NO;

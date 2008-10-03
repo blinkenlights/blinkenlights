@@ -135,6 +135,8 @@
 	[xmlStart appendFormat:@"  <title></title>\n"];
 	[xmlStart appendFormat:@"  <description></description>\n"];
 	[xmlStart appendFormat:@"  <author></author>\n"];
+	[xmlStart appendFormat:@"  <email></email>\n"];
+	[xmlStart appendFormat:@"  <url></url>\n"];
 	[xmlStart appendFormat:@"  <recorder>Blinken BML Writer Plugin</recorder>\n"];
 	NSCalendarDate *date = [NSCalendarDate date];
 	[xmlStart appendFormat:@"  <recordingDate>%@</recordingDate>\n",[date descriptionWithCalendarFormat:@"%Y-%m-%d"]];
