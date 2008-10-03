@@ -24,6 +24,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Logger;
 
 import de.blinkenlights.bmix.mixer.Layer;
 import de.blinkenlights.bmix.mixer.Output;
@@ -36,7 +37,8 @@ import de.blinkenlights.bmix.network.BLPacketReceiverThread;
 public final class BMixSession {
     private final Layer rootLayer;
     private final Map<BLPacketReceiver, List<Layer>> layerInputs;
-    
+	private final static Logger logger = Logger.getLogger(BMixSession.class.getName());
+
     /**
      * An unmodifiable copy of the list given in the constructor.
      */
@@ -90,14 +92,13 @@ public final class BMixSession {
 
     
     public void close() {
-        for (BLPacketReceiver layerInput : layerInputs.keySet()) {
-        	layerInput.close();
-        }
         
+        logger.info("Closing receiverThreads");
         for (BLPacketReceiverThread receiverThread : receiverThreads) {
         	receiverThread.close();
         }
         
+        logger.info("closing outputs");
         for (Output output : outputs)  {
         	output.close();
         }
