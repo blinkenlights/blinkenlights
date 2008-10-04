@@ -7,8 +7,23 @@ Ogre::SceneManager *mSceneMgr;
 AnimationState* mAnimState;
 Camera *mCamera;
 BOOL shouldAnimate;
+BOOL autoCam;
+
+double progress;
+Vector3 from, to;
+BOOL animating;
+Vector3 cameras[6];
+
 
 #define FRAMERATE 1.0/60.0
+
+#define NEAR_LEFT Vector3(-16.255816,1.924682,20.444798)
+#define NEAR_MIDDLE Vector3(0.003960,0.302409,20.962048)
+#define NEAR_RIGHT Vector3(14.228559,2.149735,23.378349)
+#define FAR_LEFT Vector3(-12.485603,2.159666,39.822617)
+#define FAR_MIDDLE Vector3(-0.632594,1.828550,42.405907)
+#define FAR_RIGHT Vector3(11.238027,1.401788,38.238659)
+
 
 static GLfloat windowtextureCoords[16][12];
 GLfloat windowMeshTextureValues[16][2][2];
@@ -48,7 +63,16 @@ GLfloat windowMeshTextureValues[16][2][2];
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
-{
+{   
+    cameras[0] = FAR_LEFT;
+    cameras[1] = FAR_MIDDLE;
+    cameras[2] = FAR_RIGHT;
+    cameras[3] = NEAR_LEFT;
+    cameras[4] = NEAR_RIGHT;
+    cameras[5] = NEAR_MIDDLE;
+    
+    srand( (unsigned int) time( NULL ));
+
 	[self prepareValues];
 
     shouldAnimate = YES;
@@ -210,31 +234,20 @@ GLfloat windowMeshTextureValues[16][2][2];
     
     // Put in a bit of fog for the hell of it
     //mSceneMgr->setFog(FOG_EXP, ColourValue::White, 0.0002);
-    
+
+    autoCam = YES;
+    shouldAnimate = YES;
+    progress = 1.0;    
     
 	// create a timer that causes OGRE to render
 	NSTimer *renderTimer = [NSTimer scheduledTimerWithTimeInterval:FRAMERATE target:self selector:@selector(renderFrame) userInfo:NULL repeats:YES];
 	[[NSRunLoop currentRunLoop] addTimer:renderTimer forMode:NSEventTrackingRunLoopMode];
 }
 
-- (void)renderFrame
-{
-    //if (shouldAnimate) mAnimState->addTime(FRAMERATE);
-	Ogre::Root::getSingleton().renderOneFrame();
-	//mSceneMgr->getSceneNode("OgreNode")->rotate(Vector3(0 ,1 ,0 ), Radian(0.01));
-}
-
 - (IBAction) showWebsite:(id)inSender
 {
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://blinkenlights.net/stereoscope"]];
 }
-
-#define NEAR_LEFT Vector3(-16.255816,1.924682,20.444798)
-#define NEAR_MIDDLE Vector3(0.003960,0.302409,20.962048)
-#define NEAR_RIGHT Vector3(14.228559,2.149735,23.378349)
-#define FAR_LEFT Vector3(-12.485603,2.159666,39.822617)
-#define FAR_MIDDLE Vector3(-0.632594,1.828550,42.405907)
-#define FAR_RIGHT Vector3(11.238027,1.401788,38.238659)
 
 - (IBAction)setCameraPosition:(id)inSender
 {
@@ -243,38 +256,61 @@ GLfloat windowMeshTextureValues[16][2][2];
     
     if (camera == 0) {
         // Enable Animation
+        autoCam = YES;
         shouldAnimate = YES;
+        progress = 1.0;
     } else {
         // Disable Animation
-        shouldAnimate = NO;
-        switch (camera)
-        {
-            case 1:
-                pos = FAR_RIGHT;
-                break;
-            case 2:
-                pos = FAR_MIDDLE;
-                break;
-            case 3:
-                pos = FAR_LEFT;
-                break;
-            case 4:
-                pos = NEAR_RIGHT;
-                break;
-            case 5:
-                pos = NEAR_LEFT;
-                break;
-            case 6:
-                pos = NEAR_MIDDLE;
-                break;
-            default:
-                break;
-        }
-        
-        // move to pos
-        mCamera->setPosition(pos.x, pos.y, pos.z);
+        autoCam = NO;
+        to = cameras[camera-1];
+        [self animateCamera];
     }
     
+}
+
+- (void)animateCamera {
+    
+    progress = 0;
+    shouldAnimate = YES;
+    from = mCamera->getPosition();
+    //to = inTo;
+}
+
+- (void)renderFrame
+{
+    if (autoCam&&progress>=1) {
+        // Choose next cam after random wait
+        if (rand() % 100 == 1) {
+        NSLog(@"AUTO!");
+        
+        to = cameras[rand() % 6];
+        [self animateCamera];
+        }
+            
+    }
+    
+    if (shouldAnimate) {
+        progress = progress + (1.0/(2.0*60.0));
+        //NSLog(@"progress: %f",progress);
+        if (progress>=1) {
+            
+            shouldAnimate = NO;
+            
+        } else {
+            double p = progress;
+            if (p < 0.5) {
+                p = p*p*2;
+            } else {
+                p =  - 2 * (p-1)*(p-1) + 1;
+                
+            }
+            
+            mCamera->setPosition(from.x+(to.x-from.x)*p, from.y+(to.y-from.y)*p, from.z+(to.z-from.z)*p);
+        }
+    }
+    
+	Ogre::Root::getSingleton().renderOneFrame();
+	//mSceneMgr->getSceneNode("OgreNode")->rotate(Vector3(0 ,1 ,0 ), Radian(0.01));
 }
 
 

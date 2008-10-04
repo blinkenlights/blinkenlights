@@ -26,7 +26,7 @@ extern Camera *mCamera;
     if (pos.z<2) mCamera->setPosition(old.x, old.y, old.z);
 
     pos = mCamera->getPosition();
-    NSLog(@"Camera at %f,%f,%f",pos.x,pos.y,pos.z);
+    //NSLog(@"Camera at %f,%f,%f",pos.x,pos.y,pos.z);
 }
 
 - (void)scrollWheel:(NSEvent *)theEvent;

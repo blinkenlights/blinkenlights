@@ -12,5 +12,6 @@
 }
 - (IBAction) showWebsite:(id)inSender;
 - (IBAction) setCameraPosition:(id)inSender;
+- (void)animateCamera;
 
 @end
