@@ -9,6 +9,11 @@
 	IBOutlet OgreView *ogreView;
 	NSColor *diffuseLight;
 	NSColor *specularLight;
+	Ogre::Entity *topLeftWindows;
+	Ogre::Entity *bottomLeftWindows;
+	Ogre::Entity *topRightWindows;
+	Ogre::Entity *bottomRightWindows;
+	unsigned char displayState[23][54];
 }
 - (IBAction) showWebsite:(id)inSender;
 - (IBAction) setCameraPosition:(id)inSender;

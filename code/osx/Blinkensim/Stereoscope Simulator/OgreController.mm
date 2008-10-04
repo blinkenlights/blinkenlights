@@ -75,6 +75,193 @@ GLfloat windowMeshTextureValues[16][2][2];
 	}
 }
 
+- (void)updateWindows:(unsigned char *)inDisplayState
+{
+
+    SubMesh *submesh = NULL;
+    VertexData *vertexData = NULL;
+	const VertexElement *texcoordVE = NULL;
+    HardwareVertexBufferSharedPtr texcoordHVB;
+    GLfloat* texcoords = NULL;
+    IndexData *indexData = NULL;
+    HardwareIndexBufferSharedPtr indexHB;
+    unsigned short * vertexIndices = NULL;
+    size_t numFaces = 0;
+    GLfloat *originalTextureCoords = NULL;
+    size_t vertexIndexPosition = 0;
+    
+	// bottom left tower
+    submesh = bottomLeftWindows->getMesh()->getSubMesh(0);
+    vertexData = submesh->vertexData;
+	texcoordVE = vertexData->
+		vertexDeclaration->findElementBySemantic(VES_TEXTURE_COORDINATES);
+	texcoordHVB = vertexData->
+		vertexBufferBinding->getBuffer(texcoordVE->getSource());
+	texcoords = (GLfloat*) texcoordHVB->lock(0, texcoordHVB->getSizeInBytes(), 
+			HardwareBuffer::HBL_NORMAL);
+    indexData = submesh->indexData;
+	indexHB = indexData->indexBuffer ;
+	vertexIndices = (unsigned short*) indexHB->lock(
+		0, indexHB->getSizeInBytes(), HardwareBuffer::HBL_READ_ONLY);
+	numFaces = indexData->indexCount / 3 ;
+
+	// bottom left tower
+	originalTextureCoords = windowMeshTextureCoords[LEFT_BOTTOM_MESH_NO];
+	vertexIndexPosition = 0;
+	for (int y=22;y>22-7;y--) {
+		unsigned char *rowStart = inDisplayState + y * 54;
+		for (int x=0;x<22;x++) {
+			unsigned char pixelValue = *(rowStart + x);
+			int vcount = 6; // change the next 6 vertixes that form 2 triangles = one window
+			// lookup the vertices and change the texcoords
+			while (vcount--)
+			{
+				unsigned short vertexIndex = vertexIndices[vertexIndexPosition]; // two texture coords per vertex
+				int isUpperRight = (int)((originalTextureCoords[vertexIndex * 2]) + 0.2);
+				texcoords[vertexIndex * 8 + 6] = windowMeshTextureValues[pixelValue][0][isUpperRight];
+				
+				isUpperRight = (int)((originalTextureCoords[vertexIndex * 2 + 1]) + 0.2);
+				texcoords[vertexIndex * 8 + 7] = windowMeshTextureValues[pixelValue][1][isUpperRight];
+
+				vertexIndexPosition++;
+			}
+			printf("\n");
+		}
+	}
+	indexHB->unlock();
+	texcoordHVB->unlock();
+
+	// top left part
+    submesh = topLeftWindows->getMesh()->getSubMesh(0);
+    vertexData = submesh->vertexData;
+	texcoordVE = vertexData->
+		vertexDeclaration->findElementBySemantic(VES_TEXTURE_COORDINATES);
+	texcoordHVB = vertexData->
+		vertexBufferBinding->getBuffer(texcoordVE->getSource());
+	texcoords = (GLfloat*) texcoordHVB->lock(0, texcoordHVB->getSizeInBytes(), 
+			HardwareBuffer::HBL_NORMAL);
+    indexData = submesh->indexData;
+	indexHB = indexData->indexBuffer ;
+	vertexIndices = (unsigned short*) indexHB->lock(
+		0, indexHB->getSizeInBytes(), HardwareBuffer::HBL_READ_ONLY);
+	numFaces = indexData->indexCount / 3 ;
+
+	// top left part
+	originalTextureCoords = windowMeshTextureCoords[LEFT_TOP_MESH_NO];
+	vertexIndexPosition = 0;
+
+	for (int y=22-9;y>5;y--) {
+		unsigned char *rowStart = inDisplayState + y * 54;
+		for (int x=0;x<22;x++) {
+			unsigned char pixelValue = *(rowStart + x);
+			int vcount = 6; // change the next 6 vertices that form 2 triangles = one window
+			// lookup the vertices and change the texcoords
+			while (vcount--)
+			{
+				unsigned short vertexIndex = vertexIndices[vertexIndexPosition]; // two texture coords per vertex
+				int isUpperRight = (int)((originalTextureCoords[vertexIndex * 2]) + 0.2);
+				texcoords[vertexIndex * 8 + 6] = windowMeshTextureValues[pixelValue][0][isUpperRight];
+				
+				isUpperRight = (int)((originalTextureCoords[vertexIndex * 2 + 1]) + 0.2);
+				texcoords[vertexIndex * 8 + 7] = windowMeshTextureValues[pixelValue][1][isUpperRight];
+
+				vertexIndexPosition++;
+			}
+		}
+	}
+
+	indexHB->unlock();
+	texcoordHVB->unlock();
+
+	// top right tower
+    submesh = topRightWindows->getMesh()->getSubMesh(0);
+    vertexData = submesh->vertexData;
+	texcoordVE = vertexData->
+		vertexDeclaration->findElementBySemantic(VES_TEXTURE_COORDINATES);
+	texcoordHVB = vertexData->
+		vertexBufferBinding->getBuffer(texcoordVE->getSource());
+	texcoords = (GLfloat*) texcoordHVB->lock(0, texcoordHVB->getSizeInBytes(), 
+			HardwareBuffer::HBL_NORMAL);
+    indexData = submesh->indexData;
+	indexHB = indexData->indexBuffer ;
+	vertexIndices = (unsigned short*) indexHB->lock(
+		0, indexHB->getSizeInBytes(), HardwareBuffer::HBL_READ_ONLY);
+	numFaces = indexData->indexCount / 3 ;
+
+	// top right tower
+	originalTextureCoords = windowMeshTextureCoords[RIGHT_TOP_MESH_NO];
+	vertexIndexPosition = 0;
+
+	for (int y=11;y>=0;y--) {
+		unsigned char *rowStart = inDisplayState + y * 54 + 54-30;
+		for (int x=0;x<30;x++) {
+			unsigned char pixelValue = *(rowStart + x);
+			int vcount = 6; // change the next 6 vertixec that form 2 triangles = one window
+			// lookup the vertices and change the texcoords
+			while (vcount--)
+			{
+				unsigned short vertexIndex = vertexIndices[vertexIndexPosition]; // two texture coords per vertex
+				int isUpperRight = (int)((originalTextureCoords[vertexIndex * 2]) + 0.2);
+				texcoords[vertexIndex * 8 + 6] = windowMeshTextureValues[pixelValue][0][isUpperRight];
+				
+				isUpperRight = (int)((originalTextureCoords[vertexIndex * 2 + 1]) + 0.2);
+				texcoords[vertexIndex * 8 + 7] = windowMeshTextureValues[pixelValue][1][isUpperRight];
+
+				vertexIndexPosition++;
+			}
+		}
+	}
+
+	indexHB->unlock();
+	texcoordHVB->unlock();
+
+
+
+	// upper right tower
+    submesh = bottomRightWindows->getMesh()->getSubMesh(0);
+    vertexData = submesh->vertexData;
+	texcoordVE = vertexData->
+		vertexDeclaration->findElementBySemantic(VES_TEXTURE_COORDINATES);
+	texcoordHVB = vertexData->
+		vertexBufferBinding->getBuffer(texcoordVE->getSource());
+	texcoords = (GLfloat*) texcoordHVB->lock(0, texcoordHVB->getSizeInBytes(), 
+			HardwareBuffer::HBL_NORMAL);
+    indexData = submesh->indexData;
+	indexHB = indexData->indexBuffer ;
+	vertexIndices = (unsigned short*) indexHB->lock(
+		0, indexHB->getSizeInBytes(), HardwareBuffer::HBL_READ_ONLY);
+	numFaces = indexData->indexCount / 3 ;
+
+	// top right tower
+	originalTextureCoords = windowMeshTextureCoords[RIGHT_BOTTOM_MESH_NO];
+	vertexIndexPosition = 0;
+
+	for (int y=22;y>22-9;y--) {
+		unsigned char *rowStart = inDisplayState + y * 54 + 54-30;
+		for (int x=0;x<30;x++) {
+			unsigned char pixelValue = *(rowStart + x);
+			int vcount = 6; // change the next 6 vertixec that form 2 triangles = one window
+			// lookup the vertices and change the texcoords
+			while (vcount--)
+			{
+				unsigned short vertexIndex = vertexIndices[vertexIndexPosition]; // two texture coords per vertex
+				int isUpperRight = (int)((originalTextureCoords[vertexIndex * 2]) + 0.2);
+				texcoords[vertexIndex * 8 + 6] = windowMeshTextureValues[pixelValue][0][isUpperRight];
+				
+				isUpperRight = (int)((originalTextureCoords[vertexIndex * 2 + 1]) + 0.2);
+				texcoords[vertexIndex * 8 + 7] = windowMeshTextureValues[pixelValue][1][isUpperRight];
+
+				vertexIndexPosition++;
+			}
+		}
+	}
+
+	indexHB->unlock();
+	texcoordHVB->unlock();
+
+
+}
+
 - (void)initializeTextureCordsForMeshNo:(int)meshNo entity:(Entity *)inEntity
 {
     printf("------------------> window vertex data: <----------------------\n");
@@ -105,27 +292,10 @@ GLfloat windowMeshTextureValues[16][2][2];
 	HardwareIndexBufferSharedPtr indexHB = indexData->indexBuffer ;
 	unsigned short * vertexIndices = (unsigned short*) indexHB->lock(
 		0, indexHB->getSizeInBytes(), HardwareBuffer::HBL_READ_ONLY);
-	size_t numFaces = indexData->indexCount / 3 ;
-	for(int i=0 ; i<numFaces ; i++, vertexIndices+=3) {
-		//~ int p0 = 0;
-		//~ int p1 = 1;
-		//~ int p2 = 2;
-		int p0 = vertexIndices[0] ;
-		int p1 = vertexIndices[1] ;
-		int p2 = vertexIndices[2] ;
-//		printf("window half 1 at %d %d %d\n",p0,p1,p2);
-//		printf("vertex coords: %f, %f",texcoords[p0 * 8 + 6],texcoords[p0 * 8 + 7]);
-//		printf("vertex coords: %f, %f",texcoords[p1 * 8 + 6],texcoords[p1 * 8 + 7]);
-//		printf("vertex coords: %f, %f",texcoords[p2 * 8 + 6],texcoords[p2 * 8 + 7]);
-		if (texcoords[p0 * 8 + 6] - 0.95 > 0.05)  texcoords[p0 * 8 + 6]*= 0.25;
-		if (texcoords[p0 * 8 + 7] - 0.95 > 0.05)  texcoords[p0 * 8 + 7]*= 0.25;
-		if (texcoords[p1 * 8 + 6] - 0.95 > 0.05)  texcoords[p1 * 8 + 6]*= 0.25;
-		if (texcoords[p1 * 8 + 7] - 0.95 > 0.05)  texcoords[p1 * 8 + 7]*= 0.25;
-		if (texcoords[p2 * 8 + 6] - 0.95 > 0.05)  texcoords[p2 * 8 + 6]*= 0.25;
-		if (texcoords[p2 * 8 + 7] - 0.95 > 0.05)  texcoords[p2 * 8 + 7]*= 0.25;
-		printf("after vertex coords: %f, %f",texcoords[p0 * 8 + 6],texcoords[p0 * 8 + 7]);
-		printf("after vertex coords: %f, %f",texcoords[p1 * 8 + 6],texcoords[p1 * 8 + 7]);
-		printf("after vertex coords: %f, %f",texcoords[p2 * 8 + 6],texcoords[p2 * 8 + 7]);
+	for(int i=0 ; i<indexData->indexCount ; i++, vertexIndices++) {
+		int p0 = *vertexIndices;
+		windowMeshTextureCoords[meshNo][p0*2]     = texcoords[p0 * 8 + 6];
+		windowMeshTextureCoords[meshNo][p0*2 + 1] = texcoords[p0 * 8 + 6 + 1];
 	}
 	indexHB->unlock();
 
@@ -135,6 +305,16 @@ GLfloat windowMeshTextureValues[16][2][2];
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
 {   
+	int maxcount = 23*54;
+	int value = 0;
+	for (int i=0;i<maxcount;i++)
+	{
+		*(((char *)displayState)+i)=value;
+		value = (i) % 16;
+	}
+
+//	[self resetTimeCompensation];
+
     cameras[0] = FAR_LEFT;
     cameras[1] = FAR_MIDDLE;
     cameras[2] = FAR_RIGHT;
@@ -248,6 +428,7 @@ GLfloat windowMeshTextureValues[16][2][2];
     windowNodeA1->attachObject(ent);
     windowNodeA1->pitch(Degree(90)); 
     
+    topLeftWindows = ent;
     [self initializeTextureCordsForMeshNo:LEFT_TOP_MESH_NO entity:ent];
 
     
@@ -258,6 +439,7 @@ GLfloat windowMeshTextureValues[16][2][2];
     windowNodeA2->attachObject(ent);
     windowNodeA2->pitch(Degree(90)); 
     
+    bottomLeftWindows = ent;
     [self initializeTextureCordsForMeshNo:LEFT_BOTTOM_MESH_NO entity:ent];
 
     SceneNode* windowNodeB1 = mSceneMgr->getRootSceneNode()->createChildSceneNode();
@@ -265,13 +447,16 @@ GLfloat windowMeshTextureValues[16][2][2];
     windowNodeB1->attachObject(ent);
     windowNodeB1->pitch(Degree(90)); 
     
-    [self initializeTextureCordsForMeshNo:RIGHT_BOTTOM_MESH_NO entity:ent];
+    topRightWindows = ent;
+    [self initializeTextureCordsForMeshNo:RIGHT_TOP_MESH_NO entity:ent];
+
 
     SceneNode* windowNodeB2 = mSceneMgr->getRootSceneNode()->createChildSceneNode();
     ent = mSceneMgr->createEntity("windowsB2", "WindowsB2.mesh");
     windowNodeB2->attachObject(ent);
     windowNodeB2->pitch(Degree(90));
 
+	bottomRightWindows = ent;
     [self initializeTextureCordsForMeshNo:RIGHT_BOTTOM_MESH_NO entity:ent];
     
     Vector3 lookTo = Vector3(0,10,0);
@@ -309,6 +494,7 @@ GLfloat windowMeshTextureValues[16][2][2];
     shouldAnimate = YES;
     progress = 1.0;    
     
+    [self updateWindows:(unsigned char *)displayState];
 	// create a timer that causes OGRE to render
 	NSTimer *renderTimer = [NSTimer scheduledTimerWithTimeInterval:FRAMERATE target:self selector:@selector(renderFrame) userInfo:NULL repeats:YES];
 	[[NSRunLoop currentRunLoop] addTimer:renderTimer forMode:NSEventTrackingRunLoopMode];
