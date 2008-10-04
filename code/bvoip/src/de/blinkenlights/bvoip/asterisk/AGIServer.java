@@ -1,6 +1,7 @@
 package de.blinkenlights.bvoip.asterisk;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
@@ -24,6 +25,7 @@ public class AGIServer implements Runnable {
 	private Set<String> activeLines = Collections.synchronizedSet(new HashSet<String>());
 	private final Map<String, Integer> exclusionGroups;
 	private Set<Integer> groupsInUse = new HashSet<Integer>();
+	private final File lockoutFile;
 		
 	/**
 	 * Creates a new AGIServer
@@ -31,10 +33,11 @@ public class AGIServer implements Runnable {
 	 * @param port the port number to listen on
 	 * @param exclusionGroups 
 	 */
-	public AGIServer(int port, ChannelList channelList, Map<String, Integer> exclusionGroups) {
+	public AGIServer(int port, ChannelList channelList, Map<String, Integer> exclusionGroups, File lockoutFile) {
 		this.port = port;
 		this.channelList = channelList;
 		this.exclusionGroups = exclusionGroups;
+		this.lockoutFile = lockoutFile;
 	}
 	
 	
@@ -88,7 +91,10 @@ public class AGIServer implements Runnable {
 							agiSession = new AGISession(in, out);
 							String dnid = agiSession.getDnid();
 							Integer exclGroup = exclusionGroups.get(dnid); // might be null
-							if (groupsInUse.contains(exclGroup)) {
+							if (lockoutFile != null && lockoutFile.exists()) {
+								logger.info("Not accepting call because lockout file exists: " + lockoutFile.getAbsolutePath());
+							} 
+							else if (groupsInUse.contains(exclGroup)) {
 								logger.info("Not accepting call because exclusion group " + exclGroup + " is in use");
 								agiSession.hangup();
 							} else if (activeLines.contains(dnid)) {

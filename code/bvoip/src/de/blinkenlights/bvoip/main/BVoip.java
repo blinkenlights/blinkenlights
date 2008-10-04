@@ -1,5 +1,6 @@
 package de.blinkenlights.bvoip.main;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -18,6 +19,7 @@ public class BVoip {
 	private static final Logger logger = Logger.getLogger(BVoip.class.getName());
 	private int listenPort;
 	private Map<String,Integer> didGroupMap;
+	private File lockoutFile;
 	
 	
 	/**
@@ -32,7 +34,7 @@ public class BVoip {
 		new Thread(new BLTClientManager(listenPort,channelList)).start();
 		
 		// TODO - make configurable port number
-		AGIServer agiServer = new AGIServer(4545, channelList, didGroupMap);
+		AGIServer agiServer = new AGIServer(4545, channelList, didGroupMap, lockoutFile);
 		agiServer.run();
 		
 		
@@ -40,7 +42,6 @@ public class BVoip {
 
 	
 	public static void main(String args[]) throws IOException {
-		
 		
 		int verbosity = 3;
 		
@@ -86,6 +87,12 @@ public class BVoip {
 		listenPort = Integer.parseInt(properties.getProperty("listenPort"));
 		
 		didGroupMap = new HashMap<String,Integer>();
+		
+		String lockoutFileString = properties.getProperty("lockoutFile");
+		if (lockoutFileString != null) {
+			lockoutFile = new File(lockoutFileString);
+		}
+		
 		
 		int i = 0;
 		while (properties.getProperty("didGroup."+i) != null) {
