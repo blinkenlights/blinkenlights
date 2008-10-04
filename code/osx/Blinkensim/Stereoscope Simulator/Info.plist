@@ -9,18 +9,24 @@
 	<key>CFBundleIconFile</key>
 	<string>StereoscopeSimulator.icns</string>
 	<key>CFBundleIdentifier</key>
-	<string>de.codingmonkeys.Stereoscope.Simulator</string>
+	<string>net.blinkenlights.stereoscope.simulator</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
-	<key>CFBundleVersion</key>
+	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
+	<key>CFBundleVersion</key>
+	<string>1</string>
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+	<key>SUPublicDSAKeyFile</key>
+	<string>dsa_pub.pem</string>
+	<key>SUFeedURL</key>
+	<string>http://www.blinkenlights.net/config/stereoscope_simulator_appcast.xml</string>
 </dict>
 </plist>

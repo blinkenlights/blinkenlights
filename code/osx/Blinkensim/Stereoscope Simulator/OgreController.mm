@@ -32,8 +32,9 @@ Vector3 cameras[6];
 #define RIGHT_TOP_MESH_NO    3
 
 // five seconds without a frame means timeout
-#define CONNECTIION_NO_FRAME_TIMEOUT 5.0
+#define CONNECTIION_NO_FRAME_TIMEOUT 10.0
 #define HOST_RESOLVING_TIMEOUT      10.0
+#define MINCAMERAPOSITIONTIME      10.0
 
 
 GLfloat *windowMeshTextureCoords[] = {NULL,NULL,NULL,NULL};
@@ -53,6 +54,8 @@ GLfloat windowMeshTextureValues[16][2][2];
 	[[NSUserDefaults standardUserDefaults] registerDefaults:[NSDictionary dictionaryWithObjectsAndKeys:
 		[NSNumber numberWithBool:YES],@"autoselectProxy",
 		[NSNumber numberWithInt:0],@"message-number",
+		@"4242",@"customProxyPort",
+		@"localhost",@"customProxyAddress",
 		nil]
 	];
 	srandomdev(); // have a good seed.
@@ -63,6 +66,11 @@ GLfloat windowMeshTextureValues[16][2][2];
     ogreView = [inView retain];
 }
 
+- (BOOL)applicationShouldOpenUntitledFile:(NSApplication *)inSender
+{
+	[_ibWindow makeKeyAndOrderFront:self];
+	return NO;
+}
 
 - (void)prepareValues
 {
@@ -111,6 +119,51 @@ GLfloat windowMeshTextureValues[16][2][2];
 	return (proxy && [proxy length]);
 }
 
+- (IBAction)setCustomProxy:(id)inSender
+{
+	[NSApp beginSheet:_ibCustomSheet modalForWindow:_ibWindow modalDelegate:nil didEndSelector:NULL contextInfo:NULL];
+}
+
+- (IBAction)cancelCustomProxy:(id)inSender
+{
+	[_ibCustomSheet orderOut:self];
+	[NSApp endSheet:_ibCustomSheet];
+}
+- (IBAction)connectToCustomProxy:(id)inSender;
+{
+	[_ibCustomSheet orderOut:self];
+	[NSApp endSheet:_ibCustomSheet];
+	[self connectToProxy:[NSDictionary dictionaryWithObjectsAndKeys:
+					[[NSUserDefaults standardUserDefaults] objectForKey:@"customProxyAddress"],@"address",
+					[[NSUserDefaults standardUserDefaults] objectForKey:@"customProxyPort"], @"port", // warning if no port port dictionary stops here
+					nil]];
+}
+
+- (void)updateFeedMenu
+{
+	while ([_ibStreamsMenu numberOfItems] > 1) [_ibStreamsMenu removeItemAtIndex:[_ibStreamsMenu numberOfItems]-1];
+	
+	NSMenuItem *item = nil;
+	
+	for (TableSection *section in self.projectTableSections)
+	{
+		[_ibStreamsMenu addItem:[NSMenuItem separatorItem]];
+		item = [[[NSMenuItem alloc] initWithTitle:[section heading] action:0 keyEquivalent:@""] autorelease];
+		[_ibStreamsMenu addItem:item];
+		for (NSDictionary *proxy in [section items])
+		{
+			item = [[[NSMenuItem alloc] initWithTitle:
+				[NSString stringWithFormat:@"%@ %@- %@:%@",
+					[proxy objectForKey:@"name"] ? [proxy objectForKey:@"name"] : @"unnamed",
+					[proxy objectForKey:@"kind"] ? [NSString stringWithFormat:@"(%@) ",[proxy objectForKey:@"kind"]] : @"",
+					[proxy objectForKey:@"address"],[proxy objectForKey:@"port"]] action:@selector(selectProxy:) keyEquivalent:@""] autorelease];
+			[item setRepresentedObject:proxy];
+
+			[_ibStreamsMenu addItem:item];
+		}
+	}
+}
+
 - (void)updateWithBlinkenstreams:(NSArray *)inBlinkenArray
 {
 	[[NSUserDefaults standardUserDefaults] setObject:inBlinkenArray forKey:@"blinkenArray"];
@@ -137,7 +190,8 @@ GLfloat windowMeshTextureValues[16][2][2];
 			[proxyArray release];
 		}
 	}
-	NSLog(@"%s %@",__FUNCTION__,projectTableSections);
+	[self updateFeedMenu];
+//	NSLog(@"%s %@",__FUNCTION__,projectTableSections);
 }
 
 
@@ -337,20 +391,8 @@ GLfloat windowMeshTextureValues[16][2][2];
 
 - (void)initializeTextureCordsForMeshNo:(int)meshNo entity:(Entity *)inEntity
 {
-    printf("------------------> window vertex data: <----------------------\n");
     SubMesh *submesh = inEntity->getMesh()->getSubMesh(0);
     VertexData *vertexData = submesh->vertexData;
-    VertexDeclaration *declaration = vertexData->vertexDeclaration;
-    for (int i=0;i<declaration->getElementCount();i++) {
-    	const VertexElement *element = declaration->getElement(i);
-    	printf("element %d has type of %d\n",i, element->getType());
-    }
-    
-	// get our copy of the initial mesh values
-//	windowMeshTextureCoords[1] = (GLfloat *)calloc(2 * g_sScene.pMesh[3].nNumVertex,sizeof(GLfloat));
-//	windowMeshTextureCoords[2] = (GLfloat *)calloc(2 * g_sScene.pMesh[4].nNumVertex,sizeof(GLfloat));
-//	windowMeshTextureCoords[3] = (GLfloat *)calloc(2 * g_sScene.pMesh[5].nNumVertex,sizeof(GLfloat));
-
 
 	const VertexElement *normVE = vertexData->
 		vertexDeclaration->findElementBySemantic(VES_TEXTURE_COORDINATES);
@@ -390,8 +432,9 @@ GLfloat windowMeshTextureValues[16][2][2];
 
 }
 
-- (void)applicationDidFinishLaunching:(NSNotification *)notification
+- (void)applicationWillFinishLaunching:(NSNotification *)notification
 {   
+	_lastAutoCameraTime = [NSDate timeIntervalSinceReferenceDate];
 	_xmlReadFailureCount = 0;
 	_connectionLostTime = DBL_MAX;
 	_hostResolveFailureTime = DBL_MAX;
@@ -623,10 +666,10 @@ GLfloat windowMeshTextureValues[16][2][2];
 			}
 		}
 		if ([liveProxiesToChooseFrom count]) {
-			NSLog(@"%s choosing from live proxies %@",__FUNCTION__,liveProxiesToChooseFrom);
+//			NSLog(@"%s choosing from live proxies %@",__FUNCTION__,liveProxiesToChooseFrom);
 			[self connectToProxyFromArray:liveProxiesToChooseFrom];
 		} else if ([proxiesToChooseFrom count]) {
-			NSLog(@"%s choosing from all %@",__FUNCTION__,proxiesToChooseFrom);
+//			NSLog(@"%s choosing from all %@",__FUNCTION__,proxiesToChooseFrom);
 			[self connectToProxyFromArray:proxiesToChooseFrom];
 		}
 	}
@@ -664,6 +707,24 @@ GLfloat windowMeshTextureValues[16][2][2];
 		_showTime = [[inProxy objectForKey:@"showtime"] isEqualToString:@"showtime"];
 	}
 }
+
+- (void)selectProxy:(id)inMenuItem
+{
+	[self connectToProxy:[inMenuItem representedObject]];
+}
+
+- (BOOL)validateMenuItem:(NSMenuItem *)inMenuItem {
+	if ([inMenuItem action] == @selector(selectProxy:)) {
+		if ([self.currentProxy isEqualTo:[inMenuItem representedObject]])
+		{
+			[inMenuItem setState:NSOnState];
+		} else {
+			[inMenuItem setState:NSOffState];
+		}
+	}
+	return YES;
+}
+
 
 - (void)connectToManualProxy
 {
@@ -897,7 +958,8 @@ GLfloat windowMeshTextureValues[16][2][2];
 		else
 		{
 			// compensate
-			[self performSelector:@selector(consumeFrame) withObject:nil afterDelay:compensationTime];
+			[self performSelector:@selector(consumeFrame) withObject:nil afterDelay:compensationTime inModes:[NSArray arrayWithObjects: NSDefaultRunLoopMode,
+NSModalPanelRunLoopMode, NSRunLoopCommonModes, nil]];
 			_maxTimeDifference -= 0.01; // shrink the time difference again to catch up if we only had one hickup
 		}
 		// NSLog(@"%s ts:0x%016qx %@ now: %@ 0x%016qx",__FUNCTION__,inTimestamp,[NSDate dateWithTimeIntervalSince1970:inTimestamp / (double)1000.0],now, (uint64_t)([now timeIntervalSince1970] * 1000));
@@ -930,7 +992,7 @@ GLfloat windowMeshTextureValues[16][2][2];
 	[parser setDelegate:self];
 	[parser parse];
 	[parser release];
-	NSLog(@"%s new xml proxy list:\n%@",__FUNCTION__, responseString);
+//	NSLog(@"%s new xml proxy list:\n%@",__FUNCTION__, responseString);
 	[responseString release];
 	[_responseData release];
 	_responseData = nil;
@@ -1052,7 +1114,7 @@ GLfloat windowMeshTextureValues[16][2][2];
 
 - (void)messageAlertDidEnd:(NSAlert *)alert returnCode:(int)returnCode contextInfo:(void *)contextInfo
 {
-	NSLog(@"%s",__FUNCTION__);
+//	NSLog(@"%s",__FUNCTION__);
 	if ([_messageDictionary objectForKey:@"url"] && NSAlertAlternateReturn == returnCode) 
 	{
 		[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[_messageDictionary objectForKey:@"url"]]];
@@ -1081,11 +1143,13 @@ GLfloat windowMeshTextureValues[16][2][2];
 		[self failHostResolving];
 	}
 
-    if (autoCam&&progress>=1) {
+    if (autoCam && progress>=1) {
         // Choose next cam after random wait
-        if (rand() % 100 == 1) {
-        NSLog(@"AUTO!");
-        
+        if (_lastAutoCameraTime + MINCAMERAPOSITIONTIME < [NSDate timeIntervalSinceReferenceDate] &&
+        	rand() % 100 == 1) {
+//        NSLog(@"AUTO!");
+        	_lastAutoCameraTime = [NSDate timeIntervalSinceReferenceDate];
+
         to = cameras[rand() % 6];
         [self animateCamera];
         }
@@ -1124,12 +1188,31 @@ GLfloat windowMeshTextureValues[16][2][2];
 
 - (void)fadeoutStatusText
 {
-
+	[_ibWindow setTitle:[NSString stringWithFormat:@"Stereoscope Simulator"]];
 }
 
 -(void)setStatusText:(NSString *)aStatusText
 {
-	NSLog(@"%s %@",__FUNCTION__,aStatusText);
+	[_ibWindow setTitle:[NSString stringWithFormat:@"Stereoscope Simulator - %@",aStatusText]];
 }
+
+#pragma mark -
+
+- (IBAction)openBlinkenlightsHomepage:(id)inSender
+{
+	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://blinkenlights.net/"]];
+}
+
+- (IBAction)openStereoscopeHomepage:(id)inSender
+{
+	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://blinkenlights.net/stereoscope"]];
+}
+
+- (IBAction)openBlinkenlightsBlog:(id)inSender
+{
+	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://blinkenlights.net/blog"]];
+}
+
+
 
 @end

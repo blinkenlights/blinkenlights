@@ -19,6 +19,10 @@
 	Ogre::Entity *bottomRightWindows;
 	unsigned char displayState[23][54];
 
+	IBOutlet NSWindow *_ibWindow;
+	IBOutlet NSWindow *_ibCustomSheet;
+	IBOutlet NSMenuItem *_ibCustomProxyMenuItem;
+
 	TCMHost *_hostToResolve;
 	NSURLConnection *_proxyListConnection;
 	NSMutableData *_responseData;
@@ -28,6 +32,7 @@
 	NSTimeInterval _maxTimeDifference;
 	int            _timeSamplesTaken;
 	NSTimeInterval _lastDrawTime;
+	NSTimeInterval _lastAutoCameraTime;
 
 	NSDictionary *_currentProxy;
 	NSTimeInterval _connectionLostTime;
@@ -39,7 +44,10 @@
     NSMutableDictionary *_messageDictionary;
     int _position;
 	NSMutableArray *projectTableSections;
-
+	IBOutlet NSTextField *_ibStatusTextField;
+	IBOutlet NSTextField *_ibKindTextField;
+	IBOutlet NSTextField *_ibTimeTextField;
+	IBOutlet NSMenu *_ibStreamsMenu;
 }
 
 @property (nonatomic, retain) NSMutableArray *projectTableSections;
@@ -62,5 +70,14 @@
 - (void)connectToProxy:(NSDictionary *)inProxy;
 - (void)fetchStreamsXML;
 - (void)connectToAutoconnectProxy;
+
+- (IBAction)openBlinkenlightsHomepage:(id)inSender;
+- (IBAction)openStereoscopeHomepage:(id)inSender;
+- (IBAction)openBlinkenlightsBlog:(id)inSender;
+
+
+- (IBAction)setCustomProxy:(id)inSender;
+- (IBAction)cancelCustomProxy:(id)inSender;
+- (IBAction)connectToCustomProxy:(id)inSender;
 
 @end

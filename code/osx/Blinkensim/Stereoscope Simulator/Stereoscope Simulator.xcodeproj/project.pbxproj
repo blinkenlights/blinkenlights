@@ -85,6 +85,9 @@
 		F2104BC10E95531000983057 /* UsefulAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F2104BBF0E95531000983057 /* UsefulAdditions.m */; };
 		F2104BC30E95536E00983057 /* Windows256.png in Resources */ = {isa = PBXBuildFile; fileRef = F2104BC20E95536E00983057 /* Windows256.png */; };
 		F2B200050E8F3F8B00A2EFC7 /* StereoscopeSimulator.icns in Resources */ = {isa = PBXBuildFile; fileRef = F2B200040E8F3F8B00A2EFC7 /* StereoscopeSimulator.icns */; };
+		F2C677680E97BB5200CA2CA5 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2C677670E97BB5200CA2CA5 /* Sparkle.framework */; };
+		F2C677720E97BB5D00CA2CA5 /* Sparkle.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = F2C677670E97BB5200CA2CA5 /* Sparkle.framework */; };
+		F2C677850E97BB7C00CA2CA5 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = F2C677840E97BB7C00CA2CA5 /* dsa_pub.pem */; };
 		F2CFF21F0E979910009C3084 /* TCMHost.m in Sources */ = {isa = PBXBuildFile; fileRef = F2CFF21E0E979910009C3084 /* TCMHost.m */; };
 		F2CFF23B0E9799C8009C3084 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2CFF23A0E9799C8009C3084 /* CoreServices.framework */; };
 		F2CFF23C0E9799C8009C3084 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2CFF23A0E9799C8009C3084 /* CoreServices.framework */; };
@@ -101,6 +104,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				F2C677720E97BB5D00CA2CA5 /* Sparkle.framework in Copy Frameworks */,
 				3108D25D0E8F23960016A9B2 /* Cg.framework in Copy Frameworks */,
 				3108D25E0E8F23960016A9B2 /* Ogre.framework in Copy Frameworks */,
 			);
@@ -169,6 +173,8 @@
 		F2104BBF0E95531000983057 /* UsefulAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UsefulAdditions.m; path = Classes/UsefulAdditions.m; sourceTree = "<group>"; };
 		F2104BC20E95536E00983057 /* Windows256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Windows256.png; path = Resources/Windows256.png; sourceTree = SOURCE_ROOT; };
 		F2B200040E8F3F8B00A2EFC7 /* StereoscopeSimulator.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = StereoscopeSimulator.icns; sourceTree = "<group>"; };
+		F2C677670E97BB5200CA2CA5 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
+		F2C677840E97BB7C00CA2CA5 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 		F2CFF21D0E979910009C3084 /* TCMHost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TCMHost.h; path = Classes/TCMHost.h; sourceTree = "<group>"; };
 		F2CFF21E0E979910009C3084 /* TCMHost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TCMHost.m; path = Classes/TCMHost.m; sourceTree = "<group>"; };
 		F2CFF23A0E9799C8009C3084 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = /System/Library/Frameworks/CoreServices.framework; sourceTree = "<absolute>"; };
@@ -187,6 +193,7 @@
 				313B662C0E9757B000450CDC /* Cocoa.framework in Frameworks */,
 				F2CFF23B0E9799C8009C3084 /* CoreServices.framework in Frameworks */,
 				F2CFF2810E979A94009C3084 /* SystemConfiguration.framework in Frameworks */,
+				F2C677680E97BB5200CA2CA5 /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,6 +227,7 @@
 		000E25220B392B6F004EA2DF /* External Frameworks and Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				F2C677670E97BB5200CA2CA5 /* Sparkle.framework */,
 				F2CFF2800E979A94009C3084 /* SystemConfiguration.framework */,
 				F2CFF23A0E9799C8009C3084 /* CoreServices.framework */,
 				313B66280E9757A400450CDC /* Cocoa.framework */,
@@ -265,6 +273,7 @@
 		00ABEB590B4D8AD10059129A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F2C677840E97BB7C00CA2CA5 /* dsa_pub.pem */,
 				3108D2770E8F25D70016A9B2 /* Media */,
 				00ABEF060B4F7CAD0059129A /* Old Media */,
 				3108D4E80E8F4DF00016A9B2 /* MainMenu.nib */,
@@ -410,6 +419,7 @@
 				3108D5070E8F61E60016A9B2 /* black.png in Resources */,
 				3108D56B0E8F6E490016A9B2 /* torontoskyline.jpg in Resources */,
 				F2104BC30E95536E00983057 /* Windows256.png in Resources */,
+				F2C677850E97BB7C00CA2CA5 /* dsa_pub.pem in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -551,9 +561,11 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_3)",
 				);
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SYSTEM_LIBRARY_DIR)/Frameworks/CoreServices.framework/Versions/A/Frameworks\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)\"";
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
@@ -584,9 +596,11 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_3)",
 				);
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SYSTEM_LIBRARY_DIR)/Frameworks/CoreServices.framework/Versions/A/Frameworks\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)\"";
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_MODEL_TUNING = G5;
