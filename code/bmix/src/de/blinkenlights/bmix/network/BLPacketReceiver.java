@@ -83,6 +83,7 @@ public class BLPacketReceiver {
 	private final byte[] heartBeatBytes = new BLHeartbeatPacket(
 			BLHeartbeatPacket.VERSION_NUMBER).getNetworkBytes();
 	private long lastPacketReceiveTime = 0;
+	private String lastSourceAddr = "moo";
 
 	/**
 	 * The default address to listen on (binds to all local addresses).
@@ -225,6 +226,7 @@ public class BLPacketReceiver {
 			socket.receive(packet);
 			BLPacket parsedPacket = BLPacketFactory.parse(packet, alphaMode,
 					transparentColour, shadowColour);
+			lastSourceAddr = packet.getAddress().getHostAddress();
 			lastPacketReceiveTime = System.currentTimeMillis();
 			for (BLPacketSender sender : relaySenders) {
 				try {
@@ -295,6 +297,10 @@ public class BLPacketReceiver {
 
 	public long getLastPacketReceiveTime() {
 		return lastPacketReceiveTime;
+	}
+
+	public String getLastSourceAddr() {
+		return lastSourceAddr;
 	}
 
 	public String getName() {

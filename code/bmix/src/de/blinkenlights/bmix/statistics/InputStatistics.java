@@ -44,11 +44,12 @@ public class InputStatistics implements StatisticsItem {
 	private final Color chromaKeyColor;
 	private final Map<String, Integer> relaySenderMap;
 	private final long lastPacketReceiveTime;
+	private final String lastSourceAddr;
 	private final String name;
 	private final long frameCount;
 	private int timeoutMillis;
 
-	public InputStatistics(BLPacketReceiver input) {
+	public InputStatistics(BLPacketReceiver input) {	
 		this.id = System.identityHashCode(input);
 		this.name = input.getName();
 		this.inputPort = input.getPort();
@@ -57,6 +58,7 @@ public class InputStatistics implements StatisticsItem {
 		this.alphaMode = input.getAlphaMode();
 		this.chromaKeyColor = input.getTransparentColour();
 		this.lastPacketReceiveTime = input.getLastPacketReceiveTime();
+		this.lastSourceAddr = input.getLastSourceAddr();
 		this.frameCount = input.getFrameCount();
 		this.timeoutMillis = input.getTimeoutMillis();
 
@@ -149,11 +151,11 @@ public class InputStatistics implements StatisticsItem {
 			blinkenproxy = heartBeatDestAddr + ":" + heartBeatDestPort;
 		}
 		return String.format("<html><table cellpadding=1 cellspacing=0>"
-				+ "<tr><th colspan=2>Input %s (%d)"
-				+ "<tr><td>Blinkenproxy<td>%s" + "<tr><td>Alpha Mode<td>%s"
-				+ "<tr><td>Key Colour<td>#%8x" + "<tr><td>Frame Count<td>%d"
-				+ "<tr><td>Timeout<td>%dms" + "<tr><td>Relay Senders<td>%s",
+				+ "<tr><th colspan=2>Input<br>%s<br>Port %d"
+				+ "<tr><td>Proxy<td>%s" + "<tr><td>Alpha<td>%s"
+				+ "<tr><td>Key<td>#%8x" + "<tr><td>Frames<td>%d"
+				+ "<tr><td>Timeout<td>%dms" + "<tr><td>Source<td>%s",
 				name, inputPort, blinkenproxy, alphaMode.name(), chromaKeyColor
-						.getRGB(), frameCount, timeoutMillis, relaySenders);
+						.getRGB(), frameCount, timeoutMillis, lastSourceAddr);
 	}
 }

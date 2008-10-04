@@ -100,10 +100,10 @@ public class OutputStatistics implements StatisticsItem {
 	    }
         return String.format(
                 "<html><table cellpadding=1 cellspacing=0>" +
-                "<tr><th colspan=2>Output %s" +
+                "<tr><th colspan=2>Output<br>%s" +
                 "<tr><td>Viewport<td>%dx%d+%d+%d" +
-                "<tr><td>Min frame interval<td>%dms" +
-                "<tr><td>Packet Type<td>%s",
+                "<tr><td>Min interval<td>%dms" +
+                "<tr><td>Packet<td>%s",
                 destinations,
                 viewport.width, viewport.height, viewport.x, viewport.y,
                 minSendInterval,

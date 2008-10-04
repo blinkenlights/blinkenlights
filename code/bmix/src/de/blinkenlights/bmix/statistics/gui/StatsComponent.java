@@ -265,7 +265,7 @@ public class StatsComponent extends JPanel {
                 
                 InfoBox sourceInputBox = layerBox.pointsTo;
                 Point p2 = sourceInputBox.display.getLocation();
-                p2.y += inputsColumn.bounds.y + sourceInputBox.display.getHeight();
+                p2.y += inputsColumn.bounds.y + sourceInputBox.display.getHeight() + 3;
                 p2.x += inputsColumn.bounds.x + sourceInputBox.display.getWidth() / 2;
                 
                 g.setStroke(new BasicStroke(
@@ -275,13 +275,13 @@ public class StatsComponent extends JPanel {
             }
         }
 
-        rootLayerColumn.bounds.y = getHeight() / 2;
+        rootLayerColumn.bounds.y = (getHeight() / 2) + 30;
         rootLayerColumn.paint(
                 (Graphics2D) g.create(
                         rootLayerColumn.bounds.x, rootLayerColumn.bounds.y,
                         rootLayerColumn.bounds.width, rootLayerColumn.bounds.height));
 
-        outputsColumn.bounds.y = getHeight() - outputsColumn.bounds.height;
+        outputsColumn.bounds.y = getHeight() - outputsColumn.bounds.height - 4;
         outputsColumn.paint(
                 (Graphics2D) g.create(
                         outputsColumn.bounds.x, outputsColumn.bounds.y,

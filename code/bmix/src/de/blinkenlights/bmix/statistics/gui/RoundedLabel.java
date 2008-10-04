@@ -23,6 +23,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 
 import javax.swing.BorderFactory;
+import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.Icon;
 import javax.swing.JLabel;
@@ -51,11 +52,12 @@ public class RoundedLabel extends JPanel {
         iconLabel = new JLabel();
         iconLabel.setAlignmentX(.5f);
         iconLabel.setBorder(BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        textLabel = new JLabel(text);
+        textLabel = new JLabel(text, JLabel.CENTER);
         textLabel.setFont(getFont().deriveFont(8f));
         textLabel.setAlignmentX(.5f);
         textLabel.setForeground(Color.WHITE);
         add(iconLabel);
+        add(Box.createVerticalGlue());
         add(textLabel);
     }
 

@@ -118,10 +118,10 @@ public class LayerStatistics implements StatisticsItem, Icon {
 	public String toHtml() {
 		return String.format(
 			"<html><table>" +
-			"<tr><td>Source Input<td>%s" +
-			"<tr><td>Target viewport<td>%dx%d+%d+%d" +
-		    "<tr><td>Opacity<td>%.3f",
-		    (inputStat == null ? "none" : inputStat.getName()),
+			"<tr><th>Layer<br>%s" +
+			"<tr><td align=center>Viewport<br>%dx%d+%d+%d",
+//		    "<tr><td align=center>Opacity<br>%.3f",
+		    (inputStat == null || rootLayer ? "Mixdown" : inputStat.getName()),
 		    viewport.width, viewport.height, viewport.x, viewport.y,
 			opacity);
 	}
