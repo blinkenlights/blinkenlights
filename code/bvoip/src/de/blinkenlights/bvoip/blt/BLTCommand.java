@@ -57,7 +57,7 @@ public class BLTCommand {
 		command = parts[1];
 		BLTCommand retval;
 		if ("register".equals(command)) {
-			logger.fine("got register command");
+			logger.finest("got register command");
 			retval = new BLTCommand(channel, CommandType.REGISTER);
 			if (parts.length > 2) {
 				// optional destination port
@@ -69,11 +69,11 @@ public class BLTCommand {
 			retval = new BLTCommand(channel, CommandType.HEARTBEAT);
 		}
 		else if ("accept".equals(command)) {
-			logger.fine("got accept command");
+			logger.finest("got accept command");
 			retval = new BLTCommand(channel, CommandType.ACCEPT);
 		}
 		else if ("hangup".equals(command)) {
-			logger.fine("got hangup command");
+			logger.finest("got hangup command");
 			retval = new BLTCommand(channel, CommandType.HANGUP);
 			if (parts.length > 2) {
 				// optional reason
@@ -82,7 +82,7 @@ public class BLTCommand {
 
 		}
 		else if ("playbackground".equals(command)) {
-			logger.fine("got playbackground command");
+			logger.finest("got playbackground command");
 			retval = new BLTCommand(channel, CommandType.PLAYBACKGROUND);
 			if (parts.length > 2) {
 				// filename to play
@@ -92,7 +92,7 @@ public class BLTCommand {
 			}
 		}
 		else if ("play".equals(command)) {
-			logger.fine("got play command");		
+			logger.finest("got play command");		
 			retval = new BLTCommand(channel, CommandType.PLAY);
 			if (parts.length > 2) {
 				// filename to play
@@ -102,11 +102,11 @@ public class BLTCommand {
 			}
 		}
 		else if ("onhook".equals(command)) {
-			logger.fine("got onhook command");		
+			logger.finest("got onhook command");		
 			retval = new BLTCommand(channel, CommandType.ONHOOK);
 		}
 		else if ("connected".equals(command)) {
-			logger.fine("got connected command");		
+			logger.finest("got connected command");		
 			retval = new BLTCommand(channel, CommandType.CONNECTED);
 		}
 		else if ("setup".equals(command)) {
@@ -119,7 +119,7 @@ public class BLTCommand {
 			}
 		}
 		else if ("setup".equals(command)) {
-			logger.fine("got setup command");		
+			logger.finest("got setup command");		
 			retval = new BLTCommand(channel, CommandType.SETUP);
 		}
 		else if ("dtmf".equals(command)) {
