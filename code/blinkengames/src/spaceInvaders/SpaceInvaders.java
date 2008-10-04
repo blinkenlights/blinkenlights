@@ -49,8 +49,10 @@ public class SpaceInvaders implements BlinkenGame {
 	}
 	
 	public void paint(Graphics g) {
-		
-		g.clearRect(0, 0, maxWidth, maxHeight);
+		Graphics2D g2 = (Graphics2D) g;
+		g2.rotate(Math.toRadians(90), 0, 0);
+		g2.translate(0, -30);
+		g.clearRect(0, 0, 10, 10);
 		player.paint(g);
 		for (Bullet b : bullets) {
 			b.paint(g);
@@ -73,11 +75,11 @@ public class SpaceInvaders implements BlinkenGame {
 		if (key == null) {
 			return;
 		}
-		if (key == '1' || key == '2' || key == '3') {
-			player.moveLeft();
-		} else if (key == '7' || key == '8' || key == '9') {
+		if (key == '1' || key == '4' || key == '7') {
 			player.moveRight();
-		} else if (key == '4' || key == '5' || key == '6' || key == '*') {
+		} else if (key == '3' || key == '6' || key == '9') {
+			player.moveLeft();
+		} else if (key == '2' || key == '5' || key == '8' || key == '*') {
 			if (gunCooldown <= 0) {
 				bullets.add(new Bullet(new Point(maxWidth - 1, player.getLocation())));
 				gunCooldown = GUN_COOLDOWN;
@@ -109,8 +111,8 @@ public class SpaceInvaders implements BlinkenGame {
 	}
 
 	public void gameStarting(GameContext context) {
-		maxWidth = context.getPlayfieldWidth();
-		maxHeight = context.getPlayfieldHeight();
+		maxHeight = context.getPlayfieldWidth();
+		maxWidth = context.getPlayfieldHeight();
 		
 		context.setFramesPerSecond(3);
 		
@@ -125,10 +127,8 @@ public class SpaceInvaders implements BlinkenGame {
 		bullets = new ArrayList<Bullet>();
 		aliens = new ArrayList<Alien>();
 		for (int i = 0; i < numAlienRows; i++) {
-			for (int j = 0; j < (maxHeight)/2; j++) {
-				if (i%2 == j%2) {
-					aliens.add(new Alien(new Point(1 + i*2, 1 + j*2), this, currentAlienDelay));
-				}
+			for (int j = 4; j < maxHeight - 4; j += 4) {
+				aliens.add(new Alien(new Point(i*2, j), this, currentAlienDelay));
 			}
 		}
 		explosions = new ArrayList<Explosion>();
@@ -197,13 +197,13 @@ public class SpaceInvaders implements BlinkenGame {
 				currentAlienDelay--;
 			}
 			numAlienRows++;
+
 			for (int i = 0; i < numAlienRows; i++) {
-				for (int j = 0; j < (maxHeight)/2; j++) {
-					if (i%2 == j%2) {
-						aliens.add(new Alien(new Point(1 + i*2, 1 + j*2), this, currentAlienDelay));
-					}
+				for (int j = 4; j < maxHeight - 4; j += 4) {
+					aliens.add(new Alien(new Point(i*2, j), this, currentAlienDelay));
 				}
 			}
+
 		}
 		
 		for (Bullet b : expiredBullets) {

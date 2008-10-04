@@ -60,7 +60,7 @@ public class Alien {
 		}
 		
 		g.setColor(new Color(colour * 16, colour * 16, colour * 16));
-		g.drawLine(loc.x, loc.y, loc.x-1, loc.y);
+		g.drawLine(loc.x, loc.y, loc.x-0, loc.y);
 	}
 	
 	public boolean move(boolean switchDirection) {
@@ -82,7 +82,7 @@ public class Alien {
 			moveCountdown = maxDelay;
 		}
 		
-		if (loc.y == 0 || loc.y == game.getMaxHeight() - 1) {
+		if (loc.y == 2 || loc.y == game.getMaxHeight() - 1) {
 			return true;
 		}
 		

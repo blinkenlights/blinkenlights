@@ -22,13 +22,13 @@ public class Ship {
 	}
 	
 	public void moveLeft() {
-		if (location > 0) {
+		if (location > 3) {
 			location--;
 		}
 	}
 	
 	public void moveRight() {
-		if (location < game.getMaxHeight()) {
+		if (location < game.getMaxHeight() - 2) {
 			location++;
 		}
 	}
