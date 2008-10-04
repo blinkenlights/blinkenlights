@@ -17,7 +17,7 @@
  */
 package de.blinkenlights.game;
 
-import java.awt.FlowLayout;
+import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -26,14 +26,17 @@ import java.util.concurrent.Semaphore;
 import javax.swing.AbstractAction;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class TelephoneSimulator implements UserInputSource {
 
+	private final String backgroundMusicDefault = "Current background music: ";
     private JFrame frame;
     private volatile Character lastKey = null;
     private Semaphore gameStartSemaphore = new Semaphore(0);
     private volatile boolean offhook;
+    private JLabel backgroundMusic = new JLabel(backgroundMusicDefault);
     
     private class NumberAction extends AbstractAction {
         
@@ -59,7 +62,7 @@ public class TelephoneSimulator implements UserInputSource {
         frame = new JFrame("Telephone!");
         frame.setLocationByPlatform(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setLayout(new FlowLayout(FlowLayout.CENTER));
+        frame.setLayout(new BorderLayout());
         
         JButton startCallButton = new JButton("Start Call");
         startCallButton.addActionListener(new ActionListener() {
@@ -76,10 +79,13 @@ public class TelephoneSimulator implements UserInputSource {
                 offhook = false;
             }
         });
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.add(startCallButton);
+        buttonPanel.add(endCallButton);
         
-        frame.add(startCallButton);
-        frame.add(endCallButton);
-        frame.add(makeKeyPad());
+        frame.add(buttonPanel,BorderLayout.WEST);
+        frame.add(makeKeyPad(),BorderLayout.CENTER);
+        frame.add(backgroundMusic,BorderLayout.SOUTH);
         frame.pack();
         frame.setVisible(true);
     }
@@ -111,11 +117,16 @@ public class TelephoneSimulator implements UserInputSource {
 
     public void gameEnding() {
         offhook = false;
+        backgroundMusic.setText(backgroundMusicDefault);
     }
 
     public boolean isUserPresent() {
         return offhook;
     }
+
+	public void playBackgroundMusic(String musicName) {
+		backgroundMusic.setText("Current background music: "+musicName);
+	}
 
     
 }

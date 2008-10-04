@@ -59,4 +59,7 @@ public interface UserInputSource {
      * the game.
      */
     void gameEnding();
+    
+    void playBackgroundMusic(String musicName);
+    
 }

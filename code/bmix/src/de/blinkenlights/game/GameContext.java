@@ -42,6 +42,8 @@ public class GameContext {
     private FrameTarget bmixClient;
 
     private UserInputSource inputClient;
+
+	private Properties config;
     
     
     public GameContext(BlinkenGame game) throws GameConfigurationException {
@@ -60,7 +62,7 @@ public class GameContext {
      */
     private void readConfiguration() throws GameConfigurationException {
         try {
-            Properties config = new Properties();
+            config = new Properties();
             FileInputStream propertiesIn = new FileInputStream("blinkengame.properties");
             config.load(propertiesIn);
             propertiesIn.close();
@@ -90,6 +92,16 @@ public class GameContext {
             throw new GameConfigurationException(ex);
         }
     }
+    
+    /** 
+     * This returns a property from the blinkengame.properties file.
+     * 
+     * @param property the name of the property to return
+     * @return the property
+     */
+    public String getProperty(String property) {
+		return config.getProperty(property);
+	}
 
     /**
      * Starts the game context, which causes it to register with the telephony
@@ -182,5 +194,9 @@ public class GameContext {
 
     public void setFramesPerSecond(double framesPerSecond) {
         this.framesPerSecond = framesPerSecond;
+    }
+    
+    public void startBackgroundMusic(String musicName) {
+    	inputClient.playBackgroundMusic(musicName);
     }
 }
