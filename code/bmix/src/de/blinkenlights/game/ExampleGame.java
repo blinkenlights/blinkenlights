@@ -20,6 +20,8 @@ package de.blinkenlights.game;
 import java.awt.Color;
 import java.awt.Graphics2D;
 
+import quicktime.app.players.Playable;
+
 /**
  * Simple example "game" that demonstrates how to use the Blinkengame API.
  * <p>
@@ -44,18 +46,20 @@ public class ExampleGame implements BlinkenGame {
         context = gameContext;
         centre = gameContext.getPlayfieldWidth() / 2;
         xOffset = 0;
+        gameContext.startBackgroundMusic(gameContext.getProperty("telephony.backgroundMusic"));
     }
 
     public boolean nextFrame(Graphics2D g, FrameInfo frameInfo) {
         
         // TODO user input from frame info
-        System.out.println("Frame@" + frameInfo.getWhen() + "ms. User Input="+frameInfo.getUserInput());
+        //System.out.println("Frame@" + frameInfo.getWhen() + "ms. User Input="+frameInfo.getUserInput());
         Character input = frameInfo.getUserInput();
         if (input != null) {
             xOffset++;
         }
         if (xOffset * 2 >= context.getPlayfieldWidth()) {
             xOffset = 0;
+            return false;
         }
         
         int height = context.getPlayfieldHeight();
