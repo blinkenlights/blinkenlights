@@ -65,7 +65,7 @@ public class BLTCommand {
 			}
 		}
 		else if ("heartbeat".equals(command)) {
-			logger.fine("got heartbeat command");
+			logger.finest("got heartbeat command");
 			retval = new BLTCommand(channel, CommandType.HEARTBEAT);
 		}
 		else if ("accept".equals(command)) {
