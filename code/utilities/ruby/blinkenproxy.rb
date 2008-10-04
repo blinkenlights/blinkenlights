@@ -2,26 +2,28 @@
 
 # == Synopsis 
 #   blinkenproxy listens on a port for blinkenpackets or requests them from a proxy and forwards them to clients that are sending heartbeats on the heartbeatport
+#
 # == Examples
-#   blinkenpackets.rb -p 2323
+#   blinkenproxy.rb -p 2323
 #
 #   Other examples:
-#     ruby_cl_skeleton -n -p 2324
+#     blinkenproxy -n -p 2324
 # == Usage 
 #   blinkenproxy.rb [-v | -h] [-f] [-a] [blinkenproxyaddress:port | receive-port] [heartbeat-port]
 #
 #   For help use: blinkenproxy.rb -h
-#   defaults are 2323 and heartbeat-port:4242
+#   defaults is: blinkenproxy 2323 4242
 # == Options
 #   -h, --help          Displays help message
 #   -v, --version       Display the version, then exit
 #   -f, --frames        Output frame content
-#   -t, --timestamp     Output 64-bit timestamp instead of human redable time
+#   -t, --timestamp     Output 64-bit timestamp instead of human redable time in framelogs
 #   -a, --asciidisplay  Output frames as ascii using ' .,:;+io!4768%@$'
 #   -r, --restrictip ADDRESSES  restrict receiving to ip addresses, comma separated
 
 # == Author
-#   Dominik Wagner
+#   Dominik Wagner (dom@codingmonkeys.de)
+#
 # == Copyright
 #   Frei und so.
 
@@ -53,7 +55,7 @@ class App
     @options.showFrames = false
     @semaphore = Mutex.new
     @options.sendClients = true
-    @options.restrictips = []
+    @options.restrict_ips = []
   end
 
   # Parse options, check arguments, then process the command
@@ -86,7 +88,7 @@ class App
       opts.on('-t', '--timestamp')  { @options.timestamp = true }
       opts.on('-a', '--asciidisplay')  { @options.ascii = true }
       opts.on('-d', '--dontsendstats') {@options.sendClients = false }
-      opts.on('-r', '--restrictip IP_ADDRESSES') {|addresses| @options.restrictips = addresses.split(',')}
+      opts.on('-r', '--restrictip IP_ADDRESSES') {|addresses| @options.restrict_ips = addresses.split(',')}
       # TO DO - add additional options
             
       opts.parse!(@arguments) rescue return false
@@ -128,6 +130,10 @@ class App
       @arguments.length <= 2
     end
     
+    def log(string)
+      print Time.now.strftime("%Y-%m-%d %H:%M:%S") + ": " + string + "\n"
+    end
+
     # Setup the arguments
     def process_arguments
       # TO DO - place in local vars, etc
@@ -152,7 +158,7 @@ class App
     
     
     def send_heartbeat
-      data = [0x42424242,0,0,0].pack("NnnN") # old blinkenproxy compatibility , needs long packet
+      data = [0x42424242,0,0,0].pack("NnnN") # old blinkenproxy compatibility, needs long packet
       if @options.sendClients
         @semaphore.synchronize {
           data = [0x42424242,0, @clients.length, self.indirect_count ].pack("NnnN")
@@ -160,7 +166,7 @@ class App
       end
       @socket.send(data,0,@options.proxyAddress,@options.proxyPort)
       seconds_since_last_frame = Time.now - @last_frame_time
-      print Time.now.strftime("%Y-%m-%d %H:%M:%S") + ": -------> Sent ping to #{@options.proxyAddress} #{@options.proxyPort} " + " - last frame %0.2f seconds ago\n" % [seconds_since_last_frame] if seconds_since_last_frame > 30.0
+      self.log "-------> Sent ping to #{@options.proxyAddress} #{@options.proxyPort} " + " - last frame %0.2f seconds ago\n" % [seconds_since_last_frame] if seconds_since_last_frame > 30.0
       sleep(5)
       rescue 
         p $!
@@ -189,7 +195,7 @@ class App
           end
           
           if should_report
-            print Time.now.strftime("%Y-%m-%d %H:%M:%S"), ": (#{change_string} #{clientaddress} #{direct_client_count},#{indirect_client_count}) total:[#{@clients.length},#{self.indirect_count}]\n"
+            self.log "(#{change_string} #{clientaddress} #{direct_client_count},#{indirect_client_count}) total:[#{@clients.length},#{self.indirect_count}]"
             STDOUT.flush
           end
         }
@@ -197,7 +203,6 @@ class App
       rescue 
         p $!
     end #def
-
     
     def process_command
       
@@ -240,6 +245,10 @@ class App
       loop do
         data, sender = @socket.recvfrom(10000)
         host = sender[3]
+        if @options.restrict_ips.length > 0 && ! @options.restrict_ips.member?(host)
+          self.log "Blocked blinkenpackets from #{host}:#{sender[1]} because of restrictions"
+          next
+        end
         magic,ignore = data.unpack('N')
 
         now = Time.now
@@ -249,7 +258,7 @@ class App
           @semaphore.synchronize {
             if (now - lastCheck > 5.0) 
               unless @clients.reject!{ |k,v| now - v[:updateTime] > 5.0 * 12}.nil?
-                print Time.now.strftime("%Y-%m-%d %H:%M:%S"), ": (-) total:[#{@clients.length},#{self.indirect_count}]\n"
+                self.log "(-) total:[#{@clients.length},#{self.indirect_count}]"
                 STDOUT.flush
               end
             end
