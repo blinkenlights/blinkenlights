@@ -156,7 +156,7 @@ public class SpaceInvaders implements BlinkenGame {
 		for (Alien a : aliens) {
 			boolean newSwitch = a.move(switchDirection);
 			switchDir = switchDir || newSwitch;
-			if (a.getLocation().x >= maxWidth) {
+			if (a.getLocation().x >= maxWidth - 1) {
 				lives--;
 				if (lives == 0) {
 					return false;
