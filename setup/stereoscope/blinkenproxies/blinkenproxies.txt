@@ -1,3 +1,12 @@
 217.172.177.145		# Torsten Grunig <mailto:tgrunig@gmail.com>
 208.113.253.145		# Robin Senior <mailto:senior@gmail.com>
 212.201.68.148		# Andreas Kupfer <mailto:blinkenlights.net@42h.de>
+88.198.198.113		# Duckula <mailto:blinken@stresser.de>
+213.239.208.75		# <mailto:beanie@benle.de>
+85.214.89.204		# <mailto:mail@denisu.jp>
+81.169.140.255		# <mailto:rmayer@vinotech.de>
+89.238.67.183		# Florian Holzhauer <mailto:fh-foobar@fholzhauer.de>
+89.238.65.185		# Martin Ringehahn <mailto:martin@ringehahn.de>
+85.214.122.220		# Oliver <mailto:oliver@plainbytes.com>
+213.160.27.162		# Micky Roth <info@rothnet.org>
+78.47.62.13		# Garret Alfert <mail@garretalfert.de>
