@@ -51,6 +51,7 @@ class App
     @options.showFrames = false
     @options.outfilename = "out.braw"
     @semaphore = Mutex.new
+    @last_frame_time = Time.now
   end
 
   # Parse options, check arguments, then process the command
@@ -88,6 +89,10 @@ class App
       
       process_options
       true      
+    end
+
+    def log(string)
+      print Time.now.strftime("[br] %Y-%m-%d %H:%M:%S") + ": " + string + "\n"
     end
 
     # Performs post-parse processing on options
@@ -143,7 +148,8 @@ class App
     def send_heartbeat
       data = [0x42424242,0,0,0].pack("NnnN")
       @socket.send(data,0,@options.proxyAddress,@options.proxyPort)
-      print Time.now.strftime("%Y-%m-%d %H:%M:%S") + ": -------> Sent ping to #{@options.proxyAddress} #{@options.proxyPort} \n"
+      seconds_since_last_frame = Time.now - @last_frame_time
+      self.log "-------> Sent ping to #{@options.proxyAddress} #{@options.proxyPort} " + " - last frame %0.2f seconds ago" % [seconds_since_last_frame] if seconds_since_last_frame > 30.0
       sleep(5)
     end
 
@@ -183,6 +189,7 @@ class App
             # only record multiframes because this format needs the timestamp. when recording to bml later on we could do that differently
             outFile.print [data.length].pack('n')
             outFile.print data
+            @last_frame_time = Time.now
           end              
   
   

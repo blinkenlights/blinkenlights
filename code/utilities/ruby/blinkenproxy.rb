@@ -166,7 +166,7 @@ class App
       end
       @socket.send(data,0,@options.proxyAddress,@options.proxyPort)
       seconds_since_last_frame = Time.now - @last_frame_time
-      self.log "-------> Sent ping to #{@options.proxyAddress} #{@options.proxyPort} " + " - last frame %0.2f seconds ago\n" % [seconds_since_last_frame] if seconds_since_last_frame > 30.0
+      self.log "-------> Sent ping to #{@options.proxyAddress} #{@options.proxyPort} " + " - last frame %0.2f seconds ago" % [seconds_since_last_frame] if seconds_since_last_frame > 30.0
       sleep(5)
       rescue 
         p $!
@@ -257,10 +257,15 @@ class App
           #send it on
           @semaphore.synchronize {
             if (now - lastCheck > 5.0) 
-              unless @clients.reject!{ |k,v| now - v[:updateTime] > 5.0 * 12}.nil?
-                self.log "(-) total:[#{@clients.length},#{self.indirect_count}]"
+              removed_ips = []
+              unless @clients.reject!{ |k,v| 
+                result = now - v[:updateTime] > 5.0 * 12
+                removed_ips << k if result
+                result}.nil?
+                self.log "(- #{removed_ips.join(',')}) total:[#{@clients.length},#{self.indirect_count}]"
                 STDOUT.flush
               end
+              lastCheck = Time.now
             end
             @clients.each { |k,v|
               @proxySocket.send(data, 0, v[:client][3], v[:client][1])
