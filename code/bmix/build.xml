@@ -42,19 +42,41 @@
 			 includes="**" manifest="etc/StatsClient_manifest"/>
 	</target>
 	
-	<target name="blinkengameDir" depends="jar" description="Creates the dist directory with the blinkengame stuff">
-		<mkdir dir="dist/game"/>
-		<copy file="blinkengame.properties" todir="dist/game"/>
+	<target name="blinkengame.dir" depends="jar" description="Creates the dist directory with the blinkengame stuff">
+		<mkdir dir="dist/blinkengame"/>
+		<copy file="blinkengame.properties" todir="dist/blinkengame"/>
 		
 		<!-- For now, just put the entire bmix jar there. Later on, we can
              prune out some stuff if we're feeling ambitious. -->
-		<copy file="dist/bmix-${bmix.version}/bmix.jar" tofile="dist/game/blinkengame.jar"/>
+		<copy file="dist/bmix-${bmix.version}/bmix.jar" tofile="dist/blinkengame/blinkengame.jar"/>
 		
-		<copy file="src/de/blinkenlights/game/ExampleGame.java" todir="dist/game"/>
-		<replace file="dist/game/ExampleGame.java" value="import de.blinkenlights.game.*;">
+		<copy file="src/de/blinkenlights/game/ExampleGame.java" todir="dist/blinkengame"/>
+		<replace file="dist/blinkengame/ExampleGame.java" value="import de.blinkenlights.game.*;">
 			<replacetoken><![CDATA[package de.blinkenlights.game;]]></replacetoken>
 		</replace>
 
+	</target>
+	
+	<target name="blinkengame.site" depends="blinkengame.dir" description="Website with instructions, javadoc, and a downloadable zipfile of blinkengame.dir">
+		<mkdir dir="dist/blinkengame.site"/>
+		<zip destfile="dist/blinkengame.site/blinkengame_sdk.zip"> <!-- TODO version -->
+			<zipfileset dir="dist/blinkengame" includes="**"/>
+		</zip>
+		<copy file="src/de/blinkenlights/game/blinkengame.html" tofile="dist/blinkengame.site/index.html" />
+		<copy file="dist/blinkengame/ExampleGame.java" todir="dist/blinkengame.site" />
+		<javadoc sourcepath="src" destdir="dist/blinkengame.site/javadoc"
+			packagenames="de.blinkenlights.*"
+			maxmemory="100m"
+			windowtitle="Blinkengame API Documentation"
+			Version="true" Author="true" Use="true"
+			>
+    		<classpath>
+    		    <pathelement path="build"/>
+    		    <fileset dir="lib">
+    		       <include name="**/*.jar"/>
+    		    </fileset>
+    	    </classpath>
+		</javadoc>
 	</target>
 		
 	<target name="tarball" depends="clean,jar" description="Creates the distribution tarball">

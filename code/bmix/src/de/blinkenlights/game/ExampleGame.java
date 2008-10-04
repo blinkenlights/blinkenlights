@@ -51,7 +51,6 @@ public class ExampleGame implements BlinkenGame {
 
     public boolean nextFrame(Graphics2D g, FrameInfo frameInfo) {
         
-        // TODO user input from frame info
         //System.out.println("Frame@" + frameInfo.getWhen() + "ms. User Input="+frameInfo.getUserInput());
         Character input = frameInfo.getUserInput();
         if (input != null) {

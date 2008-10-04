@@ -60,7 +60,6 @@ public class TelephoneSimulator implements UserInputSource {
 
     public void start() {
         frame = new JFrame("Telephone!");
-        frame.setLocationByPlatform(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new BorderLayout());
         
@@ -87,6 +86,7 @@ public class TelephoneSimulator implements UserInputSource {
         frame.add(makeKeyPad(),BorderLayout.CENTER);
         frame.add(backgroundMusic,BorderLayout.SOUTH);
         frame.pack();
+        frame.setLocation(400, 100);
         frame.setVisible(true);
     }
 
