@@ -60,7 +60,7 @@ public class BLTClientManager implements Runnable  {
 				DatagramPacket p = new DatagramPacket(new byte[1024],1024);
 				try {
 					socket.receive(p);
-					logger.fine("got packet from: "+p.getAddress()+": "+new String(p.getData()));
+					logger.finest("got packet from: "+p.getAddress()+": "+new String(p.getData()));
 					ci = new ClientIdentifier(p.getAddress(),p.getPort());
 					BLTCommand bltc = BLTCommand.parsePacket(new String(p.getData()));
 
