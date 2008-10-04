@@ -116,7 +116,7 @@ public class SpaceInvaders implements BlinkenGame {
 		context.setFramesPerSecond(3);
 		
 		score = 0;
-		lives = 3;
+		lives = 1;
 		currentAlienDelay = START_ALIEN_DELAY;
 		numAlienRows = START_ALIEN_ROWS;
 		gunCooldown = 0;

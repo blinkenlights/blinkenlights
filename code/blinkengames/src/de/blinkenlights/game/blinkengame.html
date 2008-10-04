@@ -1,0 +1,193 @@
+<html>
+<head>
+	<title>Blinkengame - API for creating games for Blinkenlights
+			installations</title>
+  <style type="text/css">
+  body {
+        font-family: verdana;
+        font-size: 9pt;
+        line-height: 3ex;
+        margin-left: 10em;
+        background-color: white;
+        text: black;
+        width: 45em;
+  }
+  h1 {
+        padding-top: 3ex;
+    font-size: 20pt;
+  }
+  h2 {
+        font-size: 16pt;
+        padding-top: 1ex;
+        margin-left: 2em;
+  }
+  h3 {
+    font-size: 12pt;
+        padding-top: 0.5ex;
+        margin-left: 3em;
+  }
+  p {
+        margin-left: 5em;
+  }
+  table.icon-collection {
+    font-size: 9pt;
+    clear: both;
+    position: static;
+  }
+  table.icon-collection tr td {
+    text-align: center;
+  }
+  </style>
+</head>
+<body>
+	<h1>Blinkengame API for Java</h1>
+	
+	<p>Writing games in Java that work with Blinkenlights is easy! To get started:</p>
+	
+	<ol>
+		<li>Ensure you have a <a href="http://java.sun.com/">JDK installed</a> (requires
+		Sun JDK5.0 or newer)</li>
+		<li>Download the <a href="blinkengame_sdk.zip">blinkengame development kit</a> and unzip it</li>
+		<li>Open a terminal window and try compiling the example game:<br>
+			<tt>% javac -cp blinkengame.jar ExampleGame.java</tt><br>
+ 			then run it like this:<br>
+			<tt>% java -cp blinkengame.jar:. ExampleGame</tt><br>
+			(on windows, substitute a semilcolon for the colon).</li>
+	</ol>
+	
+	<p>That's it. Now just make a copy of ExampleGame.java, and modify to your heart's
+	content.</p>
+	
+	
+	<h2>How it Works</h2>
+	
+	<p>Take a look at the example game's source code, <a href="ExampleGame.java">ExampleGame.java</a>.</p>
+		It's an implementation of the <a href="javadoc/de/blinkenlights/game/BlinkenGame.html">BlinkenGame</a>
+		interface, which has three methods: <tt>gameStarting()</tt>,
+		<tt>nextFrame()</tt>, and <tt>gameEnding()</tt>. Let's look at each of them in turn, using
+		excerpts from the example game:</p>
+		
+	<pre>
+	public void gameStarting(GameContext gameContext) {
+        System.out.println("Game starting");
+        context = gameContext;
+        centre = gameContext.getPlayfieldWidth() / 2;
+        xOffset = 0;
+    }
+	</pre>
+	
+	<p>This method is called once when the game is starting. The game will start
+		due to some user input: on the simulator, you press the "Start Call" button,
+		and in the real installation, the game will start when someone calls the
+		designated telephone number for your game.</p>
+		
+	<p>The game context parameter contains useful information such as playfield dimensions,
+		frame rate, and so on. You will probably find it handy to stash a reference to
+		it like this example does.</p>
+	
+	<p>The println is just for your use as a developer. It will show up in your console
+		when the game starts. Println output will not be visible to players of the real game.</p>
+		
+	<p>Now the nextFrame() method. This is where you put the meat of your game.</p>
+	
+	<pre>
+    public boolean nextFrame(Graphics2D g, FrameInfo frameInfo) {
+        
+        System.out.println("Frame@" + frameInfo.getWhen() + "ms. User Input="+frameInfo.getUserInput());
+        Character input = frameInfo.getUserInput();
+        if (input != null) {
+            xOffset++;
+        }
+        if (xOffset * 2 &gt;= context.getPlayfieldWidth()) {
+            xOffset = 0;
+        }
+        
+        int height = context.getPlayfieldHeight();
+        g.setColor(Color.WHITE);
+        g.drawLine(centre - xOffset, 0, centre - xOffset, height);
+        g.drawLine(centre + xOffset, 0, centre + xOffset, height);
+        
+        // quit after 60 seconds so people can't hog it
+        return frameInfo.getWhen() &lt; 60000;
+    }
+    </pre>
+    
+    <p>This example isn't really a game at all. It simply draws a couple of vertical
+    	lines that move apart every time the user presses a button on their phone.</p>
+    
+    <p>The useful lessons here are:
+    <ul>
+    	<li>frameInfo.getUserInput() is the way to find out if the user has pressed
+    		a button on their phone. If the user hasn't pressed anything since last
+    		time you checked,  frameInfo.getUserInput() returns null.</li>
+    	<li>You return true from nextFrame() if you want the game to keep going. When
+    		you return false, the game is over. This game uses that strategy together
+    		with the information about how many milliseconds the game has been running
+    		in order to implement a 1-minute (60000ms) time limit.</li>
+    </ul>
+    
+    <p>And finally, the gameEnding() method:</p>
+    
+    <pre>
+    public void gameEnding(Graphics2D g) {
+        System.out.println("Game ending");
+        g.drawLine(0, 0, context.getPlayfieldWidth(), context.getPlayfieldHeight());
+        context = null;
+        xOffset = 0;
+        centre = 0;
+    }
+    </pre>
+    
+    <p>This method is guaranteed to be called some time after gameStarting() has been called.
+    	Once it has been called, there will be no further calls to nextFrame() until
+    	gameStarting() has been called again.
+    	
+    <p>You can use it to paint a final frame for your game. In this case, we just draw
+    	a diagonal line from top left to bottom right. If you want to play an animated
+    	ending sequence, you will have to keep track of your game state and do the ending
+    	sequence in nextFrame().</p>
+    	
+    <p>You can also clean up any resources you allocated in gameStarted() or while
+    	the game was in play. In this case, there's nothing that really needs cleanup,
+    	but we're clearing our reference to the game context and zeroing out the
+    	information about playfield size just to be polite.</p>
+    
+    <h3>Test playing</h3>
+    
+    <p>The example game also has a main method:</p>
+    <pre>
+    public static void main(String[] args) throws GameConfigurationException {
+        BlinkenGame game = new ExampleGame();
+        GameContext context = new GameContext(game);
+        context.start();
+    }
+	</pre>
+	
+	<p>This is just a simple way to launch your game for testing. In the real scenario, your
+		main method will not be called. Put any initialization you need into either your class's
+		no-args constructor or in your startGame() method.</p>
+	
+	
+	<h2>Formal Documentation</h2>
+	
+	<p>The javadoc for the blinkengame library
+	   <a href="javadoc/de/blinkenlights/game/package-summary.html">is here</a>.</p> 
+	
+	
+	<h2>Other APIs</h2>
+	
+	<p>Dan Fraser and Robin Senior have created a similar system that uses
+		the Processing language. If you don't already have a Java development
+		infrastructure set up, you will find it much quicker to start with
+		Processing.</p>
+		
+	<p>You can find it on <a href="http://robinsenior.com/blinkenlights">Robin's
+		site</a>.</p>
+		
+	<p>If you just want to make static movies, one option is to use
+		<a href="http://capybara.org/~dfraser/?p=261">Dan Fraser's
+		ImageToBML program</a>. It converts a directory full of images into a BML
+		movie file.</p>
+
+</body>
+</html>

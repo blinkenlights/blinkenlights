@@ -14,6 +14,8 @@ import de.blinkenlights.game.GameContext;
 
 public class Snake implements BlinkenGame {
 
+    private static final int GAME_TIME = 30000;
+    
 	/**
 	 * The max width of the screen.
 	 */
@@ -122,6 +124,6 @@ public class Snake implements BlinkenGame {
 		
 		paint(g);
 		
-		return true;
+		return info.getWhen() < GAME_TIME;
 	}
 }
