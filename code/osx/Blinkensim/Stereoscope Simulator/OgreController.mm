@@ -1,4 +1,5 @@
 #import "OgreController.h"
+#import "TableSection.h"
 
 using namespace Ogre;
 
@@ -30,12 +31,32 @@ Vector3 cameras[6];
 #define RIGHT_BOTTOM_MESH_NO 2
 #define RIGHT_TOP_MESH_NO    3
 
+// five seconds without a frame means timeout
+#define CONNECTIION_NO_FRAME_TIMEOUT 5.0
+#define HOST_RESOLVING_TIMEOUT      10.0
+
 
 GLfloat *windowMeshTextureCoords[] = {NULL,NULL,NULL,NULL};
 static GLfloat windowtextureCoords[16][12];
 GLfloat windowMeshTextureValues[16][2][2];
 
 @implementation OgreController
+
+@synthesize hostToResolve = _hostToResolve;
+@synthesize proxyListConnection = _proxyListConnection;
+@synthesize currentProxy = _currentProxy;
+@synthesize messageDictionary = _messageDictionary;
+@synthesize projectTableSections;
+
++ (void)initialize
+{
+	[[NSUserDefaults standardUserDefaults] registerDefaults:[NSDictionary dictionaryWithObjectsAndKeys:
+		[NSNumber numberWithBool:YES],@"autoselectProxy",
+		[NSNumber numberWithInt:0],@"message-number",
+		nil]
+	];
+	srandomdev(); // have a good seed.
+}
 
 - (void)setOgreView:(OgreView *)inView
 {
@@ -49,8 +70,8 @@ GLfloat windowMeshTextureValues[16][2][2];
 	for (int i = 0; i<16;i++) {
 		int row = i / 4;
 		int column = i % 4;
-		CGPoint topRight   = CGPointMake(0.0 + (column+1) * 0.25, 0.0 +  row    * 0.25);
-		CGPoint bottomLeft = CGPointMake(0.0 +  column    * 0.25, 0.0 + (row+1) * 0.25);
+		CGPoint topRight   = CGPointMake(0.0 + (column+1) * 0.25, 0.0 + (row+1) * 0.25);
+		CGPoint bottomLeft = CGPointMake(0.0 +  column    * 0.25, 0.0 +  row    * 0.25);
 	
 //		NSLog(@"%s %d:%@ %@",__FUNCTION__,i,NSStringFromCGPoint(bottomLeft), NSStringFromCGPoint(topRight));
 		windowMeshTextureValues[i][0][0] = (GLfloat)bottomLeft.x;
@@ -74,6 +95,59 @@ GLfloat windowMeshTextureValues[16][2][2];
 		windowtextureCoords[i][11] = bottomLeft.y;
 	}
 }
+
+- (NSDictionary *)manualProxy {
+	NSArray *components = [[[NSUserDefaults standardUserDefaults] stringForKey:@"blinkenproxyAddress"] componentsSeparatedByString:@":"];
+	NSString *address = [components count]>0 ? [components objectAtIndex:0] : @"";
+	NSString *port    = [components count]>1 ? [components objectAtIndex:1] : nil;
+	return [NSDictionary dictionaryWithObjectsAndKeys:
+					address,@"address",
+					port, @"port", // warning if no port port dictionary stops here
+					nil];
+}
+
+- (BOOL)manualProxyIsSet {
+	NSString *proxy = [[NSUserDefaults standardUserDefaults] stringForKey:@"blinkenproxyAddress"];
+	return (proxy && [proxy length]);
+}
+
+- (void)updateWithBlinkenstreams:(NSArray *)inBlinkenArray
+{
+	[[NSUserDefaults standardUserDefaults] setObject:inBlinkenArray forKey:@"blinkenArray"];
+	[projectTableSections removeAllObjects];
+	for (NSDictionary *project in inBlinkenArray)
+	{
+		NSString *name = [project objectForKey:@"name"];
+		if ([[project objectForKey:@"building"] isEqualToString:@"stereoscope"]) {
+			NSMutableArray *proxyArray = [NSMutableArray new];
+			for (NSDictionary *proxy in [project objectForKey:@"proxies"])
+			{
+				if ([[proxy valueForKey:@"size"] isEqualToString:@"displayed"]) {
+					NSMutableDictionary *proxyDict = [proxy mutableCopy];
+					[proxyDict setValue:name forKey:@"projectName"];
+					[proxyDict setValue:[project valueForKey:@"building"] forKey:@"projectBuilding"];
+					[proxyArray addObject:proxy];
+				}
+			}
+			if ([proxyArray count]) {
+				TableSection *section = [TableSection sectionWithItems:proxyArray heading:name indexLabel:@""];
+				section.representedObject = project;
+				[projectTableSections addObject:section];
+			}
+			[proxyArray release];
+		}
+	}
+	NSLog(@"%s %@",__FUNCTION__,projectTableSections);
+}
+
+
+
+- (void)resetTimeCompensation
+{
+	_maxTimeDifference = -999999999999999.0;
+	_timeSamplesTaken = 0;
+}
+
 
 - (void)updateWindows:(unsigned char *)inDisplayState
 {
@@ -125,7 +199,6 @@ GLfloat windowMeshTextureValues[16][2][2];
 
 				vertexIndexPosition++;
 			}
-			printf("\n");
 		}
 	}
 	indexHB->unlock();
@@ -303,14 +376,40 @@ GLfloat windowMeshTextureValues[16][2][2];
 
 }
 
+
+- (void)connectionDidBecomeAvailable {
+
+	[self fetchStreamsXML];
+
+	if (![self hasConnection]) {
+		if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"autoselectProxy"] boolValue])
+		{
+			[self connectToAutoconnectProxy];
+		}
+	}
+
+}
+
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
 {   
+	_xmlReadFailureCount = 0;
+	_connectionLostTime = DBL_MAX;
+	_hostResolveFailureTime = DBL_MAX;
+	
+	_frameQueue = [NSMutableArray new];
+
+	projectTableSections = [NSMutableArray new];
+	NSArray *savedStreams = [[NSUserDefaults standardUserDefaults] objectForKey:@"blinkenArray"];
+	if (savedStreams) {
+		[self updateWithBlinkenstreams:savedStreams];
+	}
+
 	int maxcount = 23*54;
 	int value = 0;
 	for (int i=0;i<maxcount;i++)
 	{
 		*(((char *)displayState)+i)=value;
-		value = (i) % 16;
+		value = (i / 54) % 16;
 	}
 
 //	[self resetTimeCompensation];
@@ -495,10 +594,367 @@ GLfloat windowMeshTextureValues[16][2][2];
     progress = 1.0;    
     
     [self updateWindows:(unsigned char *)displayState];
+
 	// create a timer that causes OGRE to render
 	NSTimer *renderTimer = [NSTimer scheduledTimerWithTimeInterval:FRAMERATE target:self selector:@selector(renderFrame) userInfo:NULL repeats:YES];
 	[[NSRunLoop currentRunLoop] addTimer:renderTimer forMode:NSEventTrackingRunLoopMode];
+	[self connectionDidBecomeAvailable];
 }
+
+- (void)connectToProxyFromArray:(NSArray *)inArray {
+	NSUInteger count = [inArray count];
+	if (count) {
+		[self connectToProxy:[inArray objectAtIndex:random() % count]];
+	}
+}
+
+- (void)connectToAutoconnectProxy {
+	if (![self hasConnection]) {
+		// collect all live proxies
+		NSMutableArray *liveProxiesToChooseFrom = [NSMutableArray array];
+		NSMutableArray *proxiesToChooseFrom = [NSMutableArray array];
+		for (TableSection *section in [self projectTableSections]) {
+			for (NSDictionary *proxy in [section items]) {
+				if ([proxy valueForKey:@"kind"] &&
+					[[proxy valueForKey:@"kind"] caseInsensitiveCompare:@"live"] == NSOrderedSame) {
+					[liveProxiesToChooseFrom addObject:proxy];
+				}
+				[proxiesToChooseFrom addObject:proxy];
+			}
+		}
+		if ([liveProxiesToChooseFrom count]) {
+			NSLog(@"%s choosing from live proxies %@",__FUNCTION__,liveProxiesToChooseFrom);
+			[self connectToProxyFromArray:liveProxiesToChooseFrom];
+		} else if ([proxiesToChooseFrom count]) {
+			NSLog(@"%s choosing from all %@",__FUNCTION__,proxiesToChooseFrom);
+			[self connectToProxyFromArray:proxiesToChooseFrom];
+		}
+	}
+}
+
+- (void)handleConnectionFailure {
+	BOOL autoconnect = [[[NSUserDefaults standardUserDefaults] objectForKey:@"autoselectProxy"] boolValue];
+	if (autoconnect) {
+		[self connectToAutoconnectProxy];
+	}
+}
+
+
+- (void)connectToProxy:(NSDictionary *)inProxy {
+//	NSLog(@"%s %@",__FUNCTION__,inProxy);
+	NSString *address = [inProxy valueForKey:@"address"];
+	if (address) {
+		[_blinkenListener stopListening];
+		[_hostToResolve cancel];
+		[_hostToResolve setDelegate:nil];
+		self.hostToResolve = nil;
+		self.currentProxy = inProxy;
+		[self setStatusText:[NSString stringWithFormat:@"Resolving %@",address]];
+		
+		// this is just done for asychronous resolving so we know we have an ip address for this one
+		self.hostToResolve = [TCMHost hostWithName:address port:1234 userInfo:nil];
+		
+		[_hostToResolve setDelegate:self];
+		_hostResolveFailureTime = [NSDate timeIntervalSinceReferenceDate] + HOST_RESOLVING_TIMEOUT;
+		[_hostToResolve resolve];
+		
+		NSString *kindString = [inProxy objectForKey:@"kind"];
+		if (!kindString) kindString = @"";
+//		_liveLabel.text = kindString;
+		_showTime = [[inProxy objectForKey:@"showtime"] isEqualToString:@"showtime"];
+	}
+}
+
+- (void)connectToManualProxy
+{
+	[self connectToProxy:[self manualProxy]];
+}
+
+
+- (void)fetchStreamsXML
+{
+	NSURL *urlToFetch = [NSURL URLWithString:(_xmlReadFailureCount % 2) == 0 ? 
+		@"http://www.blinkenlights.net/config/blinkenstreams.xml" : 
+		@"http://www.blinkenlights.de/config/blinkenstreams.xml"];
+	NSURLRequest *request = [NSURLRequest requestWithURL:urlToFetch cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:30.0];
+	[_responseData release];
+	_responseData = NULL;
+	_responseData = [NSMutableData new];
+	self.proxyListConnection = [[[NSURLConnection alloc] initWithRequest:request delegate:self] autorelease];
+}
+
+
+
+- (void)hostDidResolveAddress:(TCMHost *)inHost;
+{
+	NSString *addressString = [_currentProxy valueForKey:@"address"];
+	id portValue = [_currentProxy valueForKey:@"port"];
+	if (portValue) addressString = [addressString stringByAppendingFormat:@":%@",portValue];
+	_fadeOutOnBlinkenframe = YES;
+	[self setStatusText:[NSString stringWithFormat:@"Connecting to %@",addressString]];
+
+	[[_hostToResolve retain] autorelease];
+	[_hostToResolve cancel];
+	[_hostToResolve setDelegate:nil];
+	self.hostToResolve = nil;
+	_hostResolveFailureTime = DBL_MAX;
+
+	_connectionLostTime = [NSDate timeIntervalSinceReferenceDate] + CONNECTIION_NO_FRAME_TIMEOUT;
+
+	// create this one lazyly
+	if (!_blinkenListener) {
+		_blinkenListener = [BlinkenListener new];
+		[_blinkenListener setDelegate:self];
+	}
+	
+	[_blinkenListener setProxyAddress:addressString];
+	[_blinkenListener listen];
+}
+
+- (void)host:(TCMHost *)inHost didNotResolve:(NSError *)inError;
+{
+	[self setStatusText:[NSString stringWithFormat:@"Could not resolve %@",[(id)inHost name]]];
+	[[_hostToResolve retain] autorelease];
+	[_hostToResolve cancel];
+	[_hostToResolve setDelegate:nil];
+	self.hostToResolve = nil;
+	_hostResolveFailureTime = DBL_MAX;
+// 	NSLog(@"%s %@ %@",__FUNCTION__,inHost, inError);
+ 	[self handleConnectionFailure];
+}
+
+- (void)failHostResolving {
+	if (self.hostToResolve) {
+		[self host:self.hostToResolve didNotResolve:nil];
+	}
+}
+
+- (void)consumeFrame
+{
+	NSArray *frames = [_frameQueue lastObject];
+	for (BlinkenFrame *frame in frames)
+	{
+		CGSize frameSize = frame.frameSize;
+		NSData *frameData = frame.frameData;
+		BOOL isNibbles = frame.bitsPerPixel != 8;
+		unsigned char *bytes = (unsigned char *)frameData.bytes;
+		unsigned char *bytesEnd = bytes + frameData.length;
+		NSUInteger bytesPerRow = (NSUInteger)frameSize.width;
+		unsigned char maxValue = frame.maxValue;
+		if (isNibbles) bytesPerRow = (bytesPerRow + 1) / 2;
+
+		unsigned char screenID = frame.screenID;
+
+		if (screenID == 0)
+		{
+			if ((int)frameSize.width == 96 && (int)frameSize.height == 32)
+			{
+				int rowIndex = 0;
+				for (;bytes < bytesEnd;bytes+=bytesPerRow,rowIndex++)
+				{
+					if (rowIndex >= 5)
+					{
+						if (isNibbles)
+						{
+							int offset = 8;
+							for (offset = 8; offset < 8+11; offset++)
+							{
+								displayState[rowIndex - 5][(offset-8)*2]   = (((int)*(bytes + offset)) >>  4) * 15 / maxValue;
+								displayState[rowIndex - 5][(offset-8)*2+1] = (((int)*(bytes + offset)) & 0xf) * 15 / maxValue;
+							}
+							for (offset = 25; offset < 25+15; offset++)
+							{
+								displayState[rowIndex - 5][24+(offset-25)*2]   = (((int)*(bytes + offset)) >>  4) * 15 / maxValue;
+								displayState[rowIndex - 5][24+(offset-25)*2+1] = (((int)*(bytes + offset)) & 0xf) * 15 / maxValue;
+							}
+						}
+						else
+						{
+							int offset = 16;
+							for (offset = 16; offset < 16+22; offset++)
+							{
+								displayState[rowIndex - 5][offset - 16] = ((int)*(bytes + offset)) * 15 / maxValue;
+							}
+							for (offset = 50; offset < 50+30; offset++)
+							{
+								displayState[rowIndex - 5][offset - 50 + 24] = ((int)*(bytes + offset)) * 15 / maxValue;
+							}
+						}
+					}
+					if (rowIndex >= 31 - 4) break;
+				}
+			}
+		} 
+		else if (screenID == 5)
+		{
+			// this is the left tower probably
+			if ((int)frameSize.width == 22 && (int)frameSize.height == 17)
+			{
+				int rowIndex = 0;
+				for (;bytes < bytesEnd;bytes+=bytesPerRow,rowIndex++)
+				{
+					if (isNibbles)
+					{
+						int x = 0;
+						for (x = 0; x < 11; x++)
+						{
+							displayState[rowIndex + 6][x*2]   = (((int)*(bytes + x)) >>  4) * 15 / maxValue;
+							displayState[rowIndex + 6][x*2+1] = (((int)*(bytes + x)) & 0xf) * 15 / maxValue;
+						}
+					}
+					else
+					{
+						int x = 0;
+						for (x = 0; x < 22; x++)
+						{
+							displayState[rowIndex + 6][x] = ((int)*(bytes + x)) * 15 / maxValue;
+						}
+					}
+				}
+			}
+		}
+		else if (screenID == 6)
+		{
+			// this is the right tower probably
+			if ((int)frameSize.width == 30 && (int)frameSize.height == 23)
+			{
+				int rowIndex = 0;
+				for (;bytes < bytesEnd;bytes+=bytesPerRow,rowIndex++)
+				{
+					if (isNibbles)
+					{
+						int x = 0;
+						for (x = 0; x < 15; x++)
+						{
+							displayState[rowIndex][24+x*2]   = (((int)*(bytes + x)) >>  4) * 15 / maxValue;
+							displayState[rowIndex][24+x*2+1] = (((int)*(bytes + x)) & 0xf) * 15 / maxValue;
+						}
+					}
+					else
+					{
+						int x = 0;
+						for (x = 0; x < 30; x++)
+						{
+							displayState[rowIndex][24+x] = ((int)*(bytes + x)) * 15 / maxValue;
+						}
+					}
+				}
+			}
+		}
+	}
+	[_frameQueue removeLastObject];
+	[self updateWindows:(unsigned char *)displayState];
+}
+
+
+- (void)blinkenListener:(BlinkenListener *)inListener receivedFrames:(NSArray *)inFrames atTimestamp:(uint64_t)inTimestamp
+{
+	if (_fadeOutOnBlinkenframe) {
+		[self fadeoutStatusText];
+		_fadeOutOnBlinkenframe = NO;
+	}
+	NSTimeInterval now = [NSDate timeIntervalSinceReferenceDate];
+	_connectionLostTime = now + CONNECTIION_NO_FRAME_TIMEOUT;
+	// handle the frame
+
+	[_frameQueue insertObject:inFrames atIndex:0];
+
+	if (inTimestamp != 0) 
+	{
+		if (_showTime) {
+			static NSDateFormatter *dateFormatter = nil;
+			static NSDateFormatter *timeFormatter = nil;
+			if (dateFormatter == nil) {
+				dateFormatter = [NSDateFormatter new];
+				[dateFormatter setTimeStyle:NSDateFormatterNoStyle];
+				[dateFormatter setDateStyle:NSDateFormatterShortStyle];
+
+				timeFormatter = [NSDateFormatter new];
+				[timeFormatter setDateStyle:NSDateFormatterNoStyle];
+				[timeFormatter setTimeStyle:NSDateFormatterShortStyle];
+			}
+			NSTimeInterval interval = ((NSTimeInterval)inTimestamp / 1000.0);
+			NSDate *dateToDisplay = [NSDate dateWithTimeIntervalSince1970:interval];
+			NSString *dateAndTimeString = [NSString stringWithFormat:@"%@\n%@",
+				[dateFormatter stringForObjectValue:dateToDisplay],
+				[timeFormatter stringForObjectValue:dateToDisplay]];
+//			_liveLabel.text = dateAndTimeString;
+		}
+	
+		NSTimeInterval now = [[NSDate date] timeIntervalSince1970] ;
+		NSTimeInterval timeDifference = now - ((NSTimeInterval)inTimestamp / 1000.0);
+		NSTimeInterval compensationTime = (_maxTimeDifference - timeDifference);
+		if (_timeSamplesTaken > 5 && ABS(timeDifference - _maxTimeDifference) > 3.0) 
+		{
+			[self resetTimeCompensation];
+		}
+		_maxTimeDifference = MAX(timeDifference,_maxTimeDifference);
+		if (_timeSamplesTaken <= 5 && compensationTime > 0)
+		{
+			_timeSamplesTaken++;
+			[self consumeFrame];
+		}
+		else
+		{
+			// compensate
+			[self performSelector:@selector(consumeFrame) withObject:nil afterDelay:compensationTime];
+			_maxTimeDifference -= 0.01; // shrink the time difference again to catch up if we only had one hickup
+		}
+		// NSLog(@"%s ts:0x%016qx %@ now: %@ 0x%016qx",__FUNCTION__,inTimestamp,[NSDate dateWithTimeIntervalSince1970:inTimestamp / (double)1000.0],now, (uint64_t)([now timeIntervalSince1970] * 1000));
+		//NSLog(@"time difference: %0.5f s - compensation %0.5f s",timeDifference,compensationTime);
+	} else {
+		[self consumeFrame];
+	}
+}
+
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
+{
+	_xmlReadFailureCount++;
+	if (_xmlReadFailureCount % 2) {
+		[self fetchStreamsXML];
+	}
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)inData
+{
+//	NSLog(@"%s %@",__FUNCTION__,inData);
+	[_responseData appendData:inData];
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
+	NSString *responseString = [[NSString alloc] initWithData:_responseData encoding:NSUTF8StringEncoding];
+
+	// parse XML
+	NSXMLParser *parser = [[NSXMLParser alloc] initWithData:_responseData];
+	[parser setDelegate:self];
+	[parser parse];
+	[parser release];
+	NSLog(@"%s new xml proxy list:\n%@",__FUNCTION__, responseString);
+	[responseString release];
+	[_responseData release];
+	_responseData = nil;
+	if ([_blinkenStreamsArray count])
+	{
+		[self updateWithBlinkenstreams:_blinkenStreamsArray];
+		[_blinkenStreamsArray release];
+		_blinkenStreamsArray = nil;
+		if (![self hasConnection]) {
+			if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"autoselectProxy"] boolValue])
+			{
+				[self connectToAutoconnectProxy];
+			}
+		}
+
+	} else {
+		_xmlReadFailureCount++;
+		if (_xmlReadFailureCount % 2) {
+			[self fetchStreamsXML];
+		}
+	}
+}
+
+
 
 - (IBAction) showWebsite:(id)inSender
 {
@@ -532,8 +988,99 @@ GLfloat windowMeshTextureValues[16][2][2];
     //to = inTo;
 }
 
+- (BOOL)hasConnection {
+	return [NSDate timeIntervalSinceReferenceDate] + CONNECTIION_NO_FRAME_TIMEOUT > _connectionLostTime;
+}
+
+#pragma mark -
+#pragma mark XML Parsing
+
+- (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qualifiedName attributes:(NSDictionary *)attributeDict
+{
+	static NSMutableArray *proxyArray = nil;
+	       if ([elementName isEqualToString:@"blinkenstreams"]) {
+		_blinkenStreamsArray = [NSMutableArray new];
+	} else if ([elementName isEqualToString:@"project"]) {
+		if ([attributeDict objectForKey:@"name"]) {
+			proxyArray = [NSMutableArray array];
+			NSMutableDictionary *projectDict = [[attributeDict mutableCopy] autorelease];
+			[projectDict setObject:proxyArray forKey:@"proxies"];
+			[_blinkenStreamsArray addObject:projectDict];
+		}
+	} else if ([elementName isEqualToString:@"proxy"]) {
+		[proxyArray addObject:attributeDict];
+	} else if ([elementName isEqualToString:@"message"]) {
+		NSMutableDictionary *messageDict = [attributeDict mutableCopy];
+		
+		self.messageDictionary = messageDict;
+		[messageDict release];
+	}
+}
+
+- (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string 
+{
+	if (_messageDictionary && ![[_messageDictionary objectForKey:@"messageWasShown"] boolValue]) {
+		NSMutableString *messageText = [_messageDictionary objectForKey:@"_messageText"];
+		if (!messageText) {
+			messageText = [NSMutableString string];
+			[_messageDictionary setObject:messageText forKey:@"_messageText"];
+		}
+		[messageText appendString:string];
+	}
+}
+
+- (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName
+{
+	if ([elementName isEqualToString:@"message"]) {
+		NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+		if ([defaults integerForKey:@"lastShownMessageNumber"] >= [[_messageDictionary objectForKey:@"message-number"] intValue])
+		{
+			// now show - already seen
+			return;
+		}
+		
+		NSString *messageTitle = [_messageDictionary objectForKey:@"title"];
+		if (!messageTitle) messageTitle = @"Message";
+		NSString *messageText = [[_messageDictionary objectForKey:@"_messageText"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+		BOOL hasURL = [_messageDictionary objectForKey:@"url"] != 0;
+		NSString *urlTitle = [_messageDictionary objectForKey:@"url-title"];
+		if (!urlTitle) urlTitle = @"Goto Site";
+		NSAlert *alert = [NSAlert alertWithMessageText:messageTitle defaultButton:@"OK" alternateButton:hasURL ? urlTitle : nil otherButton:nil informativeTextWithFormat:@"%@",messageText];
+		[alert beginSheetModalForWindow:nil modalDelegate:self didEndSelector:@selector(messageAlertDidEnd:returnCode:contextInfo:) contextInfo:[[_messageDictionary objectForKey:@"message-number"] retain]];
+	}
+}
+
+- (void)messageAlertDidEnd:(NSAlert *)alert returnCode:(int)returnCode contextInfo:(void *)contextInfo
+{
+	NSLog(@"%s",__FUNCTION__);
+	if ([_messageDictionary objectForKey:@"url"] && NSAlertAlternateReturn == returnCode) 
+	{
+		[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[_messageDictionary objectForKey:@"url"]]];
+	}
+	NSNumber *number = (NSNumber *)contextInfo;
+	[[NSUserDefaults standardUserDefaults] setObject:number forKey:@"lastShownMessageNumber"];
+	[number autorelease];
+}
+
+
 - (void)renderFrame
 {
+	// check connection
+	NSTimeInterval now = [NSDate timeIntervalSinceReferenceDate];
+
+	if (now > _connectionLostTime) {
+		// connection is lost
+		_connectionLostTime = DBL_MAX;
+		[self setStatusText:@"No Frames"];
+		[_blinkenListener stopListening];
+		[self handleConnectionFailure];
+	}
+
+	if (now > _hostResolveFailureTime) {
+		// connection is lost
+		[self failHostResolving];
+	}
+
     if (autoCam&&progress>=1) {
         // Choose next cam after random wait
         if (rand() % 100 == 1) {
@@ -573,6 +1120,16 @@ GLfloat windowMeshTextureValues[16][2][2];
 {
     NSRect aRect = [[ogreView window] frame];
     mCamera->setAspectRatio(Real(aRect.size.width) / Real(aRect.size.height));
+}
+
+- (void)fadeoutStatusText
+{
+
+}
+
+-(void)setStatusText:(NSString *)aStatusText
+{
+	NSLog(@"%s %@",__FUNCTION__,aStatusText);
 }
 
 @end
