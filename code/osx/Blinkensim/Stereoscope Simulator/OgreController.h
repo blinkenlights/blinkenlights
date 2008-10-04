@@ -13,5 +13,6 @@
 - (IBAction) showWebsite:(id)inSender;
 - (IBAction) setCameraPosition:(id)inSender;
 - (void)animateCamera;
+- (void)setOgreView:(OgreView *)inView;
 
 @end

@@ -35,18 +35,52 @@
 		3108D29F0E8F25D80016A9B2 /* WindowsA2.mesh in Resources */ = {isa = PBXBuildFile; fileRef = 3108D28A0E8F25D70016A9B2 /* WindowsA2.mesh */; };
 		3108D2A00E8F25D80016A9B2 /* WindowsB1.mesh in Resources */ = {isa = PBXBuildFile; fileRef = 3108D28B0E8F25D70016A9B2 /* WindowsB1.mesh */; };
 		3108D2A10E8F25D80016A9B2 /* WindowsB2.mesh in Resources */ = {isa = PBXBuildFile; fileRef = 3108D28C0E8F25D70016A9B2 /* WindowsB2.mesh */; };
-		3108D2E00E8F30F30016A9B2 /* clouds.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3108D2DF0E8F30F30016A9B2 /* clouds.jpg */; };
 		3108D2E20E8F312A0016A9B2 /* Example.material in Resources */ = {isa = PBXBuildFile; fileRef = 3108D2E10E8F312A0016A9B2 /* Example.material */; };
-		3108D2F30E8F32010016A9B2 /* RustySteel.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3108D2F20E8F32010016A9B2 /* RustySteel.jpg */; };
 		3108D3A20E8F43800016A9B2 /* StereoscopeOgreView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3108D3A10E8F43800016A9B2 /* StereoscopeOgreView.mm */; };
 		3108D4E90E8F4DF00016A9B2 /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 3108D4E80E8F4DF00016A9B2 /* MainMenu.nib */; };
-		3108D5000E8F60990016A9B2 /* torontoskyline_left1024-new.png in Resources */ = {isa = PBXBuildFile; fileRef = 3108D4FC0E8F60990016A9B2 /* torontoskyline_left1024-new.png */; };
-		3108D5010E8F60990016A9B2 /* torontoskyline_right1024-new.png in Resources */ = {isa = PBXBuildFile; fileRef = 3108D4FD0E8F60990016A9B2 /* torontoskyline_right1024-new.png */; };
-		3108D5020E8F60990016A9B2 /* torontoskyline_middle1024-new.png in Resources */ = {isa = PBXBuildFile; fileRef = 3108D4FE0E8F60990016A9B2 /* torontoskyline_middle1024-new.png */; };
 		3108D5030E8F60990016A9B2 /* ground2_1024.png in Resources */ = {isa = PBXBuildFile; fileRef = 3108D4FF0E8F60990016A9B2 /* ground2_1024.png */; };
 		3108D5070E8F61E60016A9B2 /* black.png in Resources */ = {isa = PBXBuildFile; fileRef = 3108D5060E8F61E60016A9B2 /* black.png */; };
-		3108D5390E8F6A3C0016A9B2 /* torontoskyline_full1024-new.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3108D5380E8F6A3C0016A9B2 /* torontoskyline_full1024-new.jpg */; };
 		3108D56B0E8F6E490016A9B2 /* torontoskyline.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3108D56A0E8F6E490016A9B2 /* torontoskyline.jpg */; };
+		313B661A0E97571200450CDC /* ScreenSaverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 313B66180E9756FF00450CDC /* ScreenSaverView.m */; };
+		313B661D0E97577500450CDC /* StereoscopeOgreView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3108D3A10E8F43800016A9B2 /* StereoscopeOgreView.mm */; };
+		313B661E0E97577900450CDC /* OgreController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 00ABEB6C0B4D913B0059129A /* OgreController.mm */; };
+		313B661F0E97577E00450CDC /* BlinkenListener.m in Sources */ = {isa = PBXBuildFile; fileRef = F2104BBD0E95531000983057 /* BlinkenListener.m */; };
+		313B66200E97578300450CDC /* UsefulAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F2104BBF0E95531000983057 /* UsefulAdditions.m */; };
+		313B662A0E9757A400450CDC /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 313B66280E9757A400450CDC /* Cocoa.framework */; };
+		313B662B0E9757A400450CDC /* ScreenSaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 313B66290E9757A400450CDC /* ScreenSaver.framework */; };
+		313B662C0E9757B000450CDC /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 313B66280E9757A400450CDC /* Cocoa.framework */; };
+		313B66330E97585200450CDC /* Cg.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3108D2570E8F238F0016A9B2 /* Cg.framework */; };
+		313B66350E97589900450CDC /* Ogre.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3108D2580E8F238F0016A9B2 /* Ogre.framework */; };
+		313B663B0E9758EB00450CDC /* Cg.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3108D2570E8F238F0016A9B2 /* Cg.framework */; };
+		313B66A70E97666000450CDC /* plugins.cfg in Resources */ = {isa = PBXBuildFile; fileRef = 000E263F0B393B0A004EA2DF /* plugins.cfg */; };
+		313B66A80E97666000450CDC /* Blinn.cg in Resources */ = {isa = PBXBuildFile; fileRef = 3108D2780E8F25D70016A9B2 /* Blinn.cg */; };
+		313B66A90E97666000450CDC /* CityHall.mesh in Resources */ = {isa = PBXBuildFile; fileRef = 3108D2790E8F25D70016A9B2 /* CityHall.mesh */; };
+		313B66AA0E97666000450CDC /* CityHall_1024_v2.tif in Resources */ = {isa = PBXBuildFile; fileRef = 3108D27A0E8F25D70016A9B2 /* CityHall_1024_v2.tif */; };
+		313B66AB0E97666000450CDC /* CityHall_Toronto_080917L.scene in Resources */ = {isa = PBXBuildFile; fileRef = 3108D27B0E8F25D70016A9B2 /* CityHall_Toronto_080917L.scene */; };
+		313B66AC0E97666000450CDC /* MATLIB-080709_Tower_06b.RM_CityHall.material in Resources */ = {isa = PBXBuildFile; fileRef = 3108D27C0E8F25D70016A9B2 /* MATLIB-080709_Tower_06b.RM_CityHall.material */; };
+		313B66AD0E97666000450CDC /* MATLIB-080709_Tower_06b.RM_Pavillon.material in Resources */ = {isa = PBXBuildFile; fileRef = 3108D27D0E8F25D70016A9B2 /* MATLIB-080709_Tower_06b.RM_Pavillon.material */; };
+		313B66AE0E97666000450CDC /* MATLIB-080709_Tower_06b.RM_Platz.material in Resources */ = {isa = PBXBuildFile; fileRef = 3108D27E0E8F25D70016A9B2 /* MATLIB-080709_Tower_06b.RM_Platz.material */; };
+		313B66AF0E97666000450CDC /* MATLIB-080709_Tower_06b.RM_Ramp.material in Resources */ = {isa = PBXBuildFile; fileRef = 3108D27F0E8F25D70016A9B2 /* MATLIB-080709_Tower_06b.RM_Ramp.material */; };
+		313B66B00E97666000450CDC /* MATLIB-080709_Tower_06b.RM_Windows_On.material in Resources */ = {isa = PBXBuildFile; fileRef = 3108D2800E8F25D70016A9B2 /* MATLIB-080709_Tower_06b.RM_Windows_On.material */; };
+		313B66B10E97666000450CDC /* Pavillon.mesh in Resources */ = {isa = PBXBuildFile; fileRef = 3108D2810E8F25D70016A9B2 /* Pavillon.mesh */; };
+		313B66B20E97666000450CDC /* Pavillon_1024_v2.tif in Resources */ = {isa = PBXBuildFile; fileRef = 3108D2820E8F25D70016A9B2 /* Pavillon_1024_v2.tif */; };
+		313B66B30E97666000450CDC /* Platz.mesh in Resources */ = {isa = PBXBuildFile; fileRef = 3108D2830E8F25D70016A9B2 /* Platz.mesh */; };
+		313B66B40E97666000450CDC /* Platz_1024.tif in Resources */ = {isa = PBXBuildFile; fileRef = 3108D2840E8F25D70016A9B2 /* Platz_1024.tif */; };
+		313B66B50E97666000450CDC /* Ramp.mesh in Resources */ = {isa = PBXBuildFile; fileRef = 3108D2850E8F25D70016A9B2 /* Ramp.mesh */; };
+		313B66B60E97666000450CDC /* Ramp_1024_v2.tif in Resources */ = {isa = PBXBuildFile; fileRef = 3108D2860E8F25D70016A9B2 /* Ramp_1024_v2.tif */; };
+		313B66B70E97666000450CDC /* Shaders.program in Resources */ = {isa = PBXBuildFile; fileRef = 3108D2870E8F25D70016A9B2 /* Shaders.program */; };
+		313B66B80E97666000450CDC /* Window_On.tif in Resources */ = {isa = PBXBuildFile; fileRef = 3108D2880E8F25D70016A9B2 /* Window_On.tif */; };
+		313B66B90E97666000450CDC /* WindowsA1.mesh in Resources */ = {isa = PBXBuildFile; fileRef = 3108D2890E8F25D70016A9B2 /* WindowsA1.mesh */; };
+		313B66BA0E97666000450CDC /* WindowsA2.mesh in Resources */ = {isa = PBXBuildFile; fileRef = 3108D28A0E8F25D70016A9B2 /* WindowsA2.mesh */; };
+		313B66BB0E97666000450CDC /* WindowsB1.mesh in Resources */ = {isa = PBXBuildFile; fileRef = 3108D28B0E8F25D70016A9B2 /* WindowsB1.mesh */; };
+		313B66BC0E97666000450CDC /* WindowsB2.mesh in Resources */ = {isa = PBXBuildFile; fileRef = 3108D28C0E8F25D70016A9B2 /* WindowsB2.mesh */; };
+		313B66BE0E97666000450CDC /* Example.material in Resources */ = {isa = PBXBuildFile; fileRef = 3108D2E10E8F312A0016A9B2 /* Example.material */; };
+		313B66C00E97666000450CDC /* StereoscopeSimulator.icns in Resources */ = {isa = PBXBuildFile; fileRef = F2B200040E8F3F8B00A2EFC7 /* StereoscopeSimulator.icns */; };
+		313B66C10E97666000450CDC /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 3108D4E80E8F4DF00016A9B2 /* MainMenu.nib */; };
+		313B66C50E97666000450CDC /* ground2_1024.png in Resources */ = {isa = PBXBuildFile; fileRef = 3108D4FF0E8F60990016A9B2 /* ground2_1024.png */; };
+		313B66C60E97666000450CDC /* black.png in Resources */ = {isa = PBXBuildFile; fileRef = 3108D5060E8F61E60016A9B2 /* black.png */; };
+		313B66C80E97666000450CDC /* torontoskyline.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3108D56A0E8F6E490016A9B2 /* torontoskyline.jpg */; };
+		313B66C90E97666000450CDC /* Windows256.png in Resources */ = {isa = PBXBuildFile; fileRef = F2104BC20E95536E00983057 /* Windows256.png */; };
 		F2104BC00E95531000983057 /* BlinkenListener.m in Sources */ = {isa = PBXBuildFile; fileRef = F2104BBD0E95531000983057 /* BlinkenListener.m */; };
 		F2104BC10E95531000983057 /* UsefulAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F2104BBF0E95531000983057 /* UsefulAdditions.m */; };
 		F2104BC30E95536E00983057 /* Windows256.png in Resources */ = {isa = PBXBuildFile; fileRef = F2104BC20E95536E00983057 /* Windows256.png */; };
@@ -64,6 +98,16 @@
 				3108D25E0E8F23960016A9B2 /* Ogre.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		313B663E0E97592A00450CDC /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				313B663B0E9758EB00450CDC /* Cg.framework in CopyFiles */,
+			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -98,19 +142,19 @@
 		3108D28A0E8F25D70016A9B2 /* WindowsA2.mesh */ = {isa = PBXFileReference; lastKnownFileType = file; path = WindowsA2.mesh; sourceTree = "<group>"; };
 		3108D28B0E8F25D70016A9B2 /* WindowsB1.mesh */ = {isa = PBXFileReference; lastKnownFileType = file; path = WindowsB1.mesh; sourceTree = "<group>"; };
 		3108D28C0E8F25D70016A9B2 /* WindowsB2.mesh */ = {isa = PBXFileReference; lastKnownFileType = file; path = WindowsB2.mesh; sourceTree = "<group>"; };
-		3108D2DF0E8F30F30016A9B2 /* clouds.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = clouds.jpg; sourceTree = "<group>"; };
 		3108D2E10E8F312A0016A9B2 /* Example.material */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Example.material; sourceTree = "<group>"; };
-		3108D2F20E8F32010016A9B2 /* RustySteel.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = RustySteel.jpg; sourceTree = "<group>"; };
 		3108D3A00E8F43800016A9B2 /* StereoscopeOgreView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StereoscopeOgreView.h; sourceTree = "<group>"; };
 		3108D3A10E8F43800016A9B2 /* StereoscopeOgreView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = StereoscopeOgreView.mm; sourceTree = "<group>"; };
 		3108D4E80E8F4DF00016A9B2 /* MainMenu.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; path = MainMenu.nib; sourceTree = "<group>"; };
-		3108D4FC0E8F60990016A9B2 /* torontoskyline_left1024-new.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "torontoskyline_left1024-new.png"; sourceTree = "<group>"; };
-		3108D4FD0E8F60990016A9B2 /* torontoskyline_right1024-new.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "torontoskyline_right1024-new.png"; sourceTree = "<group>"; };
-		3108D4FE0E8F60990016A9B2 /* torontoskyline_middle1024-new.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "torontoskyline_middle1024-new.png"; sourceTree = "<group>"; };
 		3108D4FF0E8F60990016A9B2 /* ground2_1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ground2_1024.png; sourceTree = "<group>"; };
 		3108D5060E8F61E60016A9B2 /* black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = black.png; sourceTree = "<group>"; };
-		3108D5380E8F6A3C0016A9B2 /* torontoskyline_full1024-new.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "torontoskyline_full1024-new.jpg"; sourceTree = "<group>"; };
 		3108D56A0E8F6E490016A9B2 /* torontoskyline.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = torontoskyline.jpg; sourceTree = "<group>"; };
+		313B66120E9756D500450CDC /* Stereoscope.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Stereoscope.saver; sourceTree = BUILT_PRODUCTS_DIR; };
+		313B66130E9756D500450CDC /* Screenaver-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Screenaver-Info.plist"; sourceTree = "<group>"; };
+		313B66170E9756FF00450CDC /* ScreenSaverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScreenSaverView.h; sourceTree = "<group>"; };
+		313B66180E9756FF00450CDC /* ScreenSaverView.m */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = ScreenSaverView.m; sourceTree = "<group>"; };
+		313B66280E9757A400450CDC /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		313B66290E9757A400450CDC /* ScreenSaver.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScreenSaver.framework; path = /System/Library/Frameworks/ScreenSaver.framework; sourceTree = "<absolute>"; };
 		F2104BBB0E95531000983057 /* UsefulAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UsefulAdditions.h; path = Classes/UsefulAdditions.h; sourceTree = "<group>"; };
 		F2104BBC0E95531000983057 /* BlinkenListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BlinkenListener.h; path = Classes/BlinkenListener.h; sourceTree = "<group>"; };
 		F2104BBD0E95531000983057 /* BlinkenListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BlinkenListener.m; path = Classes/BlinkenListener.m; sourceTree = "<group>"; };
@@ -127,6 +171,18 @@
 			files = (
 				3108D2590E8F238F0016A9B2 /* Cg.framework in Frameworks */,
 				3108D25A0E8F238F0016A9B2 /* Ogre.framework in Frameworks */,
+				313B662C0E9757B000450CDC /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		313B66100E9756D500450CDC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				313B662A0E9757A400450CDC /* Cocoa.framework in Frameworks */,
+				313B662B0E9757A400450CDC /* ScreenSaver.framework in Frameworks */,
+				313B66330E97585200450CDC /* Cg.framework in Frameworks */,
+				313B66350E97589900450CDC /* Ogre.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,12 +196,15 @@
 				00ABEB590B4D8AD10059129A /* Resources */,
 				000E25220B392B6F004EA2DF /* External Frameworks and Libraries */,
 				000E252C0B392BE5004EA2DF /* Products */,
+				313B66130E9756D500450CDC /* Screenaver-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
 		000E25220B392B6F004EA2DF /* External Frameworks and Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				313B66280E9757A400450CDC /* Cocoa.framework */,
+				313B66290E9757A400450CDC /* ScreenSaver.framework */,
 				3108D2570E8F238F0016A9B2 /* Cg.framework */,
 				3108D2580E8F238F0016A9B2 /* Ogre.framework */,
 			);
@@ -156,6 +215,7 @@
 			isa = PBXGroup;
 			children = (
 				00ABEB520B4D8A980059129A /* Stereoscope Simulator.app */,
+				313B66120E9756D500450CDC /* Stereoscope.saver */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -172,6 +232,8 @@
 				F2104BBD0E95531000983057 /* BlinkenListener.m */,
 				F2104BBE0E95531000983057 /* bprotocol.h */,
 				F2104BBF0E95531000983057 /* UsefulAdditions.m */,
+				313B66170E9756FF00450CDC /* ScreenSaverView.h */,
+				313B66180E9756FF00450CDC /* ScreenSaverView.m */,
 				00ABEB880B4D946B0059129A /* main.m */,
 			);
 			name = Source;
@@ -194,8 +256,6 @@
 			isa = PBXGroup;
 			children = (
 				3108D2E10E8F312A0016A9B2 /* Example.material */,
-				3108D2F20E8F32010016A9B2 /* RustySteel.jpg */,
-				3108D2DF0E8F30F30016A9B2 /* clouds.jpg */,
 			);
 			name = "Old Media";
 			sourceTree = "<group>";
@@ -208,10 +268,6 @@
 				3108D2790E8F25D70016A9B2 /* CityHall.mesh */,
 				3108D27A0E8F25D70016A9B2 /* CityHall_1024_v2.tif */,
 				3108D27B0E8F25D70016A9B2 /* CityHall_Toronto_080917L.scene */,
-				3108D4FC0E8F60990016A9B2 /* torontoskyline_left1024-new.png */,
-				3108D4FD0E8F60990016A9B2 /* torontoskyline_right1024-new.png */,
-				3108D4FE0E8F60990016A9B2 /* torontoskyline_middle1024-new.png */,
-				3108D5380E8F6A3C0016A9B2 /* torontoskyline_full1024-new.jpg */,
 				3108D4FF0E8F60990016A9B2 /* ground2_1024.png */,
 				3108D5060E8F61E60016A9B2 /* black.png */,
 				3108D27C0E8F25D70016A9B2 /* MATLIB-080709_Tower_06b.RM_CityHall.material */,
@@ -258,6 +314,26 @@
 			productReference = 00ABEB520B4D8A980059129A /* Stereoscope Simulator.app */;
 			productType = "com.apple.product-type.application";
 		};
+		313B66110E9756D500450CDC /* Screensaver */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 313B66160E9756D700450CDC /* Build configuration list for PBXNativeTarget "Screensaver" */;
+			buildPhases = (
+				313B660E0E9756D500450CDC /* Resources */,
+				313B663E0E97592A00450CDC /* CopyFiles */,
+				313B660F0E9756D500450CDC /* Sources */,
+				313B66100E9756D500450CDC /* Frameworks */,
+				313B665D0E97602700450CDC /* ShellScript */,
+				313B66310E97580A00450CDC /* Rez */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Screensaver;
+			productName = Screenaver;
+			productReference = 313B66120E9756D500450CDC /* Stereoscope.saver */;
+			productType = "com.apple.product-type.bundle";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -272,6 +348,7 @@
 			projectRoot = "";
 			targets = (
 				00ABEB510B4D8A980059129A /* Stereoscope Simulator */,
+				313B66110E9756D500450CDC /* Screensaver */,
 			);
 		};
 /* End PBXProject section */
@@ -303,23 +380,80 @@
 				3108D29F0E8F25D80016A9B2 /* WindowsA2.mesh in Resources */,
 				3108D2A00E8F25D80016A9B2 /* WindowsB1.mesh in Resources */,
 				3108D2A10E8F25D80016A9B2 /* WindowsB2.mesh in Resources */,
-				3108D2E00E8F30F30016A9B2 /* clouds.jpg in Resources */,
 				3108D2E20E8F312A0016A9B2 /* Example.material in Resources */,
-				3108D2F30E8F32010016A9B2 /* RustySteel.jpg in Resources */,
 				F2B200050E8F3F8B00A2EFC7 /* StereoscopeSimulator.icns in Resources */,
 				3108D4E90E8F4DF00016A9B2 /* MainMenu.nib in Resources */,
-				3108D5000E8F60990016A9B2 /* torontoskyline_left1024-new.png in Resources */,
-				3108D5010E8F60990016A9B2 /* torontoskyline_right1024-new.png in Resources */,
-				3108D5020E8F60990016A9B2 /* torontoskyline_middle1024-new.png in Resources */,
 				3108D5030E8F60990016A9B2 /* ground2_1024.png in Resources */,
 				3108D5070E8F61E60016A9B2 /* black.png in Resources */,
-				3108D5390E8F6A3C0016A9B2 /* torontoskyline_full1024-new.jpg in Resources */,
 				3108D56B0E8F6E490016A9B2 /* torontoskyline.jpg in Resources */,
 				F2104BC30E95536E00983057 /* Windows256.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		313B660E0E9756D500450CDC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				313B66A70E97666000450CDC /* plugins.cfg in Resources */,
+				313B66A80E97666000450CDC /* Blinn.cg in Resources */,
+				313B66A90E97666000450CDC /* CityHall.mesh in Resources */,
+				313B66AA0E97666000450CDC /* CityHall_1024_v2.tif in Resources */,
+				313B66AB0E97666000450CDC /* CityHall_Toronto_080917L.scene in Resources */,
+				313B66AC0E97666000450CDC /* MATLIB-080709_Tower_06b.RM_CityHall.material in Resources */,
+				313B66AD0E97666000450CDC /* MATLIB-080709_Tower_06b.RM_Pavillon.material in Resources */,
+				313B66AE0E97666000450CDC /* MATLIB-080709_Tower_06b.RM_Platz.material in Resources */,
+				313B66AF0E97666000450CDC /* MATLIB-080709_Tower_06b.RM_Ramp.material in Resources */,
+				313B66B00E97666000450CDC /* MATLIB-080709_Tower_06b.RM_Windows_On.material in Resources */,
+				313B66B10E97666000450CDC /* Pavillon.mesh in Resources */,
+				313B66B20E97666000450CDC /* Pavillon_1024_v2.tif in Resources */,
+				313B66B30E97666000450CDC /* Platz.mesh in Resources */,
+				313B66B40E97666000450CDC /* Platz_1024.tif in Resources */,
+				313B66B50E97666000450CDC /* Ramp.mesh in Resources */,
+				313B66B60E97666000450CDC /* Ramp_1024_v2.tif in Resources */,
+				313B66B70E97666000450CDC /* Shaders.program in Resources */,
+				313B66B80E97666000450CDC /* Window_On.tif in Resources */,
+				313B66B90E97666000450CDC /* WindowsA1.mesh in Resources */,
+				313B66BA0E97666000450CDC /* WindowsA2.mesh in Resources */,
+				313B66BB0E97666000450CDC /* WindowsB1.mesh in Resources */,
+				313B66BC0E97666000450CDC /* WindowsB2.mesh in Resources */,
+				313B66BE0E97666000450CDC /* Example.material in Resources */,
+				313B66C00E97666000450CDC /* StereoscopeSimulator.icns in Resources */,
+				313B66C10E97666000450CDC /* MainMenu.nib in Resources */,
+				313B66C50E97666000450CDC /* ground2_1024.png in Resources */,
+				313B66C60E97666000450CDC /* black.png in Resources */,
+				313B66C80E97666000450CDC /* torontoskyline.jpg in Resources */,
+				313B66C90E97666000450CDC /* Windows256.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXRezBuildPhase section */
+		313B66310E97580A00450CDC /* Rez */ = {
+			isa = PBXRezBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXRezBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		313B665D0E97602700450CDC /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/sh\n\n# Since the web-plugin is not the main executable, we need to change\n# the @executable_path reference to @loader_path\n\nBINARY_NAME=\"${TARGET_BUILD_DIR}/${EXECUTABLE_PATH}\"\n\necho ${BINARY_NAME}\n\n/usr/bin/install_name_tool -change \\\n @executable_path/../Frameworks/Ogre.framework/Versions/A/Ogre \\\n @loader_path/../Frameworks/Ogre.framework/Versions/A/Ogre \\\n \"${BINARY_NAME}\"\n\n/usr/bin/install_name_tool -change \\\n @executable_path/../Frameworks/Cg.framework/Cg \\\n @loader_path/../Frameworks/Cg.framework/Cg \\\n \"${BINARY_NAME}\"\n\n/usr/bin/install_name_tool -change @executable_path/../Frameworks/Ogre.framework/Versions/A/Ogre @loader_path/Ogre \"${TARGET_BUILD_DIR}/Stereoscope.saver/Contents/Frameworks/Ogre.framework/Resources/RenderSystem_GL.bundle/Contents/MacOS/RenderSystem_GL\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		00ABEB4F0B4D8A980059129A /* Sources */ = {
@@ -331,6 +465,18 @@
 				3108D3A20E8F43800016A9B2 /* StereoscopeOgreView.mm in Sources */,
 				F2104BC00E95531000983057 /* BlinkenListener.m in Sources */,
 				F2104BC10E95531000983057 /* UsefulAdditions.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		313B660F0E9756D500450CDC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				313B661A0E97571200450CDC /* ScreenSaverView.m in Sources */,
+				313B661D0E97577500450CDC /* StereoscopeOgreView.mm in Sources */,
+				313B661E0E97577900450CDC /* OgreController.mm in Sources */,
+				313B661F0E97577E00450CDC /* BlinkenListener.m in Sources */,
+				313B66200E97578300450CDC /* UsefulAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -426,6 +572,66 @@
 			};
 			name = Release;
 		};
+		313B66140E9756D700450CDC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+				);
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)\"";
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = "Screenaver-Info.plist";
+				INSTALL_PATH = "$(HOME)/Library/Bundles";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = Stereoscope;
+				WRAPPER_EXTENSION = saver;
+			};
+			name = Debug;
+		};
+		313B66150E9756D700450CDC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+				);
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)\"";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = "Screenaver-Info.plist";
+				INSTALL_PATH = "$(HOME)/Library/Bundles";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = Stereoscope;
+				WRAPPER_EXTENSION = saver;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -443,6 +649,15 @@
 			buildConfigurations = (
 				00ABEB560B4D8A9A0059129A /* Debug */,
 				00ABEB570B4D8A9A0059129A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		313B66160E9756D700450CDC /* Build configuration list for PBXNativeTarget "Screensaver" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				313B66140E9756D700450CDC /* Debug */,
+				313B66150E9756D700450CDC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

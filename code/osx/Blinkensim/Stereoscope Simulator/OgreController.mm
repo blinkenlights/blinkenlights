@@ -30,6 +30,12 @@ GLfloat windowMeshTextureValues[16][2][2];
 
 @implementation OgreController
 
+- (void)setOgreView:(OgreView *)inView
+{
+    ogreView = [inView retain];
+}
+
+
 - (void)prepareValues
 {
 	// init textureCoordinates
@@ -77,7 +83,7 @@ GLfloat windowMeshTextureValues[16][2][2];
 
     shouldAnimate = YES;
     [[ogreView window] setDelegate:self];
-	std::string mResourcePath = [[[NSBundle mainBundle] resourcePath] UTF8String];
+	std::string mResourcePath = [[[NSBundle bundleForClass:[self class]] resourcePath] UTF8String];
 	
 	// Create a new root object with the correct paths
 	Root *mRoot = new Root(mResourcePath + "/plugins.cfg", mResourcePath + "/ogre.cfg", mResourcePath + "/Ogre.log");
@@ -310,7 +316,6 @@ GLfloat windowMeshTextureValues[16][2][2];
     }
     
 	Ogre::Root::getSingleton().renderOneFrame();
-	//mSceneMgr->getSceneNode("OgreNode")->rotate(Vector3(0 ,1 ,0 ), Radian(0.01));
 }
 
 
