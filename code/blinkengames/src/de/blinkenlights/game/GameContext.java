@@ -27,7 +27,7 @@ import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class GameContext {
+public class GameContext implements Runnable {
 
     Logger logger = Logger.getLogger(GameContext.class.getName());
     
@@ -48,10 +48,45 @@ public class GameContext {
     
     public GameContext(BlinkenGame game) throws GameConfigurationException {
         this.game = game;
-        readConfiguration();
+        
+        try {
+        	Properties config = new Properties();
+        	FileInputStream propertiesIn = new FileInputStream("blinkengame.properties");
+        	config.load(propertiesIn);
+        	propertiesIn.close();
+
+        	processConfiguration(config);
+        } catch (IOException ex) {
+        	throw new GameConfigurationException(ex);
+        }
     }
 
-    /**
+	/**
+	 * Processes the given configuration, loading the game class dynamically.
+	 * The game class must be specified in the given properties file under key
+	 * "game.class".
+	 * 
+	 * @param gameConfig
+	 *            The game's properties.
+	 * @throws GameConfigurationException
+	 *             If any mandatory properties are missing or invalid in
+	 *             the given properties bundle.
+	 */
+    public GameContext(Properties gameConfig) throws GameConfigurationException {
+    	processConfiguration(gameConfig);
+        try {
+        	String gameClassName = gameConfig.getProperty("game.class");
+        	if (gameClassName == null) {
+        		throw new GameConfigurationException("Missing mandatory property game.class");
+        	}
+        	Class<?> gameClass = Class.forName(gameClassName);
+        	game = gameClass.asSubclass(BlinkenGame.class).newInstance();
+        } catch (Exception ex) {
+        	throw new GameConfigurationException(ex);
+        }
+	}
+
+	/**
      * Reads the configuration from a properties file called
      * blinkengame.properties in the current directory.
      * 
@@ -60,12 +95,10 @@ public class GameContext {
      *             directory, it cannot be read, or it does not contain the
      *             required set of property values.
      */
-    private void readConfiguration() throws GameConfigurationException {
+    private void processConfiguration(Properties config) throws GameConfigurationException {
         try {
-            config = new Properties();
-            FileInputStream propertiesIn = new FileInputStream("blinkengame.properties");
-            config.load(propertiesIn);
-            propertiesIn.close();
+        	this.config = config;
+        	
             playfieldWidth = Integer.parseInt(config.getProperty("playfield.width"));
             playfieldHeight = Integer.parseInt(config.getProperty("playfield.height"));
 
@@ -118,11 +151,21 @@ public class GameContext {
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
+                
+                try {
+                	Thread.sleep(500);
+                } catch (InterruptedException ex) {
+                	// ok, we'll just retry sooner
+                }
             }
         } finally {
             bmixClient.stop();
             inputClient.stop();
         }
+    }
+    
+    public void run() {
+    	start();
     }
     
     private void doGame() {
@@ -173,6 +216,7 @@ public class GameContext {
             }
 
             // TODO last frame delay? (config file)
+            // currently handled by a long timeout in the bmix input
             
         } finally {
             inputClient.gameEnding();

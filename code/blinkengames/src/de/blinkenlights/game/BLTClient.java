@@ -165,7 +165,7 @@ class BLTClient implements UserInputSource, Runnable {
 
 	private void sendHeartbeat(DatagramSocket socket) throws IOException {
 		if (System.currentTimeMillis() - lastHeartBeatSent > heartbeatIntervalMillis) {
-			logger.info("Sending heartbeat to "+host+":"+port);
+			logger.finest("Sending heartbeat to "+host+":"+port);
 			byte[] heartbeat = new BLTCommand(0, CommandType.HEARTBEAT).getNetworkBytes();
 			DatagramPacket heartbeatPacket = new DatagramPacket(
 					heartbeat, heartbeat.length, host, port);
@@ -175,7 +175,7 @@ class BLTClient implements UserInputSource, Runnable {
 	}
 
 	private void sendPlaybackground(String context) throws IOException {
-		logger.info("Sending playbackground to "+host+":"+port);
+		logger.fine("Sending playbackground to "+host+":"+port);
 		BLTCommand command = new BLTCommand(bltChannel, CommandType.PLAYBACKGROUND, context);
 		byte[] buf = command.getNetworkBytes();
 		DatagramPacket packet = new DatagramPacket(
