@@ -117,7 +117,6 @@ class App
       state = Array.new(16)
       @socket = UDPSocket.new
       @socket.setsockopt(Socket::SOL_SOCKET, Socket::SO_REUSEADDR, true)
-#      @socket.setsockopt(Socket::SOL_SOCKET, Socket::SO_REUSEPORT, true)
 
       if @options.useProxy
         print "connecting to #{@options.proxyAddress} on port #{@options.proxyPort}...\n" 

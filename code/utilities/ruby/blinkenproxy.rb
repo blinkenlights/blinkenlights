@@ -211,7 +211,6 @@ class App
       
       @socket = UDPSocket.new
       @socket.setsockopt(Socket::SOL_SOCKET, Socket::SO_REUSEADDR, true)
-      @socket.setsockopt(Socket::SOL_SOCKET, Socket::SO_REUSEPORT, true)
 
       if @options.useProxy
         print "Connecting to #{@options.proxyAddress} on port #{@options.proxyPort}\n" 
@@ -231,7 +230,6 @@ class App
       
       @proxySocket = UDPSocket.new
       @proxySocket.setsockopt(Socket::SOL_SOCKET, Socket::SO_REUSEADDR, true)
-#      @proxySocket.setsockopt(Socket::SOL_SOCKET, Socket::SO_REUSEPORT, true)
       @proxySocket.bind("0.0.0.0",@options.heartbeatPort)
       
       Thread.start() do 
