@@ -55,11 +55,10 @@ public class Snake implements BlinkenGame {
 			snake.changeDirection(TheSnake.Direction.LEFT);
 		} else if (key == '6') {
 			snake.changeDirection(TheSnake.Direction.RIGHT);
-		} else if (key == '8') {
+		} else if (key == '8' || key == '5') {
 			snake.changeDirection(TheSnake.Direction.DOWN);
 		} else if (key == '2') {
 			snake.changeDirection(TheSnake.Direction.UP);
-		} else if (key == '5') {
 		} else {
 			System.out.println("Invalid Key: " + key);
 		}
