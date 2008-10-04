@@ -8,6 +8,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,15 +22,19 @@ public class AGIServer implements Runnable {
 	private final ChannelList channelList;
 	
 	private Set<String> activeLines = Collections.synchronizedSet(new HashSet<String>());
+	private final Map<String, Integer> exclusionGroups;
+	private Set<Integer> groupsInUse = new HashSet<Integer>();
 		
 	/**
 	 * Creates a new AGIServer
 	 * 
 	 * @param port the port number to listen on
+	 * @param exclusionGroups 
 	 */
-	public AGIServer(int port, ChannelList channelList) {
+	public AGIServer(int port, ChannelList channelList, Map<String, Integer> exclusionGroups) {
 		this.port = port;
 		this.channelList = channelList;
+		this.exclusionGroups = exclusionGroups;
 	}
 	
 	
@@ -79,17 +84,28 @@ public class AGIServer implements Runnable {
 					try {
 						channel = channelList.acquire();
 						if (channel != null) {
+							logger.info("Trying to accept call on channel " + channel);
 							agiSession = new AGISession(in, out);
-							if (activeLines.contains(agiSession.getDnid())) {
+							String dnid = agiSession.getDnid();
+							Integer exclGroup = exclusionGroups.get(dnid); // might be null
+							if (groupsInUse.contains(exclGroup)) {
+								logger.info("Not accepting call because exclusion group " + exclGroup + " is in use");
+								agiSession.hangup();
+							} else if (activeLines.contains(dnid)) {
+								logger.info("Not accepting call because " + dnid + " is already an active line");
 								agiSession.hangup();
 							} else {
+								logger.info("Accepting call");
 								acceptedCall = true;
-								activeLines.add(agiSession.getDnid());
+								if (exclusionGroups.containsKey(dnid)) {
+									groupsInUse.add(exclusionGroups.get(dnid));
+								}
+								activeLines.add(dnid);
 								channel.setAgiSession(agiSession);
 								agiSession.handleCall();
 							}
 						} else {
-							logger.warning("Refusing (congestion) call because all channels are in use");
+							logger.warning("Refusing call (congestion) because all channels are in use");
 							AGISession tempAgiSession = new AGISession(in, out);
 							tempAgiSession.hangup();
 						}
@@ -99,7 +115,11 @@ public class AGIServer implements Runnable {
 						logger.log(Level.WARNING, "Call handling ended abnormally", ex);
 					} finally {
 						if (acceptedCall && agiSession != null) {
-							activeLines.remove(agiSession.getDnid());
+							String dnid = agiSession.getDnid();
+							activeLines.remove(dnid);
+							if (exclusionGroups.containsKey(dnid)) {
+								groupsInUse.remove(exclusionGroups.get(dnid));
+							}
 						}
 						if (channel != null) {
 							channel.close();
