@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blm width="30" height="12" bits="4" channels="1">
+	<header>
+		<title>Fire</title>
+		<description>Homa</description>
+		<creator>Stereoscope Paint</creator>
+		<author>gregoa</author>
+		<email>gregornicer@web.de</email>
+		<loop>yes</loop>
+		<duration>900</duration>
+	</header>
+
+	<frame duration="150">
+		<row>76666665555666557cfff965555555</row>
+		<row>766666656666665569fffd65565555</row>
+		<row>766666656685565569ffffb5555554</row>
+		<row>7666666667d656556bffffe9544444</row>
+		<row>7666666668e776567effffea544444</row>
+		<row>766666678afdb666afffefeb444444</row>
+		<row>7665576cceffb7779fffeff8344444</row>
+		<row>6555bfcbffff9898bffdfff8565654</row>
+		<row>655aedebffffa899dfffffe7776555</row>
+		<row>57aab9dbfeffdaabffffffb7654344</row>
+		<row>66688a9acdcccccdfffdb987553135</row>
+		<row>666567b999aaaaabcb877886521256</row>
+	</frame>
+
+	<frame duration="150">
+		<row>66677af9669fa86444458a5458f555</row>
+		<row>666679fa66ad795444447c5548f655</row>
+		<row>766678fe98e97c544444ad8648e754</row>
+		<row>766679fffef89d544446fe775ac844</row>
+		<row>76667affffe8ae544348ffeeee8544</row>
+		<row>76667bdffff9be544446effffd6444</row>
+		<row>7666699efffcce555568efcde97444</row>
+		<row>5555afccffffea87788ceeabc65544</row>
+		<row>5569dedbefffc77777bcebbda65555</row>
+		<row>569aa99acdffb87779efedda654334</row>
+		<row>66688a99abcddcbcefeda977553124</row>
+		<row>666567a9899aa99aba766775521156</row>
+	</frame>
+
+	<frame duration="150">
+		<row>76666876ed67efffc7555555555555</row>
+		<row>766669a7fd66afffffcb6755455555</row>
+		<row>766679e9df767cffffeeac79455554</row>
+		<row>766678fecf8567dffffe9a78444444</row>
+		<row>766668ffefb6667beffdb898444444</row>
+		<row>766679ffffe655678dfcc9ba334444</row>
+		<row>76666aaefffa66779bfbcca7344444</row>
+		<row>6656bebbffff7798bfeabb76555544</row>
+		<row>655addcffefec8879eeabb66665555</row>
+		<row>67aaa99efbbce99befdbea86654334</row>
+		<row>76698a9accbceeeeffeda877553135</row>
+		<row>766567a9899aaaabca866775521256</row>
+	</frame>
+
+	<frame duration="150">
+		<row>6666666675566cffffe96a65555555</row>
+		<row>6666666ac6556cfffffd7795455554</row>
+		<row>6666666df6557ffffffd9884555444</row>
+		<row>7666666ef8557fffffffea86444444</row>
+		<row>7666667ff9558ffcffffa6ba444444</row>
+		<row>7666669dfa569fd9efffdade344444</row>
+		<row>6665568aed87ee87dffeecec455444</row>
+		<row>5555ac9accfffea8cffcccd9555654</row>
+		<row>555acb9baceffd98dffba9b7665455</row>
+		<row>579aabb999ceee9beedaa997554223</row>
+		<row>66698a98aaacdccdba998877552136</row>
+		<row>666567b9899aaa9aba766875621366</row>
+	</frame>
+
+	<frame duration="150">
+		<row>777777666666669c6efffffffffc66</row>
+		<row>777777666667769d6cffffffffe865</row>
+		<row>77777766666977be78ffffffffa555</row>
+		<row>77777776667eddff76bffffffd7555</row>
+		<row>7777776666cffffe978fffffcd9555</row>
+		<row>7777766666effffdc7afffffdfe655</row>
+		<row>7776566876cfefdfb8bffffeead865</row>
+		<row>6666ac9adcbedcfd98cfffdb978875</row>
+		<row>6669dbaaa9bfcefa99dffea8977666</row>
+		<row>67abba99aabeeffeadfffc98765223</row>
+		<row>677a9baaabccefeefffda988553147</row>
+		<row>777678ba9aabbccccb977886721367</row>
+	</frame>
+
+	<frame duration="150">
+		<row>777766666667efe6bfffed7c555555</row>
+		<row>77666666666bffe7dfffdc6c555554</row>
+		<row>77767666668effd9fbffcc6a545444</row>
+		<row>7777666666bdffdefabfcd79544444</row>
+		<row>7777666667befffffcdfccaa444444</row>
+		<row>7776665569bfffffffffcbcb455444</row>
+		<row>766556667befefffffffdbda766655</row>
+		<row>66659b99defceffffffebadeb75655</row>
+		<row>6658dbaaabfefffffffecbeda75455</row>
+		<row>679aa988aadffffffeeebdc8665223</row>
+		<row>66798aa9abceffeeedcd9977553136</row>
+		<row>777667a989aabbbccb976876621366</row>
+	</frame>
+</blm>
