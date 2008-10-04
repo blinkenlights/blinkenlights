@@ -25,6 +25,13 @@ Vector3 cameras[6];
 #define FAR_RIGHT Vector3(11.238027,1.401788,38.238659)
 
 
+#define LEFT_BOTTOM_MESH_NO  0
+#define LEFT_TOP_MESH_NO     1
+#define RIGHT_BOTTOM_MESH_NO 2
+#define RIGHT_TOP_MESH_NO    3
+
+
+GLfloat *windowMeshTextureCoords[] = {NULL,NULL,NULL,NULL};
 static GLfloat windowtextureCoords[16][12];
 GLfloat windowMeshTextureValues[16][2][2];
 
@@ -66,6 +73,64 @@ GLfloat windowMeshTextureValues[16][2][2];
 		windowtextureCoords[i][10] = bottomLeft.x;
 		windowtextureCoords[i][11] = bottomLeft.y;
 	}
+}
+
+- (void)initializeTextureCordsForMeshNo:(int)meshNo entity:(Entity *)inEntity
+{
+    printf("------------------> window vertex data: <----------------------\n");
+    SubMesh *submesh = inEntity->getMesh()->getSubMesh(0);
+    VertexData *vertexData = submesh->vertexData;
+    VertexDeclaration *declaration = vertexData->vertexDeclaration;
+    for (int i=0;i<declaration->getElementCount();i++) {
+    	const VertexElement *element = declaration->getElement(i);
+    	printf("element %d has type of %d\n",i, element->getType());
+    }
+    
+	// get our copy of the initial mesh values
+//	windowMeshTextureCoords[1] = (GLfloat *)calloc(2 * g_sScene.pMesh[3].nNumVertex,sizeof(GLfloat));
+//	windowMeshTextureCoords[2] = (GLfloat *)calloc(2 * g_sScene.pMesh[4].nNumVertex,sizeof(GLfloat));
+//	windowMeshTextureCoords[3] = (GLfloat *)calloc(2 * g_sScene.pMesh[5].nNumVertex,sizeof(GLfloat));
+
+
+	const VertexElement *normVE = vertexData->
+		vertexDeclaration->findElementBySemantic(VES_TEXTURE_COORDINATES);
+	HardwareVertexBufferSharedPtr normHVB = vertexData->
+		vertexBufferBinding->getBuffer(normVE->getSource());
+	GLfloat* texcoords = (GLfloat*) normHVB->lock(0, normHVB->getSizeInBytes(), 
+			HardwareBuffer::HBL_NORMAL);
+	
+	windowMeshTextureCoords[meshNo] = (GLfloat *)calloc(2 * vertexData->vertexCount,sizeof(GLfloat));
+
+    IndexData *indexData = submesh->indexData;
+	HardwareIndexBufferSharedPtr indexHB = indexData->indexBuffer ;
+	unsigned short * vertexIndices = (unsigned short*) indexHB->lock(
+		0, indexHB->getSizeInBytes(), HardwareBuffer::HBL_READ_ONLY);
+	size_t numFaces = indexData->indexCount / 3 ;
+	for(int i=0 ; i<numFaces ; i++, vertexIndices+=3) {
+		//~ int p0 = 0;
+		//~ int p1 = 1;
+		//~ int p2 = 2;
+		int p0 = vertexIndices[0] ;
+		int p1 = vertexIndices[1] ;
+		int p2 = vertexIndices[2] ;
+//		printf("window half 1 at %d %d %d\n",p0,p1,p2);
+//		printf("vertex coords: %f, %f",texcoords[p0 * 8 + 6],texcoords[p0 * 8 + 7]);
+//		printf("vertex coords: %f, %f",texcoords[p1 * 8 + 6],texcoords[p1 * 8 + 7]);
+//		printf("vertex coords: %f, %f",texcoords[p2 * 8 + 6],texcoords[p2 * 8 + 7]);
+		if (texcoords[p0 * 8 + 6] - 0.95 > 0.05)  texcoords[p0 * 8 + 6]*= 0.25;
+		if (texcoords[p0 * 8 + 7] - 0.95 > 0.05)  texcoords[p0 * 8 + 7]*= 0.25;
+		if (texcoords[p1 * 8 + 6] - 0.95 > 0.05)  texcoords[p1 * 8 + 6]*= 0.25;
+		if (texcoords[p1 * 8 + 7] - 0.95 > 0.05)  texcoords[p1 * 8 + 7]*= 0.25;
+		if (texcoords[p2 * 8 + 6] - 0.95 > 0.05)  texcoords[p2 * 8 + 6]*= 0.25;
+		if (texcoords[p2 * 8 + 7] - 0.95 > 0.05)  texcoords[p2 * 8 + 7]*= 0.25;
+		printf("after vertex coords: %f, %f",texcoords[p0 * 8 + 6],texcoords[p0 * 8 + 7]);
+		printf("after vertex coords: %f, %f",texcoords[p1 * 8 + 6],texcoords[p1 * 8 + 7]);
+		printf("after vertex coords: %f, %f",texcoords[p2 * 8 + 6],texcoords[p2 * 8 + 7]);
+	}
+	indexHB->unlock();
+
+	normHVB->unlock();
+
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
@@ -183,15 +248,8 @@ GLfloat windowMeshTextureValues[16][2][2];
     windowNodeA1->attachObject(ent);
     windowNodeA1->pitch(Degree(90)); 
     
+    [self initializeTextureCordsForMeshNo:LEFT_TOP_MESH_NO entity:ent];
 
-    printf("------------------> window vertex data: <----------------------\n");
-    SubMesh *submesh = ent->getMesh()->getSubMesh(0);
-    VertexData *vertexData = submesh->vertexData;
-    VertexDeclaration *declaration = vertexData->vertexDeclaration;
-    for (int i=0;i<declaration->getElementCount();i++) {
-    	const VertexElement *element = declaration->getElement(i);
-    	printf("element %d has type of %d\n",i, element->getType());
-    }
     
 	// let us create an entity per window this should be easier to handle
 
@@ -200,15 +258,21 @@ GLfloat windowMeshTextureValues[16][2][2];
     windowNodeA2->attachObject(ent);
     windowNodeA2->pitch(Degree(90)); 
     
+    [self initializeTextureCordsForMeshNo:LEFT_BOTTOM_MESH_NO entity:ent];
+
     SceneNode* windowNodeB1 = mSceneMgr->getRootSceneNode()->createChildSceneNode();
     ent = mSceneMgr->createEntity("windowsB1", "WindowsB1.mesh");
     windowNodeB1->attachObject(ent);
     windowNodeB1->pitch(Degree(90)); 
     
+    [self initializeTextureCordsForMeshNo:RIGHT_BOTTOM_MESH_NO entity:ent];
+
     SceneNode* windowNodeB2 = mSceneMgr->getRootSceneNode()->createChildSceneNode();
     ent = mSceneMgr->createEntity("windowsB2", "WindowsB2.mesh");
     windowNodeB2->attachObject(ent);
     windowNodeB2->pitch(Degree(90));
+
+    [self initializeTextureCordsForMeshNo:RIGHT_BOTTOM_MESH_NO entity:ent];
     
     Vector3 lookTo = Vector3(0,10,0);
     
