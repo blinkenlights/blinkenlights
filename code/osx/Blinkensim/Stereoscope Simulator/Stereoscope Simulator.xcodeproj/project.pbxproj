@@ -336,6 +336,7 @@
 				00ABEB4E0B4D8A980059129A /* Resources */,
 				00ABEB4F0B4D8A980059129A /* Sources */,
 				00ABEB500B4D8A980059129A /* Frameworks */,
+				F2C678AE0E97C07B00CA2CA5 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -485,6 +486,19 @@
 			shellPath = /bin/sh;
 			shellScript = "#!/bin/sh\n\n# Since the web-plugin is not the main executable, we need to change\n# the @executable_path reference to @loader_path\n\nBINARY_NAME=\"${TARGET_BUILD_DIR}/${EXECUTABLE_PATH}\"\n\necho ${BINARY_NAME}\n\n/usr/bin/install_name_tool -change \\\n @executable_path/../Frameworks/Ogre.framework/Versions/A/Ogre \\\n @loader_path/../Frameworks/Ogre.framework/Versions/A/Ogre \\\n \"${BINARY_NAME}\"\n\n/usr/bin/install_name_tool -change \\\n @executable_path/../Frameworks/Cg.framework/Cg \\\n @loader_path/../Frameworks/Cg.framework/Cg \\\n \"${BINARY_NAME}\"\n\n/usr/bin/install_name_tool -change @executable_path/../Frameworks/Ogre.framework/Versions/A/Ogre @loader_path/Ogre \"${TARGET_BUILD_DIR}/Stereoscope.saver/Contents/Frameworks/Ogre.framework/Resources/RenderSystem_GL.bundle/Contents/MacOS/RenderSystem_GL\"\n";
 			showEnvVarsInLog = 0;
+		};
+		F2C678AE0E97C07B00CA2CA5 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = "/usr/bin/perl -w";
+			shellScript = "# Xcode auto-versioning script for Subversion\n# by Axel Andersson, modified by Daniel Jalkut to add\n# \"--revision HEAD\" to the svn info line, which allows\n# the latest revision to always be used.\n        \nuse strict;\n        \ndie \"$0: Must be run from Xcode\" unless $ENV{\"BUILT_PRODUCTS_DIR\"};\n        \n# Get the current subversion revision number and use it to set the CFBundleVersion value\nmy $REV = `export PATH=\\$PATH:/usr/local/bin;/usr/bin/env svnversion -n -c ./`;\nmy $INFO = \"$ENV{BUILT_PRODUCTS_DIR}/$ENV{WRAPPER_NAME}/Contents/Info.plist\";\n        \nmy $version = $REV;\n$version =~ s/([\\d]*:)(\\d+[M|S]*).*/$2/;\ndie \"$0: No Subversion revision found\" unless $version;\n        \nopen(FH, \"$INFO\") or die \"$0: $INFO: $!\";\nmy $info = join(\"\", <FH>);\nclose(FH);\n        \n$info =~ s/([\\t ]+<key>CFBundleVersion<\\/key>\\n[\\t ]+<string>).*?(<\\/string>)/$1$version$2/;\n        \nopen(FH, \">$INFO\") or die \"$0: $INFO: $!\";\nprint FH $info;\nclose(FH);\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
