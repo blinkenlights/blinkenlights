@@ -28,6 +28,15 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class GameContext implements Runnable {
+    
+    /**
+     * Maximum run time for a game, in milliseconds. This value is enforced
+     * by the game context.
+     * <p>
+     * Controlled by the <code>game.maxTime</code> configuration property.
+     * Default value is no limit.
+     */
+    private long maxGameTime = Long.MAX_VALUE;
 
     Logger logger = Logger.getLogger(GameContext.class.getName());
     
@@ -98,6 +107,8 @@ public class GameContext implements Runnable {
     private void processConfiguration(Properties config) throws GameConfigurationException {
         try {
         	this.config = config;
+        	
+        	maxGameTime = Long.parseLong(config.getProperty("game.maxTime"));
         	
             playfieldWidth = Integer.parseInt(config.getProperty("playfield.width"));
             playfieldHeight = Integer.parseInt(config.getProperty("playfield.height"));
@@ -175,6 +186,10 @@ public class GameContext implements Runnable {
             long startTime = System.currentTimeMillis();
             for (;;) {
                 long when = System.currentTimeMillis() - startTime;
+                if (when > maxGameTime) {
+                    logger.finer("Stopping game because time limit is exhausted");
+                    break;
+                }
                 FrameInfo frameInfo = new FrameInfo(inputClient.getKeystroke(), when);
                 Graphics2D g = (Graphics2D) bi.getGraphics();
                 try {
