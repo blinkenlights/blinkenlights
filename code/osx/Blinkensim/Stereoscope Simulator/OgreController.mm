@@ -10,10 +10,47 @@ BOOL shouldAnimate;
 
 #define FRAMERATE 1.0/60.0
 
+static GLfloat windowtextureCoords[16][12];
+GLfloat windowMeshTextureValues[16][2][2];
+
 @implementation OgreController
+
+- (void)prepareValues
+{
+	// init textureCoordinates
+	for (int i = 0; i<16;i++) {
+		int row = i / 4;
+		int column = i % 4;
+		CGPoint topRight   = CGPointMake(0.0 + (column+1) * 0.25, 0.0 +  row    * 0.25);
+		CGPoint bottomLeft = CGPointMake(0.0 +  column    * 0.25, 0.0 + (row+1) * 0.25);
+	
+//		NSLog(@"%s %d:%@ %@",__FUNCTION__,i,NSStringFromCGPoint(bottomLeft), NSStringFromCGPoint(topRight));
+		windowMeshTextureValues[i][0][0] = (GLfloat)bottomLeft.x;
+		windowMeshTextureValues[i][1][0] = (GLfloat)bottomLeft.y;
+		windowMeshTextureValues[i][0][1] = (GLfloat)topRight.x;
+		windowMeshTextureValues[i][1][1] = (GLfloat)topRight.y;
+		
+		
+		windowtextureCoords[i][0] = topRight.x;
+		windowtextureCoords[i][1] = bottomLeft.y;
+		windowtextureCoords[i][2] = topRight.x;
+		windowtextureCoords[i][3] = topRight.y;
+		windowtextureCoords[i][4] = bottomLeft.x;
+		windowtextureCoords[i][5] = topRight.y;
+		
+		windowtextureCoords[i][6] = topRight.x;
+		windowtextureCoords[i][7] = bottomLeft.y;
+		windowtextureCoords[i][8] = bottomLeft.x;
+		windowtextureCoords[i][9] = topRight.y;
+		windowtextureCoords[i][10] = bottomLeft.x;
+		windowtextureCoords[i][11] = bottomLeft.y;
+	}
+}
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
 {
+	[self prepareValues];
+
     shouldAnimate = YES;
     [[ogreView window] setDelegate:self];
 	std::string mResourcePath = [[[NSBundle mainBundle] resourcePath] UTF8String];
@@ -110,11 +147,24 @@ BOOL shouldAnimate;
     pavilionNode->attachObject(ent);
     pavilionNode->pitch(Degree(90)); 
     
+    
     SceneNode* windowNodeA1 = mSceneMgr->getRootSceneNode()->createChildSceneNode();
     ent = mSceneMgr->createEntity("windowsA1", "WindowsA1.mesh");
     windowNodeA1->attachObject(ent);
     windowNodeA1->pitch(Degree(90)); 
     
+
+    printf("------------------> window vertex data: <----------------------\n");
+    SubMesh *submesh = ent->getMesh()->getSubMesh(0);
+    VertexData *vertexData = submesh->vertexData;
+    VertexDeclaration *declaration = vertexData->vertexDeclaration;
+    for (int i=0;i<declaration->getElementCount();i++) {
+    	const VertexElement *element = declaration->getElement(i);
+    	printf("element %d has type of %d\n",i, element->getType());
+    }
+    
+	// let us create an entity per window this should be easier to handle
+
     SceneNode* windowNodeA2 = mSceneMgr->getRootSceneNode()->createChildSceneNode();
     ent = mSceneMgr->createEntity("windowsA2", "WindowsA2.mesh");
     windowNodeA2->attachObject(ent);

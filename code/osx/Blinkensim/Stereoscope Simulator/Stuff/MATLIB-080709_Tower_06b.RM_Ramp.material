@@ -7,11 +7,12 @@ material MATLIB-080709_Tower_06b.RM_Ramp
 		{
 			ambient 0.7 0.7 0.7 1
 			specular 0.7 0.7 0.7 1 0.5
+			cull_hardware none
 
 			texture_unit
 			{
 				texture_alias diffuse
-				texture Ramp_1024_v2.tif
+				texture Ramp_1024_v2.tif 0
 			}
 		}
 

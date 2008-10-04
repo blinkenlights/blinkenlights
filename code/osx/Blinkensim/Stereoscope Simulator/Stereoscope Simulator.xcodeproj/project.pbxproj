@@ -47,6 +47,9 @@
 		3108D5070E8F61E60016A9B2 /* black.png in Resources */ = {isa = PBXBuildFile; fileRef = 3108D5060E8F61E60016A9B2 /* black.png */; };
 		3108D5390E8F6A3C0016A9B2 /* torontoskyline_full1024-new.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3108D5380E8F6A3C0016A9B2 /* torontoskyline_full1024-new.jpg */; };
 		3108D56B0E8F6E490016A9B2 /* torontoskyline.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3108D56A0E8F6E490016A9B2 /* torontoskyline.jpg */; };
+		F2104BC00E95531000983057 /* BlinkenListener.m in Sources */ = {isa = PBXBuildFile; fileRef = F2104BBD0E95531000983057 /* BlinkenListener.m */; };
+		F2104BC10E95531000983057 /* UsefulAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F2104BBF0E95531000983057 /* UsefulAdditions.m */; };
+		F2104BC30E95536E00983057 /* Windows256.png in Resources */ = {isa = PBXBuildFile; fileRef = F2104BC20E95536E00983057 /* Windows256.png */; };
 		F2B200050E8F3F8B00A2EFC7 /* StereoscopeSimulator.icns in Resources */ = {isa = PBXBuildFile; fileRef = F2B200040E8F3F8B00A2EFC7 /* StereoscopeSimulator.icns */; };
 /* End PBXBuildFile section */
 
@@ -108,6 +111,12 @@
 		3108D5060E8F61E60016A9B2 /* black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = black.png; sourceTree = "<group>"; };
 		3108D5380E8F6A3C0016A9B2 /* torontoskyline_full1024-new.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "torontoskyline_full1024-new.jpg"; sourceTree = "<group>"; };
 		3108D56A0E8F6E490016A9B2 /* torontoskyline.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = torontoskyline.jpg; sourceTree = "<group>"; };
+		F2104BBB0E95531000983057 /* UsefulAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UsefulAdditions.h; path = Classes/UsefulAdditions.h; sourceTree = "<group>"; };
+		F2104BBC0E95531000983057 /* BlinkenListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BlinkenListener.h; path = Classes/BlinkenListener.h; sourceTree = "<group>"; };
+		F2104BBD0E95531000983057 /* BlinkenListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BlinkenListener.m; path = Classes/BlinkenListener.m; sourceTree = "<group>"; };
+		F2104BBE0E95531000983057 /* bprotocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = bprotocol.h; path = Classes/bprotocol.h; sourceTree = "<group>"; };
+		F2104BBF0E95531000983057 /* UsefulAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UsefulAdditions.m; path = Classes/UsefulAdditions.m; sourceTree = "<group>"; };
+		F2104BC20E95536E00983057 /* Windows256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Windows256.png; path = Resources/Windows256.png; sourceTree = SOURCE_ROOT; };
 		F2B200040E8F3F8B00A2EFC7 /* StereoscopeSimulator.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = StereoscopeSimulator.icns; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -158,6 +167,11 @@
 				3108D3A10E8F43800016A9B2 /* StereoscopeOgreView.mm */,
 				00ABEB6B0B4D913B0059129A /* OgreController.h */,
 				00ABEB6C0B4D913B0059129A /* OgreController.mm */,
+				F2104BBB0E95531000983057 /* UsefulAdditions.h */,
+				F2104BBC0E95531000983057 /* BlinkenListener.h */,
+				F2104BBD0E95531000983057 /* BlinkenListener.m */,
+				F2104BBE0E95531000983057 /* bprotocol.h */,
+				F2104BBF0E95531000983057 /* UsefulAdditions.m */,
 				00ABEB880B4D946B0059129A /* main.m */,
 			);
 			name = Source;
@@ -189,6 +203,7 @@
 		3108D2770E8F25D70016A9B2 /* Media */ = {
 			isa = PBXGroup;
 			children = (
+				F2104BC20E95536E00983057 /* Windows256.png */,
 				3108D2780E8F25D70016A9B2 /* Blinn.cg */,
 				3108D2790E8F25D70016A9B2 /* CityHall.mesh */,
 				3108D27A0E8F25D70016A9B2 /* CityHall_1024_v2.tif */,
@@ -300,6 +315,7 @@
 				3108D5070E8F61E60016A9B2 /* black.png in Resources */,
 				3108D5390E8F6A3C0016A9B2 /* torontoskyline_full1024-new.jpg in Resources */,
 				3108D56B0E8F6E490016A9B2 /* torontoskyline.jpg in Resources */,
+				F2104BC30E95536E00983057 /* Windows256.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -313,6 +329,8 @@
 				00ABEB6E0B4D913B0059129A /* OgreController.mm in Sources */,
 				00ABEB890B4D946B0059129A /* main.m in Sources */,
 				3108D3A20E8F43800016A9B2 /* StereoscopeOgreView.mm in Sources */,
+				F2104BC00E95531000983057 /* BlinkenListener.m in Sources */,
+				F2104BC10E95531000983057 /* UsefulAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -331,7 +349,7 @@
 					../Dependencies/include,
 				);
 				LIBRARY_SEARCH_PATHS = ../Dependencies/lib/Debug;
-				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
+				SDKROOT = /Developer/SDKs/MacOSX10.5.sdk;
 				USER_HEADER_SEARCH_PATHS = include;
 			};
 			name = Debug;

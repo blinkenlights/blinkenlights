@@ -6,12 +6,12 @@ material MATLIB-080709_Tower_06b.RM_Windows_On
 		pass Main
 		{
 			ambient 0.7 0.7 0.7 1
-			specular 0.7 0.7 0.7 1 0.5
+			specular 0.7 0.7 0.7 1 1.0
 
 			texture_unit
 			{
 				texture_alias diffuse
-				texture Window_On.tif
+				texture Windows256.png
                 mipmap_bias -10000
 			}
 		}
