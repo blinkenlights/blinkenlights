@@ -73,16 +73,15 @@ public class SpaceInvaders implements BlinkenGame {
 		if (key == null) {
 			return;
 		}
-		if (key == '2') {
+		if (key == '1' || key == '2' || key == '3') {
 			player.moveLeft();
-		} else if (key == '8') {
+		} else if (key == '7' || key == '8' || key == '9') {
 			player.moveRight();
-		} else if (key == '4') {
+		} else if (key == '4' || key == '5' || key == '6' || key == '*') {
 			if (gunCooldown <= 0) {
 				bullets.add(new Bullet(new Point(maxWidth - 1, player.getLocation())));
 				gunCooldown = GUN_COOLDOWN;
 			}
-		} else if (key == '5') {
 		} else {
 			System.out.println("Invalid Key: " + key);
 		}
