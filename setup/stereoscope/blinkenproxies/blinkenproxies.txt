@@ -10,3 +10,4 @@
 85.214.122.220		# Oliver <mailto:oliver@plainbytes.com>
 213.160.27.162		# Micky Roth <info@rothnet.org>
 78.47.62.13		# Garret Alfert <mail@garretalfert.de>
+87.230.77.43		# Clemens Schaffenrath <mail@clesch.com>
