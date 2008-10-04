@@ -14,6 +14,11 @@ public class Ball {
 	private boolean moveLeft;
 	private boolean moveUp;
 	
+	/**
+	 * Flag for cutting ball motion rate in half.
+	 */
+    private boolean moveNextTime;
+	
 	public Ball(Breakout parent, Point start) {
 		loc = start;
 		lastLoc = start;
@@ -24,6 +29,10 @@ public class Ball {
 	}
 	
 	public void move() {
+	    moveNextTime = !moveNextTime;
+	    if (moveNextTime) {
+	        return;
+	    }
 		lastLastLoc = new Point(lastLoc);
 		lastLoc = new Point(loc);
 		if (moveUp) {

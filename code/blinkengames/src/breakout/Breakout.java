@@ -39,7 +39,7 @@ public class Breakout implements BlinkenGame {
 	}
 
 	public void gameStarting(GameContext context) {
-		context.setFramesPerSecond(5);
+		context.setFramesPerSecond(8);
 		maxWidth = context.getPlayfieldWidth();
 		maxHeight = context.getPlayfieldHeight();
 		
