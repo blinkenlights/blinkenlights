@@ -172,7 +172,10 @@ public class SpaceInvaders implements BlinkenGame {
 		for (Bullet b : bullets) {
 			for (Alien a : aliens) {
 				for (int i = 0; i < Bullet.BULLET_SPEED; i++) {
-					if (b.getLocation().x - i == a.getLocation().x && b.getLocation().y == a.getLocation().y) {
+					if ( (  (b.getLocation().x - i == a.getLocation().x)
+					     || (b.getLocation().x - i == a.getLocation().x - 1) )
+					    && b.getLocation().y == a.getLocation().y) {
+					    
 						deadAliens.add(a);
 						expiredBullets.add(b);
 						score++;

@@ -10,7 +10,7 @@ import java.awt.Point;
  */
 public class Alien {
 	
-	public static final int DARKEST_SHADE = 5;
+	public static final int DARKEST_SHADE = 8;
 	
 	private Point loc;
 	
@@ -60,7 +60,7 @@ public class Alien {
 		}
 		
 		g.setColor(new Color(colour * 16, colour * 16, colour * 16));
-		g.drawLine(loc.x, loc.y, loc.x, loc.y);
+		g.drawLine(loc.x, loc.y, loc.x-1, loc.y);
 	}
 	
 	public boolean move(boolean switchDirection) {
