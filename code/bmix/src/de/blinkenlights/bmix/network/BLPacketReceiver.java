@@ -83,7 +83,7 @@ public class BLPacketReceiver {
 	private final byte[] heartBeatBytes = new BLHeartbeatPacket(
 			BLHeartbeatPacket.VERSION_NUMBER).getNetworkBytes();
 	private long lastPacketReceiveTime = 0;
-	private String lastSourceAddr = "moo";
+	private String lastSourceAddr = "null";
 
 	/**
 	 * The default address to listen on (binds to all local addresses).
