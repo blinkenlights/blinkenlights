@@ -39,6 +39,7 @@ public class Mole {
     
     private Icon image = moleImage;
     private final Dimension size;
+    private long blinkPhase;
     
     /**
      * Creates a new mole that will paint within the given dimensions.
@@ -46,6 +47,7 @@ public class Mole {
      */
     public Mole(Dimension size) {
         this.size = size;
+        blinkPhase = System.currentTimeMillis() % 10;
     }
 
     /**
@@ -85,7 +87,7 @@ public class Mole {
             
         case TEASE:
 //            phase += .4;
-            if ( (when % 10) == 3 || (when % 10) == 5) {
+            if ( ((when + blinkPhase) % 10) == 3 || ((when + blinkPhase) % 10) == 5) {
                 image = moleImageBlink;
             } else {
                 image = moleImage;
