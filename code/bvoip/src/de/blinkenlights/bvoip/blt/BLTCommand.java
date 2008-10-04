@@ -105,6 +105,10 @@ public class BLTCommand {
 			logger.fine("got onhook command");		
 			retval = new BLTCommand(channel, CommandType.ONHOOK);
 		}
+		else if ("connected".equals(command)) {
+			logger.fine("got connected command");		
+			retval = new BLTCommand(channel, CommandType.CONNECTED);
+		}
 		else if ("setup".equals(command)) {
 			retval = new BLTCommand(channel, CommandType.SETUP);
 			if (parts.length > 3) {
@@ -222,5 +226,9 @@ public class BLTCommand {
 			output = channelNum+":"+"play:"+args.get(0);
 		}
 		return output.getBytes();	
+	}
+	
+	public String toString() {
+		return "BLTCommand - "+new String(getNetworkBytes());
 	}
 }

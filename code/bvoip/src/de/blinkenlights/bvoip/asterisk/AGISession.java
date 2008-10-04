@@ -38,6 +38,12 @@ public class AGISession {
 	 */
 	private boolean playSoundInitiallyHackEnabled = false;
 	
+	
+	/**
+	 *  whether or not this line has been answered -- we need to answer it before we can do anything else
+	 */
+	private boolean answered = false;
+	
 	private final PrintWriter out;
 	private final BufferedReader in; 
 
@@ -123,7 +129,7 @@ public class AGISession {
 	 */
 	public void answer() {
 		agiCommandQueue.add("ANSWER");
-		
+		setAnswered(true);
 		if (playSoundInitiallyHackEnabled) {
 			try {
 				Thread.sleep(3000);
@@ -134,12 +140,27 @@ public class AGISession {
 		}
 	}
 
+	private synchronized void setAnswered(boolean b) {
+		answered = true;
+	}
+
+	private synchronized boolean getAnswered() {
+		return answered;
+	}
+	
+
+	
 	/**
 	 * Hangs up the call.
 	 */
 	public void hangup() {
-		agiCommandQueue.add("HANGUP");
+		if (getAnswered()) {
+			agiCommandQueue.add("HANGUP");
+		} else {
+			agiCommandQueue.add("EXEC Congestion(1000)");
+		}
 	}
+	
 	
 	/**
 	 * Play a file that will be interrupted with DTMF.

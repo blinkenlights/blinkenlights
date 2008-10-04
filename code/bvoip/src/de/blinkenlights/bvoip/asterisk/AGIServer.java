@@ -6,6 +6,9 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -17,6 +20,8 @@ public class AGIServer implements Runnable {
 	private final int port;
 	private final ChannelList channelList;
 	
+	private Set<String> activeLines = Collections.synchronizedSet(new HashSet<String>());
+		
 	/**
 	 * Creates a new AGIServer
 	 * 
@@ -65,24 +70,37 @@ public class AGIServer implements Runnable {
 		
 		Runnable callHandler = new Runnable() {
 			public void run() {
+				AGISession agiSession = null;
 				try {
 					BufferedReader in = new BufferedReader(new InputStreamReader(client.getInputStream()));
 					PrintWriter out = new PrintWriter(client.getOutputStream(), true);
 					Channel channel = null;
+					boolean acceptedCall = false;
 					try {
 						channel = channelList.acquire();
 						if (channel != null) {
-							AGISession agiSession = new AGISession(in, out);
-							channel.setAgiSession(agiSession);
-							agiSession.handleCall();
+							agiSession = new AGISession(in, out);
+							if (activeLines.contains(agiSession.getDnid())) {
+								agiSession.hangup();
+							} else {
+								acceptedCall = true;
+								activeLines.add(agiSession.getDnid());
+								channel.setAgiSession(agiSession);
+								agiSession.handleCall();
+							}
 						} else {
-							logger.warning("Ingoring call because all channels are in use");
+							logger.warning("Refusing (congestion) call because all channels are in use");
+							AGISession tempAgiSession = new AGISession(in, out);
+							tempAgiSession.hangup();
 						}
 					} catch (CallEndedException ex) {
 						logger.info("Call ended: " + channel);
 					} catch (Exception ex) {
 						logger.log(Level.WARNING, "Call handling ended abnormally", ex);
 					} finally {
+						if (acceptedCall && agiSession != null) {
+							activeLines.remove(agiSession.getDnid());
+						}
 						if (channel != null) {
 							channel.close();
 						}

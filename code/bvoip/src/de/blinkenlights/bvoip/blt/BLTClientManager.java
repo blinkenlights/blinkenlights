@@ -164,7 +164,7 @@ public class BLTClientManager implements Runnable  {
 		
 		// is the channel registered to another client?
 		if(channel.getClient() == null || channel.getClient() != client) {
-			logger.fine("Rejecting HANGUP command because this client doesn't own this call");
+			logger.fine("Rejecting HANGUP command because this client doesn't own this call: client: "+client+"  channel owner: "+channel.getClient());
 			BLTCommand command = new BLTCommand(channelNum, CommandType.ERROR, "not your call");
 			sendToClient(client, command);
 		} else {
