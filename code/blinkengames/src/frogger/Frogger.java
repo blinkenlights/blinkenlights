@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import util.Util;
-
 import de.blinkenlights.game.BlinkenGame;
 import de.blinkenlights.game.FrameInfo;
 import de.blinkenlights.game.GameConfigurationException;

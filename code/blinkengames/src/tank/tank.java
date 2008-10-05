@@ -1,16 +1,16 @@
 	package tank;
 	
 	import java.awt.Graphics;
-	import java.awt.Graphics2D;
-	import java.awt.Point;
-	import java.util.List;
-	import java.util.ArrayList;
-	
-	import spaceInvaders.Explosion;
-	import util.Util;
-	import de.blinkenlights.game.BlinkenGame;
-	import de.blinkenlights.game.FrameInfo;
-	import de.blinkenlights.game.GameConfigurationException;
+import java.awt.Graphics2D;
+import java.awt.Point;
+import java.util.ArrayList;
+import java.util.List;
+
+import spaceInvaders.Explosion;
+import util.Util;
+import de.blinkenlights.game.BlinkenGame;
+import de.blinkenlights.game.FrameInfo;
+import de.blinkenlights.game.GameConfigurationException;
 import de.blinkenlights.game.GameContext;
 	
 	public class tank implements BlinkenGame {

@@ -3,15 +3,10 @@ package spaceInvaders;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Point;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.Timer;
-
 import util.Util;
-
 import de.blinkenlights.game.BlinkenGame;
 import de.blinkenlights.game.FrameInfo;
 import de.blinkenlights.game.GameConfigurationException;

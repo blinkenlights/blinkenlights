@@ -20,8 +20,6 @@ package de.blinkenlights.game;
 import java.awt.Color;
 import java.awt.Graphics2D;
 
-import quicktime.app.players.Playable;
-
 /**
  * Simple example "game" that demonstrates how to use the Blinkengame API.
  * <p>
