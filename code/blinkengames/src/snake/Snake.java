@@ -32,9 +32,6 @@ public class Snake implements BlinkenGame {
 	
 	private int score;
 	
-	public Snake() {
-	}
-	
 	public void paint(Graphics g) {
 		
 		g.clearRect(0, 0, maxWidth, maxHeight);

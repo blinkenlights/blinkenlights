@@ -40,9 +40,6 @@ public class SpaceInvaders implements BlinkenGame {
 	private int numAlienRows;
 	private int gunCooldown;
 	
-	public SpaceInvaders() {
-	}
-	
 	public void paint(Graphics g) {
 		Graphics2D g2 = (Graphics2D) g;
 		g2.rotate(Math.toRadians(90), 0, 0);

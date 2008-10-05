@@ -33,9 +33,6 @@ public class Matrix implements BlinkenGame{
 	 */
 	private ArrayList<Line> lines;
 	
-	public Matrix() {
-	}
-	
 	public void paint(Graphics g) {
 		g.clearRect(0, 0, MAX_WIDTH, MAX_HEIGHT);
 		g.setColor(Color.WHITE);

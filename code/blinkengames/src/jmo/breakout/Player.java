@@ -8,8 +8,6 @@ public class Player implements BreakoutObject {
 	private static final int PLAYER_HEIGHT = 0;
 	private static final int PLAYER_WIDTH = 4;
 	
-	private int numLives;
-	
 	/**
 	 * Central x co-ordinate
 	 */
@@ -23,7 +21,6 @@ public class Player implements BreakoutObject {
 	public Player(int x, int y) {
 		this.x = x;
 		this.y = y;
-		numLives = 3;
 	}
 	
 	public void move(int x, int y) {
