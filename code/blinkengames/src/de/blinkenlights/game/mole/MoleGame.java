@@ -11,6 +11,8 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.RenderingHints;
 
+import javax.swing.ImageIcon;
+
 import de.blinkenlights.game.BlinkenGame;
 import de.blinkenlights.game.FrameInfo;
 import de.blinkenlights.game.GameContext;
@@ -19,6 +21,8 @@ public class MoleGame implements BlinkenGame {
 
     private static final long GAME_DURATION = 30000;
 
+    private final ImageIcon titleImage = new ImageIcon(MoleGame.class.getResource("title.png"));
+    
     private GameContext context;
 
     /**
@@ -47,6 +51,10 @@ public class MoleGame implements BlinkenGame {
     private int squareHeight;
 
     private int score;
+
+    private Mode mode;
+    
+    private long INTRO_TIME = 3000;
     
     public void gameStarting(GameContext context) {
         this.context = context;
@@ -69,24 +77,54 @@ public class MoleGame implements BlinkenGame {
         hammers = new Hammer[9];
         score = 0;
         concurrentMoleLimit = 1;
+        mode = Mode.INTRO;
     }
     
     public void gameEnding(Graphics2D g) {
-        g.setFont(Font.decode("System-10"));
-        g.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_OFF);
-        String s = String.valueOf(score);
-        FontMetrics fm = g.getFontMetrics();
-        int w = (int) fm.getStringBounds(s, g).getWidth();
-        g.setColor(Color.WHITE);
-        System.out.println("Drawing score: " + s);
-        g.drawString(s, context.getPlayfieldWidth()/2 - w/2, context.getPlayfieldHeight()/2 + fm.getAscent()/2);
+        drawText(g, String.valueOf(score));
         bounds = null;
         context = null;
     }
 
+    private void drawText(Graphics2D g, String s) {
+        g.setFont(Font.decode("System-10"));
+        g.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_OFF);
+        FontMetrics fm = g.getFontMetrics();
+        int w = (int) fm.getStringBounds(s, g).getWidth();
+        g.setColor(Color.WHITE);
+        g.drawString(s, context.getPlayfieldWidth()/2 - w/2, context.getPlayfieldHeight()/2 + fm.getAscent()/2);
+    }
+
+    private static enum Mode { INTRO, GAME };
+    
     public boolean nextFrame(Graphics2D g, FrameInfo frameInfo) {
-        
-        concurrentMoleLimit = (int) (frameInfo.getWhen() / 6000) + 1;
+        if (mode == Mode.INTRO) {
+            boolean continueIntro = nextIntroFrame(g, frameInfo);
+            if (!continueIntro) {
+                mode = Mode.GAME;
+            }
+            return true;
+        } else {
+            return nextInGameFrame(g, frameInfo);
+        }
+    }
+    
+    private boolean nextIntroFrame(Graphics2D g, FrameInfo frameInfo) {
+        if (frameInfo.getWhen() > INTRO_TIME - 600) {
+            drawText(g, "1");
+        } else if (frameInfo.getWhen() > INTRO_TIME - 1200) {
+            drawText(g, "2");
+        } else if (frameInfo.getWhen() > INTRO_TIME - 1800) {
+            drawText(g, "3");
+        } else {
+            titleImage.paintIcon(null, g, context.getPlayfieldWidth()/2 - titleImage.getIconWidth()/2, 0);
+        }
+        return frameInfo.getWhen() < INTRO_TIME;
+    }
+
+    private boolean nextInGameFrame(Graphics2D g, FrameInfo frameInfo) {
+        long when = frameInfo.getWhen() - INTRO_TIME;
+        concurrentMoleLimit = (int) (when / 6000) + 1;
         
         Character key = frameInfo.getUserInput();
         if (key != null) {
@@ -120,7 +158,7 @@ public class MoleGame implements BlinkenGame {
                 Rectangle r = bounds[idx];
                 if (mole != null) {
                     Graphics2D gg = (Graphics2D) g.create(r.x, r.y, r.width, r.height);
-                    boolean thisMoleAlive = mole.nextFrame(gg, frameInfo.getWhen());
+                    boolean thisMoleAlive = mole.nextFrame(gg, when);
                     gg.dispose();
                     
                     if (thisMoleAlive) {
@@ -134,7 +172,7 @@ public class MoleGame implements BlinkenGame {
                 Hammer hammer = hammers[idx];
                 if (hammer != null) {
                     Graphics2D gg = (Graphics2D) g.create(r.x, r.y, r.width, r.height);
-                    boolean thisHammerAlive = hammer.nextFrame(gg, frameInfo.getWhen());
+                    boolean thisHammerAlive = hammer.nextFrame(gg, when);
                     gg.dispose();
                     
                     if (!thisHammerAlive) {
@@ -152,7 +190,7 @@ public class MoleGame implements BlinkenGame {
             System.out.println("Created new mole at " + idx);
         }
         
-        return frameInfo.getWhen() < GAME_DURATION;
+        return when < GAME_DURATION;
     }
 
     public static void main(String[] args) throws Exception {
