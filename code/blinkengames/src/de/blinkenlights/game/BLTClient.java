@@ -252,7 +252,7 @@ class BLTClient implements UserInputSource, Runnable {
 		else if (c.getCommand() == CommandType.DTMF) {
 			String digit = c.getArgs().get(0);
 			logger.fine("got digit: "+digit);
-			setKeystroke(new Character(digit.charAt(0)));
+			setKeystroke(Character.valueOf(digit.charAt(0)));
 		}
 		else if (c.getCommand() == CommandType.ERROR && c.getChannelNum() == bltChannel) {
 			String message = c.getArgs().get(0);
