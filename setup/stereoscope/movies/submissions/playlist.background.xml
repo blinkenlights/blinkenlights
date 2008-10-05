@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<playlist>
+  <item loop="1" speed="0.5"><param key="movie" value="2008/10/3/crowley_0.bml" /></item>
+  <item loop="1"><param key="movie" value="2008/10/3/enzo-kopf_1.bml" /></item>
+  <item loop="1"><param key="movie" value="2008/10/3/fluidwaves.bml" /></item>
+  <item loop="1"><param key="movie" value="2008/10/3/GOL.bml" /></item>
+  <item loop="1"><param key="movie" value="2008/10/3/liebesgruesse.bml" /></item>
+  <item loop="1"><param key="movie" value="2008/10/3/stereoscope_physics_0.bml" /></item>
+  <item loop="1"><param key="movie" value="2008/10/3/stereoscope-flooding.bml" /></item>
+  <item loop="1"><param key="movie" value="2008/10/3/stereoscope-logo.bml" /></item>
+  <item loop="1"><param key="movie" value="2008/10/3/stereoscope-trees1.bml" /></item>
+  <item loop="1"><param key="movie" value="2008/10/4/amoeba.bml" /></item>
+  <item loop="1" speed="0.5"><param key="movie" value="2008/10/4/autumnLites.bml" /></item>
+  <item loop="1"><param key="movie" value="2008/10/4/Discordian-Apple.bml" /></item>
+  <item loop="1"><param key="movie" value="2008/10/4/fluid.bml" /></item>
+  <item loop="1"><param key="movie" value="2008/10/4/flurryrotation.bml" /></item>
+  <item loop="1"><param key="movie" value="2008/10/4/horse.bml" /></item>
+  <item loop="1"><param key="movie" value="2008/10/4/Kaleidoscope_0.bml" /></item>
+  <item loop="1"><param key="movie" value="2008/10/4/kaleidoscope01.bml" /></item>
+  <item loop="1"><param key="movie" value="2008/10/4/kaleidoscope02.bml" /></item>
+  <item loop="1"><param key="movie" value="2008/10/4/kaleidoscope03.bml" /></item>
+  <item loop="1"><param key="movie" value="2008/10/4/lines.bml" /></item>
+  <item loop="1"><param key="movie" value="2008/10/4/lines2.bml" /></item>
+  <item loop="1"><param key="movie" value="2008/10/4/maple-leaf_0.bml" /></item>
+  <item loop="1"><param key="movie" value="2008/10/4/MovingLights.bml" /></item>
+  <item loop="1"><param key="movie" value="2008/10/4/ontario.bml" /></item>
+  <item loop="1"><param key="movie" value="2008/10/4/pesthorn.bml" /></item>
+  <item loop="1"><param key="movie" value="2008/10/4/rings_0.bml" /></item>
+  <item loop="1"><param key="movie" value="2008/10/4/stereoscope-tsunami.bml" /></item>
+  <item loop="1"><param key="movie" value="2008/10/4/stream-up.bml" /></item>
+  <item loop="1"><param key="movie" value="2008/10/5/rickroll.bml" /></item>
+  <item loop="1"><param key="movie" value="/usr/local/stereoscope/bmlarchive/stereoscope/movies/playlist/stereoscope_teardown_hopping.bml" /></item>
+
+</playlist>
+
