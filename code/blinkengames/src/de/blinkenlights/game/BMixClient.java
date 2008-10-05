@@ -43,11 +43,11 @@ class BMixClient implements FrameTarget {
     }
 
     public void start() {
-
+        // nothing to do
     }
     
     public void stop() {
-
+        // nothing to do
     }
 
     public void putFrame(BufferedImage image) throws IOException {

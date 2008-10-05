@@ -40,7 +40,6 @@ class BLTClient implements UserInputSource, Runnable {
 	private final InetAddress host;
 	private final int port;
 	private final String did;
-	private final int maximumLines = 1;
 
 	private Character lastKeystroke = null;
 
