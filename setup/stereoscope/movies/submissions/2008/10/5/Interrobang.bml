@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blm width="30" height="12" bits="1" channels="1">
+	<header>
+		<title>Interrobang</title>
+		<description>a nonstandard punctuation mark</description>
+		<creator>Stereoscope Paint</creator>
+		<author>Sven Lubenau</author>
+		<email>sven.lubenau@hamburgefonstiv.com</email>
+		<loop>no</loop>
+		<duration>200</duration>
+	</header>
+
+	<frame duration="200">
+		<row>001111000000000000000000011100</row>
+		<row>111111111000000000000001111110</row>
+		<row>111111111110000000000111111100</row>
+		<row>011110001110000000001111111000</row>
+		<row>001111100111100000011111110000</row>
+		<row>000110000011100000011110000000</row>
+		<row>000000000001110000111100000000</row>
+		<row>000000000000011001100000000000</row>
+		<row>000000000000000000000000000000</row>
+		<row>000000000000001111000000000000</row>
+		<row>000000000000001111000000000000</row>
+		<row>000000000000001111000000000000</row>
+	</frame>
+</blm>
