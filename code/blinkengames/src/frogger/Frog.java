@@ -15,14 +15,11 @@ public class Frog {
     
     private Point frogHead;
     
-    private Direction facing;
-    
     private Frogger game;
     
     public Frog(Frogger parent, Point start) {
         game = parent;
         frogHead = start;
-        facing = Direction.LEFT;
     }
     
     public void move(Direction d) {
@@ -35,8 +32,6 @@ public class Frog {
         } else if (d.equals(Direction.DOWN)) {
             frogHead.y += 1;
         }
-        
-        facing = d;
     }
     
     public int getFrogLeftEdge() {
