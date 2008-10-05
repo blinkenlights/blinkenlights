@@ -31,12 +31,12 @@ import javax.swing.JPanel;
 
 public class TelephoneSimulator implements UserInputSource {
 
-	private final String backgroundMusicDefault = "Current background music: ";
+	private static final String MUSIC_LABEL_PREFIX = "Current background music: ";
     private JFrame frame;
     private volatile Character lastKey = null;
     private Semaphore gameStartSemaphore = new Semaphore(0);
     private volatile boolean offhook;
-    private JLabel backgroundMusic = new JLabel(backgroundMusicDefault);
+    private JLabel backgroundMusic = new JLabel(MUSIC_LABEL_PREFIX);
     
     private class NumberAction extends AbstractAction {
         
@@ -117,7 +117,7 @@ public class TelephoneSimulator implements UserInputSource {
 
     public void gameEnding() {
         offhook = false;
-        backgroundMusic.setText(backgroundMusicDefault);
+        backgroundMusic.setText(MUSIC_LABEL_PREFIX);
     }
 
     public boolean isUserPresent() {
