@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blm width="30" height="12" bits="4" channels="1">
+	<header>
+		<title>Baby Betty</title>
+		<description>Baby Betty Movie</description>
+		<creator>Stereoscope Paint</creator>
+		<author>Jason Slaughter</author>
+		<email>rexrhino@hotmail.com</email>
+		<loop>no</loop>
+		<duration>12000</duration>
+	</header>
+
+	<frame duration="3000">
+		<row>44479999b99bbbdddddddddffb1114</row>
+		<row>17477977777979bbdfdb7449bf4111</row>
+		<row>477774111147779bdddb41479fb111</row>
+		<row>477777741477999bdffdbbbdfff111</row>
+		<row>179779999999979bbddfffffffd111</row>
+		<row>117799999bb97974bb99ddffffd111</row>
+		<row>1479999b99bb97779bbbdddffff111</row>
+		<row>944799999999999999ddddddff7111</row>
+		<row>777777799999744444479bddfd7411</row>
+		<row>9b999777999744444477bddffdfffd</row>
+		<row>dbbb9997997799799bdb9dffdfffff</row>
+		<row>ddbbdbbbb997779bbb99dfffffffff</row>
+	</frame>
+
+	<frame duration="3000">
+		<row>fffff00ffff0fffff0fffff0f0000f</row>
+		<row>f0000f0f000000f00000f000f0000f</row>
+		<row>f0000f0f000000f00000f000f0000f</row>
+		<row>fffff00fff0000f00000f000ffffff</row>
+		<row>f0000f0f000000f00000f000000f00</row>
+		<row>f0000f0f000000f00000f000000f00</row>
+		<row>ffffff0ffff000f00000f000fff000</row>
+		<row>000000000000000000000000000000</row>
+		<row>000000000000000000000000000000</row>
+		<row>000000000000000000000000000000</row>
+		<row>000000000000000000000000000000</row>
+		<row>000000000000000000000000000000</row>
+	</frame>
+
+	<frame duration="3000">
+		<row>3336799bbb999bbbcccccccceeeeb6</row>
+		<row>036666336667779bcccb9779bcceb3</row>
+		<row>367776666677799bcecc966669bcc3</row>
+		<row>677799b9bb767669b7bccbbccccee7</row>
+		<row>667799bbb9997799b9bcbbbceeeeec</row>
+		<row>766779bb7777677779cccc9cceeeec</row>
+		<row>76677bb96330000000069b7bcceee7</row>
+		<row>667779cb730330303000367bcceec3</row>
+		<row>36677999776666666336b99ceecb30</row>
+		<row>763367777677777667bcbccecc6000</row>
+		<row>b997666667779999bbccccb96becbb</row>
+		<row>cecccbb7766799bcbbb9b999eeeeee</row>
+	</frame>
+
+	<frame duration="3000">
+		<row>fffff00ffff0fffff0fffff0f0000f</row>
+		<row>f0000f0f000000f00000f000f0000f</row>
+		<row>f0000f0f000000f00000f000f0000f</row>
+		<row>fffff00fff0000f00000f000ffffff</row>
+		<row>f0000f0f000000f00000f000000f00</row>
+		<row>f0000f0f000000f00000f000000f00</row>
+		<row>ffffff0ffff000f00000f000fff000</row>
+		<row>000000000000000000000000000000</row>
+		<row>000000000000000000000000000000</row>
+		<row>000000000000000000000000000000</row>
+		<row>000000000000000000000000000000</row>
+		<row>000000000000000000000000000000</row>
+	</frame>
+</blm>
