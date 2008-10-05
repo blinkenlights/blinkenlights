@@ -15,6 +15,6 @@ for entry in d['entries']:
 		os.makedirs(dirname)
 
 	if not os.path.isfile(filename):
-		urllib.urlretrieve (entry.id, filename)
 		print filename
+		urllib.urlretrieve (entry.id, filename)
 
