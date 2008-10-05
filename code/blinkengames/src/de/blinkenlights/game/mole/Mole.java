@@ -102,7 +102,7 @@ public class Mole {
         g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BICUBIC);
         
-        g.rotate(Math.sin(phase), image.getIconWidth()/2, image.getIconHeight());
+        g.rotate(Math.sin(phase), image.getIconWidth()/2.0, image.getIconHeight());
         image.paintIcon(null, g, size.width/2 - image.getIconWidth()/2, MAX_HEIGHT - top);
         return alive;
     }
