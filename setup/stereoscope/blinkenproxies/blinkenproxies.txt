@@ -2,7 +2,7 @@
 208.113.253.145		# Robin Senior <mailto:senior@gmail.com>
 212.201.68.148		# Andreas Kupfer <mailto:blinkenlights.net@42h.de>
 88.198.198.113		# Duckula <mailto:blinken@stresser.de>
-213.239.208.75		# <mailto:beanie@benle.de>
+213.239.208.75		# Fritsch Benjamin <mailto:beanie@benle.de>
 85.214.89.204		# <mailto:mail@denisu.jp>
 81.169.140.255		# <mailto:rmayer@vinotech.de>
 89.238.67.183		# Florian Holzhauer <mailto:fh-foobar@fholzhauer.de>
@@ -11,3 +11,40 @@
 213.160.27.162		# Micky Roth <info@rothnet.org>
 78.47.62.13		# Garret Alfert <mail@garretalfert.de>
 87.230.77.43		# Clemens Schaffenrath <mail@clesch.com>
+verionshelf.com # Dominik Wagner <dom@codingmonkeys.de>
+
+state of the blinkenstreams file as of oct-5:
+
+<?xml version="1.0" encoding="UTF-8"?>
+<blinkenstreams>
+  <message url="http://blinkenlights.net/blog" url-title="Open Blog" message-number="5" title="Welcome to Stereoscope!">
+    Check out the project blog for the latest progress and news! The screens are finally up and running.
+  </message>
+	<project name="Stereoscope Feeds" building="stereoscope">
+		<proxy name="Toronto Show" address="versionshelf.com" port="4242" format="MCU_MULTIFRAME" size="displayed" kind="LIVE" showtime=""/>
+		<proxy name="Toronto Show" address="217.172.177.145" port="4242" format="MCU_MULTIFRAME" size="displayed" kind="LIVE" showtime=""/>
+		<proxy name="Toronto Show" address="212.201.68.148" port="4242" format="MCU_MULTIFRAME" size="displayed" kind="LIVE" showtime=""/>
+		<proxy name="Toronto Show" address="212.201.68.148" port="4243" format="MCU_MULTIFRAME" size="displayed" kind="LIVE" showtime=""/>
+		<proxy name="Toronto Show" address="blinkenproxy.clesch.com" port="4242" format="MCU_MULTIFRAME" size="displayed" kind="LIVE" showtime=""/>
+		<proxy name="Toronto Show" address="blinkenproxy.clesch.com" port="4243" format="MCU_MULTIFRAME" size="displayed" kind="LIVE" showtime=""/>
+		<proxy name="Toronto Show" address="88.198.198.113" port="4242" format="MCU_MULTIFRAME" size="displayed" kind="LIVE" showtime=""/>
+		<proxy name="Toronto Show" address="88.198.198.113" port="4243" format="MCU_MULTIFRAME" size="displayed" kind="LIVE" showtime=""/>
+		<proxy name="Toronto Show" address="89.238.65.185" port="4242" format="MCU_MULTIFRAME" size="displayed" kind="LIVE" showtime=""/>
+		<proxy name="Toronto Show" address="89.238.65.185" port="4243" format="MCU_MULTIFRAME" size="displayed" kind="LIVE" showtime=""/>
+		<proxy name="Toronto Show" address="213.239.208.75" port="4242" format="MCU_MULTIFRAME" size="displayed" kind="LIVE" showtime=""/>
+		<proxy name="Toronto Show" address="213.239.208.75" port="4243" format="MCU_MULTIFRAME" size="displayed" kind="LIVE" showtime=""/>
+
+		<proxy name="Toronto Show" address="89.238.67.183" port="4242" format="MCU_MULTIFRAME" size="displayed" kind="LIVE" showtime=""/>
+		<proxy name="Toronto Show" address="89.238.67.183" port="4243" format="MCU_MULTIFRAME" size="displayed" kind="LIVE" showtime=""/>
+		<proxy name="Toronto Show" address="81.169.140.255" port="4242" format="MCU_MULTIFRAME" size="displayed" kind="LIVE" showtime=""/>
+		<proxy name="Toronto Show" address="81.169.140.255" port="4243" format="MCU_MULTIFRAME" size="displayed" kind="LIVE" showtime=""/>
+		<proxy name="Toronto Show" address="78.47.62.13" port="4242" format="MCU_MULTIFRAME" size="displayed" kind="LIVE" showtime=""/>
+		<proxy name="Toronto Show" address="78.47.62.13" port="4243" format="MCU_MULTIFRAME" size="displayed" kind="LIVE" showtime=""/>
+	</project>
+	<project name="Stereoscope Replay Feeds" building="stereoscope">
+		<proxy name="Toronto Day 1" address="proxy.blinkenlights.net" port="4243" format="MCU_MULTIFRAME" size="displayed" kind="R" showtime="showtime"/>
+  </project>
+	<project name="Stereoscope Test Feeds" building="stereoscope">
+		<proxy name="Munich Test Movies" address="blink.emonk.net" port="4243" format="MCU_MULTIFRAME" size="displayed" kind="Test"/>
+	</project>
+</blinkenstreams>
