@@ -32,7 +32,11 @@
   <item loop="1"><param key="movie" value="2008/10/5/particles-up.bml" /></item>
   <item loop="1"><param key="movie" value="2008/10/5/stereoscope-teardown_hopping_new.bml" /></item>
   <item loop="1"><param key="movie" value="2008/10/5/matrix.bml" /></item>
-  <item loop="1"><param key="movie" value="2008/10/5/bat_explosion.bml" /></item>
+  <item loop="1" speed="0.3"><param key="movie" value="2008/10/5/Rotation.bml" /></item>
+  <item loop="1"><param key="movie" value="2008/10/5/Countdown.bml" /></item>
+  <item loop="1"><param key="movie" value="2008/10/6/Lemmings2.bml" /></item>
+  <item loop="1"><param key="movie" value="2008/10/6/LovePullOver.bml" /></item>
+  <item loop="1"><param key="movie" value="2008/10/6/WillowSkatingBig.bml" /></item>
 
 </playlist>
 
