@@ -20,7 +20,7 @@
   <item loop="1"><param key="movie" value="2008/10/4/Kaleidoscope_0.bml" /></item>
   <item loop="1"><param key="movie" value="2008/10/4/lines.bml" /></item>
   <item loop="1"><param key="movie" value="2008/10/4/lines2.bml" /></item>
-  <item loop="1"><param key="movie" value="2008/10/4/maple-leaf_0.bml" /></item>
+  <item loop="1" speed="1.2"><param key="movie" value="2008/10/4/maple-leaf_0.bml" /></item>
   <item loop="1"><param key="movie" value="2008/10/4/MovingLights.bml" /></item>
   <item loop="1"><param key="movie" value="2008/10/4/ontario.bml" /></item>
   <item loop="1"><param key="movie" value="2008/10/4/pesthorn.bml" /></item>
