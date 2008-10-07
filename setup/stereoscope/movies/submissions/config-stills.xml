@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+
+<!-- config file for blccc background layer instance -->
+
+<blccc>
+  <config>
+    <param key="width"        value="96" />
+    <param key="height"       value="32" />
+    <param key="aspect"       value="0.5" />
+    <param key="playlist"     value="playlist.stills.xml" />
+    <param key="logfile"      value="/var/tmp/blccc-background.log" />
+    <param key="recipient"    value="localhost:2329" />
+    <param key="telnet-port"  value="9999" />
+  </config>
+</blccc>
+
