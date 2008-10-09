@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
-import de.blinkenlights.bmix.main.BMovieSender;
 import de.blinkenlights.bmix.movie.BLMovie;
 import de.blinkenlights.bmix.movie.Frame;
 import de.blinkenlights.game.BlinkenGame;
@@ -50,15 +49,18 @@ public class Slideshow implements BlinkenGame {
     private int currentFrame;
     
     /**
-     * The sender that sends the current frame to the 
+     * Controls whether frames are advanced automatically or only on user demand.
      */
-    private BMovieSender sender;
+    private boolean paused;
     
     private int brightnessAdjust = 0;
     
     public void gameStarting(GameContext context) {
         movies = new ArrayList<BLMovie>();
         currentMovie = 0;
+        currentFrame = 0;
+        paused = true;
+        brightnessAdjust = 0;
         try {
             int i = 0;
             while (context.getProperty("movie." + i) != null) {
@@ -101,7 +103,7 @@ public class Slideshow implements BlinkenGame {
      *   <tr>
      *     <td>*
      *     <td>0<br>stop slideshow and hang up
-     *     <td>#
+     *     <td>#<br>pause/resume playback
      * </table>
      */
     public boolean nextFrame(Graphics2D g, FrameInfo frameInfo) {
@@ -150,6 +152,15 @@ public class Slideshow implements BlinkenGame {
                 // terminate
                 // TODO when call ended != terminate, have to do more here
                 return false;
+            } else if (key == '#') {
+                paused = !paused;
+            }
+        }
+        
+        if (!paused) {
+            currentFrame++;
+            if (currentFrame >= movies.get(currentMovie).getNumFrames()) {
+                currentFrame = 0;
             }
         }
         
@@ -157,7 +168,6 @@ public class Slideshow implements BlinkenGame {
         BufferedImage bi = new BufferedImage(f.getImageWidth(), f.getIconHeight(), BufferedImage.TYPE_INT_ARGB);
         f.fillBufferedImage(bi);
         int[] biPixels = ((DataBufferInt) bi.getRaster().getDataBuffer()).getData();
-        int addme = (brightnessAdjust & 0xff) << 16 | (brightnessAdjust & 0xff) << 8 | (brightnessAdjust & 0xff); // FIXME
         for (int i = 0; i < biPixels.length; i++) {
             int red   = (biPixels[i] >> 16) & 0xff;
             int green = (biPixels[i] >> 8) & 0xff;
