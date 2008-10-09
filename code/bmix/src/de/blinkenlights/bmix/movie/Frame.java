@@ -18,8 +18,12 @@
 
 package de.blinkenlights.bmix.movie;
 
+import java.awt.Component;
+import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+
+import javax.swing.Icon;
 
 import de.blinkenlights.bmix.mixer.BLImage;
 
@@ -33,7 +37,7 @@ import de.blinkenlights.bmix.mixer.BLImage;
  * In the case of 4 bit images, the characters 0-9 and abcdef or ABCDEF are assumed to represent
  * the 16 levels in hex. 
  */
-public class Frame implements BLImage {
+public class Frame implements BLImage, Icon {
 	int width;
 	int height;
 	int bits;
@@ -70,14 +74,15 @@ public class Frame implements BLImage {
 
 		for(int i = 0; i < len; i ++) {
 			int val = 0;
-			try {
-				val = (byte) ((int) (Integer.parseInt(rowChars.substring(i, i + 1), 16) * 
-						scaleFactor) & 0xff);
+			String pixelHexChar = rowChars.substring(i, i + 1);
+            try {
+				int packedValue = Integer.parseInt(pixelHexChar, 16);
+                val = ((int) (packedValue * scaleFactor) & 0xff);
 			} catch(NumberFormatException e) {
 				System.err.println("i: " + i);
-				System.err.println("bad pixel data: " + rowChars + " - [" + rowChars.substring(i, i + 1) + "]");
+				System.err.println("bad pixel data: " + rowChars + " - [" + pixelHexChar + "]");
 			}
-			img.setRGB(i, rowCount, (val << 24) | (val << 16) | val);
+			img.setRGB(i, rowCount, (0xff << 24) | (val << 16) | (val << 8) | val);
 		}
 		rowCount ++;
 	}
@@ -98,4 +103,18 @@ public class Frame implements BLImage {
 	public int getDuration() {
 		return duration;
 	}
+
+    public int getIconHeight() {
+        return getImageHeight();
+    }
+
+    public int getIconWidth() {
+        return getImageWidth();
+    }
+
+    public void paintIcon(Component c, Graphics g, int x, int y) {
+        g.drawImage(img, x, y, null);
+    }
+	
+	
 }
