@@ -122,6 +122,10 @@ public class StatsClient implements Runnable {
 			Preferences prefs = Preferences.userNodeForPackage(StatsClient.class);
 			String bmixHost = prefs.get("bmixHost", "localhost");
 			bmixHost = JOptionPane.showInputDialog("Connect to which bmix?", bmixHost);
+			if (bmixHost == null) {
+			    // I guess they don't want to mix right now
+			    return;
+			}
 			prefs.put("bmixHost", bmixHost);
 			prefs.flush();
 			
