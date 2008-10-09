@@ -45,11 +45,11 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.JToggleButton;
 import javax.swing.SwingUtilities;
 
 import com.apple.mrj.MRJApplicationUtils;
 import com.apple.mrj.MRJOpenDocumentHandler;
-import com.apple.mrj.MRJQuitHandler;
 
 import de.blinkenlights.bmix.main.BMovieException;
 import de.blinkenlights.bmix.main.BMovieSender;
@@ -59,7 +59,7 @@ import de.blinkenlights.bmix.network.HostAndPort;
  * This is the main class for the "Stereoscope Player" app. It is a GUI wrapper
  * for the BMovieSender.
  */
-public class Sender implements MRJOpenDocumentHandler, MRJQuitHandler {
+public class Sender implements MRJOpenDocumentHandler {
 
     private static final String DEFAULT_STATUS_MESSAGE = "<html><center>Drag BML file here</center>";
     private final JLabel statusLabel;
@@ -68,24 +68,24 @@ public class Sender implements MRJOpenDocumentHandler, MRJQuitHandler {
     private final JTextField sendToHost;
     private File currentFile;
     private final JButton playButton;
+    private final JToggleButton pauseButton;
     private final JButton stopButton;
     private final JCheckBox loop;
 
     public Sender() {
-    		MRJApplicationUtils.registerOpenDocumentHandler(this);
-    		MRJApplicationUtils.registerQuitHandler(this);
-    
+        MRJApplicationUtils.registerOpenDocumentHandler(this);
+
         frame = new JFrame("Stereoscope Player");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
+
         JMenuBar menuBar = new JMenuBar();
         frame.setJMenuBar(menuBar);
-        
+
         JMenu m = new JMenu("File");
         menuBar.add(m);
-        
+
         m.add(new JMenuItem(new OpenFileAction(frame, this)));
-        
+
         statusLabel = new JLabel(DEFAULT_STATUS_MESSAGE, JLabel.CENTER);
         frame.add(statusLabel);
 
@@ -102,7 +102,7 @@ public class Sender implements MRJOpenDocumentHandler, MRJQuitHandler {
                 sendMovie(currentFile);
             }
         });
-        
+
         gbc.weightx = 0f;
         playButton = new JButton("Play");
         playButton.addActionListener(new ActionListener() {
@@ -120,6 +120,14 @@ public class Sender implements MRJOpenDocumentHandler, MRJQuitHandler {
         });
         configPanel.add(playButton, gbc);
 
+        pauseButton = new JToggleButton("Pause");
+        pauseButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                movieSender.setPaused(pauseButton.isSelected());
+            }
+        });
+        configPanel.add(pauseButton);    
+        
         gbc.weightx = 0f;
         stopButton = new JButton("Stop");
         stopButton.addActionListener(new ActionListener() {
@@ -141,24 +149,20 @@ public class Sender implements MRJOpenDocumentHandler, MRJQuitHandler {
             }
         });
         configPanel.add(loop, gbc);
-        
+
         frame.add(configPanel, BorderLayout.SOUTH);
-        
+
         frame.setSize(500, 200);
-        
+
         frame.setDropTarget(new DropTarget(frame, new FileDropListener()));
         frame.setVisible(true);
 
     }
 
-		public void handleOpenFile(File fileName) {
-			this.sendMovie(fileName);
-		}
-		
-		public void handleQuit() {
-			System.exit(0);
-		}
-		
+    public void handleOpenFile(File fileName) {
+        this.sendMovie(fileName);
+    }
+
     public HostAndPort getSendTo() {
         String orig = sendToHost.getText();
         String host;
@@ -179,10 +183,10 @@ public class Sender implements MRJOpenDocumentHandler, MRJQuitHandler {
             return;
         }
         statusLabel.setText("<html><center>" +
-        		            "Sending " + file.getName() + " to " + getSendTo() + "<br>" +
-        		            "<br>" +
-                            "Please open Stereoscope Simulator to view the output" +
-                            "</center>");
+                "Sending " + file.getName() + " to " + getSendTo() + "<br>" +
+                "<br>" +
+                "Please open Stereoscope Simulator to view the output" +
+                "</center>");
         try {
             if (movieSender != null) {
                 movieSender.stopSending();
@@ -195,6 +199,7 @@ public class Sender implements MRJOpenDocumentHandler, MRJQuitHandler {
         }
     }
 
+    // warning: this was cut'n'pasted to MultiSenderMonitorComponent
     public class FileDropListener implements DropTargetListener {
 
         public void dragEnter(DropTargetDragEvent dtde) {
@@ -235,7 +240,7 @@ public class Sender implements MRJOpenDocumentHandler, MRJQuitHandler {
             // don't care
         }
     }
-    
+
     public static void main(String[] args) {
         System.setProperty("apple.laf.useScreenMenuBar", "true");
         SwingUtilities.invokeLater(new Runnable() {

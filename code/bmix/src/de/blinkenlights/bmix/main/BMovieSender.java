@@ -53,13 +53,21 @@ import de.blinkenlights.bmix.util.FileFormatException;
  */
 public class BMovieSender extends Thread {
     
+    /**
+     * Number of milliseconds between retransmissions of the same frame
+     * when this sender is paused. This should be set somewhat lower than
+     * the receiver's input timeout.
+     */
+    private static final int FRAME_INTERVAL_WHEN_PAUSED = 700;
+
     private static final Logger logger = Logger.getLogger(BMovieSender.class.getName());
     
 	BLPacketSender netSend;
 	BLMovie movie;
 	boolean loop;
     private boolean stopped;
-
+    private boolean paused;
+    
 	/**
 	 * Creates a new BMovieSender 
 	 * 
@@ -105,7 +113,12 @@ public class BMovieSender extends Thread {
 				} catch (Exception e) {
 				    logger.log(Level.WARNING, "Send frame failed", e);
 				}
-				nextFrameTime = System.currentTimeMillis() + frame.getDuration();
+                if (isPaused()) {
+                    i--;
+                    nextFrameTime += FRAME_INTERVAL_WHEN_PAUSED;
+                } else {
+                    nextFrameTime = System.currentTimeMillis() + frame.getDuration();
+                }
 				while(System.currentTimeMillis() < nextFrameTime) {
 					try {
 						Thread.sleep(nextFrameTime - System.currentTimeMillis());
@@ -278,5 +291,20 @@ public class BMovieSender extends Thread {
     
     public synchronized boolean isLooping() {
         return loop;
+    }
+    
+    public synchronized boolean isPaused() {
+        return paused;
+    }
+    
+    /**
+     * When paused, the progression of frames does not continue, but this sender
+     * will still continue to send the same frame over and over to avoid blanking
+     * the display.
+     * 
+     * @param paused true to pause; false to resume
+     */
+    public synchronized void setPaused(boolean paused) {
+        this.paused = paused;
     }
 }
