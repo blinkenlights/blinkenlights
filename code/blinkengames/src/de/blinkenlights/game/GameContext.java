@@ -53,6 +53,8 @@ public class GameContext implements Runnable {
     private UserInputSource inputClient;
 
 	private Properties config;
+
+    private boolean terminateOnHangup = false;
     
     
     public GameContext(BlinkenGame game) throws GameConfigurationException {
@@ -108,7 +110,8 @@ public class GameContext implements Runnable {
         try {
         	this.config = config;
         	
-        	maxGameTime = Long.parseLong(config.getProperty("game.maxTime"));
+            maxGameTime = Long.parseLong(config.getProperty("game.maxTime", "60000"));
+            terminateOnHangup = Boolean.parseBoolean(config.getProperty("game.terminateOnHangup", "true"));
         	
             playfieldWidth = Integer.parseInt(config.getProperty("playfield.width"));
             playfieldHeight = Integer.parseInt(config.getProperty("playfield.height"));
@@ -203,8 +206,12 @@ public class GameContext implements Runnable {
                         break;
                     }
                     if (!inputClient.isUserPresent()) {
-                        logger.info("Stopping because user input source went dead");
-                        break;
+                        if (terminateOnHangup ) {
+                            logger.info("Stopping because user input source went dead");
+                            break;
+                        } else {
+                            logger.info("User hung up; staying alive due to configuration");
+                        }
                     }
                     Thread.sleep((long) ((1.0 / framesPerSecond) * 1000));
                 } catch (InterruptedException e) {
