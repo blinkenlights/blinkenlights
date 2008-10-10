@@ -9,8 +9,8 @@
     <param key="aspect"       value="0.5" />
     <param key="playlist"     value="playlist.stills.xml" />
     <param key="logfile"      value="/var/tmp/blccc-background.log" />
-    <param key="recipient"    value="localhost:2329" />
-    <param key="telnet-port"  value="9999" />
+    <param key="recipient"    value="localhost:2324" />
+    <param key="telnet-port"  value="9998" />
   </config>
 </blccc>
 

@@ -12,7 +12,6 @@
   <item loop="1"><param key="movie" value="2008/10/3/stereoscope-trees1.bml" /></item>
   <item loop="1"><param key="movie" value="2008/10/4/amoeba.bml" /></item>
   <item loop="1"><param key="movie" value="2008/10/4/kaleidoscope03.bml" /></item>
-  <item loop="1" speed="0.5"><param key="movie" value="2008/10/4/autumnLites.bml" /></item>
   <item loop="1"><param key="movie" value="2008/10/4/Discordian-Apple.bml" /></item>
   <item loop="1"><param key="movie" value="2008/10/4/fluid.bml" /></item>
   <item loop="1"><param key="movie" value="2008/10/4/flurryrotation.bml" /></item>
@@ -37,6 +36,27 @@
   <item loop="1"><param key="movie" value="2008/10/6/Lemmings2.bml" /></item>
   <item loop="1"><param key="movie" value="2008/10/6/LovePullOver.bml" /></item>
   <item loop="1"><param key="movie" value="2008/10/6/WillowSkatingBig.bml" /></item>
-
+  <item loop="1" speed="0.5"><param key="movie" value="2008/10/6/autumnLitesNoTitle.bml" /></item>
+  <item loop="1"><param key="movie" value="2008/10/6/bat_explosion.bml" /></item>
+  <item loop="1"><param key="movie" value="2008/10/6/DieLemmingDie.bml" /></item>
+  <item loop="1"><param key="movie" value="2008/10/6/foursstarC2_0.bml" /></item>
+  <item loop="1"><param key="movie" value="2008/10/6/funkyDanceRightTower.bml" /></item>
+  <item loop="1"><param key="movie" value="2008/10/6/Gears.bml" /></item>
+  <item loop="1"><param key="movie" value="2008/10/6/jumplefthouserightInverted.bml" /></item>
+  <item loop="1"><param key="movie" value="2008/10/6/Lemmings2.bml" /></item>
+  <item loop="1"><param key="movie" value="2008/10/6/LifeOnEight-LubachevskyStillinger2D.bml" /></item>
+  <item loop="1"><param key="movie" value="2008/10/6/LoveDanceSwirlAround.bml" /></item>
+  <item loop="1"><param key="movie" value="2008/10/6/LovePullOverBIG.bml" /></item>
+  <item loop="1"><param key="movie" value="2008/10/6/photo.bml" /></item>
+  <item loop="1"><param key="movie" value="2008/10/6/PixelFun.bml" /></item>
+  <item loop="1"><param key="movie" value="2008/10/6/StereoLoveLogo.bml" /></item>
+  <item loop="1" speed="0.5"><param key="movie" value="2008/10/6/StereoLoveTypo.bml" /></item>
+  <item loop="1"><param key="movie" value="2008/10/6/WillowdoubleskateInverted.bml" /></item>
+  <item loop="1"><param key="movie" value="2008/10/6/willowHandsBig.bml" /></item>
+  <item loop="1"><param key="movie" value="2008/10/6/WillowSkatingBig.bml" /></item>
+  <item loop="1"><param key="movie" value="2008/10/7/Nose%20off.bml" /></item>
+  <item loop="1"><param key="movie" value="2008/10/8/StarTrip.bml" /></item>
+  <item loop="1"><param key="movie" value="2008/10/8/EarthRotating.bml" /></item>
+  <item loop="1" speed="0.5"><param key="movie" value="2008/10/8/SieHabenDaWas.bml" /></item>
 </playlist>
 
