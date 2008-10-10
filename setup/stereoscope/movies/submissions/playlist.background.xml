@@ -58,5 +58,12 @@
   <item loop="1"><param key="movie" value="2008/10/8/StarTrip.bml" /></item>
   <item loop="1"><param key="movie" value="2008/10/8/EarthRotating.bml" /></item>
   <item loop="1" speed="0.5"><param key="movie" value="2008/10/8/SieHabenDaWas.bml" /></item>
+  <item loop="1"><param key="movie" value="2008/10/9/cake.bml" /></item>
+  <item loop="1"><param key="movie" value="2008/10/9/handshake.bml" /></item>
+  <item loop="1"><param key="movie" value="2008/10/9/Liebesgruesse-an-gitti.bml" /></item>
+  <item loop="1"><param key="movie" value="2008/10/9/QuadraticRotation.bml" /></item>
+  <item loop="1"><param key="movie" value="2008/10/9/TorusRide.bml" /></item>
+  <item loop="1"><param key="movie" value="2008/10/9/two-hands-doing-something-like-washing-waving.bml" /></item>
+  <item loop="1" speed="0.5"><param key="movie" value="2008/10/9/WhiteNoiseStrangeCount.bml" /></item>
 </playlist>
 
