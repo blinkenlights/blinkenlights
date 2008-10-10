@@ -36,7 +36,8 @@ public class TelephoneSimulator implements UserInputSource {
     private volatile Character lastKey = null;
     private Semaphore gameStartSemaphore = new Semaphore(0);
     private volatile boolean offhook;
-    private JLabel backgroundMusic = new JLabel(MUSIC_LABEL_PREFIX);
+    private JLabel statusLabel = new JLabel();
+    private String musicName;
     
     private class NumberAction extends AbstractAction {
         
@@ -69,6 +70,7 @@ public class TelephoneSimulator implements UserInputSource {
                 lastKey = null;
                 offhook = true;
                 gameStartSemaphore.release();
+                updateStatus();
             }
         });
         
@@ -76,6 +78,7 @@ public class TelephoneSimulator implements UserInputSource {
         endCallButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 offhook = false;
+                updateStatus();
             }
         });
         JPanel buttonPanel = new JPanel();
@@ -84,7 +87,7 @@ public class TelephoneSimulator implements UserInputSource {
         
         frame.add(buttonPanel,BorderLayout.WEST);
         frame.add(makeKeyPad(),BorderLayout.CENTER);
-        frame.add(backgroundMusic,BorderLayout.SOUTH);
+        frame.add(statusLabel,BorderLayout.SOUTH);
         frame.pack();
         frame.setLocation(400, 100);
         frame.setVisible(true);
@@ -117,7 +120,10 @@ public class TelephoneSimulator implements UserInputSource {
 
     public void gameEnding() {
         offhook = false;
-        backgroundMusic.setText(MUSIC_LABEL_PREFIX);
+        musicName = null;
+        lastKey = null;
+        gameStartSemaphore.drainPermits();
+        updateStatus();
     }
 
     public boolean isUserPresent() {
@@ -125,8 +131,12 @@ public class TelephoneSimulator implements UserInputSource {
     }
 
 	public void playBackgroundMusic(String musicName) {
-		backgroundMusic.setText("Current background music: "+musicName);
+        this.musicName = musicName;
+        updateStatus();
 	}
 
+	private void updateStatus() {
+	    statusLabel.setText("Offhook: " + offhook + " " + MUSIC_LABEL_PREFIX + musicName);
+	}
     
 }

@@ -93,6 +93,8 @@ class BLTClient implements UserInputSource, Runnable {
 			sendHangup(bltChannel);
 		} catch (IOException e) {
 			logger.log(Level.WARNING,"error sending hangup",e);
+		} finally {
+		    gameStart.drainPermits();
 		}
 		bltChannel = -1;
 	}

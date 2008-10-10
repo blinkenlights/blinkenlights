@@ -206,11 +206,11 @@ public class GameContext implements Runnable {
                         break;
                     }
                     if (!inputClient.isUserPresent()) {
-                        if (terminateOnHangup ) {
+                        if (terminateOnHangup) {
                             logger.info("Stopping because user input source went dead");
                             break;
                         } else {
-                            logger.info("User hung up; staying alive due to configuration");
+                            logger.finest("User hung up; staying alive due to configuration");
                         }
                     }
                     Thread.sleep((long) ((1.0 / framesPerSecond) * 1000));
