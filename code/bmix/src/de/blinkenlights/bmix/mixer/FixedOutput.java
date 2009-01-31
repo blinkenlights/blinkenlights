@@ -34,7 +34,7 @@ import de.blinkenlights.bmix.network.HostAndPort;
 public class FixedOutput extends AbstractOutput {
     private static final Logger logger = Logger.getLogger(FixedOutput.class.getName());
     
-    private final BLPacketSender sender;
+    private final OutputSender sender;
 
     /**
      * The last time a packet was sent. Dropped output packets are not counted.
@@ -52,7 +52,7 @@ public class FixedOutput extends AbstractOutput {
      *            virtual buffer, but if you're making novel use of the API, it
      *            can be any BLImage.
      */
-    public FixedOutput(BLPacketSender sender, BLImage source, long minSendInterval,
+    public FixedOutput(OutputSender sender, BLImage source, long minSendInterval,
     		PacketType packetType) {
         super(source, packetType, minSendInterval);
         this.sender = sender;

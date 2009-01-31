@@ -26,11 +26,13 @@ import java.net.SocketException;
 import java.net.UnknownHostException;
 import java.util.logging.Logger;
 
+import de.blinkenlights.bmix.mixer.OutputSender;
+
 /**
  * This class is a packet sender that sends packets over the network. The
  * raw bytes to send must be passed in from a class that knows how to make them.
  */
-public class BLPacketSender {
+public class BLPacketSender implements OutputSender {
     DatagramSocket socket = null;
 	InetAddress address = null;
 	int port;

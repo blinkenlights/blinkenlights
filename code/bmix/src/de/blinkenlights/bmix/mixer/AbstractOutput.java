@@ -30,8 +30,8 @@ import de.blinkenlights.bmix.protocol.BLFramePacket;
 import de.blinkenlights.bmix.protocol.BLMultiframePacket;
 
 public abstract class AbstractOutput implements Output {
-
-    public static enum PacketType { MCU_FRAME, MCU_MULTIFRAME }
+	
+    public static enum PacketType { MCU_FRAME, MCU_MULTIFRAME, HACKLAB_SIGN }
 
     protected final PacketType packetType;
     
@@ -86,7 +86,7 @@ public abstract class AbstractOutput implements Output {
         viewports.add(new BLImageViewport(source, bounds, bpp, screenId));
     }
     
-    protected boolean sendSingleFrame(BLPacketSender sender, long lastSendTime, Logger logger)
+    protected boolean sendSingleFrame(OutputSender sender, long lastSendTime, Logger logger)
     throws IOException {
         boolean sent;
         long now = System.currentTimeMillis();
@@ -101,7 +101,11 @@ public abstract class AbstractOutput implements Output {
             } else if(packetType == PacketType.MCU_MULTIFRAME) {
                 BLMultiframePacket p = new BLMultiframePacket(viewports);
                 sender.send(p.getNetworkBytes());
-            } else {
+            } else if(packetType == PacketType.HACKLAB_SIGN) {
+                AbstractFramePacket p = new BLFramePacket(viewports.get(0));
+                sender.send(p.getNetworkBytes());            	
+            }
+            else {
                 throw new AssertionError("Unsupported packet type: " + packetType.name());
             }
             sent = true;

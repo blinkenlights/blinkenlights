@@ -37,10 +37,12 @@ import org.xml.sax.Locator;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
+import de.blinkenlights.bmix.directHardware.HacklabSignDriver;
 import de.blinkenlights.bmix.mixer.DynamicOutput;
 import de.blinkenlights.bmix.mixer.FixedOutput;
 import de.blinkenlights.bmix.mixer.Layer;
 import de.blinkenlights.bmix.mixer.Output;
+import de.blinkenlights.bmix.mixer.OutputSender;
 import de.blinkenlights.bmix.mixer.AbstractOutput.PacketType;
 import de.blinkenlights.bmix.movie.MovieRecorderOutput;
 import de.blinkenlights.bmix.network.BLPacketReceiver;
@@ -218,8 +220,14 @@ public class BMixSAXHandler extends DefaultHandler {
                 int destPort = Integer.parseInt(attributes.getValue("dest-port"));
                 long minInterval = Long.parseLong(attributes.getValue("min-frame-interval"));
                 PacketType packetFormat = PacketType.valueOf(attributes.getValue("packet-format"));
-                BLPacketSender sender = new BLPacketSender(destAddr, destPort);
-                currentOutput = new FixedOutput(sender, rootLayer, minInterval, packetFormat);
+            	OutputSender outputSender = null; 
+                if(packetFormat == PacketType.HACKLAB_SIGN) {
+                	outputSender = new HacklabSignDriver(destAddr);
+                }
+                else {                	
+                    outputSender = new BLPacketSender(destAddr, destPort);
+                }
+                currentOutput = new FixedOutput(outputSender, rootLayer, minInterval, packetFormat);
                 outputs.add(currentOutput);
 
             } else if (qName.equals("screen")) {

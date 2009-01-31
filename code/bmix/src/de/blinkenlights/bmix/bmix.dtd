@@ -79,9 +79,10 @@ the input will be set to transparent. -->
      family accepted by inputs. -->
 <!ELEMENT output (screen+)>
 <!ATTLIST output dest-addr CDATA #REQUIRED>
-<!ATTLIST output dest-port CDATA #REQUIRED>
+<!-- <!ATTLIST output dest-port CDATA #REQUIRED> -->
+<!ATTLIST output dest-port CDATA "2323">
 <!ATTLIST output min-frame-interval CDATA "0">
-<!-- outputs can be send in one of two formats: MCU_FRAME, or MCU_MULTIFRAME -->
+<!-- outputs can be send in one of two formats: MCU_FRAME, MCU_MULTIFRAME, or HACKLAB_SIGN -->
 <!ATTLIST output packet-format CDATA "MCU_FRAME">
 
 <!-- screens specify the individual viewports geometries of an output.
