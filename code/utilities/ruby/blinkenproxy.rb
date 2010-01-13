@@ -170,6 +170,7 @@ class App
       sleep(5)
       rescue 
         p $!
+        sleep(5)
     end
 
     def receive_heartbeats
