@@ -45,6 +45,7 @@
 		799120D80E1E349D00035EEA /* skybox5.pvr in Resources */ = {isa = PBXBuildFile; fileRef = 799120D10E1E349D00035EEA /* skybox5.pvr */; };
 		799120D90E1E349D00035EEA /* skybox6.pvr in Resources */ = {isa = PBXBuildFile; fileRef = 799120D20E1E349D00035EEA /* skybox6.pvr */; };
 		799121BE0E1F410C00035EEA /* ResourcePath.mm in Sources */ = {isa = PBXBuildFile; fileRef = 799121BD0E1F410C00035EEA /* ResourcePath.mm */; };
+		F202225D112261A80095C2A4 /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = F202225C112261A80095C2A4 /* MainWindow-iPad.xib */; };
 		F22550D60E796BD00007A4C1 /* dist.plist in Resources */ = {isa = PBXBuildFile; fileRef = F22550D50E796BD00007A4C1 /* dist.plist */; };
 		F23F402F0E81B85200F77DC4 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = F23F402E0E81B85200F77DC4 /* Default.png */; };
 		F24282710E84776800180039 /* Blinkenlights.png in Resources */ = {isa = PBXBuildFile; fileRef = F24282700E84776800180039 /* Blinkenlights.png */; };
@@ -141,6 +142,7 @@
 		799121BC0E1F410C00035EEA /* ResourcePath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourcePath.h; sourceTree = "<group>"; };
 		799121BD0E1F410C00035EEA /* ResourcePath.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ResourcePath.mm; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F202225C112261A80095C2A4 /* MainWindow-iPad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "MainWindow-iPad.xib"; path = "Resources-iPad/MainWindow-iPad.xib"; sourceTree = "<group>"; };
 		F22550D50E796BD00007A4C1 /* dist.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = dist.plist; sourceTree = "<group>"; };
 		F23F402E0E81B85200F77DC4 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		F24282700E84776800180039 /* Blinkenlights.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Blinkenlights.png; path = Media/Blinkenlights.png; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 				2D500B1D0D5A766B00DBA0E3 /* Engine */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
+				F202225B112261A70095C2A4 /* Resources-iPad */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 			);
@@ -460,6 +463,14 @@
 			path = Engine/Utility/Pathes;
 			sourceTree = "<group>";
 		};
+		F202225B112261A70095C2A4 /* Resources-iPad */ = {
+			isa = PBXGroup;
+			children = (
+				F202225C112261A80095C2A4 /* MainWindow-iPad.xib */,
+			);
+			name = "Resources-iPad";
+			sourceTree = "<group>";
+		};
 		F2607F290E780FE500B0A7BB /* Blinkenhall Legacy */ = {
 			isa = PBXGroup;
 			children = (
@@ -544,6 +555,7 @@
 				F24282B70E84D96800180039 /* CloseButtonP.png in Resources */,
 				F24283280E858A6D00180039 /* ApplicatoinCreditsP.png in Resources */,
 				F24283290E858A6D00180039 /* ApplicatoinCredits.png in Resources */,
+				F202225D112261A80095C2A4 /* MainWindow-iPad.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -626,6 +638,8 @@
 				INFOPLIST_FILE = Info.plist;
 				PREBINDING = NO;
 				PRODUCT_NAME = Stereoscope;
+				SDKROOT = iphoneos3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WARNING_CFLAGS = "-Wall";
 			};
 			name = Debug;
@@ -649,6 +663,8 @@
 				INFOPLIST_FILE = Info.plist;
 				PREBINDING = NO;
 				PRODUCT_NAME = Stereoscope;
+				SDKROOT = iphoneos3.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WARNING_CFLAGS = "-Wall";
 			};
 			name = Release;
@@ -701,6 +717,8 @@
 				INFOPLIST_FILE = Info.plist;
 				PREBINDING = NO;
 				PRODUCT_NAME = Stereoscope;
+				SDKROOT = iphoneos3.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WARNING_CFLAGS = "-Wall";
 			};
 			name = Distrubtion;

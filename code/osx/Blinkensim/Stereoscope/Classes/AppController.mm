@@ -318,6 +318,7 @@ static AppController *s_sharedAppController;
 
 	UIView *view = _mainNavigationController.view;
 	CGRect	rect = [[UIScreen mainScreen] applicationFrame];
+	view.frame = rect;
 	CGPoint targetCenter = CGPointMake(CGRectGetMidX(rect),CGRectGetMidY(rect));
 	view.center = CGPointMake(CGRectGetMidX(rect),CGRectGetMidY(rect) + view.bounds.size.height);
 	[UIView beginAnimations:@"SettingsAnimation" context:NULL];
@@ -905,8 +906,8 @@ static AppController *s_sharedAppController;
     CGPoint location = [inTouch locationInView:inView];
 	if (location.y > 440 && location.x > 260)
 	{
-		_infoButton.highlighted = YES;
-		return YES;
+//		_infoButton.highlighted = YES;
+//		return YES;
 	}
         
 	return NO;
