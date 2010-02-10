@@ -190,7 +190,11 @@ static AppController *s_sharedAppController;
 	[_window addSubview:_glView];
 
 	_titleView = [[UIImageView alloc] initWithFrame:rect];
-	_titleView.image = [UIImage imageNamed:@"Default.png"];
+	if (CGRectGetWidth(rect) <= 320) {
+		_titleView.image = [UIImage imageNamed:@"Default.png"];
+	} else {
+		_titleView.image = [UIImage imageNamed:@"Default-Portrait.png"];
+	}
 	[_window addSubview:_titleView];
 	
 	

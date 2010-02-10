@@ -46,6 +46,7 @@
 		799120D90E1E349D00035EEA /* skybox6.pvr in Resources */ = {isa = PBXBuildFile; fileRef = 799120D20E1E349D00035EEA /* skybox6.pvr */; };
 		799121BE0E1F410C00035EEA /* ResourcePath.mm in Sources */ = {isa = PBXBuildFile; fileRef = 799121BD0E1F410C00035EEA /* ResourcePath.mm */; };
 		F202225D112261A80095C2A4 /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = F202225C112261A80095C2A4 /* MainWindow-iPad.xib */; };
+		F20222E111226F670095C2A4 /* Default-Portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = F20222E011226F670095C2A4 /* Default-Portrait.png */; };
 		F22550D60E796BD00007A4C1 /* dist.plist in Resources */ = {isa = PBXBuildFile; fileRef = F22550D50E796BD00007A4C1 /* dist.plist */; };
 		F23F402F0E81B85200F77DC4 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = F23F402E0E81B85200F77DC4 /* Default.png */; };
 		F24282710E84776800180039 /* Blinkenlights.png in Resources */ = {isa = PBXBuildFile; fileRef = F24282700E84776800180039 /* Blinkenlights.png */; };
@@ -143,6 +144,7 @@
 		799121BD0E1F410C00035EEA /* ResourcePath.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ResourcePath.mm; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F202225C112261A80095C2A4 /* MainWindow-iPad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "MainWindow-iPad.xib"; path = "Resources-iPad/MainWindow-iPad.xib"; sourceTree = "<group>"; };
+		F20222E011226F670095C2A4 /* Default-Portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait.png"; sourceTree = "<group>"; };
 		F22550D50E796BD00007A4C1 /* dist.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = dist.plist; sourceTree = "<group>"; };
 		F23F402E0E81B85200F77DC4 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		F24282700E84776800180039 /* Blinkenlights.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Blinkenlights.png; path = Media/Blinkenlights.png; sourceTree = "<group>"; };
@@ -263,6 +265,7 @@
 				F2607FC80E7818EE00B0A7BB /* MainWindow.xib */,
 				F22550D50E796BD00007A4C1 /* dist.plist */,
 				F23F402E0E81B85200F77DC4 /* Default.png */,
+				F20222E011226F670095C2A4 /* Default-Portrait.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -556,6 +559,7 @@
 				F24283280E858A6D00180039 /* ApplicatoinCreditsP.png in Resources */,
 				F24283290E858A6D00180039 /* ApplicatoinCredits.png in Resources */,
 				F202225D112261A80095C2A4 /* MainWindow-iPad.xib in Resources */,
+				F20222E111226F670095C2A4 /* Default-Portrait.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
