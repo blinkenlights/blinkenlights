@@ -46,7 +46,7 @@
 	NSTimeInterval _maxTimeDifference;
 	int            _timeSamplesTaken;
 	NSTimeInterval _lastDrawTime;
-	char displayState[23][54];
+	unsigned char displayState[23][54];
 	UIImageView *_titleView;
 	NSDictionary *_currentProxy;
 	NSTimeInterval _connectionLostTime;

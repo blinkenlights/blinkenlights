@@ -567,7 +567,7 @@ bool CShell::UpdateScene()
 	if (currTime.tv_usec - time.tv_usec) 
 	{
 		frameRate = ((float)frames/((currTime.tv_usec - time.tv_usec) / 1000000.0f));
-		//[(AppController *)[[UIApplication sharedApplication] delegate] shellReportsFrameRate:frameRate];
+		[(AppController *)[[UIApplication sharedApplication] delegate] shellReportsFrameRate:frameRate];
 		// AppDisplayText->DisplayText(0, 0, 0.9f, RGBA(255,255,255,255), "fps: %3.2f", frameRate);
 		time = currTime;
 		frames = 0;

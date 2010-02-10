@@ -134,7 +134,7 @@ static NSString * const labelCellIdentifier = @"LabelCell";
 	if (indexPath.section == 0) {
 		cell.text = @"Autoselect Feed";
 		UISwitch *mySwitch = ((UISwitch *)cell.accessoryView);
-		mySwitch.isOn = [[[NSUserDefaults standardUserDefaults] objectForKey:@"autoselectProxy"] boolValue];
+		[mySwitch setOn:[[[NSUserDefaults standardUserDefaults] objectForKey:@"autoselectProxy"] boolValue] animated:NO];
 		[mySwitch addTarget:self action:@selector(takeValueForAutoselect:) forControlEvents:UIControlEventValueChanged];
 	} else if (indexPath.section < [projectTableSections count] + SECTIONS_BEFORE_PROXY_LIST) {
 		NSDictionary *proxy = [[[projectTableSections objectAtIndex:indexPath.section - SECTIONS_BEFORE_PROXY_LIST] items] objectAtIndex:indexPath.row];

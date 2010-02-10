@@ -621,11 +621,11 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Prefix.pch;
+				GCC_THUMB_SUPPORT = NO;
 				HEADER_SEARCH_PATHS = Engine/Include;
 				INFOPLIST_FILE = Info.plist;
 				PREBINDING = NO;
 				PRODUCT_NAME = Stereoscope;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = DefaultProfileUuid;
 				WARNING_CFLAGS = "-Wall";
 			};
 			name = Debug;
@@ -644,11 +644,11 @@
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Prefix.pch;
+				GCC_THUMB_SUPPORT = NO;
 				HEADER_SEARCH_PATHS = Engine/Include;
 				INFOPLIST_FILE = Info.plist;
 				PREBINDING = NO;
 				PRODUCT_NAME = Stereoscope;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = DefaultProfileUuid;
 				WARNING_CFLAGS = "-Wall";
 			};
 			name = Release;
@@ -659,7 +659,7 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				HEADER_SEARCH_PATHS = ./Engine/Include/;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos2.0;
+				SDKROOT = iphoneos3.0;
 			};
 			name = Debug;
 		};
@@ -668,7 +668,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				HEADER_SEARCH_PATHS = ./Engine/Include/;
-				SDKROOT = iphoneos2.0;
+				SDKROOT = iphoneos3.0;
 			};
 			name = Release;
 		};
@@ -677,7 +677,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				HEADER_SEARCH_PATHS = ./Engine/Include/;
-				SDKROOT = iphoneos2.0;
+				SDKROOT = iphoneos3.0;
 			};
 			name = Distrubtion;
 		};
@@ -696,11 +696,11 @@
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Prefix.pch;
+				GCC_THUMB_SUPPORT = NO;
 				HEADER_SEARCH_PATHS = Engine/Include;
 				INFOPLIST_FILE = Info.plist;
 				PREBINDING = NO;
 				PRODUCT_NAME = Stereoscope;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F6D7E195-F08E-488B-9845-5F7A616D3667";
 				WARNING_CFLAGS = "-Wall";
 			};
 			name = Distrubtion;

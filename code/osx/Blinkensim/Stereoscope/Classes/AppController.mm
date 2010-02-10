@@ -16,7 +16,7 @@
 #include "Application.h"
 
 //CONSTANTS:
-#define kFPS			24.0
+#define kFPS			60.0
 #define kSpeed			10.0
 
 // five seconds without a frame means timeout
