@@ -75,6 +75,8 @@
 		F2607F630E7810D100B0A7BB /* AppController.mm in Sources */ = {isa = PBXBuildFile; fileRef = F2607F590E7810D100B0A7BB /* AppController.mm */; };
 		F2607FC90E7818EE00B0A7BB /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2607FC80E7818EE00B0A7BB /* MainWindow.xib */; };
 		F26080BE0E790B9C00B0A7BB /* Windows256.png in Resources */ = {isa = PBXBuildFile; fileRef = F26080BD0E790B9C00B0A7BB /* Windows256.png */; };
+		F27498A111349CCE00CAD4B5 /* icon-50.png in Resources */ = {isa = PBXBuildFile; fileRef = F274989F11349CCE00CAD4B5 /* icon-50.png */; };
+		F27498A211349CCE00CAD4B5 /* icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = F27498A011349CCE00CAD4B5 /* icon-72.png */; };
 		F2DF6B570E831FA00088ACC1 /* Camera.png in Resources */ = {isa = PBXBuildFile; fileRef = F2DF6B560E831FA00088ACC1 /* Camera.png */; };
 /* End PBXBuildFile section */
 
@@ -188,6 +190,8 @@
 		F2607F590E7810D100B0A7BB /* AppController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AppController.mm; sourceTree = "<group>"; };
 		F2607FC80E7818EE00B0A7BB /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		F26080BD0E790B9C00B0A7BB /* Windows256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Windows256.png; path = Media/Windows256.png; sourceTree = "<group>"; };
+		F274989F11349CCE00CAD4B5 /* icon-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-50.png"; sourceTree = "<group>"; };
+		F27498A011349CCE00CAD4B5 /* icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-72.png"; sourceTree = "<group>"; };
 		F2DF6B560E831FA00088ACC1 /* Camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Camera.png; path = Media/Camera.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -259,6 +263,8 @@
 				31DF06C00E767C220092C379 /* Textures */,
 				31DF06C10E767C2B0092C379 /* Mesh */,
 				1B26781D0DA2F9B000B24DA5 /* icon.png */,
+				F274989F11349CCE00CAD4B5 /* icon-50.png */,
+				F27498A011349CCE00CAD4B5 /* icon-72.png */,
 				8D1107310486CEB800E47090 /* Info.plist */,
 				F2607F380E78103B00B0A7BB /* Settings.xib */,
 				F2607F390E78103B00B0A7BB /* EditingView.xib */,
@@ -560,6 +566,8 @@
 				F24283290E858A6D00180039 /* ApplicatoinCredits.png in Resources */,
 				F202225D112261A80095C2A4 /* MainWindow-iPad.xib in Resources */,
 				F20222E111226F670095C2A4 /* Default-Portrait.png in Resources */,
+				F27498A111349CCE00CAD4B5 /* icon-50.png in Resources */,
+				F27498A211349CCE00CAD4B5 /* icon-72.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
