@@ -101,7 +101,7 @@ public class DynamicOutput extends AbstractOutput {
             logger.fine("creating heartbeat receiver task bound to "+listenAddr);
             heartbeatReceiver = new BLPacketReceiver(
                     "Heartbeat receiver", listenPort, InetAddress.getByName(listenAddr),
-                    null, 0, AlphaMode.OPAQUE, null, null, BLPacketReceiver.DEFAULT_TIMEOUT, null);
+                    null, 0, ScaleMode.NEAREST_NEIGHBOUR, AlphaMode.OPAQUE, null, null, BLPacketReceiver.DEFAULT_TIMEOUT, null);
         }
         
         public void run() {

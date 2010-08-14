@@ -21,6 +21,7 @@ package de.blinkenlights.bmix.monitor;
 import java.net.SocketException;
 
 import de.blinkenlights.bmix.mixer.BLImage;
+import de.blinkenlights.bmix.mixer.ScaleMode;
 import de.blinkenlights.bmix.network.BLPacketReceiver;
 import de.blinkenlights.bmix.network.BLPacketReceiver.AlphaMode;
 import de.blinkenlights.bmix.protocol.BLFramePacket;
@@ -42,7 +43,7 @@ public class NetworkStreamMonitor extends Monitor {
 		super(nc.getName(), nc.getX(), nc.getY(), nc.getW(), nc.getH(), true);		
 		this.bpr = new BLPacketReceiver(
 				"receiver", nc.getPort(), null,
-				null, 0,
+				null, 0, ScaleMode.NEAREST_NEIGHBOUR,
 				AlphaMode.OPAQUE, null, null, BLPacketReceiver.DEFAULT_TIMEOUT, null);
 	}
 

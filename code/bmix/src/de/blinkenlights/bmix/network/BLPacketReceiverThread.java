@@ -157,7 +157,7 @@ public class BLPacketReceiverThread extends Thread {
 							.getImageHeight(), BufferedImage.TYPE_INT_ARGB);
 				}
 				fp.fillBufferedImage(layerImage);
-				l.updateImage(layerImage, receiver.getInputCropOffset());
+				l.updateImage(layerImage, receiver.getInputCropOffset(), receiver.getScaleMode());
 			}
 		} else if (System.currentTimeMillis() > lastPacketReceiptTime + timeout) {
 			for (Layer l : layersForReceiver) {

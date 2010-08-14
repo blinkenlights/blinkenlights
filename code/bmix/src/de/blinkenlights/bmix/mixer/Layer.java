@@ -90,7 +90,7 @@ public class Layer implements BLImage {
 	 * 
 	 * @param newImage The image to copy to this layer.
 	 */
-	public void updateImage(BufferedImage newImage, Point offset) {
+	public void updateImage(BufferedImage newImage, Point offset, ScaleMode scaleMode) {
 		
 	    clearImageToTransparent();
 
@@ -102,8 +102,7 @@ public class Layer implements BLImage {
 	    			offset.x, offset.y, offset.x + bi.getWidth(), offset.y + bi.getHeight(), null);
 	    } else {
 	    	// scale source image to fit bi
-	    	g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_OFF);
-	    	g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_NEAREST_NEIGHBOR);
+	    	g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, scaleMode.getRenderingHintValue());
 	    	g.drawImage(newImage, 0, 0, bi.getWidth(), bi.getHeight(), 0, 0, newImage.getWidth(), newImage.getHeight(), null);
 	    }
 		g.dispose();

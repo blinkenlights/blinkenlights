@@ -39,6 +39,8 @@
  -->
 <!ATTLIST input alpha-mode CDATA "chroma-key">
 
+<!ATTLIST input scale-mode CDATA "nearest-neighbour">
+
 <!-- HTML-style 24-bit hex string, prefixed by # just to be obnoxious (i.e. for forward compatibility)
      Defaults to black. Ignored unless alpha mode is chroma-key. -->
 <!ATTLIST input chroma-key-colour CDATA "#000000">

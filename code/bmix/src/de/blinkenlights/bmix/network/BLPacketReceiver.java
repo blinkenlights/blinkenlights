@@ -32,6 +32,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import de.blinkenlights.bmix.mixer.ScaleMode;
 import de.blinkenlights.bmix.protocol.BLHeartbeatPacket;
 import de.blinkenlights.bmix.protocol.BLPacket;
 import de.blinkenlights.bmix.protocol.BLPacketFactory;
@@ -112,6 +113,12 @@ public class BLPacketReceiver {
 	 */
 	private final int heartBeatDestPort;
 
+    /**
+     * The scaling mode to use when frames received on this input are copied to
+     * a layer.
+     */
+    private final ScaleMode scaleMode;
+
 	/**
 	 * The current alpha mode. This can be changed at any time on an existing
 	 * instance. Defaults to the extremely documented NATIVE mode.
@@ -175,12 +182,13 @@ public class BLPacketReceiver {
 	 *            heartbeats
 	 * @param transparentColour
 	 * @param alphaMode
+	 * @param scaleMode 
 	 * @throws SocketException
 	 *             if binding to the specified port and address is not possible.
 	 */
 	public BLPacketReceiver(String name, int port, InetAddress address,
 			InetAddress heartBeatDestination, int heartBeatDestPort,
-			AlphaMode alphaMode, Color transparentColour, Color shadowColor,
+			ScaleMode scaleMode, AlphaMode alphaMode, Color transparentColour, Color shadowColor,
 			int timeoutMillis, Point cropOffset) throws SocketException {
 		this.name = name;
 		shadowColour = shadowColor;
@@ -196,6 +204,7 @@ public class BLPacketReceiver {
 		if (port < 1) {
 			throw new IllegalArgumentException("port must be > 0");
 		}
+		this.scaleMode = scaleMode;
 		this.alphaMode = alphaMode;
 		this.transparentColour = transparentColour;
 
@@ -263,6 +272,10 @@ public class BLPacketReceiver {
 		relaySenders.add(relaySender);
 	}
 
+	public ScaleMode getScaleMode() {
+        return scaleMode;
+    }
+	
 	public AlphaMode getAlphaMode() {
 		return alphaMode;
 	}

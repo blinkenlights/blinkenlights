@@ -43,6 +43,7 @@ import de.blinkenlights.bmix.mixer.FixedOutput;
 import de.blinkenlights.bmix.mixer.Layer;
 import de.blinkenlights.bmix.mixer.Output;
 import de.blinkenlights.bmix.mixer.OutputSender;
+import de.blinkenlights.bmix.mixer.ScaleMode;
 import de.blinkenlights.bmix.mixer.AbstractOutput.PacketType;
 import de.blinkenlights.bmix.movie.MovieRecorderOutput;
 import de.blinkenlights.bmix.network.BLPacketReceiver;
@@ -146,6 +147,7 @@ public class BMixSAXHandler extends DefaultHandler {
 	            String listenPort = attributes.getValue("listen-port");
 	            String heartBeatDestAddrString = attributes.getValue("heartbeat-dest-addr");
 	            AlphaMode alphaMode = AlphaMode.forCode(attributes.getValue("alpha-mode"));
+	            ScaleMode scaleMode = ScaleMode.forCode(attributes.getValue("scale-mode"));
 	            Color transparentColour = Color.decode(attributes.getValue("chroma-key-colour"));
 	            String shadowColourCode = attributes.getValue("shadow-colour");
 	            Color shadowColour = null;
@@ -175,7 +177,7 @@ public class BMixSAXHandler extends DefaultHandler {
 	                new BLPacketReceiver(id,
 	                        Integer.parseInt(listenPort),
 	                        InetAddress.getByName(listenAddr),
-	                        heartBeatDestAddr, heartBeatDestPort, alphaMode,
+	                        heartBeatDestAddr, heartBeatDestPort, scaleMode, alphaMode,
 	                        transparentColour, shadowColour, inputTimeout, 
 	                        cropOffset);
 	            inputs.put(id, receiver);

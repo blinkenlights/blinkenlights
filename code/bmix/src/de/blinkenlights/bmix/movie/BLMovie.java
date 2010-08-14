@@ -55,7 +55,11 @@ import de.blinkenlights.bmix.util.GZIPDetector;
  * in the blm entity, a 1 bit movie is assumed. (this appears to be the case for older 1 bit movies)
  */
 public class BLMovie {
+    
+    // FIXME this list is not random access, but the public API only exposes
+    // a getFrame(int) method!
 	LinkedList<Frame> frames;
+	
 	private boolean isGzip;
 
 	/**
