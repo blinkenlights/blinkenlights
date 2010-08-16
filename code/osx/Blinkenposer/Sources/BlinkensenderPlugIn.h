@@ -37,6 +37,7 @@
 @property (assign) NSArray * inputBlinkenStructure;
 @property double inputFPSCap;
 @property double inputMinFPS;
+@property BOOL   inputColor;
 //@property double inputBitsPerPixel;
 
 @property (assign)id <QCPlugInOutputImageProvider> outputImage;

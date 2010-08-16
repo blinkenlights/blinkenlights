@@ -41,6 +41,24 @@
 	return result;
 }
 
++ (NSData *)frameDataForColorBlinkenStructure:(NSArray *)inBlinkenStructure {
+	NSMutableData *result = [NSMutableData data];
+	int channel = 0;
+	for (channel=0; channel < 3; channel++) {
+		for (NSArray *row in inBlinkenStructure) {
+			int pixelCount = 0;
+			for (NSNumber *value in row) {
+				if ((pixelCount % 3) == channel) {
+					unsigned char charValue = [value integerValue];
+					[result appendBytes:&charValue length:1];
+				} 
+				pixelCount++;
+			}
+		}
+	}
+	return result;
+}
+
 
 - (void)createSendSocket {
 	I_sendSocket = CFSocketCreate(kCFAllocatorDefault, PF_INET, SOCK_DGRAM, IPPROTO_UDP, 
@@ -155,21 +173,27 @@
     };
 }
 
-- (void)sendBlinkenStructure:(NSArray *)inBlinkenStructure
+- (void)sendBlinkenStructure:(NSArray *)inBlinkenStructure {
+	[self sendBlinkenStructure:inBlinkenStructure color:NO];
+}
+
+- (void)sendBlinkenStructure:(NSArray *)inBlinkenStructure color:(BOOL)isColor
 {
 	NSMutableData *sendData = [NSMutableData data];
 	
 	struct mcu_frame_header header;
 	header.magic =    OSSwapHostToBigInt32(MAGIC_MCU_FRAME);
 	header.height =   OSSwapHostToBigInt16([inBlinkenStructure count]);
-	header.width =    OSSwapHostToBigInt16([[inBlinkenStructure lastObject] count]);
-	header.channels = OSSwapHostToBigInt16(1);
+	header.width =    OSSwapHostToBigInt16([[inBlinkenStructure lastObject] count] / (isColor ? 3 : 1));
+	header.channels = OSSwapHostToBigInt16(isColor ? 3 : 1);
 	header.maxval =   OSSwapHostToBigInt16(0xff);
 	
 	[sendData appendBytes:&header length:sizeof(struct mcu_frame_header)];
-	
-	[sendData appendData:[BlinkenSender frameDataForBlinkenStructure:inBlinkenStructure]];
-	
+	if (!isColor) {
+		[sendData appendData:[BlinkenSender frameDataForBlinkenStructure:inBlinkenStructure]];
+	} else {
+		[sendData appendData:[BlinkenSender frameDataForColorBlinkenStructure:inBlinkenStructure]];
+	}
 	[self sendData:sendData];
 }
 

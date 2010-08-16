@@ -22,6 +22,7 @@
 @dynamic inputBlinkenStructure;
 @dynamic inputFPSCap;
 @dynamic inputMinFPS;
+@dynamic inputColor;
 //@dynamic inputBitsPerPixel;
 
 @dynamic outputImage;
@@ -39,6 +40,7 @@
 		@"inputBlinkenStructure",
 		@"inputFPSCap",
 		@"inputMinFPS",
+		@"inputColor",
 //		@"inputBitsPerPixel",
     
     	@"outputImage",
@@ -121,6 +123,12 @@
                 	[NSNumber numberWithInt:1], QCPortAttributeDefaultValueKey,
                 nil];
 
+	if ([inKey isEqualToString:@"inputColor"])
+        return [NSDictionary dictionaryWithObjectsAndKeys:
+                	@"Color?", QCPortAttributeNameKey,
+                	[NSNumber numberWithInt:0], QCPortAttributeDefaultValueKey,
+                nil];
+
 //	if ([inKey isEqualToString:@"inputBitsPerPixel"])
 //        return [NSDictionary dictionaryWithObjectsAndKeys:
 //                	@"Bits Per Pixel", QCPortAttributeNameKey,
@@ -189,7 +197,7 @@
 	_blinkenSender = [BlinkenSender new];
 }
 
-- (NSArray *)blinkenStructureForImageProvider:(id)inImageProvider bitsPerPixel:(int)inBPP {
+- (NSArray *)blinkenStructureForImageProvider:(id)inImageProvider bitsPerPixel:(int)inBPP color:(BOOL)isColor {
 
 	CGColorSpaceRef					colorSpace;
 	NSString*						pixelFormat;
@@ -241,11 +249,16 @@
 #if __BIG_ENDIAN__
 			rowBase += 3;
 #else
+			if (isColor) {
+				[blinkenRow addObject:[NSNumber numberWithInt:(int)(*(rowBase + 2))]]; // Red
+				[blinkenRow addObject:[NSNumber numberWithInt:(int)(*(rowBase + 1))]]; // Green
+				[blinkenRow addObject:[NSNumber numberWithInt:(int)(*(rowBase + 0))]]; // Blue
+			}
 			rowBase += 4;
 #endif
 			}
 			value = (int)roundf((value / 255.) * 15.);
-			[blinkenRow addObject:[NSNumber numberWithInt:value]];
+			if (!isColor) [blinkenRow addObject:[NSNumber numberWithInt:value]];
 		}
 		[blinkenStructure addObject:blinkenRow];
 
@@ -271,6 +284,10 @@
 	The OpenGL context for rendering can be accessed and defined for CGL macros using:
 	CGLContextObj cgl_ctx = [context CGLContextObj];
 	*/
+
+	if ([self didValueForInputKeyChange:@"inputColor"]) {
+		NSLog(@"toggle clolor! %d", self.inputColor);
+	}
 
 	if ([self didValueForInputKeyChange:@"inputTargetAddress"] || [self didValueForInputKeyChange:@"inputTargetPort"] || !_renderedOnce)
 	{
@@ -304,22 +321,26 @@
 			
 			id inputImage = self.inputImage;
 			if (inputImage) {
-				NSArray *structure = [self blinkenStructureForImageProvider:inputImage bitsPerPixel:bitsPerPixel];
+				NSArray *structure = [self blinkenStructureForImageProvider:inputImage bitsPerPixel:bitsPerPixel color:self.inputColor];
 				if (structure) blinkenStructure = structure;
 			}
 			if ([self blinkenStructureIsDifferentFromLastFrame:blinkenStructure]) {
 				self.blinkenStructure = blinkenStructure;
-				[_blinkenSender sendBlinkenStructure:blinkenStructure];
+				[_blinkenSender sendBlinkenStructure:blinkenStructure color:self.inputColor];
 				
 				if (!_blinkenImageProvider)
 				{
 					_blinkenImageProvider = [BlinkenImageProvider new];
 				}
-				CGSize imageSize = CGSizeMake((CGFloat)[[blinkenStructure lastObject] count],(CGFloat)[blinkenStructure count]);
+				CGSize imageSize = CGSizeMake((CGFloat)([[blinkenStructure lastObject] count] / (self.inputColor ? 3 : 1)),(CGFloat)[blinkenStructure count]);
 				
 				if ([blinkenStructure count] && [[blinkenStructure lastObject] count]) {
 					
-					[_blinkenImageProvider setFrameData:[BlinkenSender frameDataForBlinkenStructure:blinkenStructure] size:imageSize channels:1 maxValue:0xff bitsPerPixel:8];
+					if (!self.inputColor) {
+						[_blinkenImageProvider setFrameData:[BlinkenSender frameDataForBlinkenStructure:blinkenStructure] size:imageSize channels:1 maxValue:0xff bitsPerPixel:8];
+					} else {
+						[_blinkenImageProvider setFrameData:[BlinkenSender frameDataForColorBlinkenStructure:blinkenStructure] size:imageSize channels:3 maxValue:0xff bitsPerPixel:8];
+					}
 		
 					self.outputImage = _blinkenImageProvider;
 					self.outputBlinkenStructure = blinkenStructure;

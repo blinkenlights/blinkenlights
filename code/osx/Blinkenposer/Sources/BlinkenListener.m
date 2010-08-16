@@ -337,6 +337,7 @@ static void readData (
 
 			if ([_delegate respondsToSelector:@selector(blinkenListener:receivedFrames:atTimestamp:)]) {
 				BlinkenFrame *frame = [[BlinkenFrame alloc] initWithData:frameData frameSize:frameSize screenID:0];
+				frame.channels = header->channels;
 				frame.maxValue = header->maxval;
 				NSArray *framesArray = [[NSArray alloc] initWithObjects:frame,nil];
 				[frame release];
@@ -361,6 +362,7 @@ static void readData (
 //					NSLog(@"%s size:%@ frameLength:%u",__FUNCTION__,NSStringFromSize(NSSizeFromCGSize(frameSize)),frameLength);
 					NSData *frameData = [[NSData alloc] initWithBytes:subframeHeaderStart + sizeof(mcu_subframe_header_t) length:frameLength];
 					BlinkenFrame *frame = [[BlinkenFrame alloc] initWithData:frameData frameSize:frameSize screenID:header->screen_id];
+					frame.channels = 1;
 					frame.bitsPerPixel = header->bpp;
 					frame.maxValue = (header->bpp == 4) ? 0xf : 0xff;
 					[frameData release];
@@ -411,6 +413,7 @@ static void readData (
 @synthesize screenID = _screenID;
 @synthesize frameData = _frameData;
 @synthesize frameSize = _frameSize;
+@synthesize channels = _channels;
 
 - (id)initWithData:(NSData *)inData frameSize:(CGSize)inSize screenID:(unsigned char)inScreenID
 {

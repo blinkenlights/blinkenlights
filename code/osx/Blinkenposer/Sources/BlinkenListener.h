@@ -47,11 +47,13 @@
 	CGSize  _frameSize;
 	unsigned char _maxValue;
 	unsigned char _bitsPerPixel;
+	unsigned char _channels;
 }
 
 @property unsigned char maxValue;
 @property unsigned char screenID;
 @property unsigned char bitsPerPixel;
+@property unsigned char channels;
 @property (copy) NSData *frameData;
 @property CGSize frameSize;
 

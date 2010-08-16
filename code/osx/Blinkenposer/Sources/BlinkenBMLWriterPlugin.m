@@ -19,6 +19,7 @@
 @dynamic inputBaseDirectory;
 @dynamic inputBlinkenStructure;
 @dynamic inputFPSCap;
+@dynamic inputColor;
 
 
 + (NSArray*) sortedPropertyPortKeys {
@@ -27,6 +28,7 @@
 		@"inputBlinkenStructure",
 		@"inputFPSCap",
 		@"inputBaseDirectory",
+		@"inputColor",
 
     nil];
 }
@@ -62,6 +64,12 @@
         return [NSDictionary dictionaryWithObjectsAndKeys:
                 	@"Destination Path", QCPortAttributeNameKey,
                 	@"~/Desktop", QCPortAttributeDefaultValueKey,
+                nil];
+
+	if ([inKey isEqualToString:@"inputColor"])
+        return [NSDictionary dictionaryWithObjectsAndKeys:
+                	@"Color?", QCPortAttributeNameKey,
+                	[NSNumber numberWithInt:0], QCPortAttributeDefaultValueKey,
                 nil];
 	
 	return nil;
@@ -130,13 +138,16 @@
 //	NSLog(@"%s, %@",__FUNCTION__, self.blinkenStructure);
 	NSMutableString *xmlStart = [NSMutableString stringWithString:@"<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n"];
 	NSArray *structure = self.inputBlinkenStructure;
-	[xmlStart appendFormat:@"<blm width=\"%d\" height=\"%d\" bits=\"4\">\n",[[structure lastObject] count],[structure count]];
+	int channels = self.inputColor ? 3 : 1;
+	[xmlStart appendFormat:@"<blm width=\"%d\" height=\"%d\" bits=\"%d\" channels=\"%d\">\n",[[structure lastObject] count] / channels,[structure count],self.inputColor ? 8 : 4,channels];
 	[xmlStart appendFormat:@"<header>\n"];
 	[xmlStart appendFormat:@"  <title></title>\n"];
 	[xmlStart appendFormat:@"  <description></description>\n"];
 	[xmlStart appendFormat:@"  <author></author>\n"];
 	[xmlStart appendFormat:@"  <email></email>\n"];
 	[xmlStart appendFormat:@"  <url></url>\n"];
+	[xmlStart appendFormat:@"  <loop>no</loop>\n"];
+	[xmlStart appendFormat:@"  <max_duration>60</max_duration>\n"];
 	[xmlStart appendFormat:@"  <recorder>Blinken BML Writer Plugin</recorder>\n"];
 	NSCalendarDate *date = [NSCalendarDate date];
 	[xmlStart appendFormat:@"  <recordingDate>%@</recordingDate>\n",[date descriptionWithCalendarFormat:@"%Y-%m-%d"]];
@@ -169,6 +180,7 @@
 			}
 		}
 	}
+	BOOL isColor = self.inputColor;
 	NSString *entryRepresentations[] = {@"0",@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"a",@"b",@"c",@"d",@"e",@"f"};
 	if (_writingFileHandle && _blinkenStructure)
 	{
@@ -178,8 +190,12 @@
 			for (NSArray *dataRow in _blinkenStructure) {
 				NSMutableString *rowString = [NSMutableString string];
 				for (NSNumber *dataPoint in dataRow) {
-					int index = MIN(16,MAX(0,[dataPoint intValue]));
-					[rowString appendString:entryRepresentations[index]];
+					if (isColor) {
+						[rowString appendFormat:@"%02x",[dataPoint unsignedCharValue]];
+					} else {
+						int index = MIN(15,MAX(0,[dataPoint intValue]));
+						[rowString appendString:entryRepresentations[index]];
+					}
 				}
 				[rows addObject:[NSString stringWithFormat:@"      <row>%@</row>",rowString]];
 			}

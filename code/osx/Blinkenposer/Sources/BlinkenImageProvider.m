@@ -47,6 +47,7 @@
     	int rowOffset = _frameSize.height - NSMaxY(inBounds);
         unsigned char *src, *dest;
         src = (unsigned char *)[self.frameData bytes];
+		unsigned color_offset = _frameSize.height * _frameSize.width;
         dest = inBaseAddress;
         NSUInteger myRowBytes = (_bitsPerPixel == 4) ? (((int)_frameSize.width) + 1) / 2 : _frameSize.width;
     
@@ -66,29 +67,36 @@
             int x = 0;
             for (x=0;x<MIN(_frameSize.width, inBounds.size.width);x++) {
 				
-                unsigned char grayValue = 0;
+                unsigned char red = 0, green = 0, blue = 0;
                 if (_bitsPerPixel == 4) {
                 	if (x % 2 == 0) {
-                		grayValue = ((*sourceRow) >> 4);
+                		red = green = blue = ((*sourceRow) >> 4);
                 	} else {
-	                	grayValue = ((*sourceRow) & 0xF);
+	                	red = green = blue = ((*sourceRow) & 0xF);
 	                	sourceRow++;
 	                }
-                	grayValue *= 0x11;
+                	red *= 0x11;
+					green = blue = red;
                 } else {
-                	grayValue = (*sourceRow) * 255. / _maxValue;
+                	red = (*sourceRow) * 255. / _maxValue;
+					if (_numberOfChannels == 3) {
+						green = (*(sourceRow + color_offset)) * 255. / _maxValue;
+						blue = (*(sourceRow + color_offset + color_offset)) * 255. / _maxValue;
+					} else {
+						green = blue = red;
+					}
                 	sourceRow++;
                 }
                 if (isBGRA) {
-                    *destRow = grayValue; destRow++;  
-                    *destRow = grayValue; destRow++; 
-                    *destRow = grayValue; destRow++; 
+                    *destRow = blue; destRow++;  
+                    *destRow = green; destRow++; 
+                    *destRow = red; destRow++; 
                     *destRow = alpha;     destRow++; 
                 } else {
                     *destRow = alpha;     destRow++; 
-                    *destRow = grayValue; destRow++;  
-                    *destRow = grayValue; destRow++;  
-                    *destRow = grayValue; destRow++;  
+                    *destRow = red; destRow++;  
+                    *destRow = green; destRow++;  
+                    *destRow = blue; destRow++;  
                 }
             }
         }	

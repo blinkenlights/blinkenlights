@@ -332,6 +332,7 @@ Here you need to declare the input / output properties as dynamic as Quartz Comp
 
 - (BlinkenFrame *)combinedFrameForFrames:(NSArray *)inFrames
 {
+	
 	NSMutableArray *screenMetadata = [NSMutableArray array];
 	// collect dimensions
 	CGSize combinedSize = CGSizeZero;
@@ -398,7 +399,7 @@ Here you need to declare the input / output properties as dynamic as Quartz Comp
 	{
 		_blinkenImageProvider = [BlinkenImageProvider new];
 	}
-	[_blinkenImageProvider setFrameData:frame.frameData size:frameSize channels:1 maxValue:maxValue bitsPerPixel:frame.bitsPerPixel];
+	[_blinkenImageProvider setFrameData:frame.frameData size:frameSize channels:frame.channels maxValue:maxValue bitsPerPixel:frame.bitsPerPixel];
 	
 	unsigned char * bytes = (unsigned char *)[frame.frameData bytes];
 	unsigned char bitsPerPixel = frame.bitsPerPixel;

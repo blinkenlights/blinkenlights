@@ -32,6 +32,7 @@
 
 @property (assign) NSArray * inputBlinkenStructure;
 @property double inputFPSCap;
+@property BOOL inputColor;
 @property (assign) NSString *inputBaseDirectory;
 
 
