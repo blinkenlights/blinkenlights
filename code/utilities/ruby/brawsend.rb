@@ -28,8 +28,6 @@ require 'thread'
 require 'socket'
 require 'ipaddr'
 require 'optparse' 
-require 'rdoc/ri/ri_paths'
-require 'rdoc/usage'
 require 'ostruct'
 require 'date'
 
@@ -130,13 +128,37 @@ class App
       # TO DO - place in local vars, etc
     end
     
+    # The comment block at the top of this file, as RDoc::usage used to print
+    # it. Without arguments the whole block, otherwise only the named
+    # "== Section" parts.
+    def header_comment(*sections)
+      lines = File.readlines(__FILE__).drop(1)
+      lines = lines.take_while { |l| l =~ /^\s*(#|$)/ }
+      lines = lines.map { |l| l.sub(/^\s*#\s?/, '').rstrip }
+      unless sections.empty?
+        wanted = sections.map { |s| s.downcase }
+        keep = false
+        lines = lines.select do |l|
+          if l =~ /^==\s*(.*)$/
+            keep = wanted.member?($1.strip.downcase)
+            false
+          else
+            keep
+          end
+        end
+      end
+      lines.join("\n").strip
+    end
+
     def output_help
       output_version
-      RDoc::usage() #exits app
+      puts header_comment
+      exit 0 #exits app
     end
     
     def output_usage
-      RDoc::usage('usage') # gets usage from comments above
+      puts header_comment('Usage') # gets usage from comments above
+      exit 0
     end
     
     def output_version
