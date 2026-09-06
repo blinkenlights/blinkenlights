@@ -75,12 +75,14 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
 @implementation UITouch (domadditions)
 - (CGPoint)locationInWindow
 {
-    return _locationInWindow;
+    // was: the private _locationInWindow ivar, gone since iOS 3.2.
+    // A nil view means "the window's coordinate system", which is what it held.
+    return [self locationInView:nil];
 }
 
 - (CGPoint)previousLocationInWindow
 {
-    return _previousLocationInWindow;
+    return [self previousLocationInView:nil];
 }
 @end
 

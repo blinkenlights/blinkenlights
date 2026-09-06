@@ -25,7 +25,7 @@
 
 static CShell *shell = NULL;
 
-@interface AppController ()
+@interface AppController () <NSXMLParserDelegate>
 - (void)fadeoutStartscreen;
 - (void)connectToAutoconnectProxy;
 - (void)handleConnectionFailure;
@@ -187,6 +187,10 @@ static AppController *s_sharedAppController;
 	[_glView setDelegate:self];
     [_glView setShell:shell];
     
+	// UIKit has required a root view controller on the main window since iOS 6;
+	// everything below still goes straight onto the window, as it always did.
+	_window.rootViewController = [[[UIViewController alloc] init] autorelease];
+
 	[_window addSubview:_glView];
 
 	_titleView = [[UIImageView alloc] initWithFrame:rect];

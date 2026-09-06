@@ -76,26 +76,26 @@ void ConvertFileToDefine(
 
 static void WriteHData(
 	FILE				* const pFile,
-	const unsigned long	* const p,
+	const unsigned int	* const p,
 	const unsigned int	nBytes,
 	const char			* const sName)
 {
 	unsigned int i, j;
 	unsigned int n = (nBytes + 3) / 4;
-	unsigned long	*pTmp;
+	unsigned int	*pTmp;
 
 	/*
 		We're rounding up the data to some number of 'unsigned longs'. Need to
 		ensure the last unnecessary 0..3 bytes bytes are 0.
 	*/
-	pTmp = new unsigned long[n];
+	pTmp = new unsigned int[n];
 	pTmp[n-1] = 0;
 	memcpy(pTmp, p, nBytes);
 
 	/*
 		Write the data.
 	*/
-	fprintf(pFile, "const unsigned long %s[%d] =\n", sName, n);
+	fprintf(pFile, "const unsigned int %s[%d] =\n", sName, n);
 	fprintf(pFile, "{\n");
 	for(i = 0; i < n;)
 	{
@@ -135,7 +135,7 @@ static void WriteHCameras(
 		else
 		{
 			sprintf(&pStr[i * CFAH], "%s%dAnimFOV", sName, i);
-			WriteHData(pFile, (unsigned long*)s.pCamera[i].pfAnimFOV, s.nNumFrame * sizeof(*s.pCamera[i].pfAnimFOV), &pStr[i * CFAH]);
+			WriteHData(pFile, (unsigned int*)s.pCamera[i].pfAnimFOV, s.nNumFrame * sizeof(*s.pCamera[i].pfAnimFOV), &pStr[i * CFAH]);
 		}
 	}
 
@@ -180,10 +180,10 @@ static void WriteHCPODData(
 
 	if(bValidData && n && s.nStride) {
 		sprintf(buf, "%s%s", sName, sNamePost);
-		WriteHData(pFile, (unsigned long*)s.pData, n * s.nStride, buf);
+		WriteHData(pFile, (unsigned int*)s.pData, n * s.nStride, buf);
 		sprintf(pStr, "%s		{ (EDataType)0x%08x, %d, %d, (unsigned char*)%s },\n", pStr, s.eType, s.n, s.nStride, buf);
 	} else {
-		sprintf(pStr, "%s		{ (EDataType)0x%08x, %d, %d, (unsigned char*)0x%08x },\n", pStr, s.eType, s.n, s.nStride, (unsigned int)s.pData);
+		sprintf(pStr, "%s		{ (EDataType)0x%08x, %d, %d, (unsigned char*)0x%08x },\n", pStr, s.eType, s.n, s.nStride, (unsigned int)(uintptr_t)s.pData);
 	}
 }
 
@@ -237,7 +237,7 @@ static void WriteHMeshes(
 		if(s.pMesh[i].nNumStrips)
 		{
 			sprintf(buf, "%s%dpnStripLength", sName, i);
-			WriteHData(pFile, (unsigned long*)s.pMesh[i].pnStripLength, s.pMesh[i].nNumStrips * sizeof(*s.pMesh[i].pnStripLength), buf);
+			WriteHData(pFile, (unsigned int*)s.pMesh[i].pnStripLength, s.pMesh[i].nNumStrips * sizeof(*s.pMesh[i].pnStripLength), buf);
 			sprintf(pStr, "%s		(unsigned int*)%s, %d,\n", pStr, buf, s.pMesh[i].nNumStrips);
 		}
 		else
@@ -268,7 +268,7 @@ static void WriteHMeshes(
 		if(s.pMesh[i].pInterleaved)
 		{
 			sprintf(buf, "%s%dpInterleaved", sName, i);
-			WriteHData(pFile, (unsigned long*)s.pMesh[i].pInterleaved, s.pMesh[i].nNumVertex * s.pMesh[i].sVertex.nStride, buf);
+			WriteHData(pFile, (unsigned int*)s.pMesh[i].pInterleaved, s.pMesh[i].nNumVertex * s.pMesh[i].sVertex.nStride, buf);
 			sprintf(pStr, "%s		(unsigned char*)%s,\n", pStr, buf);
 		}
 		else
@@ -281,15 +281,15 @@ static void WriteHMeshes(
 			sprintf(pStr, "%s		{\n", pStr);
 
 			sprintf(buf, "%s%dpnBatches", sName, i);
-			WriteHData(pFile, (unsigned long*)s.pMesh[i].sBoneBatches.pnBatches, s.pMesh[i].sBoneBatches.nBatchCnt * sizeof(*s.pMesh[i].sBoneBatches.pnBatches) * s.pMesh[i].sBoneBatches.nBatchBoneMax, buf);
+			WriteHData(pFile, (unsigned int*)s.pMesh[i].sBoneBatches.pnBatches, s.pMesh[i].sBoneBatches.nBatchCnt * sizeof(*s.pMesh[i].sBoneBatches.pnBatches) * s.pMesh[i].sBoneBatches.nBatchBoneMax, buf);
 			sprintf(pStr, "%s			(int*)%s,\n", pStr, buf);
 
 			sprintf(buf, "%s%dpnBatchBoneCnt", sName, i);
-			WriteHData(pFile, (unsigned long*)s.pMesh[i].sBoneBatches.pnBatchBoneCnt, s.pMesh[i].sBoneBatches.nBatchCnt * sizeof(*s.pMesh[i].sBoneBatches.pnBatchBoneCnt), buf);
+			WriteHData(pFile, (unsigned int*)s.pMesh[i].sBoneBatches.pnBatchBoneCnt, s.pMesh[i].sBoneBatches.nBatchCnt * sizeof(*s.pMesh[i].sBoneBatches.pnBatchBoneCnt), buf);
 			sprintf(pStr, "%s			(int*)%s,\n", pStr, buf);
 
 			sprintf(buf, "%s%dpnBatchOffset", sName, i);
-			WriteHData(pFile, (unsigned long*)s.pMesh[i].sBoneBatches.pnBatchOffset, s.pMesh[i].sBoneBatches.nBatchCnt * sizeof(*s.pMesh[i].sBoneBatches.pnBatchOffset), buf);
+			WriteHData(pFile, (unsigned int*)s.pMesh[i].sBoneBatches.pnBatchOffset, s.pMesh[i].sBoneBatches.nBatchCnt * sizeof(*s.pMesh[i].sBoneBatches.pnBatchOffset), buf);
 			sprintf(pStr, "%s			(int*)%s,\n", pStr, buf);
 
 			sprintf(pStr, "%s			%d,\n", pStr, s.pMesh[i].sBoneBatches.nBatchBoneMax);
@@ -331,7 +331,7 @@ static void WriteHNodes(
 		if(s.pNode[i].pszName)
 		{
 			sprintf(buf, "%s%dpszName", sName, i);
-			WriteHData(pFile, (unsigned long*)s.pNode[i].pszName, (unsigned int)strlen(s.pNode[i].pszName) + 1, buf);
+			WriteHData(pFile, (unsigned int*)s.pNode[i].pszName, (unsigned int)strlen(s.pNode[i].pszName) + 1, buf);
 		}
 		sprintf(pStr, "%s		(char*)%s,\n", pStr, buf);
 
@@ -354,7 +354,7 @@ static void WriteHNodes(
 		if(s.pNode[i].pfAnimPosition)
 		{
 			sprintf(buf, "%s%dpfAnimPosition", sName, i);
-			WriteHData(pFile, (unsigned long*)s.pNode[i].pfAnimPosition, s.nNumFrame * 3 * sizeof(*s.pNode[i].pfAnimPosition), buf);
+			WriteHData(pFile, (unsigned int*)s.pNode[i].pfAnimPosition, s.nNumFrame * 3 * sizeof(*s.pNode[i].pfAnimPosition), buf);
 		}
 		if(s.nFlags & MODELPODSF_FIXED)
 			sprintf(pStr, "%s		(int*)%s,\n", pStr, buf);
@@ -365,7 +365,7 @@ static void WriteHNodes(
 		if(s.pNode[i].pfAnimRotation)
 		{
 			sprintf(buf, "%s%dpfAnimRotation", sName, i);
-			WriteHData(pFile, (unsigned long*)s.pNode[i].pfAnimRotation, s.nNumFrame * 4 * sizeof(*s.pNode[i].pfAnimRotation), buf);
+			WriteHData(pFile, (unsigned int*)s.pNode[i].pfAnimRotation, s.nNumFrame * 4 * sizeof(*s.pNode[i].pfAnimRotation), buf);
 		}
 		if(s.nFlags & MODELPODSF_FIXED)
 			sprintf(pStr, "%s		(int*)%s,\n", pStr, buf);
@@ -376,7 +376,7 @@ static void WriteHNodes(
 		if(s.pNode[i].pfAnimScale)
 		{
 			sprintf(buf, "%s%dpfAnimScale", sName, i);
-			WriteHData(pFile, (unsigned long*)s.pNode[i].pfAnimScale, s.nNumFrame * 7 * sizeof(*s.pNode[i].pfAnimScale), buf);
+			WriteHData(pFile, (unsigned int*)s.pNode[i].pfAnimScale, s.nNumFrame * 7 * sizeof(*s.pNode[i].pfAnimScale), buf);
 		}
 		if(s.nFlags & MODELPODSF_FIXED)
 			sprintf(pStr, "%s		(int*)%s,\n", pStr, buf);
@@ -412,7 +412,7 @@ static void WriteHTextures(
 		if(s.pTexture[i].pszName)
 		{
 			sprintf(buf, "%s%dpszName", sName, i);
-			WriteHData(pFile, (unsigned long*)s.pTexture[i].pszName, (unsigned int)strlen(s.pTexture[i].pszName) + 1, buf);
+			WriteHData(pFile, (unsigned int*)s.pTexture[i].pszName, (unsigned int)strlen(s.pTexture[i].pszName) + 1, buf);
 		}
 		sprintf(pStr, "%s		(char*)%s,\n", pStr, buf);
 
@@ -445,7 +445,7 @@ static void WriteHMaterials(
 		if(s.pMaterial[i].pszName)
 		{
 			sprintf(buf, "%s%dpszName", sName, i);
-			WriteHData(pFile, (unsigned long*)s.pMaterial[i].pszName, (unsigned int)strlen(s.pMaterial[i].pszName) + 1, buf);
+			WriteHData(pFile, (unsigned int*)s.pMaterial[i].pszName, (unsigned int)strlen(s.pMaterial[i].pszName) + 1, buf);
 		}
 		sprintf(pStr, "%s		(char*)%s,\n", pStr, buf);
 
@@ -471,7 +471,7 @@ static void WriteHMaterials(
 		if(s.pMaterial[i].pszEffectFile)
 		{
 			sprintf(buf, "%s%dpszEffectFile", sName, i);
-			WriteHData(pFile, (unsigned long*)s.pMaterial[i].pszEffectFile, (unsigned int)strlen(s.pMaterial[i].pszEffectFile) + 1, buf);
+			WriteHData(pFile, (unsigned int*)s.pMaterial[i].pszEffectFile, (unsigned int)strlen(s.pMaterial[i].pszEffectFile) + 1, buf);
 		}
 		sprintf(pStr, "%s		(char*)%s,\n", pStr, buf);
 
@@ -479,7 +479,7 @@ static void WriteHMaterials(
 		if(s.pMaterial[i].pszEffectName)
 		{
 			sprintf(buf, "%s%dpszEffectName", sName, i);
-			WriteHData(pFile, (unsigned long*)s.pMaterial[i].pszEffectName, (unsigned int)strlen(s.pMaterial[i].pszEffectName) + 1, buf);
+			WriteHData(pFile, (unsigned int*)s.pMaterial[i].pszEffectName, (unsigned int)strlen(s.pMaterial[i].pszEffectName) + 1, buf);
 		}
 		sprintf(pStr, "%s		(char*)%s,\n", pStr, buf);
 

@@ -166,7 +166,7 @@ int CDisplayText::Flush()
 //
 bool CDisplayText::APIInit()
 {
-    m_pAPI = new () SDisplayTextAPI;
+    m_pAPI = new SDisplayTextAPI;
 
 	//m_pAPI = new SDisplayTextAPI;
 	if(!m_pAPI)
@@ -188,8 +188,8 @@ void CDisplayText::APIRelease()
 // for a given context.
 //
 bool CDisplayText::APIUpLoadIcons(
-	const unsigned long * const pPVR,
-	const unsigned long * const pIMG)
+	const unsigned int * const pPVR,
+	const unsigned int * const pIMG)
 {
 	/* Load Icon textures */
 	/* PVR Icon */
@@ -197,14 +197,14 @@ bool CDisplayText::APIUpLoadIcons(
 	glBindTexture(GL_TEXTURE_2D, m_pAPI->uTexturePVRLogo);
 	myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, 128, 128, 0, GL_RGB, GL_UNSIGNED_SHORT_5_6_5, pPVR + (pPVR[0] / sizeof(unsigned long)));
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, 128, 128, 0, GL_RGB, GL_UNSIGNED_SHORT_5_6_5, pPVR + (pPVR[0] / sizeof(unsigned int)));
 
 	/* IMG Icon */
 	glGenTextures(1, &m_pAPI->uTextureIGDKLogo);
 	glBindTexture(GL_TEXTURE_2D, m_pAPI->uTextureIGDKLogo);
 	myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	myglTexParameter(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, 128, 128, 0, GL_RGB, GL_UNSIGNED_SHORT_5_6_5, pIMG + (pIMG[0] / sizeof(unsigned long)));
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, 128, 128, 0, GL_RGB, GL_UNSIGNED_SHORT_5_6_5, pIMG + (pIMG[0] / sizeof(unsigned int)));
 	return true;
 }
 

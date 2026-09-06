@@ -307,8 +307,8 @@ void APIRelease();
 // for a given context.
 //
 bool APIUpLoadIcons(
-		const unsigned long * const pPVR,
-		const unsigned long * const pIMG);
+		const unsigned int * const pPVR,
+		const unsigned int * const pIMG);
 
 //
 // true if succesful, false otherwise.

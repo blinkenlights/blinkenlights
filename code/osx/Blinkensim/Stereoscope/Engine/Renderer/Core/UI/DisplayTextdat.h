@@ -17,7 +17,7 @@ subject to the following restrictions:
 #define _DISPLAYTEXTDAT_H_
 
 #ifndef A32BIT
- #define A32BIT unsigned long
+ #define A32BIT unsigned int
 #endif
 
 const unsigned char WindowBackground[]={
